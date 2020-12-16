@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Columns in data tables and variables"
-permalink: guide/naming
+permalink: guideline/naming
 parent: "Styleguide, standards, and conventions"
 nav_order: 1
 ---

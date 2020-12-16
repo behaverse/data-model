@@ -1,10 +1,9 @@
 ---
 layout: default
 title:  "Styleguide, standards, and conventions"
-permalink: guide
+permalink: guideline
 nav_order: 2
 has_children: true
-has_toc: false
 ---
 
 # {{ page.title }}
