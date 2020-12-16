@@ -33,6 +33,7 @@ github_username:  behaverse
 # theme: "just-the-docs"
 remote_theme: pmarsceill/just-the-docs
 plugins:
+  - jemoji
   - jekyll-feed
 
 # Exclude from processing.
@@ -81,6 +82,23 @@ ga_tracking_anonymize_ip: false # Use GDPR compliant Google Analytics settings (
 just_the_docs:
   collections:
     pages:
-      name: Behaverse Data Model
+      name: Data Model
     tutorials:
       name: Tutorials
+
+
+
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# last edit timestamp
+last_edit_timestamp: true
+last_edit_time_format: "%b %e %Y"  # "%b %e %Y at %I:%M %p" to show time
+
+# edit on github
+gh_edit_link: true  # show or hide edit this page link
+gh_edit_link_text: ":memo:"
+gh_edit_repository: "https://github.com/behaverse/data-model"  # the github repo URL
+gh_edit_branch: "master" # the branch that your docs is served from
+gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately

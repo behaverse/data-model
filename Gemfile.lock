@@ -262,6 +262,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll-feed
+  jemoji
   just-the-docs
   tzinfo (~> 1.2)
   tzinfo-data

@@ -4,3 +4,5 @@
 
 layout: home
 ---
+
+Hello! This is a work in progress. Use the nav to read the docs, spec, and the rest ;)
