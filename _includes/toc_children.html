@@ -4,9 +4,10 @@
   {% assign pages = site.pages %}
 {% endif %}
 
-
+{%- unless include.hide_header == true -%}
 <hr>
 <h2 class="text-delta">Table of contents</h2>
+{% endunless %}
 <ul>
   {%- for page in pages -%}
     <li>
