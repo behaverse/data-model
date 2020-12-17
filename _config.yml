@@ -70,6 +70,8 @@ collections:
 # custom configs (only works in the just-the-docs theme)
 # --------------
 
+logo: "/assets/images/xCIT_logo.png"
+
 # search configs
 search_enabled: true
 search:
@@ -89,7 +91,7 @@ ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (t
 just_the_docs:
   collections:
     pages:
-      name: Data Model
+      name: Behaverse Data Model
     tutorials:
       name: Tutorials
 
