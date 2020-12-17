@@ -19,5 +19,20 @@ has_children: true
 
 Note that in some cases data may be aggregated from multiple different sources, each following their own conventions and it might not always be feasible/practical to harmonize them. More on this later. 
 
-Note also that there are usually higher-level standards regarding the naming and structuring of code depending on the particular tool stack people use to analyze data (for example, for Python, there is PEP-8 and Flake-8, for R there is the tidyverse style). It is generally advised to follow such well-known and widely used standards when applicable.
+Note also that there are usually higher-level standards regarding the naming and structuring of code depending on the particular tool stack people use to analyze data (for example, for Python, there is PEP-8 and Flake-8, for R there is the Tidyverse style). It is generally advised to follow such well-known and widely used standards when applicable.
 
+
+page: {{pages_list}}
+
+{% if page.has_children == true and page.has_toc != false %}
+  <hr>
+  <h2 class="text-delta">Table of contents</h2>
+  <ul>
+    {%- assign children_list = pages_list | where: "parent", page.title | where: "grand_parent", page.parent -%}
+    {% for child in pages_list %}
+      <li>
+        <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

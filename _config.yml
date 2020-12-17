@@ -7,11 +7,7 @@
 #
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
+
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
@@ -26,7 +22,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Google search results) and in your feed.xml site description.
 baseurl: "/data-model" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
+twitter_username: behaverse
 github_username:  behaverse
 
 # Build settings
@@ -35,6 +31,12 @@ remote_theme: pmarsceill/just-the-docs
 plugins:
   - jemoji
   - jekyll-feed
+
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -64,21 +66,26 @@ collections:
     permalink: "/:collection/:path/"
     output: true
 
+# --------------
 # custom configs (only works in the just-the-docs theme)
+# --------------
 
+# search configs
 search_enabled: true
 search:
   button: true
   heading_level: 6
 
-# Aux links for the upper right navigation
+# links in the upper right navigation
 aux_links:
   "Behaverse on GitHub":
     - "//github.com/behaverse/data-model"
 
-ga_tracking: UA-5555555-55
-ga_tracking_anonymize_ip: false # Use GDPR compliant Google Analytics settings (true by default)
+# tracking info
+ga_tracking: UA-128269502-3 # same as behaverse.org tracking code
+ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true by default)
 
+# collections to be handled by the just_the_docs theme
 just_the_docs:
   collections:
     pages:
@@ -86,17 +93,15 @@ just_the_docs:
     tutorials:
       name: Tutorials
 
-
-
-# Back to top link
-back_to_top: true
+# Back-to-top link
+back_to_top: false
 back_to_top_text: "Back to top"
 
-# last edit timestamp
+# show last edit timestamp
 last_edit_timestamp: true
 last_edit_time_format: "%b %e %Y"  # "%b %e %Y at %I:%M %p" to show time
 
-# edit on github
+# edit-on-github links
 gh_edit_link: true  # show or hide edit this page link
 gh_edit_link_text: ":memo:"
 gh_edit_repository: "https://github.com/behaverse/data-model"  # the github repo URL
