@@ -71,7 +71,7 @@ collections:
 # custom configs (only works in the just-the-docs theme)
 # --------------
 
-logo: "/assets/images/xCIT_logo.png"
+logo: "/assets/images/behaverse_logo_purple.png"
 
 # search configs
 search_enabled: true
