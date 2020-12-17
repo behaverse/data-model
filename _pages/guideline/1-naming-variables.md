@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Naming data"
+title: "Naming variables"
 permalink: guideline/naming-variables
 parent: Guideline
 nav_order: 1
@@ -16,7 +16,6 @@ Naming things is notoriously hard. In addition to naming concerns that are commo
 {: .no_toc .text-delta }
 - TOC
 {:toc}
-
 
 
 ## Naming columns
@@ -50,12 +49,14 @@ Here are a few points to consider when naming variables:
 - It's OK to use long names; but throw out unnecessary words; Sometimes creating a new expression that refers to the long can be useful (however, add explanation in the codebook/documentation);
 - Use formatting to convey meaning (e.g., capitalization, underscores, dashed).
 
-> **Tip**{: .label} If you feel the need to write a comment to explain the meaning of a variable or function or expression, instead of writing the comment think about the possibility to change the names/code to make them more readable (ideally to the point no comments are needed).
+> If you feel the need to write a comment to explain the meaning of a variable or function or expression, instead of writing the comment think about the possibility to change the names/code to make them more readable (ideally to the point no comments are needed).
+{: .tip }
 
-> **Tip**{: .label } Test your variable names. Show someone (a peer) your variable name and ask them to guess what the variable means and what type it likely has (and whether it is a variable, a function or something else). 
+> Test your variable names. Show someone (a peer) your variable name and ask them to guess what the variable means and what type it likely has (and whether it is a variable, a function or something else).
+{: .tip }
 
-> **Tip**{: .label } Don't hesitate to change names when you come up with better ones.
-
+> Don't hesitate to change names when you come up with better ones.
+{: .tip }
 
 ## Hierarchy
 
@@ -82,7 +83,9 @@ Note that in some cases this convention goes against the way we would name thing
 Note also that there might be cases where the terms used to form a variable name do not on their own reveal their relationships (entity versus property) and background knowledge is required to determine the correct order (i.e., `<entity>_<property>`).
 
 
-> **Rule #1**{: .label .label-green} **Use the naming pattern `<entity>_<property>`.**
+> **Rule #1**
+> **Use the naming pattern `<entity>_<property>`.**
+{: .rule }
 
 
 ## Adjectives
@@ -93,7 +96,10 @@ In these examples, "left" and "expected" are values not variables; they play the
 
 Thus our general pattern for naming columns in a data table is:
 
-> **Rule #2**{: .label .label-green} **Use the naming pattern `[<adjective>_]<entity>_<feature>`.**
+> **Rule #2**
+> **Use the naming pattern `[<adjective>_]<entity>_<feature>`.**
+{: .rule }
+
 
 ## Singular versus plural
 
@@ -109,8 +115,9 @@ Regarding the second question, we follow the pattern <entity>_<property> with th
 
 Finally, note that it's OK to use plurals for naming units (e.g., age_in_years). 
 
-
-> **Rule #3**{: .label .label-green} **When naming variables using `<entity>_<property>` pattern, express the entity in singular form.**
+> **Rule #3**
+> **When naming variables using `<entity>_<property>` pattern, express the entity in singular form.**
+{: .rule }
 
 
 ## Boolean variables
@@ -123,7 +130,9 @@ It's OK to not use prefix boolean variables with `is_`, `has_` or similar when t
 - `correct`
 - `timed_out`
 
-> **Rule #4**{: .label .label-green} **Make clear when a variable is a boolean and express the variable positively.**
+> **Rule #4**
+> **Make clear when a variable is a boolean and express the variable positively.**
+{: .rule }
 
 ## Aggregation and transformation
 
@@ -132,7 +141,10 @@ In data analysis pipelines variables are typically transformed and aggregated. S
 To keep things consistent with the "Hierarchy" rule presented earlier, we will use suffixes of specific terms (see below). For example, if there's a variable called `response_time` and we compute first the log of response_time and then average the logs of response_time we would end up with a new variable called `response_time_log_mean`.
 
 
-> **Rule #5**{: .label .label-green} **When transforming or aggregating variables, use dedicated suffixes..**
+> **Rule #5**
+> **When transforming or aggregating variables, use dedicated suffixes.**
+{: .rule }
 
 
-**Note:** Sometimes such names can get quite long and hard to read and there might in fact exist specific names to refer to a sequence of transformation or one can come up with such a specific new name. For example, one might use `x_rmse` rather than `x_square_mean_root`. 
+> Sometimes such names can get quite long and hard to read and there might in fact exist specific names to refer to a sequence of transformation or one can come up with such a specific new name. For example, one might use `x_rmse` rather than `x_square_mean_root`. 
+{: .note }
