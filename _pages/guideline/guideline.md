@@ -14,7 +14,7 @@ has_children: true
 - For column names, variables and functions we use lower_snake_case;
 - For enum values, we also use lower_snake_case (because those values might end up becoming columns during the data analysis);
 - For data set names in code and classes we CamelCase; 
-- For named constants we ALL_CAPS (e.g., PI, MAX_RADIUS);
+- For named constants we ALL_CAPS (e.g., `PI`, `MAX_RADIUS`);
 - For naming data files and data folders see below. 
 
 Note that in some cases data may be aggregated from multiple different sources, each following their own conventions and it might not always be feasible/practical to harmonize them. More on this later. 

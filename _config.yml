@@ -31,6 +31,7 @@ remote_theme: pmarsceill/just-the-docs
 plugins:
   - jemoji
   - jekyll-feed
+  - jekyll-toc
 
 defaults:
   - scope:
@@ -84,8 +85,8 @@ aux_links:
     - "//github.com/behaverse/data-model"
 
 # tracking info
-ga_tracking: UA-128269502-3 # same as behaverse.org tracking code
-ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true by default)
+ga_tracking: G-K2NP7Q9KGZ
+# ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true by default)
 
 # collections to be handled by the just_the_docs theme
 just_the_docs:

@@ -8,12 +8,16 @@ nav_order: 2
 
 
 # {{page.title}}
+{: .no-toc}
 
 While the sections above were concerned with the general naming pattern of columns in data tables, the sections below will argue for the use of specific terms to the exclusion of others.
 
 
-## Standard variables and their default units
+- TOC
+{:toc}
 
+
+## Standard variables and their default units
 
 ### Naming people
 
@@ -148,7 +152,14 @@ modifier = stimulus that implies a transformation of the mapping from stimuli to
 Having defined these categories, we now define the following stimulus roles within each category:
 
 
-TABLE TABLE
+| head1        | head two          | three |
+|:-------------|:------------------|:------|
+| ok           | good swedish fish | nice  |
+| out of stock | good and plenty   | nice  |
+| ok           | good `oreos`      | hmm   |
+| ok           | good `zoute` drop | yumm  |
+
+
 
 
 Note: the goal of this table is to enforce consistency. When using the term “non-target” we will always mean a mandatory input which does not trigger a response and not a subtype of distractor.
