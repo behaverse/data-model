@@ -60,14 +60,20 @@ Because of these distinct purposes, we will use two different variables to refer
 
 <dl>
   <dt>subject_index</dt>
-  <dd>an integer assigned to subjects within a data set, typically but not necessarily in chronological order of starting participation in the study.</dd>
+  <dd markdown="1">
+  an integer assigned to subjects within a data set, typically but not necessarily in chronological order of starting participation in the study.
+  </dd>
 
   <dt>subject_name</dt>
-  <dd>a name given to subjects within a data set. Following BIDS recommendations, this name is obtained by converting subject_index to a string and using 0 padding, such that the first subject is named "01". Note that such 0 padding requires knowing how many subjects there are in a study before being able to name them (e.g., if there are less than 100, the first subject would be called "01", but if there are 1000 subjects in total, that subject would be called "0001"). <br />
-  We will use a string of length 4 by default as this will most likely cover all of our use cases.</dd>
+  <dd markdown="1">
+  a name given to subjects within a data set. Following [BIDS recommendations](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html#participant-names-and-other-labels), this name is obtained by converting `subject_index` to a string and using 0 padding, such that the first subject is named "01". Note that such 0 padding requires knowing how many subjects there are in a study before being able to name them (e.g., if there are less than 100, the first subject would be called "01", but if there are 1000 subjects in total, that subject would be called "0001"). <br />
+  We will use a string of length 4 by default as this will most likely cover all of our use cases.
+  </dd>
   
   <dt>subject_uuid</dt>
-  <dd>a universally unique identifier (UUID), which looks something like: <code>20025fe6-6868-47c6-a222-a5c06b49c8db</code>. Note that this <code>subject_uuid</code> will not be directly in the L1 Trial data but rather will be stored in a separate table that contains for each <code>subject_name</code> its corresponding subject_uuid.</dd>
+  <dd markdown="1">
+  a universally unique identifier (UUID), which looks something like: `20025fe6-6868-47c6-a222-a5c06b49c8db`. Note that this `subject_uuid` will not be directly in the L1 Trial data but rather will be stored in a separate table that contains for each `subject_name` its corresponding subject_uuid.
+  </dd>
 
 </dl>
 
