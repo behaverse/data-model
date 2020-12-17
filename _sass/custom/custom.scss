@@ -21,12 +21,9 @@
   background-size: 0px;
 }
 
-
 $callouts: (
   note: ($blue-300, rgba($blue-000, .2), 'NOTE'),
   tip: ($blue-300, rgba($blue-000, .2), 'TIP'),
-  rule: ($blue-300, rgba($blue-000, .2), 'Rule'),
-  propose: ($blue-300, rgba($blue-000, .2), 'Propose'),
   info: ($blue-300, rgba($blue-000, .2), 'INFO'),
   warn: ($yellow-300, rgba($yellow-000, .2), 'WARNING'),
   danger: ($red-300, rgba($red-000, .2), 'DANGER')
@@ -49,4 +46,38 @@ $callouts: (
             padding-bottom: .125rem;
         }
     }
+}
+
+.rule {
+    background: rgba($green-000, .2);
+    border-left: $border-radius solid $green-300;
+    border-radius: $border-radius;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+    padding: .8rem;
+
+    strong:first-of-type, em:first-of-type {
+      color: $green-300;
+      display: block;
+      font-weight: bold;
+      font-size: .75em;
+      padding-bottom: .125rem;
+    }
+
+}
+
+.purpose {
+  background: rgba($purple-000, .2);
+  border-left: $border-radius solid $purple-300;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: .8rem;
+
+  strong:first-of-type, em:first-of-type {
+    color: $purple-300;
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    padding-bottom: .125rem;
+  }
+
 }
