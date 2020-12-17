@@ -24,7 +24,7 @@ In some cases data may be aggregated from multiple different sources, each follo
 {: .note }
 
 
-there are usually higher-level standards regarding the naming and structuring of code depending on the particular tool stack people use to analyze data (for example, for Python, there is PEP-8 and Flake-8, for R there is the Tidyverse style). It is generally advised to follow such well-known and widely used standards when applicable.
+There are usually higher-level standards regarding the naming and structuring of code depending on the particular tool stack people use to analyze data (for example, for Python, there is PEP-8 and Flake-8, for R there is the Tidyverse style). It is generally advised to follow such well-known and widely used standards when applicable.
 {: .note }
 
 
