@@ -1,3 +1,10 @@
+---
+title: About
+permalink: about
+layout: home
+toc: true
+---
+
 # About
 
 Behaverse Data Model is part of an [FNR](https://www.fnr.lu/) funded cognitive sciences research project from [xCIT](https://xcit.org/)—a research team led by Prof. Pedro Cardoso-Leite.
