@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "Naming data"
-permalink: guideline/naming-variables
-parent: "Styleguide, standards, and conventions"
+permalink: guideline/naming-data
+parent: Guideline
 nav_order: 1
 ---
 

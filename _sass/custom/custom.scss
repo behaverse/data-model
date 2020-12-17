@@ -1,9 +1,15 @@
 .site-title {
-  padding: 0.5rem;
+  // padding: 0.5rem;
+  white-space: nowrap;
+  font-size: 18px !important;
+  // padding-left: 1rem;
 }
 
 .site-logo {
-  background-position: center center;
+  // background-position: center center;
+  height: 36px;
+  width: 36px;
+  margin-right: .25rem;
 }
 
 .site-footer {

@@ -1,12 +1,13 @@
 ---
 layout: default
-title:  "Styleguide, standards, and conventions"
+title:  "Guideline"
 permalink: guideline
 nav_order: 2
 has_children: true
 ---
 
-# {{ page.title }}
+# Styleguide, standards, and conventions
+{: .no-toc }
 
 
 ## General advices

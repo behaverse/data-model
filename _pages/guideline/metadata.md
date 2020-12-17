@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Metadata"
+permalink: guideline/metadata
+parent: Guideline
+nav_order: 4
+---
+
 ## Metadata (TBD)
 What is the difference between data and meta-data?
 What formats are there for structuring meta-data?
