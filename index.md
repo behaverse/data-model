@@ -3,6 +3,6 @@ layout: home
 toc: true
 ---
 
-# Behaverse data model
+# Behaverse Data Model
 
 ## Test again
