@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Naming data"
-permalink: guideline/naming-data
+permalink: guideline/naming-variables
 parent: Guideline
 nav_order: 1
 ---

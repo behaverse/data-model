@@ -1,0 +1,16 @@
+{% if include.parent %}
+  {% assign pages = site.pages | where:'parent', include.parent.title %}
+{% else %}
+  {% assign pages = site.pages %}
+{% endif %}
+
+
+<hr>
+<h2 class="text-delta">Table of contents</h2>
+<ul>
+  {%- for page in pages -%}
+    <li>
+      <a href="{{ page.url | absolute_url }}">{{ page.title }}</a>{% if page.summary %} - {{ page.summary }}{% endif %}
+    </li>
+  {%- endfor -%}
+</ul>
