@@ -14,7 +14,7 @@ first the primary key of the table,
 first the general, then the specific variables,
 first the parameters/fixed variables, then the measurements,
 group columns that are semantically related (e.g., columns describing the task, columns describing the response). 
-if there’s an implicit ordering, use that ordering (the stimulus was shown before the response was recorded, the stimulus columns should be to the left of the response columns);
+if there's an implicit ordering, use that ordering (the stimulus was shown before the response was recorded, the stimulus columns should be to the left of the response columns);
 order columns alphabetically.
 
 Regarding the ordering of the suffixes within an entity (e.g., block) we use the following convention:

@@ -27,7 +27,7 @@ The data is grouped first by study, then by subject and the data within each sub
 Most behavioral datasets do not follow the BIDS way of organizing data files and instead either have a table per task (including the data from all subjects in the same table) or a folder per task which contains a file per subject. Organizing data by task makes sense because a task defines a data schema that will be the same across subjects. Grouping subjects in a common table also makes sense because the data is usually small and typically processed all at once rather than on a subject-by-subject basis. However, as data sets become larger, there are several advantages to using the BIDS convention (in addition to consistency, this includes for example a greater ease to understand the scope of the indices or the ability to easily delete all the data from one particular subject who might request it). 
 
 
-BIDS uses a hierarchy principle to avoid duplicating information across many folders: if some information applies to all the sessions of one subject, that information should be in the root folder of that subject’s data. Information that is closest to the actual data file has priority over information presented at a higher level; this allows one to specify the general parameters at the root of the study folder and only include changes relative to those general parameters when they apply.  It is OK but not strictly necessary to follow this pattern.
+BIDS uses a hierarchy principle to avoid duplicating information across many folders: if some information applies to all the sessions of one subject, that information should be in the root folder of that subject's data. Information that is closest to the actual data file has priority over information presented at a higher level; this allows one to specify the general parameters at the root of the study folder and only include changes relative to those general parameters when they apply.  It is OK but not strictly necessary to follow this pattern.
 
 The folder structure we will use is described below. Note that entities surrounded square brackets "[ ]" are optional and may be used only when applicable and entities marked with a "*" are replicated for each instance of the class (e.g., for each subject in the study).  
 
@@ -43,7 +43,7 @@ The folder structure we will use is described below. Note that entities surround
 ...
 
 
-Here’s an example folder structure:
+Here's an example folder structure:
 
 SDS_v2020.10/
 	description.json
@@ -111,9 +111,9 @@ BIDS uses TSV rather than CSV for tabular data;
 json for meta-data
 https://library.stanford.edu/research/data-management-services/data-best-practices/best-practices-file-formats
 
-There are two main file formats that seem most appropriate to store tabular data: CSV (comma separated values) and TSV (tab separated values). CSV have the advantage of being more common and can be read by most software that uses tabular data. TSV is less common but is technically more efficient, less error prone and more human readable. TSV is in particular more appropriate than CSV in cases where the values in a cell can contain commas, which is obviously very common in text data, and where the commas within a cell must be distinguished from the commas that serve as separators (tabs are much less common in data values). While TSV is less common than CSV, all advanced data analysis tools are able to easily handle tsv files and people who can’t handle tsv files can find tsv to csv conversion tools. 
+There are two main file formats that seem most appropriate to store tabular data: CSV (comma separated values) and TSV (tab separated values). CSV have the advantage of being more common and can be read by most software that uses tabular data. TSV is less common but is technically more efficient, less error prone and more human readable. TSV is in particular more appropriate than CSV in cases where the values in a cell can contain commas, which is obviously very common in text data, and where the commas within a cell must be distinguished from the commas that serve as separators (tabs are much less common in data values). While TSV is less common than CSV, all advanced data analysis tools are able to easily handle tsv files and people who can't handle tsv files can find tsv to csv conversion tools. 
 
-It seems therefore, that TSV is a better option for behavioral data and we will export our data in that format. This has the added benefit that we’ll be consistent with BIDS who also uses the tsv fileformat for their behavioral data.
+It seems therefore, that TSV is a better option for behavioral data and we will export our data in that format. This has the added benefit that we'll be consistent with BIDS who also uses the tsv fileformat for their behavioral data.
 
 https://en.wikipedia.org/wiki/Tab-separated_values 
 https://odino.org/tsv-better-than-csv/

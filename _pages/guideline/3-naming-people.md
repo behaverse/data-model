@@ -41,7 +41,7 @@ A reference to a subject identifier can serve multiple purposes and depending on
 {: .purpose }
 
 >**Purpose #2**
->**Select or identify data belonging to a particular subject. For example, if you see an outlier point in a plot and want to understand why that point occurred, it might be necessary to identify that data as belonging to a particular subject and then look in greater detail in that subject’s data.**
+>**Select or identify data belonging to a particular subject. For example, if you see an outlier point in a plot and want to understand why that point occurred, it might be necessary to identify that data as belonging to a particular subject and then look in greater detail in that subject's data.**
 {: .purpose }
 
 >**Purpose #3**
@@ -82,5 +82,5 @@ Because of these distinct purposes, we will use two different variables to refer
 > We do not use `*_label` because it does not convey the idea of uniqueness.
 {: .warn }
 
-> We do not use shortened UUIDs as in [RIA layouts](https://github.com/datalad/git-annex-ria-remote) (which is obtained by shortening the subjects’s uuid) to avoid potential data privacy issues.
+> We do not use shortened UUIDs as in [RIA layouts](https://github.com/datalad/git-annex-ria-remote) (which is obtained by shortening the subjects's uuid) to avoid potential data privacy issues.
 {: .warn }

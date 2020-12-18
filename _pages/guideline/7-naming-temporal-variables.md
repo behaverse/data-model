@@ -55,5 +55,5 @@ response_offset: refers to the duration between trial start (not stimulus onset)
 response_duration: refers to the difference between response_offset and response_onset and indicates how long it took to enter the response. 
 
 
-Note: In general, in data tables, we should refer to stimulus onset times relative to the beginning of the trial (time reference of the trial) and specify their duration (i.e., onset and duration, rather than onset and offset or start_datetime and end_datetime). If there’s a need for additional time measurements, which are not part of the task parameters, these can be computed by the analyst rather than be precomputed and present in the shared data. 
+Note: In general, in data tables, we should refer to stimulus onset times relative to the beginning of the trial (time reference of the trial) and specify their duration (i.e., onset and duration, rather than onset and offset or start_datetime and end_datetime). If there's a need for additional time measurements, which are not part of the task parameters, these can be computed by the analyst rather than be precomputed and present in the shared data. 
 
