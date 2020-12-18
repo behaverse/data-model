@@ -1,13 +1,29 @@
 ---
-title: Ordering tables
+title: Organizing datasets
 parent: "Standards and conventions"
 grand_parent: Guideline
 layout: page
 nav_order: 8
 ---
 
-# Ordering tables
-Ordering of variables within a data table
+# Datasets
+
+
+<hr />
+
+## Table of content
+{: .no_toc .text-delta }
+- TOC
+{:toc}
+
+Datasets can be organized and stored in many different ways. This section focuses only on the organization of datasets that are destined to be archived on a specialized website and/or shared with other researchers who might want to reproduce results or process the data in novel ways. These data sets can be seen as static and encapsulated/standalone; they are not meant to be updated and augmented as new data comes in.
+
+Data from research projects often fit naturally in that category because a study will typically define a data collection campaign with a clear scope and well defined start and end times (determined for example by the timeline and funding of a particular research project). However, this need not always be the case. A research group may for instance collect data on a particular task for a long period of time and use different subsets of that data for different studies. 
+
+
+## Ordering tables
+
+### Ordering of variables within a data table
 The ordering of the columns within a table may facilitate the understanding of particular variables and can be useful when inspecting the data. Columns in a data table should be ordered according to the following rules:
 
 first the primary key of the table, 
@@ -23,7 +39,7 @@ block_type > block_name > block_id > block_index
 
 Rows should be ordered using the indexing rules described earlier; that is ordered by study, then subject, then session, then timeline, then episode, then task and finally trial. This will also be the ordering of the primary key of the table.
 
-## Tidy tables
+### Tidy tables
 "Tidy data allows one to start analyzing the data right away"
 Wickham, Hadley (20 February 2013). "Tidy Data" (PDF). Journal of Statistical Software.
 
