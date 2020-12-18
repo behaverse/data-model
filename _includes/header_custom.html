@@ -1,0 +1,27 @@
+
+<!-- dark mode switch -->
+
+<script>
+  theme = sessionStorage.getItem("theme") || "light";
+  jtd.setTheme(theme);
+
+  function toggleDarkMode() {
+    if (jtd.getTheme() === 'dark') {
+      sessionStorage.setItem("theme", "light");
+      jtd.setTheme('light');
+      toggleDarkMode.textContent = 'Dark';
+    } else {
+      sessionStorage.setItem("theme", "dark");
+      jtd.setTheme('dark');
+      toggleDarkMode.textContent = 'Light';
+    }
+  }
+</script>
+
+<nav class='aux-nav'>
+  <ul class="aux-nav-list">
+    <li class="aux-nav-list-item">
+      <a class='site-button' onclick='toggleDarkMode()' href='#'><i class='fa fa-adjust'></i></a>
+    </li>
+  </ul>
+</nav>
