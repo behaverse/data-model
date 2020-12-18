@@ -1,9 +1,9 @@
 ---
 layout: page
-title: "Task Instructions model"
+title: "Task instructions model (coming soon)"
 permalink: spec/task-instruction
 nav_order: 3
-parent: "Specifications (TBD)"
+parent: "Specifications (coming soon)"
 ---
 
 

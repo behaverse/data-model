@@ -1,6 +1,6 @@
 ---
-layout: default
-title:  "Specifications (TBD)"
+layout: page
+title:  "Specifications (coming soon)"
 permalink: spec
 nav_order: 3
 has_children: true

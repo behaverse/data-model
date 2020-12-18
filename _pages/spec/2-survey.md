@@ -1,9 +1,9 @@
 ---
 layout: page
-title: "Survey data"
+title: "Survey data (coming-soon)"
 permalink: spec/survey
 nav_order: 2
-parent: "Specifications (TBD)"
+parent: "Specifications (coming soon)"
 ---
 
 
