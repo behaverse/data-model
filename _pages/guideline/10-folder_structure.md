@@ -8,6 +8,13 @@ nav_order: 3
 
 # Folder structure
 
+<hr />
+
+## Table of content
+{: .no_toc .text-delta }
+- TOC
+{:toc}
+
 When datasets become large or involve many different kinds of tables it becomes necessary to organize the data into a folder structure. We will use the pattern described in the *Brain Imaging Data Structure* ([BIDS]( https://bids.neuroimaging.io)). BIDS defines a clear standard for organizing and data in folders. We first describe the general principle before giving examples.
 
 ```
