@@ -1,12 +1,12 @@
 ---
 layout: page
-title: "Metadata"
+title: "Metadata (coming soon)"
 permalink: guideline/metadata
 parent: Guideline
 nav_order: 4
 ---
 
-## Metadata (TBD)
+# {{ page.title }}
 
 What is the difference between data and meta-data?
 

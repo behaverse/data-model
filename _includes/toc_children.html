@@ -1,5 +1,5 @@
 {% if include.parent %}
-  {% assign pages = site.pages | where:'parent', include.parent.title %}
+  {% assign pages = site.pages | where:'parent', include.parent.title | sort:"nav_order" %}
 {% else %}
   {% assign pages = site.pages %}
 {% endif %}
@@ -10,8 +10,18 @@
 {% endunless %}
 <ul>
   {%- for page in pages -%}
-    <li>
-      <a href="{{ page.url | absolute_url }}">{{ page.title }}</a>{% if page.summary %} - {{ page.summary }}{% endif %}
-    </li>
+      <li>
+        <a href="{{ page.url | absolute_url }}">{{ page.title }}</a>{% if page.summary %} - {{ page.summary }}{% endif %}
+        {% assign children = site.pages | where:'parent', page.title %}
+        {% if children.size > 0 %}
+          <ul>
+            {% for child in children %}
+            <li>
+              <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
   {%- endfor -%}
 </ul>
