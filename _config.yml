@@ -16,10 +16,6 @@
 
 title: Behaverse Data Model
 email: contact@xcit.org
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
 baseurl: "/data-model" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: behaverse
@@ -32,6 +28,7 @@ plugins:
   - jemoji
   - jekyll-feed
   - jekyll-toc
+  - jekyll-seo-tag
 
 defaults:
   - scope:
@@ -84,6 +81,8 @@ aux_links_new_tab: true
 aux_links:
   "<i class='fa fa-external-link'></i>&nbsp;behaverse.org":
     - "https://behaverse.org"
+  "<i class='fa fa-file-pdf-o'></i>":
+    - "https://doi.org/10.5281/zenodo.4336114"
   "<i class='fa fa-github-alt'></i>":
     - "https://github.com/behaverse/data-model"
 
