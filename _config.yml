@@ -80,9 +80,12 @@ search:
   heading_level: 6
 
 # links in the upper right navigation
+aux_links_new_tab: true
 aux_links:
-  "Behaverse on GitHub":
-    - "//github.com/behaverse/data-model"
+  "<i class='fa fa-external-link'></i>&nbsp;behaverse.org":
+    - "https://behaverse.org"
+  "<i class='fa fa-github-alt'></i>":
+    - "https://github.com/behaverse/data-model"
 
 # tracking info
 ga_tracking: G-K2NP7Q9KGZ
