@@ -1,9 +1,10 @@
 ---
 title: "Other common names"
 parent: "Standards and conventions"
+permalink: guideline/common-names
 grand_parent: Guideline
 layout: page
-nav_order: 7
+nav_order: 8
 ---
 
 # Other common names
@@ -98,7 +99,7 @@ height, width
 weight
 : refers to the weight in kg a physical object.
 
-size
+~~size~~
 : don't use "size" as this term is ambiguous. "size" could refer to 180cm, "Medium" or 230x230. Instead, use a more specific term.
 
 count

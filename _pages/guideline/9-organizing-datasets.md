@@ -1,9 +1,9 @@
 ---
 title: "Organizing datasets"
-parent: "Standards and conventions"
-grand_parent: Guideline
+parent: "Guideline"
+permalink: guideline/organizing-datasets
+nav_order: 9
 layout: page
-nav_order: 8
 ---
 
 # Organizing datasets

@@ -1,9 +1,10 @@
 ---
 title: "Naming temporal variables"
 parent: "Standards and conventions"
+permalink: guideline/temporal-variables
 grand_parent: Guideline
 layout: page
-nav_order: 5
+nav_order: 7
 ---
 
 # Naming temporal variable

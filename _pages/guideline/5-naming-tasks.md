@@ -3,7 +3,7 @@ title: "Naming tasks"
 parent: "Standards and conventions"
 grand_parent: Guideline
 layout: page
-nav_order: 2
+nav_order: 5
 ---
 
 

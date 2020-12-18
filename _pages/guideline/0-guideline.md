@@ -2,13 +2,27 @@
 layout: default
 title:  "Guideline"
 permalink: guideline
-nav_order: 2
+nav_order: 1
 has_children: true
 has_toc: false
 ---
 
 # Styleguide, standards, and conventions
 {: .no-toc }
+
+Styleguides and conventions can apply to:
+
+- data
+- code (surface-level properties; literal)
+- code (structural, architectural, paradigmatic properties)
+- workflow and practices (everything that is not directly code)
+
+There are various great books that cover 2-4 but comparatively less about 1 and in particular within the context of behavioral data science.
+
+This document focuses on 1 (with repercussions on 2). It takes advantage of lessons learned about 2 and applies them to 1 but it also addresses points that are specific to 1 and haven’t perhaps been addressed before. Overall this document also serves to list and sometimes explain the particular choices we’ve made and styles and conventions that we follow in our lab.
+
+> We do not claim that the conventions and rules listed in this document are the absolute best way of doing things. We agree with “Clean Code” and others that consistency is more important than the choice for a particular set of conventions; this document therefore reflects our opinionated choices to achieve such consistency.
+{: .note }
 
 
 ## General advices

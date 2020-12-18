@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Naming variables"
-permalink: guideline/naming-variables
+title: "Naming columns"
+permalink: guideline/naming-columns
 parent: Guideline
 nav_order: 1
 ---

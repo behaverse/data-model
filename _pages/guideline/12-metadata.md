@@ -2,8 +2,8 @@
 layout: page
 title: "Metadata (coming soon)"
 permalink: guideline/metadata
-parent: Guideline
-nav_order: 4
+parent: "Guideline"
+nav_order: 12
 ---
 
 # {{ page.title }}

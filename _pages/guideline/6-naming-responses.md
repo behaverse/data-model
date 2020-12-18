@@ -1,9 +1,10 @@
 ---
 title: Naming responses
 parent: "Standards and conventions"
+permalink: guideline/response
 grand_parent: Guideline
 layout: page
-nav_order: 4
+nav_order: 6
 ---
 
 # Naming responses and response options

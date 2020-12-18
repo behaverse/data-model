@@ -60,13 +60,3 @@ In our opinion, source data should not be shared if one has the ability to extra
 This last point deserves further explaining. For research to be reproducible one may want to test all the steps from the data collection up to the final results. While all the steps might be tested, they are not necessarily tested by the same person. For instance, a software company may run tests to determine that the recorded timestamps are accurate and a lab technician may run tests to calibrate the monitor and other hardware equipment. The question of what data to share is related to what quality assurance (QA) requirements are expected to be fulfilled by the data analyst. If both the source data and data extracted from the source data are handed over to the data analyst it becomes the data analyst's responsibility to verify that both sets of data are in fact in agreement. If there is an error in the extraction code, the data analysis becomes responsible because he/she had access to that and could thus have spotted and corrected the error. In our opinion, the preparation of usable data from source data is not the responsibility of the data analyst; it is the responsibility of the data engineer and the entity that is sharing the data. It remains however that in any case tests must be conducted to verify the validity and accuracy of the process (we simply argue this is not the role of the person receiving the data). 
 
 In short then, we say "don't share source data", instead share well documented, well formatted, tidy raw data.
-
-### Organization of standalone single study data
-
-There are different valid options to organize standalone single study data and there are certain rules that apply to all such organizational systems.In particular, any dataset must have 
-a document that describes and gives background information about the dataset as a whole (e.g., README.md, licence);
-
-a code book that describes the meaning of the variables and the values they can take. 
-Ideally these documents should have a code (hash) that guarantees that they refer to a particular dataset. These elements will be described later.
-
-

@@ -1,9 +1,9 @@
 ---
 layout: page
 title: "Folder structure"
+parent: "Guideline"
 permalink: guideline/folder-structure
-parent: Guideline
-nav_order: 3
+nav_order: 11
 ---
 
 # Folder structure

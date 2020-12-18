@@ -3,7 +3,7 @@ title: Naming people
 parent: "Standards and conventions"
 grand_parent: Guideline
 layout: page
-nav_order: 1
+nav_order: 3
 ---
 
 
