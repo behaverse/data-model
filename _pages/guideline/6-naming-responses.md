@@ -6,7 +6,7 @@ layout: page
 nav_order: 4
 ---
 
-# Naming Responses and Response Options
+# Naming responses and response options
 
 
 <!-- there is only one section -->
