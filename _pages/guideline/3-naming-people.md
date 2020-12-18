@@ -8,10 +8,6 @@ nav_order: 1
 
 
 # Naming people
-{: .no_toc }
-
-There are three issues related to naming people in a data set; they concern how to name the "entity" (e.g., "participant"), which postfix to use (e.g., "_id") and what format to use for its values (e.g., an integer). We will go over each of this in turn and justify our choice for a particular convention.
-
 
 <hr>
 
@@ -19,6 +15,10 @@ There are three issues related to naming people in a data set; they concern how 
 {: .no_toc .text-delta }
 - TOC
 {:toc}
+
+
+There are three issues related to naming people in a data set; they concern how to name the "entity" (e.g., "participant"), which postfix to use (e.g., "_id") and what format to use for its values (e.g., an integer). We will go over each of this in turn and justify our choice for a particular convention.
+
 
 
 ## Naming the entity
@@ -56,31 +56,22 @@ These four purposes have somewhat different requirements.
 
 P#1 requires uniqueness within a study while P#4 requires uniqueness in general. For P#1 it would suffice to have a participant counter and assign an integer to each participant. But this would not work for P#4. Also while P#4 will typically require long strings to ensure uniqueness, soch long names are impractical for data analysis and storage (P#2, P#3). 
 
-Because of these distinct purposes, we will use two different variables to refer to a subject.
+Because of these distinct purposes, we will use three different variables to refer to a subject.
 
-<dl>
-  <dt>subject_index</dt>
-  <dd markdown="1">
-  an integer assigned to subjects within a data set, typically but not necessarily in chronological order of starting participation in the study.
-  </dd>
+subject_index
+: an integer assigned to subjects within a data set, typically but not necessarily in chronological order of starting participation in the study.
 
-  <dt>subject_name</dt>
-  <dd markdown="1">
-  a name given to subjects within a data set. Following [BIDS recommendations](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html#participant-names-and-other-labels), this name is obtained by converting `subject_index` to a string and using 0 padding, such that the first subject is named "01". Note that such 0 padding requires knowing how many subjects there are in a study before being able to name them (e.g., if there are less than 100, the first subject would be called "01", but if there are 1000 subjects in total, that subject would be called "0001"). <br />
-  We will use a string of length 4 by default as this will most likely cover all of our use cases.
-  </dd>
+subject_name
+: a name given to subjects within a data set. Following [BIDS recommendations](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html#participant-names-and-other-labels), this name is obtained by converting `subject_index` to a string and using 0 padding, such that the first subject is named "01". Note that such 0 padding requires knowing how many subjects there are in a study before being able to name them (e.g., if there are less than 100, the first subject would be called "01", but if there are 1000 subjects in total, that subject would be called "0001").
+<br />
+We will use a string of length 4 by default as this will most likely cover all of our use cases.
   
-  <dt>subject_uuid</dt>
-  <dd markdown="1">
-  a universally unique identifier (UUID), which looks something like: `20025fe6-6868-47c6-a222-a5c06b49c8db`. Note that this `subject_uuid` will not be directly in the L1 Trial data but rather will be stored in a separate table that contains for each `subject_name` its corresponding subject_uuid.
-  </dd>
-
-</dl>
-
+subject_uuid
+: a universally unique identifier (UUID), which looks something like: `20025fe6-6868-47c6-a222-a5c06b49c8db`. Note that this `subject_uuid` will not be directly in the L1 Trial data but rather will be stored in a separate table that contains for each `subject_name` its corresponding subject_uuid.
 
 
 > We do not use `*_label` because it does not convey the idea of uniqueness.
-{: .warn }
+{: .note }
 
-> We do not use shortened UUIDs as in [RIA layouts](https://github.com/datalad/git-annex-ria-remote) (which is obtained by shortening the subjects's uuid) to avoid potential data privacy issues.
-{: .warn }
+> We do not use shortened UUIDs (e.g., as in [RIA layouts](https://github.com/datalad/git-annex-ria-remote) which is obtained by shortening the subjects's uuid) to avoid potential data privacy issues.
+{: .note }

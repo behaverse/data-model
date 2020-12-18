@@ -9,6 +9,14 @@ nav_order: 3
 
 # Naming stimuli
 
+<hr>
+
+## Table of content
+{: .no_toc .text-delta }
+- TOC
+{:toc}
+
+
 There are several terms that are commonly used to refer to specific categories of stimuli. These include "item", "target" and "non-target", "distractor", "cue", "probe", "flanker", "mask", "lure", "stop-signal", "task-cue", "warning signal". Unfortunately, it seems that these terms are not used in a consistent manner (e.g., a "no-go" stimulus may be referred to as either a non-target because it does not require a "go" response or a distractor because that stimulus should be ignored; a "target" might be a stimulus you need to respond to or a reference you need to search for in a set).
 
 Furthermore, some of these terms belong to different semantic categories: a "cue" designates a functional role played by a stimulus within the context of the task (e.g., "this is to tell subjects to pay attention to the left") while "lure" reflects assumptions about the cognitive processes underlying task performance (e.g., "this type of stimuli should be more confusing to subjects because ...").  Following this insight, we distinguish:
@@ -24,7 +32,7 @@ design_vector
 {: .note }
 
 
-## Naming stimulus roles
+# Naming stimulus roles
 
 To decrease ambiguity in the naming of stimulus roles we will adopt the perspective on an "implied" ideal agent performing the task, that is, a schematic model of how the task designer intends agents to perform the task.
 
