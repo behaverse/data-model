@@ -73,18 +73,8 @@ logo: "/assets/images/behaverse_logo_purple.png"
 # search configs
 search_enabled: true
 search:
-  button: true
+  button: false
   heading_level: 6
-
-# links in the upper right navigation
-aux_links_new_tab: true
-aux_links:
-  "<i class='fa fa-github-alt'></i>":
-    - "https://github.com/behaverse/data-model"
-  "<i class='fa fa-file-pdf-o'></i>&nbsp;v2020.12.1":
-    - "https://doi.org/10.5281/zenodo.4336114"
-  "<i class='fa fa-external-link'></i>&nbsp;behaverse.org":
-    - "https://behaverse.org"
 
 # tracking info
 ga_tracking: G-K2NP7Q9KGZ
