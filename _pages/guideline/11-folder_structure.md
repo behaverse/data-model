@@ -104,7 +104,7 @@ sub-<label>[_ses-<label>]_task-<label>[_timeline-<label>][_rep-<index>]_type-<la
 {: .note }
 
 
-## Naming Datasets
+## Naming datasets
 If a dataset B is derived from dataset A, it is expected that the derived dataset has the same root as dataset A but a specific postfix (e.g., `income_luxembourg_2020.csv`). 
 
 A dataset may also have a version; in this case the filename should have a postfix expressing the version using [semantic versioning](https://semver.org/); for example, `income_luxembourg_2020_v1.0.1`) or [calendar based versioning (calver)](https://calver.org); for example `income_luxembourg_v2020.10`). For versioning datasets we recommend the use of calver.
