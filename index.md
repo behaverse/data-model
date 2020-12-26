@@ -11,7 +11,12 @@ parent: nil
 
 There are increasing amounts of behavioral data freely available on the internet with metadata standards making it easier to find them. However, there are large inconsistencies in the way those datasets are structured and stored, in the way their variables are named and formatted and even in what is meant by various common terms. These inconsistencies make it unnecessarily hard to reuse datasets and prevent the development of effective software tools and automatization. *Behaverse Data Model* defines coherent data models for both cognitive tests and surveys that apply to a large range of use-cases. In addition, *Behaverse Data Model* defines concepts and best practices regarding the naming and structuring of datasets. 
 
+To leare more about the ideas behind the Behaverse data model, see:
 
+<div class="csl-bib-body" style="line-height: 2; margin-left: 2em; text-indent:-2em;">
+  <div class="csl-entry">Defossez, A., Ansarinia, M., Clocher, B., Schmück, E., Schrater, P., &amp; Cardoso-Leite, P. (2020). The structure of behavioral data. <i>ArXiv:2012.12583 [q-Bio, Stat]</i>. <a href="http://arxiv.org/abs/2012.12583">http://arxiv.org/abs/2012.12583</a></div>
+  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=The%20structure%20of%20behavioral%20data&amp;rft.jtitle=arXiv%3A2012.12583%20%5Bq-bio%2C%20stat%5D&amp;rft.aufirst=Aur%C3%A9lien&amp;rft.aulast=Defossez&amp;rft.au=Aur%C3%A9lien%20Defossez&amp;rft.au=Morteza%20Ansarinia&amp;rft.au=Brice%20Clocher&amp;rft.au=Emmanuel%20Schm%C3%BCck&amp;rft.au=Paul%20Schrater&amp;rft.au=Pedro%20Cardoso-Leite&amp;rft.date=2020-12-23"></span>
+</div>
 
 <hr>
 
