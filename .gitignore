@@ -6,3 +6,5 @@ vendor/
 
 # ignore ide settings
 .vscode/
+
+Gemfile.lock
