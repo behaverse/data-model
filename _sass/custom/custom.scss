@@ -48,6 +48,17 @@ $callouts: (
     }
 }
 
+.category.label {
+  background: $grey-dk-100 !important;
+  // font-size: .9rem !important;
+  text-transform: none !important;
+  font-weight: normal !important;
+  font-style: italic !important;
+  // padding: 0 .1rem;
+  // border-radius: 15% !important;
+  margin: 0 5px;
+}
+
 .rule {
     background: rgba($green-000, .2);
     border-left: $border-radius solid $green-300;
@@ -80,4 +91,9 @@ $callouts: (
     padding-bottom: .125rem;
   }
 
+}
+
+.main-content dt::after{
+  content: '' !important;
+  display: none;
 }
