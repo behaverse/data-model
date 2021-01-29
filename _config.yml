@@ -20,6 +20,7 @@ baseurl: "/data-model" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: behaverse
 github_username:  behaverse
+github: [metadata]
 
 # Build settings
 # theme: "just-the-docs"
