@@ -60,35 +60,30 @@ $callouts: (
 }
 
 .rule {
-    background: rgba($green-000, .2);
-    border-left: $border-radius solid $green-300;
-    border-radius: $border-radius;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
-    padding: .8rem;
+  @extend .note;
+  background: rgba($green-000, .2);
+  strong:first-of-type, em:first-of-type {
+    color: $green-300;
+  }
 
-    strong:first-of-type, em:first-of-type {
-      color: $green-300;
-      display: block;
-      font-weight: bold;
-      font-size: 1em;
-      padding-bottom: .125rem;
-    }
+  &::before {
+    content: '';
+  }
 
 }
 
+
 .purpose {
+  @extend .note;
   background: rgba($purple-000, .2);
   border-left: $border-radius solid $purple-300;
-  border-radius: $border-radius;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
-  padding: .8rem;
 
   strong:first-of-type, em:first-of-type {
     color: $purple-300;
-    display: block;
-    font-weight: bold;
-    font-size: 1rem;
-    padding-bottom: .125rem;
+  }
+
+  &::before {
+    content: '';
   }
 
 }

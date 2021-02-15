@@ -3,3 +3,44 @@
 {% include css/just-the-docs.scss.liquid color_scheme="dark" %}
 
 
+$callouts: (
+  note: ($blue-000, $blue-300, 'NOTE'),
+  tip: ($blue-000, $blue-300, 'TIP'),
+  info: ($blue-000, $blue-300, 'INFO'),
+  warn: ($yellow-300, $yellow-000, 'WARNING'),
+  danger: ($red-300, $red-000, 'DANGER')
+);
+
+@each $class, $props in $callouts {
+    .#{$class} {
+        background: rgba(nth($props, 2), 0.3);
+        border-left: $border-radius solid nth($props, 1);
+
+        &::before {
+            color: nth($props, 1);
+        }
+    }
+}
+
+.rule {
+  @extend .note;
+  background: rgba($green-300, .3);
+  border-left: $border-radius solid $green-000;
+
+  strong:first-of-type, em:first-of-type {
+    color: $green-000;
+  }
+
+}
+
+.purpose {
+  @extend .note;
+  background: rgba($purple-300, .3);
+  border-left: $border-radius solid $purple-000;
+
+  strong:first-of-type, em:first-of-type {
+    color: $purple-000;
+  }
+
+}
+
