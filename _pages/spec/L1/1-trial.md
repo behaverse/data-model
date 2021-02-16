@@ -1,18 +1,15 @@
 ---
 layout: page
-title: "L1 data"
-permalink: spec/L1-trial
+title: Trial
+permalink: spec/L1/trial
 nav_order: 1
-parent: "Specifications"
+parent: L1
+grand_parent: Cognitive tests
 ---
 
-# {{ page.title }}
+
+# <i class="fa fa-table"></i> Trial
 {: .no_toc }
-
-The L1-data contains multiple tables, some of which are detailed in this document, others will be added in the future.
-
-> We use <i class="fa fa-table"></i> icon to refer to specific tables (e.g., the *<i class="fa fa-table"></i> Trial* table or the *<i class="fa fa-table"></i> Stimulus* table) and **subsections** to indicate the semantic category that groups various columns in a table; these semantic categories are used here only to highlight the ordering of the columns within each table.
-{: .note}
 
 
 # Table of contents
@@ -21,9 +18,7 @@ The L1-data contains multiple tables, some of which are detailed in this documen
 {:toc}
 
 
-## <i class="fa fa-table"></i> Trial
-
-### Key
+## Key
 
 id [integer]
 : The unique trial identifier, generated in temporal order (meaning that a greater `id` refers to a trial that occurred later in time).
@@ -33,7 +28,7 @@ unique in *<i class="fa fa-table"></i> Trial* (i.e., each row in *<i class="fa f
 {: .note}
 
 
-### Context
+## Context
 
 study_name [string]
 : The name of the study the participant participated in.
@@ -52,7 +47,7 @@ session_index [integer]
 > We currently don’t use `session_name`, `session_id` and `session_repetition` in this table.
 {: .note}
 
-### Task
+## Task
 
 instrument_name [string]
 : The name of the instrument used for collecting data (e.g., the name of the computer script used to run the test).
@@ -145,7 +140,7 @@ trial_seed [integer]
 : The seed used to initialize the <abbr title="Random Number Generator">RNG</abbr> and generate everything that is random in the trial. Knowing this seed it should in principle be possible to exactly reproduce the `timeline_run` as experienced by the subject.
 
 
-### Stimulus
+## Stimulus
 Describes the most relevant information about the stimuli presented during a given trial and provides information on where to find more detailed information about what exact stimuli were presented, how and when (this sub-trial data will be in separate tables).
 
 
@@ -222,7 +217,7 @@ stimulus_role [enum]
 : - **stop_signal:**  A stimulus signaling the participant he should abort his current action.
 : - **probe:**  A stimulus indicating about which stimulus to respond.
 
-### Option
+## Option
 Describes the set of options that were offered to the subject for responding on a given trial. Information about the individual options within that set are stored in a different, sub-trial table.
 
 option_source_type [enum]
@@ -247,7 +242,7 @@ measurement_type [enum]
 : - **interval:**  Ordered values with clear distances but no absolute zero (e.g., 10 versus 20 degrees Celsius); 
 : - **ratio:**  Values with clear distance metrics and absolute zero (e.g., length in cm).
 
-### Input
+## Input
 Describes the kinds of actions the subject performed in a trial. 
 
 input_interface_type [enum]
@@ -279,7 +274,7 @@ input_count [integer]
 {: .note }
 
 
-### Expectation
+## Expectation
 Describes what response is expected from the subject (i.e., which response would evaluate to correct).
 
 In general, expectation will display/refer to a particular option among the set of options offered to the subject (in choice tasks) and will have the same structure and format as the actual response data so that expected response and actual responses can be directly compared (e.g., if `response_index` == `expected_response_index`, then `correct` = TRUE).
@@ -297,7 +292,7 @@ expected_response_index [integer]
 expected_response_description [string]
 A description of the expected response using the same convention as `response_description`.
 
-### Response
+## Response
 
 response_structure [enum]
 : The structure of the response required by the subject; can take values in:
@@ -350,7 +345,7 @@ timed_out [boolean]
 : Some tasks require subjects to give a response within a certain time limit. When subjects fail to respond before that time runs out, `timed_out` is set to TRUE. 
 
 
-### Evaluation
+## Evaluation
 
 accuracy [float]
 : A task-dependent accuracy measure ranging from 0 to 1 (inclusive).
@@ -371,7 +366,7 @@ evaluation_label [string]
 :  - **cr:**  The stimulus was "absent" and the subject correctly responded "absent".
 
 
-### Feedback
+## Feedback
 Describes what feedback was shown on a given trial. Because feedback hasn’t yet been fully specified in our data model we will use the most basic representation for feedback information in the trial table.
 
 feedback_description [string]
@@ -390,7 +385,7 @@ feedback_description [string]
 {: .note }
 
 
-### Experimental Design
+## Experimental Design
 
 job_repeat [enum]
 : Whether this trial's job has not been seen before in this timeline.
@@ -400,7 +395,7 @@ job_repeat [enum]
 :  - **switch:**  The job is different from the previous trial but has been seen prior in the timeline.
 
 
-### Accessories
+## Accessories
 
 additional_measures
 : Indicates whether additional measures have been recorded during this trial and if so what kind of measures they are. Possible values include (non-exhaustive):
@@ -410,322 +405,3 @@ additional_measures
 :  - eye_tracking
 :  - heart_rate
 
-
-
-## <i class="fa fa-table"></i> Stimulus
-Table describing each of the stimuli that were shown during an L1 trial.
-
-
-### Referencing
-
-id [integer]
-: Primary key of the *<i class="fa fa-table"></i> Stimulus* table.
-: Each row in this table has a unique `id`.
-: If the same stimulus is shown at two different times in a trial, those two instances will have their own row in the *<i class="fa fa-table"></i> Stimulus* table, each with its own `id`.
-
-
-trial_id [integer]
-: Refers to the id in the *<i class="fa fa-table"></i> Trial* table and indicates in which (L1) trial this stimulus was shown.
-
-
-object_id [integer]
-: A stimulus is defined by a set of features. This variable is used to identify each time the same stimulus features were used. For example, if the same white digit "3" is shown in a digit span sequence, all those instances would have the same `object_id` although they would have different `id`s (as they appeared at different times). 
-
-
-presentation_id [integer]
-: In a multitasking setting, a particular instance of a stimulus (e.g., the current letter "A") may be used by multiple trials at the same time (e.g, in the dual RE task). Because these are different trials, they will have different `trial_id` values and hence will have different rows in the *<i class="fa fa-table"></i> Stimulus* table. We use `presentation_id` to indicate that a given stimulus is in fact the same instance across those trials.
-
-
-index_in_trial [integer]
-: Refers to individual stimuli within the sequence or set of stimuli shown during a trial.
-
-
-### When
-
-onset [float]
-: Duration between the start of the trial and the appearance of the stimulus.
-
-
-duration [float]
-: Describes for how long this stimulus was displayed in seconds.
-
-> When the stimulus is shown using an animation, `duration` covers the complete period between the start of the animation and the end of the animation.
-{: .note }
-
-
-### Where
-
-panel_id [string]
-: Identifier of the panel this stimulus is displayed over.
-
-x_screen [integer]
-: X coordinates of the stimulus on the screen in pixels. 
-
-y_screen [integer]
-: Y coordinates of the stimulus on the screen in pixels. 
-
-x_viewport [float]
-: X coordinates of the stimulus on the screen expressed as a fraction of the screen width. 
-
-y_viewport [float]
-: Y coordinates of the stimulus on the screen expressed as a fraction of the screen height. 
-
-### What
-
-source_type [enum]
-: A stimulus is typically created using a particular procedure/algorithm ("generator") or is sampled from a particular set ("set"). This variable indicates which of these two applies for the current stimulus.
-
-
-source [string]
-: Refers to the specific generator or set the stimulus belongs to. Stimuli that stem from the same source have the same data scheme and could thus be described in a table named after `stimulus_source` (i.e., `stimulus_source` indicates which table contains the full information about the stimulus; e.g., "digit1to9").
-
-> We could include a `source_count` variable here that indicates how many different stimuli there are in the set; but this is probably better stored in the table that contains information about that source.
-{: .note }
-
-
-index_in_source [integer]
-: When a stimulus is picked from a particular set (e.g., "digits1to9"), this index refers to the index within that set. 
-
-
-role [enum]
-: Describe the role this stimulus plays in the trial (e.g., "target").
-
-
-### How
-
-animation [string]
-: Describes the animation that was used to show a particular stimulus.
-
-
-## <i class="fa fa-table"></i> StimulusComponent
-Stimuli can comprise multiple components. This table describes each component of a stimulus.
-
-
-### Key
-
-stimulus_id [integer]
-: A reference to the primary key of the *<i class="fa fa-table"></i>Stimulus* table.
-
-
-index [integer]
-: A number from 1 differentiating each part. A stimulus component with a higher `index` is displayed above all other components with a lower index.
-
-
-### Where
-
-x_screen [integer]
-: X coordinates of the stimulus component on the screen in pixels. 
-
-
-y_screen [integer]
-: Y coordinates of the stimulus component on the screen in pixels. 
-
-
-x_viewport [float]
-: X coordinates of the stimulus component on the screen expressed as a fraction of the screen width. 
-
-
-y_viewport [float]
-: Y coordinates of the stimulus component on the screen expressed as a fraction of the screen height. 
-
-
-### What
-
-description [string]
-: A human readable, compact description of the component.
-
-symbol_name [string]
-: The name of the displayed symbol.
-
-
-symbol_count [integer]
-: The number of symbols represented in this component.
-
-
-symbol_layout [enum]
-: How the symbols are laid out (vertical, horizontal, diagonal_top_left, diagonal_top_right, square, ring, cross, x, two_columns, h).
-
-
-color_name [string]
-: The human-readable name of the component color.
-
-
-color_hex [string]
-: The hexadecimal value of the component color.
-
-
-orientation [enum]
-: The symbol orientation (north, north_east, east, south_east, south, south_west, west, north_west, free).
-
-
-## <i class="fa fa-table"></i> Click
-Table describing each click that was recorded during an L1 trial.
-
-
-### Referencing
-
-id [integer]
-: Primary key; each click has its own `id` value.
-
-
-trial_id [integer]
-: Refers to the *<i class="fa fa-table"></i> Trial* table and indicates in which L1 trial this stimulus was shown.
-
-
-index [integer]
-: Indexing all the clicks that occurred within a given trial; ranging from 1 to `Trial.input_count`.
-
-
-response_element_index [integer]
-: Indicates which of the clicks is used and in what order to form the actual response in the L1 trial when `response_structure` is "sequence" or "set".
-
-> This needs to be here rather than in *<i class="fa fa-table"></i> Option* because the same option can be clicked multiple times and either serve or not for the response depending on the order of the clicks. For example, in the Digit Span test we could have the response of "3;5;7" on a particular trial. This might correspond to
->  - `option.description` = ["3", "4", "delete", "delete", "3", "5v, v7", "enter"]
->  - `click.response_element_index` = [NA, NA, NA, NA, 1, 2, 3,  NA]
-{: .note }
-
-
-### When
-
-onset [float]
-: Duration between the start of the trial and the moment the mouse button press occured.
-
-
-duration [float]
-: Describes for how long the mouse button was pressed.
-
-### Where
-
-x_screen [integer]
-: X coordinates of the stimulus component on the screen in pixels. 
-
-
-y_screen [integer]
-: Y coordinates of the stimulus component on the screen in pixels. 
-
-
-x_viewport [float]
-: X coordinates of the stimulus component on the screen expressed as a fraction of the screen width. 
-
-
-y_viewport [float]
-: Y coordinates of the stimulus component on the screen expressed as a fraction of the screen height. 
-
-
-### What
-Describes what was clicked on.
-
-object_type [enum]
-: Describes the type of object that was clicked on (e.g., "button").
-
-
-object_name [string]
-: The name of the object that was clicked on (e.g., "sos_box_1_3").
-
-
-is_object_enabled [boolean]
-: Indicates whether the object that was clicked on was enabled (clickable) or not.
-
-
-object_state [string]
-: Describes the state the object was in *before* it was clicked on. The meaning of "state" depends on the particular task (e.g., "new empty").
-
-
-option_id [integer]
-: If the click is on an option, this variable indicates which option it was. Note that `option_id` refers to an id in the *<i class="fa fa-table"></i> Option* table.
-
-
-stimulus_id [integer]
-: If the click is on a stimulus, this variable indicates which stimulus it was. Note that `stimulus_id` refers to an id in the *<i class="fa fa-table"></i> Stimulus* table.
-
-
-### How
-animation [string]
-: Describes the animation that was used to show a particular stimulus. 
-
-
-### Other
-Instrument-specific variables, NA when not applicable.
-
-
-## <i class="fa fa-table"></i> Option
-Table describing each option that a subject could choose from in a given L1 trial. Note that in some tasks the options may change within a trial after each input (e.g., SOS task); therefore the options need to also be indexed by `input_index`. 
-
-### Referencing
-
-id [integer]
-: Primary key.
-
-
-trial_id [integer]
-: Refers to the *<i class="fa fa-table"></i> Trial* table and indicates in which L1 trial this option was shown.
-
-
-input_index [integer]
-: Indexing all the clicks that occurred within a given trial, starting at 1 and going up to `Trial.input_count`.
-
-
-index [integer]
-: indexing each of the options within the set of options that were available to subjects on a given trial.
-
-
-### When
-
-onset [float]
-: Duration between the start of the trial and the moment the option was displayed or activated.
-
-
-duration [float]
-: Describes for how long the option was displayed or active in seconds.
-
-### Where
-
-x_screen [integer]
-: X coordinates of the stimulus component on the screen in pixels. 
-
-
-y_screen [integer]
-: Y coordinates of the stimulus component on the screen in pixels. 
-
-
-x_viewport [float]
-: X coordinates of the stimulus component on the screen expressed as a fraction of the screen width. 
-
-
-y_viewport [float]
-: Y coordinates of the stimulus component on the screen expressed as a fraction of the screen height. 
-
-
-### What
-
-description [string]
-: Describes what clicking on this object means given the current state of the test (e.g., "new_empty").
-
-
-value [float]
-: A numeric value associated with a particular response option; typically indicating the "worth" of a response (e.g., `value` = 1 for the correct response).
-
-
-### How
-
-: animation [string]
-Describes the animation that was used to show a particular option.
-
-
-### Other
-Instrument-specific variables, NA when not applicable.
-
-
-## <i class="fa fa-table"></i> Instrument
-This table contains information describing the instrument or software used to collect data from subjects (e.g., the Python script that executes the presentation of the stimuli and records key presses).
-
-id [string]
-: Unique identifier of an instrument. Can be formed by combining name and version (e.g., "ds_v2020.01").
-
-
-name [string]
-: Name of the entity (scene, config filename) that is used to collect the data. The specific parameterization of the instrument is defined in the "Timeline/configuration" (e.g., “ds”).
-
-
-version [string]
-: Refers to the current version of a particular instrument (e.g., current build version). We will use a calendar based versioning system ([calver.org](https://calver.org/); e.g., "v2020.01").

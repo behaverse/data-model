@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Specifications"
+title: Specifications
 permalink: spec
 nav_order: 2
 has_children: true
