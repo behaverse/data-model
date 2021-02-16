@@ -3,8 +3,8 @@ layout: page
 title: Option
 permalink: spec/L1/option
 nav_order: 5
-parent: L1
-grand_parent: Cognitive tests
+parent: Cognitive tests
+grand_parent: Specifications
 ---
 
 # <i class="fa fa-table"></i> Option

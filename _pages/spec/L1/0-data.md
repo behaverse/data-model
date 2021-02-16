@@ -5,7 +5,8 @@ permalink: spec/L1
 nav_order: 0
 parent: Cognitive tests
 grand_parent: Specifications
-has_children: true
+has_children: false
+has_toc: false
 ---
 
 
@@ -19,17 +20,12 @@ The L1-data contains multiple tables, some of which are detailed in this documen
 
 
 # L1 tables
-{: .no_toc .text-delta }
-- TOC
-{:toc}
 
 
+{% assign l1_tables = site.pages | where:'parent', 'Cognitive tests' | sort:"nav_order" %}
 
-
-{% assign l1_table = site.pages | where:'parent', 'Cognitive tests' | sort:"nav_order" %}
-
-<ul>
-  {%- for table in l1_table -%}
+<ul class='tables-toc'>
+  {%- for table in l1_tables -%}
     {%- if table.title != page.title -%}
       <li>
         <i class="fa fa-table"></i> <a href="{{ table.url | absolute_url }}">{{ table.title }}</a>{% if table.summary %} - {{ table.summary }}{% endif %}
@@ -37,3 +33,4 @@ The L1-data contains multiple tables, some of which are detailed in this documen
     {%- endif -%}
   {%- endfor -%}
 </ul>
+

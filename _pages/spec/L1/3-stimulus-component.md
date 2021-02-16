@@ -3,8 +3,8 @@ layout: page
 title: StimulusComponent
 permalink: spec/L1/stimulus-component
 nav_order: 3
-parent: L1
-grand_parent: Cognitive tests
+parent: Cognitive tests
+grand_parent: Specifications
 ---
 
 # <i class="fa fa-table"></i> StimulusComponent

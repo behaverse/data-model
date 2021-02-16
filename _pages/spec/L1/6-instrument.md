@@ -3,8 +3,8 @@ layout: page
 title: Instrument
 permalink: spec/L1/instrument
 nav_order: 6
-parent: L1
-grand_parent: Cognitive tests
+parent: Cognitive tests
+grand_parent: Specifications
 ---
 
 # <i class="fa fa-table"></i> Instrument

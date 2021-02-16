@@ -3,8 +3,8 @@ layout: page
 title: Click
 permalink: spec/L1/click
 nav_order: 4
-parent: L1
-grand_parent: Cognitive tests
+parent: Cognitive tests
+grand_parent: Specifications
 ---
 
 # <i class="fa fa-table"></i> Click

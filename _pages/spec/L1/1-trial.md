@@ -3,8 +3,8 @@ layout: page
 title: Trial
 permalink: spec/L1/trial
 nav_order: 1
-parent: L1
-grand_parent: Cognitive tests
+parent: Cognitive tests
+grand_parent: Specifications
 ---
 
 

@@ -92,3 +92,12 @@ $callouts: (
   content: '' !important;
   display: none;
 }
+
+.main-content ul.tables-toc > li {
+  
+  padding-bottom: 5px;
+
+  &::before {
+    content: '' !important;
+  }
+}
