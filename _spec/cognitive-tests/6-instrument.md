@@ -1,10 +1,11 @@
 ---
 layout: page
 title: Instrument
-permalink: spec/L1/instrument
+permalink: spec/cognitive-tests/L1/instrument
 nav_order: 6
-parent: Cognitive tests
-grand_parent: Specifications
+parent: L1 data
+grand_parent: Cognitive tests
+is_table: true
 ---
 
 # <i class="fa fa-table"></i> Instrument

@@ -1,11 +1,10 @@
 ---
 layout: page
-title: L1
-permalink: spec/L1
+title: L1 data
+permalink: spec/cognitive-tests/L1
 nav_order: 0
 parent: Cognitive tests
-grand_parent: Specifications
-has_children: false
+has_children: true
 has_toc: false
 ---
 
@@ -22,13 +21,13 @@ The L1-data contains multiple tables, some of which are detailed in this documen
 # L1 tables
 
 
-{% assign l1_tables = site.pages | where:'parent', 'Cognitive tests' | sort:"nav_order" %}
+{% assign _tables = site.spec | where:"parent", "L1 data" | sort:"nav_order" %}
 
 <ul class='tables-toc'>
-  {%- for table in l1_tables -%}
+  {%- for table in _tables -%}
     {%- if table.title != page.title -%}
       <li>
-        <i class="fa fa-table"></i> <a href="{{ table.url | absolute_url }}">{{ table.title }}</a>{% if table.summary %} - {{ table.summary }}{% endif %}
+        <a href="{{ table.url | absolute_url }}"><i class="fa fa-table"></i> {{ table.title }}</a>{% if table.summary %} - {{ table.summary }}{% endif %}
       </li>
     {%- endif -%}
   {%- endfor -%}

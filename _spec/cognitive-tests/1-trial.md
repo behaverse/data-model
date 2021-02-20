@@ -1,10 +1,11 @@
 ---
 layout: page
 title: Trial
-permalink: spec/L1/trial
+permalink: spec/cognitive-tests/L1/trial
 nav_order: 1
-parent: Cognitive tests
-grand_parent: Specifications
+parent: L1 data
+grand_parent: Cognitive tests
+is_table: true
 ---
 
 

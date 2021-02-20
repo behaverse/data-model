@@ -1,10 +1,11 @@
 ---
 layout: page
 title: Stimulus
-permalink: spec/L1/stimulus
+permalink: spec/cognitive-tests/L1/stimulus
 nav_order: 2
-parent: Cognitive tests
-grand_parent: Specifications
+parent: L1 data
+grand_parent: Cognitive tests
+is_table: true
 ---
 
 # <i class="fa fa-table"></i> Stimulus

@@ -42,6 +42,29 @@ To leare more about the ideas behind the Behaverse data model, see:
       </li>
     {% endif %}
   {%- endfor -%}
+
+  <li> Specifications
+  {% assign spec_pages = site.spec | sort:"nav_order" %}
+    <ul>
+      {%- for page in spec_pages -%}
+        {% if page.parent == nil %}
+          <li>
+            <a href="{{ page.url | absolute_url }}">{{ page.title }}</a>{% if page.summary %} - {{ page.summary }}{% endif %}
+            {% assign children = site.pages | where:'parent', page.title %}
+            {% if children.size > 0 %}
+              <ul>
+                {% for child in children %}
+                <li>
+                  <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endif %}
+      {%- endfor -%}
+    </ul>
+  </li>
 </ul>
 
 

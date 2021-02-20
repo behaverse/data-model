@@ -64,6 +64,9 @@ collections:
   tutorials:
     permalink: "/:collection/:path/"
     output: true
+  spec:
+    permalink: "/:collection/:path/"
+    output: true
 
 # --------------
 # custom configs (only works in the just-the-docs theme)
@@ -86,8 +89,8 @@ just_the_docs:
   collections:
     pages:
       name: Behaverse Data Model
-    # tutorials:
-    #   name: Tutorials
+    spec:
+      name: Specifications
 
 # Back-to-top link
 back_to_top: false

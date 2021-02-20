@@ -1,10 +1,11 @@
 ---
 layout: page
 title: Option
-permalink: spec/L1/option
+permalink: spec/cognitive-tests/L1/option
 nav_order: 5
-parent: Cognitive tests
-grand_parent: Specifications
+parent: L1 data
+grand_parent: Cognitive tests
+is_table: true
 ---
 
 # <i class="fa fa-table"></i> Option

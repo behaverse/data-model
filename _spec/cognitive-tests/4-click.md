@@ -1,10 +1,11 @@
 ---
 layout: page
 title: Click
-permalink: spec/L1/click
+permalink: spec/cognitive-tests/L1/click
 nav_order: 4
-parent: Cognitive tests
-grand_parent: Specifications
+parent: L1 data
+grand_parent: Cognitive tests
+is_table: true
 ---
 
 # <i class="fa fa-table"></i> Click
