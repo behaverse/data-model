@@ -77,8 +77,8 @@ value [float]
 
 ## How
 
-: animation [string]
-Describes the animation that was used to show a particular option.
+animation [string]
+: Describes the animation that was used to show a particular option.
 
 
 ## Other
