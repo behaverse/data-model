@@ -45,7 +45,7 @@ response_time [float]
 > It is tempting to abbreviate `response_time` as `rt`; however, there are several other variables prefixed `response_` which do not have abbreviations. Spelling the names out, while making the name longer, makes the overall data structure more consistent and explicit.
 {: .note}
 
-timeout [boolean]
+timed_out [boolean]
 : indicates whether the participant failed to respond within the allocated time period. 
 
 gender/sex [enum]
