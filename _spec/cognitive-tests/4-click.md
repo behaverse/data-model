@@ -39,7 +39,7 @@ response_element_index [integer]
 : Indicates which of the clicks is used and in what order to form the actual response in the L1 trial when `response_structure` is "sequence" or "set".
 
 > This needs to be here rather than in *<i class="fa fa-table"></i> Option* because the same option can be clicked multiple times and either serve or not for the response depending on the order of the clicks. For example, in the Digit Span test we could have the response of "3;5;7" on a particular trial. This might correspond to
->  - `option.description` = ["3", "4", "delete", "delete", "3", "5v, v7", "enter"]
+>  - `option.description` = ["3", "4", "delete", "delete", "3", "5", "7", "enter"]
 >  - `click.response_element_index` = [NA, NA, NA, NA, 1, 2, 3,  NA]
 {: .note }
 
