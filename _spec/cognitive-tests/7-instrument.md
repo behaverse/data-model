@@ -2,7 +2,7 @@
 layout: page
 title: Instrument
 permalink: spec/cognitive-tests/L1/instrument
-nav_order: 6
+nav_order: 7
 parent: L1 data
 grand_parent: Cognitive tests
 is_table: true
