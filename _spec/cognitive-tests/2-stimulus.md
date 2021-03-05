@@ -77,6 +77,9 @@ y_viewport [float]
 
 ## What
 
+description [string]
+: A human readable, compact description of the main aspects of the stimulus. The description for a given stimulus depends on the task but follows a specific template for a given task. Because of this, it looks like the `stimulus_description` could be "parsed" and "tidied"---however, this is not the intention; parsed/tidied data will be available in other tables; description is for human readability and facilitates the understanding of the data.
+
 source_type [enum]
 : A stimulus is typically created using a particular procedure/algorithm ("generator") or is sampled from a particular set ("set"). This variable indicates which of these two applies for the current stimulus.
 
@@ -87,10 +90,8 @@ source [string]
 > We could include a `source_count` variable here that indicates how many different stimuli there are in the set; but this is probably better stored in the table that contains information about that source.
 {: .note }
 
-
 index_in_source [integer]
 : When a stimulus is picked from a particular set (e.g., "digits1to9"), this index refers to the index within that set. 
-
 
 role [enum]
 : Describe the role this stimulus plays in the trial (e.g., "target").
