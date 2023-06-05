@@ -1,0 +1,11 @@
+
+
+## Other standards
+
+What other stanards are we following?
+
+ - BIDS
+ - ISOXXX
+ - schema.org
+
+ 

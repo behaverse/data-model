@@ -1,0 +1,99 @@
+
+# Organizing datasets
+
+- naming of datasets
+- folder structure of datasets
+- metadata
+- versioning
+
+-
+
+What is a dataset?
+
+### Which data to store? Which data to share?
+
+It is typically the case that more data is stored than is shared. For example, researchers may store participants contact information or specific parameters of the hardware being used. The question then arises of what information should be collected in the first place and what subset of that data should be shared and whether or not the source data should be sent along with the data extracted from that source data.
+
+Regarding what data to store, the answer depends on the purpose of the study. In any case, participants need to be informed about what data is being collected and the data collection must follow relevant regulations. It is generally well advised to be parsimonious regarding which personal data to collect (<https://martinfowler.com/bliki/Datensparsamkeit.html>).
+
+In our opinion, source data should not be shared if one has the ability to extract and share better formatted data. There are three main reasons not to share source data:
+
+1. source data is not useable: they can be messy, come in diverse, sometimes proprietary formats, and lack documentation.
+2. source data may contain personal data the data sharer is not aware of (e.g., participants' full name, IP address); by defining what data is to be shared and extracting only that data it seems that such accidental privacy breaches could be avoided.
+3. the extraction of data from the source data into usable data is outside the scope of responsibility of the data analyst.
+
+This last point deserves further explaining. For research to be reproducible one may want to test all the steps from the data collection up to the final results. While all the steps might be tested, they are not necessarily tested by the same person. For instance, a software company may run tests to determine that the recorded timestamps are accurate and a lab technician may run tests to calibrate the monitor and other hardware equipment. The question of what data to share is related to what quality assurance (QA) requirements are expected to be fulfilled by the data analyst. If both the source data and data extracted from the source data are handed over to the data analyst it becomes the data analyst's responsibility to verify that both sets of data are in fact in agreement. If there is an error in the extraction code, the data analysis becomes responsible because he/she had access to that and could thus have spotted and corrected the error. In our opinion, the preparation of usable data from source data is not the responsibility of the data analyst; it is the responsibility of the data engineer and the entity that is sharing the data. It remains however that in any case tests must be conducted to verify the validity and accuracy of the process (we simply argue this is not the role of the person receiving the data).
+
+In short then, we say "don't share source data", instead share well documented, well formatted, tidy raw data.
+
+# Organization of standalone single study data
+
+There are different valid options to organize standalone single study data and there are certain rules that apply to all such organizational systems.In particular, any dataset must have
+a document that describes and gives background information about the dataset as a whole (e.g., README.md, licence).
+
+a code book that describes the meaning of the variables and the values they can take.
+Ideally these documents should have a code (hash) that guarantees that they refer to a particular dataset. These elements will be described later.
+
+# Folder structure
+
+<hr />
+
+## Table of content
+
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
+
+When datasets become large or involve many different kinds of tables it becomes necessary to organize the data into a folder structure. We will use the pattern described in the *Brain Imaging Data Structure* ([BIDS]( https://bids.neuroimaging.io)). BIDS defines a clear standard for organizing and data in folders. We first describe the general principle before giving examples.
+
+```
+Study/
+├─ README.md
+├─ description.json
+├─ General/
+├─ *Subject*/
+│  ├─ General/
+│  │  ├─ description.json
+│  ├─ *Session*/
+│  │  ├─ *DataType*/
+...
+```
+
+{: .lh-0 }
+
+The data is grouped first by study, then by subject and the data within each subject is further organized by session (when applicable) and finally data type. This organization makes sense in the context of brain imaging data because the data files per subject and session can be quite big and are processed at the individual level (e.g., preprocessing of fMRI data) and may lead to additional files that can then be stored in the same folder. It is typically only at later stages that data is aggregated across subjects and that data has been already heavily processed and summarized.
+
+Most behavioral datasets do not follow the BIDS way of organizing data files and instead either have a table per task (including the data from all subjects in the same table) or a folder per task which contains a file per subject. Organizing data by task makes sense because a task defines a data schema that will be the same across subjects. Grouping subjects in a common table also makes sense because the data is usually small and typically processed all at once rather than on a subject-by-subject basis. However, as data sets become larger, there are several advantages to using the BIDS convention (in addition to consistency, this includes for example a greater ease to understand the scope of the indices or the ability to easily delete all the data from one particular subject who might request it).
+
+BIDS uses a hierarchy principle to avoid duplicating information across many folders: if some information applies to all the sessions of one subject, that information should be in the root folder of that subject's data. Information that is closest to the actual data file has priority over information presented at a higher level; this allows one to specify the general parameters at the root of the study folder and only include changes relative to those general parameters when they apply. It is OK but not strictly necessary to follow this pattern.
+
+The folder structure we will use is described below:
+
+```
+<study-name>/
+├─ sub-<label>
+│  ├─ [ses-<label>]
+│  │  ├─ [beh/]
+│  │  ├─ [func/]
+│  │  ├─ [anat/]
+...
+```
+
+{: .lh-0 }
+
+> Entities surrounded by square brackets (`[ ]`) are optional and may be used only when applicable and entities marked with a `*` are replicated for each instance of the class (e.g., for each subject in the study).  
+{: .note }
+
+Here's an example folder structure:
+
+```
+SDS_v2020.10/
+├─ description.json
+├─ *sub-<label>/
+│  ├─ *ses-<label>/
+...
+```
+
+{: .lh-0 }
+

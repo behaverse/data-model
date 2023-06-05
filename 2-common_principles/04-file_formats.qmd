@@ -1,0 +1,20 @@
+
+
+## File formats
+
+BIDS uses TSV rather than CSV for tabular data; and json for meta-data.
+See <https://library.stanford.edu/research/data-management-services/data-best-practices/best-practices-file-formats>
+
+There are two main file formats that seem most appropriate to store tabular data:
+
+- CSV (comma separated values)
+- TSV (tab separated values)
+
+CSV have the advantage of being more common and can be read by most software that uses tabular data. TSV is less common but is technically more efficient, less error prone and more human readable. TSV is in particular more appropriate than CSV in cases where the values in a cell can contain commas, which is obviously very common in text data, and where the commas within a cell must be distinguished from the commas that serve as separators (tabs are much less common in data values). While TSV is less common than CSV, all advanced data analysis tools are able to easily handle tsv files and people who can't handle TSV files can find TSV-to-CSV conversion tools.
+
+It seems therefore, that TSV is a better option for behavioral data and we will export our data in that format. This has the added benefit that we'll be consistent with BIDS who also uses the TSV file format for their behavioral data.
+
+- [Tab-separated values (Wikipedia)](https://en.wikipedia.org/wiki/Tab-separated_values)
+- [TSV, better than CSV](https://odino.org/tsv-better-than-csv/)
+- [Choosing between TSV and CSV](https://stackoverflow.com/questions/11130120/-)
+

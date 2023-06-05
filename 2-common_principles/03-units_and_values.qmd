@@ -1,0 +1,128 @@
+
+
+# Units and values
+
+## Units in variable names
+
+According to [NASA 1999] Arthur Stephenson, chairman of the Mars Climate Orbiter Mission Failure Investigation Board:
+>> "The 'root cause' of the loss of the spacecraft was the failed translation of English units into metric units in a segment of ground-based, navigation-related mission software, ..."
+>>
+>> from <https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12>
+
+Some variables have measurement units. Variables should use the standard measurement unit for their type (e.g., durations in seconds; defined below), or the default unit assigned to them specifically within this document. Variables that use a non-standard, non-default measurement unit MUST specify the units explicitly using the format `<variable>_in_<unit>`.
+
+Examples:
+
+- `age` (by default in years)
+- `age_in_months`
+
+When the units are a single word it's OK to use the complete word; if it has multiple words, it's better to abbreviate them unless the abbreviation can lead to confusion or ambiguity. For example, prefer `seconds` to `s` but `mpg` to `miles_per_gallon`.
+
+> There are default units, these are marked with `*`. In addition there are default units for specific variables. If a "standard" variable has a default unit, that default unit overrides the default in this list. For example, the default for duration is seconds. `age` is a duration but its default is years rather than seconds.
+{: .note}
+
+This document does not cover the subject of units exhaustively and will be updated as new use cases arise. When in doubt, consult BIDS:
+<https://bids-specification.readthedocs.io/en/latest/99-appendices/05-units.html>
+<https://bids-specification.readthedocs.io/en/latest/02-common-principles.html#units>
+
+The formatting of the units should probably be specified further, maybe using an international standard (<https://ucum.org/ucum.html> or the one Morty mentioned once in his presentation ?)
+
+## Formats
+
+### Numeric values
+
+It can be sometimes tempting to floor, ceil or round a float variable into an integer. For example, one might assume that age when expressed in years should be an integer or that response times when expressed in milliseconds should be integers as well.
+
+Such data transformations should be avoided as a default because they lose data. A data analyst who wishes to round a variable for a particular purpose can still perform that operation later one and name her variables accordingly (e.g., age_floor).
+
+Date, date time and timezones
+Variables that express a "datetime" must
+be formatted using ISO 8601
+express time at a resolution of the millisecond or smaller
+include a timezone if possible
+express participants local date and time in day
+
+Imagine an online study with participants all over the world. At 6pm UTC, it is 11am in Los Angeles, 2pm in New York, 8pm in Paris and 3am (of the next day) in Tokyo. One would clearly expect a cognitive test completed at 6pm UTC to yield very different results depending on participants' local timezone (e.g., 11am versus 3am). From a psychological point of view then, is participants' local time (for a system administrator, on the other hand, UTC time would be more useful). Hence, we should express datetime variables in participants' local timezone.
+
+There are cases where recording local timezones may infringe privacy. In such cases there are several possible solutions:
+remove timezones (11am Los Angeles -> 11am, 2pm New York -> 2pm)
+replace timezones while keeping date and time in day (11am Los Angeles -> 11am UTC, 2pm New York -> 2pm UTC)
+keep timezones but shift days (cf BIDS)
+remove timezones and shift days
+
+We recommend solution 1, where timezones are "missing", rather than the other solutions which inject "lies" in the data. Hence, when timezones are not specified we assume (contrary to BIDS) that date_times are expressed in participants' local (but unknown) timezone.
+
+Example: "2009-10-31T01:48:52.512Z"
+Note: the "year-month-day-hour-minute-second-ms" ordering is consistent with the hierarchy principle and provides a better view of the raw data than the format that would display day-month-year.
+Note: we diverge here from BIDS because BIDS accepts missing timezones (assuming it implies the local time of the data viewer) and does not require millisecond precision (but does require format consistency within a dataset;
+<https://bids-specification.readthedocs.io/en/latest/02-common-principles.html#units>).
+
+### Languages
+
+When referring to particular languages, we use the ISO_639-1 standard.
+
+### Colors
+
+Colors can be expressed in many different ways,including hex (e.g., #A9A9A9), RGB (e.g., (169, 169, 169)) or CMYK (e.g., (0,0,0, 33.73)). We use two conventions to describe colors depending on the use case.
+
+If the exact color value is not relevant and the information is destined for human readers, we refer to colors using color words (e.g., "red", "green", "blue").
+
+If, however, colors need to be specified exactly, we use the RGBA format which defines a color using 4 floating point values, each within the [0-1] range, and where the the first three number define the red, green and blue components of the color and the last number it's opacity (0 = transparent, 1 = opaque).
+
+### Format of data values
+
+Sometimes it is necessary to spread a table by one of its variables; meaning that the values of a particular variable become the names of new columns. In order for those new columns to be named in a way that is consistent with this style guide it is necessary that variable values (in particular for enums) follow the same standard as the variable names: they should be in lower_snake_case.
+
+### Missing values and errors
+
+There is considerable variability in what is considered a missing value and how to deal with them. For example, in a go/no-go task where the correct response to no-go stimuli is to NOT respond, should a non-response be considered a missing value? Can a missing value evaluate to a correct response on a trial? In a different test, if a person had to choose between two options within a certain time interval and failed to respond within that time, should the accuracy of the trial be set to NA as the person did not in fact make a choice between the two options?
+
+First of all, it is useful to have a variable that explicitly indicates whether the participant timed out or not (rather than having to infer this information by looking at the presence of missing values within a particular task context).
+
+Second, missing values should be applied only to the data that is in fact missing. If a person did not press a key in the go/no-go task, the response time would be missing but that would be considered reflecting the participant's choice for a "no-go" and in a particular trial that response would evaluate to correct.
+
+Third, a response evaluates to correct if a specific set of conditions are met and evaluates to incorrect in all other cases. For example, in the "two choice" task with limited time to decide, a correct response would be defined by choosing the better option within that time limit. If no response was given (i.e., missing value) that condition is not fulfilled and thus the response evaluates to incorrect (and not NA). This is an important point because some people might instead decide to evaluate only those trials on which the person actually made a choice. Evaluating accuracy conditional on there being an input or not might be valid in some contexts but will typically lead to very different results. Imagine for example a case of a test where the questions asked are easy or hard. A weak student that answers correctly only the easy questions should not get a higher score than a better student who responded to all questions and made some errors on the hard questions.
+
+Regarding the coding of missing values, some people also use various numeric codes to "tag" missing values (e.g., -9 or -99). This can lead to errors down the line (e.g., missing values are not noticed or missing and actual values look similar). This practice should be avoided and missing values should be coded explicitly as NA.
+
+## Default units
+
+Below we list the names we use for different measurement units by measurement dimension (e.g., duration); these are the names that should be used when suffixing variables (to explicitly indicate units; e.g., response_time_in_milliseconds). Default units for each measurement dimension are marked by an *, those units need not be explicit in the variable names. Note that some specific variables listed in this document have their own default units (e.g., age in years); the variable specific default unit override the dimension default (i.e., duration is typically expressed in second, but for age we use years).
+
+### Duration
+
+- milliseconds
+- *seconds
+- minutes
+- hours
+- days
+- months
+- years
+- decades
+- centuries
+
+### Weight
+
+- mg: milligrams
+- g: grams
+- *kg: kilograms
+- pounds
+
+### Length
+
+- mm: millimeters
+- *cm: centimeters
+- m: meters
+- km: kilometers
+- inches
+- feet
+- feet_inch: mix of feet and inches (e.g., 5"3')
+- pixels: number of pixels; the pixel size in cm depends on subjects screen size and resolution.
+- screen_fraction: fraction of subject's screen diagonal expressed between 0 and 1, from bottom-left to top-right. For example, if the diagonal of the screen is 40cm long, a screen_fraction of 0.25 corresponds to 10cm.
+
+> For more information on viewports, see: <https://developer.mozilla.org/en-US/docs/Web/CSS/length#Viewport-percentage_lengths>
+{: .note }
+
+### Frequency
+
+- *hertz: count per second

@@ -1,0 +1,41 @@
+## Naming data files and data folders
+
+There are various good recommendations on how to name data files. In general, we will follow BIDS in using a specific naming pattern to name files, which takes the following form:
+
+```
+<key 1>-<value 1>_<key 2>-<value 2> ... <.extension>
+```
+
+where the keys can only take a small set of possible values and must be entered in a specific order. For example, a valid BIDS filename might look like this:
+
+```
+sub-2475379_ses-1_task-rest_acq-TR2500_bold.nii.gz
+```
+
+Note that we only use a subset of the BIDS keys as well as additional keys which are not used in BIDS (marked below with an * below):
+
+- `sub` means subject (i.e., participant, person, animal),
+- `ses` means session (index),
+- `task` is the name of the activity performed by the participants (e.g., "nb", "bm", "ds"),
+- `*timeline|config` is the name for the particular configuration used (e.g., `xcit_nb_01`);
+- `*rep` *counts* repetition of completing a specific timeline
+- `desc` means description and allows to manually tag particular data files; `desc` should only be used when strictly necessary
+- `*type` indicates what type of data the file contains (e.g., `trial`, `stimulus`).
+
+Hence a data filename within the Behaverse Data Model follows this pattern:
+
+```
+sub-<label>[_ses-<label>]_task-<label>[_timeline-<label>][_rep-<index>]_type-<label>.csv
+```
+
+> One reason for using the BIDS file naming convention is that some file systems (e.g., FAT32) are case insensitive and CamelCase displayed in all lower case letters canbequitehardtoread, while the text-separated-by-dashes-is-not.
+{: .note }
+
+> The use of long filenames can sometimes be problematic (e.g., not recognized by software, relevant parts truncated in the file viewer) and is to some extent redundant with the folder structure and names. However, encoding information in the filename seems more robust than encoding it in the path and allows one to know what a file is about without having to open the file or open other files.
+{: .note }
+
+## Naming datasets
+
+If a dataset B is derived from dataset A, it is expected that the derived dataset has the same root as dataset A but a specific postfix (e.g., `income_luxembourg_2020.csv`).
+
+A dataset may also have a version; in this case the filename should have a postfix expressing the version using [semantic versioning](https://semver.org/); for example, `income_luxembourg_2020_v1.0.1`) or [calendar based versioning (calver)](https://calver.org); for example `income_luxembourg_v2020.10`). For versioning datasets we recommend the use of calver.
