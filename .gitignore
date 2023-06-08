@@ -3,8 +3,11 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 vendor/
-
+_site/
+.quarto/
 # ignore ide settings
 .vscode/
 
 Gemfile.lock
+
+/.quarto/

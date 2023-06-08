@@ -39,15 +39,7 @@ def print_header(df_row):
     
     
     # format string
-    header = f"""
-
-    # {table_name} Table
-
-
-    {table_description}
-
-    <br>
-    """
+    header = f"\n# {table_name} Table\n\n {table_description}\n\n<br>"
     return header
 
 
