@@ -151,7 +151,7 @@ The implication is that it is impossible to make everyone happy. When chosing am
 
   a) if the standard is already used and provides value, follow the standard as is. This is in particular the case for (descriptive) metadata: schema.org should be used for that as it is supported by Google.
 
-  b) if there are good technical reasons to favor one alternative over another. This is the case for example when chosing between json-ld and xml or when chosing between tsv and csv. The difficulty here is that the community might be more used to one kind of file format versus another—but hey, it might be time to evolve;-)
+  b) if there are strong technical reasons to favor one alternative over another.
 
   c) when possible we favor open rather than closed solutions (e.g., avoid saving data in proprietay file formats.)
 

@@ -170,7 +170,7 @@ stimulus_structure_source [string]
 stimulus_set_size [integer]
 : The number of different values each presented stimulus could have taken. This value gives an indication of the complexity of the stimulus space. When this number is large we set to infinity, when for any reason it was not computed, it has a value of NA. 
 
-> To specify "infinity" in a CSV or TSV file we use `+Inf` and `-Inf`; these are correctly recognized in R (tidyverse) and Python (pandas) as being valid numbers rather than strings.
+> To specify "infinity" in a CSV file we use `+Inf` and `-Inf`; these are correctly recognized in R (tidyverse) and Python (pandas) as being valid numbers rather than strings.
 {: .note }
 
 

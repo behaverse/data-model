@@ -64,14 +64,14 @@ The LICENSE file specifies the terms and conditions for use, reproduction and di
 
 ### subjects/
 
-The subjects/ folder contains information about the subjects of the study. Typically, but not always, subjects will be study participants. This folder may for instance include a subjects.tsv table listing all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
+The subjects/ folder contains information about the subjects of the study. Typically, but not always, subjects will be study participants. This folder may for instance include a subjects.csv table listing all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
 
 > include a subject_id that uniquely identifies a subjects within a datacollection.
 
 ### study/
 
 The study/ folder contains information about the study. This includes in particular 
- - **instruments.tsv**: describes the instruments used for the data collection. 
+ - **instruments.csv**: describes the instruments used for the data collection. 
  - **insructions.json**: describes the instructions presented to subjects.
  - **study_flow.json**: describes the flow of subjects across activities within a study.
  - other: for example, ethics approval and adminsitrative or technical documentation.
@@ -96,25 +96,22 @@ Additional folders may be included within each subjects' folder depending on the
 
 ## Naming data files
 
-We recommend using simple, short names for data files so they are easier to type and can be fully displayed on the screen. The location of a file provides context to a data file. For example `~/dataset/data/subject_001/session_1/Trial.tsv` is to preferred over  `~/dataset/data/subject_001/subject-001_session-1_Trial.tsv` as it is shorter and yet contains the same information.
+We recommend using simple, short names for data files so they are easier to type and can be fully displayed on the screen. The location of a file provides context to a data file. For example `~/dataset/data/subject_001/session_1/Trial.csv` is to preferred over  `~/dataset/data/subject_001/subject-001_session-1_Trial.csv` as it is shorter and yet contains the same information.
 
 
 
 
 ## Data file types
 
-### Tabular data
+We recommend using the following file types:
 
-There are two main open file formats for storing tabular data:
-- CSV (comma separated values)
-- TSV (tab separated values)
+| Data type | Recommended file type | Conditions |
+| ---- | ---- | ---- |
+| Tabular data | CSV | Always. |
+| Structured data | JSON | For specific machine-focused applications. |
+|  | YAML | When human readability and editabiliy matters. |
+| Text | markdown | Always; except for official, static or administrative documents which may be in PDF. |
 
-CSV is more common but TSV is technically more efficient, less error prone and more human readable. TSV is in particular more appropriate than CSV in cases where the values in a cell can contain commas, which is obviously very common in text data, and where the commas within a cell must be distinguished from the commas that serve as separators (tabs are much less common in data values). Both TSV and CSV files can easily be important by most data analysis software. We therefor recommend using TSV for storing and sharing any tabular data. 
-
-
-### Other
-
-Other kinds of file types may be used to store non-tabular data. Markdown is a good choice for text documents and JSON or YAML may be appropriate for different kinds of structured data.
 
 
 
