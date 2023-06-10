@@ -109,10 +109,11 @@ def print_table(df):
     
         # get header title for group of variables
         current_category = row['category']
-        if current_category != old_category:
-            old_category = current_category
-            category_header = "\n\n## " + current_category + "\n\n"
-            md_text += category_header
+        if not pd.isna(current_category):
+            if current_category != old_category:
+                old_category = current_category
+                category_header = "\n\n## " + current_category + "\n\n"
+                md_text += category_header
 
         # convert and concatenate each row    
         md_text += print_row(row)

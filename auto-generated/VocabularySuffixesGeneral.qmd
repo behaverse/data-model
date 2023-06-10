@@ -1,0 +1,54 @@
+
+# VocabularySuffixesGeneral Table
+
+ Variables may describe a feature or property of an entity, using the format <entity>_<feature>. All names below are not to be used alone but rather as suffixes (e.g., "block_type", "stimulus_description"). 
+
+<br>length	[float]
+: refers to the length in cm of a physical object. When possible use a more specific word (e.g., height, width, distance). Don't use length to mean count or size!
+
+
+
+height	[float]
+: refers to the height of a physical object in cm.
+
+
+
+width	[float]
+: refers to the width of a physical object in cm.
+
+
+
+weight	[float]
+: refers to the weight of a physical object in kg .
+
+
+
+count	[integer]
+: refers to the cardinality of the entity. If an observation/row has `car_count = 5` this means that this particular observation involves a total count of 5 cars; this 5 is unrelated to other rows in the table.
+
+:::{.callout-note}
+
+ Avoid the use of `size` as this term is ambiguous; it could refer to the height of a person, the screen width x height dimensions, or a level within a scale (e.g., "Medium").    
+
+:::
+
+
+:::{.callout-note}
+
+ Avoid the use of `n` to refer to counts. 
+
+:::
+
+
+
+type	[enum]
+: is always an enum. The meaning of the particular enum needs to be explained in a codebook.
+It can be tempting to use synonyms of "type", in particular when "type" is already taken; such synonyms include things like "category", "kind" or  "set". When those synonyms are not required (e.g., domain language) they should be avoided and replaced by "type". Not all enums however need to be suffixed with "type". 
+
+
+
+description	[string]
+: is always a text (String) for human consumption. While it is not strictly necessary, a textual description can greatly facilitate the understanding and processing of the data by humans.
+
+
+
