@@ -25,3 +25,25 @@ https://bids-specification.readthedocs.io/en/stable/02-common-principles.html
 ## PEP8
 https://pep8.org/
 
+
+
+
+
+{{< include 01-guideline.qmd >}}
+{{< include 02-naming_things.qmd >}}
+{{< include 02.1-general.qmd >}}
+{{< include 02.2-naming_people.qmd >}}
+{{< include 02.3-naming_tasks.qmd >}}
+{{< include 02.4-naming_stimuli.qmd >}}
+{{< include 02.5-naming_responses.qmd >}}
+{{< include 02.6-naming_temporal_variables.qmd >}}
+{{< include 02.7-naming_data_and_files.qmd >}}
+{{< include 03-units_and_values.qmd >}}
+{{< include 04-file_formats.qmd >}}
+{{< include 05-indexing.qmd >}}
+{{< include 06-tidy_tables.qmd >}}
+{{< include 07-organizing_datasets.qmd >}}
+{{< include 08-standards.qmd >}}
+
+
+

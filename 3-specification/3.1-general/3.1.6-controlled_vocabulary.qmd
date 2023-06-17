@@ -3,3 +3,19 @@
 
 
 
+{{< include ../../auto-generated/VocabularyGeneral.qmd >}}
+
+
+{{< include ../../auto-generated/VocabularyDemographics.qmd >}}
+
+
+{{< include ../../auto-generated/VocabularySuffixesGeneral.qmd >}}
+
+
+{{< include ../../auto-generated/VocabularySuffixesAggregation.qmd >}}
+
+
+{{< include ../../auto-generated/VocabularySuffixesTransformation.qmd >}}
+
+
+{{< include ../../auto-generated/VocabularySuffixesReferencing.qmd >}}

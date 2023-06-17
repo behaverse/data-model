@@ -8,7 +8,7 @@ website:
       - index.qmd
       - 1-getting_started/index.qmd
       - 2-common_principles/index.qmd
-      - 3-specification/index.qmd
+      - 3-specification/index.qmd           
       - 4-datasets/index.qmd
       - 5-change_logs/index.qmd
       - 6-contribute/index.qmd

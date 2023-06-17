@@ -1,0 +1,8 @@
+# L1 Specification for different kinds of activities
+
+
+
+{{< include /3-specification/3.2-activity_specific/3.2.1-cognitive_tests.qmd >}}
+
+
+{{< include /3-specification/3.2-activity_specific/3.2.2-questionnaires.qmd >}}
