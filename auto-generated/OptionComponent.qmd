@@ -1,11 +1,11 @@
 
-# OptionComponent Table
+## OptionComponent Table
 
  Options can comprise multiple components. This table describes each component of an option.
 
 <br>
 
-## key
+### key
 
 option_id	[integer]
 : A reference to the primary key of the *<i class="fa fa-table"></i> Option* table.
@@ -20,7 +20,7 @@ index	[integer]
 
 
 
-## where
+### where
 
 panel_id	[string]
 : Identifier of the panel this option is displayed over.
@@ -49,7 +49,7 @@ y_viewport	[float]
 
 
 
-## what
+### what
 
 description	[string]
 : A human readable, compact description of the component.

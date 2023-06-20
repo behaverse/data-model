@@ -1,11 +1,11 @@
 
-# Trial Table
+## Trial Table
 
  nan
 
 <br>
 
-## key
+### key
 
 id	[integer]
 : The unique trial identifier, generated in temporal order (meaning that a greater id refers to a trial that occurred later in time). Unique within each table (i.e., each row in a table has a different id value.)
@@ -21,7 +21,7 @@ id	[integer]
 
 
 
-## context
+### context
 
 study_name	[string]
 : The name of the study the participant participated in. Unique in **Study** table.
@@ -48,7 +48,7 @@ session_index	[integer]
 
 
 
-## task
+### task
 
 instrument_name	[string]
 : The name of the instrument used for collecting data (e.g., the name of the computer script used to run the test). unique in the **Instrument** table.
@@ -162,7 +162,7 @@ trial_seed	[integer]
 
 
 
-## stimulus
+### stimulus
 
 stimulus_panel_count	[integer]
 : The number of panels or screen areas stimuli may appear on during the trial. For example, in a task where stimuli to be compared are presented on the left and right side of the screen, stimulus_panel_count = 2.
@@ -264,7 +264,7 @@ stimulus_role	[enum]
 
 
 
-## option
+### option
 
 option_source_type	[enum]
 : A set of options is typically created using a particular procedure/algorithm (“generator”) or is sampled from a particular set (“set”). This variable indicates which of these two applies for the current options.
@@ -298,7 +298,7 @@ measurement_type	[enum]
 
 
 
-## input
+### input
 
 input_interface_type	[enum]
 : Refers to the type of interface subjects used to input actions. Possible values include (non-exhaustive):
@@ -341,7 +341,7 @@ input_count	[integer]
 
 
 
-## expectation
+### expectation
 
 expected_response_index	[integer]
 : The index of the option the subject is expected to choose from the set of options.
@@ -368,7 +368,7 @@ expected_response_description	[string]
 
 
 
-## response
+### response
 
 response_structure	[enum]
 : The structure of the response required by the subject; can take values in:
@@ -455,7 +455,7 @@ timed_out	[boolean]
 
 
 
-## evaluation
+### evaluation
 
 accuracy	[float]
 : A task-dependent accuracy measure ranging from 0 to 1 (inclusive).
@@ -481,7 +481,7 @@ Here are few evaluation labels that are commonly used:
 
 
 
-## feeback
+### feeback
 
 feedback_description	[string]
 : Lists the different kinds of feedback that were shown on a given trial. When multiple types of feedback were used, feedback will list them using `;` as a separator. If a given type of feedback was shown multiple times during a trial, that feedback type is listed only once (i.e., feedback_description does NOT represent the sequence of feedbacks).
@@ -509,7 +509,7 @@ The possible values for feedback are:
 
 
 
-## experimental design
+### experimental design
 
 job_repeat	[enum]
 : Whether this trial’s job has not been seen before in this timeline.
@@ -522,7 +522,7 @@ The possible values for job_repeat are:
 
 
 
-## accessories
+### accessories
 
 additional_measures	[string]
 : Indicates whether additional measures have been recorded during this trial and if so what kind of measures they are. Possible values include (non-exhaustive):

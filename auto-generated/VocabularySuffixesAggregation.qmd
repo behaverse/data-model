@@ -1,5 +1,5 @@
 
-# VocabularySuffixesAggregation Table
+### Aggregation Suffixes
 
  We will use the following names as suffixes to refer to particular operations in variable names. For example the mean of a variable "age" would be called "age_mean" (and not for example age_avg or age_m). We typically use the same name as the aggregation function name in R or Python. More specialized terms require explicit descriptions.
 

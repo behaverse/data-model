@@ -1,11 +1,11 @@
 
-# Instrument Table
+## Instrument Table
 
  This table contains information describing the instrument or software used to collect data from subjects (e.g., the Python script that executes the presentation of the stimuli and records key presses).
 
 <br>
 
-## key
+### key
 
 id	[string]
 : Unique identifier of an instrument. Can be formed by combining name and version (e.g., "ds_v2020.01").
@@ -14,7 +14,7 @@ id	[string]
 
 
 
-## what
+### what
 
 name	[string]
 : Name of the entity (scene, config filename) that is used to collect the data. The specific parameterization of the instrument is defined in the "Timeline/configuration" (e.g., "ds").

@@ -1,11 +1,11 @@
 
-# StimulusComponent Table
+## StimulusComponent Table
 
  Stimuli can comprise multiple components. This table describes each component of a stimulus.
 
 <br>
 
-## key
+### key
 
 stimulus_id	[integer]
 : A reference to the primary key of the *<i class="fa fa-table"></i> Stimulus* table.
@@ -19,7 +19,7 @@ index	[integer]
 
 
 
-## where
+### where
 
 x_screen	[integer]
 : X coordinates of the stimulus component on the screen in pixels.
@@ -43,7 +43,7 @@ y_viewport	[float]
 
 
 
-## what
+### what
 
 description	[string]
 : A human readable, compact description of the component.

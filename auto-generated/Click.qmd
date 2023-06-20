@@ -1,11 +1,11 @@
 
-# Click Table
+## Click Table
 
  Table describing each click that was recorded during an [L1 trial](/trial).
 
 <br>
 
-## key
+### key
 
 id	[integer]
 : Primary key; each click has its own `id` value.
@@ -32,7 +32,7 @@ response_element_index	[integer]
 
 
 
-## when
+### when
 
 onset	[float]
 : Duration between the start of the trial and the moment the mouse button press occured.
@@ -46,7 +46,7 @@ duration	[float]
 
 
 
-## where
+### where
 
 x_screen	[integer]
 : X coordinates of the click on the screen in pixels.
@@ -70,7 +70,7 @@ y_viewport	[float]
 
 
 
-## what
+### what
 
 object_type	[enum]
 : Describes the type of object that was clicked on (e.g., "button").

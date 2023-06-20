@@ -1,11 +1,11 @@
 
-# Option Table
+## Option Table
 
  Table describing each option that a subject could choose from in a given L1 trial. Note that in some tasks the options may change within a trial after each input (e.g., SOS task); therefore the options need to also be indexed by `input_index`. 
 
 <br>
 
-## key
+### key
 
 id	[integer]
 : Primary key of the *<i class="fa fa-table"></i> Option* table.
@@ -36,7 +36,7 @@ object_id	[integer]
 
 
 
-## when
+### when
 
 onset	[float]
 : Duration between the start of the trial and the moment the option was displayed or activated.
@@ -50,7 +50,7 @@ duration	[float]
 
 
 
-## where
+### where
 
 panel_id	[string]
 : Identifier of the panel this option is displayed over.
@@ -79,7 +79,7 @@ y_viewport	[float]
 
 
 
-## what
+### what
 
 description	[string]
 : A human readable, compact description of the main aspects of the option. The description for a given option depends on the task but follows a specific template for a given task. Because of this, it looks like the `option_description` could be "parsed" and "tidied"---however, this is not the intention; parsed/tidied data will be available in other tables; description is for human readability and facilitates the understanding of the data.
@@ -115,7 +115,7 @@ index_in_source	[integer]
 
 
 
-## how
+### how
 
 animation	[string]
 : Describes the animation that was used to show a particular option.

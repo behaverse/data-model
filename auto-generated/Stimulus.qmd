@@ -1,11 +1,11 @@
 
-# Stimulus Table
+## Stimulus Table
 
  Table describing each of the stimuli that were shown during an L1 trial.
 
 <br>
 
-## key
+### key
 
 id	[integer]
 : Primary key of the *<i class="fa fa-table"></i> Stimulus* table.
@@ -41,7 +41,7 @@ index_in_trial	[integer]
 
 
 
-## when
+### when
 
 onset	[float]
 : Duration between the start of the trial and the appearance of the stimulus.
@@ -61,7 +61,7 @@ duration	[float]
 
 
 
-## where
+### where
 
 panel_id	[string]
 : Identifier of the panel this stimulus is displayed over.
@@ -90,7 +90,7 @@ y_viewport	[float]
 
 
 
-## what
+### what
 
 description	[string]
 : A human readable, compact description of the main aspects of the stimulus. The description for a given stimulus depends on the task but follows a specific template for a given task. Because of this, it looks like the `stimulus_description` could be "parsed" and "tidied"---however, this is not the intention; parsed/tidied data will be available in other tables; description is for human readability and facilitates the understanding of the data.
@@ -125,7 +125,7 @@ role	[enum]
 
 
 
-## how
+### how
 
 animation	[string]
 : Describes the animation that was used to show a particular stimulus.

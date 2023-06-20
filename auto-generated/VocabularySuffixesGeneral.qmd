@@ -1,5 +1,5 @@
 
-# VocabularySuffixesGeneral Table
+### Generic Suffixes
 
  Variables may describe a feature or property of an entity, using the format <entity>_<feature>. All names below are not to be used alone but rather as suffixes (e.g., "block_type", "stimulus_description"). 
 

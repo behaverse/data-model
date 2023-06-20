@@ -1,5 +1,5 @@
 
-# VocabularySuffixesTransformation Table
+### Transformation Suffixes
 
  In general, use the function name that was used to do the transformation. 
 For example the log of a variable `age` would be called `age_log` (and not for example `log_age` or `age_in_log`). We typically use the same name as the transformation function name in R (tidyverse) or Python (pandas).  We will use the following names to refer to particular operations in variable names.
