@@ -22,7 +22,7 @@ def load_table(table_name):
     return pd.read_csv(url_table)
 
 
-def print_header(df_row):
+def print_header(df_row, header_level=1):
     """
     Generates the header text for the documentation file.
     """
@@ -31,15 +31,15 @@ def print_header(df_row):
     # extract data from df
     table_name = df_row.iloc[0]['table_name']
     table_description = df_row.iloc[0]['table_description']
-    #nav_order = df_row.iloc[0]['nav_order']
+    table_title = df_row.iloc[0]['table_title']
+    #header_level = int(df_row.iloc[0]['header_level'])
     #table_level = df_row.iloc[0]['table_level']
     #parent = df_row.iloc[0]['parent']
     #grand_parent = df_row.iloc[0]['grand_parent']
+  
    
-    
-    
     # format string
-    header = f"\n# {table_name} Table\n\n {table_description}\n\n<br>"
+    header = f"\n{'#'*header_level} {table_title}\n\n {table_description}\n\n<br>"
     return header
 
 
@@ -101,7 +101,7 @@ def enum2text(row):
 
 
 
-def print_table(df):
+def print_table(df, header_level = 1):
     old_category = ''
     md_text = ''
 
@@ -112,7 +112,7 @@ def print_table(df):
         if not pd.isna(current_category):
             if current_category != old_category:
                 old_category = current_category
-                category_header = "\n\n## " + current_category + "\n\n"
+                category_header = f"\n\n{'#'*header_level}# {current_category}\n\n"
                 md_text += category_header
 
         # convert and concatenate each row    
@@ -148,8 +148,11 @@ def generate_qmd():
 
     for current_table_index in range(table_count): # loop over tables
 
+
+        header_level = int(tables.iloc[[current_table_index]].iloc[0]['header_level'])
+    
         # create header for this table using info from the "Tables" sheet
-        header_txt = print_header(tables.iloc[[current_table_index]])
+        header_txt = print_header(tables.iloc[[current_table_index]], header_level)
 
         # create body for this table
         # -- load sheet for this table
@@ -158,7 +161,7 @@ def generate_qmd():
         df = load_table(current_table_name)
         
         # format content of the sheet
-        body_txt = print_table(df)
+        body_txt = print_table(df, header_level)
 
         # write to file
         save_qmd(content=header_txt + body_txt, 
