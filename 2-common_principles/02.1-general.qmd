@@ -1,163 +1,138 @@
-
 ## General advice on naming things
 
-Best practieces in programming emphasize the importance of making your code readable, which means that by reading only the code (i.e., not the commemnts or documentation) the intention of the program should be as comprehensible as possible. Good variable names are an important component in making code readable. Similarly, good names for datastes, tables, colmuns and values are important to make a dataset more comprehensible and easier to use. 
+Best practices in programming emphasize the importance of making your code readable, which means that by reading only the code (i.e., not the comments or documentation) the intention of the program should be as comprehensible as possible. Good variable names are an important component in making code readable. Similarly, good names for datasets, tables, columns and values are important to make a dataset more intuitive and thus their processing more effective and less error prone.
 
 Here are a few key points to consider when naming variables:
-- Names should be explicit (i.e., "intention-revealing") and easy to understand (e.g., instead of `t` use `elapsed_time_in_days`).
-- Ideally, names should tell you why they exist, what it does and how it is used. 
-- Avoid names that can be misinterpreted outside of their context (e.g., `left` could mean `remaining` and `right` could mean `correct`); unfortunately, many words are ambiguous in programming.
-- It's OK to use technical terms and abbreviations if they are common knowledge among those who will read the code or use the data; you don't want people to mentally rename your variable into some other variable name that is more common and familiar.
-- Don't shorten regular words, in particular if they are already short and shortening them may lead to confusion (e.g., `acc` for `accuracy` or is it `anterior cingulate cortex`, `corr` for `correct` or for `correlation`).
-- Choose specific and more "colorful" words.
-- Avoid{: .warn} generic names like `tmp`, `Data`, `Manager`.
-- Avoid noise words; among equally informative names, prefer the shortest.
-- Avoid number-series naming (e.g., a1, a2).
-- Attach extra information if needed (e.g., `plaintext_password` rather than `password`, `height_in_cm` rather than `height`, `raw_data` rather than `data`)
-- Do not encode the type of the variable in the variable name (e.g., `date_string`). 
-- Use names that can be searchable (e.g., if you search for a variable `t` you will get many false positive; rename it to `elapsed_time_in_days` and your search will be more effective).
-- Use pronounceable and phonetically and visually distinct names (vital if you have to communicate with a peer about the code or data).
-- Don't be cute, don't pun, don't use jokes; other people might not have the same sense of humor and get confused.
-- It's OK to use long names; but throw out unnecessary words. Sometimes creating new names can be useful (however, add explanation in the codebook/documentation);
-- Use formatting to convey meaning (e.g., capitalization, underscores, dashed).
 
-> If you feel the need to write a comment to explain the meaning of a variable or function or expression, instead of writing the comment think about the possibility to change the names/code to make them more readable (ideally to the point no comments are needed).
-{: .tip }
+1.  Names should be explicit (i.e., "intention-revealing") and easy to understand (e.g., instead of `t` use `elapsed_time_in_days`).
 
-> Test your variable names. Show someone (a peer) your variable name and ask them to guess what the variable means and what type it likely has (and whether it is a variable, a function or something else).
-{: .tip }
+2.  Ideally, names should tell you why they exist, what it does and how it is used.
 
-> Don't hesitate to change names when you come up with better ones.
-{: .tip }
+3.  Avoid names that can be misinterpreted outside of their context (e.g., `left` could mean `remaining` and `right` could mean `correct`); unfortunately, many words are ambiguous in programming.
 
+4.  It's OK to use technical terms and abbreviations if they are common knowledge among those who will read the code or use the data; you don't want people to mentally rename your variable into some other variable name that is more common and familiar.
 
+5.  Don't shorten regular words, in particular if they are already short and shortening them may lead to confusion (e.g., `acc` for `accuracy` or is it `anterior cingulate cortex`, `corr` for `correct` or for `correlation`).
 
+6.  Choose specific and more "colorful" words.
+
+7.  Avoid generic names like `tmp`, `Data`, `Manager`.
+
+8.  Avoid noise words; among equally informative names, prefer the shortest.
+
+9.  Avoid number-series naming (e.g., a1, a2).
+
+10. Attach extra information if needed (e.g., `plaintext_password` rather than `password`, `height_in_cm` rather than `height`, `raw_data` rather than `data`)
+
+11. Do not encode the type of the variable in the variable name (e.g., `date_string`).
+
+12. Use names that can be searchable (e.g., if you search for a variable `t` you will get many false positive; rename it to `elapsed_time_in_days` and your search will be more effective).
+
+13. Use pronounceable and phonetically and visually distinct names (vital if you have to communicate with a peer about the code or data).
+
+14. Don't be cute, don't pun, don't use jokes; other people might not have the same sense of humor and get confused.
+
+15. It's OK to use long names; but throw out unnecessary words. Sometimes creating new names can be useful (however, add explanation in the codebook/documentation);
+
+16. Use formatting to convey meaning (e.g., capitalization, underscores, dashed).
+
+> If you feel the need to write a comment to explain the meaning of a variable or function or expression, instead of writing the comment think about the possibility to change the names/code to make them more readable (ideally to the point no comments are needed). {: .tip }
+
+> Test your variable names. Show someone (a peer) your variable name and ask them to guess what the variable means and what type it likely has (and whether it is a variable, a function or something else). {: .tip }
+
+> Don't hesitate to change names when you come up with better ones. {: .tip }
 
 ## Hierarchy
 
+Many variable names (e.g., the column names of data table) include hierarchical information. Here are a few examples we found in public datasets:
 
-Many variable names, which may be columns of a table, include hierarchical information; here are a few examples one may find in the wild:
+-   `houseIndex`
+-   `petal_length`
+-   `ReturnOnInvestment`
+-   `woman_age_usa`
+-   `car_batterySize`
+-   `test_phase`
+-   `gross_salary`
+-   `student_response_type`
+-   `problem.view`
+-   `total_number_hits`
+-   `coroutines_mean_cycle_duration`
 
-- `houseIndex`
-- `petal_length`
-- `ReturnOnInvestment`
-- `woman_age_usa`
-- `car_batterySize`
-- `test_phase`
-- `gross_salary`
-- `student_response_type`
-- `problem.view`
-- `problem.start_time`
-- `total_number_hits`
-- `coroutines_mean_cycle_duration`
+These examples show a lack of consistency. One way to achieve consistency is construct such terms by going from the highest/biggest/abstract to the lowest/smallest/concrete. For example `car_battery_size` makes more sense than `battery_car_size` or `size_car_battery`. It also makes sense to first name an entity (e.g., "house", "petal", "car battery") before naming its properties (e.g., "index", "length", "age"). Furhtermore, imagine a data set that contains many different entities and each entity has many properties. It seems plausible that this naming convention fits more naturally with the way we think: we first think of the entities before focusing on its attributes.
 
-It seems reasonable to have such names go from the highest/biggest/abstract to the lowest/smallest/concrete. For example `car_battery_size` makes more sense than `battery_car_size` or `size_car_battery`. It also makes sense to first name an entity (e.g., "house", "petal", "car battery") before naming its feature (e.g., "index", "length", "age"). Imagine a data set that contains many different entities and each entity has many features. This naming convention seems to fit more naturally with the way we think: it seems more natural to think first about the entities one wants to compare before thinking about their attributes. 
-
-Note that in some cases this convention goes against the way we would name things in plain English. For example, "Gross salary" seems more natural than "salary gross"; however "salary_gross" is what is consistent with our style guide.
+Note however that in some cases this convention goes against the way we would name things in plain English. For example, "gross salary" seems more natural than "salary gross"; however "salary_gross" is what is consistent with our styleguide.
 
 Note also that there might be cases where the terms used to form a variable name do not on their own reveal their relationships (entity versus property) and background knowledge is required to determine the correct order (i.e., `<entity>_<property>`).
 
-
-> **Rule #1**
-> **Use the naming pattern `<entity>_<property>`.**
-{: .rule }
-
-
-
-
+> **Rule #1** **Use the naming pattern `<entity>_<property>`.** {: .rule }
 
 ## Adjectives
 
-There are cases that look like `<entity>_<feature>` (or `<class>_<property>`) but are in fact quite different. Consider for example variable names like "expected_response", and "left_button". In these examples, "response" and "button" are not properties of "expected" and "left". Should we instead rename these variables into "response_expected" and "button_left"? Again, it is important to note that "left" does not refer to a type of feature of button; the feature that would have "left" as a value might be called position and it would then make sense to have a variable called "button_position" which could take the value "left"'. button_left then does in fact NOT follow the convention `<class>_<property>`; 
+There are cases that look like `<entity>_<property>` (or `<class>_<property>`) but are in fact quite different. Consider for example variable names like "expected_response", and "left_button". In these examples, "response" and "button" are not properties of "expected" and "left". Should we instead rename these variables into "response_expected" and "button_left"? Again, it is important to note that "left" does not refer to a type of feature of button; the feature that would have "left" as a value might be called position and it would then make sense to have a variable called "button_position" which could take the value "left"'. button_left then does in fact NOT follow the convention `<class>_<property>`;
 
-In these examples, "left" and "expected" are values not variables; they play the role of adjectives and specify in greater detail which entity is being referred to (it is not button in general, it's only the left_button, it's not response we're talking about but expected response). In this case, it seems to make more sense to have the adjective be placed as a prefix to the entity, rather than as a suffix (because it's similar to natural language use and should be different from the <entity>_<feature> pattern). Hence, we will use "left_button" instead of "button_left". 
+In these examples, "left" and "expected" are values not variables; they play the role of adjectives and specify in greater detail which entity is being referred to (it is not button in general, it's only the left_button, it's not response we're talking about but the expected_response). In this case, it seems to make more sense to have the adjective be placed as a prefix to the entity, rather than as a suffix (because it's similar to natural language use and should be different from the <entity>\_<property> pattern). Hence, we will use "left_button" instead of "button_left".
 
 Thus our general pattern for naming variables and columns in a data table is:
 
-> **Rule #2**
-> **Use the naming pattern `[<adjective>_]<entity>_<feature>`.**
-{: .rule }
-
-
-
-
-
+> **Rule #2** **Use the naming pattern `[<adjective>_]<entity>_<property>`.** {: .rule }
 
 ## Singular versus plural
 
 The use of singular versus plural in variable names is sometimes inconsistent. This inconsistency seems to arise from the fact that the plural may either refer to the values of a variable or to its cardinality. For example, does `customers_served` indicate "how many customers were served" or "list which customers were served"?
 
-This point raises in fact two questions: 
- - When should we use plurals? 
- - How do we name "those variables" when we don't use plurals? 
+This point raises in fact two questions:
 
-Regarding the first question, plurals should be used for variables that have multiple values (e.g., a list). Following this rationale, `served_customers` would be a valid name for a variable listing which customers were served. Note however, that typical tabular data only allow for a single value per cell. It then follows, that in general column names in tabular data should be in singular form.
+-   When should we use plurals?
+-   How do we name "those variables" when we don't use plurals?
 
-Regarding the second question, we follow the pattern <entity>_<property> with the <entity> being in singular form and <property> indicating cardinality.  Among the numerous options to name <property>, one can find "num", "total", "n" and "count". As described later, we will use `count` to refer to the cardinality of a variable. Thus, continuing with our example, we could rename `customers_served` into `served_customer_count`.
+Regarding the first question, plurals should be used for variables that have multiple values (e.g., a list). Following this rationale, `served_customers` would be a valid name for a variable listing which customers were served. Note however, that typical tabular data only allow for a single value per cell. It then follows, that in general column names in tabular data should all be in singular form.
 
-Finally, note that it's OK to use plurals for naming units (e.g., age_in_years). 
+Regarding the second question, we follow the pattern <entity>\_<property> with the <entity> being in singular form and <property> indicating cardinality. Among the numerous options to name <property>, one can find "num", "total", "n" and "count". As described later, we will use `count` to refer to the cardinality of a variable. Thus, continuing with our example, we would rename `customers_served` into `served_customer_count`.
 
-> **Rule #3**
-> **When naming variables using `<entity>_<property>` pattern, express the entity in singular form.**
-{: .rule }
+Finally, we think it's OK to use plurals for naming units (e.g., age_in_years).
 
+> **Rule #3** **When naming variables using `<entity>_<property>` pattern, express the entity in singular form.** {: .rule }
 
-
-
-
-
+> It's OK to use plurals to name folders? e.g., Subjects, Instruments
 
 ## Boolean variables
 
-There are two main rules for naming booleans:
-- don't use negatives or negations in boolean names to avoid mental gymnastics (e.g., instead of "has_not_succeeded" or "has_failed", use "has_succeeded");
-- use `is_`, `has_` or `should_` to make clear the variable is a boolean when there is ambiguity (e.g., "space" versus "has_space").
+There are two main rules for naming boolean variables:
 
-It's OK to not use prefix boolean variables with `is_`, `has_` or similar when there is no ambiguity or a convention. In particular we use the following two booleans: 
-- `correct`
-- `timed_out`
+-   don't use negatives or negations in boolean names to avoid mental gymnastics (e.g., instead of "has_not_succeeded" or "has_failed", use "has_succeeded");
 
-> **Rule #4**
-> **Make clear when a variable is a boolean and express the variable positively.**
-{: .rule }
+-   use `is_`, `has_` or `should_` to make clear the variable is a boolean when there is ambiguity (e.g., compare `space` versus `has_space`, or `checked` versus `is_checked` or `has_checked`).
 
+It's OK to not use prefix boolean variables with `is_`, `has_` or similar when there is no ambiguity or a convention. In particular we use the following two boolean variables:
 
+-   `correct`: the response given by a subject was correct.
 
+-   `timed_out`: the subject did not respond within the allotted time period.
+
+> **Rule #4** **Make clear when a variable is a boolean and express the variable positively.** {: .rule }
 
 ## Aggregation and transformation
 
-In data analysis pipelines variables are typically transformed and aggregated. Sometimes it can be hard to come up with names for the new variables and to do so in a consistent way. The following provides some rules to do so in a consistent way.
+In data analysis pipelines variables are typically transformed and aggregated. Sometimes it can be hard to come up with names for the new variables and to do so in a consistent way.
 
-To keep things consistent with the "Hierarchy" rule presented earlier, we will use suffixes of specific terms (see below). For example, if there's a variable called `response_time` and we compute first the log of response_time and then average the logs of response_time we would end up with a new variable called `response_time_log_mean`.
+To keep naming consistent with the "Hierarchy" rule presented earlier, we will use suffixes of specific terms (see below) to designate aggregations and transformation of variables. For example, if there's a variable called `response_time` and we compute first the log of response_time and then average the logs of response_time we would end up with a new variable called `response_time_log_mean`. This is line with the "pipe"-style syntax in some data analysis programming languages (e.g., `response_time |> log() |> mean()`.)
 
+> **Rule #5** **When transforming or aggregating variables, use dedicated suffixes.** {: .rule }
 
-> **Rule #5**
-> **When transforming or aggregating variables, use dedicated suffixes.**
-{: .rule }
-
-
-> Sometimes such names can get quite long and hard to read and there might in fact exist specific names to refer to a sequence of transformation or one can come up with such a specific new name. For example, one might use `x_rmse` rather than `x_square_mean_root`. 
-{: .note }
-
-
+> Sometimes such names can get quite long and hard to read and there might in fact exist specific names to refer to a sequence of transformation (or one can invent new ones). For example, one might use `x_rmse` rather than `x_square_mean_root`. {: .note }
 
 ## On conflicting standards, conventions and preferences
 
-It seems impossible to have everyone agree on what the best solution is—fields have different traditions and conventions, people have different preferences, etc.
+It seems impossible to have everyone agree on common standards and conventions---different fields have their own traditions and people have different preferences.
 
-Furhtermore, while we intend to conform to main existing conventions as much as possible, this is typically not possible to do as different conventions and standards often conflict with each other. For example, [schema.org](schema.org) uses an "mixedCase" to describe the elements of its schema (e.g., `countryOfOrigin`, `dateCreated`) while both the leading [python](https://pep8.org/) and [R](https://style.tidyverse.org/files.html) styleguides recommend using "lower_snake_case" (reusing the previous examples: `country_of_origin`, `date_created`.) The same is true for the file formats to use (e.g., `.csv` vs `.tsv`, `json-ld` vs `XML`.) and virtually all other aspects of data management.
+Furthermore, while we intend to conform to main existing conventions as much as possible, this is not always possible to do as different conventions and standards often conflict with each other. For example, [schema.org](schema.org) uses an "mixedCase" to describe the elements of its schema (e.g., `countryOfOrigin`, `dateCreated`) while both the leading [python](https://pep8.org/) and [R](https://style.tidyverse.org/files.html) styleguides recommend using "lower_snake_case" (reusing the previous examples: `country_of_origin`, `date_created`.) The same is true for the file formats to use (e.g., `.csv` vs `.tsv`, `json-ld` vs `XML`.) and virtually all other aspects of data.
 
-The implication is that it is impossible to make everyone happy. When chosing among different alternatives we try to follow the following principles:
+When choosing among different alternatives we try to follow the following principles:
 
-  a) if the standard is already used and provides value, follow the standard as is. This is in particular the case for (descriptive) metadata: schema.org should be used for that as it is supported by Google.
+-   if the standard is already used and provides value, follow the standard as is. This is in particular the case for (descriptive) metadata: schema.org should be used for that as it is supported by Google.
 
-  b) if there are strong technical reasons to favor one alternative over another.
+-   if there are strong technical reasons to favor one alternative over another.
 
-  c) when possible we favor open rather than closed solutions (e.g., avoid saving data in proprietay file formats.)
+-   when possible use open rather than closed solutions (e.g., avoid saving data in proprietary file formats.)
 
-  d) there are different stakeholders involved in the data lifecycle and they have different needs and conventions. The software engineer that writes the code that generates log files when a person plays a game might best follow the standards of the programming language that software is writting in. The person that stores the data and wants other people to reuse that data will prefer conventions that are familiar to that community. Finally, the data analyst who wants to exploit that data would likely have the data be in their conventions (e.g., PEP8.) With regards to these different stakeholders, we argue that the "client is king" and we should therefore follow the conventions that are required or recommended by that stakeholder. This means that for metadata meant to help people find the dataset we follow the standards of search engines. For the actual data that is meant to be used by data analysts, we use standards that are recommended/preferred by the them.
-
-
-
-
-
+-   focus on the target audience. There are different stakeholders involved in the data lifecycle and they have different needs and conventions. The software engineer that writes the code that generates log files when a person plays a game might best follow the standards of the programming language that software is written in. The person that stores the data and wants other people to reuse that data will prefer conventions that are familiar to that community. Finally, the data analyst who wants to exploit that data would likely have the data be in their conventions (e.g., PEP8.) With regards to these different stakeholders, we argue that the "client is king" and we should therefore follow the conventions that are required or recommended by that stakeholder. This means, for example, that for metadata that is meant to help people find the dataset we follow the standards of search engines. For the data that is meant to be used by data analysts, we use the standards that are recommended/preferred by that community.

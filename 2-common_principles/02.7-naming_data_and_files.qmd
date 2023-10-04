@@ -1,41 +1,65 @@
 ## Naming data files and data folders
 
-There are various good recommendations on how to name data files. In general, we will follow BIDS in using a specific naming pattern to name files, which takes the following form:
+### Styleguide
 
-```
-<key 1>-<value 1>_<key 2>-<value 2> ... <.extension>
-```
+We want file and folder names to be short and meaningful. Instead of encoding numerous pieces of information in the filename (e.g., the subject index, the task, the session) we prefer short names that describe only what type of data a given file contains, leaving it to the names of the parent directories that contain that file to encode its context. Conceptually, this is equivalent to calling a file README.md within a project folder rather than calling it project_subproject_README.md.
 
-where the keys can only take a small set of possible values and must be entered in a specific order. For example, a valid BIDS filename might look like this:
+To our best knowledge there are no clear standards or styleguides regarding how to name data files and folders. Some groups use lower case with hypens (e.g., the uses `mad-men` and `masculinity-survey` in [FiveThirtyEight](https://github.com/fivethirtyeight/data)) or underscores (e.g., `arxiv_qa`) or a mixture (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz` in [BIDS](https://bids-specification.readthedocs.io/en/stable/06-longitudinal-and-multi-site-studies.html)). Others use uppercase, either with hyphens, underscores or camelCase/PascalCase (e.g, `CIFAR10` in [PyTorch](https://pytorch.org/vision/stable/datasets.html), `BIG5` in [Open Psychometrics](https://openpsychometrics.org/_rawdata/))or a mixture thereof (e.g., `CoT-Collection`). It is not uncommon to find organizations that mix different naming styles (e.g., [Kaggle](https://www.kaggle.com/datasets), [HuggingFace](https://huggingface.co/datasets), [R](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html)). Furthermore, some people seem to distinguish the name of a dataset from the name of the correspond file or folder (e.g., the ["Fashion-MNIST"](https://github.com/zalandoresearch/fashion-mnist) dataset is stored as "fashion-mnist").
 
-```
-sub-2475379_ses-1_task-rest_acq-TR2500_bold.nii.gz
-```
 
-Note that we only use a subset of the BIDS keys as well as additional keys which are not used in BIDS (marked below with an * below):
 
-- `sub` means subject (i.e., participant, person, animal),
-- `ses` means session (index),
-- `task` is the name of the activity performed by the participants (e.g., "nb", "bm", "ds"),
-- `*timeline|config` is the name for the particular configuration used (e.g., `xcit_nb_01`);
-- `*rep` *counts* repetition of completing a specific timeline
-- `desc` means description and allows to manually tag particular data files; `desc` should only be used when strictly necessary
-- `*type` indicates what type of data the file contains (e.g., `trial`, `stimulus`).
+Perhaps the reason for this state of affairs is that a dataset is subject to multiple constraints: 
+- when a dataset becomes a package or repository or module, the dataset must follow the corresponding conventions (e.g., `fashion-mnist`). 
+- datasets may contain files and folders that are subject to their own conventions (e.g., README.md)
+- data files may be related to variable names and to code; in which case they must form valid variable names (e.g., no spaces or hypens)
 
-Hence a data filename within the Behaverse Data Model follows this pattern:
 
-```
-sub-<label>[_ses-<label>]_task-<label>[_timeline-<label>][_rep-<index>]_type-<label>.csv
-```
 
-> One reason for using the BIDS file naming convention is that some file systems (e.g., FAT32) are case insensitive and CamelCase displayed in all lower case letters canbequitehardtoread, while the text-separated-by-dashes-is-not.
-{: .note }
+Within Behaverse we use following styling rules: 
 
-> The use of long filenames can sometimes be problematic (e.g., not recognized by software, relevant parts truncated in the file viewer) and is to some extent redundant with the folder structure and names. However, encoding information in the filename seems more robust than encoding it in the path and allows one to know what a file is about without having to open the file or open other files.
-{: .note }
+ 
+ - data and filenames can only inlude lower case letters, numbers, underscores and hyphens (except for standard files, e.g., README.md);
+ - dataset names follow the convention of repository names (i.e., no underscores)
+ - data files and code related files have names that are valid varialbe names (under PEP8; i.e., no hyphens)
+ - hyphens and underscores are used for human readability, not to encode structural relationships (e.g., key-value pairs or entity_feature)
 
-## Naming datasets
 
-If a dataset B is derived from dataset A, it is expected that the derived dataset has the same root as dataset A but a specific postfix (e.g., `income_luxembourg_2020.csv`).
 
-A dataset may also have a version; in this case the filename should have a postfix expressing the version using [semantic versioning](https://semver.org/); for example, `income_luxembourg_2020_v1.0.1`) or [calendar based versioning (calver)](https://calver.org); for example `income_luxembourg_v2020.10`). For versioning datasets we recommend the use of calver.
+We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `~/dataset/data/subject_001/session_1/response.csv` is preferred over `~/dataset/data/subject_001/subject-001_session-1_response.csv` as it is shorter and yet contains the same information.
+
+We also do not recommend including data in the filenames (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz`, `2019_`) as this data should be either accessible in the data or obvious from the context. 
+
+
+Here are a few examples of file and folder names that follow these rules:
+
+-   `masculinity-survey/`
+-   `big-5/`
+-   `response.csv`
+-   `subject_001/`
+
+
+
+
+
+### Naming datasets
+
+There are four main strategies to name datasets; they focus respectively on:
+
+-   the project name (e.g., the [ABCD (Adolescent Brain Cognitive Development) dataset](https://abcdstudy.org/scientists/data-sharing/);
+-   the name of the data provider (e.g., `CIFAR-10` from the Canadian Institute For Advanced Research);
+-   the data content (e.g., `election-forecasts-2022`):
+-   a related publication (e.g., the `Harmann74.cor` dataset refers to the publication "Harman, H. H. (1976) Modern Factor Analysis, Third Edition Revised, University of Chicago Press, Table 7.4.")
+
+For simple datasets that focus on a specific type of observation (e.g., air quality data) it makes sense to use content-based filenames (e.g., `air-quality`). In such cases one should use meanifngful and explicit names. However, for more complex datasets such a naming scheme is typically not possible.
+
+In general we recommend that datasets be published (e.g., on Zenodo) and to name the corresponding datasets by referring to the last name of the first author and the date of the publication (e.g., `steyvers-2020`).
+
+For bigger projects and datasets, it makes sense however to use the project name instead (e.g., `abcd-2021`).
+
+We do not recommend using meaningless strings (e.g., `g9zkf`) or names that are not specific (e.g., `titanic`, `sleep`, `dolphin`) beyond simple toy datasets.
+
+We do not recommend to include the version in the dataset name (see below.)
+
+### Versioning datasets
+
+Datasets may change across time (e.g., as new data is collected or errors are corrected) and it is thus necessary to version datasets. We do not recommend appending version labels to file names as this raises many issues (e.g., do you append the updated version label to all files? only the files that changed? Only the root directory?). Instead, we recommend using the data version control system [DVC](https://dvc.org/) and to encode the version information in the metadata of the dataset. Indeed, schema.org allows to encode such information and popular data sharing platforms display that information (e.g., [Zenodo](https://zenodo.org/).)

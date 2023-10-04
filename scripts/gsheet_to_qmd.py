@@ -166,6 +166,10 @@ def generate_qmd():
         # write to file
         save_qmd(content=header_txt + body_txt, 
                 filename=output_dir + current_table_name)
+        
+
+        print("--save file:")
+        print(output_dir + current_table_name)
 
 
 

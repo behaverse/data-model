@@ -1,6 +1,6 @@
 # L1 Specification for Cognitive Test data
 
-{{< include /auto-generated/Trial.qmd >}}
+{{< include /auto-generated/Response.qmd >}}
 
 
 {{< include /auto-generated/Stimulus.qmd >}}
@@ -12,10 +12,10 @@
 {{< include /auto-generated/Click.qmd >}}
 
 
-{{< include /auto-generated/Option.qmd >}}
+{{< include /auto-generated/OptionPresentation.qmd >}}
 
 
-{{< include /auto-generated/OptionComponent.qmd >}}
+{{< include /auto-generated/OptionPresentationComponent.qmd >}}
 
 
 {{< include /auto-generated/Instrument.qmd >}}

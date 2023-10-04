@@ -1,5 +1,5 @@
 
-## Option Table
+## OptionPresentation Table
 
  Table describing each option that a subject could choose from in a given L1 trial. Note that in some tasks the options may change within a trial after each input (e.g., SOS task); therefore the options need to also be indexed by `input_index`. 
 

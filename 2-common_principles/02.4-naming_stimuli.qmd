@@ -1,79 +1,73 @@
-
-
 ## Naming stimuli
 
+The term "stimulus" is ubiquitous in cognitive sciences despite lacking a clear and consensual definition (e.g., it may refer to thing that caused a response versus the thing the experimenter generated to elicit a (possibly internal) response).
 
+In other contexts, different terms might be more commonly used to convey a similar idea. For example, in questionnaires the stimulus might be called a question, in educational assessments it might be called an item.
 
+For lack of a better word, we will use `stimulus` to refer to the information presented to subjects and which the experimenter considers to be a defining component of a specific type of trial. The stimulus is what the experimenter or data analysis considers as the input signal to the subject's cognitive system and which processed by that system as required by the task demands (typically defined in the instructions). Note that the response options offered to participants are not considered part of the stimulus (they are part of the options).
 
-There are several terms that are commonly used to refer to specific categories of stimuli. These include "item", "target" and "non-target", "distractor", "cue", "probe", "flanker", "mask", "lure", "stop-signal", "task-cue", "warning signal". Unfortunately, it seems that these terms are not used in a consistent manner (e.g., a "no-go" stimulus may be referred to as either a non-target because it does not require a "go" response or a distractor because that stimulus should be ignored; a "target" might be a stimulus you need to respond to or a reference you need to search for in a set).
+The use of the generic `stimulus` term has the disadvantage of being less familiar in specific context (e.g., calling a question a stimulus in a questionnaire). However, the use of a common term allows to use the same data model for cognitive tests and questionnaires and to have a consistent data table in cases where questions are interleaved within a cognitive test.
 
-Furthermore, some of these terms belong to different semantic categories: a "cue" designates a functional role played by a stimulus within the context of the task (e.g., "this is to tell subjects to pay attention to the left") while "lure" reflects assumptions about the cognitive processes underlying task performance (e.g., "this type of stimuli should be more confusing to subjects because ...").  Following this insight, we distinguish:
+### Naming stimulus roles, trial types, conditions
 
+Numerous terms are commonly used to refer to specific categories of stimuli. These include "target" and "non-target", "distractor", "cue", "probe", "flanker", "mask", "lure", "stop-signal", "task-cue", "warning signal" and more. Unfortunately, these terms are not used in a consistent manner (e.g., a "no-go" stimulus may be referred to as either a non-target because it does not require a "go" response or a distractor because that stimulus should be ignored; a "target" might be a stimulus you need to respond to or a reference you need to search for in a set).
+
+Furthermore, some of these terms belong to different semantic categories: a "cue" designates a functional role played by a stimulus within the context of the task (e.g., "this is to tell subjects to pay attention to the left") while "lure" reflects assumptions about the cognitive processes underlying task performance (e.g., "this type of stimuli should be more confusing to subjects because ..."). Following this insight, we distinguish the following terms:
+
+trial_tag
+
+:   one or multiple strings used to tag or label specific types of trials that are thought to be of theoretical interest by the data analyst and intended to be used for subsequent data analysis. Examples of trial tags include "lure", "difficult", "rare", "task_switch" and "congruent". Note that these are different from objective descriptions of trial features which may be found in the task parameters (e.g., the stimulus presentation duration) or in the stimulus descriptions. Note also that we don't use the terms "condition" or "trial_type" as these terms may be ambiguous.
 
 stimulus_role
-: a functional role assigned to a stimulus within the context of the task. This assignment does not depend on who/what is performing the task.
 
-design_vector
-: a variable mapped to stimuli that reflects a data analysis intention (in reference to "design matrix"); examples include "lure", "task_switch", "congruent".
+:   a functional role assigned to a stimulus within the context of the task by the experimenter or task designer. This assignment refers to how the experiments or task designer intends the stimulus to be processed by subjects (as typically explained to subjects in task instructions).
 
-> Oftentimes these data analysis intentions determined the choice of task parameters (e.g., the use of a particular trial sequence); in those cases, those intentions will be reflected in the parameters that describe a trial (e.g., the value of N in the N-back task, the current task in a task-switching task).
-{: .note }
+Furher explanation may be needed to clarify the naming of stimulus roles.
 
+First, we define a stimulus as being a set of physical events that are presented to subjects with the intention or assumption that they will cause a particular effect (observable or not). Not all physical events are stimuli and the qualification of a physical event as being a stimulus or not depends on the context.
 
-# Naming stimulus roles
-
-To decrease ambiguity in the naming of stimulus roles we will adopt the perspective on an "implied" ideal agent performing the task, that is, a schematic model of how the task designer intends agents to perform the task.
-
-We define a stimulus as being a set of physical events that are presented to subjects with the intention or assumption that they cause a particular effect. Not all physical events are stimuli and the qualification of a physical event as being a stimulus or not depends on the context. 
-
-By performing the task, the ideal agent performs a mapping between the stimulus space and the response space; in other words, we have:
+By performing the task, the theorized agent performs a mapping between a stimulus space and a response space; in other words, we have:
 
 $$
-R = Cognition(Stimulus; Task)
+Response = Cognition(Stimulus, Task)
 $$
 
-It is important to note here that Stimulus can be further broken down into categories, with a given stimulus possibly belonging to more than one of these categories. In particular, we have the following `stimulus_role` types:
-
+It is important to note here that Stimulus and Task can be further broken down into sub-categories. In particular, we define the following `stimulus_role` types:
 
 input
-: mandatory input that causes a response when *Task* is fully specified; "domain" of the "Cognition" function.
-<br />
-*Example:* a particular letter in the N-back task.
+
+:   mandatory input that causes a response when *Task* is fully specified; "domain" of the "Cognition" function. <br /> *Example:* a particular letter in the N-back task.
 
 distractor
-: a stimulus that is not used by the "ideal agent". Example, a light flashing at random intervals.
 
-modulator *OR*{: .text-delta} supporter
-: optional argument which may improve performance if taken into account.
-Example: spatial cue in the Posner task.
+:   a stimulus that is not used by the "ideal", theorized optimal agent. Example, a light flashing at random intervals.
 
-specifier *OR*{: .text-delta} goal *OR*{: .text-delta} task
-: mandatory input to specify the Task; on its own, the specifier is  insufficient to yield a response.
-<br />
-*Example:* task cue in a task-switching paradigm.
+facilitator
+
+:   optional argument which may improve performance if taken into account. Example: spatial cue in the Posner task.
+
+specifier
+
+:   mandatory input to specify the cognitive operations to be performed on the input; on its own, the specifier is insufficient to yield a response. <br /> *Example:* task cue in a task-switching paradigm.
 
 selector
-: stimulus used to highlight a subset of stimuli for which to respond to.
-<br />
-*Example:* a question mark on top of one of the MOT dots. Probably a subclass of specifier.
+
+:   stimulus used to highlight a subset of stimuli for which to respond to. <br /> *Example:* a question mark on top of one of the MOT dots. Probably a subclass of specifier.
 
 modifier
-: stimulus that implies a transformation of the mapping from stimuli to responses.
-<br />
-*Example:* negation sign in a symbol detection task (i.e., "now press the key in response to all but the digit '3'). Probably a subclass of specifier.
+
+:   stimulus that implies a transformation of the mapping from stimuli to responses. <br /> *Example:* negation sign in a symbol detection task (i.e., "now press the key in response to all but the digit '3'). Probably a subclass of specifier.
 
 Having defined these categories, we now define the following stimulus roles within each category:
 
+| stimulus_role_type | stimulus_role      | description                                                                                                  |
+|:---------------|:---------------|:----------------------------------------|
+| input              | target ("trigger") | stimulus that completes the input and triggers the execution of the response.                                |
+|                    | non-target         | stimulus that is mandatory for performing the task but not sufficient to trigger a response.                 |
+| distractor         | distractor         | stimulus that is not processed by the "ideal" agent but may decrease performance when processed by subjects. |
+| facilitator        | location-cue       | stimulus that is not processed by the "ideal" agent but may increase performance when processed by subjects. |
+| specifier          | task-specifier     | stimulus that indicates which task should be performed.                                                      |
+| selector           | probe              | stimulus that indicates how to response or about what input to respond.                                      |
+| modifier           | stop-signal        | stimulus that changes the stimulus-response mapping in a systematic way.                                     |
 
-| stimulus_role_type | stimulus_role      | description                                                  |
-| :----------------- | :----------------- | :----------------------------------------------------------- |
-| input              | target ("trigger") | stimulus that completes the input and triggers the execution of the response. |
-|                    | non-target         | stimulus that is mandatory for performing the task but not sufficient to trigger a response. |
-| distractor         | distractor         | stimulus that is not processed by the "implied" agent.       |
-| modular            | location-cue       | stimulus that does not fundamentally change the task but may affect the importance that should be given to other stimuli but. |
-| specifier          | task-specifier     | stimulus that indicates which task should be performed.      |
-| selector           | probe              | stimulus that indicates how/about what to respond.           |
-| modifier           | stop-signal        | stimulus that changes the stimulus-response mapping in a systematic way. |
-
->The goal of this table is to enforce consistency. When using the term "non-target" we will always mean a mandatory input which does not trigger a response and not a subtype of distractor.
-{: .note }
+> The goal of this table is to enforce consistency. When using the term "non-target" we will always mean a mandatory input which does not trigger a response and not a sub-type of distractor. {: .note }

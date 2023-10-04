@@ -1,49 +1,47 @@
+# General principles
 
-# Common principles
-{: .no-toc }
+Styleguides, standards, and conventions are useful in that they support consistency and quality while facilitating the development of efficient workflows, automation and specialized software. They can apply to:
 
-Styleguide, standards, and conventions are useful in that they support consistency and quality while facilitating the developmment of efficient workflows, automation and specialized software. They can apply to:
+1.  data
+2.  code (surface-level properties; literal)
+3.  code (structural, architectural, paradigmatic properties)
+4.  workflow and practices (everything that is not directly code)
 
-- data
-- code (surface-level properties; literal)
-- code (structural, architectural, paradigmatic properties)
-- workflow and practices (everything that is not directly code)
+There are various great books that cover 2-4 (e.g., https://www.goodreads.com/book/show/3735293-clean-code) but comparatively less about 1, in particular within the context of behavioral data science.
 
-There are various great books that cover 2-4 but comparatively less about 1 and in particular within the context of behavioral data science.
+This document focuses on standards and principles for structuring, formatting and saving data (which has repercussions on subsequent data analysis code and workflows). It aims to list and sometimes explain the particular choices we have made.
 
-This document focuses on 1 (with repercussions on 2). It takes advantage of lessons learned about 2 and applies them to 1 but it also addresses points that are specific to 1 and haven’t perhaps been addressed before. Overall this document also serves to list and sometimes explain the particular choices we’ve made and styles and conventions that we follow in our lab.
-
-> We do not claim that the conventions and rules listed in this document are the absolute best way of doing things. We agree with “Clean Code” and others that consistency is more important than the choice for a particular set of conventions; this document therefore reflects our opinionated choices to achieve such consistency.
-{: .note }
+We do not claim that the conventions and rules listed in this document are the absolute best way of doing things. As many have argued before us, consistency is the most important objective; in aiming to achieve such consistency we made opinionated choices people may disagree with.
 
 
-
-## BIDS
-https://bids-specification.readthedocs.io/en/stable/02-common-principles.html
-
-
-## PEP8
-https://pep8.org/
+This being said, whenever relevant and possible we aim to follow  established standards and guidelines (e.g., [schema.org](https://schema.org/), [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html), [PEP8](https://pep8.org/).)
 
 
 
 
 
-{{< include 01-guideline.qmd >}}
+
+{{< include 01-styleguide.qmd >}} 
+
 {{< include 02-naming_things.qmd >}}
-{{< include 02.1-general.qmd >}}
-{{< include 02.2-naming_people.qmd >}}
-{{< include 02.3-naming_tasks.qmd >}}
-{{< include 02.4-naming_stimuli.qmd >}}
-{{< include 02.5-naming_responses.qmd >}}
-{{< include 02.6-naming_temporal_variables.qmd >}}
-{{< include 02.7-naming_data_and_files.qmd >}}
-{{< include 03-units_and_values.qmd >}}
-{{< include 04-file_formats.qmd >}}
-{{< include 05-indexing.qmd >}}
-{{< include 06-tidy_tables.qmd >}}
-{{< include 07-organizing_datasets.qmd >}}
-{{< include 08-standards.qmd >}}
 
+{{< include 02.1-general.qmd >}} 
 
+{{< include 02.2-naming_people.qmd >}} 
+
+{{< include 02.3-naming_tasks.qmd >}} 
+
+{{< include 02.4-naming_stimuli.qmd >}} 
+
+{{< include 02.5-naming_responses.qmd >}} 
+
+{{< include 02.6-naming_temporal_variables.qmd >}} 
+
+{{< include 02.7-naming_data_and_files.qmd >}} 
+
+{{< include 03-units_and_values.qmd >}} 
+
+{{< include 04-file_formats.qmd >}} 
+
+{{< include 05-tidy_tables.qmd >}} 
 

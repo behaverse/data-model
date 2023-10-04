@@ -1,9 +1,3 @@
-
 # Naming things
 
-
-Naming things is notoriously hard. This is also true When naming data and data related entities. Below we present concrete examples to illustrate concerns and justify our choices.
-
-
-
-
+Naming things is notoriously hard; Below we present concrete examples to illustrate concerns when naming data related entities and justify our choices.

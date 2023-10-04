@@ -1,9 +1,21 @@
-
-
 ## File formats
 
+In general, we recommend using open (e.g., CSV, JSON, .md) rather than closed file format (e.g., .mat, .sav, .docx) to ensure the data is accessible to a wide audience. More specifically using the followign file formats:
 
-In general, we recommend using open (e.g., CSV, JSON, .md) rather than closed file format (e.g., .mat, .sav, .docx) to ensure the data is accessible to a wide audience. 
 
-We do NOT recommend to save the same data in multiple output formats to avoid redundancy and version mismatches. Special tools may be developped to convert a dataset from one format to another (e.g., CSV to .sav).
+| Data type       | Recommended file type | Conditions                                                                           |
+|------------------------|------------------------|------------------------|
+| Tabular data    | CSV                   | Always.                                                                              |
+| Structured data | JSON                  | For specific machine-focused applications.                                           |
+|                 | YAML                  | When human readability and editabiliy matters.                                       |
+| Text            | markdown              | Always; except for official, static or administrative documents which may be in PDF. |
+
+
+
+
+
+We do NOT recommend saving the same data in multiple output formats (e.g., CSV and .sav) to avoid redundancy and version mismatches. Note that many tools already exist that allow the conversion from data format to another.
+
+
+
 

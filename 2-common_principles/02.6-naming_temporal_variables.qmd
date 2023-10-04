@@ -1,81 +1,42 @@
-
 ## Naming temporal variable
 
+Multiple terms may be used as variable names to describe different temporal features. Here we present some general guidelines we follow for consistency. Firstly, some terms are used to characterize specific **points in time**; others are used to describe a **duration**. Sometimes this distinction may seem fuzzy (e.g., a point in time relative to a reference point is a duration) but in general it is clear if the intention or focus is on an event or on a duration. Secondly, as we are referring here to a feature or property on an entity (i.e., a temporal feature), the temporal part of the variable name would be encoded as a suffix (e.g., `study_start_datetime`).
 
+Below we cover the main temporal suffixes for both events and durations.
 
-Numerous words refer to "time"; below we describe what those words mean for us.
+\*\_datetime
 
-Some names are used to designate specific **points in time**: 
+:   indicates a date and a time in a (somewhat) absolute sense for an event; datetime variables are expected to be in a specific format (see below). For example the start datetime of a timeline may be `2009-10-31T01:48:52.512Z`. Note that we use `*_datetime` rather than `* _date_time` because `date_time` may incorrectly suggest that `time` is a feature of `date` (e.g., `start_datetime` is less ambiguous than `start_date_time` which could be read as `(start_)date_time` or `(start_date)_time)`.
 
-*_datetime
-: indicates a date and a time in a (somewhat) absolute sense for an event; datetime variables are expected to be in a specific format (see below). For example the start datetime of a timeline may be `2009-10-31T01:48:52.512Z`.
+\*\_onset
 
-> We use `*_datetime` rather than `* _date_time` because `date_time` may suggest that time is a feature of the entity time rather than `datetime` being a single construct/feature of the entity it is appended to (e.g., `start_datetime` is less ambiguous than `start_date_time` which could be read as `(start_)date_time` or `(start_date)_time)`.
-{: .note }
+:   refers to the start of an event expressed relative to the start of a trial. It thus expresses the duration between the trial start and the start of some event (e.g., `stimulus_onset`);
 
-*_timestamp
-: refers to the timing of an event but its reference may be relative (e.g., beginning of the session) and its format less specified (e.g., a duration expressed in seconds). Because of the referencing, "timestamp" may be more ambiguous; if it refers to a date and time, use `*_datetime`; if it refers to a duration relative to a particular reference, use a term that makes this reference more explicit (e.g., `stimlus_onset` instead of `stimulus_timestamp`).
+\*\_offset
 
-*_onset
-: refers to the duration between the trial start and the start of some event (e.g., `stimulus_onset`);
+:   refers to the end of an event expressed relative to the start of a trial (e.g., `stimulus_offset`);
 
-*_offset
-: refers to the duration between the trial start and the end of some event (e.g., `stimulus_offset`); 
+Note that datetime is explicit while onset and offset are relative to an implicit temporal reference (in our case, the start of a trial.)
 
-*_time
-: ambiguous term we keep for historic reasons; we currently use it only for `response_time`. 
+response_time
 
+:   we only use the suffix `_time` for `response_time`, which despite being ubiquitous in experimental psychology does not have a consensual definition (e.g., it may refer to the onset or offset of the response). Here response_time refers to the completion of a response expressed relative to the earliest possible timepoint a response could have been completed recorded.
 
-> A point in time may be seen as a duration relative to a reference point; in the examples above, the focus is on the event itself rather than on the duration.
-{: .note }
+\*\_duration
 
-Other names refer to **the duration of an event** itself (the onset and offset of the event itself).
+:   refers to the time difference between the end and the start of some event. For example, `stimulus_duration` describes how long the stimulus was displayed.
 
-duration
-: refers to the time difference between the end and the start of some entity; for example, `stimulus_duration` describes how long the stimulus was displayed;
-
-Finally, still other names refer to the duration separating two specific events:
-
-interval
-: refers to the time difference between the end of an entity and the start of another (typically, but not always of the same type).
-: For example `inter_stimulus_interval` is the duration between the disappearance of a stimulus and the appearance of the next one; `cue_target_interval` is the duration between the end of the cue and the start of the target (see figure below); Other examples include:
-- inter-trial interval (ITI)
-- inter-stimulus-interval (ISI)
-- cue-target-interval (CTI)
-
-period (or phase)
-: is used to refer to a temporal range in a more generic/abstract sense. For example, foreperiod may refer to the duration between the beginning of a trial and the onset of a stimulus.  
-
-onset_asynchrony
-: describes the elapsed time between the start of one entity and the start of another one (e.g., stimulus onset asynchrony; SOA)
-
-delay
-: could refer to the unexpected addition of a duration (e.g., the takeoff was delayed); in general should be avoided.
-
-latency
-: expresses the idea of a duration for an event that could occur right away but might for some reason take more or less time. *"An input to a system produces some response which appears with a latency"*; in general should be avoided.
- 
-As Martin Kleppman says in his book [Designing Data Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/):
->>> ***Latency** is the duration that a request is waiting to be handled - during which it is latent, awaiting service. Used for diagnostic purposes ex: Latency spikes.*
->>> ***Response time** is the time between a client sending a request and receiving a response. It is the sum of round trip latency and service time. It is used to describe the performance of applications.*
-{: .text-grey-dk-000 }
-
-
-![Temporal variables]({{ site.baseurl }}/assets/images/temporal_variables.png)
-
+Finally, there are several terms that may be common in some contexts but which we avoid using. These include the terms like `interval` (as in inter-trial interval, inter-stimulus interval, cue-target interval), `onset_asynchrony` (as in stimulus onset asynchrony or SOA), `period` (as in foreperiod), `phase`, `delay` and `latency` (e.g., as in response latency). We note however that there are very specific uses cases where some of these terms may be necessary (e.g., to describe standard parameters of an instrument; latency may have a clear and specific meaning in software engineering).
 
 ### Examples
 
-- `stimulus_onset` refers to the duration between trial start and appearance of the stimulus; 
-- `stimulus_duration` is the duration between the appearance and the disappearance of the stimulus;
-- `response_time` typically represents the duration between the onset of a stimulus and the completion of the response to that stimulus.
-- `response_onset` refers to the duration between trial start (not stimulus onset) and the start of the response;
-- `response_offset` refers to the duration between trial start (not stimulus onset) and the moment the response was completed; 
-- `response_duration` refers to the difference between `response_offset` and `response_onset` and indicates how long it took to enter the response. 
-
+-   `stimulus_onset` refers to the duration between trial start and appearance of the stimulus;
+-   `stimulus_duration` is the duration between the appearance and the disappearance of the stimulus;
+-   `response_time` typically represents the duration between the onset of a stimulus and the completion of the response to that stimulus.
+-   `response_onset` refers to the duration between trial start (not stimulus onset) and the start of the response;
+-   `response_offset` refers to the duration between trial start (not stimulus onset) and the moment the response was completed;
+-   `response_duration` refers to the difference between `response_offset` and `response_onset` and indicates how long it took to enter the response.
 
 > In general, in data tables, we should refer to stimulus onset times relative to the beginning of the trial (time reference of the trial) and specify their duration (i.e., onset and duration, rather than onset and offset or `start_datetime` and `end_datetime`).
-> 
-> If there's a need for additional time measurements, which are not part of the task parameters, these can be computed by the analyst rather than be precomputed and present in the shared data.
-{: .note }
-
+>
+> If there's a need for additional time measurements, which are not part of the task parameters, these can be computed by the analyst rather than be pre-computed and present in the shared data (e.g., inter-trial interval) {: .note }

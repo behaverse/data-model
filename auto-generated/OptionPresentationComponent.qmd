@@ -1,5 +1,5 @@
 
-## OptionComponent Table
+## OptionPresentationComponent Table
 
  Options can comprise multiple components. This table describes each component of an option.
 

@@ -1,14 +1,14 @@
 
-## Trial Table
+## Response Table
 
- nan
+ Main L1 table. Each row describes a response. More detailed information may be avaiable in other tables and link to this one via the primary key id.
 
 <br>
 
 ### key
 
 id	[integer]
-: The unique trial identifier, generated in temporal order (meaning that a greater id refers to a trial that occurred later in time). Unique within each table (i.e., each row in a table has a different id value.)
+: The unique response identifier, generated in temporal order (meaning that a greater id refers to a response that occurred later in time). Unique within each table (i.e., each row in a table has a different id value.)
 
 
 :::{.callout-note}
@@ -29,14 +29,36 @@ study_name	[string]
 
 
 
-subject_id	[string]
+group_name	[string]
+: Participants may be assigned to different groups (where typically, different groups will have different experiences within a study).
+
+
+
+subject_index	[string]
 : The identifier of the entity (typically person) generating the responses. unique in  **Subject** table.
 
 
 
+response_index	[integer]
+: Indexes in chronological order all responses emitted by a given subject within a study. 
+
+
+
 session_index	[integer]
-: When there are multiple sessions, this variable indicates the order of each session (i.e., the first session completed by the subject has `session_index` = 1, the second session has `session_index` = 2; even if the second session is an exact repetition of the first one. indexes sessions within study and subject.
+: When there are multiple sessions, this variable indicates the order of each session (i.e., the first session completed by the subject has `session_index` = 1, the second session has `session_index` = 2; even if the second session is an exact repetition of the first one.
 : index of session within subject.
+
+:::{.callout-note}
+
+ We currently don’t use session_name, session_id and session_repetition in this table. 
+
+:::
+
+
+
+activity_index	[integer]
+: When subjects complete multiple activities (e.g., a cognitive test followed by a questionnaire), this variable indicates the order of each activity (i.e., the first activity completed by the subject has `activity_index` = 1, the second session has `activity_index` = 2; even if the second activity is an exact repetition of the first one.
+: index of activity within subject.
 
 :::{.callout-note}
 
@@ -51,7 +73,17 @@ session_index	[integer]
 ### task
 
 instrument_name	[string]
-: The name of the instrument used for collecting data (e.g., the name of the computer script used to run the test). unique in the **Instrument** table.
+: The name of the instrument used for collecting data (e.g., the name of the computer script used to run the test). Multiple versions of the same instrument may coexist.
+
+
+
+instrument_id	[string]
+: The unique id of the specific version of the instrument used for collecting data (e.g., the name of the computer script used to run the test). unique in the **Instrument** table.
+
+
+
+instrument_repetition	[integer]
+: The number of times this particular instrument has already been completed anytime in the past by this particular subject in this study. This variable has a value 0 the first time an instrument is used.
 
 
 
@@ -115,12 +147,13 @@ block_name	[string]
 
 block_index	[integer]
 : Refers to the order in which this block has been experienced by the subject. When there are multiple blocks, this variable indicates the order of each block (i.e., the first block completed by the subject has block_index = 1, the second block has block_index = 2; even if the second block is an exact repetition of the first one.
+In questionnaires, block_index may refer to distinct pages where each page may contain multiple questions.
 : index of block within a timeline.
 
 
 
 episode_index	[string]
-: Refers to a particular time interval, in chronological order, of the timeline_run. Episodes are temporally distinct (no overlap) and discrete. The binning of the timeline_run into successive episodes depends on the task; it is mostly used and necessary to group data in cases where two distinct trials occurred at the same time (e.g., dual N-back).
+: Refers to a particular time interval, in chronological order, of a subject's participation in a study. Episodes are temporally distinct (no overlap) and discrete. The binning of the time into successive episodes depends on the task; it is mostly used and necessary to group data in cases where two distinct trials occurred at the same time (e.g., dual N-back).
 : index of episode within a timeline.
 
 :::{.callout-note}
@@ -164,6 +197,18 @@ trial_seed	[integer]
 
 ### stimulus
 
+stimulus_index	[integer]
+: Indexes in chronological (or spatial) order the stimuli shown within an instrument (counting one stimulus count per response). stimulus_index may for instance be used to refer to the nth question asked within a questionnaire.
+
+
+
+stimulus_type	[enum]
+: We distinguish the following stimulus types:
+:  **message:** The stimulus is a message shown to subjects (e.g., task instructions).
+:  **question:** The stimulus may consist of text, images and/or sounds; they require subjects to make a decision based on the content of the stimulus.
+
+
+
 stimulus_panel_count	[integer]
 : The number of panels or screen areas stimuli may appear on during the trial. For example, in a task where stimuli to be compared are presented on the left and right side of the screen, stimulus_panel_count = 2.
 
@@ -191,11 +236,11 @@ stimulus_structure_source	[string]
 
 
 stimulus_set_size	[integer]
-: The number of different values each presented stimulus could have taken. This value gives an indication of the complexity of the stimulus space. When this number is large we set to infinity, when for any reason it was not computed, it has a value of NA.
+: The number of different values each presented stimulus could have taken. This value gives an indication of the complexity of the stimulus space. When this number is large we set this variable to infinity, when for any reason it was not computed, it has a value of NA.
 
 :::{.callout-note}
 
- To specify "infinity" in a CSV or TSV file we use +Inf and -Inf; these are correctly recognized in R (tidyverse) and Python (pandas) as being valid numbers rather than strings. 
+ To specify "infinity" in a CSV file we use +Inf and -Inf; these are correctly recognized in R (tidyverse) and Python (pandas) as being valid numbers rather than strings. 
 
 :::
 
@@ -245,8 +290,8 @@ stimulus_description	[string]
 
 
 
-stimulus_uid	[integer]
-: Is a unique identifier for the (unitary, set or sequence of) stimuli presented during a trial; if those exact same stimuli are repeated in a different trial, that trial would have the same value for stimulus_uid.
+stimulus_id	[integer]
+: Is a unique identifier for the (unitary, set or sequence of) stimuli presented during a trial; if those exact same stimuli are repeated in a different trial, that trial would have the same value for stimulus_id. stimulus_id may also be used to refer to a specific message or question in a questionnaire.
 
 
 
@@ -271,7 +316,7 @@ option_source_type	[enum]
 
 
 
-option_source	[enum]
+option_source	[string]
 : Refers to the specific generator or set that determined the options on a given trial. Option that stem from the same source have the same data scheme and could thus be described in a table named after option_source (i.e., option_source indicates which table contains the full information about the option set).
 
 :::{.callout-note}
@@ -284,6 +329,20 @@ option_source	[enum]
 
 option_count	[integer]
 : The number of options the participant can choose from on a given trial.
+
+
+
+option_id	[string]
+: Is a unique identifier for the option (set or generator) used on a given trial.
+
+
+
+option_data_type	[enum]
+: Describes the type of data this option entails. Possible values include:
+:  **nominal:** Set of unordered labels (e.g., {“Luxembourg”, “France”, “Germany”}).
+:  **ordinal:** Ordered values without clear distance (e.g., {“a lot”, “a bit”, “not at all”}).
+:  **interval:** Ordered values with clear distances but no absolute zero (e.g., 10 versus 20 degrees Celsius).
+:  **ratio:** Values with clear distance metrics and absolute zero (e.g., length in cm).
 
 
 
@@ -343,7 +402,7 @@ input_count	[integer]
 
 ### expectation
 
-expected_response_index	[integer]
+expected_response_option_index	[integer]
 : The index of the option the subject is expected to choose from the set of options.
 
 :::{.callout-note}
@@ -402,7 +461,7 @@ response_count	[integer]
 
 
 
-response_index	[integer]
+response_option_index	[integer]
 : The index of the option the participant chose, starting from 1.
 
 :::{.callout-note}
@@ -438,13 +497,33 @@ response_description	[string]
 
 
 
-response_value	[float]
-: A numeric value associated with a particular response option; typically indicating the “worth” of a response (e.g., response_value = 1 for the correct response). Depending on the context, response_value can mean something different. In some cases response_value will be redundant with accuracy and correct.
+response_numeric	[float]
+: A numeric value associated with a particular response; this could be a numeric value entered directly by the subject or the numeric meaning of a selected option (for example, the choice of option "Never" may be associated with the numeric value of 0). Note that this variable describes the subject's response; it does not describe the value (e.g., correctness or goodness) that is associated with that response.
 
 
 
 response_time	[float]
 : The duration, in seconds, between the earliest possible time a response could have been completed and the moment that response was actually completed (and NOT when it was initiated).
+
+
+
+response_datetime	[datetime]
+: The datetime corresponding to the completion of the response.
+
+
+
+response_validation_time	[float]
+: In some cases, subjects may need to press an extra key to validate previous responses. When relevant, this variable may encode this duration.
+
+
+
+response_initiation_time	[float]
+: In some cases (e.g., a reaching movement) it might be useful to encode when a response was initiated.
+
+
+
+response_skipped	[boolean]
+: In some cases (e.g., in some questionnaires), subjects have the option to skip a question.
 
 
 
@@ -467,7 +546,12 @@ correct	[boolean]
 
 
 
-evaluation_label	[string]
+score	[float]
+: A numeric value associated with a particular response in a given context. This variable may be used to compute a performance metric or a questionnaire level index (e.g., a well-being score).
+
+
+
+evaluation_label	[enum]
 : There are several labels that can be assigned to a given response to specify what that response means in terms of evaluation within a task. The most general terms are "correct” and "error" (which are already given by the correct variable). There are however more specific sets of terms that may apply in different contexts. For example, in a signal detection task, it is common to use labels from the signal detection theory framework (i.e., “hit”, “miss”, “false alarm”, “correct rejection”). In other contexts, researchers might use terms like “omission” or “commission” errors or even things like “perseveration” error (e.g., in the Wisconsin Card Sorting Test). Note that these terms are not always well defined or exclusive. For example, a “hit” is also a “correct” response and a “false alarm” may be synonymous to “commission error”. Whenever possible use the more specific terms (i.e., always use “hit” rather than “correct” when applicable).
 Here are few evaluation labels that are commonly used:
 :  **correct:** The response is correct.
@@ -481,7 +565,7 @@ Here are few evaluation labels that are commonly used:
 
 
 
-### feeback
+### feedback
 
 feedback_description	[string]
 : Lists the different kinds of feedback that were shown on a given trial. When multiple types of feedback were used, feedback will list them using `;` as a separator. If a given type of feedback was shown multiple times during a trial, that feedback type is listed only once (i.e., feedback_description does NOT represent the sequence of feedbacks).
@@ -489,7 +573,7 @@ The possible values for feedback are:
 :  **none:** No feedback was shown.
 :  **expected_response:** Feedback indicated what the correct response would have been.
 :  **explanation:** Feedback explains *why* a certain option is the correct one.
-:  **correctness_on_option:** Feedback indicates (on the the option itself) if the option chosen by the participant was correct one (e.g., in green), or not (e.g., in red).
+:  **correctness_on_option:** Feedback indicates (on the option itself) if the option chosen by the participant was the correct one (e.g., in green), or not (e.g., in red).
 :  **correctness_on_screen:** Feedback displayed on the screen center indicates if the response to the current trial was correct or not (e.g., using a green check or a red cross).
 
 :::{.callout-note}
@@ -504,6 +588,20 @@ The possible values for feedback are:
  We don’t consider here as “feedback”, the kind of feedback that is used in UI to confirm to users that a button has indeed been clicked. 
 
 :::
+
+
+
+
+
+### outcome
+
+outcome_description	[string]
+: Describes the observable consequences of the subject's response (e.g., "the opened box is empty").
+
+
+
+outcome_numeric	[float]
+: A numeric value describing the observable consequences of the subject's response (e.g., +3 points).
 
 
 
