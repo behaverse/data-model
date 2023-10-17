@@ -53,12 +53,12 @@ All relevant data, metadata and documentation is included in the dataset folder.
 
 ### README.md
 
-The README.md file contains the general description of the dataset and embeds its metadata. We use it as a dataset card (as in [https://huggingface.co/datasets](HuggingFace)) rather than as a codebook (which instead are dedicated files describing specific instruments).
+The `README.md` file contains the general description of the dataset and embeds its metadata. We use it as a dataset card (as in [https://huggingface.co/datasets](HuggingFace)) rather than as a codebook (which instead are dedicated files describing specific instruments).
 
 
 ### LICENSE
 
-The LICENSE file specifies the terms and conditions for use, reproduction and distribution of the dataset. While different licenses may apply to different parts of a dataset we recommend to keep it simple and to use the [CC-BY](https://creativecommons.org/licenses/by/4.0/) according to which the dataset may be used for any purpose as long as it is given appropriate credit.
+The `LICENSE` file specifies the terms and conditions for use, reproduction and distribution of the dataset. While different licenses may apply to different parts of a dataset we recommend to keep it simple and to use the [CC-BY](https://creativecommons.org/licenses/by/4.0/) according to which the dataset may be used for any purpose as long as it is given appropriate credit.
 
 
 ### study/
