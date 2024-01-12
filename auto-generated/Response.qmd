@@ -321,7 +321,7 @@ option_source	[string]
 
 :::{.callout-note}
 
- While there is a stimulus_index_in_source to refer to the particular stimulus that was used, we don’t have an equivalent opiton_index_in_source since all options are displayed. Instead, we use response_index and expected_response_index to refer to a particular option within the set of options. 
+ While there is a stimulus_index_in_source to refer to the particular stimulus that was used, we don’t have an equivalent opiton_index_in_source since all options are displayed. Instead, we use response_index and expected_response_option_index to refer to a particular option within the set of options. 
 
 :::
 
@@ -466,21 +466,21 @@ response_option_index	[integer]
 
 :::{.callout-note}
 
- response_index = 0 means the subject chose none of the options (e.g., a “no-go” response in a Go/No-go task). 
+ response_option_index = 0 means the subject chose none of the options (e.g., a “no-go” response in a Go/No-go task). 
 
 :::
 
 
 :::{.callout-note}
 
- response_index can be directly compared to expected_response_index. 
+ response_option_index can be directly compared to expected_response_option_index. 
 
 :::
 
 
 :::{.callout-note}
 
- response_index refers to an entry in the Option table (i.e., there is no  Response table). 
+ response_option_index refers to an entry in the Option table (i.e., there is no  Response table). 
 
 :::
 
