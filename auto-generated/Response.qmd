@@ -127,7 +127,7 @@ job_type	[string]
 
 
 job_description	[string]
-: The more specific description of a job, which gives more information about what the participant sees and has to do. Whereas the `job_type` typically uses only verbs and adjectives, the `job_description` also contains nouns (e.g., “recall-digits-forward”, “recall-letters-backward”).
+: The more specific description of a job, which gives more information about what the participant sees and has to do. Whereas the `job_type` typically uses only verbs and adjectives, the `job_description` also contains nouns (e.g., “recall-forward-digits”, “recall-backward-letters”).
 
 
 
