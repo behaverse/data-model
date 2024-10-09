@@ -1,24 +1,57 @@
 project:
   type: website
+  # NOTE we are now using GitHub actions to compile quarto, output-dir folder will be automatically generated on GitHub servers (and git-ignored on local)
+  execute-dir: project
+  resources:
+    - "assets/**/*"
 
 website:
-  title: "behaverse_data_model"
+  title: Behaverse Data Model
+  site-url: "https://behaverse.org/data/model"
+  google-analytics: "G-K2NP7Q9KGZ"
+  cookie-consent:
+    type: implied
+    style: simple
+  repo-url: https://github.com/behaverse/website 
+  repo-actions: none
+  page-footer:
+    background: light
+    # right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    center: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) &middot; [Cookies](#){#open_preferences_center} &middot; [About Us](/about.qmd)"
+
   navbar:
     left:
-      - index.qmd
       - 1-getting_started/index.qmd
       - 2-common_principles/index.qmd
       - 3-specification/index.qmd           
       - 4-datasets/index.qmd
-      - 5-change_logs/index.qmd
-      - 6-contribute/index.qmd
-
+    logo: assets/img/behaverse_logo_purple.png
+    right:
+        - text: Help
+          menu: 
+            - icon: info-circle
+              url: 6-contribute/index.qmd
+            - icon: info-circle
+              url: 5-changelog/index.qmd
+            - icon: github
+              text: GitHub
+              url: https://github.com/behaverse/data-model
+            - icon: bug
+              text: Report an Issue
+              url: https://github.com/behaverse/data-model/issues
+    # drafts:
+    #   - ...
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    title-block-banner: true
+    title-block-style: manuscript
+    abstract-title: " "
+    theme:
+      light: cosmo
+      # dark: [cosmo, assets/css/dark-theme.scss]
+    email-obfuscation: javascript
+    css: assets/css/styles.css
     toc: true
-
-
-
+    # toc-title: " "
+    link-external-icon: false

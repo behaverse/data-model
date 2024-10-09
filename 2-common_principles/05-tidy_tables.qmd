@@ -1,8 +1,8 @@
 # Tidy Tables
 
-> > "Tidy data allows one to start analyzing the data right away"
-> >
-> > Wickham, Hadley (20 February 2013). ["Tidy Data"](). *Journal of Statistical Software*. {: .text-grey-dk-000 }
+> "Tidy data allows one to start analyzing the data right away"
+>
+> Wickham, Hadley (20 February 2013). ["Tidy Data"](). *Journal of Statistical Software*.
 
 There are many different ways of organizing data in tabular form. We recommend that data tables should be tidy as defined by the following criteria:
 

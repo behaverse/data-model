@@ -1,13 +1,10 @@
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-vendor/
+.DS_Store
+
+# quarto
 _site/
 .quarto/
+
 # ignore ide settings
 .vscode/
-
-Gemfile.lock
 
 /.quarto/

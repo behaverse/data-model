@@ -1,19 +1,15 @@
-
-
 import shutil
 import os
 import pandas as pd
 
 
-## Get access to the google spreadsheet
-sheet_id = "1LWTXsg2T4NPo0xbhD4pulIgkEJk5Oey7FusItltlCk8"
-main_sheet = "Tables"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={main_sheet}"
-
-output_dir = '../auto-generated/'
-
-
-
+# Parameters
+SHEET_ID = '1LWTXsg2T4NPo0xbhD4pulIgkEJk5Oey7FusItltlCk8'
+MAIN_SHEET = 'Tables'
+SHEETS_URL = (
+    f'https://docs.google.com/spreadsheets/d/'
+    f'{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={MAIN_SHEET}')
+OUTPUT_DIR = 'auto-generated/'
 
 
 # helper function to load a specific sheet in the gsheet
