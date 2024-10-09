@@ -1,5 +1,6 @@
-
-# Getting started
+---
+title: Getting started
+---
 
 The easiest way to get started is to look at example datasets.
 

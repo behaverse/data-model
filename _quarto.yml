@@ -7,12 +7,12 @@ project:
 
 website:
   title: Behaverse Data Model
-  site-url: "https://behaverse.org/data/model"
+  site-url: "https://behaverse.org/data-model"
   google-analytics: "G-K2NP7Q9KGZ"
   cookie-consent:
     type: implied
     style: simple
-  repo-url: https://github.com/behaverse/website 
+  repo-url: https://github.com/behaverse/data-model 
   repo-actions: none
   page-footer:
     background: light
@@ -21,18 +21,20 @@ website:
 
   navbar:
     left:
-      - 1-getting_started/index.qmd
-      - 2-common_principles/index.qmd
-      - 3-specification/index.qmd           
-      - 4-datasets/index.qmd
+      - getting-started/index.qmd
+      - common_principles/index.qmd
+      - specification/index.qmd           
+      - datasets/index.qmd
     logo: assets/img/behaverse_logo_purple.png
     right:
+        - text: About
+          url: about.qmd
         - text: Help
           menu: 
-            - icon: info-circle
-              url: 6-contribute/index.qmd
-            - icon: info-circle
-              url: 5-changelog/index.qmd
+            - icon: person-raised-hand
+              url: contribute.qmd
+            - icon: clock-history
+              url: changelog.qmd
             - icon: github
               text: GitHub
               url: https://github.com/behaverse/data-model
