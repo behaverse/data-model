@@ -19,11 +19,15 @@ website:
     # right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
     center: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) &middot; [Cookies](#){#open_preferences_center} &middot; [About Us](/about.qmd)"
 
+  announcement: 
+    content: " **This website is under construction.** " 
+    position: below-navbar 
+
   navbar:
     left:
       - getting-started/index.qmd
-      - common_principles/index.qmd
-      - specification/index.qmd           
+      - common-principles/index.qmd
+      - spec/index.qmd           
       - datasets/index.qmd
     logo: assets/img/behaverse_logo_purple.png
     right:
@@ -43,6 +47,28 @@ website:
               url: https://github.com/behaverse/data-model/issues
     # drafts:
     #   - ...
+
+  sidebar:
+    - id: spec
+      contents:
+        - section: "Specification"
+          href: spec/index.qmd
+          contents:
+              - section: "General"
+                href: spec/general/index.qmd
+                contents:
+                  - spec/general/folder_structure.qmd
+                  - spec/general/indexing.qmd
+                  - spec/general/metadata.qmd
+                  - spec/general/study_flow.qmd
+                  - spec/general/instructions.qmd
+                  - spec/general/codebook.qmd
+                  - spec/general/controlled_vocabulary.qmd
+              - section: "Activity-specific"
+                href: spec/activity-specific/index.qmd
+                contents:
+                  - spec/activity-specific/cognitive-tests.qmd
+                  - spec/activity-specific/questionnaires.qmd
 
 format:
   html:

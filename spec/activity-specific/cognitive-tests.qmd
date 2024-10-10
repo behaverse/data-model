@@ -1,4 +1,4 @@
-# L1 Specification for Cognitive Test data
+# Cognitive tests
 
 {{< include /auto-generated/Response.qmd >}}
 
