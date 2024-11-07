@@ -1,23 +1,2 @@
 # Cognitive tests
 
-{{< include /auto-generated/Response.qmd >}}
-
-
-{{< include /auto-generated/Stimulus.qmd >}}
-
-
-{{< include /auto-generated/StimulusComponent.qmd >}}
-
-
-{{< include /auto-generated/Click.qmd >}}
-
-
-{{< include /auto-generated/OptionPresentation.qmd >}}
-
-
-{{< include /auto-generated/OptionPresentationComponent.qmd >}}
-
-
-{{< include /auto-generated/Instrument.qmd >}}
-
-
