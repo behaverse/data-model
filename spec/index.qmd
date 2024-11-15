@@ -1,12 +1,14 @@
 ---
 title: Specification
 sidebar: spec
+listing: 
+  contents:
+    - "/assets/yml/*.qmd"
 ---
 
-## General intro do spec
+## Introduction
 
-
-The L1-data contains multiple tables, some of which are detailed in this document, others will be added in the future.
+The tables in the BDM are designed to capture the information that is relevant to the study of human behavior in tests and questionnaires. They can be used to capture a wide variety of experiments.
 
 > We use <i class="bi bi-table"></i> icon to refer to specific tables (e.g., the *<i class="bi bi-table"></i> Trial* table or the *<i class="bi bi-table"></i> Stimulus* table) and **subsections** to indicate the semantic category that groups various columns in a table; these semantic categories are used here only to highlight the ordering of the columns within each table.
 {: .note}

@@ -1,6 +1,6 @@
-
-## Indexing contexts
-
+---
+title: Indexing
+---
 
 To interpret a given observation (e.g., a response to a questionnaire) we need contextual information. In particular, we want to know when within the course of a study that particular observation took place. There are several kinds of variables one may use to provide such information. For example, `datetime` variables maybe used to record the date and time of a particular observation. While `datetime` is a critical piece of information, it is also typically insufficient or impractical. Instead, it may be desirable to use `index` variables to encode for example, that a given response was the third response to a particular questionnaire on the second day of testing (which is common practice). 
 

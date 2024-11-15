@@ -63,13 +63,12 @@ website:
                   - spec/general/study_flow.qmd
                   - spec/general/instructions.qmd
                   - spec/general/codebook.qmd
-                  - spec/general/controlled_vocabulary.qmd
               - section: "Activity-specific"
                 href: spec/activity-specific/index.qmd
                 contents:
                   - spec/activity-specific/cognitive-tests.qmd
                   - spec/activity-specific/questionnaires.qmd
-
+              - spec/vocabulary.qmd
 format:
   html:
     title-block-banner: true

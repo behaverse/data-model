@@ -1,9 +1,7 @@
 ---
+title: Folder structure
 code-block-bg: true
 ---
-
-## Dataset folder structure
-
 
 A dataset is a folder that contains data files and all relevant information needed to make sense of that data. The name of the folder is the name of the dataset. Here we describe the files and subfolders contained in a dataset folder.
 

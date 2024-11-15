@@ -1,6 +1,0 @@
-
-## Controlled vocabulary
-
-
-
-{{< include /spec/auto-generated/vocabulary.qmd >}}
