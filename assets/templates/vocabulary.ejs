@@ -3,7 +3,7 @@
 
 <% if (item.publish == false) continue %>
 
-## <%= item.category %>
+# <%= item.category %>
 
 <%= item.description && item.description.length > 0 ? item.description : '' %>
 
@@ -11,7 +11,9 @@
 
 <% if (field.publish == false) continue %>
 
-**<%=field.name %>** `<%= field.data_type %>`: <%- field.description %>
+[<%= field.name %> `<%= field.data_type ? field.data_type : '' %>`]{}
+
+:   <%= field.description ?  field.description : '' %>
 
 <% } %>
 

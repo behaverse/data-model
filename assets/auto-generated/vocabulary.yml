@@ -416,15 +416,15 @@
     range: .nan
     notes: .nan
   - publish: true
-    name: task
-    data_type: Task
+    name: Task
+    data_type: .nan
     description: Describes key properties of the task or activity during which this
       data was collected.
     range: .nan
     notes: .nan
   - publish: true
-    name: stimulus
-    data_type: Stimulus
+    name: Stimulus
+    data_type: .nan
     description: Describes the most relevant information about the stimuli presented
       during a given trial and provides information on where to find more detailed
       information about what exact stimuli were presented, how and when (this sub-trial
@@ -432,22 +432,22 @@
     range: .nan
     notes: .nan
   - publish: true
-    name: option
-    data_type: Option
+    name: Option
+    data_type: .nan
     description: Describes the set of options that were offered to the subject for
       responding on a given trial. Information about the individual options within
       that set are stored in a different, sub-trial table.
     range: .nan
     notes: .nan
   - publish: true
-    name: input
-    data_type: Input
+    name: Input
+    data_type: .nan
     description: Describes the kinds of actions the subject performed in a trial.
     range: .nan
     notes: .nan
   - publish: true
-    name: expectation
-    data_type: Expectation
+    name: Expectation
+    data_type: .nan
     description: 'Describes what response is expected from the subject (i.e., which
       response would evaluate to correct).
 
@@ -460,47 +460,47 @@
     range: .nan
     notes: .nan
   - publish: true
-    name: response
-    data_type: Response
+    name: Response
+    data_type: .nan
     description: .nan
     range: .nan
     notes: .nan
   - publish: true
-    name: evaluation
-    data_type: Evaluation
+    name: Evaluation
+    data_type: .nan
     description: .nan
     range: .nan
     notes: .nan
   - publish: true
-    name: feeback
-    data_type: Feedback
+    name: Feedback
+    data_type: .nan
     description: "Describes what feedback was shown on a given trial. Because feedback\
       \ hasn\u2019t yet been fully specified in our data model we will use the most\
       \ basic representation for feedback information in the trial table."
     range: .nan
     notes: .nan
   - publish: true
-    name: experimental design
-    data_type: Experimental Design
+    name: Experimental Design
+    data_type: .nan
     description: .nan
     range: .nan
     notes: .nan
   - publish: true
-    name: accessories
-    data_type: Accessories
+    name: Accessories
+    data_type: .nan
     description: Describes what additional data was recorded in parallel to behavioral
       response data (e.g., EEG).
     range: .nan
     notes: .nan
   - publish: true
-    name: reward
-    data_type: Reward
+    name: Reward
+    data_type: .nan
     description: Describes the reward signals subjects received.
     range: .nan
     notes: .nan
   - publish: true
-    name: outcome
-    data_type: Outcome
+    name: Outcome
+    data_type: .nan
     description: Describes the consequences of subjects actions within the test environment
       (e.g., box opened).
     range: .nan

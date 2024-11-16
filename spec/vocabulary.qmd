@@ -1,5 +1,6 @@
 ---
 title: Controlled Vocabulary
+toc: true
 listing: 
   template: "../assets/templates/vocabulary.ejs"
   contents:
