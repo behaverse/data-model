@@ -1,0 +1,78 @@
+- category: context
+  variables:
+  - variable_name: stimulus_id
+    data_type: integer
+    description: A reference to the primary key of the *Stimulus* table.
+    range: .nan
+    notes: .nan
+- category: key
+  variables:
+  - variable_name: index
+    data_type: integer
+    description: A number from 1 differentiating each part. A stimulus component with
+      a higher `index` is displayed above all other components with a lower index.
+    range: .nan
+    notes: .nan
+- category: where
+  variables:
+  - variable_name: x_screen
+    data_type: integer
+    description: X coordinates of the stimulus component on the screen in pixels.
+    range: .nan
+    notes: .nan
+  - variable_name: y_screen
+    data_type: integer
+    description: Y coordinates of the stimulus component on the screen in pixels.
+    range: .nan
+    notes: .nan
+  - variable_name: x_viewport
+    data_type: float
+    description: X coordinates of the stimulus component on the screen expressed as
+      a fraction of the screen width.
+    range: 0 to 1 (inclusive)
+    notes: .nan
+  - variable_name: y_viewport
+    data_type: float
+    description: Y coordinates of the stimulus component on the screen expressed as
+      a fraction of the screen height.
+    range: .nan
+    notes: .nan
+- category: what
+  variables:
+  - variable_name: description
+    data_type: string
+    description: A human readable, compact description of the component.
+    range: .nan
+    notes: .nan
+  - variable_name: symbol_name
+    data_type: string
+    description: The name of the displayed symbol.
+    range: .nan
+    notes: .nan
+  - variable_name: symbol_count
+    data_type: integer
+    description: The number of symbols represented in this component.
+    range: .nan
+    notes: .nan
+  - variable_name: symbol_layout
+    data_type: enum
+    description: How the symbols are laid out.
+    range: vertical, horizontal, diagonal_top_left, diagonal_top_right, square, ring,
+      cross, x, two_columns, h
+    notes: .nan
+  - variable_name: color_name
+    data_type: string
+    description: The human-readable name of the component color.
+    range: .nan
+    notes: .nan
+  - variable_name: color_hex
+    data_type: string
+    description: The hexadecimal value of the component color.
+    range: '#000000  to #FFFFFF'
+    notes: .nan
+  - variable_name: orientation
+    data_type: enum
+    description: The symbol orientation.
+    range: north, north_east, east, south_east, south, south_west, west, north_west,
+      free
+    notes: .nan

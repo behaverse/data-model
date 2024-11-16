@@ -1,0 +1,130 @@
+- category: key
+  variables:
+  - name: option_id
+    data_type: integer
+    description: Primary key of the *Option* table.
+    range: Each row in this table has a unique `id`.
+    notes: If the same option is shown at two different times in a trial, those two
+      instances will have their own row in the * Option* table, each with its own
+      `id`.
+- category: context
+  variables:
+  - name: trial_id
+    data_type: foreign key
+    description: Refers to the id in the @TrialTable and indicates in which trial
+      this option was shown.
+    range: '`trial_id` in the @TrialTable for the same subject-session-activity combination.'
+    notes: .nan
+  - name: response_id
+    data_type: foreign key
+    description: .nan
+    range: '`response_id` in the @TrialTable.'
+    notes: .nan
+  - name: index_in_trial
+    data_type: index
+    description: indexing each of the options within the set of options that were
+      available to subjects on a given trial.
+    range: .nan
+    notes: .nan
+  - name: object_id
+    data_type: integer
+    description: An option is defined by a set of features. This variable is used
+      to identify each time the same features were used. For example, if the same
+      white digit "3" is used as an option in the digit span task, all those instances
+      would have the same `object_id` although they would have different `id`s (as
+      they appeared at different times).
+    range: .nan
+    notes: .nan
+- category: when
+  variables:
+  - name: onset
+    data_type: float
+    description: Duration between the start of the trial and the moment the option
+      was displayed or activated.
+    range: in seconds
+    notes: .nan
+  - name: duration
+    data_type: float
+    description: Describes for how long the option was displayed or active in seconds,
+      starting from the `onset`.
+    range: in seconds
+    notes: .nan
+- category: where
+  variables:
+  - name: panel_id
+    data_type: string
+    description: Identifier of the panel this option is displayed over.
+    range: .nan
+    notes: .nan
+  - name: x_screen
+    data_type: float
+    description: X coordinates of the option component on the screen in pixels.
+    range: .nan
+    notes: .nan
+  - name: y_screen
+    data_type: float
+    description: Y coordinates of the option component on the screen in pixels.
+    range: .nan
+    notes: .nan
+  - name: x_viewport
+    data_type: float
+    description: X coordinates of the option component on the screen expressed as
+      a fraction of the screen width.
+    range: .nan
+    notes: .nan
+  - name: y_viewport
+    data_type: float
+    description: 'Y coordinates of the option component on the screen expressed as
+      a fraction of the screen height. '
+    range: .nan
+    notes: .nan
+- category: what
+  variables:
+  - name: description
+    data_type: string
+    description: 'A human readable, compact description of the main aspects of the
+      option. The description for a given option depends on the task but follows a
+      specific template for a given task. Because of this, it looks like the `option_description`
+      could be parsed---however, this is not the intention; structured data will be
+      available in other tables; description is for human readability and facilitates
+      the understanding of the data.
+
+      '
+    range: .nan
+    notes: .nan
+  - name: value
+    data_type: float
+    description: A numeric value associated with a particular response option; typically
+      indicating the "worth" of a response (e.g., `value` = 1 for the correct response).
+    range: .nan
+    notes: .nan
+  - name: source
+    data_type: string
+    description: Refers to the specific generator or set the option belongs to. Options
+      that stem from the same source have the same data scheme and could thus be described
+      in a table named after `option_source` (i.e., `option_source` indicates which
+      table contains the full information about the option; e.g., "digit1to9").
+    range: .nan
+    notes: .nan
+  - name: source_type
+    data_type: enum
+    description: An option is typically created using a particular procedure/algorithm
+      ("generator") or is sampled from a particular set ("set"). This variable indicates
+      which of these two applies for the current option.
+    range: '- generator
+
+      - set'
+    notes: .nan
+  - name: index_in_source
+    data_type: integer
+    description: When a option is picked from a particular set (e.g., "digits1to9"),
+      this index refers to the index within that set.
+    range: .nan
+    notes: .nan
+- category: how
+  variables:
+  - name: animation
+    data_type: string
+    description: Describes the animation that was used to show a particular option.
+    range: .nan
+    notes: .nan
