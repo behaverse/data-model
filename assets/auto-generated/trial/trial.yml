@@ -1,5 +1,5 @@
 - category: key
-  variables:
+  fields:
   - variable_name: response_id
     required: true
     data_type: integer
@@ -15,7 +15,7 @@
       this id in order to link those descriptions (typically multiple lines in the  Stimulus
       table, to a unique row in the  Trial table).
 - category: context
-  variables:
+  fields:
   - variable_name: study_name
     required: true
     data_type: string
@@ -60,7 +60,7 @@
     notes: "We currently don\u2019t use session_name, session_id and session_repetition\
       \ in this table."
 - category: task
-  variables:
+  fields:
   - variable_name: language
     required: false
     data_type: string
@@ -237,7 +237,7 @@
     range: .nan
     notes: .nan
 - category: experimental design
-  variables:
+  fields:
   - variable_name: job_repeat
     required: false
     data_type: enum
@@ -251,7 +251,7 @@
       \n  }\n}"
     notes: .nan
 - category: stimulus
-  variables:
+  fields:
   - variable_name: stimulus_index
     required: false
     data_type: list[index]
@@ -419,7 +419,7 @@
       \ to respond.\""
     notes: .nan
 - category: option
-  variables:
+  fields:
   - variable_name: option_source_type
     required: false
     data_type: enum
@@ -483,7 +483,7 @@
       : \"Values with clear distance metrics and absolute zero (e.g., length in cm).\""
     notes: .nan
 - category: input
-  variables:
+  fields:
   - variable_name: input_interface_type
     required: false
     data_type: enum
@@ -515,7 +515,7 @@
     notes: For mouse-drag, it corresponds to the number of drag points that have been
       sampled during the drag-and-drop.
 - category: expectation
-  variables:
+  fields:
   - variable_name: expected_response_option_index
     required: false
     data_type: integer
@@ -540,7 +540,7 @@
     range: .nan
     notes: .nan
 - category: response
-  variables:
+  fields:
   - variable_name: response_structure
     required: false
     data_type: string
@@ -649,7 +649,7 @@
     range: .nan
     notes: .nan
 - category: evaluation
-  variables:
+  fields:
   - variable_name: accuracy
     required: false
     data_type: float
@@ -699,7 +699,7 @@
       \n"
     notes: .nan
 - category: feedback
-  variables:
+  fields:
   - variable_name: feedback_description
     required: false
     data_type: string
@@ -729,7 +729,7 @@
       , the kind of feedback that is used in UI to confirm to users that a button\
       \ has indeed been clicked."
 - category: outcome
-  variables:
+  fields:
   - variable_name: outcome_description
     required: false
     data_type: string
@@ -745,7 +745,7 @@
     range: .nan
     notes: .nan
 - category: accessory
-  variables:
+  fields:
   - variable_name: additional_measures
     required: false
     data_type: string
@@ -757,7 +757,7 @@
       ,\n    \"description\": \"\""
     notes: .nan
 - category: adaptive
-  variables:
+  fields:
   - variable_name: adaptive_method_name
     required: false
     data_type: enum

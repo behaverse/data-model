@@ -1,5 +1,5 @@
 - category: key
-  variables:
+  fields:
   - name: id
     data_type: string
     description: Unique locatable identifier of an instrument. It can be formed by
@@ -19,7 +19,7 @@
     range: .nan
     notes: .nan
 - category: what
-  variables:
+  fields:
   - name: name
     data_type: string
     description: Name of the toolkit (scene, code, or configuration) that is used

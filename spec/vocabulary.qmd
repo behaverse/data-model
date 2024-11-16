@@ -1,9 +1,9 @@
 ---
 title: Controlled Vocabulary
 listing: 
-  template: "../assets/ejs/vocabulary.ejs"
+  template: "../assets/templates/vocabulary.ejs"
   contents:
-    - "../assets/yml/vocabulary.yml"
+    - "../assets/auto-generated/vocabulary.yml"
 
 ---
 

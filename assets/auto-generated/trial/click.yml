@@ -1,5 +1,5 @@
 - category: context
-  variables:
+  fields:
   - variable_name: id
     data_type: integer
     variable_type: .nan
@@ -63,7 +63,7 @@
     note_2: .nan
     note_3: .nan
 - category: when
-  variables:
+  fields:
   - variable_name: onset
     data_type: float
     variable_type: .nan
@@ -100,7 +100,7 @@
     note_2: .nan
     note_3: .nan
 - category: where
-  variables:
+  fields:
   - variable_name: x_screen
     data_type: integer
     variable_type: .nan
@@ -172,7 +172,7 @@
     note_2: .nan
     note_3: .nan
 - category: what
-  variables:
+  fields:
   - variable_name: object_type
     data_type: enum
     variable_type: .nan

@@ -1,5 +1,5 @@
 - category: key
-  variables:
+  fields:
   - id: .nan
     table: .nan
     name: option_id
@@ -45,7 +45,7 @@
     note_2: .nan
     note_3: .nan
 - category: where
-  variables:
+  fields:
   - id: .nan
     table: .nan
     name: panel_id
@@ -149,7 +149,7 @@
     note_2: .nan
     note_3: .nan
 - category: what
-  variables:
+  fields:
   - id: .nan
     table: .nan
     name: description

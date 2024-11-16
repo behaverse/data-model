@@ -1,12 +1,12 @@
 - category: context
-  variables:
+  fields:
   - variable_name: stimulus_id
     data_type: integer
     description: A reference to the primary key of the *Stimulus* table.
     range: .nan
     notes: .nan
 - category: key
-  variables:
+  fields:
   - variable_name: index
     data_type: integer
     description: A number from 1 differentiating each part. A stimulus component with
@@ -14,7 +14,7 @@
     range: .nan
     notes: .nan
 - category: where
-  variables:
+  fields:
   - variable_name: x_screen
     data_type: integer
     description: X coordinates of the stimulus component on the screen in pixels.
@@ -38,7 +38,7 @@
     range: .nan
     notes: .nan
 - category: what
-  variables:
+  fields:
   - variable_name: description
     data_type: string
     description: A human readable, compact description of the component.

@@ -1,0 +1,18 @@
+
+<% for (const item of items) { %>
+
+<% if (item.publish == false) continue %>
+
+## <%= item.category %>
+
+<%= item.description && item.description.length > 0 ? item.description : '' %>
+
+<% for (const field of item.fields) { %>
+
+<% if (field.publish == false) continue %>
+
+**<%=field.name %>** `<%= field.data_type %>`: <%- field.description %>
+
+<% } %>
+
+<% } %>

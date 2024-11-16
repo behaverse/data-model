@@ -1,5 +1,5 @@
 - category: key
-  variables:
+  fields:
   - name: option_id
     data_type: integer
     description: Primary key of the *Option* table.
@@ -8,7 +8,7 @@
       instances will have their own row in the * Option* table, each with its own
       `id`.
 - category: context
-  variables:
+  fields:
   - name: trial_id
     data_type: foreign key
     description: Refers to the id in the @TrialTable and indicates in which trial
@@ -36,7 +36,7 @@
     range: .nan
     notes: .nan
 - category: when
-  variables:
+  fields:
   - name: onset
     data_type: float
     description: Duration between the start of the trial and the moment the option
@@ -50,7 +50,7 @@
     range: in seconds
     notes: .nan
 - category: where
-  variables:
+  fields:
   - name: panel_id
     data_type: string
     description: Identifier of the panel this option is displayed over.
@@ -79,7 +79,7 @@
     range: .nan
     notes: .nan
 - category: what
-  variables:
+  fields:
   - name: description
     data_type: string
     description: 'A human readable, compact description of the main aspects of the
@@ -122,7 +122,7 @@
     range: .nan
     notes: .nan
 - category: how
-  variables:
+  fields:
   - name: animation
     data_type: string
     description: Describes the animation that was used to show a particular option.

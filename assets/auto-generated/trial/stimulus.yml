@@ -1,5 +1,5 @@
 - category: identifier
-  variables:
+  fields:
   - variable_name: stimulus_id
     data_type: integer
     description: Primary key of the @StimulusTable. Reference to this  identifier
@@ -9,7 +9,7 @@
       two instances will have their own row in the *<i class="fa fa-table"></i> Stimulus*
       table, each with its own `id`.
 - category: context
-  variables:
+  fields:
   - variable_name: trial_id
     data_type: integer
     description: Refers to the id in the @TrialTable and indicates in which trial
@@ -41,7 +41,7 @@
     range: .nan
     notes: .nan
 - category: when
-  variables:
+  fields:
   - variable_name: onset
     data_type: float
     description: Duration between the start of the trial and the appearance of the
@@ -55,7 +55,7 @@
     notes: When the stimulus is shown using an animation, `duration` covers the complete
       period between the start of the animation and the end of the animation.
 - category: where
-  variables:
+  fields:
   - variable_name: panel_id
     data_type: string
     description: Identifier of the panel this stimulus is displayed over.
@@ -84,7 +84,7 @@
     range: .nan
     notes: .nan
 - category: what
-  variables:
+  fields:
   - variable_name: description
     data_type: string
     description: A human readable, compact description of the main aspects of the
@@ -130,7 +130,7 @@
       - ....'
     notes: .nan
 - category: how
-  variables:
+  fields:
   - variable_name: animation
     data_type: string
     description: Describes the animation that was used to show a particular stimulus
