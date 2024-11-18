@@ -4,7 +4,7 @@ abstract: |
   A controlled vocabulary for behavioral data terms, including terms specific to the Behaverse data model.
 toc: false
 listing: 
-  template: "template.ejs.md"
+  template: "template.ejs"
   field-required: [name, categories, description]
   exclude:
     "categories":
