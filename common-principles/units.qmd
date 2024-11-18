@@ -1,6 +1,7 @@
-# Units and values
-
-## Units in variable names
+---
+title: Units and values
+sidebar: principles
+---
 
 According to \[NASA 1999\] Arthur Stephenson, chairman of the Mars Climate Orbiter Mission Failure Investigation Board: \>\> "The 'root cause' of the loss of the spacecraft was the failed translation of English units into metric units in a segment of ground-based, navigation-related mission software, ..." \>\> \>\> from <https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12>
 

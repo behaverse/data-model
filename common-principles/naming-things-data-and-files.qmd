@@ -1,6 +1,8 @@
-## Naming data files and data folders
+---
+title: Naming files and folders
+sidebar: principles
+---
 
-### Styleguide
 
 We want file and folder names to be short and meaningful. Instead of encoding numerous pieces of information in the filename (e.g., the subject index, the task, the session) we prefer short names that describe only what type of data a given file contains, leaving it to the names of the parent directories that contain that file to encode its context. Conceptually, this is equivalent to calling a file README.md within a project folder rather than calling it project_subproject_README.md.
 

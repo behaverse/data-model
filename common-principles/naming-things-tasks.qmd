@@ -1,4 +1,8 @@
-## Naming tasks and their components
+---
+title: Naming tasks and their components
+sidebar: principles
+---
+
 
 Numerous terms designate different aspects of a task. Here we list some of these terms and provide our definition (as for most cases, we did not find clear and consensual definitions in the literature).
 

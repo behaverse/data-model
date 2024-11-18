@@ -1,4 +1,7 @@
-## General advice on naming things
+---
+title: General advice on naming things
+sidebar: principles
+---
 
 Best practices in programming emphasize the importance of making your code readable, which means that by reading only the code (i.e., not the comments or documentation) the intention of the program should be as comprehensible as possible. Good variable names are an important component in making code readable. Similarly, good names for datasets, tables, columns and values are important to make a dataset more intuitive and thus their processing more effective and less error prone.
 

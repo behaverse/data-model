@@ -1,4 +1,7 @@
-## File formats
+---
+title: File formats
+sidebar: principles
+---
 
 In general, we recommend using open (e.g., CSV, JSON, .md) rather than closed file format (e.g., .mat, .sav, .docx) to ensure the data is accessible to a wide audience. More specifically using the followign file formats:
 

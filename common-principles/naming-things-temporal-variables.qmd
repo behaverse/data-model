@@ -1,4 +1,8 @@
-## Naming temporal variable
+---
+title: Naming temporal variable
+sidebar: principles
+---
+
 
 Multiple terms may be used as variable names to describe different temporal features. Here we present some general guidelines we follow for consistency. Firstly, some terms are used to characterize specific **points in time**; others are used to describe a **duration**. Sometimes this distinction may seem fuzzy (e.g., a point in time relative to a reference point is a duration) but in general it is clear if the intention or focus is on an event or on a duration. Secondly, as we are referring here to a feature or property on an entity (i.e., a temporal feature), the temporal part of the variable name would be encoded as a suffix (e.g., `study_start_datetime`).
 

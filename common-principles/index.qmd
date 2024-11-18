@@ -1,7 +1,7 @@
 ---
 title: Common principles
+sidebar: principles
 ---
-
 
 Styleguides, standards, and conventions are useful in that they support consistency and quality while facilitating the development of efficient workflows, automation and specialized software. They can apply to:
 
@@ -19,32 +19,4 @@ We do not claim that the conventions and rules listed in this document are the a
 
 This being said, whenever relevant and possible we aim to follow  established standards and guidelines (e.g., [schema.org](https://schema.org/), [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html), [PEP8](https://pep8.org/).)
 
-
-
-
-{{< include 00-data.qmd >}} 
-
-{{< include 01-styleguide.qmd >}} 
-
-{{< include 02-naming_things.qmd >}}
-
-{{< include 02.1-general.qmd >}} 
-
-{{< include 02.2-naming_people.qmd >}} 
-
-{{< include 02.3-naming_tasks.qmd >}} 
-
-{{< include 02.4-naming_stimuli.qmd >}} 
-
-{{< include 02.5-naming_responses.qmd >}} 
-
-{{< include 02.6-naming_temporal_variables.qmd >}} 
-
-{{< include 02.7-naming_data_and_files.qmd >}} 
-
-{{< include 03-units_and_values.qmd >}} 
-
-{{< include 04-file_formats.qmd >}} 
-
-{{< include 05-tidy_tables.qmd >}} 
 

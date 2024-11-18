@@ -1,0 +1,9 @@
+---
+title: Naming things
+sidebar: principles
+---
+
+
+Naming things is notoriously hard; Here we present concrete examples to illustrate concerns when naming data related entities and justify our choices.
+
+TODO: a table of content

@@ -1,4 +1,7 @@
-# Tidy Tables
+---
+title: Tidy tables
+sidebar: principles
+---
 
 > "Tidy data allows one to start analyzing the data right away"
 >

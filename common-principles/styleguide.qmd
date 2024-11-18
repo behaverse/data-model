@@ -1,4 +1,8 @@
-# Styleguide
+---
+title: Styleguide
+sidebar: principles
+---
+
 
 The Behaverse Data Model uses the following conventions:
 

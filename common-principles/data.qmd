@@ -1,4 +1,7 @@
-# Data
+---
+title: Data
+sidebar: principles
+---
 
 There are many concepts related to data and it is worth describing them quickly to make explicit what we mean when we use such terms. We can describe data using terms that indicate how it is stored/organized and terms that indicate how much the data has been "processed". In addition there are terms for the entity that contains the data and for various processes involved in the collection, storage and processing of data.
 
@@ -37,3 +40,17 @@ In general, we believe that the following operations may be performed on source 
 - reordering of columns and rows
 - removing duplicates
 - joining or separating tables
+
+Which data to store? Which data to share?
+It is typically the case that more data is stored than is shared. For example, researchers may store participants contact information or specific parameters of the hardware being used. The question then arises of what information should be collected in the first place and what subset of that data should be shared and whether or not the source data should be sent along with the data extracted from that source data.
+
+Regarding what data to store, the answer depends on the purpose of the study. In any case, participants need to be informed about what data is being collected and the data collection must follow relevant regulations. It is generally well advised to be parsimonious regarding which personal data to collect (https://martinfowler.com/bliki/Datensparsamkeit.html).
+
+In our opinion, source data should not be shared if one has the ability to extract and share better formatted data. There are three main reasons not to share source data:
+
+source data is not useable: they can be messy, come in diverse, sometimes proprietary formats, and lack documentation.
+source data may contain personal data the data sharer is not aware of (e.g., participants’ full name, IP address); by defining what data is to be shared and extracting only that data it seems that such accidental privacy breaches could be avoided.
+the extraction of data from the source data into usable data is outside the scope of responsibility of the data analyst.
+This last point deserves further explaining. For research to be reproducible one may want to test all the steps from the data collection up to the final results. While all the steps might be tested, they are not necessarily tested by the same person. For instance, a software company may run tests to determine that the recorded timestamps are accurate and a lab technician may run tests to calibrate the monitor and other hardware equipment. The question of what data to share is related to what quality assurance (QA) requirements are expected to be fulfilled by the data analyst. If both the source data and data extracted from the source data are handed over to the data analyst it becomes the data analyst’s responsibility to verify that both sets of data are in fact in agreement. If there is an error in the extraction code, the data analysis becomes responsible because he/she had access to that and could thus have spotted and corrected the error. In our opinion, the preparation of usable data from source data is not the responsibility of the data analyst; it is the responsibility of the data engineer and the entity that is sharing the data. It remains however that in any case tests must be conducted to verify the validity and accuracy of the process (we simply argue this is not the role of the person receiving the data).
+
+In short then, we say “don’t share source data”, instead share well documented, well formatted raw data.

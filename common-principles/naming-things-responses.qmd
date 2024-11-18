@@ -1,4 +1,8 @@
-## Naming responses and response options
+---
+title: Naming responses and response options
+sidebar: principles
+---
+
 
 Various terms and constructs are somehow related to the concept of a "response". Here we list those terms and clarify how we use them. To illustrate the various terms we will use the example of the digit span task where people have to click with their mouse on a virtual keyboard displayed on the screen which shows the digits 1 to 9, an "enter" button and a "delete" button.
 

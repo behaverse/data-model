@@ -27,6 +27,7 @@ website:
     left:
       - getting-started/index.qmd
       - common-principles/index.qmd
+      - glossary/index.qmd
       - spec/index.qmd           
       - datasets/index.qmd
     logo: assets/img/behaverse_logo_purple.png
@@ -69,6 +70,29 @@ website:
                   - spec/activity-specific/cognitive-tests.qmd
                   - spec/activity-specific/questionnaires.qmd
               - spec/vocabulary.qmd
+    - id: principles
+      contents:
+        - section: "Common principles"
+          href: common-principles/index.qmd
+          contents:
+            - common-principles/data.qmd
+            - common-principles/styleguide.qmd
+            - section: "Naming things"
+              href: common-principles/naming-things.qmd
+              contents:
+                - common-principles/naming-things-general.qmd
+                - common-principles/naming-things-people.qmd
+                - common-principles/naming-things-tasks.qmd
+                - common-principles/naming-things-stimuli.qmd
+                - common-principles/naming-things-responses.qmd
+                - common-principles/naming-things-temporal-variables.qmd
+                - common-principles/naming-things-data-and-files.qmd
+            - common-principles/units.qmd
+            - common-principles/file-formats.qmd
+            - common-principles/tidy-tables.qmd
+            - common-principles/other-standards.qmd
+
+
 format:
   html:
     title-block-banner: true

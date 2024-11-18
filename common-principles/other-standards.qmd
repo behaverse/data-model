@@ -1,11 +1,10 @@
-
-
-## Other standards
+---
+title: Other standards
+sidebar: principles
+---
 
 What other stanards are we following?
 
  - BIDS
  - ISOXXX
  - schema.org
-
- 
