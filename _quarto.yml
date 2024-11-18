@@ -26,14 +26,14 @@ website:
     position: below-navbar 
 
   navbar:
+    logo: assets/img/behaverse_logo_purple.png
     left:
       - getting-started/index.qmd
       - common-principles/index.qmd
       - spec/index.qmd           
       - datasets/index.qmd
-      - glossary/index.qmd
-    logo: assets/img/behaverse_logo_purple.png
     right:
+        - glossary/index.qmd
         - text: About
           url: about.qmd
         - text: Help

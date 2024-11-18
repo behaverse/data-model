@@ -14,21 +14,15 @@
   data_type: integer
   description: Refers to the id in the @TrialTable and indicates in which trial this
     stimulus was shown.
-  range: ' '
-  notes: ' '
 - categories: []
   variable_name: response_id
-  data_type: ' '
-  description: ' '
-  range: ' '
-  notes: ' '
+  description: ''
 - categories:
   - context
   variable_name: object_id
   data_type: integer
   description: A stimulus is defined by a set of features. This variable is used to
     identify each time the same stimulus features were used.
-  range: ' '
   notes: For example, if the same white digit "3" is shown in a digit span sequence,
     all those instances would have the same `object_id` although they would have different
     `id`s (as they appeared at different times).
@@ -42,16 +36,12 @@
     `trial_id` values and hence will have different rows in the @StimulusTable. We
     use `presentation_id` to indicate that a given stimulus is in fact the same instance
     across those trials.
-  range: ' '
-  notes: ' '
 - categories:
   - context
   variable_name: index_in_trial
   data_type: integer
   description: Refers to individual stimuli within the sequence or set of stimuli
     shown during a trial.
-  range: ' '
-  notes: ' '
 - categories:
   - when
   variable_name: onset
@@ -59,7 +49,6 @@
   description: Duration between the start of the trial and the appearance of the stimulus
     (in seconds).
   range: in seconds
-  notes: ' '
 - categories:
   - when
   variable_name: duration
@@ -73,38 +62,28 @@
   variable_name: panel_id
   data_type: string
   description: Identifier of the panel this stimulus is displayed over.
-  range: ' '
-  notes: ' '
 - categories:
   - where
   variable_name: x_screen
   data_type: integer
   description: X coordinates of the stimulus on the screen in pixels.
-  range: ' '
-  notes: ' '
 - categories:
   - where
   variable_name: y_screen
   data_type: integer
   description: Y coordinates of the stimulus on the screen in pixels.
-  range: ' '
-  notes: ' '
 - categories:
   - where
   variable_name: x_viewport
   data_type: float
   description: X coordinates of the stimulus on the screen expressed as a fraction
     of the screen width.
-  range: ' '
-  notes: ' '
 - categories:
   - where
   variable_name: y_viewport
   data_type: float
   description: Y coordinates of the stimulus on the screen expressed as a fraction
     of the screen height.
-  range: ' '
-  notes: ' '
 - categories:
   - what
   variable_name: description
@@ -116,8 +95,6 @@
     not the intention; structured parsed data will be available in other tables; here,
     description is for human readability and facilitates the understanding of the
     data.
-  range: ' '
-  notes: ' '
 - categories:
   - what
   variable_name: source
@@ -126,7 +103,6 @@
     that come from the same source have the same data scheme and could thus be described
     in a table named after `stimulus_source` (i.e., `stimulus_source` indicates which
     table contains the full information about the stimulus; e.g., "digits1to9").
-  range: ' '
   notes: We could include a `source_count` variable here that indicates how many different
     stimuli there are in the set; but this is probably better stored in the table
     that contains information about that source.
@@ -140,15 +116,12 @@
   range: '- generator
 
     - set'
-  notes: ' '
 - categories:
   - what
   variable_name: index_in_source
   data_type: integer
   description: When a stimulus is picked from a particular set (e.g., "digits1to9"),
     this index refers to the index within that set.
-  range: ' '
-  notes: ' '
 - categories:
   - what
   variable_name: role
@@ -157,7 +130,6 @@
   range: '- target
 
     - ....'
-  notes: ' '
 - categories:
   - how
   variable_name: animation
@@ -165,5 +137,3 @@
   description: Describes the animation that was used to show a particular stimulus
     in human-readable format. For example, to refer to a fade-in animation that took
     3 seconds, we can use "fade-in-3s".
-  range: ' '
-  notes: ' '

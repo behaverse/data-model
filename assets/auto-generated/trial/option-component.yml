@@ -1,316 +1,78 @@
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - key
   name: option_id
   data_type: integer
-  data_subtype: ' '
-  variable_type: ' '
   description: A reference to the primary key of the *<i class="fa fa-table"></i>
     Option* table.
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - key
   name: index
   data_type: integer
-  data_subtype: ' '
-  variable_type: ' '
   description: 'A number from 1 differentiating each part. An option component with
     a higher `index` is displayed above all other components with a lower index.
 
     '
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - where
   name: panel_id
   data_type: string
-  data_subtype: ' '
-  variable_type: ' '
   description: Identifier of the panel this option is displayed over.
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - where
   name: x_screen
   data_type: float
-  data_subtype: ' '
-  variable_type: ' '
   description: 'X coordinates of the option component on the screen in pixels. '
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - where
   name: y_screen
   data_type: float
-  data_subtype: ' '
-  variable_type: ' '
   description: 'Y coordinates of the option component on the screen in pixels. '
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - where
   name: x_viewport
   data_type: float
-  data_subtype: ' '
-  variable_type: ' '
   description: X coordinates of the option component on the screen expressed as a
     fraction of the screen width.
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - where
   name: y_viewport
   data_type: float
-  data_subtype: ' '
-  variable_type: ' '
   description: 'Y coordinates of the option component on the screen expressed as a
     fraction of the screen height. '
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - what
   name: description
   data_type: string
-  data_subtype: ' '
-  variable_type: ' '
   description: A human readable, compact description of the component.
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - what
   name: symbol_name
   data_type: string
-  data_subtype: ' '
-  variable_type: ' '
   description: The name of the displayed symbol.
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - what
   name: symbol_count
   data_type: integer
-  data_subtype: ' '
-  variable_type: ' '
   description: The number of symbols represented in this component.
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - what
   name: symbol_layout
   data_type: enum
-  data_subtype: ' '
-  variable_type: ' '
   description: How the symbols are laid out (vertical, horizontal, diagonal_top_left,
     diagonal_top_right, square, ring, cross, x, two_columns, h).
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - what
   name: color_name
   data_type: string
-  data_subtype: ' '
-  variable_type: ' '
   description: The human-readable name of the component color.
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - what
   name: color_hex
   data_type: string
-  data_subtype: ' '
-  variable_type: ' '
   description: The hexadecimal value of the component color.
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '
-- id: ' '
-  table: ' '
-  categories:
+- categories:
   - what
   name: orientation
   data_type: enum
-  data_subtype: ' '
-  variable_type: ' '
   description: The symbol orientation (north, north_east, east, south_east, south,
     south_west, west, north_west, free).
-  index_scope: ' '
-  example: ' '
-  min: ' '
-  max: ' '
-  step: ' '
-  default_value: ' '
-  sampling: ' '
-  unit: ' '
-  enum_values: ' '
-  comment: ' '
-  note_1: ' '
-  note_2: ' '
-  note_3: ' '

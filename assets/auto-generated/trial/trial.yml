@@ -8,7 +8,6 @@
     each table (i.e., each row in a table has a different id value.)
 
     '
-  range: ' '
   notes: This identifier is used by other tables. For example, there is a table called  Stimulus
     that describes in greater detail the sequence of images shown during a trial,
     their timing and visual properties. That table will refer to this id in order
@@ -22,8 +21,6 @@
   description: 'The name of the study the participant participated in.
 
     '
-  range: ' '
-  notes: ' '
 - categories:
   - context
   variable_name: group_name
@@ -31,8 +28,6 @@
   data_type: string
   description: Participants may be assigned to different groups (where typically,
     different groups will have different experiences within a study).
-  range: ' '
-  notes: ' '
 - categories:
   - context
   variable_name: subject_id
@@ -40,8 +35,6 @@
   data_type: string
   description: The identifier of the entity (typically person) generating the responses.
     unique in  **Subject** table.
-  range: ' '
-  notes: ' '
 - categories:
   - context
   variable_name: session_id
@@ -74,8 +67,6 @@
   data_type: string
   description: The language the task was completed in (expressed as the code within
     the [ISO_639-1 standard](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)).
-  range: ' '
-  notes: ' '
 - categories:
   - task
   variable_name: instrument_id
@@ -85,7 +76,6 @@
     data (e.g., the name of the computer script used to run the test). Unique in the
     list of instruments in the instruments/ folder.
   range: unique filename of the instrument in the instruments/ folder, e.g., XCIT_BM.
-  notes: ' '
 - categories:
   - task
   variable_name: instrument_repetition
@@ -94,8 +84,6 @@
   description: The number of times this particular instrument has already been completed
     anytime in the past by this particular subject in this study. This variable has
     a value 0 the first time an instrument is used.
-  range: ' '
-  notes: ' '
 - categories:
   - task
   variable_name: timeline_id
@@ -105,8 +93,6 @@
     (e.g., the name of a specific version of a test the instrument supports). Timelines
     are specific parameterization of an instrument and their identifiers are unique
     in the **Instrument** table.
-  range: ' '
-  notes: ' '
 - categories:
   - task
   variable_name: timeline_repetition
@@ -115,8 +101,6 @@
   description: The number of times this particular timeline has already been completed
     anytime in the past by this particular subject in this study. This variable has
     a value 0 the first time a timeline is completed.
-  range: ' '
-  notes: ' '
 - categories:
   - task
   variable_name: transformer_id
@@ -125,8 +109,6 @@
   description: Refers to the specific events-to-trials data projection used to form
     this table from raw data (i.e., the ETL pipeline); the transformer embodies the
     definition of a trial for a particular task.
-  range: ' '
-  notes: ' '
 - categories:
   - task
   variable_name: multitask_type
@@ -154,7 +136,6 @@
   description: when `multitask_type` is other than none, task_index refers to each
     of the individual tasks in a block.
   range: index of the task within a block.
-  notes: ' '
 - categories:
   - task
   variable_name: job_type
@@ -164,8 +145,6 @@
     \ typically is expressed as a verb (e.g., \u201Crecall\u201D, \u201Csort\u201D\
     ) and can be the same for different instruments (e.g., digit span test and spatial-span\
     \ test both have a job of type \u201Crecall-forward\u201D)."
-  range: ' '
-  notes: ' '
 - categories:
   - task
   variable_name: job_description
@@ -175,8 +154,6 @@
     \ about what the participant sees and has to do. Whereas the `job_type` typically\
     \ uses only verbs and adjectives, the `job_description` also contains nouns (e.g.,\
     \ \u201Crecall-digits-forward\u201D, \u201Crecall-letters-backward\u201D)."
-  range: ' '
-  notes: ' '
 - categories:
   - experimental design
   variable_name: job_repeat
@@ -190,7 +167,6 @@
     \n  },\n    \"3\": {\n    \"name\": \"switch\",\n    \"description\": \"The job\
     \ is different from the previous trial but has been seen prior in the timeline.\"\
     \n  }\n}"
-  notes: ' '
 - categories:
   - task
   variable_name: block_type
@@ -211,7 +187,6 @@
     \ the task in a no-stakes environment.\n'test':\n  description: Test blocks form\
     \ the main test.\n'instruction':\n  description: Instruction blocks present participants\
     \ the instructions for a given test as text and possibly images."
-  notes: ' '
 - categories:
   - task
   variable_name: block_name
@@ -221,8 +196,6 @@
     \ completed twice in a row, they would have different block_index values (1 and\
     \ 2, respectively) but they would have the same block_name (e.g., \u201CNB_timeline1_block1\u201D\
     ). Unique within the **Instrument** table."
-  range: ' '
-  notes: ' '
 - categories:
   - task
   variable_name: block_index
@@ -237,7 +210,6 @@
     In questionnaires, block_index may refer to distinct pages where each page may
     contain multiple questions.'
   range: index of block within a timeline.
-  notes: ' '
 - categories:
   - task
   variable_name: episode_index
@@ -271,23 +243,18 @@
     \ are two \u201Cstreams\u201D within a block as in the dual N-back, this variable\
     \ indexes trials separately for each stream)."
   range: index of trial within task and block.
-  notes: ' '
 - categories:
   - task
   variable_name: trial_start_datetime
   required: true
   data_type: datetime
-  description: ' '
-  range: ' '
-  notes: ' '
+  description: ''
 - categories:
   - task
   variable_name: trial_seed
   required: false
   data_type: interger|string
   description: Random seed used in the trial (if any).
-  range: ' '
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_index
@@ -296,7 +263,6 @@
   description: Indexes in chronological (or spatial) order the stimuli shown within
     an instrument (counting one stimulus count per response). stimulus_index may for
     instance be used to refer to the nth question asked within a questionnaire.
-  range: ' '
   notes: 'Use ;-separated indices if more then one stimulus were presented '
 - categories:
   - stimulus
@@ -307,8 +273,6 @@
     presented during a trial; if those exact same stimuli are repeated in a different
     trial, that trial would have the same value for stimulus_id. stimulus_id may also
     be used to refer to a specific message or question in a questionnaire.
-  range: ' '
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_type
@@ -323,7 +287,6 @@
     \ subjects (e.g., task instructions).\",\n- question\": \"The stimulus may consist\
     \ of text, images and/or sounds; they require subjects to make a decision based\
     \ on the content of the stimulus.\""
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_panel_count
@@ -332,8 +295,6 @@
   description: The number of panels or screen areas stimuli may appear on during the
     trial. For example, in a task where stimuli to be compared are presented on the
     left and right side of the screen, stimulus_panel_count = 2.
-  range: ' '
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_structure
@@ -348,7 +309,6 @@
     - "sequence": "Multiple stimuli are shown, either at the same time or not; order
     does matter (order may be indicated by the order of presentation or by a digit
     for example)."'
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_structure_source_type
@@ -361,7 +321,6 @@
     ,\n\"preset\",\n    \"description\": \"stimulus_structure is hard coded in a file.\"\
     \n\"generator\": \"a procedure was used to generate the stimulus_structure.\"\n\
     \ "
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_structure_source
@@ -370,8 +329,6 @@
   description: Refers to the specific generator used to produce the stimulus_structure
     (e.g., sequence of digits in a digit span test). When no generator was used, this
     variable has a value of none.
-  range: ' '
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_set_size
@@ -381,7 +338,6 @@
     This value gives an indication of the complexity of the stimulus space. When this
     number is large we set this variable to infinity, when for any reason it was not
     computed, it has a value of NA.
-  range: ' '
   notes: To specify "infinity" in a CSV file we use +Inf and -Inf; these are correctly
     recognized in R (tidyverse) and Python (pandas) as being valid numbers rather
     than strings.
@@ -392,7 +348,6 @@
   data_type: integer
   description: The number of stimuli shown to the participant during the trial.
   range: This should match number of stimuli in stimulus_id
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_source_type
@@ -409,7 +364,6 @@
     - "generator": "stimulus is created using a procedure/algorithm."
 
     '
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_source
@@ -419,8 +373,6 @@
     that stem from the same source have the same data scheme and could thus be described
     in a table named after stimulus_source (i.e., stimulus_source indicates which
     table contains the full information about the stimulus; e.g., "digit1to9").
-  range: ' '
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_index_in_source
@@ -430,7 +382,6 @@
     : For example, if stimulus_source == "digit1to9", stimulus_index_in_source = 1
     refers to "1" while for stimulus_source == "LettersAtoD", stimulus_index_in_source
     = 1 refers to "A".'
-  range: ' '
   notes: It is not because a particular stimulus_source is used in a given timeline
     that all possible stimuli of that source are displayed to the user. For example,
     the AX-CPT may use "upper-case-letters" but only use a subset of those letters
@@ -445,8 +396,6 @@
     on. The set and ordering of possible positions depends on the test. Whenever possible,
     it follows a natural order (left to right, top to bottom), but in free-form layouts,
     indices are arbitrary.
-  range: ' '
-  notes: ' '
 - categories:
   - stimulus
   variable_name: stimulus_description
@@ -458,7 +407,6 @@
     could be "parsed" and "tidied"---however, this is not the intention; parsed/tidied
     data will be available in other tables; description is for human readability and
     facilitates the understanding of the data.
-  range: ' '
   notes: In some cases, when stimuli are too complex or can't be precisely described,
     a summary of all stimuli is given instead.
 - categories:
@@ -482,7 +430,6 @@
     : \"A stimulus specifying which job the subject should perform.\"\n\"stop_signal\"\
     : \"A stimulus signaling the participant he should abort his current action.\"\
     \n\"probe\": \"A stimulus indicating about which stimulus to respond.\""
-  notes: ' '
 - categories:
   - option
   variable_name: option_source_type
@@ -491,8 +438,6 @@
   description: "A set of options is typically created using a particular procedure/algorithm\
     \ (\u201Cgenerator\u201D) or is sampled from a particular set (\u201Cset\u201D\
     ). This variable indicates which of these two applies for the current options."
-  range: ' '
-  notes: ' '
 - categories:
   - option
   variable_name: option_source
@@ -502,7 +447,6 @@
     on a given trial. Option that stem from the same source have the same data scheme
     and could thus be described in a table named after option_source (i.e., option_source
     indicates which table contains the full information about the option set).
-  range: ' '
   notes: "While there is a stimulus_index_in_source to refer to the particular stimulus\
     \ that was used, we don\u2019t have an equivalent opiton_index_in_source since\
     \ all options are displayed. Instead, we use response_index and expected_response_index\
@@ -513,8 +457,6 @@
   required: false
   data_type: integer
   description: The number of options the participant can choose from on a given trial.
-  range: ' '
-  notes: ' '
 - categories:
   - option
   variable_name: option_id
@@ -522,8 +464,6 @@
   data_type: integer
   description: Is a unique identifier for the option (set or generator) used on a
     given trial.
-  range: ' '
-  notes: ' '
 - categories:
   - option
   variable_name: option_data_type
@@ -538,7 +478,6 @@
     \ clear distances but no absolute zero (e.g., 10 versus 20 degrees Celsius).\"\
     \n\n  -  \"name\": \"ratio\",\n    \"description\": \"Values with clear distance\
     \ metrics and absolute zero (e.g., length in cm).\"\n"
-  notes: ' '
 - categories:
   - option
   variable_name: measurement_type
@@ -554,7 +493,6 @@
     \   \"description\": \"Ordered values with clear distances but no absolute zero\
     \ (e.g., 10 versus 20 degrees Celsius).\"\n\"ratio\",\n    \"description\": \"\
     Values with clear distance metrics and absolute zero (e.g., length in cm).\""
-  notes: ' '
 - categories:
   - input
   variable_name: input_interface_type
@@ -567,7 +505,6 @@
     stimulus-button\",\n    \"description\": \"Stimuli serves as buttons.\"\n\"text-field\"\
     ,\n    \"description\": \"A text field is displayed on the screen.\"\n\"slider\"\
     ,\n    \"description\": \"A slider is displayed on the screen.\"\n"
-  notes: ' '
 - categories:
   - input
   variable_name: input_action_type
@@ -587,7 +524,6 @@
   required: false
   data_type: integer
   description: The number of inputs (i.e., actions) the user made during the trial.
-  range: ' '
   notes: For mouse-drag, it corresponds to the number of drag points that have been
     sampled during the drag-and-drop.
 - categories:
@@ -597,7 +533,6 @@
   data_type: integer
   description: The index of the option the subject is expected to choose from the
     set of options.
-  range: ' '
   notes: 'When expected_response_index = 0, it means that the subject should not respond
     at all.
 
@@ -615,8 +550,6 @@
   data_type: string
   description: A description of the expected response using the same convention as
     response_description.
-  range: ' '
-  notes: ' '
 - categories:
   - response
   variable_name: response_structure
@@ -652,7 +585,6 @@
     \ task and this response contains three components, namely \u201C3\u201D, \u201C\
     5\u201D and \u201C7\u201D). response_count refers to the number of components\
     \ that make up a response (not the number of responses within a trial)."
-  range: ' '
   notes: "response_count is different from input_count; a subject may in some cases\
     \ change their response multiple times before submitting the final response. In\
     \ such cases, there would be many more inputs than there are components to the\
@@ -664,7 +596,6 @@
   required: false
   data_type: integer
   description: The index of the option the participant chose, starting from 1.
-  range: ' '
   notes: "response_index = 0 means the subject chose none of the options (e.g., a\
     \ \u201Cno-go\u201D response in a Go/No-go task).\n\nresponse_index can be directly\
     \ compared to expected_response_index.\n\nresponse_index refers to an entry in\
@@ -676,7 +607,6 @@
   data_type: string
   description: "A description of participant\u2019s response; typically the description\
     \ of the option that was chosen."
-  range: ' '
   notes: response_description can be directly compared to expected_response_description.
 - categories:
   - response
@@ -689,8 +619,6 @@
     value of 0). Note that this variable describes the subject's response; it does
     not describe the value (e.g., correctness or goodness) that is associated with
     that response.
-  range: ' '
-  notes: ' '
 - categories:
   - response
   variable_name: response_time
@@ -699,16 +627,12 @@
   description: The duration, in seconds, between the earliest possible time a response
     could have been completed and the moment that response was actually completed
     (and NOT when it was initiated).
-  range: ' '
-  notes: ' '
 - categories:
   - response
   variable_name: response_datetime
   required: false
   data_type: datetime
   description: The datetime corresponding to the completion of the response.
-  range: ' '
-  notes: ' '
 - categories:
   - response
   variable_name: response_validation_time
@@ -716,8 +640,6 @@
   data_type: float
   description: In some cases, subjects may need to press an extra key to validate
     previous responses. When relevant, this variable may encode this duration.
-  range: ' '
-  notes: ' '
 - categories:
   - response
   variable_name: response_initiation_time
@@ -725,8 +647,6 @@
   data_type: float
   description: In some cases (e.g., a reaching movement) it might be useful to encode
     when a response was initiated.
-  range: ' '
-  notes: ' '
 - categories:
   - response
   variable_name: response_skipped
@@ -734,8 +654,6 @@
   data_type: boolean
   description: In some cases (e.g., in some questionnaires), subjects have the option
     to skip a question.
-  range: ' '
-  notes: ' '
 - categories:
   - response
   variable_name: timed_out
@@ -744,16 +662,12 @@
   description: Some tasks require subjects to give a response within a certain time
     limit. When subjects fail to respond before that time runs out, timed_out is set
     to TRUE.
-  range: ' '
-  notes: ' '
 - categories:
   - evaluation
   variable_name: accuracy
   required: false
   data_type: float
   description: A task-dependent accuracy measure ranging from 0 to 1 (inclusive).
-  range: ' '
-  notes: ' '
 - categories:
   - evaluation
   variable_name: correct
@@ -761,8 +675,6 @@
   data_type: boolean
   description: Indicates whether the response matches the expected response (i.e.,
     correct = TRUE) or not (i.e., correct = FALSE).
-  range: ' '
-  notes: ' '
 - categories:
   - evaluation
   variable_name: score
@@ -771,8 +683,6 @@
   description: A numeric value associated with a particular response in a given context.
     This variable may be used to compute a performance metric or a questionnaire level
     index (e.g., a well-being score).
-  range: ' '
-  notes: ' '
 - categories:
   - evaluation
   variable_name: evaluation_label
@@ -800,7 +710,6 @@
     \n\"fa\",\n    \"description\": \"The stimulus was *absent* and the subject correctly\
     \ responded *present*.\"\n\"cr\",\n    \"description\": \"The stimulus was *absent*\
     \ and the subject correctly responded *absent*.\"\n"
-  notes: ' '
 - categories:
   - feedback
   variable_name: feedback_description
@@ -837,8 +746,6 @@
   data_type: string
   description: Describes the observable consequences of the subject's response (e.g.,
     "the opened box is empty").
-  range: ' '
-  notes: ' '
 - categories:
   - outcome
   variable_name: outcome_numeric
@@ -846,8 +753,6 @@
   data_type: float
   description: A numeric value describing the observable consequences of the subject's
     response (e.g., +3 points).
-  range: ' '
-  notes: ' '
 - categories:
   - accessory
   variable_name: additional_measures
@@ -858,44 +763,35 @@
   range: "\"mouse_trajectories\",\n    \"description\": \"\"\n\"fmri\",\n    \"description\"\
     : \"\"\n\"eye_tracking\",\n    \"description\": \"\"\n\"heart_rate\",\n    \"\
     description\": \"\""
-  notes: ' '
 - categories:
   - adaptive
   variable_name: adaptive_method_name
   required: false
   data_type: enum
-  description: ' '
-  range: ' '
-  notes: ' '
+  description: ''
 - categories:
   - adaptive
   variable_name: adaptive_method_config
   required: false
   data_type: string
-  description: ' '
-  range: ' '
-  notes: ' '
+  description: ''
 - categories:
   - adaptive
   variable_name: adaptive_parameter_name
   required: false
   data_type: string
-  description: ' '
-  range: ' '
-  notes: ' '
+  description: ''
 - categories:
   - adaptive
   variable_name: adaptive_parameter_value
   required: false
   data_type: Any
-  description: ' '
+  description: ''
   range: Data type depends on the type of the adaptive parameter, as defined in `adaptive_parameter_name`)
-  notes: ' '
 - categories:
   - adaptive
   variable_name: adaptive_parameter_value_next
   required: false
   data_type: Any
-  description: ' '
+  description: ''
   range: Data type depends on the type of the adaptive parameter, as defined in `adaptive_parameter_name`)
-  notes: ' '

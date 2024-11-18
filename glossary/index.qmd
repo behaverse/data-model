@@ -1,9 +1,11 @@
 ---
 title: Glossary
+abstract: |
+  A controlled vocabulary for behavioral data terms, including terms specific to the Behaverse data model.
 toc: false
 listing: 
-  template: "template.ejs"
-  field-required: [name, data_type, categories, description]
+  template: "template.ejs.md"
+  field-required: [name, categories, description]
   exclude:
     "categories":
       - "Glossary"
@@ -17,6 +19,4 @@ listing:
   contents:
     - "../assets/auto-generated/glossary.yml"
 ---
-
-This glossary defines a controlled vocabulary for behavioral data terms. It also includes terms specific to the Behaverse data model.
 
