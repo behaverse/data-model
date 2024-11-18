@@ -1,283 +1,305 @@
-- category: context
-  fields:
-  - variable_name: id
-    data_type: integer
-    variable_type: .nan
-    description: Primary key; each click has its own `id` value.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: response_id
-    data_type: integer
-    variable_type: .nan
-    description: Indexing all the clicks that occurred within a given trial; ranging
-      from 1 to `Trial.input_count`.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: response_element_index
-    data_type: integer
-    variable_type: .nan
-    description: Indicates which of the clicks is used and in what order to form the
-      actual response in the response table when `response_structure` is "sequence"
-      or "set".
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: 'This needs to be here rather than in *<i class="fa fa-table"></i> Option*
-      because the same option can be clicked multiple times and either serve or not
-      for the response depending on the order of the clicks. For example, in the Digit
-      Span test we could have the response of "3;5;7" on a particular trial. This
-      might correspond to
+- categories:
+  - context
+  variable_name: id
+  data_type: integer
+  variable_type: ' '
+  description: Primary key; each click has its own `id` value.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - context
+  variable_name: response_id
+  data_type: integer
+  variable_type: ' '
+  description: Indexing all the clicks that occurred within a given trial; ranging
+    from 1 to `Trial.input_count`.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - context
+  variable_name: response_element_index
+  data_type: integer
+  variable_type: ' '
+  description: Indicates which of the clicks is used and in what order to form the
+    actual response in the response table when `response_structure` is "sequence"
+    or "set".
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: 'This needs to be here rather than in *<i class="fa fa-table"></i> Option*
+    because the same option can be clicked multiple times and either serve or not
+    for the response depending on the order of the clicks. For example, in the Digit
+    Span test we could have the response of "3;5;7" on a particular trial. This might
+    correspond to
 
-      >  - `option.description` = ["3", "4", "delete", "delete", "3", "5", "7", "enter"]
+    >  - `option.description` = ["3", "4", "delete", "delete", "3", "5", "7", "enter"]
 
-      >  - `click.response_element_index` = [NA, NA, NA, NA, 1, 2, 3,  NA]'
-    note_2: .nan
-    note_3: .nan
-- category: when
-  fields:
-  - variable_name: onset
-    data_type: float
-    variable_type: .nan
-    description: Duration between the start of the trial and the moment the mouse
-      button press occured.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: duration
-    data_type: float
-    variable_type: .nan
-    description: Describes for how long the mouse button was pressed.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-- category: where
-  fields:
-  - variable_name: x_screen
-    data_type: integer
-    variable_type: .nan
-    description: X coordinates of the click on the screen in pixels.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: y_screen
-    data_type: integer
-    variable_type: .nan
-    description: Y coordinates of the click on the screen in pixels.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: x_viewport
-    data_type: float
-    variable_type: .nan
-    description: X coordinates of the click on the screen expressed as a fraction
-      of the screen width.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: y_viewport
-    data_type: float
-    variable_type: .nan
-    description: Y coordinates of the click on the screen expressed as a fraction
-      of the screen height.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-- category: what
-  fields:
-  - variable_name: object_type
-    data_type: enum
-    variable_type: .nan
-    description: Describes the type of object that was clicked on (e.g., "button").
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: object_name
-    data_type: string
-    variable_type: .nan
-    description: The name of the object that was clicked on (e.g., "sos_box_1_3").
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: is_object_enabled
-    data_type: boolean
-    variable_type: .nan
-    description: Indicates whether the object that was clicked on was enabled (clickable)
-      or not.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: object_state
-    data_type: string
-    variable_type: .nan
-    description: Describes the state the object was in *before* it was clicked on.
-      The meaning of "state" depends on the particular task (e.g., "new empty").
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: option_id
-    data_type: integer
-    variable_type: .nan
-    description: If the click is on an option, this variable indicates which option
-      it was. Note that `option_id` refers to an id in the *<i class="fa fa-table"></i>
-      Option* table.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
-  - variable_name: stimulus_id
-    data_type: integer
-    variable_type: .nan
-    description: If the click is on a stimulus, this variable indicates which stimulus
-      it was. Note that `stimulus_id` refers to an id in the *<i class="fa fa-table"></i>
-      Stimulus* table.
-    index_scope: .nan
-    example: .nan
-    min: .nan
-    max: .nan
-    step: .nan
-    default_value: .nan
-    sampling: .nan
-    unit: .nan
-    enum_values: .nan
-    comment: .nan
-    note_1: .nan
-    note_2: .nan
-    note_3: .nan
+    >  - `click.response_element_index` = [NA, NA, NA, NA, 1, 2, 3,  NA]'
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - when
+  variable_name: onset
+  data_type: float
+  variable_type: ' '
+  description: Duration between the start of the trial and the moment the mouse button
+    press occured.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - when
+  variable_name: duration
+  data_type: float
+  variable_type: ' '
+  description: Describes for how long the mouse button was pressed.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - where
+  variable_name: x_screen
+  data_type: integer
+  variable_type: ' '
+  description: X coordinates of the click on the screen in pixels.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - where
+  variable_name: y_screen
+  data_type: integer
+  variable_type: ' '
+  description: Y coordinates of the click on the screen in pixels.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - where
+  variable_name: x_viewport
+  data_type: float
+  variable_type: ' '
+  description: X coordinates of the click on the screen expressed as a fraction of
+    the screen width.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - where
+  variable_name: y_viewport
+  data_type: float
+  variable_type: ' '
+  description: Y coordinates of the click on the screen expressed as a fraction of
+    the screen height.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - what
+  variable_name: object_type
+  data_type: enum
+  variable_type: ' '
+  description: Describes the type of object that was clicked on (e.g., "button").
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - what
+  variable_name: object_name
+  data_type: string
+  variable_type: ' '
+  description: The name of the object that was clicked on (e.g., "sos_box_1_3").
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - what
+  variable_name: is_object_enabled
+  data_type: boolean
+  variable_type: ' '
+  description: Indicates whether the object that was clicked on was enabled (clickable)
+    or not.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - what
+  variable_name: object_state
+  data_type: string
+  variable_type: ' '
+  description: Describes the state the object was in *before* it was clicked on. The
+    meaning of "state" depends on the particular task (e.g., "new empty").
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - what
+  variable_name: option_id
+  data_type: integer
+  variable_type: ' '
+  description: If the click is on an option, this variable indicates which option
+    it was. Note that `option_id` refers to an id in the *<i class="fa fa-table"></i>
+    Option* table.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '
+- categories:
+  - what
+  variable_name: stimulus_id
+  data_type: integer
+  variable_type: ' '
+  description: If the click is on a stimulus, this variable indicates which stimulus
+    it was. Note that `stimulus_id` refers to an id in the *<i class="fa fa-table"></i>
+    Stimulus* table.
+  index_scope: ' '
+  example: ' '
+  min: ' '
+  max: ' '
+  step: ' '
+  default_value: ' '
+  sampling: ' '
+  unit: ' '
+  enum_values: ' '
+  comment: ' '
+  note_1: ' '
+  note_2: ' '
+  note_3: ' '

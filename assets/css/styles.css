@@ -2,9 +2,9 @@
 .glossary-divider
 {
   width: 50%;
-  margin-left: 25%;
+  margin-left: 0%;
   margin-bottom: 25px;
   height: 1px;
   border: none;
-  background: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+  background: linear-gradient(to right, gray, transparent);
 }

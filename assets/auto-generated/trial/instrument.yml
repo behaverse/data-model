@@ -1,37 +1,43 @@
-- category: key
-  fields:
-  - name: id
-    data_type: string
-    description: Unique locatable identifier of an instrument. It can be formed by
-      combining name and version (e.g., "DS_v2024.01").
-    range: .nan
-    notes: .nan
-  - name: timeline_id
-    data_type: string
-    description: Specific parameterization of the instrument (e.g., "DS_FORWARD" and
-      "DS_BACKWARD").
-    range: .nan
-    notes: .nan
-  - name: block_id
-    data_type: string
-    description: Specific parameterization of the instrument for a block of trials
-      (e.g., "DS_FORWARD_PRACTICE" and "DS_FOWARD_TEST").
-    range: .nan
-    notes: .nan
-- category: what
-  fields:
-  - name: name
-    data_type: string
-    description: Name of the toolkit (scene, code, or configuration) that is used
-      to collect the data, e.g., "DS"  for a software that runs digit span task in
-      forward OR backward order. The specific parameterization of the instrument is
-      defined in the "Timeline" (e.g., a timeline named "DS_FORWARD").
-    range: .nan
-    notes: .nan
-  - name: version
-    data_type: string
-    description: Refers to the specific version/build of a particular instrument.
-      We will use a calendar based versioning system ([calver.org](https://calver.org/);
-      e.g., "v2024.01").
-    range: .nan
-    notes: .nan
+- categories:
+  - key
+  name: id
+  data_type: string
+  description: Unique locatable identifier of an instrument. It can be formed by combining
+    name and version (e.g., "DS_v2024.01").
+  range: ' '
+  notes: ' '
+- categories:
+  - key
+  name: timeline_id
+  data_type: string
+  description: Specific parameterization of the instrument (e.g., "DS_FORWARD" and
+    "DS_BACKWARD").
+  range: ' '
+  notes: ' '
+- categories:
+  - key
+  name: block_id
+  data_type: string
+  description: Specific parameterization of the instrument for a block of trials (e.g.,
+    "DS_FORWARD_PRACTICE" and "DS_FOWARD_TEST").
+  range: ' '
+  notes: ' '
+- categories:
+  - what
+  name: name
+  data_type: string
+  description: Name of the toolkit (scene, code, or configuration) that is used to
+    collect the data, e.g., "DS"  for a software that runs digit span task in forward
+    OR backward order. The specific parameterization of the instrument is defined
+    in the "Timeline" (e.g., a timeline named "DS_FORWARD").
+  range: ' '
+  notes: ' '
+- categories:
+  - what
+  name: version
+  data_type: string
+  description: Refers to the specific version/build of a particular instrument. We
+    will use a calendar based versioning system ([calver.org](https://calver.org/);
+    e.g., "v2024.01").
+  range: ' '
+  notes: ' '

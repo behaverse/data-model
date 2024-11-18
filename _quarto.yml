@@ -1,5 +1,7 @@
 project:
   type: website
+  preview:
+    port: 4321
   # NOTE we are now using GitHub actions to compile quarto, output-dir folder will be automatically generated on GitHub servers (and git-ignored on local)
   execute-dir: project
   resources:
@@ -27,9 +29,9 @@ website:
     left:
       - getting-started/index.qmd
       - common-principles/index.qmd
-      - glossary/index.qmd
       - spec/index.qmd           
       - datasets/index.qmd
+      - glossary/index.qmd
     logo: assets/img/behaverse_logo_purple.png
     right:
         - text: About
@@ -58,10 +60,10 @@ website:
               - section: "General"
                 href: spec/general/index.qmd
                 contents:
-                  - spec/general/folder_structure.qmd
+                  - spec/general/folder-structure.qmd
                   - spec/general/indexing.qmd
                   - spec/general/metadata.qmd
-                  - spec/general/study_flow.qmd
+                  - spec/general/studyflow.qmd
                   - spec/general/instructions.qmd
                   - spec/general/codebook.qmd
               - section: "Activity-specific"
