@@ -1,16 +1,30 @@
-<dl class="list">
-<% for (const item of items) { %>
-<div class="quarto-post trial-table-item" <%= metadataAttrs(item) %> >
-<dt class="listing-variable_name trial-table-item-title">
-<%= item.variable_name %><br />
-<code><span class="badge rounded-pill bg-info text-light"><%= item.data_type %></span></code>
+<dl class="list trial-table-listing">
+<%
+
+let categories = new Set();
+items.forEach(item => categories.add(item.categories[0]));
+
+%>
+
+<% for (category of categories) { %>
+<% const itemsInCategory = items.filter(item => item.categories.includes(category)); %>
+<h2 class="trial-table-category-heading"><%= category %></h2>
+<% for (const [item_index, item] of itemsInCategory.entries()) { %>
+<div <%= metadataAttrs(item) %> >
+<dt class="listing-variable_name table-variable_name">
+<%= item.variable_name %> <code><span class="badge rounded-pill bg-info text-light"><%= item.data_type %></span></code>
+<span class="listing-categories"><span class="listing-category"></span></span>
 </dt>
 <dd class="listing-description">
-<span class="listing-categories">
-<span class="listing-category float-end"><%= item.categories %></span>
-</span>
-<%= item.description %>
+<%= item.description %><br />
+<% if (item.range) { %>
+<%= item.range %>
+<% } %>
 </dd>
+<% if (item_index < itemsInCategory.length - 1) { %>
+<hr class="glossary-divider" />
+<% } %>
 </div>
+<% } %>
 <% } %>
 </dl>
