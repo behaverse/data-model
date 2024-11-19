@@ -10,7 +10,7 @@ listing:
     - "trial-tables/*.qmd"
 ---
 
-Behaverse data model comprises a dataset structure and a set of tables that are designed to capture the information that is relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy, following the principles outlined in [Tidy Data paper] and to capture a wide variety of behavioral experiments.
+The Behaverse Data Model contains multiple tables, revolving around the concept of a trial. A trial is a single instance of a participant interacting with a behavioral task and contains information about the participant, the task, and the interaction between the two. The trial-related tables are designed to be as flexible as possible, allowing for a wide range of tasks to be represented.
 
 ::: {.callout-tip}
 We use <i class="bi bi-table"></i> icon to refer to specific tables (e.g., the *<i class="bi bi-table"></i> Trial* table or the *<i class="bi bi-table"></i> Stimulus* table) and **subsections** to indicate the semantic category that groups various columns in a table; these semantic categories are used here only to highlight the ordering of the columns within each table.

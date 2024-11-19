@@ -1,11 +1,12 @@
-<div class="list">
+<div class="list trial-tables-listing">
 <% for (const item of items) { %>
-<div >
-<dt class="listing-title">
+<div class="listing-title">
+<a href="<%- item.path %>" class="no-external">
 <%= item.title %>
+</a>
+</div>
 <div class="listing-abstract">
 <%= item.abstract %>
-</div>
 </div>
 <% } %>
 </div>
