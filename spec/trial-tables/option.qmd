@@ -1,0 +1,15 @@
+---
+title: Option Table
+abstract: "Table describing each option that a subject could choose from in a given trial. Note that in some tasks, the options may change within a trial after each input (e.g., SOS task); therefore the options are optionally indexed by `input_index`. "
+toc: false
+listing: 
+  template: ../../assets/templates/trial-table.ejs
+  field-required: [variable_name, categories, description]
+  filter-ui: true
+  sort-ui: false
+  categories: numbered
+  page-size: 10000
+  contents:
+    - "../../assets/auto-generated/trial/option.yml"
+---
+

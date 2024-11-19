@@ -1,0 +1,15 @@
+---
+title: Instrument Table
+abstract: "This table contains information describing the instrument used to collect data from subjects and their specific parameterization (i.e., timelines), e.g., parameters for the software that executes the presentation of the stimuli and records key presses)."
+toc: false
+listing: 
+  template: ../../assets/templates/trial-table.ejs
+  field-required: [variable_name, categories, description]
+  filter-ui: true
+  sort-ui: false
+  categories: numbered
+  page-size: 10000
+  contents:
+    - "../../assets/auto-generated/trial/instrument.yml"
+---
+

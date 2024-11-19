@@ -1,12 +1,12 @@
 - categories:
   - key
-  name: option_id
+  variable_name: option_id
   data_type: integer
   description: A reference to the primary key of the *<i class="fa fa-table"></i>
     Option* table.
 - categories:
   - key
-  name: index
+  variable_name: index
   data_type: integer
   description: 'A number from 1 differentiating each part. An option component with
     a higher `index` is displayed above all other components with a lower index.
@@ -14,65 +14,65 @@
     '
 - categories:
   - where
-  name: panel_id
+  variable_name: panel_id
   data_type: string
   description: Identifier of the panel this option is displayed over.
 - categories:
   - where
-  name: x_screen
+  variable_name: x_screen
   data_type: float
   description: 'X coordinates of the option component on the screen in pixels. '
 - categories:
   - where
-  name: y_screen
+  variable_name: y_screen
   data_type: float
   description: 'Y coordinates of the option component on the screen in pixels. '
 - categories:
   - where
-  name: x_viewport
+  variable_name: x_viewport
   data_type: float
   description: X coordinates of the option component on the screen expressed as a
     fraction of the screen width.
 - categories:
   - where
-  name: y_viewport
+  variable_name: y_viewport
   data_type: float
   description: 'Y coordinates of the option component on the screen expressed as a
     fraction of the screen height. '
 - categories:
   - what
-  name: description
+  variable_name: description
   data_type: string
   description: A human readable, compact description of the component.
 - categories:
   - what
-  name: symbol_name
+  variable_name: symbol_name
   data_type: string
   description: The name of the displayed symbol.
 - categories:
   - what
-  name: symbol_count
+  variable_name: symbol_count
   data_type: integer
   description: The number of symbols represented in this component.
 - categories:
   - what
-  name: symbol_layout
+  variable_name: symbol_layout
   data_type: enum
   description: How the symbols are laid out (vertical, horizontal, diagonal_top_left,
     diagonal_top_right, square, ring, cross, x, two_columns, h).
 - categories:
   - what
-  name: color_name
+  variable_name: color_name
   data_type: string
   description: The human-readable name of the component color.
 - categories:
   - what
-  name: color_hex
+  variable_name: color_hex
   data_type: string
   description: The hexadecimal value of the component color.
 - categories:
   - what
-  name: orientation
+  variable_name: orientation
   data_type: enum
   description: The symbol orientation (north, north_east, east, south_east, south,
     south_west, west, north_west, free).

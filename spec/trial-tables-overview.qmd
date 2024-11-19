@@ -1,7 +1,8 @@
 ---
-title: Specification
+title: Trial Tables
 sidebar: spec
 listing: 
+  template: ../assets/templates/trial-tables-listing.ejs
   categories: false
   filter-ui: false
   sort-ui: false
@@ -10,3 +11,8 @@ listing:
 ---
 
 Behaverse data model comprises a dataset structure and a set of tables that are designed to capture the information that is relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy, following the principles outlined in [Tidy Data paper] and to capture a wide variety of behavioral experiments.
+
+::: {.callout-tip}
+We use <i class="bi bi-table"></i> icon to refer to specific tables (e.g., the *<i class="bi bi-table"></i> Trial* table or the *<i class="bi bi-table"></i> Stimulus* table) and **subsections** to indicate the semantic category that groups various columns in a table; these semantic categories are used here only to highlight the ordering of the columns within each table.
+:::
+

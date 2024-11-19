@@ -53,6 +53,7 @@ website:
 
   sidebar:
     - id: spec
+      style: "docked"
       contents:
         - section: "Specification"
           href: spec/index.qmd
@@ -66,12 +67,22 @@ website:
                   - spec/general/studyflow.qmd
                   - spec/general/instructions.qmd
                   - spec/general/codebook.qmd
+              - section: "Trial Tables"
+                href: spec/trial-tables-overview.qmd
+                contents:
+                  - spec/trial-tables/trial.qmd
+                  - spec/trial-tables/stimulus.qmd
+                  - spec/trial-tables/option.qmd
+                  - spec/trial-tables/click.qmd
+                  - spec/trial-tables/stimulus-component.qmd
+                  - spec/trial-tables/option-component.qmd
+                  - spec/trial-tables/instrument.qmd
               - section: "Activity-specific"
                 href: spec/activity-specific/index.qmd
                 contents:
                   - spec/activity-specific/cognitive-tests.qmd
                   - spec/activity-specific/questionnaires.qmd
-              - spec/vocabulary.qmd
+              - glossary/index.qmd
     - id: principles
       contents:
         - section: "Common principles"

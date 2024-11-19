@@ -1,6 +1,6 @@
 - categories:
   - key
-  name: option_id
+  variable_name: option_id
   data_type: integer
   description: Primary key of the *Option* table.
   range: Each row in this table has a unique `id`.
@@ -8,26 +8,26 @@
     instances will have their own row in the * Option* table, each with its own `id`.
 - categories:
   - context
-  name: trial_id
+  variable_name: trial_id
   data_type: foreign key
   description: Refers to the id in the @TrialTable and indicates in which trial this
     option was shown.
   range: '`trial_id` in the @TrialTable for the same subject-session-activity combination.'
 - categories:
   - context
-  name: response_id
+  variable_name: response_id
   data_type: foreign key
   description: ''
   range: '`response_id` in the @TrialTable.'
 - categories:
   - context
-  name: index_in_trial
+  variable_name: index_in_trial
   data_type: index
   description: indexing each of the options within the set of options that were available
     to subjects on a given trial.
 - categories:
   - context
-  name: object_id
+  variable_name: object_id
   data_type: integer
   description: An option is defined by a set of features. This variable is used to
     identify each time the same features were used. For example, if the same white
@@ -36,48 +36,48 @@
     at different times).
 - categories:
   - when
-  name: onset
+  variable_name: onset
   data_type: float
   description: Duration between the start of the trial and the moment the option was
     displayed or activated.
   range: in seconds
 - categories:
   - when
-  name: duration
+  variable_name: duration
   data_type: float
   description: Describes for how long the option was displayed or active in seconds,
     starting from the `onset`.
   range: in seconds
 - categories:
   - where
-  name: panel_id
+  variable_name: panel_id
   data_type: string
   description: Identifier of the panel this option is displayed over.
 - categories:
   - where
-  name: x_screen
+  variable_name: x_screen
   data_type: float
   description: X coordinates of the option component on the screen in pixels.
 - categories:
   - where
-  name: y_screen
+  variable_name: y_screen
   data_type: float
   description: Y coordinates of the option component on the screen in pixels.
 - categories:
   - where
-  name: x_viewport
+  variable_name: x_viewport
   data_type: float
   description: X coordinates of the option component on the screen expressed as a
     fraction of the screen width.
 - categories:
   - where
-  name: y_viewport
+  variable_name: y_viewport
   data_type: float
   description: 'Y coordinates of the option component on the screen expressed as a
     fraction of the screen height. '
 - categories:
   - what
-  name: description
+  variable_name: description
   data_type: string
   description: 'A human readable, compact description of the main aspects of the option.
     The description for a given option depends on the task but follows a specific
@@ -89,13 +89,13 @@
     '
 - categories:
   - what
-  name: value
+  variable_name: value
   data_type: float
   description: A numeric value associated with a particular response option; typically
     indicating the "worth" of a response (e.g., `value` = 1 for the correct response).
 - categories:
   - what
-  name: source
+  variable_name: source
   data_type: string
   description: Refers to the specific generator or set the option belongs to. Options
     that stem from the same source have the same data scheme and could thus be described
@@ -103,7 +103,7 @@
     table contains the full information about the option; e.g., "digit1to9").
 - categories:
   - what
-  name: source_type
+  variable_name: source_type
   data_type: enum
   description: An option is typically created using a particular procedure/algorithm
     ("generator") or is sampled from a particular set ("set"). This variable indicates
@@ -113,12 +113,12 @@
     - set'
 - categories:
   - what
-  name: index_in_source
+  variable_name: index_in_source
   data_type: integer
   description: When a option is picked from a particular set (e.g., "digits1to9"),
     this index refers to the index within that set.
 - categories:
   - how
-  name: animation
+  variable_name: animation
   data_type: string
   description: Describes the animation that was used to show a particular option.

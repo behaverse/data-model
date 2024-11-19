@@ -1,12 +1,6 @@
 ---
-title: Specification
+title: Activity-specific tables
 sidebar: spec
-listing: 
-  contents:
-    - "../../assets/yml/trial/*.yml"
 ---
 
-# Activity tables
-
-The Behaverse Data Model contains multiple tables, resolving around the concept of a *trial*. A *trial* is a single instance of a participant interacting with a behavioral task. The BDM trial contains information about the participant, the task, and the interaction between the two. 
-
+The Behaverse Data Model contains multiple tables, revolving around the concept of a *trial*. A *trial* is a single instance of a participant interacting with a behavioral task and contains information about the participant, the task, and the interaction between the two. The trial-related tables are designed to be as flexible as possible, allowing for a wide range of tasks to be represented.

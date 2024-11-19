@@ -13,4 +13,13 @@
   font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 0.5em;
+  min-width: 6em;
+}
+
+.glossary-item-title code {
+  background-color: transparent;
+}
+
+.trial-table-item {
+  flex-wrap: wrap;
 }

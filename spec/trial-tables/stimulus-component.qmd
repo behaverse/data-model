@@ -1,0 +1,15 @@
+---
+title: StimulusComponent Table
+abstract: "Stimuli can comprise multiple components. This table describes each component of a stimulus."
+toc: false
+listing: 
+  template: ../../assets/templates/trial-table.ejs
+  field-required: [variable_name, categories, description]
+  filter-ui: true
+  sort-ui: false
+  categories: numbered
+  page-size: 10000
+  contents:
+    - "../../assets/auto-generated/trial/stimulus-component.yml"
+---
+
