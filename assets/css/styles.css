@@ -1,5 +1,5 @@
 
-.glossary-divider
+hr.glossary-divider
 {
   width: 50%;
   margin-left: 0%;
@@ -9,14 +9,22 @@
   background: linear-gradient(to right, gray, transparent);
 }
 
-.glossary-item-title {
+.glossary-listing .glossary-category-heading {
+  margin-top: 0em;
+}
+
+.glossary-listing .glossary-category-heading:not(:first-child) {
+  padding-top: 2em;
+}
+
+.glossary-item-name {
   font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 0.5em;
   min-width: 6em;
 }
 
-.glossary-item-title code {
+.glossary-item-name code {
   background-color: transparent;
 }
 

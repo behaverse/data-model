@@ -7,10 +7,16 @@ project:
   resources:
     - "assets/**/*"
 
+language: 
+  search-text-placeholder: Search
+
 website:
   title: Behaverse Data Model
   site-url: "https://behaverse.org/data-model"
   google-analytics: "G-K2NP7Q9KGZ"
+  search: 
+    location: navbar
+    type: textbox
   cookie-consent:
     type: implied
     style: simple
@@ -82,7 +88,6 @@ website:
                 contents:
                   - spec/activity-specific/cognitive-tests.qmd
                   - spec/activity-specific/questionnaires.qmd
-              - glossary/index.qmd
     - id: principles
       contents:
         - section: "Common principles"

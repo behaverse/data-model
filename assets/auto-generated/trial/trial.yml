@@ -161,12 +161,12 @@
   data_type: enum
   description: "Whether this trial\u2019s job has not been seen before in this timeline.\n\
     The possible values for job_repeat are:"
-  range: "{\n  \"1\": {\n    \"name\": \"new\",\n    \"description\": \"The job has\
-    \ never been seen before in this timeline.\"\n  },\n  \"2\": {\n    \"name\":\
-    \ \"repeat\",\n    \"description\": \"The job is the same as the previous trial.\"\
-    \n  },\n    \"3\": {\n    \"name\": \"switch\",\n    \"description\": \"The job\
-    \ is different from the previous trial but has been seen prior in the timeline.\"\
-    \n  }\n}"
+  range: '"new": "The job has never been seen before in this timeline."
+
+    "repeat": "The job is the same as the previous trial."
+
+    "switch": "The job is different from the previous trial but has been seen prior
+    in the timeline."'
 - categories:
   - task
   variable_name: block_type

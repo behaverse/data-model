@@ -9,4 +9,3 @@ listing:
     - "trial-tables/*.qmd"
 ---
 
-Behaverse data model comprises a dataset structure and a set of tables that are designed to capture the information that is relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy, following the principles outlined in [Tidy Data paper] and to capture a wide variety of behavioral experiments.

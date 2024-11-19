@@ -194,56 +194,56 @@
     processing of the data by humans.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: mean
   data_type: float
   description: The average of a numeric variable. Don't use `avg` or `average`.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: median
   data_type: float
   description: The median of the variable. Don't use `med`.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: mode
   description: The mode of a variable.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: min
   description: The minimum value of a variable.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: max
   description: The maximum value of a variable.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: sd
   description: The standard deviation of a variable. Don't use `std` or `SD`.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: var
   description: The variance of a variable.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: iqr
   description: The interquartile range of a variable. Don't use `IQR`.
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: sum
   data_type: float
   description: 'The sum on a variable (e.g., `item_price_sum = sum(item_price)`).
     Don''t use total to designate the result of a sum operation. '
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: count
   data_type: integer
   description: Refers to the count of a particular entity (e.g., a variable named
@@ -258,7 +258,7 @@
     variable, an iterator).'
 - publish: true
   categories:
-  - Suffixes/Aggregation
+  - Aggregation Suffixes
   name: quantile*
   data_type: float
   description: "quantiles are similar to percentiles; both refer to the value of a\
@@ -284,43 +284,43 @@
     `youngest_to_oldest` or `youngest_first_rank`).
 - publish: true
   categories:
-  - Suffixes/Transformation
+  - Transformation Suffixes
   name: log
   description: Natural log.
 - publish: true
   categories:
-  - Suffixes/Transformation
+  - Transformation Suffixes
   name: log2
   description: Log of base 2.
 - publish: true
   categories:
-  - Suffixes/Transformation
+  - Transformation Suffixes
   name: log10
   description: Log of base 10.
   notes: 'Always specify the base when using the log except for the natural log '
 - publish: true
   categories:
-  - Suffixes/Transformation
+  - Transformation Suffixes
   name: sqrt
   description: quare root.
 - publish: true
   categories:
-  - Suffixes/Transformation
+  - Transformation Suffixes
   name: pow2
   description: power of 2.
 - publish: true
   categories:
-  - Suffixes/Transformation
+  - Transformation Suffixes
   name: floor
   description: flooring of a number (e.g., 3.6 becomes 3).
 - publish: true
   categories:
-  - Suffixes/Transformation
+  - Transformation Suffixes
   name: ceil
   description: ceiling of a number (e.g., 3.6 becomes 4).
 - publish: true
   categories:
-  - Suffixes/Transformation
+  - Transformation Suffixes
   name: round
   description: rounding of a number (e.g., 3.6 becomes 4).
 - publish: true

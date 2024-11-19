@@ -2,7 +2,7 @@
 
 ### Metadata standard
 
-Metadata are data that provide information about a record, in our case, a dataset. Metadata can serve many functions, most important of which is to facilitate finding relevant datasets (i.e., data discovery). There are numerous standards for such metadata which in practice may not be used in consistent ways. It is for instance important to note that some metadata are destined to be processed by machines (e.g., search engines) while other metadata (or views thereof) are destined to be read by the dataset consumers.
+Metadata provides information about a data record, in our case, a dataset. Metadata can serve many functions, most important of which are to facilitate data discovery. There are numerous standards for such metadata which in practice may not be used in consistent ways. It is for instance important to note that some metadata are destined to be processed by machines (e.g., search engines) while other metadata (or views thereof) are destined to be read by the dataset consumers.
 
 We use the standard defined by [schema.org](https://schema.org/Dataset), as this is a solid, industry standard that is both extensive and used by major dataset search engines (e.g., https://datasetsearch.research.google.com/).
 
