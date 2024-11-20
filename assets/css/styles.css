@@ -31,3 +31,7 @@ hr.glossary-divider
 .trial-table-item {
   flex-wrap: wrap;
 }
+
+.trial-tables-listing .card-footer {
+  border-top-style: dashed;
+}

@@ -1,6 +1,7 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> StimulusComponent'
 abstract: "Stimuli can comprise multiple components. This table describes each component of a stimulus."
+order: 4
 toc: false
 listing: 
   template: ../../assets/templates/trial-table.ejs
