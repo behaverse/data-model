@@ -1,12 +1,14 @@
-<div class="list trial-tables-listing">
+<div class="grid quarto-listing-cols-3">
 <% for (const item of items) { %>
-<div class="listing-title">
-<a href="<%- item.path %>" class="no-external">
-<%= item.title %>
-</a>
+<div class="col">
+  <div class="card shadow-sm rounded">
+  <div class="card-body">
+  <h5 class="card-title"><a href="<%- item.path %>"><b><%= item.title %></b></a></h5>
+  <p class="card-text"><%= item.description %></p>
+  <a href="<%- item.path %>" class="card-link no-external">Details</a>
+  <a href="#" class="card-link no-external">Example</a>
 </div>
-<div class="listing-abstract">
-<%= item.abstract %>
+</div>
 </div>
 <% } %>
 </div>

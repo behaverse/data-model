@@ -74,15 +74,17 @@ website:
                   - spec/general/instructions.qmd
                   - spec/general/codebook.qmd
               - section: "Trial Tables"
-                href: spec/trial-tables-overview.qmd
+                href: spec/trials-overview.qmd
                 contents:
-                  - spec/trial-tables/trial.qmd
-                  - spec/trial-tables/stimulus.qmd
-                  - spec/trial-tables/option.qmd
-                  - spec/trial-tables/click.qmd
-                  - spec/trial-tables/stimulus-component.qmd
-                  - spec/trial-tables/option-component.qmd
-                  - spec/trial-tables/instrument.qmd
+                  - href: spec/trials-overview.qmd
+                    text: '<i class="bi bi-grid"></i> Overview'
+                  - spec/trials/trial.qmd
+                  - spec/trials/stimulus.qmd
+                  - spec/trials/option.qmd
+                  - spec/trials/click.qmd
+                  - spec/trials/stimulus-component.qmd
+                  - spec/trials/option-component.qmd
+                  - spec/trials/instrument.qmd
               - section: "Activity-specific"
                 href: spec/activity-specific/index.qmd
                 contents:

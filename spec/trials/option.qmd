@@ -1,5 +1,5 @@
 ---
-title: Option Table
+title: '<i class="bi bi-grid-3x3"></i> Option'
 abstract: "Table describing each option that a subject could choose from in a given trial. Note that in some tasks, the options may change within a trial after each input (e.g., SOS task); therefore the options are optionally indexed by `input_index`. "
 toc: false
 listing: 

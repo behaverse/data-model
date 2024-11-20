@@ -1,5 +1,5 @@
 ---
-title: Instrument Table
+title: '<i class="bi bi-grid-3x3"></i> Instrument'
 abstract: "This table contains information describing the instrument used to collect data from subjects and their specific parameterization (i.e., timelines), e.g., parameters for the software that executes the presentation of the stimuli and records key presses)."
 toc: false
 listing: 

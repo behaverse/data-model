@@ -1,6 +1,6 @@
 ---
-title: Stimulus Table
-abstract: "*Stimulus Table* describes each of the stimuli that were shown during an trial."
+title: '<i class="bi bi-grid-3x3"></i> Click'
+abstract: "*Click Table* describes each click that was recorded during a trial."
 toc: false
 listing: 
   template: ../../assets/templates/trial-table.ejs
@@ -10,6 +10,6 @@ listing:
   categories: numbered
   page-size: 10000
   contents:
-    - "../../assets/auto-generated/trial/stimulus.yml"
+    - "../../assets/auto-generated/trial/click.yml"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Trial Tables
+title: Trial Tables Overview
 sidebar: spec
 listing: 
   template: ../assets/templates/trial-tables-listing.ejs
@@ -7,7 +7,7 @@ listing:
   filter-ui: false
   sort-ui: false
   contents:
-    - "trial-tables/*.qmd"
+    - "trials/*.qmd"
 ---
 
 The Behaverse Data Model contains multiple tables, revolving around the concept of a trial. A trial is a single instance of a participant interacting with a behavioral task and contains information about the participant, the task, and the interaction between the two. The trial-related tables are designed to be as flexible as possible, allowing for a wide range of tasks to be represented.

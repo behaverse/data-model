@@ -9,4 +9,3 @@ There are increasing amounts of behavioral data freely available on the internet
 To leare more about the ideas behind the Behaverse data model, see:
 
 > Defossez, A., Ansarinia, M., Clocher, B., Schmück, E., Schrater, P., & Cardoso-Leite, P. (2020). [The structure of behavioral data](https://arxiv.org/abs/2012.12583). *arXiv preprint arXiv:2012.12583.*
-
