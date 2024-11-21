@@ -12,7 +12,7 @@ listing:
       - "Data Type"
       - "Variable Type"
       - "Variable Category"
-  filter-ui: true
+  filter-ui: [name, categories]
   sort-ui: false
   categories: numbered
   page-size: 10000

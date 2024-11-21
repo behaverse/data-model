@@ -16,11 +16,12 @@
   description: Indicates which of the clicks is used and in what order to form the
     actual response in the response table when `response_structure` is "sequence"
     or "set".
-  note_1: 'This needs to be here rather than in *<i class="fa fa-table"></i> Option*
-    because the same option can be clicked multiple times and either serve or not
-    for the response depending on the order of the clicks. For example, in the Digit
-    Span test we could have the response of "3;5;7" on a particular trial. This might
-    correspond to
+  notes:
+  - 'This needs to be here rather than in *<i class="fa fa-table"></i> Option* because
+    the same option can be clicked multiple times and either serve or not for the
+    response depending on the order of the clicks. For example, in the Digit Span
+    test we could have the response of "3;5;7" on a particular trial. This might correspond
+    to
 
     >  - `option.description` = ["3", "4", "delete", "delete", "3", "5", "7", "enter"]
 

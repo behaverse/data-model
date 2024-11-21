@@ -9,18 +9,46 @@ items.forEach(item => categories.add(item.categories[0]));
 <% for (category of categories) { %>
 <% const itemsInCategory = items.filter(item => item.categories.includes(category)); %>
 <h2 class="glossary-category-heading"><%= category %></h2>
-<% for (const [item_index, item] of itemsInCategory.entries()) { %>
+<% for (const [item_index, item] of itemsInCategory.entries()) {
+
+let data_types = [];
+if (item.data_type) {
+    data_types = item.data_type.split(' | ');    
+}
+
+%>
 <div <%= metadataAttrs(item) %> >
 <dt class="listing-name glossary-item-name">
-<%= item.name %> <code><span class="badge rounded-pill bg-info text-light"><%= item.data_type %></span></code>
+<%= item.name %> <% for (data_type of data_types) { %><code><span class="badge rounded-pill bg-info text-light"><%= data_type %></span></code><% } %>
 <span class="listing-categories"><span class="listing-category"></span></span>
 </dt>
 <dd class="listing-description">
 <%= item.description %><br />
 <% if (item.range) { %>
+::: {.callout-note collapse="false" appearance="default" icon="false"}
+## Range/Scope
 <%= item.range %>
+:::
 <% } %>
 </dd>
+<% if (item.notes) { %>
+<div class="listing-notes">
+<% for (note of item.notes) { %>
+<%
+let note_type = 'note';
+if (note.startsWith('.')) {
+    [note_type, ...rest] = note.split(' ');
+    note_type = note_type.replace('.', '').toLowerCase();
+    note = note.substring(note_type.length + 1);
+}
+%>
+
+::: {.callout-<%=note_type %> appearance="simple"}
+<%= note %>
+:::    
+<% } %>
+</div>
+<% } %>
 <% if (item_index < itemsInCategory.length - 1) { %>
 <hr class="glossary-divider" />
 <% } %>

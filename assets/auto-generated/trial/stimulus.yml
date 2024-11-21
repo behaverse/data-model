@@ -5,9 +5,10 @@
   description: Primary key of the @StimulusTable. Reference to this  identifier in
     other tables are thus named `stimulus_id`.
   range: Each row in this table has a unique `id`.
-  notes: If the same stimulus is shown at two different times in a trial, those two
-    instances will have their own row in the *<i class="fa fa-table"></i> Stimulus*
-    table, each with its own `id`.
+  notes:
+  - If the same stimulus is shown at two different times in a trial, those two instances
+    will have their own row in the *<i class="fa fa-table"></i> Stimulus* table, each
+    with its own `id`.
 - categories:
   - context
   variable_name: trial_id
@@ -23,8 +24,9 @@
   data_type: integer
   description: A stimulus is defined by a set of features. This variable is used to
     identify each time the same stimulus features were used.
-  notes: For example, if the same white digit "3" is shown in a digit span sequence,
-    all those instances would have the same `object_id` although they would have different
+  notes:
+  - For example, if the same white digit "3" is shown in a digit span sequence, all
+    those instances would have the same `object_id` although they would have different
     `id`s (as they appeared at different times).
 - categories:
   - context
@@ -55,7 +57,8 @@
   data_type: float
   description: Describes for how long this stimulus was displayed after its onset.
   range: in seconds
-  notes: When the stimulus is shown using an animation, `duration` covers the complete
+  notes:
+  - When the stimulus is shown using an animation, `duration` covers the complete
     period between the start of the animation and the end of the animation.
 - categories:
   - where
@@ -103,7 +106,8 @@
     that come from the same source have the same data scheme and could thus be described
     in a table named after `stimulus_source` (i.e., `stimulus_source` indicates which
     table contains the full information about the stimulus; e.g., "digits1to9").
-  notes: We could include a `source_count` variable here that indicates how many different
+  notes:
+  - We could include a `source_count` variable here that indicates how many different
     stimuli there are in the set; but this is probably better stored in the table
     that contains information about that source.
 - categories:

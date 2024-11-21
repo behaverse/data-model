@@ -4,8 +4,9 @@
   data_type: integer
   description: Primary key of the *Option* table.
   range: Each row in this table has a unique `id`.
-  notes: If the same option is shown at two different times in a trial, those two
-    instances will have their own row in the * Option* table, each with its own `id`.
+  notes:
+  - If the same option is shown at two different times in a trial, those two instances
+    will have their own row in the * Option* table, each with its own `id`.
 - categories:
   - context
   variable_name: trial_id

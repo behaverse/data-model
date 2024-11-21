@@ -3,31 +3,33 @@
   category: Trial
   name: Trial
   label: Trial
-  description: Main trial table where each row describes a response in a trial. The
-    information in this table should be sufficient for most analyses, but more detailed
-    information may be available in other tables and link to this one via its keys
-    (`trial_id` or `response_id`).
+  description: Main trial table where each row describes a response in a trial.
+  notes: The information in this table should be sufficient for most analyses, but
+    more detailed information may be linked from other tables via identifiers (`response_id`
+    and `trial_id`).
 - index: 1
   publish: true
   category: Trial
   name: Stimulus
   label: Stimulus
-  description: '*Stimulus Table* describes each of the stimuli that were shown during
-    an trial.'
+  description: Describes each of the stimuli that were shown during an trial.
+  notes: .nan
 - index: 2
   publish: true
   category: Trial
   name: Option
   label: Option
-  description: 'Table describing each option that a subject could choose from in a
-    given trial. Note that in some tasks, the options may change within a trial after
-    each input (e.g., SOS task); therefore the options are optionally indexed by `input_index`. '
+  description: Describes each option that a subject could choose from in a given trial.
+  notes: Note that in some tasks, the options may change within a trial after each
+    input (e.g., serial self-ordered search task); therefore the options are optionally
+    indexed by `input_index`.
 - index: 3
   publish: true
   category: Trial
   name: Click
   label: Click
-  description: '*Click Table* describes each click that was recorded during a trial.'
+  description: Describes each click that was recorded during a trial.
+  notes: .nan
 - index: 4
   publish: true
   category: Trial
@@ -35,6 +37,7 @@
   label: StimulusComponent
   description: Stimuli can comprise multiple components. This table describes each
     component of a stimulus.
+  notes: .nan
 - index: 5
   publish: true
   category: Trial
@@ -42,19 +45,21 @@
   label: OptionComponent
   description: Options can comprise multiple components. This table describes each
     component of an option.
+  notes: .nan
 - index: 6
   publish: true
   category: Trial
   name: Instrument
   label: Instrument
-  description: This table contains information describing the instrument used to collect
-    data from subjects and their specific parameterization (i.e., timelines), e.g.,
-    parameters for the software that executes the presentation of the stimuli and
-    records key presses).
+  description: Describes the instrument used to collect data from subjects.
+  notes: this table includes information about specific parameterizations of the instruments
+    (i.e., timelines). For example, parameters for the software that executes the
+    presentation of the stimuli and records key presses.
 - index: 7
   publish: true
   category: .nan
   name: Glossary
   label: Controlled Vocabulary
-  description: Controlled vocabulary for the terms in the Trial data model and corresponding
+  description: Controlled vocabulary for the terms in the Trials data and corresponding
     tables.
+  notes: .nan

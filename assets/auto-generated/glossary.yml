@@ -19,57 +19,57 @@
   categories:
   - Glossary
   name: Aggregation Suffixes
-  description: We will use the following names as suffixes to refer to particular
-    operations in variable names. For example the mean of a variable "age" would be
-    called "age_mean" (and not for example age_avg or age_m). We typically use the
-    same name as the aggregation function name in R or Python. More specialized terms
-    require explicit descriptions.
+  description: Use the following terms as suffixes to refer to particular operations
+    in variable names. For example the mean of a variable "age" would be called "age_mean"
+    (and not for example age_avg or age_m). We typically use the same name as the
+    aggregation function name in Python or R. More specialized terms require explicit
+    descriptions.
 - publish: true
   categories:
   - Glossary
   name: Transformation Suffixes
-  description: "In general, use the function name that was used to do the transformation.\
-    \ \nFor example the log of a variable `age` would be called `age_log` (and not\
-    \ for example `log_age` or `age_in_log`). We typically use the same name as the\
-    \ transformation function name in R (tidyverse) or Python (pandas).  We will use\
-    \ the following names to refer to particular operations in variable names."
+  description: Use the following terms to refer to particular operations in variable
+    names. In general, use the function name that was used to do the transformation.
+    For example the log of a variable `age` would be called `age_log` (and not for
+    example `log_age` or `age_in_log`). We typically use the same name as the transformation
+    function name in Python or R.
 - publish: true
   categories:
   - Glossary
   name: Referencing Suffixes
   description: Several variables are used to filter, identify or locate particular
-    rows in a table or across multiple tables. Below, we list and clarify the ones
-    we use and how we use them.
+    rows in a table or across multiple tables. Below is a list of the ones that are
+    usually used in behavioral data and how they can be used.
 - publish: false
   categories:
   - Glossary
   name: Variable Type
-  description: ''
+  description: Type of the variable in behavioral data (problem space).
 - publish: false
   categories:
   - Glossary
   name: Data Type
-  description: ''
+  description: Type of the variable as in common programming languages (solution space).
 - publish: true
   categories:
   - General
   name: accuracy
   data_type: float
-  description: '`accuracy` refers to a measure of performance; in many tasks, it reflects
-    the percentage (0-100%) or fraction (0-1) of correct responses. We will always
-    use `accuracy` to refer to a performance measure that is a float and bounded in
-    the [0-1] range.'
-  range: 0 to 1 (inclusive).
+  description: Refers to a measure of performance. In many behavioral tasks, it reflects
+    the percentage (0-100%) or fraction (0-1) of correct responses. Always use *accuracy*
+    to refer to a performance measure that is a real number (float) and bounded to
+    the [0-1] range.
+  range: 0 to 1 (inclusive)
 - publish: true
   categories:
   - General
   name: correct
   data_type: boolean
-  description: '`correct` is a boolean variable which indicates for a given trial
-    or response whether it was correct or not. When no response was given when it
-    should (i.e., timeout), correct evaluates to `FALSE` rather than `NA`. This is
-    to avoid the case where people would be given a high performance score when in
-    fact they avoided all difficult trials and responded correctly only to easy trials.
+  description: 'A boolean which indicates whether a response in a given trial was
+    correct or not. When no response was given when it should (i.e., timeout), *correct*
+    evaluates to `FALSE` rather than `N/A`. This is to avoid the case where subjects
+    would be given a high performance score when in fact they avoided all difficult
+    trials and responded correctly only to easy trials.
 
     '
 - publish: true
@@ -77,133 +77,152 @@
   - General
   name: response_time
   data_type: float
-  description: 'the meaning of `response_time` (and its units) is not consistent across
-    studies. For us, `response_time` is the duration between the moment the participant
-    fully completed their response on a given trial and the moment that the earliest
-    possible correct response could have been completed by an AI agent with perfect
-    knowledge of the task and ability to instantaneously execute the response.
-
-
-    **Default unit:** seconds '
-  notes: "Other measures of durations exist and may be useful to describe a person's\
-    \ response. If such additional measures are needed, they should be specified explicitly.\
-    \ For example\n - `response_onset`\n - `response_offset`\n - `response_duration`\n\
-    \n\nUnits for response times are not consistent across papers and publicly available\
-    \ datasets and one can find them expressed in either seconds or milliseconds.\
-    \ We decided to use seconds as the default unit for response times because:\n\
-    \ - avoid \"exception\" by always using seconds as duration measure.\n - avoid\
-    \ computation by keeping the units as they currently are in our raw data and task\
-    \ specs.\n - avoid the temptation to round rt to integers when expressed in milliseconds.\n\
-    \ - take advantage of the fact that most packages to analyse rt seem to be using\
-    \ seconds as a default unit; be congruent with what seems to be the default unit\
-    \ in fMRI measurements. \n\n\nIt is tempting to abbreviate `response_time` as\
-    \ `rt`; however, there are several other variables prefixed `response_` which\
-    \ do not have abbreviations. Spelling the names out, while making the name longer,\
-    \ makes the overall data structure more consistent and explicit."
+  description: The meaning of response time or reaction time (and its unit) is not
+    consistent across studies. In BDM, `response_time` is the duration in seconds
+    between a) the moment the subjects fully completed their response on a given trial,
+    and b) the moment that the earliest possible correct response could have been
+    completed by a hypothetical agent with perfect knowledge of the task and ability
+    to instantaneously execute the response.
+  range: In seconds
+  notes:
+  - 'Other measures of durations exist and may be useful to describe subjects'' responses.  If
+    such additional measures are needed, they should be specified explicitly; for
+    example: `response_onset`, `response_offset`, or `response_duration`.'
+  - "Units for response times are not consistent across papers and publicly available\
+    \ datasets. One can find them expressed in either seconds or milliseconds. BDM\
+    \ uses seconds as the default unit for response times to:\n- avoid \"exception\"\
+    \ by always using seconds as the temporal unit;\n - avoid additional  computation\
+    \ by keeping the units as they currently are in our raw data and task speicifications;\n\
+    \ - avoid the temptation to round times to integers when expressed in milliseconds;\n\
+    \ - take advantage of the fact that many popular packages to analyse response\
+    \ time seem to be using seconds as the default unit;\n- be consistent with what\
+    \ seems to be the default unit in fMRI data standards (e.g., BIDS or DICOMs). "
+  - .warning It is tempting to abbreviate `response_time` as `rt`. However, there
+    are several other variables prefixed `response_` which do not have abbreviations.
+    Spelling the names out, while making the name longer, makes the overall data structure
+    more consistent and explicit.
 - publish: true
   categories:
   - General
   name: timed_out
   data_type: boolean
-  description: indicates whether the participant failed to respond within the allocated
+  description: Indicates whether the subject failed to respond within the allocated
     time period.
 - publish: true
   categories:
   - Demographics
   name: age
   data_type: float
-  description: '`age` is typically expressed in years. However, we don''t recommend
-    flooring "age" to get integer values, as flooring implies losing data. It is better
-    to leave variables as floats (when they are floats) and let the analyst decide
-    whether or not flooring this variable is necessary for their specific purpose.'
+  description: Age is typically expressed in years. However, we don't recommend rounding
+    "age" to get integer values, as rounding implies losing data. It is better to
+    leave variables as real numbers (floats when they are floats) and let the data
+    analysts decide whether or not rounding this variable is necessary for their specific
+    use case.
 - publish: true
   categories:
   - Demographics
   name: gender/sex
   data_type: enum
-  description: 'gender and sex are not exactly the same. Sex refers to a biological
+  description: 'Gender and sex are not exactly the same. Sex refers to a biological
     sex while gender is a more complex construct. A person may have a male biological
     sex but identify as a women for example. Depending on the question asked, the
-    variable should therefore be either `sex` or `gender`. *"What sex were you assigned
-    at birth, such as on an original birth certificate?"* is clearly a question about
-    biological sex and should be coded as `sex`. The possible values for `sex` are:'
-  range: "{\n  \"1\": {\n    \"name\": \"female\",\n    \"description\": \"female\
-    \ (girl, woman).\"\n  },\n  \"2\": {\n    \"name\": \"male\",\n    \"description\"\
-    : \"male (boy, man).\"\n  },\n  \"3\": {\n    \"name\": \"other\",\n    \"description\"\
-    : \"other.\"\n  },\n  \"4\": {\n    \"name\": \"skip question\",\n    \"description\"\
-    : \"prefer not to say.\"\n  }\n}"
+    variable should therefore be either `sex` or `gender`.
+
+
+    For example, *"What sex were you assigned at birth, such as on an original birth
+    certificate?"* is a question about biological sex and should be coded as `sex`.
+    The possible values for `sex` are:'
+  range: '- `female`: female (girl, woman)
+
+    - `male`: male (boy, man)
+
+    - `other`: other non-binary
+
+    - `skip`: prefer not to say'
 - publish: true
   categories:
   - Generic Suffixes
   name: length
   data_type: float
-  description: refers to the length in cm of a physical object. When possible use
-    a more specific word (e.g., height, width, distance). Don't use length to mean
-    count or size!
+  description: Refers to the length in centimeters of a physical object. When possible
+    use a more specific word (e.g., height, width, distance).
+  notes:
+  - .important Don't use length to mean count or size. This is contrary to the terms
+    used in arrays/lists in programming languages.
 - publish: true
   categories:
   - Generic Suffixes
   name: height
   data_type: float
-  description: refers to the height of a physical object in cm.
+  description: Refers to the height of a physical object in centimeters.
 - publish: true
   categories:
   - Generic Suffixes
   name: width
   data_type: float
-  description: refers to the width of a physical object in cm.
+  description: Refers to the width of a physical object in centimeters.
 - publish: true
   categories:
   - Generic Suffixes
   name: weight
   data_type: float
-  description: refers to the weight of a physical object in kg .
+  description: Refers to the weight of a physical object in kilogram.
 - publish: true
   categories:
   - Generic Suffixes
-  name: count
+  name: '*_count'
   data_type: integer
-  description: refers to the cardinality of the entity. If an observation/row has
-    `car_count = 5` this means that this particular observation involves a total count
-    of 5 cars; this 5 is unrelated to other rows in the table.
-  notes: 'Avoid the use of `size` as this term is ambiguous; it could refer to the
-    height of a person, the screen width x height dimensions, or a level within a
-    scale (e.g., "Medium").
-
-
-    Avoid the use of `n` to refer to counts.'
+  description: Refers to the cardinality of that entity. A variable named `page_count`
+    indicates the number of pages. Or, if an observation/row has `car_count = 5` this
+    means that this particular observation involves a total count of 5 cars; this
+    5 is unrelated to other rows in the table.
+  notes:
+  - .warning Avoid the use of `size` as this term is ambiguous; it could refer to
+    the height of a person, the screen width $\times$ times height dimensions, or
+    a level within a likert scale (e.g., "Medium").
+  - '"Note that "count" is different from "sum" (e.g., one can sum negative float
+    values while count involves positive integers only) and from "index" (e.g., "this
+    is the second" versus "there are two").'
+  - .warning Avoid the use of `n` to refer to counts. While using `n` to refer to
+    counts is much shorter and might be standard in some circles, `count` is more
+    explicit and less error-prone than `n` which may mean different things in other
+    contexts (e.g., the length of the variable, an iterator)."
 - publish: true
   categories:
   - Generic Suffixes
   name: type
   data_type: enum
-  description: 'is always an enum. The meaning of the particular enum needs to be
-    explained in a codebook.
-
-    It can be tempting to use synonyms of "type", in particular when "type" is already
-    taken; such synonyms include things like "category", "kind" or  "set". When those
-    synonyms are not required (e.g., domain language) they should be avoided and replaced
-    by "type". Not all enums however need to be suffixed with "type". '
+  description: Type is always an enum with known values. The meaning of the particular
+    enum value needs to be explained in a codebook.
+  notes:
+  - It can be tempting to use synonyms of "type", in particular when "type" is already
+    used for something else. Such synonyms include things like "category", "kind"
+    or  "set". When those terms are not required, they should be avoided and replaced
+    by "type".
 - publish: true
   categories:
   - Generic Suffixes
   name: description
   data_type: string
-  description: is always a text (String) for human consumption. While it is not strictly
-    necessary, a textual description can greatly facilitate the understanding and
-    processing of the data by humans.
+  description: Description is always a text (string) for human consumption. While
+    it is not strictly necessary, a textual description can greatly facilitate the
+    understanding and processing of the data by humans.
 - publish: true
   categories:
   - Aggregation Suffixes
   name: mean
   data_type: float
-  description: The average of a numeric variable. Don't use `avg` or `average`.
+  description: The average of a numeric variable.
+  notes:
+  - .warning Don't use `avg` or `average` to refer to the mean value.
 - publish: true
   categories:
   - Aggregation Suffixes
   name: median
   data_type: float
-  description: The median of the variable. Don't use `med`.
+  description: The median of the variable.
+  notes:
+  - .warning Don't use `med` to refer to the median.
 - publish: true
   categories:
   - Aggregation Suffixes
@@ -223,7 +242,9 @@
   categories:
   - Aggregation Suffixes
   name: sd
-  description: The standard deviation of a variable. Don't use `std` or `SD`.
+  description: The standard deviation of a variable.
+  notes:
+  - .warning Don't use `std` or `SD` to refer to  the standard deviation.
 - publish: true
   categories:
   - Aggregation Suffixes
@@ -233,197 +254,212 @@
   categories:
   - Aggregation Suffixes
   name: iqr
-  description: The interquartile range of a variable. Don't use `IQR`.
+  description: The interquartile range of a variable.
+  notes:
+  - .warning Don't use `IQR` to refer to the interquartile range.
 - publish: true
   categories:
   - Aggregation Suffixes
   name: sum
   data_type: float
-  description: 'The sum on a variable (e.g., `item_price_sum = sum(item_price)`).
-    Don''t use total to designate the result of a sum operation. '
-- publish: true
-  categories:
-  - Aggregation Suffixes
-  name: count
-  data_type: integer
-  description: Refers to the count of a particular entity (e.g., a variable named
-    `page_count` indicates the number of pages).
-  notes: 'Note that "count" is different from "sum" (e.g., one can sum negative float
-    values while count involves positive integers only) and from "index" (e.g., "this
-    is the second" versus "there are two").
-
-    Note also that while the use "n" to refer to counts is much shorter and might
-    be standard in some circles, "count" is more explicit and less error prone than
-    "n" which may mean different things in other contexts (e.g., the length of the
-    variable, an iterator).'
+  description: 'The sum of all values of a variable (e.g., `item_price_sum = sum(item_price)`). '
+  notes:
+  - .warning Don't use total to designate the result of a sum operation.
 - publish: true
   categories:
   - Aggregation Suffixes
   name: quantile*
   data_type: float
-  description: "quantiles are similar to percentiles; both refer to the value of a\
-    \ variable x that splits the data such that a given fraction of the data is smaller\
-    \ than x. Quantile expresses that fraction as a number between 0 and 1 while percentiles\
-    \ express it as a percentage (between 0 and 100). > We use quantiles rather than\
-    \ percentiles because they allow us to name the resulting variables in a simpler\
-    \ way. We use the following convention: \n> - `quantile(x, q = 0.23)` -> `quantile23`\n\
-    > - `quantile(x, q = 0.145)` -> `quantile145`"
-  notes: ' `quantile(x, q = 1)` can not be expressed using this convention. Note however
-    that `quantile(x, q = 1)` is in fact equivalent to `max(x)` which is the preferred
-    expression.'
+  description: 'Quantile is similar to percentile, as both refer to the value of a
+    parameter Q that splits the data such that a given fraction of the data is smaller
+    than Q.
+
+    Quantile expresses that fraction as a number between 0 and 1 while percentiles
+    express it as a percentage (between 0 and 100).'
+  notes:
+  - 'Use quantiles rather than percentiles because they allow naming the resulting
+    variables in a simpler way. BDM uses the following convention to name the parameter
+    X:
+
+    - `quantile(x, q = 0.23)` -> `quantile23`
+
+    - `quantile(x, q = 0.145)` -> `quantile145` '
+  - Note that `quantile(x, q = 1)` can not be expressed using this convention. However,  `quantile(x,
+    q = 1)` is in fact equivalent to `max(x)` which is the preferred expression.
 - publish: true
   categories:
   - Aggregation Suffixes
   name: rank
   data_type: integer
-  description: rank of a variable (first to last)
-  notes: variables can be ranked (for example from the smallest to the largest values)
-    and some values can be tied (in which case the rank will no longer be all integers).
-    It might not be clear if the ranks are descending or ascending (e.g., `age_rank`).
-    If such confusion arises it might be preferable to use a more direct name (e.g.,
-    `youngest_to_oldest` or `youngest_first_rank`).
+  description: Rank of a value in a set (ascending or first to last).
+  notes:
+  - Variables can be sorted (for example from the smallest to the largest values)
+    and some values can be tied (in which case the rank may no longer be represented
+    by integers). Also, it might not be clear if the ranks are descending or ascending
+    (e.g., `age_rank`). If such confusion arises, it is prefered to use a more explicit
+    name (e.g., `youngest_to_oldest` or `youngest_first_rank`).
 - publish: true
   categories:
   - Transformation Suffixes
   name: log
+  data_type: float
   description: Natural log.
 - publish: true
   categories:
   - Transformation Suffixes
   name: log2
+  data_type: float
   description: Log of base 2.
 - publish: true
   categories:
   - Transformation Suffixes
   name: log10
+  data_type: float
   description: Log of base 10.
-  notes: 'Always specify the base when using the log except for the natural log '
+  notes:
+  - .important Always specify the base when using the log except for the natural log.
 - publish: true
   categories:
   - Transformation Suffixes
   name: sqrt
-  description: quare root.
+  description: Square root.
 - publish: true
   categories:
   - Transformation Suffixes
   name: pow2
-  description: power of 2.
+  description: Power of 2.
 - publish: true
   categories:
   - Transformation Suffixes
   name: floor
-  description: flooring of a number (e.g., 3.6 becomes 3).
+  data_type: integer
+  description: Flooring of a number (e.g., 3.6 becomes 3).
 - publish: true
   categories:
   - Transformation Suffixes
   name: ceil
-  description: ceiling of a number (e.g., 3.6 becomes 4).
+  data_type: integer
+  description: Ceiling of a number (e.g., 3.6 becomes 4).
 - publish: true
   categories:
   - Transformation Suffixes
   name: round
-  description: rounding of a number (e.g., 3.6 becomes 4).
+  data_type: integer
+  description: Rounding of a number to the closest integer (e.g., 3.6 becomes 4).
 - publish: true
   categories:
   - Referencing
   name: '*_id'
-  data_type: string
-  description: "if a column name is postfix with `_id` (e.g., `participant_id`, `task_id`)\
-    \ it is expected that there exists a table which has the same name (i.e., \"participant\"\
-    , \"task), with a primary key named `id` such that a value of in the first (`particiapant_id\
-    \ = 215`) refers to an entry in the second (a row in the participant table where\
-    \ `id = 215`). It is expected that the values in a variable postfixed `_id` are\
-    \ unique within a \"local scope\" (e.g., a dataset); however, it is not expected\
-    \ that they are unique globally\u2014for such purposes one should use the `_uuid`.\n\
-    - If there is a column named `id` (i.e., without prefix) it is expected that there\
-    \ are other data tables or files that refer to this column; if such a link does\
-    \ not exist, use `index` instead.\nFinally, the postfix `_id` does not imply a\
-    \ particular value format: both integers and strings are valid formats. "
+  data_type: string | integer
+  description: "If a column or variable name is suffixed with `_id` (e.g., `participant_id`,\
+    \ `task_id`), it is expected that there exists a supplementary table which has\
+    \ the same name (\"participant\", \"task\"), with a primary key named `id` such\
+    \ that a value of in the first (`particiapant_id = 215`) refers to an entry in\
+    \ the second (a row in the participant table where `id = 215`). It is expected\
+    \ that the values in a variable postfixed `_id` are unique within a \"local scope\"\
+    \ of the source table; however, it is not expected that they are unique globally\u2014\
+    for such purposes one should use the `_uuid`."
+  range: Unique within a table or within an explicit context
+  notes:
+  - Note that "id" typically implies a context, within which the "id' is unique. That
+    context must be made explicit. For example, `trial_id` may identify trials within
+    a trial table for one activity completed by one subject.
+  - If there is a column named `id` (i.e., without prefix), it is expected to be a
+    primary key and there exists other tables or files that refer to this column;
+    if such a link between tables does not exist, use `index` or `name` instead.
+  - '.tip The postfix `_id` does not imply a particular data type: both integers and
+    strings are valid.'
 - publish: true
   categories:
   - Referencing
   name: '*_name'
   data_type: string
-  description: 'Sometimes "name" is used in a way that is similar to id (e.g., `study_name`
-    or `task_name`).
-
-    The difference between `_id` and `_name` is that `_name` is expected to be a readable
-    string (e.g., `n-back` versus "f346-r23v"). As with `_id`, it is expected that
-    name refers to other data tables and that names are unique within a certain context
-    (contrary to `*_label`).'
+  description: Sometimes "name" is used in a way that is similar to a unique id (e.g.,
+    `study_name` or `task_name`). The difference between "id" and "name" is that "name"
+    is expected to be a readable text (e.g., `n-back` versus `f346-r23v`). As with
+    "id", it is expected that it refers to other tables and that it is unique within
+    a certain context (contrary to, for example, "label").
 - publish: true
   categories:
   - Referencing
   name: '*_uuid'
   data_type: string
-  description: "Universally Unique Identifier (https://en.wikipedia.org/wiki/Universally_unique_identifier)\
-    \ is a 128-bit number that can be generated on the fly and will most likely be\
-    \ unique. uuid can be used to assign a row a unique id without having to ensure\
-    \ that that number is not yet used by some other table.\n- _uuid are expected\
-    \ to be unique (globally); \n- _uuid are not expected to be human readable; \n\
-    - **Example**: `123e4567-e89b-12d3-a456-426614174000`"
-  notes: 'ISO/IEC 11578:1996
-
-
-
-    We don''t use uid'
+  description: '[Universally Unique Identifier (UUID)](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+    is a random 32-digit label that can be generated on the fly and will most likely
+    be unique in computer systems. UUID can be used to assign a record a unique identifier
+    without having to ensure that that number is not yet used by some other records
+    or tables.'
+  range: UUIDv7 or later
+  notes:
+  - '`*_uuid`s are expected to be globally unique.'
+  - '`*_uuid`s are not expected to be human interpretable.'
+  - Avoid using `_uid` suffix to refer to a UUID variable.
+  - 'Within BDM, string-formatted Version 7 UUIDs are preferred over older versions
+    or  corresponding 128-bit integers. For example: `01934efd-35d5-79db-9aca-fc29b0451cd1`.'
 - publish: true
   categories:
   - Referencing
   name: '*_hash'
   data_type: string
-  description: "sometimes it is useful to create a key by combining other keys. A\
-    \ hash is not strictly necessary as it can be recreated using other variables\
-    \ but it can be convenient for data processing.\nhttps://en.wikipedia.org/wiki/Hash_function\
-    \ \n- There is not a single standard for hashing; rather there are multiple algorithms\
-    \ that can be used. We use both CRC32 (32 hexadecimal characters; e.g., \"098f6bcd4621d373cade4e832627b4f6\"\
-    ) and SHA256 (base64 characters, e.g., \"d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f\"\
-    ); depending on the probability of collision (i.e., two hashes being identical);\
-    \ when that probability is deemed high, we use SHA256."
+  description: It is sometimes useful to create a reproducible keys based on some
+    data. A [hash](https://en.wikipedia.org/wiki/Hash_function) is not strictly necessary
+    as it can be recreated using different data but it can be convenient for data
+    processing.
+  notes:
+  - There is no single widespread standard for hashing; rather there are multiple
+    algorithms that can be used depending on the use case. You can use either CRC32
+    (32 hexadecimal characters; e.g., "098f6bcd4621d373cade4e832627b4f6") or SHA256
+    (base64 characters, e.g., "d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f")
+    depending on the probability of collision (i.e., two hashes for different data
+    being identical). When that collision probability is deemed high, use SHA256.
 - publish: true
   categories:
   - Referencing
   name: '*_index'
   data_type: integer
-  description: index should be favored when a variable is used for referencing and
-    when order is important (often, but not always the chronological order).  For
-    example, "stimulus_position_index" implies its value points to an entry in a list
-    of possible stimulus_positions. Note that "index" typically implies a context
-    within which the indexing occurs and that context must be made explicit. For example,
-    trial_index may index trials within a block or a timeline.
-  notes: 'Here we follow the convention of always starting counting/indexing from
-    1 (rather than 0).
-
-
-
-    Avoid the use of `*_number` because it is ambiguous.'
+  description: Indices should be favored over labels and ids when a variable is used
+    for referencing and when order is important (often, but not always, the chronological
+    order). For example, a variable  named `stimulus_position_index` implies its value
+    points to an entry in a list of possible stimulus positions.
+  range: 1-based indices
+  notes:
+  - Note that "index" typically implies a context, within which the indexing occurs
+    and that context must be made explicit. For example, `trial_index` may index trials
+    within a block.
+  - 'BDM follows the convention of 1-based indexing: always starting counting/indexing
+    from 1 rather than 0.'
+  - .warning Avoid the use of `*_number` because it is ambiguous.
 - publish: true
   categories:
   - Referencing
   name: '*_repetition'
   data_type: integer
-  description: 'is used to count the number of times the same "thing" occurred (e.g.,
+  description: Repetition counts the number of times the same "thing" occurred, e.g.,
     a participant completes the same test twice, the same stimulus appears multiple
-    times). As with index, repetition assumes a context which must be clarified when
+    times.
+  range: 0-based
+  notes:
+  - 'As with index and id, repetition assumes a context which must be clarified when
     ambiguous. '
-  notes: Repetition starts "counting" at 0 rather than 1; *_iteration instead of *_repetition
-    would solve this issue but is less explicit and thus less preferred.
+  - 'Repetition is 0-based: it starts "counting" at 0 rather than 1; *_iteration instead
+    of *_repetition would make it 1-based like indices, but it is less explicit and
+    thus less preferred.'
 - publish: true
   categories:
   - Referencing
   name: '*_label'
   data_type: string
-  description: 'an text attached to a variable; expected to be human readable, but
-    not unique. '
+  description: A text attached to a variable and identifies it. It is expected to
+    be human readable, but not always unique.
 - publish: true
   categories:
   - Variable Category
-  name: identifier
+  name: Identifier
   description: ''
 - publish: true
   categories:
   - Variable Category
-  name: context
+  name: Context
   description: ''
 - publish: true
   categories:
@@ -507,6 +543,7 @@
   categories:
   - Variable Type
   name: index
+  data_type: integer
   description: ''
 - publish: false
   categories:
