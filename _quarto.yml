@@ -32,7 +32,7 @@ website:
     position: below-navbar 
 
   navbar:
-    logo: assets/img/behaverse_logo_purple.png
+    logo: assets/img/behaverse_data_logo.png
     left:
       - get-started/index.qmd
       - common-principles/index.qmd
@@ -64,9 +64,13 @@ website:
         - section: "Specification"
           href: spec/index.qmd
           contents:
+              - href: spec/index.qmd
+                text: Overview
               - section: "General"
                 href: spec/general/index.qmd
                 contents:
+                  - href: spec/general/index.qmd
+                    text: Overview
                   - spec/general/folder-structure.qmd
                   - spec/general/indexing.qmd
                   - spec/general/metadata.qmd
@@ -88,6 +92,8 @@ website:
               - section: "Activity-specific"
                 href: spec/activity-specific/index.qmd
                 contents:
+                  - href: spec/activity-specific/index.qmd
+                    text: Overview
                   - spec/activity-specific/cognitive-tests.qmd
                   - spec/activity-specific/questionnaires.qmd
     - id: principles

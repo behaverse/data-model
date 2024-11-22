@@ -1,3 +1,18 @@
+/* css styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'system-ui','Roboto', sans-serif;
+}
+
+.navbar-logo {
+    max-height: 36px;
+}
+
+.quarto-title-banner h1, h1, h2, h3 {
+    font-family: 'system-ui','Roboto', sans-serif;
+}
 
 hr.glossary-divider
 {

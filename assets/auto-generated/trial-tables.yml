@@ -56,6 +56,13 @@
     (i.e., timelines). For example, parameters for the software that executes the
     presentation of the stimuli and records key presses.
 - index: 7
+  publish: false
+  category: Trial
+  name: OptionSet
+  label: OptionSet
+  description: Describes choice options mainly in questionnaires.
+  notes: .nan
+- index: 8
   publish: true
   category: .nan
   name: Glossary
