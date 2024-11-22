@@ -1,78 +1,128 @@
 - categories:
-  - key
+  - Key
   variable_name: option_id
-  data_type: integer
-  description: A reference to the primary key of the *<i class="fa fa-table"></i>
-    Option* table.
+  required: true
+  data_type: id
+  description: A reference to the primary key `id` of the @Option table.
+  range: '`id` in the corresponding @Stimulus table (same subject/session/activity).'
 - categories:
-  - key
+  - Key
   variable_name: index
-  data_type: integer
-  description: 'A number from 1 differentiating each part. An option component with
-    a higher `index` is displayed above all other components with a lower index.
-
-    '
+  required: true
+  data_type: index
+  description: A 1-based index differentiating each part and indicating the stacking
+    order of them. An option component with a higher `index` is displayed on top of
+    those with lower values, similar to CSS z-index property.
+  range: 1-based indices
 - categories:
-  - where
+  - Where
   variable_name: panel_id
+  required: false
   data_type: string
   description: Identifier of the panel this option is displayed over.
 - categories:
-  - where
+  - Where
   variable_name: x_screen
-  data_type: float
-  description: 'X coordinates of the option component on the screen in pixels. '
+  required: false
+  data_type: integer
+  description: 'X coordinates of the option component relative to the left edge of
+    the screen in pixels. '
+  range: pixels
+  notes:
+  - .important In BDM, the preferred position is the center of the object. However,
+    specific implementations of the tasks may use other locations such as the top-left
+    corner. If this is the case, it should be explicitly stated in the [codebook](/spec/general/codebook.qmd).
 - categories:
-  - where
+  - Where
   variable_name: y_screen
-  data_type: float
-  description: 'Y coordinates of the option component on the screen in pixels. '
+  required: false
+  data_type: integer
+  description: 'Y coordinates of the option component relative to the top edge of
+    the screen in pixels. '
+  range: pixels
 - categories:
-  - where
+  - Where
   variable_name: x_viewport
+  required: false
   data_type: float
-  description: X coordinates of the option component on the screen expressed as a
-    fraction of the screen width.
+  description: X coordinates of the option component relative to the left edge of
+    the screen expressed as a fraction of the screen width.
+  range: 0 to 1 (inclusive)
 - categories:
-  - where
+  - Where
   variable_name: y_viewport
+  required: false
   data_type: float
-  description: 'Y coordinates of the option component on the screen expressed as a
-    fraction of the screen height. '
+  description: Y coordinates of the option component relative to the top edge of the
+    screen expressed as a fraction of the screen height.
+  range: 0 to 1 (inclusive)
 - categories:
-  - what
+  - What
   variable_name: description
+  required: true
   data_type: string
   description: A human readable, compact description of the component.
 - categories:
-  - what
+  - What
   variable_name: symbol_name
+  required: false
   data_type: string
   description: The name of the displayed symbol.
 - categories:
-  - what
+  - What
   variable_name: symbol_count
+  required: false
   data_type: integer
   description: The number of symbols represented in this component.
 - categories:
-  - what
+  - What
   variable_name: symbol_layout
+  required: false
   data_type: enum
-  description: How the symbols are laid out (vertical, horizontal, diagonal_top_left,
-    diagonal_top_right, square, ring, cross, x, two_columns, h).
+  description: How the symbols are laid out.
+  range: '- `vertical`: along the Y axis.
+
+    - `horizontal`: along the X axis.
+
+    - `diagonal_top_left`
+
+    - `diagonal_top_right`
+
+    - `square`
+
+    - `ring`
+
+    - `cross`
+
+    - `two_columns`'
+  notes:
+  - .tip If none of the predefined layouts apply, leave this field empty or use a
+    custom human-readable label. Make sure custom labels are clearly defined in the
+    codebook.
 - categories:
-  - what
+  - What
   variable_name: color_name
+  required: false
   data_type: string
-  description: The human-readable name of the component color.
+  description: The human-readable name of the component color, e.g., `red`.
+  notes:
+  - .tip To maintain clarity and consistency, BDM recommends using CSS-style naming
+    conventions for colors (e.g., "lightgray").
 - categories:
-  - what
+  - What
   variable_name: color_hex
+  required: false
   data_type: string
-  description: The hexadecimal value of the component color.
+  description: 'The hexadecimal RGB color code of the component (e.g., #FF0000 for
+    red) with optional alpha channel for transparency.'
+  range: '#000000(00)  to #FFFFFF(FF)'
 - categories:
-  - what
+  - What
   variable_name: orientation
+  required: false
   data_type: enum
-  description: The symbol orientation (north, north_east, east, south_east, south,
-    south_west, west, north_west, free).
+  description: Indicates the symbol orientation.
+  notes:
+  - .tip If none of the predefined orientations apply, leave this field empty or use
+    a custom human-readable label. Make sure custom labels are clearly defined in
+    the codebook.
