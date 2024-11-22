@@ -16,11 +16,11 @@ items.forEach(item => categories.add(item.categories[0]));
 <span class="listing-categories"><span class="listing-category"></span></span>
 </dt>
 <dd class="listing-description">
-<%= item.description %><br />
+<%= item.description.replace(/@(\w+)/g, '**<i class="bi bi-grid-3x3"></i> $1**') %><br />
 <% if (item.range) { %>
 ::: {.callout-note collapse="false" appearance="default" icon="false"}
 ## Range
-<%= item.range %>
+<%= item.range.replace(/@(\w+)/g, '**<i class="bi bi-grid-3x3"></i> $1**') %>
 :::
 <% } %>
 </dd>
@@ -37,7 +37,7 @@ if (note.startsWith('.')) {
 %>
 
 ::: {.callout-<%=note_type %> appearance="simple"}
-<%= note %>
+<%= note.replace(/@(\w+)/g, '**<i class="bi bi-grid-3x3"></i> $1**') %>
 :::    
 <% } %>   
 </div>
