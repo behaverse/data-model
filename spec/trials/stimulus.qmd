@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> Stimulus'
-abstract: "*Stimulus Table* describes each of the stimuli that were shown during an trial."
+abstract: "Describes each of the stimuli that were shown during an trial."
 order: 1
 toc: false
 listing: 

@@ -1,37 +1,47 @@
 - categories:
-  - identifier
+  - Identifier
   variable_name: stimulus_id
-  data_type: integer
-  description: Primary key of the @StimulusTable. Reference to this  identifier in
+  data_type: id
+  required: true
+  description: Primary key of the @Stimulus table. Reference to this  identifier in
     other tables are thus named `stimulus_id`.
   range: Each row in this table has a unique `id`.
   notes:
-  - If the same stimulus is shown at two different times in a trial, those two instances
-    will have their own row in the *<i class="fa fa-table"></i> Stimulus* table, each
-    with its own `id`.
+  - .tip If the same stimulus is shown at two different times in a trial, those two
+    instances will have their own row in the *<i class="fa fa-table"></i> Stimulus*
+    table, each with its own `id`.
 - categories:
-  - context
+  - Context
   variable_name: trial_id
-  data_type: integer
-  description: Refers to the id in the @TrialTable and indicates in which trial this
-    stimulus was shown.
-- categories: []
-  variable_name: response_id
-  description: ''
+  data_type: id
+  required: false
+  description: Refers to the `trial_id` in the @Trial table and indicates in which
+    trial this stimulus was shown.
+  range: '`trial_id` in the @Trial table of the same subject/activity'
 - categories:
-  - context
+  - Context
+  variable_name: response_id
+  data_type: id
+  required: true
+  description: Refers to the `response_id` in the @Trial table and indicates for which
+    response this stimulus was shown.
+  range: '`response_id` in the @Trial table of the same subject/activity'
+- categories:
+  - Context
   variable_name: object_id
-  data_type: integer
+  data_type: string
+  required: false
   description: A stimulus is defined by a set of features. This variable is used to
     identify each time the same stimulus features were used.
   notes:
-  - For example, if the same white digit "3" is shown in a digit span sequence, all
-    those instances would have the same `object_id` although they would have different
+  - .tip For example, if the same white digit "3" is shown in a digit span sequence,
+    all those instances would have the same `object_id` although they would have different
     `id`s (as they appeared at different times).
 - categories:
-  - context
+  - Context
   variable_name: presentation_id
-  data_type: integer
+  data_type: string
+  required: false
   description: In a multitasking setting, a particular instance of a stimulus (e.g.,
     the current letter "A") may be used by multiple tasks at the same time (e.g, in
     the dual N-back task). Because these are different trials, they will have different
@@ -39,105 +49,148 @@
     use `presentation_id` to indicate that a given stimulus is in fact the same instance
     across those trials.
 - categories:
-  - context
+  - Context
   variable_name: index_in_trial
   data_type: integer
+  required: false
   description: Refers to individual stimuli within the sequence or set of stimuli
     shown during a trial.
 - categories:
-  - when
+  - When
   variable_name: onset
   data_type: float
-  description: Duration between the start of the trial and the appearance of the stimulus
-    (in seconds).
-  range: in seconds
+  required: true
+  description: Duration between the start of the trial and the appearance of the stimulus,
+    in seconds.
+  range: In seconds
 - categories:
-  - when
+  - When
   variable_name: duration
   data_type: float
-  description: Describes for how long this stimulus was displayed after its onset.
-  range: in seconds
+  required: true
+  description: Describes for how long this stimulus was displayed after its onset,
+    in seconds.
+  range: In seconds
   notes:
-  - When the stimulus is shown using an animation, `duration` covers the complete
+  - .tip When the stimulus is shown using an animation, `duration` covers the complete
     period between the start of the animation and the end of the animation.
 - categories:
-  - where
+  - Where
   variable_name: panel_id
   data_type: string
+  required: false
   description: Identifier of the panel this stimulus is displayed over.
 - categories:
-  - where
+  - Where
   variable_name: x_screen
   data_type: integer
+  required: false
   description: X coordinates of the stimulus on the screen in pixels.
 - categories:
-  - where
+  - Where
   variable_name: y_screen
   data_type: integer
+  required: false
   description: Y coordinates of the stimulus on the screen in pixels.
 - categories:
-  - where
+  - Where
   variable_name: x_viewport
   data_type: float
+  required: false
   description: X coordinates of the stimulus on the screen expressed as a fraction
     of the screen width.
+  range: 0 to 1 (inclusive)
 - categories:
-  - where
+  - Where
   variable_name: y_viewport
   data_type: float
+  required: false
   description: Y coordinates of the stimulus on the screen expressed as a fraction
     of the screen height.
+  range: 0 to 1 (inclusive)
 - categories:
-  - what
+  - What
   variable_name: description
   data_type: string
+  required: true
   description: A human readable, compact description of the main aspects of the stimulus.
     The description for a given stimulus depends on the task but follows a specific
-    template for a given task. Because of this, it looks like the `stimulus_description`
-    could be parsed and converted into a more structured format---however, this is
-    not the intention; structured parsed data will be available in other tables; here,
-    description is for human readability and facilitates the understanding of the
-    data.
+    template for a given task. Because of this, it looks like the `description` could
+    be parsed and converted into a more structured format---however, this is not the
+    intention; structured data will be available in other tables; here, description
+    is for human readability and facilitates the understanding of the data.
 - categories:
-  - what
+  - What
   variable_name: source
   data_type: string
-  description: Refers to the specific generator or set the stimulus belongs to. Stimuli
-    that come from the same source have the same data scheme and could thus be described
-    in a table named after `stimulus_source` (i.e., `stimulus_source` indicates which
-    table contains the full information about the stimulus; e.g., "digits1to9").
+  required: true
+  description: Refers to the specific generator or set the stimulus belongs to.
   notes:
-  - We could include a `source_count` variable here that indicates how many different
-    stimuli there are in the set; but this is probably better stored in the table
-    that contains information about that source.
+  - .tip Stimuli that come from the same source have the same data scheme and could
+    thus be described in a table named after the `stimulus_source`. `stimulus_source`
+    indicates which table contains the full information about the stimulus; e.g.,
+    "digits1to9".
+  - .tip One could include a `source_count` variable here that indicates how many
+    different stimuli there are in the set; but it's better stored in the table that
+    contains information about that stimulus source.
 - categories:
-  - what
+  - What
   variable_name: source_type
   data_type: enum
+  required: false
   description: A stimulus is typically created using a particular procedure/algorithm
     ("generator") or is sampled from a particular set ("set"). This variable indicates
     which of these two applies for the current stimulus.
-  range: '- generator
+  range: '- `set`: stimulus is sampled from a fixed set of stimuli.
 
-    - set'
+    - `generator`: "stimulus is created using a procedure/algorithm.
+
+    '
 - categories:
-  - what
+  - What
   variable_name: index_in_source
   data_type: integer
+  required: false
   description: When a stimulus is picked from a particular set (e.g., "digits1to9"),
     this index refers to the index within that set.
+  notes:
+  - '.tip In addition to `index_in_source`, `stimulus_id` can also be used to  look
+    up further information about the stimulus in the source. '
 - categories:
-  - what
+  - What
   variable_name: role
   data_type: enum
-  description: Describe the role this stimulus plays in the trial (e.g., "target").
-  range: '- target
+  required: true
+  description: Describe the role that  the stimulus plays in the trial, e.g., "target".
+  range: '- `target`: A stimulus the subject must process and which should trigger
+    the completion of the response (e.g., classify, reach, memorize) if the subject
+    is doing the task as intended. In some cases (e.g., in a go/no-go task) the correct
+    response to a stimulus is to NOT click the button. In this case, the stimulus
+    that triggered the decision to NOT click the button is still a `target`.
 
-    - ....'
+    - `non_target`: A stimulus the subject must process but which does not trigger
+    the completion of the response (e.g., the first two stimuli in a 2-back test).
+
+    - `distractor`: "A stimulus the subject should not process at all (i.e., ignore)
+    and which is unrelated to the correct execution of the task."
+
+    - `location_cue`: A stimulus giving a spatial location information that subjects
+    could use to improve their performance.
+
+    -  `job_specifier`: A stimulus specifying which job the subject should perform.
+
+    - `stop_signal`: "A stimulus signaling the subjects that they should abort current
+    action.
+
+    - `probe`: A stimulus indicating about which stimulus to respond.'
 - categories:
-  - how
+  - How
   variable_name: animation
   data_type: string
+  required: false
   description: Describes the animation that was used to show a particular stimulus
     in human-readable format. For example, to refer to a fade-in animation that took
-    3 seconds, we can use "fade-in-3s".
+    3 seconds, we can use "fadeIn 3s".
+  notes:
+  - .tip To ensure clarity and consistency, we  recommend CSS-style naming for common
+    animations, e.g., "3s linear slide-in".

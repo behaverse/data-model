@@ -18,9 +18,30 @@ items.forEach(item => categories.add(item.categories[0]));
 <dd class="listing-description">
 <%= item.description %><br />
 <% if (item.range) { %>
+::: {.callout-note collapse="false" appearance="default" icon="false"}
+## Range
 <%= item.range %>
+:::
 <% } %>
 </dd>
+<% if (item.notes) { %>
+<div class="listing-notes">
+<% for (note of item.notes) { %>
+<%
+let note_type = 'note';
+if (note.startsWith('.')) {
+    [note_type, ...rest] = note.split(' ');
+    note_type = note_type.replace('.', '').toLowerCase();
+    note = note.substring(note_type.length + 1);
+}
+%>
+
+::: {.callout-<%=note_type %> appearance="simple"}
+<%= note %>
+:::    
+<% } %>   
+</div>
+<% } %> 
 <% if (item_index < itemsInCategory.length - 1) { %>
 <hr class="glossary-divider" />
 <% } %>

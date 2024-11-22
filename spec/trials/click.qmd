@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> Click'
-abstract: "*Click Table* describes each click that was recorded during a trial."
+abstract: "Describes each click that was recorded during a trial."
 order: 3
 toc: false
 listing: 

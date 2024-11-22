@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> Trial'
-abstract: "Main trial table where each row describes a response in a trial. The information in this table should be sufficient for most analyses, but more detailed information may be available in other tables and link to this one via its keys (`trial_id` or `response_id`)."
+abstract: "Main trial table where each row describes a response in a trial."
 order: 0
 toc: false
 listing: 
