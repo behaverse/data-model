@@ -1,125 +1,160 @@
 - categories:
-  - key
+  - Key
   variable_name: option_id
-  data_type: integer
-  description: Primary key of the *Option* table.
-  range: Each row in this table has a unique `id`.
+  data_type: id
+  required: true
+  description: Primary key of the @Option table. Reference to this  identifier in
+    other tables are thus named `option_id`.
+  range: Each row in this table has a unique `id`
   notes:
   - If the same option is shown at two different times in a trial, those two instances
     will have their own row in the * Option* table, each with its own `id`.
 - categories:
-  - context
+  - Context
   variable_name: trial_id
-  data_type: foreign key
-  description: Refers to the id in the @TrialTable and indicates in which trial this
-    option was shown.
-  range: '`trial_id` in the @TrialTable for the same subject-session-activity combination.'
+  data_type: id
+  required: true
+  description: Refers to the `id` in the @Trial table and indicates in which trial
+    this option was shown.
+  range: '`trial_id` in the @Trial table for the same subject/session/activity'
 - categories:
-  - context
+  - Context
   variable_name: response_id
-  data_type: foreign key
-  description: ''
-  range: '`response_id` in the @TrialTable.'
+  data_type: id
+  required: false
+  description: Refers to the `response_id` in the @Trial table and indicates for which
+    response this option was shown.
+  range: '`response_id` in the @Trial table of the same subject/activity'
 - categories:
-  - context
+  - Context
   variable_name: index_in_trial
   data_type: index
-  description: indexing each of the options within the set of options that were available
+  required: false
+  description: Indexing each of the options within the set of options that were available
     to subjects on a given trial.
+  range: 1-based indices
+  notes:
+  - If the presented options have no specific temporal or spatial order, leave this
+    field empty or assign the same index to all options, e.g., `index_in_trial=1`.
 - categories:
-  - context
+  - Context
   variable_name: object_id
-  data_type: integer
+  data_type: string
+  required: false
   description: An option is defined by a set of features. This variable is used to
     identify each time the same features were used. For example, if the same white
-    digit "3" is used as an option in the digit span task, all those instances would
+    digit "3" is used as an option in the Digit Span task, all those instances would
     have the same `object_id` although they would have different `id`s (as they appeared
     at different times).
 - categories:
-  - when
+  - When
   variable_name: onset
   data_type: float
+  required: true
   description: Duration between the start of the trial and the moment the option was
-    displayed or activated.
-  range: in seconds
+    displayed or activated, in seconds.
+  range: In seconds
 - categories:
-  - when
+  - When
   variable_name: duration
   data_type: float
-  description: Describes for how long the option was displayed or active in seconds,
-    starting from the `onset`.
-  range: in seconds
+  required: true
+  description: How long the option was displayed or active in seconds, starting from
+    the `onset`, in seconds.
+  range: In seconds
 - categories:
-  - where
+  - Where
   variable_name: panel_id
   data_type: string
-  description: Identifier of the panel this option is displayed over.
+  required: false
+  description: Identifier of the pane this option was displayed over.
 - categories:
-  - where
+  - Where
   variable_name: x_screen
   data_type: float
+  required: false
   description: X coordinates of the option component on the screen in pixels.
+  notes:
+  - .important In BDM, the preferred position is the center of the object. However,
+    specific implementations of the tasks may use other locations such as the top-left
+    corner. If this is the case, it should be explicitly stated in the codebook.
 - categories:
-  - where
+  - Where
   variable_name: y_screen
   data_type: float
+  required: false
   description: Y coordinates of the option component on the screen in pixels.
 - categories:
-  - where
+  - Where
   variable_name: x_viewport
   data_type: float
+  required: false
   description: X coordinates of the option component on the screen expressed as a
     fraction of the screen width.
+  range: 0 to 1 (inclusive).
 - categories:
-  - where
+  - Where
   variable_name: y_viewport
   data_type: float
+  required: false
   description: 'Y coordinates of the option component on the screen expressed as a
     fraction of the screen height. '
+  range: 0 to 1 (inclusive).
 - categories:
-  - what
+  - What
   variable_name: description
   data_type: string
-  description: 'A human readable, compact description of the main aspects of the option.
+  required: true
+  description: A human readable, compact description of the main aspects of the option.
     The description for a given option depends on the task but follows a specific
-    template for a given task. Because of this, it looks like the `option_description`
-    could be parsed---however, this is not the intention; structured data will be
-    available in other tables; description is for human readability and facilitates
+    template for a given task. Because of this, it looks like the option description
+    could be parsed---however, this is not the intention; structured, parsed data
+    will be available in other fields; description is for human readability and facilitates
     the understanding of the data.
-
-    '
 - categories:
-  - what
+  - What
   variable_name: value
   data_type: float
+  required: false
   description: A numeric value associated with a particular response option; typically
-    indicating the "worth" of a response (e.g., `value` = 1 for the correct response).
+    indicating the "worth" of a response (e.g., `value=1` for the correct response).
 - categories:
-  - what
+  - What
   variable_name: source
   data_type: string
-  description: Refers to the specific generator or set the option belongs to. Options
-    that stem from the same source have the same data scheme and could thus be described
-    in a table named after `option_source` (i.e., `option_source` indicates which
-    table contains the full information about the option; e.g., "digit1to9").
+  required: true
+  description: Refers to the specific generator or set from which the option originates.
+    Options sharing the same source have the same data structure and can be thus collectively
+    described in a table named after `option_source` (e.g., "digit1to9").
+  notes:
+  - The `option_source` specifies the table or file that provides complete details
+    about the option. For instance, `option_source=digit1to9` indicates a source containing
+    information on digits 1 to 9.
 - categories:
-  - what
+  - What
   variable_name: source_type
   data_type: enum
+  required: false
   description: An option is typically created using a particular procedure/algorithm
-    ("generator") or is sampled from a particular set ("set"). This variable indicates
-    which of these two applies for the current option.
-  range: '- generator
+    or is sampled from a particular set. This variable indicates which of these two
+    applies for the current option.
+  range: '- `set`: option is sampled from a fixed set of options.
 
-    - set'
+    - `generator`: option is created using a procedure/algorithm.'
 - categories:
-  - what
+  - What
   variable_name: index_in_source
   data_type: integer
-  description: When a option is picked from a particular set (e.g., "digits1to9"),
+  required: false
+  description: When a option is picked from a particular set (e.g., `digits1to9`),
     this index refers to the index within that set.
 - categories:
-  - how
+  - How
   variable_name: animation
   data_type: string
-  description: Describes the animation that was used to show a particular option.
+  required: false
+  description: Describes the animation used to display a specific option in a human-readable
+    format. For example, "fadeIn 3s ease-in-out" indicates a 3-second fade-in animation.
+  notes:
+  - .tip To maintain clarity and consistency, BDM recommends using CSS-style naming
+    conventions for common animations (e.g., "3s linear slide-in").
