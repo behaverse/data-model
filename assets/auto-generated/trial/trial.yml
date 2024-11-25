@@ -1,43 +1,42 @@
 - categories:
-  - key
-  variable_name: response_id
+  - Identifier
+  variable_name: id
   required: true
-  data_type: integer
-  description: 'The unique response identifier, generated in temporal order (meaning
-    that a greater id refers to a response that occurred later in time). Unique within
-    each table (i.e., each row in a table has a different id value.)
-
-    '
+  data_type: id
+  description: A unique identifier assigned to responses in temporal order, meaning
+    that larger IDs correspond to more recent responses that occurred later in time.
+    This ID is unique within this table; no two rows share the same value.
   notes:
-  - This identifier is used by other tables. For example, there is a table called  Stimulus
-    that describes in greater detail the sequence of images shown during a trial,
-    their timing and visual properties. That table will refer to this id in order
-    to link those descriptions (typically multiple lines in the  Stimulus table, to
-    a unique row in the  Trial table).
+  - This identifier is used by other tables, for example @Stimulus table which describes
+    in greater detail the sequence of images shown during a trial, their timing, and
+    visual properties. That table will refer to this `id` in order to link those descriptions
+    (typically multiple lines in the  Stimulus table) to a unique row in the @Trial
+    table.
 - categories:
-  - context
+  - Context
   variable_name: study_name
   required: true
   data_type: string
-  description: 'The name of the study the participant participated in.
+  description: 'The name of the study the subjects participated in.
 
     '
 - categories:
-  - context
+  - Context
   variable_name: group_name
   required: false
   data_type: string
-  description: Participants may be assigned to different groups (where typically,
-    different groups will have different experiences within a study).
+  description: Subjects may be assigned to different groups. Typically, different
+    groups will have different experiences within a study.
 - categories:
-  - context
+  - Context
   variable_name: subject_id
   required: true
   data_type: string
-  description: The identifier of the entity (typically person) generating the responses.
-    unique in  **Subject** table.
+  description: A unique identifier assigned to the agent (typically person) generating
+    the responses. This ID tracks their participation and responses throughout the
+    study. See @Subjects table.
 - categories:
-  - context
+  - Context
   variable_name: session_id
   required: true
   data_type: integer
@@ -50,7 +49,7 @@
   - "We currently don\u2019t use session_name, session_id and session_repetition in\
     \ this table."
 - categories:
-  - context
+  - Context
   variable_name: activity_index
   required: false
   data_type: index
@@ -61,96 +60,88 @@
     repetition of the first one.
   range: 1-based index of activity within the subject-level data.
   notes:
-  - "We currently don\u2019t use session_name, session_id and session_repetition in\
-    \ this table."
+  - .tip See @StudyFlow table for more details.
 - categories:
-  - task
+  - Task
   variable_name: language
   required: false
   data_type: string
-  description: The language the task was completed in (expressed as the code within
-    the [ISO_639-1 standard](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)).
+  description: The language the task was completed in, expressed as a two-letter code
+    within the [ISO_639-1 standard](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 - categories:
-  - task
+  - Task
   variable_name: instrument_id
   required: true
   data_type: string
-  description: The unique id of the specific version of the instrument used for collecting
-    data (e.g., the name of the computer script used to run the test). Unique in the
-    list of instruments in the instruments/ folder.
-  range: unique filename of the instrument in the instruments/ folder, e.g., XCIT_BM.
+  description: The unique identifier of the instrument used for collecting data (e.g.,
+    the name of the computer script used to run the test). Unique in the @Instrument
+    table and corresponding files in the `instruments/` folder.
+  range: '`id` in the @Instrument table.'
 - categories:
-  - task
+  - Task
   variable_name: instrument_repetition
   required: false
   data_type: integer
   description: The number of times this particular instrument has already been completed
     anytime in the past by this particular subject in this study. This variable has
     a value 0 the first time an instrument is used.
+  range: 0-based
 - categories:
-  - task
+  - Task
   variable_name: timeline_id
   required: false
   data_type: string
-  description: The name of the timeline currently implemented in the **Instrument**
-    (e.g., the name of a specific version of a test the instrument supports). Timelines
-    are specific parameterization of an instrument and their identifiers are unique
-    in the **Instrument** table.
+  description: Timelines are specific parameterization of an instrument and their
+    identifiers are unique within the corresponding table for the instrument in the
+    `instruments/` folder.
 - categories:
-  - task
+  - Task
   variable_name: timeline_repetition
   required: false
   data_type: integer
   description: The number of times this particular timeline has already been completed
     anytime in the past by this particular subject in this study. This variable has
     a value 0 the first time a timeline is completed.
+  range: 0-based
 - categories:
-  - task
-  variable_name: transformer_id
-  required: true
-  data_type: integer
-  description: Refers to the specific events-to-trials data projection used to form
-    this table from raw data (i.e., the ETL pipeline); the transformer embodies the
-    definition of a trial for a particular task.
-- categories:
-  - task
+  - Task
   variable_name: multitask_type
   required: true
   data_type: enum
-  description: 'A timeline may require subjects to perform multiple tasks at the same
-    time. This variable indicates the type of multitasking required by the timeline:
+  description: Subjects may be required to perform multiple tasks at the same time.
+    This variable indicates the type of multitasking required.
+  range: '- Empty: No multitasking, i.e., single-tasking.
 
-    - none
+    - `concurrent`: There are two independent tasks that need to be completed in parallel.
 
-    - concurrent
-
-    - compound'
-  range: "- 'none':\n  description: No multitasking, i.e., single-tasking.\n  default:\
-    \ true\n- 'concurrent':\n  description: There are two independent tasks that need\
-    \ to be completed in parallel.\n- 'compound':\n  description: The task requires\
-    \ multiple successive stages or involves tasks that are dependent/coupled."
+    - `compound`: The task requires multiple successive stages or involves tasks that
+    are dependent/coupled.'
   notes:
-  - This characterization of `multitasking_type` is rudimentary and will likely evolve
-    in the future.
+  - .important If no multitasking was involved, leave this field blank.
+  - '.warning This characterization of `multitasking_type` is rudimentary and will
+    likely evolve in the future.
+
+    '
 - categories:
-  - task
+  - Task
   variable_name: task_index
   required: false
   data_type: index
-  description: when `multitask_type` is other than none, task_index refers to each
-    of the individual tasks in a block.
-  range: index of the task within a block.
+  description: when `multitask_type` is not empty, `task_index` refers to each of
+    the individual tasks. For example, for auditoy-visual dual N-back, `task_index=1`
+    is the auditory task and `task_index=2` is the visual task.
+  range: 1-based index.
 - categories:
-  - task
+  - Task
   variable_name: job_type
   required: false
   data_type: string
-  description: "The general type of operation the subject needs to perform. The job\
-    \ typically is expressed as a verb (e.g., \u201Crecall\u201D, \u201Csort\u201D\
-    ) and can be the same for different instruments (e.g., digit span test and spatial-span\
-    \ test both have a job of type \u201Crecall-forward\u201D)."
+  description: The general type of operation the subject needs to perform. The job
+    typically is expressed as a verb (e.g., "recall", "sort") and can be the same
+    for different instruments (e.g., Digit Span test and Spatial Span test both have
+    a job of type "recall-forward").
 - categories:
-  - task
+  - Task
   variable_name: job_description
   required: false
   data_type: string
@@ -159,107 +150,102 @@
     \ uses only verbs and adjectives, the `job_description` also contains nouns (e.g.,\
     \ \u201Crecall-digits-forward\u201D, \u201Crecall-letters-backward\u201D)."
 - categories:
-  - experimental design
+  - Experimental Design
   variable_name: job_repeat
   required: false
   data_type: enum
-  description: "Whether this trial\u2019s job has not been seen before in this timeline.\n\
-    The possible values for job_repeat are:"
-  range: '"new": "The job has never been seen before in this timeline."
+  description: Whether this trial's job has not been seen before in this timeline
+    (i.e., specific version of the instrument).
+  range: '- `new`: The job has never been seen before in this timeline.
 
-    "repeat": "The job is the same as the previous trial."
+    - `repeat`: The job is the same as the previous trial.
 
-    "switch": "The job is different from the previous trial but has been seen prior
-    in the timeline."'
+    - `switch`: The job is different from the previous trial but has been seen prior
+    in the timeline.'
 - categories:
-  - task
-  variable_name: block_type
-  required: false
-  data_type: enum
-  description: 'A block can have one of the following types:
-
-    - tutorial
-
-    - practice
-
-    - test
-
-    - instruction'
-  range: "tutorial':\n  description: Typically a simplified version of the test designed\
-    \ to teach participants how the test works.\n'practice':\n  description: Typically\
-    \ identical to the test blocks but are used to get participants accustomed to\
-    \ the task in a no-stakes environment.\n'test':\n  description: Test blocks form\
-    \ the main test.\n'instruction':\n  description: Instruction blocks present participants\
-    \ the instructions for a given test as text and possibly images."
+  - Task
+  variable_name: block_index
+  required: true
+  data_type: index
+  description: Refers to the order in which this block has been experienced by the
+    subject. When there are multiple blocks, this variable indicates the order of
+    each block (i.e., the first block completed by the subject has `block_index=1`,
+    the second block has `block_index=2`, even if the second block is an exact repetition
+    of the first one).
+  range: 1-based index of the block within the timeline
+  notes:
+  - .important In questionnaires, `block_index` may refer to distinct pages where
+    each page may contain multiple questions.
 - categories:
-  - task
+  - Task
   variable_name: block_name
   required: false
   data_type: string
   description: "The name of a particular block in a timeline. If the same block is\
-    \ completed twice in a row, they would have different block_index values (1 and\
-    \ 2, respectively) but they would have the same block_name (e.g., \u201CNB_timeline1_block1\u201D\
-    ). Unique within the **Instrument** table."
+    \ completed twice in a row, they would have different `block_index` values (1\
+    \ and 2, respectively) but they would have the same `block_name` (e.g., \u201C\
+    NB_timeline1_block1\u201D). More details about the `block_name` is available in\
+    \ the @Instrument table."
 - categories:
-  - task
-  variable_name: block_index
-  required: false
-  data_type: index
-  description: 'Refers to the order in which this block has been experienced by the
-    subject. When there are multiple blocks, this variable indicates the order of
-    each block (i.e., the first block completed by the subject has block_index = 1,
-    the second block has block_index = 2; even if the second block is an exact repetition
-    of the first one.
-
-    In questionnaires, block_index may refer to distinct pages where each page may
-    contain multiple questions.'
-  range: index of block within a timeline.
-- categories:
-  - task
-  variable_name: episode_index
-  required: false
-  data_type: index
-  description: Refers to a particular time interval, in chronological order, of a
-    subject's participation in a study. Episodes are temporally distinct (no overlap)
-    and discrete. The binning of the time into successive episodes depends on the
-    task; it is mostly used and necessary to group data in cases where two distinct
-    trials occurred at the same time (e.g., dual N-back).
-  range: index of episode within a timeline.
-  notes:
-  - "Note that in some cases two different trials may use data from partially different\
-    \ but overlapping episodes. For example, consider the 2-back task with the stimulus\
-    \ sequence A-X-F-X. The first trial involves the stimuli A-X-F and the second\
-    \ trial the sequence X-F-X; these two trials refer in fact to the same instances\
-    \ of stimuli X and F. To clarify that these two trials use overlapping episodes\
-    \ we specify episode_index = \u201C1;2;3\u201D in the first case and episode_index\
-    \ = \u201C2;3;4\u201D in the second case."
-  - "NOTE 2: Also, note that in cases where trials make use of data from multiple\
-    \ stimulus events without there being an overlap of such events across trials\
-    \ (for example, the AX-CPT task where a trial may be defined for example as the\
-    \ letters A or B followed by the letters X or Y), there is no need to list multiple\
-    \ episode indices within a trial\u2014we nevertheless recommend listing them for\
-    \ consistency."
-- categories:
-  - task
-  variable_name: trial_index
+  - Task
+  variable_name: block_type
   required: true
-  data_type: index
-  description: "The index of the trial inside a block, starting from 1 and \u201C\
-    counting\u201D separately for each of the tasks within a block (e.g., if there\
-    \ are two \u201Cstreams\u201D within a block as in the dual N-back, this variable\
-    \ indexes trials separately for each stream)."
-  range: index of trial within task and block.
+  data_type: enum
+  description: Specifies the experimental role of the block (e.g., tutorial, practice,
+    test, instruction).
+  range: '- `tutorial`: A simplified version of the test designed to teach participants
+    how the test works.
+
+    - `practice`: Typically identical to the main test blocks but are used to get
+    subjects accustomed to the task in a no-stakes environment.
+
+    - `test`: Primary blocks used to measure the desired behaviors.
+
+    - `instruction`: Presents written and/or visual instructions to the subject.'
 - categories:
-  - task
+  - Task
+  variable_name: projection_name
+  required: true
+  data_type: string
+  description: 'Refers to the specific events-to-trials function used to construct
+    rows of this table from raw events. The projection embodies the definition of
+    a trial for a particular task.
+
+
+    The projection name refers to a code in the format of a function `f(trial_state,
+    event) => trial_state`, where `event` is the event occured during the performance
+    of the task, and `trial_state` is the data stored for the trial. The final state
+    of a trial is thus the result of applying a sequence of projections such that
+    `trial = f(f(f(initial()), e), e), e)`.'
+  notes:
+  - '- The projection encapsulates the domain rules defining a "trial" for a given
+    task. It defines what constitutes a "trial".
+
+    '
+- categories:
+  - Task
+  variable_name: trial_id
+  required: true
+  data_type: id
+  description: Sequential identifier representing the application count of the projection
+    rule to the events occured. It increases with each re-computation of the trial
+    based on updated or newly received events.
+  range: Preferably 1-based integer index.
+  notes:
+  - .tip This field emphasizes order of trials and alignment with projection-based
+    definition of trials. A more complete name would be `projection_index` or `pojected_trial_index`.
+    For brevity, BDM uses `trial_id` instead.
+- categories:
+  - Task
   variable_name: trial_start_datetime
   required: true
   data_type: datetime
-  description: ''
+  description: The the first event of the trial occured.
 - categories:
-  - task
+  - Task
   variable_name: trial_seed
   required: false
-  data_type: interger|string
+  data_type: integer | string
   description: Random seed used in the trial (if any).
 - categories:
   - stimulus
@@ -270,7 +256,8 @@
     an instrument (counting one stimulus count per response). stimulus_index may for
     instance be used to refer to the nth question asked within a questionnaire.
   notes:
-  - 'Use ;-separated indices if more then one stimulus were presented '
+  - Use semicolon-separated indices if more then one stimulus were presented, e.g.,
+    `1;2;3`.
 - categories:
   - stimulus
   variable_name: stimulus_id
@@ -285,15 +272,11 @@
   variable_name: stimulus_type
   required: true
   data_type: enum
-  description: 'We distinguish the following stimulus types:
+  description: 'BDM distinguishes the following stimulus types: messages and questions'
+  range: '- `message`: The stimulus is a message shown to subjects (e.g., task instructions).
 
-    - message
-
-    - question'
-  range: "- \"message\",\n    \"description\": \"The stimulus is a message shown to\
-    \ subjects (e.g., task instructions).\",\n- question\": \"The stimulus may consist\
-    \ of text, images and/or sounds; they require subjects to make a decision based\
-    \ on the content of the stimulus.\""
+    - `question`: The stimulus may consist of text, images and/or sounds; they require
+    subjects to make a decision based on the content of the stimulus.'
 - categories:
   - stimulus
   variable_name: stimulus_panel_count
@@ -308,14 +291,14 @@
   required: false
   data_type: enum
   description: 'We distinguish three stimulus structures: unitary, set, sequence'
-  range: '- "unitary": "Only one stimulus is shown, alone.",
+  range: '- `unitary`: Only one stimulus is shown, alone.
 
-    - "set": "Many stimuli are shown, either at the same time or not; order does not
-    matter."
+    - `set`: Many stimuli are shown, either at the same time or not; order does not
+    matter.
 
-    - "sequence": "Multiple stimuli are shown, either at the same time or not; order
+    - `sequence`: Multiple stimuli are shown, either at the same time or not; order
     does matter (order may be indicated by the order of presentation or by a digit
-    for example)."'
+    for example).'
 - categories:
   - stimulus
   variable_name: stimulus_structure_source_type
@@ -324,10 +307,9 @@
   description: 'Indicates the type of method used to generate the stimulus_structure
     (this is relevant when a trial displays a sequence of or set of stimuli): none,
     preset, generator'
-  range: "\"none\",\n    \"description\": \"when stimulus_structure == unitary.\"\
-    ,\n\"preset\",\n    \"description\": \"stimulus_structure is hard coded in a file.\"\
-    \n\"generator\": \"a procedure was used to generate the stimulus_structure.\"\n\
-    \ "
+  range: "- `none`: when stimulus_structure == unitary.\",\n- `preset`: The structure\
+    \ of stimuli is hard coded in a file.\n- `generator`: A procedure was used to\
+    \ generate the stimulus_structure.\n "
 - categories:
   - stimulus
   variable_name: stimulus_structure_source
@@ -426,20 +408,27 @@
   data_type: enum
   description: 'A stimulus may play different roles within a trial. Below is a list
     of some possible roles:'
-  range: "\"target\": \"A stimulus the subject must process and which should trigger\
-    \ the completion of the response (e.g., classify, reach, memorize) if the subject\
-    \ is doing the task as intended. Note that in some cases (e.g., in a go/no-go\
-    \ task) the correct response to a stimulus is to NOT click the button. In this\
-    \ case, the stimulus that triggered the decision to NOT click the button is still\
-    \ a *target*.\"\n\"non_target\": \"A stimulus the subject must process but which\
-    \ does not trigger the completion of the response (e.g., the first two stimuli\
-    \ in a 2-back test).\"\n\"distractor\": \"A stimulus the subject should not process\
-    \ at all (i.e., ignore) and which is unrelated to the correct execution of the\
-    \ task.\"\n\"location_cue\": \"A stimulus giving a spatial location information\
-    \ that subjects could use to improve their performance.\"\n \"job_specifier\"\
-    : \"A stimulus specifying which job the subject should perform.\"\n\"stop_signal\"\
-    : \"A stimulus signaling the participant he should abort his current action.\"\
-    \n\"probe\": \"A stimulus indicating about which stimulus to respond.\""
+  range: '- "target": "A stimulus the subject must process and which should trigger
+    the completion of the response (e.g., classify, reach, memorize) if the subject
+    is doing the task as intended. Note that in some cases (e.g., in a go/no-go task)
+    the correct response to a stimulus is to NOT click the button. In this case, the
+    stimulus that triggered the decision to NOT click the button is still a *target*."
+
+    - "non_target": "A stimulus the subject must process but which does not trigger
+    the completion of the response (e.g., the first two stimuli in a 2-back test)."
+
+    - "distractor": "A stimulus the subject should not process at all (i.e., ignore)
+    and which is unrelated to the correct execution of the task."
+
+    - "location_cue": "A stimulus giving a spatial location information that subjects
+    could use to improve their performance."
+
+    - "job_specifier": "A stimulus specifying which job the subject should perform."
+
+    - "stop_signal": "A stimulus signaling the participant he should abort his current
+    action."
+
+    - "probe": "A stimulus indicating about which stimulus to respond."'
 - categories:
   - option
   variable_name: option_source_type
@@ -481,14 +470,12 @@
   required: false
   data_type: enum
   description: 'Describes the type of data this option entails. Possible values include:'
-  range: "- \"name\": \"nominal\",\n  \"description\": \"Set of unordered labels (e.g.,\
-    \ {\u201CLuxembourg\u201D, \u201CFrance\u201D, \u201CGermany\u201D}).\"\n\n  \
-    \ - \"name\": \"ordinal\",\n    \"description\": \"Ordered values without clear\
-    \ distance (e.g., {\u201Ca lot\u201D, \u201Ca bit\u201D, \u201Cnot at all\u201D\
-    }).\"\n\n  -  \"name\": \"interval\",\n    \"description\": \"Ordered values with\
-    \ clear distances but no absolute zero (e.g., 10 versus 20 degrees Celsius).\"\
-    \n\n  -  \"name\": \"ratio\",\n    \"description\": \"Values with clear distance\
-    \ metrics and absolute zero (e.g., length in cm).\"\n"
+  range: "- \"nominal\": Set of unordered labels (e.g., {\u201CLuxembourg\u201D, \u201C\
+    France\u201D, \u201CGermany\u201D}).\n- \"ordinal\": \"Ordered values without\
+    \ clear distance (e.g., {\u201Ca lot\u201D, \u201Ca bit\u201D, \u201Cnot at all\u201D\
+    }).\n- \"interval\": Ordered values with clear distances but no absolute zero\
+    \ (e.g., 10 versus 20 degrees Celsius).\n- \"ratio\": Values with clear distance\
+    \ metrics and absolute zero (e.g., length in cm).\n"
 - categories:
   - option
   variable_name: measurement_type
@@ -497,13 +484,12 @@
   description: 'Describes the type of measurement implied by Option which in turn
     has implications on how that data should be processed during analysis; takes a
     value in:'
-  range: "\"nominal\",\n    \"description\": \"Set of unordered labels (e.g., {\u201C\
-    Luxembourg\u201D, \u201CFrance\u201D, \u201CGermany\u201D}).\"\n\"ordinal\",\n\
-    \    \"description\": \"Ordered values without clear distance (e.g., {\u201Ca\
-    \ lot\u201D, \u201Ca bit\u201D, \u201Cnot at all\u201D}).\"\n\"interval\",\n \
-    \   \"description\": \"Ordered values with clear distances but no absolute zero\
-    \ (e.g., 10 versus 20 degrees Celsius).\"\n\"ratio\",\n    \"description\": \"\
-    Values with clear distance metrics and absolute zero (e.g., length in cm).\""
+  range: "- \"nominal\": Set of unordered labels (e.g., {\u201CLuxembourg\u201D, \u201C\
+    France\u201D, \u201CGermany\u201D}).\n- \"ordinal\": \"Ordered values without\
+    \ clear distance (e.g., {\u201Ca lot\u201D, \u201Ca bit\u201D, \u201Cnot at all\u201D\
+    }).\n- \"interval\": Ordered values with clear distances but no absolute zero\
+    \ (e.g., 10 versus 20 degrees Celsius).\n- \"ratio\": Values with clear distance\
+    \ metrics and absolute zero (e.g., length in cm).\n"
 - categories:
   - input
   variable_name: input_interface_type
@@ -511,11 +497,17 @@
   data_type: enum
   description: 'Refers to the type of interface subjects used to input actions. Possible
     values include (non-exhaustive):'
-  range: "\"keyboard\",\n    \"description\": \"A keyboard is displayed on the screen.\"\
-    \n\"buttons\",\n    \"description\": \"Dedicated buttons on the screen.\"\n\"\
-    stimulus-button\",\n    \"description\": \"Stimuli serves as buttons.\"\n\"text-field\"\
-    ,\n    \"description\": \"A text field is displayed on the screen.\"\n\"slider\"\
-    ,\n    \"description\": \"A slider is displayed on the screen.\"\n"
+  range: '- `keyboard`: A keyboard is displayed on the screen.
+
+    - `buttons`: Dedicated buttons on the screen.
+
+    - `stimulus-button`: Stimuli serves as buttons.
+
+    - `text-field`: A text field is displayed on the screen.
+
+    - `slider`: A slider is displayed on the screen.
+
+    '
 - categories:
   - input
   variable_name: input_action_type
@@ -523,10 +515,19 @@
   data_type: enum
   description: 'Refers to the type of action the subject performs to give a response.
     Possible values include (non-exhaustive):'
-  range: "\"mouse-click\",\n    \"description\": \"\"\n\"mouse-release\",\n    \"\
-    description\": \"\"\n\"key-press\",\n    \"description\": \"\"\n\"key-release\"\
-    ,\n    \"description\": \"\"\n\"mouse-drag\",\n    \"description\": \"\"\n\"touch\"\
-    ,\n    \"description\": \"\"\n\"swipe\",\n    \"description\": \"\"\n"
+  range: '- "mouse-click"
+
+    - "mouse-release"
+
+    - "key-press"
+
+    - "key-release"
+
+    - "mouse-drag"
+
+    - "touch"
+
+    - "swipe"'
   notes:
   - The type of input_action determines the structure of detailed response data (i.e.,
     mouse-click data is different from key-press data).
@@ -570,14 +571,13 @@
   data_type: string
   description: 'The structure of the response required by the subject; can take values
     in:'
-  range: "{\n  \"1\": {\n    \"name\": \"unitary\",\n    \"description\": \"The subject\
-    \ provides a single input (e.g., chooses option *same*).\"\n  },\n  \"2\": {\n\
-    \    \"name\": \"set\",\n    \"description\": \"The subject provides a set of\
-    \ information, and the order does not matter (e.g., list words that start with\
-    \ the letter *A*).\"\n  },\n    \"3\": {\n    \"name\": \"sequence\",\n    \"\
-    description\": \"The subject provides a sequence of information, and the order\
-    \ matters (e.g., a sequence of memorized digits in their order of appearance).\"\
-    \n  }\n}"
+  range: '- `unitary`: The subject provides a single input (e.g., chooses option *same*).
+
+    - `set`: The subject provides a set of information, and the order does not matter
+    (e.g., list words that start with the letter *A*).
+
+    - `sequence`: The subject provides a sequence of information, and the order matters
+    (e.g., a sequence of memorized digits in their order of appearance).'
   notes:
   - Note that the distinction between set and sequence refers to the importance of
     order information to evaluate if the response is correct or not; a response with
@@ -721,13 +721,19 @@
     \ to \u201Ccommission error\u201D. Whenever possible use the more specific terms\
     \ (i.e., always use \u201Chit\u201D rather than \u201Ccorrect\u201D when applicable).\n\
     Here are few evaluation labels that are commonly used:"
-  range: "\"correct\",\n    \"description\": \"The response is correct.\"\n \"error\"\
-    ,\n    \"description\": \"The response is incorrect.\"\n\"hit\",\n    \"description\"\
-    : \"The stimulus was *present* and the subject correctly responded *present*.\"\
-    \n\"miss\": \"The stimulus was *present* and the subject correctly responded *absent*.\"\
-    \n\"fa\",\n    \"description\": \"The stimulus was *absent* and the subject correctly\
-    \ responded *present*.\"\n\"cr\",\n    \"description\": \"The stimulus was *absent*\
-    \ and the subject correctly responded *absent*.\"\n"
+  range: '- `correct`: The response is correct.
+
+    - `error`: The response is incorrect.
+
+    - `hit`: The stimulus was *present* and the subject correctly responded *present*.
+
+    - `miss`: The stimulus was *present* and the subject correctly responded *absent*.
+
+    - `fa`: The stimulus was *absent* and the subject correctly responded *present*.
+
+    - `cr`: The stimulus was *absent* and the subject correctly responded *absent*.
+
+    '
 - categories:
   - feedback
   variable_name: feedback_description
@@ -740,17 +746,20 @@
     the sequence of feedbacks).
 
     The possible values for feedback are:'
-  range: "{\n  \"1\": {\n    \"name\": \"none\",\n    \"description\": \"No feedback\
-    \ was shown.\"\n  },\n  \"2\": {\n    \"name\": \"expected_response\",\n    \"\
-    description\": \"Feedback indicated what the correct response would have been.\"\
-    \n  },\n    \"3\": {\n    \"name\": \"explanation\",\n    \"description\": \"\
-    Feedback explains *why* a certain option is the correct one.\"\n  },\n    \"4\"\
-    : {\n    \"name\": \"correctness_on_option\",\n    \"description\": \"Feedback\
-    \ indicates (on the option itself) if the option chosen by the participant was\
-    \ the correct one (e.g., in green), or not (e.g., in red).\"\n  },\n    \"5\"\
-    : {\n    \"name\": \"correctness_on_screen\",\n    \"description\": \"Feedback\
-    \ displayed on the screen center indicates if the response to the current trial\
-    \ was correct or not (e.g., using a green check or a red cross).\"\n  }\n}"
+  range: '- `none`: No feedback was shown.
+
+    - `expected_response`: Feedback indicated what the correct response would have
+    been.
+
+    - `explanation`: Feedback explains *why* a certain option is the correct one.
+
+    - `correctness_on_option`: "Feedback indicates (on the option itself) if the option
+    chosen by the participant was the correct one (e.g., in green), or not (e.g.,
+    in red).
+
+    - `correctness_on_screen`: "Feedback displayed on the screen center indicates
+    if the response to the current trial was correct or not (e.g., using a green check
+    or a red cross).'
   notes:
   - "This list is not exhaustive and characterizing feedback in the future will involve\
     \ more variables (e.g., separating the type of information shown (e.g., correctness)\
@@ -758,58 +767,76 @@
   - "NOTE2: We don\u2019t consider here as \u201Cfeedback\u201D, the kind of feedback\
     \ that is used in UI to confirm to users that a button has indeed been clicked."
 - categories:
-  - outcome
+  - Outcome
   variable_name: outcome_description
   required: false
   data_type: string
   description: Describes the observable consequences of the subject's response (e.g.,
     "the opened box is empty").
 - categories:
-  - outcome
+  - Outcome
   variable_name: outcome_numeric
   required: false
   data_type: float
   description: A numeric value describing the observable consequences of the subject's
     response (e.g., +3 points).
 - categories:
-  - accessory
+  - Accessory
   variable_name: additional_measures
   required: false
   data_type: string
   description: 'Indicates whether additional measures have been recorded during this
     trial and if so what kind of measures they are. Possible values include (non-exhaustive):'
-  range: "\"mouse_trajectories\",\n    \"description\": \"\"\n\"fmri\",\n    \"description\"\
-    : \"\"\n\"eye_tracking\",\n    \"description\": \"\"\n\"heart_rate\",\n    \"\
-    description\": \"\""
+  range: '- `mouse_trajectories`
+
+    - `fmri`
+
+    - `eye_tracking`
+
+    - `heart_rate`'
+  notes:
+  - .important Leave this field empty if no additional measures were recorded for
+    this specific response.
 - categories:
-  - adaptive
+  - Adaptive
   variable_name: adaptive_method_name
   required: false
   data_type: enum
-  description: ''
+  description: Specifies the adaptive procedure used to modify instrument parameters
+    in response to subject performance (e.g., `staircase`).
 - categories:
-  - adaptive
+  - Adaptive
   variable_name: adaptive_method_config
   required: false
   data_type: string
-  description: ''
+  description: More detailed configuration for the adaptive method, including initial
+    values, step sizes, and termination criteria.
+  notes:
+  - .note For example, `1up-2down`. The 1-up, 2-down is a common adaptive staircase
+    procedure used to estimate a subject's threshold or sensitivity. After a correct
+    response, the difficulty level is increased, and after two incorrect responses,
+    the difficulty level is decreased.
 - categories:
-  - adaptive
+  - Adaptive
   variable_name: adaptive_parameter_name
   required: false
   data_type: string
-  description: ''
+  description: Specific instrument parameter that is dynamically modified based on
+    the subject's performance.
 - categories:
-  - adaptive
+  - Adaptive
   variable_name: adaptive_parameter_value
   required: false
   data_type: Any
-  description: ''
+  description: The specific value of the instrument parameter that was used for this
+    trial. This value is updated as the adaptive algorithm adjusts the parameter based
+    on the subject's responses.
   range: Data type depends on the type of the adaptive parameter, as defined in `adaptive_parameter_name`)
 - categories:
-  - adaptive
+  - Adaptive
   variable_name: adaptive_parameter_value_next
   required: false
   data_type: Any
-  description: ''
+  description: The next value of the adaptive parameter that will be used in the subsequent
+    trial, as determined by the adaptive algorithm.
   range: Data type depends on the type of the adaptive parameter, as defined in `adaptive_parameter_name`)
