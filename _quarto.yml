@@ -66,7 +66,7 @@ website:
           contents:
               - href: spec/index.qmd
                 text: Overview
-              - section: "General"
+              - section: General
                 href: spec/general/index.qmd
                 contents:
                   - href: spec/general/index.qmd
@@ -77,7 +77,12 @@ website:
                   - spec/general/studyflow.qmd
                   - spec/general/instructions.qmd
                   - spec/general/codebook.qmd
-              - section: "Trial Tables"
+              - section: "<i class='bi bi-0-square'></i> Events <i class='bi bi-exclamation-circle-fill float-end text-muted'></i>"
+                href: spec/events-overview.qmd
+                contents:
+                  - href: spec/events-overview.qmd
+                    text: '<i class="bi bi-grid"></i> Overview'
+              - section: "<i class='bi bi-1-square'></i> Trials <i class='bi bi-check-circle-fill float-end text-success'></i>"
                 href: spec/trials-overview.qmd
                 contents:
                   - href: spec/trials-overview.qmd
@@ -89,13 +94,19 @@ website:
                   - spec/trials/stimulus-component.qmd
                   - spec/trials/option-component.qmd
                   - spec/trials/instrument.qmd
-              - section: "Activity-specific"
-                href: spec/activity-specific/index.qmd
+                  - section: "Activity-specific"
+                    href: spec/activity-specific/index.qmd
+                    contents:
+                      - href: spec/activity-specific/index.qmd
+                        text: Overview
+                      - spec/activity-specific/cognitive-tests.qmd
+                      - spec/activity-specific/questionnaires.qmd
+              - section: "<i class='bi bi-2-square'></i> Summary <i class='bi bi-exclamation-circle-fill float-end text-muted'></i>"
                 contents:
-                  - href: spec/activity-specific/index.qmd
-                    text: Overview
-                  - spec/activity-specific/cognitive-tests.qmd
-                  - spec/activity-specific/questionnaires.qmd
+                  - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
+              - section: "<i class='bi bi-3-square'></i> Models <i class='bi bi-exclamation-circle-fill float-end text-muted'></i>"
+                contents:
+                  - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
     - id: principles
       contents:
         - section: "Common principles"

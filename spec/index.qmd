@@ -3,4 +3,19 @@ title: Specification
 sidebar: spec
 ---
 
-Behaverse data model comprises a dataset structure and a set of tables that are designed to capture the information that is relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy, following the principles outlined in [Tidy Data paper] and to capture a wide variety of behavioral experiments.
+Behaverse Data Model (BDM) specifies dataset structure and a set of tables that are designed to capture the information relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy, following the principles outlined in [Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf) paper and to capture a wide variety of behavioral experiments.
+
+Specifically, the BDM defines the following levels of data:
+
+
+<i class="bi bdm-level0-data"></i> Events data
+: The raw data that are collected during the experiment. They are the most detailed data and are typically sufficient for reproducing the original experiment.
+
+[**<i class="bi bi-1-square-fill"></i></i> Trials data**](trials-overview.qmd)
+: The trials data that are derived from the events. They are task-specific and typically designed to capture the main features of the scientific experiment.
+
+<i class="bi bi-2-square"></i> Summary data
+: The summary data that are derived from the trials. They generally address the research questions.
+
+<i class="bi bi-3-square"></i> Models
+: The model parameters that are derived from the trial or summary data. They are used for downstream data analysis, publication, or visualization.
