@@ -51,10 +51,6 @@ hr.glossary-divider
   border-top-style: dashed;
 }
 
-.sidebar-data-level-badge {
-  vertical-align: text-bottom;
-}
-
 .bi.bdm-L0-data::before {
   content: url('../img/L0.svg') !important
 }
