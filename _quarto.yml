@@ -14,6 +14,7 @@ website:
   title: Behaverse Data Model
   site-url: "https://behaverse.org/data-model"
   google-analytics: "G-K2NP7Q9KGZ"
+  back-to-top-navigation: true
   search: 
     location: navbar
     type: textbox
@@ -32,6 +33,7 @@ website:
     position: below-navbar 
 
   navbar:
+    pinned: true
     logo: assets/img/behaverse_data_logo.png
     left:
       - get-started/index.qmd
@@ -59,7 +61,9 @@ website:
 
   sidebar:
     - id: spec
-      style: "docked"
+      type: dark
+      style: floating
+      # style: floating
       contents:
         - section: "Specification"
           href: spec/index.qmd
@@ -77,12 +81,12 @@ website:
                   - spec/general/studyflow.qmd
                   - spec/general/instructions.qmd
                   - spec/general/codebook.qmd
-              - section: "<i class='bi bdm-L0-data float-end'></i> Events Data"
+              - section: "<i class='bi bdm-L0-data'></i> Events"
                 href: spec/events-overview.qmd
                 contents:
                   - href: spec/events-overview.qmd
                     text: '<i class="bi bi-grid"></i> Overview'
-              - section: "<i class='bi bdm-L1-data float-end'></i> Trials Data"
+              - section: "<i class='bi bdm-L1-data'></i> Trials"
                 href: spec/trials-overview.qmd
                 contents:
                   - href: spec/trials-overview.qmd
@@ -101,10 +105,7 @@ website:
                         text: Overview
                       - spec/activity-specific/cognitive-tests.qmd
                       - spec/activity-specific/questionnaires.qmd
-              - section: "<i class='bi bdm-L2-data float-end'></i> Summary Data"
-                contents:
-                  - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
-              - section: "<i class='bi bdm-L3-data float-end'></i> Models"
+              - section: "<i class='bi bdm-L2-data'></i> Models"
                 contents:
                   - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
     - id: principles
@@ -139,8 +140,8 @@ website:
 
 format:
   html:
-    title-block-banner: true
-    title-block-style: manuscript
+    title-block-banner: false
+    title-block-style: plain
     abstract-title: " "
     theme:
       light: cosmo

@@ -6,22 +6,40 @@ body {
     font-family: 'system-ui','Roboto', sans-serif;
 }
 
+.title {
+  font-weight: bold;
+}
+
+.quarto-title-breadcrumbs {
+  padding-bottom: .5em;
+}
+
 .navbar-logo {
     max-height: 36px;
 }
 
-.quarto-title-banner h1, h1, h2, h3 {
-    font-family: 'system-ui','Roboto', sans-serif;
+@media(min-width: 992px) {
+  .navbar-nav {
+    align-items: center;
+  }
 }
 
-hr.glossary-divider
-{
+hr.glossary-divider {
   width: 50%;
   margin-left: 0%;
   margin-bottom: 25px;
   height: 1px;
   border: none;
   background: linear-gradient(to right, gray, transparent);
+}
+
+hr.title-divider {
+  width: 100%;
+  margin-left: 0%;
+  margin-bottom: 25px;
+  height: 2px;
+  border: none;
+  background: linear-gradient(to right, lightgray, transparent);
 }
 
 .glossary-listing .glossary-category-heading {
@@ -39,7 +57,8 @@ hr.glossary-divider
   min-width: 6em;
 }
 
-.glossary-item-name code {
+.glossary-item-name code,
+.table-variable_name code {
   background-color: transparent;
 }
 
