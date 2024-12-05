@@ -3,27 +3,31 @@ title: Data
 sidebar: principles
 ---
 
+# Common terms
+
 Data can be described using terms that indicate how it has been "collected", "stored", "organized", or "processed". As data is the core of BDM, it is worth describing such terms quickly to make explicit what we mean when we use them.
 
-## Level of Processing: Raw vs. Derived
-:   Data that has not been processed at all is termed *raw data*. Data that is computed from other data, for example summary data, is called *derived data*. For reproducible research we want to share raw data with data analysis codes that allow others to recompute all the analyses within a research project from the raw data, rather than only sharing the derived data.
+## **Process**: Raw vs. Derived
+Data that has not been processed is termed **raw data**. And data that is computed from other data, for example summary statistics, is called **derived data**. For reproducible research, it is essential to share raw data along with the analysis code. This allows others to replicate all analyses within a research project from the raw data, rather than relying only on derived data.
 
-## Format: Native vs. Tidy
-:   Different systems may record data in a variety of forms (e.g., structured, unstructured) and file formats (e.g., CSV, JSON, MAT); this is data in their "native" format. "Tidy" data (similar to the long-format data) is one that is organized in tabular form where each row is an observational record and each column is a variable or property of that record.
+## **Format**: Native vs. Tidy
+Different systems may record data in a variety of forms (e.g., structured, unstructured) and file formats (e.g., CSV, JSON, MAT); this is data in its **native**, and commonly wide, format. **Tidy** data is organized in long-format table where each row is an observational record and each column is a variable or property of that record. See [Tidy Data paper](https://vita.had.co.nz/papers/tidy-data.pdf) for more information. BDM recommends that data be stored in a *tidy* format.
 
-### Storage: Data Lake vs. Warehouse vs. Lakehouse
-: A ["data lake"](https://martinfowler.com/bliki/DataLake.html) refers to an unstructured collection of data, typically from many different sources. On the one hand, the data lake can be seen as maximally flexible (accepting all sorts of data) holding the potential for limitless data analysis enterprises; on the other, the data lake can be seen as a chaotic data dump or data swamp. A "data warehouse" organizes the incoming data in a consistent way (schema-on-write) before storing or accesing it. Data from the data warehouse can (more) readily be used for data analysis; data from data lakes require significant background knowledge and work to be processed.
+## **Storage**: Datalake vs. Warehouse vs. Lakehouse
+A [**datalake**](https://martinfowler.com/bliki/DataLake.html) refers to an unstructured collection of data, typically from many different sources. On the one hand, the *data lake* can be seen as maximally flexible (accepting all sorts of data including tables in different formats, images, texts) and holding the potential for limitless data analysis; on the other hand, it can be seen as a chaotic data dump or swamp.
 
-There is however a new acrchitecture that combines the best of both worlds: "data lakehouse". Data lakehouse benefits from the flexibility of data lakes and provides an intermediate semi-structure language (schema-on-read) that provides quick and easy access to the data in real-time.
+A **data warehouse** organizes the incoming data in a consistent way (schema-on-write) before storing or querying it. In most cases, data from warehouses can be readily used for downstream analysis. Data from data lakes, however, require significant background knowledge and effort to be processed.
+
+There is, however, a new architecture that combines the best of both worlds: the ***data lakehouse***. A *data lakehouse* benefits from the flexibility of data lakes and provides an intermediate semi-structured language (along with schema-on-read) that provides quick and flexible access to the data in real-time.
 
 :::{.callout}
-> The term ["data mart"](https://en.wikipedia.org/wiki/Data_mart) is sometimes used to refer to a subset (or a view) of the data warehouse that is optimized for specific data use and users.
+The term [**data mart**](https://en.wikipedia.org/wiki/Data_mart) is sometimes used to refer to a subset or a view of the data warehouse that is optimized for specific data use and users.
 :::
 
-## Database vs. Dataset
-: A ["database"](https://en.wikipedia.org/wiki/Database) usually refers to a collection of data that is managed a database management system (DBMS); database typically implies some form of interaction between the data and end users who read or write data from or into the database.
+## **Organize**: Database vs. Dataset
+A [**database**](https://en.wikipedia.org/wiki/Database) usually refers to a collection of data that is managed by a database management system (DBMS). A database typically implies some form of interaction between the data and the end users who read/write data from or into the database.
 
-A ["dataset"](https://en.wikipedia.org/wiki/Data_set) also refers to a collection of data but while a database is a "living" entity, a dataset is typically a static resource which can be downloaded and shared as a whole (e.g., the PISA 2012 dataset). A dataset can be defined by a data collection campaign (e.g, all the data collected within a the research project) or a data analysis campaign (e.g, a dataset created from a larger medical database that focuses specifically on mental health issues during the COVD period).
+A [**dataset**](https://en.wikipedia.org/wiki/Data_set) also refers to a collection of data, but while a database is a "living" entity, a dataset is typically a static resource that can be downloaded and shared as a whole (e.g., the [PISA 2012 dataset](https://www.oecd.org/en/data/datasets/pisa-2012-database.html)). A dataset can be defined by a data collection campaign (e.g., all the data collected within a research project) or a data analysis campaign (e.g., a dataset created from a larger medical database that focuses specifically on mental health issues during the COVID pandemic).
 
 # Confusing terms
 
@@ -39,8 +43,8 @@ In general, we believe that the following operations may be performed on origina
 - removing duplicates
 - joining or splitting tables
 
-# Which data to store? Which data to share?
-It is typically the case that more data is stored than is shared. For example, researchers may store participants contact information or specific parameters of the hardware being used. The question then arises of what information should be collected in the first place and what subset of that data should be shared and whether or not the native-format data should be sent along with the tidy data extracted from that data.
+# Which data to store and which to share?
+It is typically the case that more data is stored than shared. For example, researchers may store participants' contact information or specific parameters of the hardware being used. The question then arises: what information should be collected initially, what subset of that data should be shared, and whether the native-format data should be sent along with the tidy data extracted from it.
 
 Regarding what data to store, the answer depends on the purpose of the study. In any case, participants need to be informed about what data is being collected and the data collection must follow relevant regulations. It is generally well advised to be parsimonious regarding which personal data to collect (https://martinfowler.com/bliki/Datensparsamkeit.html).
 
