@@ -3,6 +3,8 @@ title: General advice on naming things
 sidebar: principles
 ---
 
+Naming things is notoriously hard; Here we present concrete examples to illustrate concerns when naming data related entities and justify our choices.
+
 Best practices in programming emphasize the importance of making your code readable, which means that by reading only the code (i.e., not the comments or documentation) the intention of the program should be as comprehensible as possible. Good variable names are an important component in making code readable. Similarly, good names for datasets, tables, columns and values are important to make a dataset more intuitive and thus their processing more effective and less error prone.
 
 Here are a few key points to consider when naming variables:

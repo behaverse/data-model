@@ -115,15 +115,22 @@ website:
             - common-principles/data.qmd
             - common-principles/styleguide.qmd
             - section: "Naming things"
-              href: common-principles/naming-things.qmd
+              href: common-principles/naming-things-general.qmd
               contents:
-                - common-principles/naming-things-general.qmd
-                - common-principles/naming-things-people.qmd
-                - common-principles/naming-things-tasks.qmd
-                - common-principles/naming-things-stimuli.qmd
-                - common-principles/naming-things-responses.qmd
-                - common-principles/naming-things-temporal-variables.qmd
-                - common-principles/naming-things-data-and-files.qmd
+                - href: common-principles/naming-things-general.qmd
+                  text: General advice
+                - href: common-principles/naming-things-people.qmd
+                  text: People
+                - href: common-principles/naming-things-tasks.qmd
+                  text: Tasks
+                - href: common-principles/naming-things-stimuli.qmd
+                  text: Stimuli
+                - href: common-principles/naming-things-responses.qmd
+                  text: Responses
+                - href: common-principles/naming-things-temporal-variables.qmd
+                  text: Temporal variables
+                - href: common-principles/naming-things-files-and-folders.qmd
+                  text: Files and folders
             - common-principles/units.qmd
             - common-principles/file-formats.qmd
             - common-principles/tidy-tables.qmd
