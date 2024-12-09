@@ -1,0 +1,9 @@
+---
+title: Tutorials
+---
+
+Here, you can find practical activities to learn BDM by solving some common challenges we may face when working with behavioral data.
+
+You don’t need to fully understand BDM to apply it to your data. Once you picked up an idea that seems worthy to your data, put it into practice. You can always iterate between your data and BDM documentations, and come back to it when you need more clarity about the BDM.
+
+Tutorial: a practical activity to learn by doing something meaningful, towards some achievable goal. Students achieve theoritical knowledge, understanding, familiarity, interaction between things, the names, the use of tools, workflows, concepts, commands.

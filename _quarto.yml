@@ -36,7 +36,7 @@ website:
     pinned: true
     logo: assets/img/behaverse_data_logo.png
     left:
-      - get-started/index.qmd
+      - tutorials/index.qmd
       - common-principles/index.qmd
       - spec/index.qmd           
       - datasets/index.qmd
@@ -60,6 +60,12 @@ website:
     #   - ...
 
   sidebar:
+    - id: tutorials
+      type: dark
+      style: floating
+      contents:
+        - href: tutorials/example-dataset.qmd
+          text: Example datasets
     - id: spec
       type: dark
       style: floating

@@ -1,5 +1,5 @@
 ---
-title: Get Started
+title: Example dataset
 ---
 
 The easiest way to get started is to look at example datasets.
