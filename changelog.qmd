@@ -10,12 +10,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - Migrate to Quarto.
+- Reorganized content based on the https://diátaxis.fr guidelines.
 
 ### Fixed
 
+- Broken links and navigation.
+
 ### Changed
 
-- Trial table structure.
+- Trial tables structure.
 
 ### Removed
 

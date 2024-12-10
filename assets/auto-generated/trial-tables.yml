@@ -57,7 +57,7 @@
     presentation of the stimuli and records key presses.
 - index: 7
   publish: false
-  category: Trial
+  category: .nan
   name: OptionSet
   label: OptionSet
   description: Describes choice options mainly in questionnaires.

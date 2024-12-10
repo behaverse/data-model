@@ -1,6 +1,5 @@
 ---
-title: Common Principles
-sidebar: principles
+title: Guides
 ---
 
 Styleguides, standards, and conventions are useful in that they support consistency and quality while facilitating the development of efficient workflows, automation and specialized software. They can apply to:

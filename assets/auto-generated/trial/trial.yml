@@ -150,13 +150,14 @@
     \ uses only verbs and adjectives, the `job_description` also contains nouns (e.g.,\
     \ \u201Crecall-digits-forward\u201D, \u201Crecall-letters-backward\u201D)."
 - categories:
-  - Experimental Design
+  - Task
   variable_name: job_repeat
   required: false
   data_type: enum
   description: Whether this trial's job has not been seen before in this timeline
     (i.e., specific version of the instrument).
-  range: '- `new`: The job has never been seen before in this timeline.
+  range: '- `new`: The job has never been seen before by this subject in the current
+    study.
 
     - `repeat`: The job is the same as the previous trial.
 
@@ -248,18 +249,18 @@
   data_type: integer | string
   description: Random seed used in the trial (if any).
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_index
   required: false
   data_type: list[index]
   description: Indexes in chronological (or spatial) order the stimuli shown within
-    an instrument (counting one stimulus count per response). stimulus_index may for
-    instance be used to refer to the nth question asked within a questionnaire.
+    an instrument (counting one stimulus per response). `stimulus_index` may for instance
+    be used to refer to the nth question asked within a questionnaire.
   notes:
   - Use semicolon-separated indices if more then one stimulus were presented, e.g.,
     `1;2;3`.
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_id
   required: true
   data_type: integer
@@ -477,7 +478,7 @@
     \ (e.g., 10 versus 20 degrees Celsius).\n- \"ratio\": Values with clear distance\
     \ metrics and absolute zero (e.g., length in cm).\n"
 - categories:
-  - option
+  - Option
   variable_name: measurement_type
   required: false
   data_type: enum
@@ -491,7 +492,7 @@
     \ (e.g., 10 versus 20 degrees Celsius).\n- \"ratio\": Values with clear distance\
     \ metrics and absolute zero (e.g., length in cm).\n"
 - categories:
-  - input
+  - Input
   variable_name: input_interface_type
   required: false
   data_type: enum
@@ -509,7 +510,7 @@
 
     '
 - categories:
-  - input
+  - Input
   variable_name: input_action_type
   required: false
   data_type: enum
@@ -532,7 +533,7 @@
   - The type of input_action determines the structure of detailed response data (i.e.,
     mouse-click data is different from key-press data).
 - categories:
-  - input
+  - Input
   variable_name: input_count
   required: false
   data_type: integer
@@ -541,7 +542,7 @@
   - For mouse-drag, it corresponds to the number of drag points that have been sampled
     during the drag-and-drop.
 - categories:
-  - expectation
+  - Expectation
   variable_name: expected_response_option_index
   required: false
   data_type: integer
@@ -558,14 +559,14 @@
     the options (i.e., option_index == stimulus_position_index) and consequently also
     the responses.'
 - categories:
-  - expectation
+  - Expectation
   variable_name: expected_response_description
   required: false
   data_type: string
   description: A description of the expected response using the same convention as
     response_description.
 - categories:
-  - response
+  - Response
   variable_name: response_structure
   required: false
   data_type: string
@@ -589,7 +590,7 @@
     to all such dots they will be correct no matter in which order the dots were clicked
     in.
 - categories:
-  - response
+  - Response
   variable_name: response_count
   required: false
   data_type: integer
@@ -606,7 +607,7 @@
   - "While we have stimulus_set_size we currently don\u2019t have a response_set_size,\
     \ but we do have option_count and response_count."
 - categories:
-  - response
+  - Response
   variable_name: response_option_index
   required: false
   data_type: integer
@@ -618,7 +619,7 @@
   - response_index refers to an entry in the Option table (i.e., there is no  Response
     table).
 - categories:
-  - response
+  - Response
   variable_name: response_description
   required: false
   data_type: string
@@ -627,7 +628,7 @@
   notes:
   - response_description can be directly compared to expected_response_description.
 - categories:
-  - response
+  - Response
   variable_name: response_numeric
   required: false
   data_type: float
@@ -638,7 +639,7 @@
     not describe the value (e.g., correctness or goodness) that is associated with
     that response.
 - categories:
-  - response
+  - Response
   variable_name: response_time
   required: false
   data_type: float
@@ -646,34 +647,34 @@
     could have been completed and the moment that response was actually completed
     (and NOT when it was initiated).
 - categories:
-  - response
+  - Response
   variable_name: response_datetime
   required: false
   data_type: datetime
   description: The datetime corresponding to the completion of the response.
 - categories:
-  - response
+  - Response
   variable_name: response_validation_time
   required: false
   data_type: float
   description: In some cases, subjects may need to press an extra key to validate
     previous responses. When relevant, this variable may encode this duration.
 - categories:
-  - response
+  - Response
   variable_name: response_initiation_time
   required: false
   data_type: float
   description: In some cases (e.g., a reaching movement) it might be useful to encode
     when a response was initiated.
 - categories:
-  - response
+  - Response
   variable_name: response_skipped
   required: false
   data_type: boolean
   description: In some cases (e.g., in some questionnaires), subjects have the option
     to skip a question.
 - categories:
-  - response
+  - Response
   variable_name: timed_out
   required: false
   data_type: boolean
@@ -681,20 +682,20 @@
     limit. When subjects fail to respond before that time runs out, timed_out is set
     to TRUE.
 - categories:
-  - evaluation
+  - Evaluation
   variable_name: accuracy
   required: false
   data_type: float
   description: A task-dependent accuracy measure ranging from 0 to 1 (inclusive).
 - categories:
-  - evaluation
+  - Evaluation
   variable_name: correct
   required: false
   data_type: boolean
   description: Indicates whether the response matches the expected response (i.e.,
     correct = TRUE) or not (i.e., correct = FALSE).
 - categories:
-  - evaluation
+  - Evaluation
   variable_name: score
   required: false
   data_type: float
@@ -702,7 +703,7 @@
     This variable may be used to compute a performance metric or a questionnaire level
     index (e.g., a well-being score).
 - categories:
-  - evaluation
+  - Evaluation
   variable_name: evaluation_label
   required: false
   data_type: enum
@@ -735,7 +736,7 @@
 
     '
 - categories:
-  - feedback
+  - Feedback
   variable_name: feedback_description
   required: false
   data_type: string
@@ -798,14 +799,14 @@
   - .important Leave this field empty if no additional measures were recorded for
     this specific response.
 - categories:
-  - Adaptive
+  - Experimental Design
   variable_name: adaptive_method_name
   required: false
   data_type: enum
   description: Specifies the adaptive procedure used to modify instrument parameters
     in response to subject performance (e.g., `staircase`).
 - categories:
-  - Adaptive
+  - Experimental Design
   variable_name: adaptive_method_config
   required: false
   data_type: string
@@ -817,26 +818,26 @@
     response, the difficulty level is increased, and after two incorrect responses,
     the difficulty level is decreased.
 - categories:
-  - Adaptive
+  - Experimental Design
   variable_name: adaptive_parameter_name
   required: false
   data_type: string
   description: Specific instrument parameter that is dynamically modified based on
     the subject's performance.
 - categories:
-  - Adaptive
+  - Experimental Design
   variable_name: adaptive_parameter_value
   required: false
-  data_type: Any
+  data_type: any
   description: The specific value of the instrument parameter that was used for this
     trial. This value is updated as the adaptive algorithm adjusts the parameter based
     on the subject's responses.
   range: Data type depends on the type of the adaptive parameter, as defined in `adaptive_parameter_name`)
 - categories:
-  - Adaptive
+  - Experimental Design
   variable_name: adaptive_parameter_value_next
   required: false
-  data_type: Any
+  data_type: any
   description: The next value of the adaptive parameter that will be used in the subsequent
     trial, as determined by the adaptive algorithm.
   range: Data type depends on the type of the adaptive parameter, as defined in `adaptive_parameter_name`)

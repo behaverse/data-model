@@ -14,14 +14,19 @@ body {
   padding-bottom: .5em;
 }
 
-.navbar-logo {
-    max-height: 36px;
+.sidebar-navigation .quarto-navigation-tool {
+  font-size: 1.1em;
 }
 
-@media(min-width: 992px) {
-  .navbar-nav {
-    align-items: center;
-  }
+.sidebar-logo {
+  max-width: 70%;
+  padding-bottom: 1rem !important;
+}
+
+.sidebar-divider {
+  margin-top: .5em !important;
+  margin-bottom: .5em !important;
+  border-top: 1px solid lightgray;
 }
 
 hr.glossary-divider {

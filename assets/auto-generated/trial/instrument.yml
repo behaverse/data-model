@@ -1,33 +1,53 @@
 - categories:
-  - key
+  - Identifier
   variable_name: id
+  required: true
   data_type: string
   description: Unique locatable identifier of an instrument. It can be formed by combining
     name and version (e.g., "DS_v2024.01").
 - categories:
-  - key
+  - Identifier
   variable_name: timeline_id
+  required: false
   data_type: string
   description: Specific parameterization of the instrument (e.g., "DS_FORWARD" and
     "DS_BACKWARD").
 - categories:
-  - key
+  - Identifier
   variable_name: block_id
+  required: false
   data_type: string
   description: Specific parameterization of the instrument for a block of trials (e.g.,
     "DS_FORWARD_PRACTICE" and "DS_FOWARD_TEST").
 - categories:
-  - what
+  - What
   variable_name: name
+  required: true
   data_type: string
   description: Name of the toolkit (scene, code, or configuration) that is used to
     collect the data, e.g., "DS"  for a software that runs digit span task in forward
     OR backward order. The specific parameterization of the instrument is defined
     in the "Timeline" (e.g., a timeline named "DS_FORWARD").
 - categories:
-  - what
+  - What
   variable_name: version
+  required: false
   data_type: string
   description: Refers to the specific version/build of a particular instrument. We
     will use a calendar based versioning system ([calver.org](https://calver.org/);
     e.g., "v2024.01").
+- categories:
+  - What
+  variable_name: description
+  required: false
+  data_type: string
+  description: A human readable, compact description of the main aspects of the instrument.
+- categories:
+  - What
+  variable_name: reference/link
+  required: false
+  data_type: url
+  description: External link, if any, the provides more information about the instrument,
+    e.g., on Cognitive Atlas.
+  notes:
+  - Permanent links, e.g., DOIs, are preferred over other websites.

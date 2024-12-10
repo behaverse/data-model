@@ -16,7 +16,7 @@ website:
   google-analytics: "G-K2NP7Q9KGZ"
   back-to-top-navigation: true
   search: 
-    location: navbar
+    location: sidebar
     type: textbox
   cookie-consent:
     type: implied
@@ -25,132 +25,143 @@ website:
   repo-actions: none
   page-footer:
     background: light
+    left: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
     # right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
-    center: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) &middot; [Cookies](#){#open_preferences_center} &middot; [About Us](/about.qmd)"
+    right: "[Cookies](#){#open_preferences_center} &middot; [About](/about.qmd)"
 
   announcement: 
     content: " **This website is under construction.** " 
     position: below-navbar 
 
-  navbar:
-    pinned: true
-    logo: assets/img/behaverse_data_logo.png
-    left:
-      - tutorials/index.qmd
-      - common-principles/index.qmd
-      - spec/index.qmd           
-      - datasets/index.qmd
-    right:
-        - glossary/index.qmd
-        - text: About
-          url: about.qmd
-        - text: Help
-          menu: 
-            - icon: person-raised-hand
-              url: contribute.qmd
-            - icon: clock-history
-              url: changelog.qmd
-            - icon: github
-              text: GitHub
-              url: https://github.com/behaverse/data-model
-            - icon: bug
-              text: Report an Issue
-              url: https://github.com/behaverse/data-model/issues
+  navbar: false
+  #   pinned: true
+  #   logo: assets/img/behaverse_data_logo.png
+    # left:
+    #   - tutorials/index.qmd
+    #   - common-principles/index.qmd
+    #   - spec/index.qmd           
+    #   - datasets/index.qmd
+    # right:
     # drafts:
     #   - ...
 
   sidebar:
-    - id: tutorials
-      type: dark
-      style: floating
-      contents:
-        - href: tutorials/example-dataset.qmd
-          text: Example datasets
-    - id: spec
-      type: dark
-      style: floating
-      # style: floating
-      contents:
-        - section: "Specification"
-          href: spec/index.qmd
+    logo: assets/img/behaverse_data_logo.png
+    logo-alt: "Behaverse Data Model"
+    align: center
+    style: docked
+    search: true
+    pinned: false
+    collapse-level: 1
+    tools: 
+      - icon: journal-text
+        href: glossary/index.qmd
+      - icon: clock-history
+        text: Changelog
+        href: changelog.qmd
+      - icon: person-raised-hand
+        text: Contribute
+        href: contribute.qmd
+      - icon: bug
+        text: Report an Issue
+        url: https://github.com/behaverse/data-model/issues
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - '---'
+      - section: "Tutorials"
+        href: tutorials/index.qmd
+        contents:
+          - auto: "tutorials/*.qmd"
+
+      - '---'
+
+      - section: "Guides"
+        href: guides/index.qmd
+        contents:
+        - guides/data.qmd
+        - guides/styleguide.qmd
+        - section: "Naming things"
+          href: guides/naming-things-general.qmd
           contents:
-              - href: spec/index.qmd
-                text: Overview
-              - section: General
-                href: spec/general/index.qmd
-                contents:
-                  - href: spec/general/index.qmd
-                    text: Overview
-                  - spec/general/folder-structure.qmd
-                  - spec/general/indexing.qmd
-                  - spec/general/metadata.qmd
-                  - spec/general/studyflow.qmd
-                  - spec/general/instructions.qmd
-                  - spec/general/codebook.qmd
-              - section: "<i class='bi bdm-L0-data'></i> Events"
-                href: spec/events-overview.qmd
-                contents:
-                  - href: spec/events-overview.qmd
-                    text: '<i class="bi bi-grid"></i> Overview'
-              - section: "<i class='bi bdm-L1-data'></i> Trials"
-                href: spec/trials-overview.qmd
-                contents:
-                  - href: spec/trials-overview.qmd
-                    text: '<i class="bi bi-grid"></i> Overview'
-                  - spec/trials/trial.qmd
-                  - spec/trials/stimulus.qmd
-                  - spec/trials/option.qmd
-                  - spec/trials/click.qmd
-                  - spec/trials/stimulus-component.qmd
-                  - spec/trials/option-component.qmd
-                  - spec/trials/instrument.qmd
-                  - section: "Activity-specific"
-                    href: spec/activity-specific/index.qmd
-                    contents:
-                      - href: spec/activity-specific/index.qmd
-                        text: Overview
-                      - spec/activity-specific/cognitive-tests.qmd
-                      - spec/activity-specific/questionnaires.qmd
-              - section: "<i class='bi bdm-L2-data'></i> Models"
-                contents:
-                  - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
-    - id: principles
-      contents:
-        - section: "Common principles"
-          href: common-principles/index.qmd
+              - href: guides/naming-things-general.qmd
+                text: General advice
+              - href: guides/naming-things-people.qmd
+                text: People
+              - href: guides/naming-things-tasks.qmd
+                text: Tasks
+              - href: guides/naming-things-stimuli.qmd
+                text: Stimuli
+              - href: guides/naming-things-responses.qmd
+                text: Responses
+              - href: guides/naming-things-temporal-variables.qmd
+                text: Temporal variables
+              - href: guides/naming-things-files-and-folders.qmd
+                text: Files and folders
+        - guides/units.qmd
+        - guides/file-formats.qmd
+        - guides/tidy-tables.qmd
+        - guides/other-standards.qmd
+
+      - "---"
+      - section: "Reference"
+        href: reference/index.qmd
+        contents:
+        - section: General
+          href: reference/general/index.qmd
           contents:
-            - common-principles/data.qmd
-            - common-principles/styleguide.qmd
-            - section: "Naming things"
-              href: common-principles/naming-things-general.qmd
+            - href: reference/general/index.qmd
+              text: Overview
+            - reference/general/folder-structure.qmd
+            - reference/general/indexing.qmd
+            - reference/general/metadata.qmd
+            - reference/general/studyflow.qmd
+            - reference/general/instructions.qmd
+            - reference/general/codebook.qmd
+        - section: "Events"
+          icon: 0-square-fill
+          href: reference/events-overview.qmd
+          contents:
+            - href: reference/events-overview.qmd
+              text: '<i class="bi bi-grid"></i> Overview'
+        - section: "Trials"
+          icon: 1-square-fill
+          href: reference/trials-overview.qmd
+          contents:
+            - href: reference/trials-overview.qmd
+              text: '<i class="bi bi-grid"></i> Overview'
+            - reference/trials/trial.qmd
+            - reference/trials/stimulus.qmd
+            - reference/trials/option.qmd
+            - reference/trials/click.qmd
+            - reference/trials/stimulus-component.qmd
+            - reference/trials/option-component.qmd
+            - reference/trials/instrument.qmd
+            - section: "Activity-specific"
+              href: reference/activity-specific/index.qmd
               contents:
-                - href: common-principles/naming-things-general.qmd
-                  text: General advice
-                - href: common-principles/naming-things-people.qmd
-                  text: People
-                - href: common-principles/naming-things-tasks.qmd
-                  text: Tasks
-                - href: common-principles/naming-things-stimuli.qmd
-                  text: Stimuli
-                - href: common-principles/naming-things-responses.qmd
-                  text: Responses
-                - href: common-principles/naming-things-temporal-variables.qmd
-                  text: Temporal variables
-                - href: common-principles/naming-things-files-and-folders.qmd
-                  text: Files and folders
-            - common-principles/units.qmd
-            - common-principles/file-formats.qmd
-            - common-principles/tidy-tables.qmd
-            - common-principles/other-standards.qmd
+                - href: reference/activity-specific/index.qmd
+                  text: Overview
+                - reference/activity-specific/cognitive-tests.qmd
+                - reference/activity-specific/questionnaires.qmd
+        - section: "Models"
+          icon: 2-square-fill
+          contents:
+            - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
+
+      - "---"
+      - href: glossary/index.html
+        icon: journal-text float-end
+        text: Glossary
 
 
 format:
   html:
-    title-block-banner: false
-    title-block-style: plain
+    # title-block-banner: false
+    title-block-style: default
     abstract-title: " "
     theme:
-      light: cosmo
+      light: default
       # dark: [cosmo, assets/css/dark-theme.scss]
     email-obfuscation: javascript
     css: assets/css/styles.css
