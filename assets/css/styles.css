@@ -29,6 +29,10 @@ body {
   border-top: 1px solid lightgray;
 }
 
+.nav-footer, .nav-footer-center {
+  min-height: unset;
+} 
+
 hr.glossary-divider {
   width: 50%;
   margin-left: 0%;

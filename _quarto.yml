@@ -25,9 +25,7 @@ website:
   repo-actions: none
   page-footer:
     background: light
-    left: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)"
-    # right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
-    right: "[Cookies](#){#open_preferences_center} &middot; [About](/about.qmd)"
+    left: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  &middot; [Cookies](#){#open_preferences_center} &middot; [About](/about.qmd)"
 
   announcement: 
     content: " **This website is under construction.** " 
@@ -54,17 +52,17 @@ website:
     pinned: false
     collapse-level: 1
     tools: 
-      - icon: journal-text
-        href: glossary/index.qmd
+      - icon: people
+        href: about.qmd
       - icon: clock-history
         text: Changelog
         href: changelog.qmd
-      - icon: person-raised-hand
-        text: Contribute
-        href: contribute.qmd
-      - icon: bug
-        text: Report an Issue
-        url: https://github.com/behaverse/data-model/issues
+      # - icon: person-raised-hand
+      #   text: Contribute
+      #   href: contribute.qmd
+      - icon: github
+        text: GitHub
+        url: https://github.com/behaverse/data-model/
     contents:
       - text: "Home"
         href: index.qmd
@@ -150,9 +148,13 @@ website:
             - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
 
       - "---"
-      - href: glossary/index.html
-        icon: journal-text float-end
+      - href: glossary/index.qmd
+        icon: journal-text
         text: Glossary
+      - "---"
+      - href: about.qmd
+        text: About us
+        icon: people
 
 
 format:
