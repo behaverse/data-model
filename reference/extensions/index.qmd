@@ -1,5 +1,5 @@
 ---
-title: Activity-specific tables
+title: Extensions
 sidebar: spec
 ---
 

@@ -135,13 +135,14 @@ website:
             - reference/trials/stimulus-component.qmd
             - reference/trials/option-component.qmd
             - reference/trials/instrument.qmd
-            - section: "Activity-specific"
-              href: reference/activity-specific/index.qmd
+            - section: "Extensions"
+              icon: puzzle
+              href: reference/extensions/index.qmd
               contents:
-                - href: reference/activity-specific/index.qmd
+                - href: reference/extensions/index.qmd
                   text: Overview
-                - reference/activity-specific/cognitive-tests.qmd
-                - reference/activity-specific/questionnaires.qmd
+                - reference/extensions/cognitive-tests.qmd
+                - reference/extentions/questionnaires.qmd
         - section: "Models"
           icon: 2-square-fill
           contents:
