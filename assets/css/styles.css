@@ -1,17 +1,14 @@
 /* css styles */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
 
 body {
-    font-family: 'system-ui','Roboto', sans-serif;
+    font-family: 'IBM Plex Sans', 'system-ui','Roboto', sans-serif;
 }
 
 .title {
   font-weight: bold;
-}
-
-.quarto-title-breadcrumbs {
-  padding-bottom: .5em;
+  color: purple;
 }
 
 .sidebar-navigation .quarto-navigation-tool {
