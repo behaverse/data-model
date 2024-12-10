@@ -111,7 +111,7 @@ Below we list the names we use for different measurement units by measurement di
 -   screen_fraction: fraction of subject's screen diagonal expressed between 0 and 1, from bottom-left to top-right. For example, if the diagonal of the screen is 40cm long, a screen_fraction of 0.25 corresponds to 10cm.
 
 :::{.callout-note}
-For more information on viewports, see: <https://developer.mozilla.org/en-US/docs/Web/CSS/length#Viewport-percentage_lengths>
+For more information on viewports, see [CSS *viewport-percentage length* on MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/length#relative_length_units_based_on_viewport).
 :::
 
 ### Frequency
