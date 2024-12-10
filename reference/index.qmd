@@ -8,11 +8,11 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 Specifically, the BDM defines the following levels of data:
 
 
-<i class="bi bdm-L0-data"></i> Events
+<i class="bi bi-0-square-fill"></i> Events
 : The raw data that are collected during the experiment. They are the most detailed data and are typically sufficient for reproducing the original experiment.
 
-[**<i class="bi bdm-L1-data"></i></i> Trials**](trials-overview.qmd)
+[**<i class="bi bi-1-square-fill"></i></i> Trials**](trials-overview.qmd)
 : The trials data that are derived from the events. They are task-specific and typically designed to capture the main features of the scientific experiment.
 
-<i class="bi bdm-L2-data"></i> Models
+<i class="bi bi-2-square-fill"></i> Models
 : The model parameters that are derived from the trial.  They generally address the research questions and are used for downstream data summary, analysis, publication, or visualization.
