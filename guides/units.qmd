@@ -3,7 +3,12 @@ title: Units and values
 sidebar: principles
 ---
 
-According to \[NASA 1999\] Arthur Stephenson, chairman of the Mars Climate Orbiter Mission Failure Investigation Board: \>\> "The 'root cause' of the loss of the spacecraft was the failed translation of English units into metric units in a segment of ground-based, navigation-related mission software, ..." \>\> \>\> from <https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12>
+> *The 'root cause' of the loss of the spacecraft was the failed translation of English units into metric units in a segment of ground-based, navigation-related mission software, ...*
+>
+> <div class="fw-light small text-end">Arthur Stephenson</div>
+> <div class="fw-light small text-end">Chairman of the NASA Mars Climate Orbiter Mission Failure Investigation Board</div>
+> <div class="fw-light small text-end">From [CMIXF-12](https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12)</div>
+
 
 Some variables have measurement units. Variables should use the standard measurement unit for their type (e.g., duration in seconds; defined below), or the default unit assigned to them specifically within this document. Variables that use a non-standard, non-default measurement unit MUST specify the units explicitly using the format `<variable>_in_<unit>`.
 
@@ -14,7 +19,9 @@ Examples:
 
 When the units are a single word it's OK to use the complete word; if it has multiple words, it's better to abbreviate them unless the abbreviation can lead to confusion or ambiguity. For example, prefer `seconds` to `s` but `mpg` to `miles_per_gallon`.
 
-> There are default units, these are highlighted in bold below. In addition there are default units for specific variables. If a "standard" variable has a default unit, that default unit overrides the default in this list. For example, the default for duration is seconds. `age` is a duration but its default is years rather than seconds. {: .note}
+:::{.callout-note}
+There are default units, these are highlighted in bold below. In addition there are default units for specific variables. If a "standard" variable has a default unit, that default unit overrides the default in this list. For example, the default for duration is seconds. `age` is a duration but its default is years rather than seconds.
+:::
 
 This document does not cover the subject of units exhaustively and will be updated as new use cases arise.
 
@@ -103,7 +110,9 @@ Below we list the names we use for different measurement units by measurement di
 -   pixels: number of pixels; the pixel size in cm depends on subjects screen size and resolution.
 -   screen_fraction: fraction of subject's screen diagonal expressed between 0 and 1, from bottom-left to top-right. For example, if the diagonal of the screen is 40cm long, a screen_fraction of 0.25 corresponds to 10cm.
 
-> For more information on viewports, see: <https://developer.mozilla.org/en-US/docs/Web/CSS/length#Viewport-percentage_lengths> {: .note }
+:::{.callout-note}
+For more information on viewports, see: <https://developer.mozilla.org/en-US/docs/Web/CSS/length#Viewport-percentage_lengths>
+:::
 
 ### Frequency
 

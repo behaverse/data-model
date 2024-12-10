@@ -4,13 +4,15 @@ sidebar: principles
 ---
 
 
-The Behaverse Data Model uses the following conventions:
+For column names, variables, and functions use `lower_snake_case`.
 
--   For column names, variables, and functions we use `lower_snake_case`.
--   For enum values (i.e., values of a categorical variables), we also use `lower_snake_case` (because those values might end up becoming columns during the data analysis).
--   For dataset names in code and classes we use `CamelCase`.
--   For named constants we use ALL_CAPS (e.g., `PI`, `MAX_RADIUS`).
+For enum values (i.e., values of a categorical variables), also use `lower_snake_case` (because those values might end up becoming columns during the data analysis).
 
-> In some cases data may be aggregated from multiple different sources, each following their own conventions and it might not always be feasible/practical to harmonize them. {: .note }
+For dataset names in code and classes use `CamelCase`.
 
-> When in doubt, consult [PEP8](https://pep8.org/). {: .note }
+For constants use ALL_CAPS (e.g., `PI`, `MAX_RADIUS`).
+
+:::{.callout-tip}
+In some cases data may be aggregated from multiple different projects, each following their own styles and it might not always be feasible/practical to harmonize them. When in doubt, consult [PEP 8 — the Style Guide for Python Code
+](https://pep8.org/).
+:::

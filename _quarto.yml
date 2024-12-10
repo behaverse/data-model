@@ -80,9 +80,9 @@ website:
         - guides/data.qmd
         - guides/styleguide.qmd
         - section: "Naming things"
-          href: guides/naming-things-general.qmd
+          href: guides/naming-things.qmd
           contents:
-              - href: guides/naming-things-general.qmd
+              - href: guides/naming-things.qmd
                 text: General advice
               - href: guides/naming-things-people.qmd
                 text: People
