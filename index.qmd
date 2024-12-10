@@ -1,5 +1,6 @@
 ---
-title: Behaverse Data Model
+title: Behaverse Data Model (BDM)
+abstract: Coherent data models for cognitive tests and questionnaires
 toc: false
 ---
 
