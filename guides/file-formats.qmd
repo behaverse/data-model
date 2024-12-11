@@ -3,7 +3,7 @@ title: File Formats
 sidebar: principles
 ---
 
-In general, open file formats (e.g., CSV, JSON, Markdown) are preferred over proprietary file formats (e.g., `.mat`, `.sav`, `.docx`). Open formats ensure that the data is accessible to a wide audience. Specifically, use the following formats:
+In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over proprietary file formats (e.g., `.mat`, `.sav`, `.docx`). Open formats ensure that the data is accessible to a wide audience. Specifically, use the following formats:
 
 | Data Type | Recommended Format | When? |
 |------------------------|----------------------------|---------------------|
@@ -12,4 +12,4 @@ In general, open file formats (e.g., CSV, JSON, Markdown) are preferred over pro
 |  | YAML | When human readability and editability matter |
 | Text | Markdown | Always, except for official, static, or administrative documents which may be in PDF |
 
-Do NOT save the same data in multiple output formats (e.g., CSV and SAV) to avoid redundancy and version mismatches. However, lossless data conversion must be used if converting data to other formats.
+Do NOT save the same data in multiple output formats (e.g., `.csv` and `.sav`) to avoid redundancy and version mismatches. However, lossless data conversion must be used if converting data to other formats.
