@@ -76,22 +76,10 @@ hr.title-divider {
   border-top-style: dashed;
 }
 
-.bi.bdm-L0-data::before {
-  content: url('../img/L0.svg') !important
-}
-
-.bi.bdm-L1-data::before {
-  content: url('../img/L1.svg') !important
-}
-
-.bi.bdm-L2-data::before {
-  content: url('../img/L2.svg') !important
-}
-
-.bi.bdm-L3-data::before {
-  content: url('../img/L3.svg') !important
-}
-
 h2.trial-table-category-heading {
   border-bottom: 2px solid aliceblue;
+}
+
+.listing-notes, .listing-description {
+  margin-left: 2.5rem;
 }

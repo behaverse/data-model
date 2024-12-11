@@ -1,5 +1,7 @@
-
-# Questionnaires
+---
+title: Questionnaires
+subtitle: When information presented to subjects is a "question"
+---
 
 
 Data from questionnaires and instructions are somewhat similar to the data collected from cognitive tasks.

@@ -153,15 +153,17 @@ website:
               icon: puzzle
               href: reference/extensions/index.qmd
               contents:
-                - href: reference/extensions/index.qmd
-                  text: Overview
                 - reference/extensions/cognitive-tests.qmd
-                - reference/extentions/questionnaires.qmd
+                - reference/extensions/questionnaires.qmd
         - section: "Models"
           icon: 2-square-fill
           contents:
             - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
 
+      - "---"
+      - href: datasets/index.qmd
+        icon: database-check
+        text: Datasets
       - "---"
       - href: glossary/index.qmd
         icon: journal-text

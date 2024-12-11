@@ -1,6 +1,16 @@
 ---
 title: Extensions
-sidebar: spec
+toc: false
+listing:
+    contents: 
+        - "*.qmd"
+    type: table
+    fields: [title, subtitle]
+    filter-ui: false
+    sort-ui: false
+    field-display-names: 
+      title: Extension
+      subtitle: Description
 ---
 
 The Behaverse Data Model contains multiple tables, revolving around the concept of a *trial*. A *trial* is a single instance of a participant interacting with a behavioral task and contains information about the participant, the task, and the interaction between the two. The trial-related tables are designed to be as flexible as possible, allowing for a wide range of tasks to be represented.

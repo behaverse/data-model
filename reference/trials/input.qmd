@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> Input'
-subtitle: "Describes each input or click that was recorded during a trial."
+subtitle: "A detailed log of all inputs and clicks recorded during the trial."
 order: 3
 toc: false
 listing: 

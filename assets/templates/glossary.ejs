@@ -25,10 +25,9 @@ if (item.data_type) {
 <dd class="listing-description">
 <%= item.description %><br />
 <% if (item.range) { %>
-::: {.callout-note collapse="false" appearance="minimal" icon="false"}
-## Range/Unit
-<%= item.range %>
-:::
+> <i class="bi bi-thermometer-sun"></i> <span class="small">**Range**</span>
+>
+> <%= item.range %>
 <% } %>
 </dd>
 <% if (item.notes) { %>

@@ -28,7 +28,7 @@
   category: Trials
   name: Input
   label: Input
-  description: Describes each input or click that was recorded during a trial.
+  description: A detailed log of all inputs and clicks recorded during the trial.
   notes: .nan
 - index: 4
   publish: true
