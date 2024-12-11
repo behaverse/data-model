@@ -1,6 +1,6 @@
 ---
 title: Trial Tables Overview
-sidebar: spec
+toc: false
 listing: 
   template: ../assets/templates/trial-tables-listing.ejs
   sort: "order"

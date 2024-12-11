@@ -269,7 +269,7 @@
     trial, that trial would have the same value for stimulus_id. stimulus_id may also
     be used to refer to a specific message or question in a questionnaire.
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_type
   required: true
   data_type: enum
@@ -279,7 +279,7 @@
     - `question`: The stimulus may consist of text, images and/or sounds; they require
     subjects to make a decision based on the content of the stimulus.'
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_panel_count
   required: false
   data_type: integer
@@ -287,7 +287,7 @@
     trial. For example, in a task where stimuli to be compared are presented on the
     left and right side of the screen, stimulus_panel_count = 2.
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_structure
   required: false
   data_type: enum
@@ -301,7 +301,7 @@
     does matter (order may be indicated by the order of presentation or by a digit
     for example).'
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_structure_source_type
   required: false
   data_type: enum
@@ -312,7 +312,7 @@
     \ of stimuli is hard coded in a file.\n- `generator`: A procedure was used to\
     \ generate the stimulus_structure.\n "
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_structure_source
   required: false
   data_type: string
@@ -320,7 +320,7 @@
     (e.g., sequence of digits in a digit span test). When no generator was used, this
     variable has a value of none.
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_set_size
   required: false
   data_type: integer
@@ -333,30 +333,25 @@
     recognized in R (tidyverse) and Python (pandas) as being valid numbers rather
     than strings.
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_count
   required: false
   data_type: integer
   description: The number of stimuli shown to the participant during the trial.
   range: This should match number of stimuli in stimulus_id
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_source_type
   required: false
   data_type: enum
   description: A stimulus is typically created using a particular procedure/algorithm
     ("generator") or is sampled from a particular set ("set"). This variable indicates
     which of these two applies for the current stimulus.
-  range: '
+  range: '- "set":"stimulus is sampled from a fixed set of stimuli."
 
-    - "set":"stimulus is sampled from a fixed set of stimuli."
-
-
-    - "generator": "stimulus is created using a procedure/algorithm."
-
-    '
+    - "generator": "stimulus is created using a procedure/algorithm."'
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_source
   required: false
   data_type: string
@@ -365,7 +360,7 @@
     in a table named after stimulus_source (i.e., stimulus_source indicates which
     table contains the full information about the stimulus; e.g., "digit1to9").
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_index_in_source
   required: false
   data_type: integer
@@ -380,7 +375,7 @@
     "A", "B", "X", "Y"). Whenever possible, we specify the most relevant/specific
     set (e.g., "digit1to9" rather than "digit").
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_position_index
   required: false
   data_type: integer
@@ -389,7 +384,7 @@
     it follows a natural order (left to right, top to bottom), but in free-form layouts,
     indices are arbitrary.
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_description
   required: false
   data_type: string
@@ -403,7 +398,7 @@
   - In some cases, when stimuli are too complex or can't be precisely described, a
     summary of all stimuli is given instead.
 - categories:
-  - stimulus
+  - Stimulus
   variable_name: stimulus_role
   required: false
   data_type: enum
@@ -431,7 +426,7 @@
 
     - "probe": "A stimulus indicating about which stimulus to respond."'
 - categories:
-  - option
+  - Option
   variable_name: option_source_type
   required: false
   data_type: enum
@@ -439,7 +434,7 @@
     \ (\u201Cgenerator\u201D) or is sampled from a particular set (\u201Cset\u201D\
     ). This variable indicates which of these two applies for the current options."
 - categories:
-  - option
+  - Option
   variable_name: option_source
   required: false
   data_type: string
@@ -453,20 +448,20 @@
     \ all options are displayed. Instead, we use response_index and expected_response_index\
     \ to refer to a particular option within the set of options."
 - categories:
-  - option
+  - Option
   variable_name: option_count
   required: false
   data_type: integer
   description: The number of options the participant can choose from on a given trial.
 - categories:
-  - option
+  - Option
   variable_name: option_id
   required: false
   data_type: integer
   description: Is a unique identifier for the option (set or generator) used on a
     given trial.
 - categories:
-  - option
+  - Option
   variable_name: option_data_type
   required: false
   data_type: enum

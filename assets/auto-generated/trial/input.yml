@@ -1,72 +1,67 @@
-- index: 0
-  publish: true
-  category: Trial
+- publish: true
+  categories:
+  - Trial
   name: Trial
   label: Trial
   description: Main trial table where each row describes a response in a trial.
-  notes: The information in this table should be sufficient for most analyses, but
-    more detailed information may be linked from other tables via identifiers (`response_id`
+  notes:
+  - The information in this table should be sufficient for most analyses, but more
+    detailed information may be linked from other tables via identifiers (`response_id`
     and `trial_id`).
-- index: 1
-  publish: true
-  category: Trial
+- publish: true
+  categories:
+  - Trial
   name: Stimulus
   label: Stimulus
   description: Describes each of the stimuli that were shown during an trial.
-  notes: .nan
-- index: 2
-  publish: true
-  category: Trial
+- publish: true
+  categories:
+  - Trial
   name: Option
   label: Option
   description: Describes each option that a subject could choose from in a given trial.
-  notes: Note that in some tasks, the options may change within a trial after each
-    input (e.g., serial self-ordered search task); therefore the options are optionally
+  notes:
+  - Note that in some tasks, the options may change within a trial after each input
+    (e.g., serial self-ordered search task); therefore the options are optionally
     indexed by `input_index`.
-- index: 3
-  publish: true
-  category: Trial
+- publish: true
+  categories:
+  - Trial
   name: Input
   label: Input
   description: Describes each input or click that was recorded during a trial.
-  notes: .nan
-- index: 4
-  publish: true
-  category: Trial
+- publish: true
+  categories:
+  - Trial
   name: StimulusComponent
   label: StimulusComponent
   description: Stimuli can comprise multiple components. This table describes each
     component of a stimulus.
-  notes: .nan
-- index: 5
-  publish: true
-  category: Trial
+- publish: true
+  categories:
+  - Trial
   name: OptionComponent
   label: OptionComponent
   description: Options can comprise multiple components. This table describes each
     component of an option.
-  notes: .nan
-- index: 6
-  publish: true
-  category: Trial
+- publish: true
+  categories:
+  - Trial
   name: Instrument
   label: Instrument
   description: Describes the instrument used to collect data from subjects.
-  notes: this table includes information about specific parameterizations of the instruments
+  notes:
+  - this table includes information about specific parameterizations of the instruments
     (i.e., timelines). For example, parameters for the software that executes the
     presentation of the stimuli and records key presses.
-- index: 7
-  publish: false
-  category: .nan
+- publish: false
+  categories: []
   name: OptionSet
   label: OptionSet
   description: Describes choice options mainly in questionnaires.
-  notes: .nan
-- index: 8
-  publish: true
-  category: .nan
+- publish: true
+  categories: []
   name: Glossary
   label: Controlled Vocabulary
   description: Controlled vocabulary for the terms in the Trials data and corresponding
     tables.
-  notes: .nan

@@ -1,6 +1,6 @@
 ---
-title: '<i class="bi bi-grid-3x3"></i> Click'
-abstract: "Describes each click that was recorded during a trial."
+title: '<i class="bi bi-grid-3x3"></i> Input'
+abstract: "Describes each input or click that was recorded during a trial."
 order: 3
 toc: false
 listing: 
@@ -11,6 +11,6 @@ listing:
   categories: numbered
   page-size: 10000
   contents:
-    - "../../assets/auto-generated/trial/click.yml"
+    - "../../assets/auto-generated/trial/input.yml"
 ---
 
