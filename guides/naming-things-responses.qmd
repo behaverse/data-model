@@ -1,6 +1,5 @@
 ---
 title: Naming responses and response options
-sidebar: principles
 ---
 
 

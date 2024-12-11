@@ -1,9 +1,8 @@
 ---
 title: Other standards
-sidebar: principles
 ---
 
-What other stanards are we following?
+What other standards are we following?
 
  - BIDS
  - ISOXXX

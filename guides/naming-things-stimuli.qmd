@@ -1,6 +1,5 @@
 ---
 title: Naming stimuli
-sidebar: principles
 ---
 
 The term "stimulus" is ubiquitous in cognitive sciences despite lacking a clear and consensual definition (e.g., it may refer to thing that caused a response versus the thing the experimenter generated to elicit a (possibly internal) response).

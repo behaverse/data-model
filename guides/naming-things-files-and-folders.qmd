@@ -1,6 +1,5 @@
 ---
 title: Naming files and folders
-sidebar: principles
 ---
 
 

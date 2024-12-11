@@ -1,6 +1,5 @@
 ---
 title: Naming tasks and their components
-sidebar: principles
 ---
 
 

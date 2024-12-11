@@ -1,6 +1,5 @@
 ---
 title: Naming people
-sidebar: principles
 ---
 
 There are three issues related to naming people in a dataset; they concern how to name the "entity" (e.g., "participant" versus "subject"), which suffixes to use (e.g., "\_id" versus "\_index") and what format to use for its values (e.g., an integer or a string). We will go over each of this in turn and justify our choices.

@@ -1,6 +1,5 @@
 ---
 title: File Formats
-sidebar: principles
 ---
 
 In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over proprietary file formats (e.g., `.mat`, `.sav`, `.docx`). Open formats ensure that the data is accessible to a wide audience. Specifically, use the following formats:

@@ -1,7 +1,6 @@
 ---
 title: Naming things
 subtitle: General advice on naming things
-sidebar: principles
 ---
 
 Naming things is notoriously hard; Here we present concrete examples to illustrate concerns when naming data related entities and justify our choices.
