@@ -10,6 +10,20 @@ project:
 language: 
   search-text-placeholder: Search
 
+format:
+  html:
+    # title-block-banner: false
+    title-block-style: default
+    abstract-title: " "
+    theme:
+      light: default
+      # dark: [cosmo, assets/css/dark-theme.scss]
+    email-obfuscation: javascript
+    css: assets/css/styles.css
+    toc: true
+    # toc-title: " "
+    link-external-icon: false
+
 website:
   title: Behaverse Data Model
   site-url: "https://behaverse.org/data-model"
@@ -25,7 +39,7 @@ website:
   repo-actions: none
   page-footer:
     background: light
-    left: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  &middot; [Cookies](#){#open_preferences_center} &middot; [About](/about.qmd)"
+    left: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  &middot; [Cookies](#){#open_preferences_center} &middot; [About us](/about.qmd)"
 
   announcement: 
     content: " **This website is under construction.** " 
@@ -156,18 +170,3 @@ website:
       - href: about.qmd
         text: About us
         icon: people
-
-
-format:
-  html:
-    # title-block-banner: false
-    title-block-style: default
-    abstract-title: " "
-    theme:
-      light: default
-      # dark: [cosmo, assets/css/dark-theme.scss]
-    email-obfuscation: javascript
-    css: assets/css/styles.css
-    toc: true
-    # toc-title: " "
-    link-external-icon: false

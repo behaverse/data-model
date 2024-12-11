@@ -1,7 +1,6 @@
 ---
 title: Glossary
-abstract: |
-  A controlled vocabulary for behavioral data terms, including terms specific to the Behaverse data model.
+subtitle: Controlled vocabulary for behavioral data terms and BDM concepts
 toc: false
 listing: 
   template: "../assets/templates/glossary.ejs"
