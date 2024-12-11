@@ -1,67 +1,121 @@
-- publish: true
-  categories:
-  - Trial
-  name: Trial
-  label: Trial
-  description: Main trial table where each row describes a response in a trial.
+- categories:
+  - Key
+  variable_name: id
+  data_type: id
+  required: true
+  description: Primary key; each click has its own `id` value that is unique within
+    the table.
+- categories:
+  - Context
+  variable_name: response_id
+  data_type: id
+  required: true
+  description: Indexing all the clicks that occurred within a given trial; ranging
+    from 1 to `input_count` in the corresponding @Trial table.
+- categories:
+  - Context
+  variable_name: response_element_index
+  data_type: index
+  required: false
+  description: Indicates which of the clicks is used and in what order to form the
+    actual response in the response table when `response_structure` is "sequence"
+    or "set".
+  range: 1 to `input_count` in the corresponding row of the @Trial table.
   notes:
-  - The information in this table should be sufficient for most analyses, but more
-    detailed information may be linked from other tables via identifiers (`response_id`
-    and `trial_id`).
-- publish: true
-  categories:
-  - Trial
-  name: Stimulus
-  label: Stimulus
-  description: Describes each of the stimuli that were shown during an trial.
-- publish: true
-  categories:
-  - Trial
-  name: Option
-  label: Option
-  description: Describes each option that a subject could choose from in a given trial.
-  notes:
-  - Note that in some tasks, the options may change within a trial after each input
-    (e.g., serial self-ordered search task); therefore the options are optionally
-    indexed by `input_index`.
-- publish: true
-  categories:
-  - Trial
-  name: Input
-  label: Input
-  description: Describes each input or click that was recorded during a trial.
-- publish: true
-  categories:
-  - Trial
-  name: StimulusComponent
-  label: StimulusComponent
-  description: Stimuli can comprise multiple components. This table describes each
-    component of a stimulus.
-- publish: true
-  categories:
-  - Trial
-  name: OptionComponent
-  label: OptionComponent
-  description: Options can comprise multiple components. This table describes each
-    component of an option.
-- publish: true
-  categories:
-  - Trial
-  name: Instrument
-  label: Instrument
-  description: Describes the instrument used to collect data from subjects.
-  notes:
-  - this table includes information about specific parameterizations of the instruments
-    (i.e., timelines). For example, parameters for the software that executes the
-    presentation of the stimuli and records key presses.
-- publish: false
-  categories: []
-  name: OptionSet
-  label: OptionSet
-  description: Describes choice options mainly in questionnaires.
-- publish: true
-  categories: []
-  name: Glossary
-  label: Controlled Vocabulary
-  description: Controlled vocabulary for the terms in the Trials data and corresponding
-    tables.
+  - 'This needs to be here rather than in @Option table, because the same option can
+    be clicked multiple times and either serve or not for the response depending on
+    the order of the clicks. For example, in the Digit Span test we could have the
+    response of "3;5;7" on a particular trial. This might correspond to
+
+    >  - `option.description` = ["3", "4", "delete", "delete", "3", "5", "7", "enter"]
+
+    >  - `click.response_element_index` = [NA, NA, NA, NA, 1, 2, 3,  NA]'
+- categories:
+  - When
+  variable_name: onset
+  data_type: float
+  required: true
+  description: Duration between the start of the trial and the moment the mouse button
+    press occured, in seconds.
+  range: seconds
+- categories:
+  - When
+  variable_name: duration
+  data_type: float
+  required: false
+  description: Describes for how long the mouse button was pressed, in seconds.
+  range: seconds
+- categories:
+  - Where
+  variable_name: x_screen
+  data_type: integer
+  required: false
+  description: 'X coordinates of the click relative to the left edge of the screen
+    in pixels. '
+  range: pixels
+- categories:
+  - Where
+  variable_name: y_screen
+  data_type: integer
+  required: false
+  description: 'Y coordinates of the click relative to the top edge of the screen
+    in pixels. '
+  range: pixels
+- categories:
+  - Where
+  variable_name: x_viewport
+  data_type: float
+  required: false
+  description: X coordinates of the click relative to the left edge of the screen
+    expressed as a fraction of the screen width.
+  range: 0 to 1 (inclusive).
+- categories:
+  - Where
+  variable_name: y_viewport
+  data_type: float
+  required: false
+  description: Y coordinates of the click relative to the top edge of the screen expressed
+    as a fraction of the screen height.
+  range: 0 to 1 (inclusive).
+- categories:
+  - What
+  variable_name: object_type
+  data_type: enum
+  required: true
+  description: Describes the type of object that was clicked on (e.g., "button").
+- categories:
+  - What
+  variable_name: object_name
+  data_type: string
+  required: true
+  description: The human-readable name of the object that was clicked on (e.g., "sos_box_1_3").
+- categories:
+  - What
+  variable_name: is_object_enabled
+  data_type: boolean
+  required: false
+  description: Indicates whether the object that was clicked on was enabled (clickable)
+    or not.
+- categories:
+  - What
+  variable_name: object_state
+  data_type: string
+  required: false
+  description: Describes the state the object was in *before* it was clicked on. The
+    meaning of "state" depends on the particular task (e.g., "new empty").
+- categories:
+  - What
+  variable_name: option_id
+  data_type: id
+  required: false
+  description: If the click is on an option, this variable indicates which option
+    it was.
+  range: ' Corresponding `id` in the @Option table.'
+- categories:
+  - What
+  variable_name: stimulus_id
+  data_type: id
+  required: false
+  description: If the click is on a stimulus, this variable indicates which stimulus
+    it was.
+  range: ' Corresponding `id` in the @Stimulus table.'
