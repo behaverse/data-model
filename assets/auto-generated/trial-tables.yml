@@ -1,6 +1,6 @@
 - index: 0
   publish: true
-  category: Trial
+  category: Trials
   name: Trial
   label: Trial
   description: Main trial table where each row describes a response in a trial.
@@ -9,14 +9,14 @@
     and `trial_id`).
 - index: 1
   publish: true
-  category: Trial
+  category: Trials
   name: Stimulus
   label: Stimulus
   description: Describes each of the stimuli that were shown during an trial.
   notes: .nan
 - index: 2
   publish: true
-  category: Trial
+  category: Trials
   name: Option
   label: Option
   description: Describes each option that a subject could choose from in a given trial.
@@ -25,14 +25,14 @@
     indexed by `input_index`.
 - index: 3
   publish: true
-  category: Trial
+  category: Trials
   name: Input
   label: Input
   description: Describes each input or click that was recorded during a trial.
   notes: .nan
 - index: 4
   publish: true
-  category: Trial
+  category: Trials
   name: StimulusComponent
   label: StimulusComponent
   description: Stimuli can comprise multiple components. This table describes each
@@ -40,7 +40,7 @@
   notes: .nan
 - index: 5
   publish: true
-  category: Trial
+  category: Trials
   name: OptionComponent
   label: OptionComponent
   description: Options can comprise multiple components. This table describes each
@@ -48,7 +48,7 @@
   notes: .nan
 - index: 6
   publish: true
-  category: Trial
+  category: Trials
   name: Instrument
   label: Instrument
   description: Describes the instrument used to collect data from subjects.

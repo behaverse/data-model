@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> StimulusComponent'
-abstract: "Stimuli can comprise multiple components. This table describes each component of a stimulus."
+subtitle: "Stimuli can comprise multiple components. This table describes each component of a stimulus."
 order: 4
 toc: false
 listing: 
@@ -11,6 +11,6 @@ listing:
   categories: numbered
   page-size: 10000
   contents:
-    - "../../assets/auto-generated/trial/stimulus-component.yml"
+    - "../../assets/auto-generated/trials/stimulus-component.yml"
 ---
 

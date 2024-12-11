@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> Trial'
-abstract: "Main trial table where each row describes a response in a trial."
+subtitle: "Main trial table where each row describes a response in a trial."
 order: 0
 toc: false
 listing: 
@@ -11,6 +11,6 @@ listing:
   categories: numbered
   page-size: 10000
   contents:
-    - "../../assets/auto-generated/trial/trial.yml"
+    - "../../assets/auto-generated/trials/trial.yml"
 ---
 

@@ -91,3 +91,7 @@ hr.title-divider {
 .bi.bdm-L3-data::before {
   content: url('../img/L3.svg') !important
 }
+
+h2.trial-table-category-heading {
+  border-bottom: 2px solid aliceblue;
+}

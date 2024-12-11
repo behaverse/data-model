@@ -145,7 +145,7 @@ website:
             - reference/trials/trial.qmd
             - reference/trials/stimulus.qmd
             - reference/trials/option.qmd
-            - reference/trials/click.qmd
+            - reference/trials/input.qmd
             - reference/trials/stimulus-component.qmd
             - reference/trials/option-component.qmd
             - reference/trials/instrument.qmd
