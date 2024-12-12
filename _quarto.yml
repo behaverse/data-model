@@ -120,8 +120,7 @@ website:
       - section: "Reference"
         href: reference/index.qmd
         contents:
-        - section: <i class="bi bi-dice-1-fill"></i> General
-          href: reference/general/index.qmd
+        - section: <i class="bi bi-dice-1"></i> General
           contents:
             - reference/general/folder-structure.qmd
             - reference/general/indexing.qmd

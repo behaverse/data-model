@@ -1,9 +1,0 @@
----
-title: General Specification
-abstract: Common elements of a dataset that are not specific to a particular type of data or activity.
----
-
-Part of the specification is specific to a type of data or activity, part of it is common to all datasets. The following sections cover the common specification.   
-
-TODO: list of sections
-

@@ -1,18 +1,50 @@
 ---
 title: Specification
-sidebar: spec
+toc: false
+page-layout: full
 ---
 
-Behaverse Data Model (BDM) specifies dataset structure and a set of tables that are designed to capture the information relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy, following the principles outlined in [Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf) paper and to capture a wide variety of behavioral experiments.
+Behaverse Data Model (BDM) specifies dataset structure and a set of tables that are designed to capture the information relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy, following the principles outlined in [*"Tidy Data"* paper](https://vita.had.co.nz/papers/tidy-data.pdf) and to capture a wide variety of behavioral experiments.
 
-Specifically, the BDM defines the following levels of data:
+::: {.grid}
 
+::: {.g-col-md-6 .g-col-12}
 
-<i class="bi bi-0-square-fill"></i> Events
+**Part of the BDM is common to all datasets, regardless of the specific type of activity. This includes:**
+
+[**<i class="bi bi-dice-1"></i> Folder structure**](general/folder-structure.qmd)
+: a BDM dataset is a folder that contains data files and all relevant information needed to make sense of that data.
+
+[**<i class="bi bi-dice-1"></i> Metadata**](general/metadata.qmd)
+: Metadata provides information about a dataset.
+
+[**<i class="bi bi-dice-1"></i> Codebook**](general/codebook.qmd)
+: Codebook is a document that describes the contents, structure, and layout of a dataset.
+
+[**<i class="bi bi-dice-1"></i> Study flow**](general/studyflow.qmd)
+: Study flow describes the sequence of activities in a study.
+
+[**<i class="bi bi-dice-1"></i> Indexing**](general/indexing.qmd)
+: Indices are used to identify and address data records.
+
+[**<i class="bi bi-dice-1"></i> Instructions**](general/instructions.qmd)
+: Instructions provide additional guidance and help about tasks presented to subjects in a study.
+
+:::
+
+::: {.g-col-md-6 .g-col-12}
+
+**The BDM also includes particular structure that are unique to the type of data. Specifically, it defines the following levels of data:**
+
+[**<i class="bi bi-0-square-fill"></i> Events**](events-overview.qmd)
 : The raw data that are collected during the experiment. They are the most detailed data and are typically sufficient for reproducing the original experiment.
 
-[**<i class="bi bi-1-square-fill"></i></i> Trials**](trials-overview.qmd)
+[**<i class="bi bi-1-square-fill"></i> Trials**](trials-overview.qmd)
 : The trials data that are derived from the events. They are task-specific and typically designed to capture the main features of the scientific experiment.
 
 <i class="bi bi-2-square-fill"></i> Models
 : The model parameters that are derived from the trial.  They generally address the research questions and are used for downstream data summary, analysis, publication, or visualization.
+
+:::
+
+:::
