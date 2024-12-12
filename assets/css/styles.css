@@ -1,16 +1,5 @@
 /* css styles */
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
-
-body {
-    font-family: 'IBM Plex Sans', 'system-ui','Roboto', sans-serif;
-}
-
-.title {
-  font-weight: bold;
-  color: #4700BA;
-}
-
 .sidebar-navigation .quarto-navigation-tool {
   font-size: 1.1em;
 }
