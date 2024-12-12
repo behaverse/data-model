@@ -1,6 +1,6 @@
 ---
 title: Behaverse Data Model (BDM)
-subtitle: Coherent data model for cognitive tests and questionnaires
+subtitle: Unified dataset format for cognitive tests and questionnaires
 toc: false
 ---
 
