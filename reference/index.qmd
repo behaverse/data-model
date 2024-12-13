@@ -6,6 +6,8 @@ page-layout: full
 
 Behaverse Data Model (BDM) specifies dataset structure and a set of tables that are designed to capture the information relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy, following the principles outlined in [*"Tidy Data"* paper](https://vita.had.co.nz/papers/tidy-data.pdf) and to capture a wide variety of behavioral experiments.
 
+![A typical behavioral experiment in BDM, from study inception to model development](../assets/bpmn/behavioral_experiments.svg){.text-center}
+
 ::: {.grid}
 
 ::: {.g-col-md-6 .g-col-12}
