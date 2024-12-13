@@ -1,0 +1,29 @@
+---
+title: BDM Design Process
+---
+
+Behaverse data model leverages *Domain-Driven Design* to develop a shared understanding of the data and *Data Lakehouse* to harmonize the data. This addresses the shortcomings of current metadata-centric methods, which are costly and often ineffective in achieving reusability. This approach underscores the need to shift from ad-hoc metadata to data structures, and encourage a ubiquitous language that can be used by both technical and domain experts. This is crucial for developing tools and fostering collaboration in research.
+
+![BDM use cases](/assets/bpmn/bdm_use_cases.svg)
+
+
+## Domain-Driven Design
+
+Behavioral data is inherently complex due to the variety of data types, the diversity of experimental designs, and the need for precise data interpretation. Traditional data management approaches often struggle with the variability and context-dependence of behavioral data. Such domain-specific complexity are best addressed in software engineering by Domain-Driven Design (DDD), which is a structured approach that aligns technical design with the specific needs of the domain, which in our case is behavioral science.
+
+One of the primary benefits of applying DDD to behavioral data is that it serves as the foundation for all study design, data collection, pre-processing, and analysis phases. It also ensures consistency across different studies while accommodating the unique aspects of different experiments. DDD's focus on bounded contexts allows for the clear definition of key concepts like "Trial," ensuring that these concepts are used consistently across different settings.
+
+Unlike rigid standards, flexibility of DDD allows for cost-effective and optional opt-in for some of its features. Ontologies and standards that are purely based on domain knowledge often lead to unstructured, raw knowledge. DDD, on the other hand, addresses the need for developing tools to conduct research, and provides a language that bridges the gap between domain experts and technical experts.
+
+## Data Lakehouse
+
+A missing but important aspect in behavioral datasets is how to make analysis of data easy, cost-effective, and consistent while keeping the harmonizing/federation of data straightforward. For this reason, BDM relies on data lakehouse architecture which, unlike previous approaches, provides a lost-cost ingestion/storage/consumption based on a schema-on-read. Lakehouse allows, during study design and data collection, to only focus on the ubiquitous language of trials and events and later one, during the analysis and modeling, to apply loosely-coupled techniques to standardize datasets.
+
+Overall, considering events and trials as the ubiquitous domain concepts and data lakehouse as the harmonization approach make it possible to scale and manage behavioral analysis systems. New challenges involve storage, debugging, increased  traffic, and extending the data architecture to new tasks and modalities.
+
+
+## Levels of data
+
+Behavioral experiments require and produce a variety of interrelated data, from instructions shown to the subjects, task parameters, and recorded interactions, to aggregated trials data that are interpretable in accord with the scientific question. If we consider cognitive tasks as a set of interactions that participants do, trial only captures the final state of those interactions. Events on the other hand allow us to reconstruct the history of interactions. However, events are not commonly used during the analysis and most researchers are only interested in the final states of events, i.e., trials.
+
+For software engineers however, it's more convenient to collect transactional events rather than waiting for some final states; most codes are written as controlling some user interactions and storing the corresponding data. Trial data is an implicit post-processing of those event data. For a full reconstruction of what happened during the task, events data is more useful and it also leads to datasets that can be used in more modern disciplines such as RL where we are interested in learning how an agent interacts with the environment, rather than the final decisions.

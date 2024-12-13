@@ -16,11 +16,11 @@ format:
     page-layout: article
     title-block-style: default
     abstract-title: " "
-    # theme:
+    theme:
+      - assets/css/custom.scss
     #   light: default
       # dark: [cosmo, assets/css/dark-theme.scss]
     email-obfuscation: javascript
-    css: assets/css/styles.css
     toc: true
     # toc-title: " "
     link-external-icon: false

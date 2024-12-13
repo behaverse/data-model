@@ -1,4 +1,4 @@
-/* css styles */
+/*-- scss:rules --*/
 
 .sidebar-navigation .quarto-navigation-tool {
   font-size: 1.1em;
@@ -71,4 +71,8 @@ h2.trial-table-category-heading {
 
 .listing-notes, .listing-description {
   margin-left: 2.5rem;
+}
+
+figcaption {
+  @extend .text-center;
 }

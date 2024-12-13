@@ -9,6 +9,17 @@ There are increasing amounts of behavioral data freely available on the internet
 
 The *Behaverse Data Model (BDM)* defines a coherent data model for behavioral data which unifies a wide range of cognitive tests and questionnaires. It also establishes guidelines for naming behavioral variables and structuring behavioral datasets.
 
-To learn more about the ideas behind the *BDM*, see:
+### How to use this website
 
-> Defossez, A., Ansarinia, M., Clocher, B., Schmück, E., Schrater, P., & Cardoso-Leite, P. (2020). [The structure of behavioral data](https://arxiv.org/abs/2012.12583). *arXiv preprint arXiv:2012.12583.*
+Following the [Diátaxis](https://diataxis.fr/) approach to documentation, this website is organized into the following parts:
+
+- [Tutorials](/tutorials): Step-by-step instructions for integrating BDM into your projects.
+- [Guides](/guides): How-to guides, best practices, and insights into BDM dataset design.
+- [Reference](/reference): Formal specifications for BDM datasets and tables.
+- [Datasets](/datasets): Examples of datasets that conform to the BDM.
+- [Glossary](/glossary): A controlled vocabulary for behavioral data terms and BDM concepts.
+
+
+### Evolution of the BDM
+
+To learn more about the ideas behind the *BDM*, see [*"the structure of behavioral data"*](https://arxiv.org/abs/2012.12583) on ArXiv. And to suggest improvements to the specification, please read the [design process](design-process.qmd) or visit [discussions](https://github.com/orgs/behaverse/discussions) on GitHub.
