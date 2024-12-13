@@ -1,6 +1,6 @@
 # Behaverse Data Model (BDM)
 
-*Behaverse Data Model (BDM)* defines coherent data models for both cognitive tests and surveys that apply to a large range of use-cases. In addition, *Behaverse Data Model* defines concepts and best practices regarding the naming and structuring of datasets. Visit [bdm.behaverse.org](https://bdm.behaverse.org) for more information.
+*Behaverse Data Model (BDM)* defines coherent data models for both cognitive tests and surveys that apply to a large range of use-cases. In addition, *Behaverse Data Model* defines concepts and best practices regarding the naming and structuring of datasets. Visit [behaverse.org/data-model](https://behaverse.org/data-model) for more information.
 
 
 

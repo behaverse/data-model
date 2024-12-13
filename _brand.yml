@@ -1,6 +1,6 @@
 meta:
-  name: Behaverse Data Model
-  link: https://bdm.behaverse.org/
+  name: Behaverse Data Model (BDM)
+  link: https://behaverse.org/data-model
 
 logo:
   large: "assets/img/behaverse_data_logo.png"

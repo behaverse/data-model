@@ -27,7 +27,7 @@ format:
 
 website:
   title: Behaverse Data Model
-  site-url: "https://bdm.behaverse.org/"
+  site-url: "https://behaverse.github.io/data-model/"
   google-analytics: "G-K2NP7Q9KGZ"
   back-to-top-navigation: false
   search: 
