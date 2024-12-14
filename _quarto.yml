@@ -23,7 +23,7 @@ format:
     email-obfuscation: javascript
     toc: true
     # toc-title: " "
-    link-external-icon: false
+    link-external-icon: true
 
 website:
   title: Behaverse Data Model
@@ -93,7 +93,6 @@ website:
         href: guides/index.qmd
         contents:
         - guides/data.qmd
-        - guides/styleguide.qmd
         - section: "Naming things"
           href: guides/naming-things.qmd
           contents:
@@ -112,7 +111,6 @@ website:
               - href: guides/naming-things-files-and-folders.qmd
                 text: Files and folders
         - guides/units.qmd
-        - guides/file-formats.qmd
         - guides/tidy-tables.qmd
         - guides/other-standards.qmd
 

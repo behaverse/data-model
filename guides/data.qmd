@@ -54,3 +54,16 @@ In BDM, native data should not be shared if one has the ability to extract and s
 - the extraction of data from the native data into usable data is outside the scope of responsibility of the data analyst. This last point deserves further explaining. For research to be reproducible one may want to test all the steps from the data collection up to the final results. While all the steps might be tested, they are not necessarily tested by the same person. For instance, a software company may run tests to determine that the recorded timestamps are accurate and a lab technician may run tests to calibrate the monitor and other hardware equipments. The question of what data to share is related to what quality assurance requirements are expected to be fulfilled by the data analyst. If both the data in the native format and data extracted from that are handed over to the data analyst it becomes the data analyst’s responsibility to verify that both sets of data are in fact in agreement. If there is an error in the pre-processing codes, the data analysit becomes responsible because he/she had access to that and could thus have spotted and corrected the error. For that, in BDM, the preparation of usable data from the original data in native format is not the responsibility of the data analyst; it is the responsibility of the data engineer and the entity that is sharing the data. It remains however that in any case tests must be conducted to verify the validity and accuracy of the process (put simply, this is not the role of the person receiving the data).
 
 In short then, "don’t share original unformatted data in its native format", instead share well documented, well formatted raw data.
+
+## File formats
+
+In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over proprietary file formats (e.g., `.mat`, `.sav`, `.docx`). Open formats ensure that the data is accessible to a wide audience. Specifically, use the following formats:
+
+| Data Type | Recommended Format | When? |
+|------------------------|----------------------------|---------------------|
+| Tabular data | `.csv` | Always |
+| Structured data | `.json` | For machine-focused applications |
+|  | `.yml` | When human readability and editability matter |
+| Text | `.md` | Always in Markdown, except for official, static, or administrative documents which may be in PDF |
+
+Do NOT save the same data in multiple output formats (e.g., `.csv` and `.sav`) to avoid redundancy and version mismatches. However, lossless data conversion must be used if converting data to other formats.
