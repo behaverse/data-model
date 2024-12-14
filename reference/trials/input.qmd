@@ -7,6 +7,7 @@ listing:
   template: ../../assets/templates/trial-table.ejs
   field-required: [variable_name, categories, description]
   filter-ui: true
+  sort: false
   sort-ui: false
   categories: numbered
   page-size: 10000
