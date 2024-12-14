@@ -2,33 +2,29 @@
 title: Guides
 ---
 
-Styleguides, standards, and conventions are useful in that they support consistency and quality while facilitating the development of efficient workflows, automation and specialized software. They can apply to:
+## Introduction
+
+Style guides, standards, and conventions are useful in that they support consistency and quality while facilitating the development of efficient workflows, automation, and specialized software. They can apply to:
 
 1.  data
 2.  code syntax (surface-level properties)
 3.  code semantic (structural, architectural, paradigmatic properties)
 4.  workflow and best practices (everything that is not directly code)
 
-There are various great books that cover 2-4 (e.g., https://www.goodreads.com/book/show/3735293-clean-code) but comparatively less about 1, in particular within the context of behavioral data science.
+There are various great books that cover codes and best practices (e.g., [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.goodreads.com/book/show/3735293-clean-code)) but comparatively less about data, in particular within the context of behavioral sciences.
 
-This document focuses on standards and principles for structuring, formatting and saving data (which has repercussions on subsequent data analysis code and workflows). It aims to list and sometimes explain the particular choices we have made.
+Here, we focus on standards and principles for structuring, formatting, and storing data (which has repercussions on subsequent data analysis and workflows). It aims to list and sometimes explain the particular choices we have made.
 
-We do not claim that the conventions and rules listed in this document are the absolute best way of doing things. As many have argued before us, consistency is the most important objective; in aiming to achieve such consistency we made opinionated choices people may disagree with.
+We do not claim that the conventions and rules listed here are the absolute best way of doing things. As many have argued before us, consistency is the most important objective; in aiming to achieve such consistency we made opinionated choices people may disagree with. This being said, whenever relevant and possible we aim to follow  established standards and guidelines (e.g., [schema.org](https://schema.org/), [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html), [PEP8](https://pep8.org/).)
 
+## BDM conventions
 
-This being said, whenever relevant and possible we aim to follow  established standards and guidelines (e.g., [schema.org](https://schema.org/), [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html), [PEP8](https://pep8.org/).)
+- For dataset names in code and classes use `kebab-case` (e.g., `my-dataset` as it may be used in a URL).
+- For column names, variables, and functions use `lower_snake_case`.
+- For categorical values (i.e., values of an enum), also use `lower_snake_case` (because those values might end up becoming columns during the data analysis).
+- For constants use ALL_CAPS (e.g., `PI`, `MAX_RADIUS`).
 
-## Naming conventions
-
-For column names, variables, and functions use `lower_snake_case`.
-
-For enum values (i.e., values of a categorical variables), also use `lower_snake_case` (because those values might end up becoming columns during the data analysis).
-
-For dataset names in code and classes use `CamelCase`.
-
-For constants use ALL_CAPS (e.g., `PI`, `MAX_RADIUS`).
-
-:::{.callout-tip}
+:::{.callout-tip appearance="simple"}
 In some cases data may be aggregated from multiple different projects, each following their own styles and it might not always be feasible/practical to harmonize them. When in doubt, consult [PEP 8 — the Style Guide for Python Code
 ](https://pep8.org/).
 :::
