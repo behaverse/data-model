@@ -11,7 +11,7 @@ The *Behaverse Data Model (BDM)* defines a coherent data model for behavioral da
 
 ### How to use this website
 
-Following the [Diátaxis](https://diataxis.fr/) approach to documentation, this website is organized into the following parts:
+Following [Diátaxis](https://diataxis.fr/) approach to documentation, this website is organized into the following parts:
 
 - [Tutorials](/tutorials): Step-by-step instructions for integrating BDM into your projects.
 - [Guides](/guides): How-to guides, best practices, and insights into BDM dataset design.
