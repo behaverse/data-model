@@ -95,7 +95,6 @@ website:
         - guides/data.qmd
         - guides/naming-things.qmd
         - guides/units.qmd
-        - guides/tidy-tables.qmd
         - guides/other-standards.qmd
 
       - "---"
