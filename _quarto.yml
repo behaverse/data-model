@@ -93,23 +93,7 @@ website:
         href: guides/index.qmd
         contents:
         - guides/data.qmd
-        - section: "Naming things"
-          href: guides/naming-things.qmd
-          contents:
-              - href: guides/naming-things.qmd
-                text: General advice
-              - href: guides/naming-things-people.qmd
-                text: People
-              - href: guides/naming-things-tasks.qmd
-                text: Tasks
-              - href: guides/naming-things-stimuli.qmd
-                text: Stimuli
-              - href: guides/naming-things-responses.qmd
-                text: Responses
-              - href: guides/naming-things-temporal-variables.qmd
-                text: Temporal variables
-              - href: guides/naming-things-files-and-folders.qmd
-                text: Files and folders
+        - guides/naming-things.qmd
         - guides/units.qmd
         - guides/tidy-tables.qmd
         - guides/other-standards.qmd
