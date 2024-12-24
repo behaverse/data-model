@@ -5,7 +5,7 @@ description: Understand what BDM is and how to use it
 
 ## What is BDM?
 
-Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide interoperable data for modern cognitive projects. It is a set of conventions and tools that help you organize your data in a way that is easy to understand and use for both domain experts and technical experts. It is designed to be easy to use, and to work with a wide range of data types.
+Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide interoperable data for modern cognitive projects. It is a set of conventions and tools that help you organize your data in a way that is easy to understand and use for both domain experts and technical experts. It is designed to work with a wide range of cognitive tasks and questionnaires.
 
 Whether you're an individual scientist or part of a larger lab, BDM can help you build a dataset that is easy to understand, maintain, and share with others. BDM is opinionated but designed to be flexible and extensible, so you can adapt it to your specific needs out of the box.
 
