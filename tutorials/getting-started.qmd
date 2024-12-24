@@ -1,0 +1,22 @@
+---
+title: Getting Started
+---
+
+## What is BDM?
+
+Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide a interoperable data for modern cognitive projects. It is a set of conventions and tools that help you organize your data in a way that is easy to understand and use for both domain experts and technical experts. It is designed to be easy to use, and to work with a wide range of data types.
+
+Whether you're an individual scientist or part of a larger lab, BDM can help you build a dataset that is easy to understand, maintain, and share with others. BDM is opinionated but designed to be flexible and extensible, so you can adapt it to your specific needs out of the box.
+
+## How does a BDM dataset look like?
+
+A BDM dataset is a collection of files and directories that follow a specific structure. Here is an example of a simple BDM dataset:
+
+```
+example-dataset/
+├── README.md
+├── agents/
+└── instruments/
+```
+
+The `README.md` file contains both human-readable description and machine-readable metadata of the dataset. The `agents/` folder contain the data files. Each data file is a CSV table where a row in the table, and each column is a variable about the data. The `instruments/` folder contains the tasks, questionnaires, and corresponding parameters. Each instrument is a JSON file that describes the instrument and its parameters.
