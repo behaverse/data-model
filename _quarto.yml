@@ -83,24 +83,26 @@ website:
         href: index.qmd
       - '---'
       - section: "Tutorials"
-        href: tutorials/index.qmd
+        # href: tutorials/index.qmd
         contents:
           - auto: "tutorials/*.qmd"
 
       - '---'
 
       - section: "Guides"
-        href: guides/index.qmd
         contents:
+        - text: Conventions
+          href: guides/conventions.qmd
         - guides/data.qmd
         - guides/naming-things.qmd
         - guides/units.qmd
-        - guides/other-standards.qmd
 
       - "---"
       - section: "Reference"
-        href: reference/index.qmd
+        # href: reference/index.qmd
         contents:
+        - text: '<i class="bi bi-grid"></i> Overview'
+          href: reference/index.qmd
         - section: <i class="bi bi-dice-1"></i> General
           href: reference/general/index.qmd
           contents:

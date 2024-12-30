@@ -1,5 +1,5 @@
 ---
-title: Guides
+title: Conventions
 ---
 
 ## Introduction
@@ -28,3 +28,11 @@ We do not claim that the conventions and rules listed here are the absolute best
 In some cases data may be aggregated from multiple different projects, each following their own styles and it might not always be feasible/practical to harmonize them. When in doubt, consult [PEP 8 — the Style Guide for Python Code
 ](https://pep8.org/).
 :::
+
+## Other standards
+
+What other standards are we following?
+
+ - BIDS
+ - ISOXXX
+ - schema.org

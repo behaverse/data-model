@@ -1,9 +1,0 @@
----
-title: Other standards
----
-
-What other standards are we following?
-
- - BIDS
- - ISOXXX
- - schema.org
