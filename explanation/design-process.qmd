@@ -1,5 +1,5 @@
 ---
-title: Design Process
+title: Design process
 subtitle: How the Behaverse Data Model is being developed
 ---
 

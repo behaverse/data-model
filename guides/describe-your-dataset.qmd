@@ -1,0 +1,31 @@
+---
+title: Describe Your dataset with a *codebook*
+subtitle: A codebook is a collection of metadata that describes the data in a dataset.
+code-overflow: wrap
+highlight-style: github
+---
+
+Codebooks are a way to document your data. They are a collection of metadata that describe the data in a dataset.  It can include information about the dataset as a whole, such as the title, description, and author, as well as information about the variables in the dataset, such as the name, type, and description of each variable. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
+
+## Dataset metadata
+
+Each BDM dataset includes a `README.md` file in its root directory that provides both human- and machine-readable metadata. Machine readability relies primarily on the [front-matter](#). It includes information about the dataset as a whole (such as the title, description, and author) and the data (such as the variable names, types, and descriptions). Here is an example:
+
+```markdown
+---
+title: "Example dataset"
+description: "This is an example dataset that contains some example data."
+author: "John Doe"
+---
+
+This is an example dataset that contains some example data. It is provided for illustrative purposes only.
+
+## Citation
+
+...
+
+## License
+
+...
+
+```

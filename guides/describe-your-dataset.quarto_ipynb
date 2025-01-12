@@ -1,0 +1,46 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: Describe Your dataset with a *codebook*\n",
+        "subtitle: A codebook is a collection of metadata that describes the data in a dataset.\n",
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "Codebooks are a way to document your data. They are a collection of metadata that describe the data in a dataset.  It can include information about the dataset as a whole, such as the title, description, and author, as well as information about the variables in the dataset, such as the name, type, and description of each variable. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.\n",
+        "\n",
+        "## Dataset metadata\n",
+        "\n",
+        "Each BDM dataset has a readme file that describes the dataset in a human-readable format. This file is written in Markdown and is named `README.md` and is located in the root directory of the dataset. It also includes a front-matter information about the dataset as a whole, such as the title, description, and author. Here is an example of what this might look like:\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "```{markdown .code-overflow-wrap}\n",
+        "---\n",
+        "title: \"Example dataset\"\n",
+        "description: \"This is an example dataset that contains some example data.\"\n",
+        "author: \"John Doe\"\n",
+        "---\n",
+        "\n",
+        "This is an example dataset that contains some example data. It is provided for illustrative purposes only.\n",
+        "```"
+      ],
+      "id": "314eb882"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

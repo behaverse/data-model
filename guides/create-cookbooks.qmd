@@ -1,9 +1,0 @@
----
-title: Create codebooks
----
-
-Codebooks are a way to document your data. They are a collection of metadata that describe the data in a dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
-
-## Dataset metadata
-
-The metadata in a codebook can include information about the dataset as a whole, such as the title, description, and author. It can also include information about the variables in the dataset, such as the name, label, type, and description of each variable.
