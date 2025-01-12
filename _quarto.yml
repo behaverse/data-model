@@ -23,7 +23,7 @@ format:
     email-obfuscation: javascript
     toc: true
     # toc-title: " "
-    link-external-icon: true
+    link-external-icon: false
 
 website:
   title: Behaverse Data Model
@@ -43,8 +43,8 @@ website:
     left: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  &middot; [Cookies](#){#open_preferences_center} &middot; [About us](/about.qmd)"
 
   announcement: 
-    content: " **This website is under construction.** " 
-    position: below-navbar 
+    content: "**This website is under construction.** Please see [github.com/behaverse/data-model](https://github.com/behaverse/data-model) for the latest updates." 
+    position: above-navbar
 
   navbar: false
   #   pinned: true
