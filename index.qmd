@@ -14,12 +14,16 @@ The *Behaverse Data Model (BDM)* defines a coherent data model for behavioral da
 Following [Diátaxis](https://diataxis.fr/) approach to documentation, this website is organized into the following parts:
 
 - [Tutorials](/tutorials): Step-by-step instructions for integrating BDM into your projects.
-- [Guides](/guides): How-to guides, best practices, and insights into BDM dataset design.
+- [How-to guides](/guides): Practical guides for using BDM in different contexts.
 - [Reference](/reference): Formal specifications for BDM datasets and tables.
+- [Explanation](/explanation): Detailed explanations of BDM concepts and design decisions.
+
+And, you can also check:
+
 - [Datasets](/datasets): Examples of datasets that conform to the BDM.
 - [Glossary](/glossary): A controlled vocabulary for behavioral data terms and BDM concepts.
 
 
 ### Evolution of the BDM
 
-To learn more about the ideas behind the *BDM*, see [*"the structure of behavioral data"*](https://arxiv.org/abs/2012.12583) on ArXiv. And to suggest improvements to the specification, please read the [design process](design-process.qmd) or visit [discussions](https://github.com/orgs/behaverse/discussions) on GitHub.
+To learn more about the ideas behind the *BDM*, see [*"the structure of behavioral data"*](https://arxiv.org/abs/2012.12583) on ArXiv. And to suggest improvements to the specification, please read the [design process](explanation/design-process.qmd) or visit [discussions](https://github.com/orgs/behaverse/discussions) on GitHub.

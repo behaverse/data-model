@@ -76,3 +76,13 @@ h2.trial-table-category-heading {
 figcaption {
   @extend .text-center;
 }
+
+.subtitle.lead {
+  font-style: italic;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.quarto-block-header {
+  padding-bottom: 14px !important;
+}

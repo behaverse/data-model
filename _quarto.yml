@@ -81,21 +81,16 @@ website:
     contents:
       - text: "Home"
         href: index.qmd
-      - '---'
+      - "---"
       - section: "Tutorials"
         # href: tutorials/index.qmd
         contents:
           - auto: "tutorials/*.qmd"
 
-      - '---'
-
+      - "---"
       - section: "Guides"
         contents:
-        - text: Conventions
-          href: guides/conventions.qmd
-        - guides/data.qmd
-        - guides/naming-things.qmd
-        - guides/units.qmd
+          - guides/index.qmd
 
       - "---"
       - section: "Reference"
@@ -141,6 +136,15 @@ website:
           icon: 2-square-fill
           contents:
             - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
+
+      - "---"
+      - section: "Explanation"
+        contents:
+        - explanation/design-process.qmd
+        - explanation/conventions.qmd
+        - explanation/data.qmd
+        - explanation/naming-things.qmd
+        - explanation/units.qmd
 
       - "---"
       - href: datasets/index.qmd
