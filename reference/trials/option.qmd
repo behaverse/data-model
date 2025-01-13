@@ -4,7 +4,7 @@ subtitle: "Describes each option that a subject could choose from in a given tri
 order: 2
 toc: false
 listing: 
-  template: ../../assets/templates/trial-table.ejs
+  template: ../../assets/templates/trials.ejs
   field-required: [variable_name, categories, description]
   filter-ui: true
   sort: false
