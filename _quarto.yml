@@ -99,23 +99,21 @@ website:
         - text: '<i class="bi bi-grid"></i> Overview'
           href: reference/index.qmd
         - section: <i class="bi bi-dice-1"></i> General
-          href: reference/general/index.qmd
           contents:
+            - reference/general/index.qmd
             - reference/general/folder-structure.qmd
-            - reference/general/metadata.qmd
+            - reference/general/dataset-card.qmd
             - reference/general/studyflow.qmd
             - reference/general/codebook.qmd
-            - reference/general/indexing.qmd
+            - reference/general/indices.qmd
             - reference/general/instructions.qmd
         - section: "Events"
           icon: 0-square-fill
-          href: reference/events-overview.qmd
           contents:
             - href: reference/events-overview.qmd
               text: '<i class="bi bi-grid"></i> Overview'
         - section: "Trials"
           icon: 1-square-fill
-          href: reference/trials-overview.qmd
           contents:
             - href: reference/trials-overview.qmd
               text: '<i class="bi bi-grid"></i> Overview'
@@ -143,8 +141,10 @@ website:
         - explanation/design-process.qmd
         - explanation/conventions.qmd
         - explanation/data.qmd
+        - explanation/metadata.qmd
         - explanation/naming-things.qmd
         - explanation/units.qmd
+        - explanation/instructions.qmd
 
       - "---"
       - href: datasets/index.qmd

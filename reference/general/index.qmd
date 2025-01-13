@@ -1,11 +1,12 @@
 ---
-title: General specifications
+title: Overview
+subtitle: General specifications
 ---
 
 Part of the BDM is common to all datasets, regardless of the specific type of activity. This includes:
 
 [**Folder structure**](folder-structure.qmd)
-: a BDM dataset is a folder that contains data files and all relevant information needed to make sense of that data.
+: a BDM dataset is a folder that contains data files and all relevant information needed to make sense of the data.
 
 [**Metadata**](metadata.qmd)
 : Metadata provides information about a dataset.
@@ -16,7 +17,7 @@ Part of the BDM is common to all datasets, regardless of the specific type of ac
 [**Codebook**](codebook.qmd)
 : Codebook is a document that describes the contents, structure, and layout of a dataset.
 
-[**Indexing**](indexing.qmd)
+[**Indices**](indices.qmd)
 : Indices are used to identify and address data records.
 
 [**Instructions**](instructions.qmd)

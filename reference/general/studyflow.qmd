@@ -1,4 +1,3 @@
 ---
-title: Study flow
-sidebar: spec
+title: StudyFlow
 ---

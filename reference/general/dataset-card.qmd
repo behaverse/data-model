@@ -1,14 +1,9 @@
-## Metadata
+---
+title: Dataset card
+---
 
-### Metadata standard
+Dataset card is a structured representation of metadata. It is defined in the `README.md` front matter of a dataset (see [folder structure](folder-structure.qmd)) and provides information about its creator, license, funding, and other relevant information.
 
-Metadata provides information about a data record, in our case, a dataset. Metadata can serve many functions, most important of which are to facilitate data discovery. There are numerous standards for such metadata which in practice may not be used in consistent ways. It is for instance important to note that some metadata are destined to be processed by machines (e.g., search engines) while other metadata (or views thereof) are destined to be read by the dataset consumers.
-
-We use the standard defined by [schema.org](https://schema.org/Dataset), as this is a solid, industry standard that is both extensive and used by major dataset search engines (e.g., https://datasetsearch.research.google.com/).
-
-We also recommend sharing data via [Zenodo](https://zenodo.org/) which a major platform for sharing scientific datasets. When uploading datasets, Zenodo offers an interface for describing the dataset which uses the fields defined by schema.org and generates metadata following that standard that will be attached to the dataset.
-
-We also recommend adopting a minimal approach to the content of this metadata and to only fill out key information that may be useful for locating a particular dataset and determining if the dataset is of relevance to the data consumer. More detailed information about the data (e.g., the codebook) should be included in the dataset itself. Below we present the key properties to describe datasets within shema.org. For the official full specification, see https://schema.org/Dataset.
 
 ### Required fields
 
@@ -33,11 +28,11 @@ We also recommend adopting a minimal approach to the content of this metadata an
 | measurementTechnique | DefinedTerm, URL, Text        | The instrument(s) used to collect the data (e.g., "Beck Depression Inventory")                                                  |
 | variableMeasured     | Property, PropertyValue, Text | Describes the type of construct being measured (e.g., "depression"), not the columns/variables in the dataset (e.g., "dep_q1"). |
 
-### Curated dataset
+### Derived datasets
 
-Sometimes a dataset is curated and shared by people who were not the original collectors of the dataset. In those cases it might be unclear how exactly to attribute proper credit to each type of contribution.
+Sometimes a dataset is curated/aggregated and shared by people who were not the original collectors of the data. In those cases it might be unclear how exactly to attribute proper credit to each type of contribution.
 
-From our perspective, the creator(s) of a dataset are the people or organizations that published that specific version of the dataset, not the people or organizations that collected the data. For instance, if the shared dataset has been processed inadequately, it would not make sense to blame to original data collectors for such mistakes.
+In BDM, the creator(s) of a dataset are the people or organizations that published that specific version of the dataset, not the people or organizations that collected the data. For instance, if the shared dataset has been processed inadequately, it would not make sense to blame to original data collectors for such mistakes.
 
 This being said, the original data collectors must be appropriately credited. There are 5 mechanisms we recommend
 
@@ -51,12 +46,3 @@ This being said, the original data collectors must be appropriately credited. Th
 |------------------------|------------------------|------------------------|
 | isBasedOn | URL or CreativeWork  | A resource from which this work is derived or from which it is a modification or adaptation.                     |
 | citation  | CreativeWork or Text | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. |
-
-### Metadata file and location
-
-Metadata may be embedded in a file (e.g., in an html page) and/or it may be stored as a separate dedicated file within the dataset folder (e.g., `dataset_description.json`) and/or outside the folder. As these strategies are used somewhat inconsistently in practiced, it is important here to consider who (or what) the metadata is destined for.
-
-As JSON files are notoriously hard to read and edit by humans (in particular when they are long, with nested data) we do not recommend exposing them directly to data consumers. Instead we prefer the option of presenting to humans all relevant metadata within the datasets' README file. Note that the JSON metadata may be embedded in the README file and displayed in a more human readable way, while still allowing its processing by machines (for an example of this approach see [HuggingFace dataset cards](https://huggingface.co/datasets/vikp/textbook_quality_programming).)
-
-Furthermore, when sharing data on [Zenodo](https://zenodo.org/) it is necessary to fill out a form describing the shared dataset. This form is used to populate a JSON file that can be downloaded by the user, but most importantly, can be processed by search engines and help people find your dataset (in this case the metadata is external to the dataset).
-
