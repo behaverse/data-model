@@ -1,8 +1,5 @@
 # Behaverse Data Model (BDM)
-
-*Behaverse Data Model (BDM)* is an ongoing effort to define a coherent data structure for cognitive tests and questionnaires that can be applied to a large range of use cases. It also defines concepts and recommends best practices for behavioral datasets. Visit [behaverse.org/data-model](https://behaverse.org/data-model) for more information.
-
-
+*Behaverse Data Model (BDM)* is an ongoing effort to define a coherent data structure for a wide range of cognitive tests and questionnaires. For more details, visit [behaverse.org/data-model](https://behaverse.org/data-model).
 
 ## About
 Behaverse Data Model is part of an [FNR](https://www.fnr.lu/) funded cognitive sciences research project from [xCIT](https://xcit.org/)—a research team led by Prof. Pedro Cardoso-Leite.

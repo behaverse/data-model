@@ -7,7 +7,7 @@ toc: false
 
 There are increasing amounts of behavioral data freely available on the internet. Metadata standards and semantic web make it easier to find them. However, there are large inconsistencies in the way those datasets are structured, in the way their variables are named, and even in what is meant by various common terms. These inconsistencies make it unnecessarily hard to reuse or combine datasets and hinder the development of effective tools.
 
-The *Behaverse Data Model (BDM)* defines a coherent data model for behavioral data which unifies a wide range of cognitive tests and questionnaires. It also establishes guidelines for structuring behavioral datasets and naming behavioral variables.
+The *Behaverse Data Model (BDM)* defines a coherent data model for behavioral data which unifies a wide range of cognitive tests, questionnaires, and instructions. It establishes guidelines for structuring behavioral datasets and naming behavioral variables.
 
 ### How to use this website
 
@@ -18,7 +18,7 @@ Following [Diátaxis](https://diataxis.fr/) approach to documentation, this webs
 - [Reference](/reference): Formal specifications for BDM datasets and tables.
 - [Explanation](/explanation): Detailed explanations of BDM concepts and design decisions.
 
-And, you can also check:
+You can also check:
 
 - [Datasets](/datasets): Examples of datasets that conform to the BDM.
 - [Glossary](/glossary): A controlled vocabulary for behavioral data terms and BDM concepts.
@@ -26,4 +26,4 @@ And, you can also check:
 
 ### Evolution of the BDM
 
-To learn more about the ideas behind the *BDM*, see [*"the structure of behavioral data"*](https://arxiv.org/abs/2012.12583) on ArXiv. And to suggest improvements to the specification, please read the [design process](explanation/design-process.qmd) and visit [discussions](https://github.com/orgs/behaverse/discussions) on GitHub.
+To learn more about the ideas behind the *BDM*, see [*"the structure of behavioral data"*](https://arxiv.org/abs/2012.12583) on arXiv. And to suggest improvements to the specification, please read the [design process](explanation/design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions).
