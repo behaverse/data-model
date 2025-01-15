@@ -85,12 +85,16 @@ website:
       - section: "Tutorials"
         # href: tutorials/index.qmd
         contents:
+          - text: Overview
+            href: tutorials/index.qmd
           - auto: "tutorials/*.qmd"
 
       - "---"
       - section: "Guides"
         contents:
-          - guides/describe-your-dataset.qmd
+          - text: Overview
+            href: guides/index.qmd
+          - auto: "guides/*.qmd"
 
       - "---"
       - section: "Reference"

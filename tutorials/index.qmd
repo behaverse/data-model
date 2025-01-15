@@ -6,29 +6,10 @@ Here, you can find practical activities to learn BDM by solving common challenge
 
 You don’t need to fully understand BDM to apply it to your data. Once you find an idea that seems useful, put it into practice. You can always iterate between your data and BDM documentation, and return to it when you need more clarity about the data.
 
-Tutorial: a practical activity to learn by doing something meaningful, towards some achievable goal. Students achieve theoritical knowledge, understanding, familiarity, interaction between things, the names, the use of tools, workflows, concepts, commands.
+Tutorial: a practical activity to learn by doing something meaningful, towards some achievable goal. Students achieve theoretical knowledge, understanding, familiarity, interaction between things, the names, the use of tools, workflows, concepts, commands.
 
 Tutorials:
--[ ] What is a datasest and how to organize it using BDM
--[ ] How to manually convert a dataset into BDM? subjects, activities, trial tables, instruments.
--[ ] Levels of data
--[ ] Extending trials using supplementary tables
-
-How-to guides
--[ ] I already have a data table. How to convert a behavior data table into BDM
--[ ] Converting a multi-task study into BDM
--[ ] I have a dataset of longitudinal study (test/retest)
--[ ] I want to develop a software that outputs BDM
--[ ] I have events data
--[ ] I want to combine two datasets
--[ ] I want to validate a BDM dataset
--[ ] Can I convert my dataset into BDM?
--[ ] I have multi-agent data
--[ ] I have questionnaire data
--[ ] I used AI as simulating agents
--[ ] I want to access a BDM-compatible dataset
-
-
-Neuroimaging
--[ ] Convert BIDS beh into BDM
--[ ] Merge BDM into a neuroimaging BIDS dataset
+- [ ] What is a dataset and how to organize it using BDM
+- [ ] How to manually convert a dataset into BDM? subjects, activities, trial tables, instruments.
+- [ ] Levels of data
+- [ ] Extending trials using supplementary tables

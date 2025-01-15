@@ -1,0 +1,25 @@
+---
+title: How-to Guides
+---
+
+
+## General/Behavioral
+
+- [ ] I already have a data table. How to convert a behavior data table into BDM
+- [ ] Converting a multi-task study into BDM
+- [ ] I have a dataset of longitudinal study (test/retest)
+- [ ] I want to develop a software that outputs BDM
+- [ ] I have events data
+- [ ] I want to combine two datasets
+- [ ] I want to validate a BDM dataset
+- [ ] Can I convert my dataset into BDM?
+- [ ] I have multi-agent data
+- [ ] I have questionnaire data
+- [ ] I used AI as simulating agents
+- [ ] I want to access a BDM-compatible dataset
+
+
+## Neuroimaging
+
+- [ ] Convert BIDS beh into BDM
+- [ ] Merge BDM into a neuroimaging BIDS dataset
