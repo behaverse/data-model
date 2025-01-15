@@ -130,10 +130,10 @@ website:
             - reference/trials/instrument.qmd
             - section: "Extensions"
               icon: puzzle
-              href: reference/extensions/index.qmd
               contents:
-                - reference/extensions/cognitive-tests.qmd
-                - reference/extensions/questionnaires.qmd
+                - href: reference/extensions/index.qmd
+                  text: Overview
+                - auto: reference/extensions/*.qmd
         - section: "Models"
           icon: 2-square-fill
           contents:

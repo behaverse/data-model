@@ -1,0 +1,6 @@
+---
+title: Resting states
+subtitle: When subjects are not performing a task
+---
+
+Resting-state data is collected when subjects are not performing a task. This data is typically used to study the intrinsic activity of the brain.

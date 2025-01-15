@@ -1,3 +1,35 @@
 ---
 title: StudyFlow
 ---
+
+StudyFlows are visual, but formal, diagrams based on BPMN that describe cognitive studies. StudyFlows can be used to describe the study protocol, the analysis pipeline, or any other steps in a study. They can be used to communicate with the participants (automatically running a study) and the researchers (reproducible protocols and analyses).
+
+- [ ] TODO: Example
+
+## Elements
+
+### Experimental design
+
+The following elements can be used to describe the study protocol.
+
+- [ ] `bpmn:StartEvent`: initiates the flow. There must be only one start event in a study.
+- [ ] `bpmn:SequenceFlow`: connects the elements.
+- [ ] `studyflow:Element`
+    - [ ] `studyflow:Activity`: a generic task (`bpmn:Task`) that can be performed by a participant or a system.
+        - [ ] `studyflow:CognitiveTest`: participant performs a cognitive test.
+        - [ ] `studyflow:Questionnaire`: participant answers a questionnaire.
+            - [ ] `studyflow:Consent`: participant provides consent for the study.
+            - [ ] `studyflow:Instruction`: participant reads the instructions.
+        - [ ] `studyflow:VideoGame`: participant plays a video game.
+        - [ ] `studyflow:Rest`: participant takes a break, and performs no activity as in resting-state.
+    - [ ] `studyflow:Dispatcher`: a subclass of `bpmn:ExclusiveGateway` that splits the flow into on of the multiple paths based on a condition.
+        - [ ] `studyflow:RandomDispatcher`: a subclass of `Dispatcher` that randomly selects one of the outgoing paths.
+- [ ] `bpmn:EndEvent` terminates the flow. There must be only one end event in a study.
+
+### Modeling and data analysis
+
+The following elements can be used to describe the analysis pipeline.
+
+- `bpmn:StartEvent`: initiates the analysis pipeline. Unlike experimental design, there can be multiple start events in a pipeline.
+- `bpmn:EndEvent`: terminates the analysis pipeline. Unlike experimental design, there can be multiple end events in a pipeline.
+- [ ] TODO

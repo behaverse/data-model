@@ -13,4 +13,4 @@ listing:
       subtitle: Description
 ---
 
-The Behaverse Data Model contains multiple tables, revolving around the concept of a *trial*. A *trial* is a single instance of a participant interacting with a behavioral task and contains information about the participant, the task, and the interaction between the two. The trial-related tables are designed to be as flexible as possible, allowing for a wide range of tasks to be represented.
+BDM trials can be extended beyond cognitive tests and questionnaires using additional extensions for describing various types of data. Below is a list of supported extensions:
