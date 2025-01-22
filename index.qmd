@@ -7,7 +7,7 @@ toc: false
 
 There are increasing amounts of behavioral data freely available on the internet. Metadata standards and semantic web make it easier to find them. However, there are large inconsistencies in the way those datasets are structured, in the way their variables are named, and even in what is meant by various common terms. These inconsistencies make it unnecessarily hard to reuse or combine datasets and hinder the development of effective tools.
 
-The *Behaverse Data Model (BDM)* defines a coherent data model for behavioral data which unifies a wide range of cognitive tests, questionnaires, and instructions. It establishes guidelines for structuring behavioral datasets and naming behavioral variables.
+The *Behaverse Data Model (BDM)* is an ongoing attempt to define a coherent data structure for behavioral data that unifies a wide range of cognitive tests, questionnaires, and instructions. It establishes conventions for structuring behavioral datasets and naming behavioral variables.
 
 ### How to use this website
 
