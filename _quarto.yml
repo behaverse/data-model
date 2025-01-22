@@ -72,9 +72,9 @@ website:
       - icon: clock-history
         text: Changelog
         href: changelog.qmd
-      # - icon: person-raised-hand
-      #   text: Contribute
-      #   href: contribute.qmd
+      - icon: person-raised-hand
+        text: Contribute
+        href: contribute.qmd
       - icon: github
         text: GitHub
         url: https://github.com/behaverse/data-model/

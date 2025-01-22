@@ -8,14 +8,14 @@ Part of the BDM is common to all datasets, regardless of the specific type of ac
 [**Folder structure**](folder-structure.qmd)
 : a BDM dataset is a folder that contains data files and all relevant information needed to make sense of the data.
 
-[**Metadata**](metadata.qmd)
-: Metadata provides information about a dataset.
+[**Dataset card**](dataset-card.qmd)
+: Dataset cards provides metadata and information about a dataset.
 
-[**Study flow**](studyflow.qmd)
-: Study flow describes the sequence of activities in a study.
+[**StudyFlow**](studyflow.qmd)
+: StudyFlow describes the sequence of activities in a study.
 
 [**Codebook**](codebook.qmd)
-: Codebook is a document that describes the contents, structure, and layout of a dataset.
+: Codebook describes the contents, structure, and layout of data.
 
 [**Indices**](indices.qmd)
 : Indices are used to identify and address data records.

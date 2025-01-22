@@ -1,3 +1,9 @@
+---
+title: Contributing to BDM
+---
 
-# Contribute
+We welcome contributions to BDM. Here are some ways you can help:
 
+- Contributing **documentation** to the [BDM repo](https://github.com/behaverse/data-model), such as tutorials, guides, and examples.
+- Contributing **code** to the [Behaverse repos](https://github.com/behaverse). More guidelines are coming soon.
+- Contributing **data**. We are always looking for datasets to include in our list of BDM-compatible datasets. If you have a dataset that you would like to contribute, please contact us.
