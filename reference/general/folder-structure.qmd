@@ -4,54 +4,39 @@ subtitle: A dataset is a folder that contains data files and all relevant inform
 code-block-bg: true
 ---
 
-A BDM dataset is a folder that contains data files and all relevant information needed to make sense of that data. The name of the folder is the name of the dataset. Here we describe the files and subfolders contained in a dataset folder.
+A BDM-compatible dataset is a folder that contains data tables and all relevant information needed to make sense of that data. The name of the folder is the name of the dataset. Here is the structure of an example of dataset:
 
 ```default
 <dataset>/
 ├─ README.md
 ├─ LICENSE
-
-├─ study/
-│ ├─ study_design.json
-│ ├─ instructions.json
-│ ├─ instruments.csv
-│ ├─ ...
-
-
-├─ subjects/
-│ ├─ subjects.csv
-
+├─ studyflow.json
 ├─ instruments/
-│ ├─ <activity>/
-│ │ ├─ instructions.json
-│ │ ├─ codebook.csv
-
-├─ data/
-│ ├─ subject_001/
-│ | ├─ study_flow.csv
-│ | ├─ <activity>/
-│ | ├─ --- response.csv
-
-│ ├─ subject_002/
-│ ├─ .../
-
+  ├─ instructions.csv
+  ├─ <instrument>.csv
+  ├─ ...
+├─ subjects/
+  ├─ subject_001/
+    ├─ studyflow.csv
+    ├─ <activity>/
+    ├─ --- response.csv
+  ├─ subject_002/
+  ├─ .../
 
 ```
 
 
-### <Dataset>
-
-All relevant data, metadata and documentation is included in the dataset folder. The name of this folder is not "dataset" but rather a name that is assigned to the dataset (e.g., `abcd-2021`). As stated earlier, this name follows the convention of naming resposities (as datasets are often shared via repositories); thie means that datasets names may only include lowercase letters, numbers and hypens.
+All relevant data, metadata and documentation is included in the dataset folder. The name of this folder is a name that is assigned to the dataset (e.g., `abcd-2021`). This name follows the convention of naming version-controlled repositories as datasets are often shared via repositories: datasets names may only include lowercase letters, numbers and hyphens.
 
 
 ### README.md
 
-The `README.md` file contains the general description of the dataset and embeds its metadata. We use it as a dataset card (as in [https://huggingface.co/datasets](HuggingFace)) rather than as a codebook (which instead are dedicated files describing specific instruments).
+The `README.md` file contains the general description of the dataset and embeds its metadata in its front-matter section. The metadata represents a dataset card (as in [https://huggingface.co/datasets](HuggingFace)) rather than a codebook to describe specific instruments.
 
 
 ### LICENSE
 
-The `LICENSE` file specifies the terms and conditions for use, reproduction and distribution of the dataset. While different licenses may apply to different parts of a dataset we recommend to keep it simple and to use the [CC-BY](https://creativecommons.org/licenses/by/4.0/) according to which the dataset may be used for any purpose as long as it is given appropriate credit.
+The `LICENSE` file specifies the terms and conditions for use, reproduction and distribution of the dataset. While different licenses may apply to different parts of a dataset, it is recommended to keep it simple and to use the same license for the entire dataset. You can use websites like [choosealicense.com](https://choosealicense.com/) to help you choose a license for your dataset.
 
 
 ### study/
@@ -69,8 +54,6 @@ The `instruments/` folder contains information about the instruments used in the
 The `subjects/` folder contains information about the subjects of the study. Typically, but not always, subjects will be study participants. This folder may for instance include a subjects.csv table listing all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
 
 
-### data/
-
 The `data/` folder contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per subject that contains all the data about that subject.
 
 
@@ -85,8 +68,6 @@ Additional folders are included within each subjects' folder depending on the sp
 In some cases it might be usful to group the data within subject into subfolder corresponding to multiple data collection sessions (e.g., `session_01`, `session_02`).
 
 
-## vignettes/
+## examples/
 
-The optional `vignettes/` folder may contain sample code, and/or data analyses (typically in notebooks) to showcase some aspects of the data (e.g., descriptive statistics, missing values).
-
-
+The optional `examples/` folder may contain sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
