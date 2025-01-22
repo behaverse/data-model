@@ -3,7 +3,7 @@ title: Design process
 subtitle: How the Behaverse Data Model is being developed
 ---
 
-Behaverse data model leverages *Domain-Driven Design* to develop a shared understanding of the data and *Data Lakehouse* to harmonize the data. This addresses the shortcomings of current metadata-centric methods, which are costly and often ineffective in achieving reusability. This approach underscores the need to shift from ad-hoc metadata to data structures, and encourage a ubiquitous language that can be used by both technical and domain experts. This is crucial for developing tools and fostering collaboration in research.
+BDM leverages *Domain-Driven Design* to develop a shared understanding of the data, and *Data Lakehouse* to harmonize the data. This addresses shortcomings of current metadata-centric methods, which are often costly and ineffective in achieving reusability. Out approach underscores the need to shift from ad-hoc metadata to data structures, and encourage a ubiquitous language that can be used by both technical and domain experts. This is crucial for developing tools and fostering collaboration in research.
 
 ![BDM use cases](/assets/bpmn/bdm_use_cases.svg)
 

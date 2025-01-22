@@ -23,7 +23,22 @@ You can also check:
 - [Datasets](/datasets): Examples of datasets that conform to the BDM.
 - [Glossary](/glossary): A controlled vocabulary for behavioral data terms and BDM concepts.
 
+### Research papers
+
+To learn more about the ideas behind the *BDM*, see [*"the structure of behavioral data"*](https://arxiv.org/abs/2012.12583) on arXiv. If you use the *BDM* in your research, please cite this paper.
+
+```bibtex
+@misc{defossez2020structurebehavioraldata,
+      title={The structure of behavioral data}, 
+      author={Aurélien Defossez and Morteza Ansarinia and Brice Clocher and Emmanuel Schmück and Paul Schrater and Pedro Cardoso-Leite},
+      year={2020},
+      eprint={2012.12583},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.NC},
+      url={https://arxiv.org/abs/2012.12583}, 
+}
+```
 
 ### Evolution of the BDM
 
-To learn more about the ideas behind the *BDM*, see [*"the structure of behavioral data"*](https://arxiv.org/abs/2012.12583) on arXiv. And to suggest improvements to the specification, please read the [design process](explanation/design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions).
+To suggest improvements, please read the [design process](explanation/design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).
