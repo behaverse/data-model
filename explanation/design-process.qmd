@@ -3,7 +3,7 @@ title: Design process
 subtitle: How the Behaverse Data Model is being developed
 ---
 
-BDM is similar in some respects to the *data models* used in various domains. However, it is specifically designed to address the unique diversity of behavioral data. The development of BDM is an iterative process guided by two pillars: *Domain-Driven Design* and *Data Lakehouse*.
+BDM is similar in some respects to the *data models* used in various domains. However, it is specifically designed to address the unique diversity of cognitive data. The development of BDM is an iterative process guided by two pillars: *Domain-Driven Design* and *Data Lakehouse*.
 
 *Domain-Driven Design* helps develop a shared understanding of data that works for both domain and technical experts, while *Data Lakehouse* harmonizes diverse data without sacrificing flexibility or speed. This addresses the shortcomings of metadata-centric methods, which are often costly and ineffective at achieving reusability [^1]^,^[^2]. This approach emphasizes the shift from ad-hoc metadata to robust data structures and encourages a ubiquitous language for many cognitive tasks. This is crucial for developing tools and fostering collaboration in research.
 
