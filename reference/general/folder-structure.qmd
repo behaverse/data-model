@@ -1,5 +1,5 @@
 ---
-title: Folder structure
+title: Folder Structure
 subtitle: A dataset is a folder that contains data files and all relevant information needed to make sense of that data.
 code-block-bg: true
 ---

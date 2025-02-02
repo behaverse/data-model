@@ -160,5 +160,5 @@ website:
         text: Glossary
       - "---"
       - href: about.qmd
-        text: About us
+        text: About
         icon: people

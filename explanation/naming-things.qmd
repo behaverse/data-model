@@ -1,5 +1,5 @@
 ---
-title: Naming things
+title: Naming Things
 ---
 
 # General advice on naming things

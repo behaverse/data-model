@@ -1,5 +1,5 @@
 ---
-title: Units and values
+title: Units and Values
 ---
 
 > *The 'root cause' of the loss of the spacecraft was the failed translation of English units into metric units in a segment of ground-based, navigation-related mission software, ...*

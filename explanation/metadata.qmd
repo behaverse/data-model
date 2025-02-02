@@ -1,20 +1,25 @@
+---
+title: Metadata
+---
 
-### Metadata
+Metadata provides information about a data record, in our case, a dataset. It can serve many functions, most important of which is dataset discovery beyond the scope of the repository where they have been published. There are numerous standards for such metadata which in practice may not be aimed for the same audience: some standards are destined to be machine-readable (e.g., for search engines) while other ones are designed for human readability.
 
-Metadata provides information about a data record, in our case, a dataset. Metadata can serve many functions, most important of which are to facilitate data discovery. There are numerous standards for such metadata which in practice may not be used in consistent ways. It is for instance important to note that some metadata are destined to be processed by machines (e.g., search engines) while other metadata (or views thereof) are destined to be read by the dataset consumers.
+BDM relies on [schema.org](https://schema.org/Dataset) and its Croissant extension to describe the data, as they are both extensive and used by major search interfaces like [Google Dataset Search](https://datasetsearch.research.google.com/) and [HuggingFace datasets](https://huggingface.co/datasets).
 
-We use the standard defined by [schema.org](https://schema.org/Dataset), as this is a solid, industry standard that is both extensive and used by major dataset search engines (e.g., https://datasetsearch.research.google.com/).
+## Where is the metadata?
 
-We also recommend sharing data via [Zenodo](https://zenodo.org/) which a major platform for sharing scientific datasets. When uploading datasets, Zenodo offers an interface for describing the dataset which uses the fields defined by schema.org and generates metadata following that standard that will be attached to the dataset.
+Metadata may be embedded in a file (e.g., in an markdown front matter) or it may be stored as a separate file within the dataset (e.g., `dataset_description.json` as in BIDS). As these strategies are not always consistent in practice, it is important here to consider who (or what) the metadata is destined for, humans or machines.
 
-We also recommend adopting a minimal approach to the content of this metadata and to only fill out key information that may be useful for locating a particular dataset and determining if the dataset is of relevance to the data consumer. More detailed information about the data (e.g., the codebook) should be included in the dataset itself. Below we present the key properties to describe datasets within schema.org. For the official full specification, see https://schema.org/Dataset.
+Long, nested JSON files are notoriously hard to read and edit by humans, so exposing them directly to consumers is not recommended. Instead, all the relevant metadata can be presented within the datasets' README file in a human-readable way (see [Dataset Card](/reference/general/dataset-card.qmd)). The structured YAML header of the README file can be displayed in a human-readable way, while still allowing its processing by machines.
+
+It is also recommended to adopt a minimal approach to the content of the metadata and to only fill out key information that may be useful for locating a particular dataset and determining if the data is of relevance to the dataset consumer. More detailed information about the structure of data can be included in the dataset itself (see [Codebook](/reference/general/codebook.qmd)).
 
 
-### Metadata file and location
+:::{.callout-tip appearance="simple"}
 
-Metadata may be embedded in a file (e.g., in an html page) and/or it may be stored as a separate dedicated file within the dataset folder (e.g., `dataset_description.json`) and/or outside the folder. As these strategies are used somewhat inconsistently in practiced, it is important here to consider who (or what) the metadata is destined for.
+### Zenodo
 
-As JSON files are notoriously hard to read and edit by humans (in particular when they are long, with nested structure) we do not recommend exposing them directly to data consumers. Instead we prefer the option of presenting to humans all relevant metadata within the datasets' README file. Note that the JSON metadata may be embedded in the README file and displayed in a more human readable way, while still allowing its processing by machines (for an example of this approach see [HuggingFace dataset cards](https://huggingface.co/datasets/vikp/textbook_quality_programming).)
+For sharing metadata along scientific datasets, you can use [Zenodo](https://zenodo.org/) platform. When uploading, Zenodo offers a form for describing the datasets and. This form populates a schema.org JSON file that can be downloaded by the user, but most importantly, can be processed by search engines that supports schema.org and help people find the dataset.
 
-Furthermore, when sharing data on [Zenodo](https://zenodo.org/) it is necessary to fill out a form describing the shared dataset. This form is used to populate a JSON file that can be downloaded by the user, but most importantly, can be processed by search engines and help people find your dataset (in this case the metadata is external to the dataset).
-
+Also note that, when we use Zenodo, the metadata is stored in a file that is separate from the dataset. This is a good practice as it allows search engines to index the metadata separately from the dataset (the metadata is external to the dataset), and it also allows the metadata to be updated without changing the dataset itself.
+:::

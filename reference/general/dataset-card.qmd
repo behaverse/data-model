@@ -1,5 +1,5 @@
 ---
-title: Dataset card
+title: Dataset Card
 ---
 
 Dataset card is a structured representation of metadata. It is defined in the `README.md` front matter of a dataset (see [folder structure](folder-structure.qmd)) and provides information about its creator, license, funding, and other relevant information.
