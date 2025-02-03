@@ -8,17 +8,20 @@
 - categories:
   - Identifier
   variable_name: timeline_id
-  required: false
+  required: true
   data_type: string
-  description: Specific parameterization of the instrument (e.g., "DS_FORWARD" and
-    "DS_BACKWARD").
+  description: Identifier for a timeline. Timeline is a variant of an instrument with
+    specific parametrization, for the whole experiment or for multiple block of trials
+    (e.g., "DS_FORWARD" and "DS_BACKWARD" for digit span task). Timelines are configurations
+    that specify instrument parameters.
 - categories:
   - Identifier
   variable_name: block_id
-  required: false
+  required: true
   data_type: string
-  description: Specific parameterization of the instrument for a block of trials (e.g.,
-    "DS_FORWARD_PRACTICE" and "DS_FOWARD_TEST").
+  description: Specific parameterization of the instrument for a single block of trials
+    (e.g., "DS_FORWARD_PRACTICE" and "DS_FOWARD_TEST"). Block-level parameters override
+    timeline-level parameters.
 - categories:
   - What
   variable_name: name
@@ -27,7 +30,7 @@
   description: Name of the toolkit (scene, code, or configuration) that is used to
     collect the data, e.g., "DS"  for a software that runs digit span task in forward
     OR backward order. The specific parameterization of the instrument is defined
-    in the "Timeline" (e.g., a timeline named "DS_FORWARD").
+    by the "Timeline" (e.g., a variant of instrument called "DS_FORWARD").
 - categories:
   - What
   variable_name: version
@@ -44,10 +47,10 @@
   description: A human readable, compact description of the main aspects of the instrument.
 - categories:
   - What
-  variable_name: reference/link
+  variable_name: link
   required: false
   data_type: url
   description: External link, if any, the provides more information about the instrument,
     e.g., on Cognitive Atlas.
   notes:
-  - Permanent links, e.g., DOIs, are preferred over other websites.
+  - Permanent links, e.g., DOIs, are preferred over particular websites.
