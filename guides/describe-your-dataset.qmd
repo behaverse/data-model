@@ -1,11 +1,11 @@
 ---
-title: Describe Your dataset with a *codebook*
+title: Describe Your Dataset
 subtitle: A codebook is a collection of metadata that describes the data in a dataset.
 code-overflow: wrap
 highlight-style: github
 ---
 
-Codebooks are a way to document your data. They are a collection of metadata that describe the data in a dataset.  It can include information about the dataset as a whole, such as the title, description, and author, as well as information about the variables in the dataset, such as the name, type, and description of each variable. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
+Codebook is a collection of metadata that describe the data in a dataset.  It can include information about the dataset as a whole, such as the title, description, and author, as well as information about the variables in the dataset, such as the name, type, and description of each variable. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
 
 ## Dataset metadata
 
