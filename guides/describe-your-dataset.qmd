@@ -1,13 +1,12 @@
 ---
 title: Describe Your Dataset
-subtitle: A codebook is a collection of metadata that describes the data in a dataset.
+subtitle: How to use dataset cards and codebooks to describe the data in a dataset
 code-overflow: wrap
 highlight-style: github
 ---
 
-Codebook is a collection of metadata that describe the data in a dataset.  It can include information about the dataset as a whole, such as the title, description, and author, as well as information about the variables in the dataset, such as the name, type, and description of each variable. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
 
-## Dataset metadata
+## Dataset cards
 
 Each BDM dataset includes a `README.md` file in its root directory that provides both human- and machine-readable metadata. Machine readability relies primarily on the [front-matter](#). It includes information about the dataset as a whole (such as the title, description, and author) and the data (such as the variable names, types, and descriptions). Here is an example:
 
@@ -18,7 +17,33 @@ description: "This is an example dataset that contains some example data."
 author: "John Doe"
 ---
 
-This is an example dataset that contains some example data. It is provided for illustrative purposes only.
+In BDM, part of the card that that describes the the data format is called codebook. It can include information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
+
+If you have a codebook for your dataset, you can include it in the dataset card by adding a `codebook` field to the front-matter. The value of the `codebook` field should be either a path to the codebook file or the codebook itself. For example:
+```
+...
+codebook: "codebook.md"
+```
+
+Or:
+
+```
+...
+codebook:
+  @context: "https://behaverse.org/schemas/bdm/codebook.json"
+  @type: "Codebook"
+  variable:
+    - name: "age_group"
+      description: "The age group of the subject."
+      type: "integer"
+      missing: "NA"
+      values:
+        - "18-25": "between 18 and 25 years old (inclusive)"
+        - "26-35": "between 26 and 35 years old (inclusive)"
+        - "36-45": "between 36 and 45 years old (inclusive)"
+        - "46-55": "between 46 and 55 years old (inclusive)"
+        - "56-": "56 years old (inclusive) or older"
+```
 
 ## Citation
 
