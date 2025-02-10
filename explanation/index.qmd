@@ -1,0 +1,7 @@
+---
+title: Explanation
+subtitle: Explanation of the BDM and its components
+---
+
+## Table of Contents
+

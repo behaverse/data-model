@@ -24,9 +24,9 @@ format:
     toc: true
     # toc-title: " "
     link-external-icon: false
-    include-in-header: 
-      text: |
-        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    # include-in-header: 
+    #   text: |
+    #     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
 website:
   title: Behaverse Data Model
@@ -145,6 +145,8 @@ website:
       - "---"
       - section: "Explanation"
         contents:
+        - text: Overview
+          href: explanation/index.qmd
         - explanation/design-process.qmd
         - explanation/conventions.qmd
         - explanation/data.qmd
