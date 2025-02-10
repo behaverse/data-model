@@ -24,6 +24,9 @@ format:
     toc: true
     # toc-title: " "
     link-external-icon: false
+    include-in-header: 
+      text: |
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
 website:
   title: Behaverse Data Model
