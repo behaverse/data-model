@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> Option'
-subtitle: "Describes each option that a subject could choose from in a given trial."
+subtitle: "Describes each option that a subject could choose from in a trial."
 order: 2
 toc: false
 listing: 

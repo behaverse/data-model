@@ -13,13 +13,14 @@
   name: Stimulus
   label: Stimulus
   description: Describes each of the stimuli that were shown during an trial.
-  notes: .nan
+  notes: Each row corresponds to a stimulus in a trial. Each trial can contain different
+    number of stimuli.
 - index: 2
   publish: true
   category: Trials
   name: Option
   label: Option
-  description: Describes each option that a subject could choose from in a given trial.
+  description: Describes each option that a subject could choose from in a trial.
   notes: Note that in some tasks, the options may change within a trial after each
     input (e.g., serial self-ordered search task); therefore the options are optionally
     indexed by `input_index`.
@@ -51,7 +52,7 @@
   category: Trials
   name: Instrument
   label: Instrument
-  description: Describes the instrument used to collect data from subjects.
+  description: Describes the instrument used for data acquisition.
   notes: this table includes information about specific parameterizations of the instruments
     (i.e., timelines). For example, parameters for the software that executes the
     presentation of the stimuli and records key presses.
@@ -60,7 +61,7 @@
   category: .nan
   name: OptionSet
   label: OptionSet
-  description: Describes choice options mainly in questionnaires.
+  description: Describes choice options in questionnaires.
   notes: .nan
 - index: 8
   publish: true

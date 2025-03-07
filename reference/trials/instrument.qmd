@@ -1,6 +1,6 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> Instrument'
-subtitle: "Describes the instrument used to collect data from subjects."
+subtitle: "Describes the instrument used for data acquisition."
 order: 6
 toc: false
 listing: 
