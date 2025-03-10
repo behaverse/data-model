@@ -3,4 +3,5 @@ title: <i class="bi bi-0-square-fill"></i> Events Overview
 toc: false
 ---
 
-TBD
+An event is understood as a specific, measurable interaction or change that occurs within the experimental setting, reflecting experimenter's intentions and subject's responses. Understanding and modeling events is crucial for interpreting the experimental data as events are typically considered the primary raw data. They represent changes in the tasks and the interactions between subjects and tasks, and can be used to represent a wide range of interactions, from a simple button press to complex interactions with virtual environments.
+

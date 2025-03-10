@@ -2,7 +2,7 @@
 title: Contributing to BDM
 ---
 
-We welcome contributions to BDM. Here are some ways you can help:
+The BDM is open to community discussions, and we welcome all forms of contribution. Here are some ways you can help:
 
 - Contributing **documentation** such as tutorials, guides, and examples to the [BDM repo](https://github.com/behaverse/data-model).
 - Contributing **code** to the [Behaverse repos](https://github.com/behaverse). More guidelines are coming soon.
