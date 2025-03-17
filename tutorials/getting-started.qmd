@@ -32,5 +32,5 @@ The `instruments/` folder contains parameters for the tasks, instructions, and q
 The `beh/` folder contains the behavioral data files. Within this folder, data files are organized as `subject/session/activity/<DATA>.csv`, where each row in the CSV file is indexed by trial, and each column is a variable about the trial.
 
 :::{.callout-note appearance="simple"}
-The `beh/` folder is named after the data types in it (i.e., behavioral data). If your dataset includes additional data types, you can create corresponding folders. For example, you could create a `egg/` folder to store the EEG data files or a `func/` folder to store the fMRI data files. See [BIDS data types](https://bids.neuroimaging.io/getting_started/folders_and_files/folders.html#datatype) for a list of supported data types and corresponding folder names.
+The `beh/` folder is named after the data types in it (i.e., behavioral data). If your dataset includes additional data types, you can create corresponding folders. For example, you could create a `eeg/` folder to store the EEG data or a `func/` folder to store the fMRI data. See [BIDS data types](https://bids.neuroimaging.io/getting_started/folders_and_files/folders.html#datatype) for a list of supported data types and corresponding folder names.
 :::
