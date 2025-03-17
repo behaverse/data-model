@@ -16,8 +16,9 @@ A BDM dataset is a collection of files and directories that follow a specific st
 ```
 example-dataset/
 ├── README.md
-├── agents/
+├── subjects.csv
+├── beh/
 └── instruments/
 ```
 
-The `README.md` file contains both human-readable description and machine-readable metadata of the dataset. The `agents/` folder contain the data files. Each data file is a CSV table where a row in the table, and each column is a variable about the data. The `instruments/` folder contains the tasks, questionnaires, and corresponding parameters. Each instrument is a JSON file that describes the instrument and its parameters.
+The `README.md` file contains both human-readable description and machine-readable metadata of the dataset. The `beh/` folder contain the behavioral data files. Each data file in this folder is a CSV table where each column is a variable about the data. The `instruments/` folder contains the tasks, questionnaires, and corresponding parameters. Each instrument is a YAML file that describes the instrument and its parameters.
