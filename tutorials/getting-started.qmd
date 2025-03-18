@@ -20,17 +20,62 @@ dataset/
 ├── README.md
 ├── subjects.csv
 ├── instruments/
-└── beh/
+└── subjects/
 ```
 
 The `README.md` file contains both human-readable description and machine-readable metadata of the dataset.
 
 The `subjects.csv` file contains information about the subjects and agents in the dataset. It is a CSV file with one row for each subject and columns for each attribute.
 
-The `instruments/` folder contains parameters for the tasks, instructions, and questionnaires. Each instrument represented as a YAML file that describes the instrument and its parameters. The instrument files are named after the instrument name, e.g., `instruments/NBack.yaml`.
+The `instruments/` folder contains parameters for the tasks, instructions, and questionnaires. Each instrument represented as a YAML file that describes the instrument and its parameters. The instrument files are named after the instrument name, e.g., `instruments/UFOV.yaml`.
 
-The `beh/` folder contains the behavioral data files. Within this folder, data files are organized as `subject/session/activity/<DATA>.csv`, where each row in the CSV file is indexed by trial, and each column is a variable about the trial.
+The `subjects/` folder contains the data files. Within this folder, data files are organized as `<SUBJECT>/<SESSION>/<ACTIVITY>/<DATA>`.
 
-:::{.callout-note appearance="simple"}
-The `beh/` folder is named after the data types in it (i.e., behavioral data). If your dataset includes additional data types, you can create corresponding folders. For example, you could create a `eeg/` folder to store the EEG data or a `func/` folder to store the fMRI data. See [BIDS data types](https://bids.neuroimaging.io/getting_started/folders_and_files/folders.html#datatype) for a list of supported data types and corresponding folder names.
-:::
+This folder also contains additional data for the studyflow, stimuli, and other data types. For example, the `subjects/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
+
+```{.default .file-tree}
+...
+subjects/
+├── subject_1/
+│   ├── studyflow.csv
+│   ├── session_1/
+│   │   ├── UFOV/
+│   │   │   └── trials_1.csv
+│   │   └── DigitSpan/
+│   │       └── trials_1.csv
+│   └── session_2/
+│       ├── UFOV/
+│       │   └── trials_1.csv
+│       └── DigitSpan/
+│           └── trials_1.csv
+├── subject_2/
+│   ├── studyflow.csv
+│   └── session_1/
+│       ├── UFOV/
+│       │   └── trials_1.csv
+│       └── DigitSpan/
+│           ├── trials_1.csv
+│           ├── trials_2.csv
+│           └── trials_3.csv
+└── subject_3/
+    ├── studyflow.csv
+    ├── session_1/
+    │   ├── UFOV/
+    │   │   └── trials_1.csv
+    │   └── DigitSpan/
+    │       └── trials_1.csv
+    └── session_2/
+        ├── UFOV/
+        │   └── trials_1.csv
+        └── DigitSpan/
+            └── trials_1.csv
+```
+
+Note that:
+
+- Each subject has a folder named `subject_<ID>` where `<ID>` is a unique identifier for the subject. `<ID>` can be a number or a string, but must be unique within the dataset.
+- The `studyflow.csv` file contains the order and metadata of the all activities for the subject.
+- Each session has a folder named `session_<ID>` where `<ID>` is a unique identifier for the session. Session identifiers are unique within the dataset, so `session_01` for `subject_01` is the same as `session_01` for `subject_02`.
+- Each activity has a folder named `<ACTIVITY>` where `<ACTIVITY>` is the name of the activity. In this example, the activities are `ufov` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
+- The `trial_<ATTEMPT>.csv` contains the trial data collected during the activity, where `<ATTEMPT>` is 1-indexed and represents how many times the subject has initiated the activity. For example, `subject_02` has multiple responses for the `DigitSpan` activity in session 1.
+- The dataset is in incomplete in terms of having the same data for all subjects. Data for the second subject (`subject_02`) does not include a second session, so there is no `session_02` folder for this subject.
