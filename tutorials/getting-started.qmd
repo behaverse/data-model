@@ -7,9 +7,9 @@ format:
     code-copy: false
 ---
 
-Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide interoperable data for modern cognitive projects. It is a set of conventions and tools that help you organize your data in a way that is easy to understand and use for both domain experts and technical experts. It is designed to work with a wide range of cognitive tasks and questionnaires.
+Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide interoperable data for modern cognitive projects. It is a set of conventions that help you organize your data in a way that is easy to understand for both domain experts and technical experts. It is designed to work with a wide range of cognitive tasks and questionnaires.
 
-Whether you're an individual scientist or part of a larger lab, BDM can help you build a dataset that is easy to understand, maintain, and share with others. BDM is opinionated but designed to be flexible and extensible, so you can adapt it to your specific needs out of the box.
+Whether you're an individual scientist or part of a larger lab, BDM can help you build a dataset that is easy to understand, maintain, and share with others. BDM is opinionated but designed to be flexible and extensible, so you can adapt it to your specific needs.
 
 ## How does a BDM dataset look like?
 
@@ -18,24 +18,25 @@ A BDM dataset is a collection of files and directories that follow a specific st
 ```{.default .file-tree}
 dataset/
 ├── README.md
-├── subjects.csv
+├── agents.csv
+└── agents/
 ├── instruments/
-└── subjects/
 ```
 
-The `README.md` file contains both human-readable description and machine-readable metadata of the dataset.
 
-The `subjects.csv` file contains information about the subjects and agents in the dataset. It is a CSV file with one row for each subject and columns for each attribute.
+The `README.md` file contains both human-readable description (as markdown) and machine-readable metadata of the dataset (as YAML front matter).
+
+The `agents.csv` file contains information about the human subjects and artificial agents in the dataset. It is a CSV file with one row per agent and columns for attributes.
 
 The `instruments/` folder contains parameters for the tasks, instructions, and questionnaires. Each instrument represented as a YAML file that describes the instrument and its parameters. The instrument files are named after the instrument name, e.g., `instruments/UFOV.yaml`.
 
-The `subjects/` folder contains the data files. Within this folder, data files are organized as `<SUBJECT>/<SESSION>/<ACTIVITY>/<DATA>`.
+The `agents/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA>`.
 
-This folder also contains additional data for the studyflow, stimuli, and other data types. For example, the `subjects/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
+This folder also contains additional data for the studyflow, stimuli, and other data types. For example, the `agents/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
 
 ```{.default .file-tree}
 ...
-subjects/
+agents/
 ├── subject_1/
 │   ├── studyflow.csv
 │   ├── session_1/
