@@ -30,7 +30,7 @@ The `agents.csv` file contains information about the human subjects and artifici
 
 The `instruments/` folder contains parameters for the tasks, instructions, and questionnaires. Each instrument represented as a YAML file that describes the instrument and its parameters. The instrument files are named after the instrument name, e.g., `instruments/UFOV.yaml`.
 
-## Agents data
+## Data files
 
 The `agents/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA>`.
 
@@ -80,7 +80,7 @@ Note that:
 - Each activity has a folder named `<AGENT>/<SESSION>/<ACTIVITY>` where `<ACTIVITY>` is the name of the activity. In this example, the activities are `UFOV` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
 
 
-### Activities
+## Activities
 
 Within the activity folders, you will find the data files collected during the activity. The structure of the activity folder is defined in the BDM Trials schema. Here is an example of a `DigitSpan` activity folder:
 
@@ -94,3 +94,29 @@ DigitSpan/
 
 - The `trials_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is 1-indexed and represents how many times the agent has initiated the activity. For example, `agent_02` has multiple responses for the `DigitSpan` activity in session 1.
 - The dataset is in incomplete in terms of having the same data for all the agents. Data for the second subject (`agent_02`) does not include a second session, so there is no `session_02` folder for this subject.
+
+
+### Trial table
+
+### Stimulus table
+
+### Option table
+
+## Instruments
+
+The `instruments/` folder contains the instrument files. Each instrument file is a YAML file that describes the instrument and its parameters. Here is an example of a `UFOV` instrument file:
+
+```{.default .file .yaml}
+name: UFOV
+description: |
+  The Useful Field of View (UFOV) test is a measure of visual attention. The test consists of three subtests: processing speed, divided attention, and selective attention.
+
+parameters:
+  - name: subtest
+    description: The subtest of the UFOV test
+    type: enum
+    values:
+      - processing_speed
+      - divided_attention
+      - selective_attention
+```
