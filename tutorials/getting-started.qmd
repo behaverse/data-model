@@ -19,8 +19,8 @@ A BDM dataset is a collection of files and directories that follow a specific st
 dataset/
 ├── README.md
 ├── agents.csv
-└── agents/
 ├── instruments/
+└── agents/
 ```
 
 
@@ -30,6 +30,8 @@ The `agents.csv` file contains information about the human subjects and artifici
 
 The `instruments/` folder contains parameters for the tasks, instructions, and questionnaires. Each instrument represented as a YAML file that describes the instrument and its parameters. The instrument files are named after the instrument name, e.g., `instruments/UFOV.yaml`.
 
+## Agents data
+
 The `agents/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA>`.
 
 This folder also contains additional data for the studyflow, stimuli, and other data types. For example, the `agents/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
@@ -37,46 +39,58 @@ This folder also contains additional data for the studyflow, stimuli, and other 
 ```{.default .file-tree}
 ...
 agents/
-├── subject_1/
+├── agent_1/
 │   ├── studyflow.csv
 │   ├── session_1/
 │   │   ├── UFOV/
-│   │   │   └── trials_1.csv
+│   │   │   └── ...
 │   │   └── DigitSpan/
-│   │       └── trials_1.csv
+│   │       └── ...
 │   └── session_2/
 │       ├── UFOV/
-│       │   └── trials_1.csv
+│       │   └── ...
 │       └── DigitSpan/
-│           └── trials_1.csv
-├── subject_2/
+│           └── ...
+├── agent_2/
 │   ├── studyflow.csv
 │   └── session_1/
 │       ├── UFOV/
-│       │   └── trials_1.csv
+│       │   └── ...
 │       └── DigitSpan/
-│           ├── trials_1.csv
-│           ├── trials_2.csv
-│           └── trials_3.csv
-└── subject_3/
+│           └── ...
+└── agent_3/
     ├── studyflow.csv
     ├── session_1/
     │   ├── UFOV/
-    │   │   └── trials_1.csv
+    │   │   └── ...
     │   └── DigitSpan/
-    │       └── trials_1.csv
+    │       └── ...
     └── session_2/
         ├── UFOV/
-        │   └── trials_1.csv
+        │   └── ...
         └── DigitSpan/
-            └── trials_1.csv
+            └── ...
 ```
 
 Note that:
 
-- Each subject has a folder named `subject_<ID>` where `<ID>` is a unique identifier for the subject. `<ID>` can be a number or a string, but must be unique within the dataset.
-- The `studyflow.csv` file contains the order and metadata of the all activities for the subject.
-- Each session has a folder named `session_<ID>` where `<ID>` is a unique identifier for the session. Session identifiers are unique within the dataset, so `session_01` for `subject_01` is the same as `session_01` for `subject_02`.
-- Each activity has a folder named `<ACTIVITY>` where `<ACTIVITY>` is the name of the activity. In this example, the activities are `ufov` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
-- The `trial_<ATTEMPT>.csv` contains the trial data collected during the activity, where `<ATTEMPT>` is 1-indexed and represents how many times the subject has initiated the activity. For example, `subject_02` has multiple responses for the `DigitSpan` activity in session 1.
-- The dataset is in incomplete in terms of having the same data for all subjects. Data for the second subject (`subject_02`) does not include a second session, so there is no `session_02` folder for this subject.
+- Each agent has a folder named `agent_<ID>` where `<ID>` is a unique identifier for the human subject or computer agent. `<ID>` can be a number or a string, but must be unique within the dataset. For convenience, if your dataset contains only human subjects, you can also use the `agents/subject_<ID>/` format to name subject folders, but the root data folder remains `agents/`.
+- The `studyflow.csv` file contains the order and metadata of the all activities for the agent.
+- Each session has a folder named `session_<ID>` where `<ID>` is a unique identifier for the session. Session identifiers are unique within the dataset, so `session_01` for `agent_01` is the same as `session_01` for `agent_02`.
+- Each activity has a folder named `<AGENT>/<SESSION>/<ACTIVITY>` where `<ACTIVITY>` is the name of the activity. In this example, the activities are `UFOV` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
+
+
+### Activities
+
+Within the activity folders, you will find the data files collected during the activity. The structure of the activity folder is defined in the BDM Trials schema. Here is an example of a `DigitSpan` activity folder:
+
+```{.default .file-tree}
+...
+DigitSpan/
+├── trials_1.csv
+├── stimuli_1.csv
+└── options_1.csv
+```
+
+- The `trials_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is 1-indexed and represents how many times the agent has initiated the activity. For example, `agent_02` has multiple responses for the `DigitSpan` activity in session 1.
+- The dataset is in incomplete in terms of having the same data for all the agents. Data for the second subject (`agent_02`) does not include a second session, so there is no `session_02` folder for this subject.
