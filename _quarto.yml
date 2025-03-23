@@ -22,6 +22,8 @@ format:
       # dark: [cosmo, assets/css/dark-theme.scss]
     email-obfuscation: javascript
     toc: true
+    toc-location: body
+    toc-title: " "
     # toc-title: " "
     link-external-icon: false
     # include-in-header: 
@@ -32,7 +34,7 @@ website:
   title: Behaverse Data Model
   site-url: "https://behaverse.github.io/data-model/"
   google-analytics: "G-K2NP7Q9KGZ"
-  back-to-top-navigation: false
+  back-to-top-navigation: true
   search: 
     location: sidebar
     type: textbox
@@ -85,7 +87,7 @@ website:
       - text: "Home"
         href: index.qmd
       - "---"
-      - section: "Tutorials"
+      - section: "Guides"
         # href: tutorials/index.qmd
         contents:
           - text: Overview
@@ -93,19 +95,12 @@ website:
           - auto: "tutorials/*.qmd"
 
       - "---"
-      - section: "Guides"
-        contents:
-          - text: Overview
-            href: guides/index.qmd
-          - auto: "guides/*.qmd"
-
-      - "---"
       - section: "Reference"
         # href: reference/index.qmd
         contents:
         - text: '<i class="bi bi-grid"></i> Overview'
           href: reference/index.qmd
-        - section: <i class="bi bi-dice-1"></i> General
+        - section: <i class="bi bi-dice-1-fill"></i> General
           contents:
             - reference/general/index.qmd
             - reference/general/folder-structure.qmd

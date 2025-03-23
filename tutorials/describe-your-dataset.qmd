@@ -1,6 +1,7 @@
 ---
-title: Describe Your Dataset
+title: "<i class='bi bi-reception-2 float-end'></i> Describe Your Dataset"
 subtitle: How to use dataset cards and codebooks to describe the data in a dataset
+order: 2
 code-overflow: wrap
 highlight-style: github
 ---
@@ -10,25 +11,25 @@ highlight-style: github
 
 Each BDM dataset includes a `README.md` file in its root directory that provides both human- and machine-readable metadata. Machine readability relies primarily on the [front-matter](#). It includes information about the dataset as a whole (such as the title, description, and author) and the data (such as the variable names, types, and descriptions). Here is an example:
 
-```markdown
+```yaml
 ---
 title: "Example dataset"
 description: "This is an example dataset that contains some example data."
 author: "John Doe"
 ---
+```
 
 In BDM, part of the card that that describes the the data format is called codebook. It can include information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
 
 If you have a codebook for your dataset, you can include it in the dataset card by adding a `codebook` field to the front-matter. The value of the `codebook` field should be either a path to the codebook file or the codebook itself. For example:
-```
-...
-codebook: "codebook.md"
+
+```yaml
+codebook: codebook.md
 ```
 
 Or:
 
-```
-...
+```yaml
 codebook:
   @context: "https://behaverse.org/schemas/bdm/codebook.json"
   @type: "Codebook"

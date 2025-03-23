@@ -1,11 +1,14 @@
 ---
-title: Getting Started
-description: Understand what BDM is and how to use it
+title: "<i class='bi bi-reception-1 float-end'></i> Getting Started"
+subtitle: Understand what BDM is and how to use it
+order: 1
 code-block-bg: true
 format:
   html:
     code-copy: false
 ---
+
+## What is BDM?
 
 Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide interoperable data for modern cognitive projects. It is a set of conventions that help you organize your data in a way that is easy to understand for both domain experts and technical experts. It is designed to work with a wide range of cognitive tasks and questionnaires.
 
@@ -97,6 +100,8 @@ DigitSpan/
 
 
 ### Trial table
+
+See the [*<i class="bi bi-grid-3x3"></i> Trial* table](/reference/trials/trial.qmd) for more information.
 
 ### Stimulus table
 
