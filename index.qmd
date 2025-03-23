@@ -11,10 +11,9 @@ The *Behaverse Data Model (BDM)* is an ongoing attempt to define a storage forma
 
 ### How to use this website
 
-Following [Diátaxis](https://diataxis.fr/) approach to documentation, this website is organized into the following parts:
+The website is organized as follows:
 
 - [Tutorials](/tutorials): Step-by-step instructions for integrating BDM into your projects.
-- [How-to guides](/guides): Practical guides for using BDM in different contexts.
 - [Reference](/reference): Formal specifications for BDM datasets and tables.
 - [Explanation](/explanation): Detailed explanations of BDM concepts and design decisions.
 
