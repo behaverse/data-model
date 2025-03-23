@@ -16,14 +16,16 @@ format:
     page-layout: article
     title-block-style: default
     abstract-title: " "
+    grid:
+      sidebar-width: 300px
     theme:
       - assets/css/custom.scss
     #   light: default
       # dark: [cosmo, assets/css/dark-theme.scss]
     email-obfuscation: javascript
     toc: true
-    toc-location: body
-    toc-title: " "
+    toc-location: right
+    toc-expand: true
     # toc-title: " "
     link-external-icon: false
     # include-in-header: 
@@ -45,7 +47,7 @@ website:
   repo-actions: none
   page-footer:
     background: light
-    left: "&copy; 2024 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  &middot; [Cookies](#){#open_preferences_center} &middot; [About us](/about.qmd)"
+    left: "&copy; 2025 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  &middot; [Cookies](#){#open_preferences_center} &middot; [About us](/about.qmd)"
 
   announcement: 
     content: "**This website is under construction.** Please see [github.com/behaverse/data-model](https://github.com/behaverse/data-model) for the latest updates." 
@@ -88,67 +90,57 @@ website:
         href: index.qmd
       - "---"
       - section: "Guides"
-        # href: tutorials/index.qmd
         contents:
           - text: Overview
-            href: tutorials/index.qmd
-          - auto: "tutorials/*.qmd"
+            href: guides/index.qmd
+          - auto: "guides/*.qmd"
 
       - "---"
-      - section: "Reference"
-        # href: reference/index.qmd
+      - section: "Specifications"
         contents:
         - text: '<i class="bi bi-grid"></i> Overview'
-          href: reference/index.qmd
+          href: spec/index.qmd
         - section: <i class="bi bi-dice-1-fill"></i> General
           contents:
-            - reference/general/index.qmd
-            - reference/general/folder-structure.qmd
-            - reference/general/dataset-card.qmd
-            - reference/general/studyflow.qmd
-            - reference/general/codebook.qmd
-            - reference/general/indices.qmd
-            - reference/general/instructions.qmd
+            - spec/general/index.qmd
+            - spec/general/folder-structure.qmd
+            - spec/general/dataset-card.qmd
+            - spec/general/studyflow.qmd
+            - spec/general/codebook.qmd
+            - spec/general/indices.qmd
+            - spec/general/instructions.qmd
         - section: "Events"
           icon: 0-square-fill
           contents:
-            - href: reference/events-overview.qmd
+            - href: spec/events-overview.qmd
               text: '<i class="bi bi-grid"></i> Overview'
         - section: "Trials"
           icon: 1-square-fill
           contents:
-            - href: reference/trials-overview.qmd
+            - href: spec/trials-overview.qmd
               text: '<i class="bi bi-grid"></i> Overview'
-            - reference/trials/trial.qmd
-            - reference/trials/stimulus.qmd
-            - reference/trials/option.qmd
-            - reference/trials/input.qmd
-            - reference/trials/stimulus-component.qmd
-            - reference/trials/option-component.qmd
-            - reference/trials/instrument.qmd
-            - section: "Extensions"
-              icon: puzzle
-              contents:
-                - href: reference/extensions/index.qmd
-                  text: Overview
-                - auto: reference/extensions/*.qmd
+            - spec/trials/trial.qmd
+            - spec/trials/stimulus.qmd
+            - spec/trials/option.qmd
+            - spec/trials/input.qmd
+            - spec/trials/stimulus-component.qmd
+            - spec/trials/option-component.qmd
+            - spec/trials/instrument.qmd
         - section: "Models"
           icon: 2-square-fill
           contents:
             - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
+        - section: "Extensions"
+          icon: puzzle
+          contents:
+            - href: spec/extensions/index.qmd
+              text: Overview
+            - auto: spec/extensions/*.qmd
 
       - "---"
-      - section: "Explanation"
+      - section: "Explanations"
         contents:
-        - text: Overview
-          href: explanation/index.qmd
-        - explanation/design-process.qmd
-        - explanation/conventions.qmd
-        - explanation/data.qmd
-        - explanation/metadata.qmd
-        - explanation/naming-things.qmd
-        - explanation/units.qmd
-        - explanation/instructions.qmd
+          - auto: "explanations/*.qmd"
 
       - "---"
       - href: datasets/index.qmd

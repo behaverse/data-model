@@ -1,13 +1,15 @@
 ---
 title: Units and Values
+description: |
+    > *The 'root cause' of the loss of the spacecraft was the failed translation of English units into metric units in a segment of ground-based, navigation-related mission software, ...*
+
+    <div class="small text-end text-muted">Arthur Stephenson</div>
+    <div class="small text-end text-muted">Chairman of the NASA Mars Climate Orbiter Mission Failure Investigation Board</div>
+    <div class="small text-end text-muted">From [CMIXF-12](https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12)</div>
+    <br />
+order: 7
+toc-location: right
 ---
-
-> *The 'root cause' of the loss of the spacecraft was the failed translation of English units into metric units in a segment of ground-based, navigation-related mission software, ...*
-
-<div class="small text-end text-muted">Arthur Stephenson</div>
-<div class="small text-end text-muted">Chairman of the NASA Mars Climate Orbiter Mission Failure Investigation Board</div>
-<div class="small text-end text-muted">From [CMIXF-12](https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12)</div>
-<br />
 
 Some variables have measurement units. Variables should use the standard measurement unit for their type (e.g., duration in seconds; defined below), or the default unit assigned to them specifically within this document. Variables that use a non-standard, non-default measurement unit MUST specify the units explicitly using the format `<variable>_in_<unit>`.
 

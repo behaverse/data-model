@@ -205,22 +205,22 @@
     - `instruction`: Presents written and/or visual instructions to the subject.'
 - categories:
   - Task
-  variable_name: transformer_name
+  variable_name: projection_name
   required: true
   data_type: string
   description: 'Refers to the specific events-to-trials function used to construct
-    rows of this table from raw events. The transformation (or projection in DDD terminology) embodies
-    the definition of a trial for a particular task.
+    rows of this table from raw events. The transformation (or projection in DDD terminology)
+    embodies the definition of a trial for a particular task.
 
 
     The transformer name refers to a code in the format of a function `f(trial_state,
     event) => trial_state`, where `event` is the event occurred during the performance
     of the task, and `trial_state` is the data stored for the trial. The final state
     of a trial is thus the result of applying a sequence of projections such that
-    `trial = f(f(f(initial()), e), e), e)`.'
+    `trial = f(f(f(initial()), e), e), e)`.'''
   notes:
-  - '- The transformation encapsulates the domain rules defining a "trial" for a given
-    task. It defines what constitutes a "trial".
+  - '- The transformation/projection encapsulates the domain rules that define a "trial"
+    for a given task. It defines what constitutes a "trial".
 
     '
 - categories:

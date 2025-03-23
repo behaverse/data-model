@@ -1,5 +1,5 @@
 ---
-title: Resting states
+title: Resting State
 subtitle: When subjects are not performing a task
 ---
 

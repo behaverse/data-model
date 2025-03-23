@@ -1,5 +1,6 @@
 ---
 title: Naming Things
+order: 6
 ---
 
 # General advice on naming things

@@ -1,5 +1,6 @@
 ---
 title: Data
+order: 4
 ---
 
 Data can be described using terms that indicate how it has been "collected", "stored", "organized", or "processed". As data is the core of BDM, it is worth describing such terms quickly to make explicit what we mean when we use them.

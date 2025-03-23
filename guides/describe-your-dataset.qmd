@@ -1,5 +1,5 @@
 ---
-title: "<i class='bi bi-reception-2 float-end'></i> Describe Your Dataset"
+title: "<i class='bi bi-reception-2 float-end' title='Difficulty: Easy'></i> Describe Your Dataset"
 subtitle: How to use dataset cards and codebooks to describe the data in a dataset
 order: 2
 code-overflow: wrap

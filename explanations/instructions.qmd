@@ -1,5 +1,6 @@
 ---
 title: Instructions
+order: 8
 ---
 
 Instructions (and other messages) are important in behavioral experiments are they determine to a large extent participants' behavior.

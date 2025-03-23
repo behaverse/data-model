@@ -13,14 +13,14 @@ The *Behaverse Data Model (BDM)* is an ongoing attempt to define a storage forma
 
 The website is organized as follows:
 
-- [Tutorials](/tutorials): Step-by-step instructions for integrating BDM into your projects.
-- [Reference](/reference): Formal specifications for BDM datasets and tables.
-- [Explanation](/explanation): Detailed explanations of BDM concepts and design decisions.
+- [How-to Guides](/guides): Tutorials and step-by-step instructions for integrating BDM into your projects.
+- [Specifications](/spec): Formal specifications of the BDM datasets.
+- [Explanations](/explanation): Detailed explanations of fundamental concepts and design decisions.
 
 You can also check:
 
 - [Datasets](/datasets): Examples of datasets that conform to the BDM.
-- [Glossary](/glossary): A controlled vocabulary for behavioral data terms and BDM concepts.
+- [Glossary](/glossary): A controlled vocabulary for behavioral data.
 
 ### Research papers
 
@@ -40,4 +40,4 @@ To learn more about the ideas behind the *BDM*, see [*"the structure of behavior
 
 ### Evolution of the BDM
 
-To suggest improvements, please read the [design process](explanation/design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).
+To suggest improvements, please read the [design process](explanations/design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).

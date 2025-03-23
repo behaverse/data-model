@@ -1,6 +1,7 @@
 ---
-title: Explanation
+title: Explanations
 subtitle: Explanation of the BDM and its components
+order: 1
 ---
 
 ## Table of Contents

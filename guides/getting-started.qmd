@@ -1,5 +1,5 @@
 ---
-title: "<i class='bi bi-reception-1 float-end'></i> Getting Started"
+title: "<i class='bi bi-reception-1 float-end' title='Difficulty: Intro'></i> Getting Started"
 subtitle: Understand what BDM is and how to use it
 order: 1
 code-block-bg: true
@@ -101,7 +101,7 @@ DigitSpan/
 
 ### Trial table
 
-See the [*<i class="bi bi-grid-3x3"></i> Trial* table](/reference/trials/trial.qmd) for more information.
+See the [*<i class="bi bi-grid-3x3"></i> Trial* table](/spec/trials/trial.qmd) for more information.
 
 ### Stimulus table
 
