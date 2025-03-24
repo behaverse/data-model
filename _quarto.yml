@@ -102,7 +102,7 @@ website:
         contents:
         - text: '<i class="bi bi-grid"></i> Overview'
           href: spec/index.qmd
-        - section: <i class="bi bi-dice-1-fill"></i> General
+        - section: <i class="bi bi-square-fill"></i> General
           contents:
             - auto: "spec/general/*.qmd"
         - section: "Events"

@@ -8,6 +8,7 @@ listing:
     fields: [title, subtitle]
     filter-ui: false
     sort-ui: false
+    sort: order asc
     field-display-names: 
       title: Extension
       subtitle: Description

@@ -12,9 +12,9 @@ BDM relies on [schema.org](https://schema.org/Dataset) and its Croissant extensi
 
 Metadata may be embedded in a file (e.g., in an markdown front matter) or it may be stored as a separate file within the dataset (e.g., `dataset_description.json` as in BIDS). As these strategies are not always consistent in practice, it is important here to consider who (or what) the metadata is destined for, humans or machines.
 
-Long, nested JSON files are notoriously hard to read and edit by humans, so exposing them directly to consumers is not recommended. Instead, all the relevant metadata can be presented within the datasets' README file in a human-readable way (see [Dataset Card](/spec/general/3-dataset-card.qmd)). The structured YAML header of the README file can be displayed in a human-readable way, while still allowing its processing by machines.
+Long, nested JSON files are notoriously hard to read and edit by humans, so exposing them directly to consumers is not recommended. Instead, all the relevant metadata can be presented within the datasets' README file in a human-readable way (see [Dataset Card](/spec/general/2-dataset-card.qmd)). The structured YAML header of the README file can be displayed in a human-readable way, while still allowing its processing by machines.
 
-It is also recommended to adopt a minimal approach to the content of the metadata and to only fill out key information that may be useful for locating a particular dataset and determining if the data is of relevance to the dataset consumer. More detailed information about the structure of data can be included in the dataset itself (see [Codebook](/spec/general/3-dataset-card.qmd)).
+It is also recommended to adopt a minimal approach to the content of the metadata and to only fill out key information that may be useful for locating a particular dataset and determining if the data is of relevance to the dataset consumer. More detailed information about the structure of data can be included in the dataset itself (see [Codebook](/spec/general/2-dataset-card.qmd)).
 
 
 :::{.callout-tip appearance="simple"}

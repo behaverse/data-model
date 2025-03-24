@@ -18,7 +18,7 @@ items.forEach(item => categories.add(item.categories[0]));
 <dd class="listing-description">
 <%= item.description.replace(/@(\w+)/g, '**<i class="bi bi-grid-3x3"></i> $1**') %><br />
 <% if (item.range) { %>
-> <i class="bi bi-thermometer-sun"></i> <span class="small">**Range**</span>
+> <span class="small">**Range**</span>
 >
 > <%= item.range.replace(/@(\w+)/g, '**<i class="bi bi-grid-3x3"></i> $1**') %>
 <% } %>

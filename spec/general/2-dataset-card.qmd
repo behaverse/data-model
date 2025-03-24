@@ -5,7 +5,7 @@ title: Dataset Card
 ---
 
 Dataset card
-: A structured representation of metadata. It is generally defined in the `README.md` front matter of a dataset (see [folder structure](2-folder-structure.qmd)) and provides information about its creator, license, funding, and other relevant information.
+: A structured representation of metadata. It is generally defined in the `README.md` front matter of a dataset (see [folder structure](1-folder-structure.qmd)) and provides information about its creator, license, funding, and other relevant information.
 
 Codebook
 : Part of the dataset card that contains information about the variables in the data (such as their names, types, and descriptions). It also includes information about the values that each variable can take on and any missing data that may exist in the dataset. The codebook is an essential component of the dataset, as it provides context and semantic that helps researchers interpret the data.
