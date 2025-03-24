@@ -1,0 +1,8 @@
+---
+order: 14
+output-file: compatible-datasets
+title: BDM-compatible Datasets
+subtitle: How to access a BDM-compatible dataset
+---
+
+- [ ] I want to access a BDM-compatible dataset

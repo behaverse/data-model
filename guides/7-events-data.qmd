@@ -1,0 +1,8 @@
+---
+order: 7
+output-file: events-data
+title: Events Data
+subtitle: How to use events data in a BDM dataset
+---
+
+- [ ] I have events data

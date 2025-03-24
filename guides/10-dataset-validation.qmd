@@ -1,0 +1,8 @@
+---
+order: 10
+output-file: dataset-validation
+title: Dataset Validation
+subtitle: How to validate a BDM dataset
+---
+
+- [ ] I want to validate a BDM dataset

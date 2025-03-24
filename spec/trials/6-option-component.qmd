@@ -1,7 +1,8 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> OptionComponent'
+output-file: option-component
 subtitle: "Options can comprise multiple components. This table describes each component of an option."
-order: 5
+order: 6
 toc: false
 listing: 
   template: ../../assets/templates/trials.ejs

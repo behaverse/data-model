@@ -112,20 +112,14 @@ website:
         - section: "Events"
           icon: 0-square-fill
           contents:
-            - href: spec/events-overview.qmd
+            - href: spec/events/index.qmd
               text: '<i class="bi bi-grid"></i> Overview'
         - section: "Trials"
           icon: 1-square-fill
           contents:
-            - href: spec/trials-overview.qmd
+            - href: spec/trials/index.qmd
               text: '<i class="bi bi-grid"></i> Overview'
-            - spec/trials/trial.qmd
-            - spec/trials/stimulus.qmd
-            - spec/trials/option.qmd
-            - spec/trials/input.qmd
-            - spec/trials/stimulus-component.qmd
-            - spec/trials/option-component.qmd
-            - spec/trials/instrument.qmd
+            - auto: spec/trials/*.qmd
         - section: "Models"
           icon: 2-square-fill
           contents:

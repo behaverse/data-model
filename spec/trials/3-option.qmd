@@ -1,7 +1,8 @@
 ---
 title: '<i class="bi bi-grid-3x3"></i> Option'
+output-file: option
 subtitle: "Describes each option that a subject could choose from in a trial."
-order: 2
+order: 3
 toc: false
 listing: 
   template: ../../assets/templates/trials.ejs

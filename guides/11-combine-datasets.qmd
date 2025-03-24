@@ -1,0 +1,8 @@
+---
+order: 11
+output-file: combine-datasets
+title: Combine Datasets
+subtitle: How to combine two datasets into a single BDM dataset
+---
+
+- [ ] I want to combine two datasets

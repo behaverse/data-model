@@ -1,0 +1,8 @@
+---
+order: 5
+output-file: software-integration
+title: Software Integration
+subtitle: How to develop software that outputs BDM
+---
+
+- [ ] I want to develop a software that outputs BDM

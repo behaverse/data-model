@@ -1,0 +1,8 @@
+---
+order: 15
+output-file: convert-bids
+title: BIDS Datasets
+subtitle: How to convert BIDS datasets into BDM datasets
+---
+
+- [ ] Convert BIDS beh into BDM

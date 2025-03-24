@@ -1,0 +1,18 @@
+---
+title: '<i class="bi bi-grid-3x3"></i> StimulusComponent'
+output-file: stimulus-component
+subtitle: "Stimuli can comprise multiple components. This table describes each component of a stimulus."
+order: 5
+toc: false
+listing: 
+  template: ../../assets/templates/trials.ejs
+  field-required: [variable_name, categories, description]
+  filter-ui: true
+  sort: false
+  sort-ui: false
+  categories: numbered
+  page-size: 10000
+  contents:
+    - "../../assets/auto-generated/trials/stimulus-component.yml"
+---
+

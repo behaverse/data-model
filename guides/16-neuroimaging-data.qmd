@@ -1,0 +1,8 @@
+---
+order: 16
+output-file: neuroimaging-data
+title: Neuroimaging Data
+subtitle: How to use neuroimaging data in a BDM dataset
+---
+
+- [ ] Merge BDM into a neuroimaging BIDS dataset

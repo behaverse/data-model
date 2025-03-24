@@ -1,7 +1,8 @@
 ---
-title: '<i class="bi bi-grid-3x3"></i> Stimulus'
-subtitle: "Describes each of the stimuli that were shown during an trial."
-order: 1
+title: '<i class="bi bi-grid-3x3"></i> Instrument'
+output-file: instrument
+subtitle: "Describes the instrument used for data acquisition."
+order: 7
 toc: false
 listing: 
   template: ../../assets/templates/trials.ejs
@@ -12,6 +13,6 @@ listing:
   categories: numbered
   page-size: 10000
   contents:
-    - "../../assets/auto-generated/trials/stimulus.yml"
+    - "../../assets/auto-generated/trials/instrument.yml"
 ---
 
