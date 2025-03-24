@@ -1,6 +1,7 @@
 ---
-title: Conventions
 order: 3
+output-file: conventions
+title: Conventions
 ---
 
 ## Introduction

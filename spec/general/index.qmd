@@ -1,24 +1,22 @@
 ---
+order: 1
 title: Overview
 subtitle: General specifications
 ---
 
 Part of the BDM is common to all datasets, regardless of the specific type of activity. This includes:
 
-[**Folder structure**](folder-structure.qmd)
+[**Folder structure**](2-folder-structure.qmd)
 : a BDM dataset is a folder that contains data files and all relevant information needed to make sense of the data.
 
-[**Dataset card**](dataset-card.qmd)
-: Dataset cards provides metadata and information about a dataset.
+[**Dataset card**](3-dataset-card.qmd)
+: Dataset cards provides metadata and information about a dataset. Dataset card also includes codebook which describes the semantics, structure, and format of the data variables.
 
-[**StudyFlow**](studyflow.qmd)
-: StudyFlow describes the sequence of activities in a study.
+[**Studyflow**](4-studyflow.qmd)
+: Studyflow describes the sequence of activities in a study.
 
-[**Codebook**](codebook.qmd)
-: Codebook describes the contents, structure, and layout of data.
-
-[**Indices**](indices.qmd)
+[**Indices**](5-indices.qmd)
 : Indices are used to identify and address data records.
 
-[**Instructions**](instructions.qmd)
+[**Instructions**](6-instructions.qmd)
 : Instructions provide additional guidance and help about tasks presented to subjects in a study.

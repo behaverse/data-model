@@ -85,30 +85,26 @@ website:
       - icon: github
         text: GitHub
         url: https://github.com/behaverse/data-model/
+
     contents:
       - text: "Home"
         href: index.qmd
       - "---"
+
       - section: "Guides"
         contents:
           - text: Overview
             href: guides/index.qmd
           - auto: "guides/*.qmd"
-
       - "---"
+
       - section: "Specifications"
         contents:
         - text: '<i class="bi bi-grid"></i> Overview'
           href: spec/index.qmd
         - section: <i class="bi bi-dice-1-fill"></i> General
           contents:
-            - spec/general/index.qmd
-            - spec/general/folder-structure.qmd
-            - spec/general/dataset-card.qmd
-            - spec/general/studyflow.qmd
-            - spec/general/codebook.qmd
-            - spec/general/indices.qmd
-            - spec/general/instructions.qmd
+            - auto: "spec/general/*.qmd"
         - section: "Events"
           icon: 0-square-fill
           contents:
@@ -130,21 +126,23 @@ website:
             - href: spec/extensions/index.qmd
               text: Overview
             - auto: spec/extensions/*.qmd
-
       - "---"
+
       - section: "Explanations"
         contents:
           - auto: "explanations/*.qmd"
-
       - "---"
+
       - href: datasets/index.qmd
         icon: database-check
         text: Datasets
       - "---"
+
       - href: glossary/index.qmd
         icon: journal-text
         text: Glossary
       - "---"
+
       - href: about.qmd
         text: About
         icon: people

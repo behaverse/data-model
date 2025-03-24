@@ -77,7 +77,7 @@
   notes:
   - .important In BDM, the preferred position is the center of the object. However,
     specific implementations of the tasks may use other locations such as the top-left
-    corner. If this is the case, it should be explicitly stated in the [codebook](/spec/general/codebook.qmd).
+    corner. If this is the case, it should be explicitly stated in the [codebook](/spec/general/3-dataset-card.qmd).
 - categories:
   - Where
   variable_name: y_screen

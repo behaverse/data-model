@@ -1,6 +1,7 @@
 ---
-title: Naming Things
 order: 6
+output-file: naming-things
+title: Naming Things
 ---
 
 # General advice on naming things

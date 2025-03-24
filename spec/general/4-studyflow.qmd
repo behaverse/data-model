@@ -1,14 +1,16 @@
 ---
-title: StudyFlow
+order: 4
+output-file: studyflow
+title: Studyflow
 ---
 
-StudyFlows are formal diagrams based on BPMN to describe cognitive research. They can be used to visually describe the study protocol, the analysis pipeline, or any other steps in a study. StudyFlows facilitate communication with participants (e.g., automatically running a study), researchers (e.g., reproducible protocols and analyses), systems (e.g., automated data processing), and other stakeholders.
+Studyflows are formal diagrams based on BPMN to describe cognitive research. They can be used to visually describe the study protocol, the analysis pipeline, or any other steps in a study. Studyflows facilitate communication with participants (e.g., automatically running a study), researchers (e.g., reproducible protocols and analyses), systems (e.g., automated data processing), and other stakeholders.
 
 - [ ] TODO: Example diagrams
 
 ## Elements
 
-Each StudyFlow is a BPMN diagram with additional elements specific to cognitive research.
+Each Studyflow is a BPMN diagram with additional elements specific to cognitive research.
 
 ### Experimental design
 
