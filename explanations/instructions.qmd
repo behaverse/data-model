@@ -5,25 +5,19 @@ order: 8
 
 Instructions (and other messages) are important in behavioral experiments are they determine to a large extent participants' behavior.
 
-There are two main questions regarding the instructions as data:
-
- - where are instructions stored?
- - how are instructions encoded?
-
-
 ### Where to store instructions?
 
-There are at least two types of instructions. There are instructions provided within specific activities. For example, there may be instructions on how to fill a particular questionnaire (e.g., "Enter the first response that comes to your mind; respond as honestly as possible."). There are also instructions at the level of the study. For example, there may be instructions about how to ask questions to experimenter, when to take breaks or how far to stand in front of the screen).
+There are at least two types of instructions. There are instructions provided within specific activities. For example, there may be instructions on how to fill a particular questionnaire (e.g., "Enter the first response that comes to your mind; respond as honestly as possible."). There are also instructions at the level of the study. For example, there may be instructions about how to ask questions to experimenter, when to take breaks or how far to stand in front of the screen.
 
-In general, we recommend storing study-level instructions in the `study/` folder and to store activity-level instructions in the activity-specific folder that is inside the `instruments/` folder (e.g., `Dataset/instruments/Stroop/`).
+It is perhaps interesting to note that instructions can be viewed as a subtype of an questionnaire item where a text and/or other media objects are presented (that may not be a question) and where the response options are limited to either the navigation buttons (e.g., "Next"), to a confirmation or start button (e.g., a button stating "Ready to start") or no option at all (e.g., the instructions are shown for a given duration, after which the next activity is automatically started).
 
-
-It is perhaps interesting to note that instructions can be viewed as a subtype of an questionnaire item where a text and/or other media objects are presented (that may not be a question) and where the response options are limited to either the naviagation buttons (e.g., "Next"), to a confirmation or start button (e.g., a button stating "Ready to start") or no option at all (e.g., the instructions are shown for a given duration, after which the next activity is automatically started).
 Indeed, as with other types of stimuli, we can record what instructions were displayed, when and how they were displayed and we can record the subject's responses (e.g, pressed the "back button") and response times, which may be used for example to evaluate if subjects plausibly read the instructions.
 
 Under this perspective, it would make sense to include instructions and other messages in the subject-level data.
 
+In general, we recommend storing study-level instructions in the `instruments/` folder and to store activity-level instructions in the activity-specific folder that is inside the subjects's activity data folder. For example, if there are instructions that are specific to a particular cognitive task administration, these instructions should be stored in the activity-specific folder that is inside the subjects's activity data folder.
+
 
 ### How to encode instructions?
 
-
+- [ ] TODO: how to encode instructions
