@@ -1,8 +1,8 @@
 ---
 order: 2
 output-file: describe-your-dataset
-icon: bi bi-reception-2 float-end
-difficulty-level: EASY
+icon: bi bi-reception-2
+difficulty: EASY
 title: Describe Your Dataset
 subtitle: How to use dataset cards and codebooks to describe the data in a dataset
 code-overflow: wrap

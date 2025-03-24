@@ -1,0 +1,4 @@
+<% for (const item of items) { %>
+[**<%= item.title %>**](<%= item.path %>) <i class="<%= item.icon %> text-secondary" title="Difficulty Level: <%= item.difficulty %>" style="margin-left: .5rem"></i>
+: <%= item.subtitle %>
+<% } %>

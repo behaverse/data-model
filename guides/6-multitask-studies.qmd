@@ -1,0 +1,9 @@
+---
+order: 6
+output-file: multitask-studies
+title: Multi-task Studies
+subtitle: How to manage data from multi-task studies using BDM
+---
+
+- [ ] Converting a multi-task study into BDM
+

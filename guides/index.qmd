@@ -1,12 +1,15 @@
 ---
-title: Tutorials
+title: Tutorials and How-to Guides
+toc: false
+listing: 
+  template: ../assets/templates/simple-links-listing.ejs
+  sort: "order"
+  categories: false
+  filter-ui: false
+  contents:
+    - "*.qmd"
 ---
 
-Here, you can find practical activities to learn BDM by solving common challenges encountered when working with behavioral data.
+Here, you can find practical guidelines to learn BDM. You don't need to fully understand BDM to apply it to your data. Once you find an idea that seems useful, put it into practice. You can always iterate between your data and BDM documentation, and return to it when you need more clarity about the data.
 
-You don't need to fully understand BDM to apply it to your data. Once you find an idea that seems useful, put it into practice. You can always iterate between your data and BDM documentation, and return to it when you need more clarity about the data.
-
-Tutorial: a practical activity to learn by doing something meaningful, towards some achievable goal. Students achieve theoretical knowledge, understanding, familiarity, interaction between things, the names, the use of tools, workflows, concepts, commands.
-
-### Neuroimaging
 

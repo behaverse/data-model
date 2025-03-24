@@ -1,9 +1,0 @@
----
-order: 6
-output-file: multitask-dataset
-title: Multi-task Dataset
-subtitle: How to use multi-task data in a BDM dataset
----
-
-- [ ] Converting a multi-task study into BDM
-
