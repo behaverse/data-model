@@ -4,36 +4,61 @@ output-file: studyflow
 title: Studyflow
 ---
 
-Studyflows are formal diagrams based on BPMN to describe cognitive research. They can be used to visually describe the study protocol, the analysis pipeline, or any other steps in a study. Studyflows facilitate communication with participants (e.g., automatically running a study), researchers (e.g., reproducible protocols and analyses), systems (e.g., automated data processing), and other stakeholders.
+Studyflows are formal diagrams based on BPMN to describe research workflows. They can be used to visually describe the study protocol, data collection, analysis pipeline, or any other steps in a study. Studyflows facilitate communication with participants (e.g., by automatically running a study), researchers (e.g., by reproducible protocols and analyses), systems (e.g., by automated data processing), and other stakeholders.
 
-- [ ] TODO: Example diagrams
+Here is an example of a simple studyflow:
 
-## Elements
 
-Each Studyflow is a BPMN diagram with additional elements specific to cognitive research.
+
+![A visual representation of a simple studyflow that describes an experiment (click on the image to enlarge).](../../assets/bpmn/studyflow_example_01.png){width="80%" .lightbox}
+
+
+Although studyflows are visual, the underlying storage format is XML (just like BPMN). This allows studyflows to be easily shared, version-controlled, and processed by machines. Studyflows can be created and executed using diagramming tools such as [Studyflow Modeler](https://behaverse.org/studyflow-modeler).
+
+## Basic elements
+
+Each Studyflow is a BPMN diagram with additional elements specific to research workflows in cognitive sciences.
 
 ### Experimental design
 
-The following elements can be used to describe the study protocol.
+The following elements can be used to describe the experimental design and data collection.
 
-- [ ] `bpmn:StartEvent`: initiates the flow. There must be only one start event in a study.
-- [ ] `bpmn:SequenceFlow`: connects the elements.
-- [ ] `studyflow:Element`
-    - [ ] `studyflow:Activity`: a generic task (`bpmn:Task`) that can be performed by a participant or a system.
-        - [ ] `studyflow:CognitiveTest`: participant performs a cognitive test.
-        - [ ] `studyflow:Questionnaire`: participant answers a questionnaire.
-            - [ ] `studyflow:Consent`: participant provides consent for the study.
-            - [ ] `studyflow:Instruction`: participant reads the instructions.
-        - [ ] `studyflow:VideoGame`: participant plays a video game.
-        - [ ] `studyflow:Rest`: participant takes a break, and performs no activity as in resting-state.
-    - [ ] `studyflow:Dispatcher`: a subclass of `bpmn:ExclusiveGateway` that splits the flow into on of the multiple paths based on a condition.
-        - [ ] `studyflow:RandomDispatcher`: a subclass of `Dispatcher` that randomly selects one of the outgoing paths.
-- [ ] `bpmn:EndEvent` terminates the flow. There must be only one end event in a study.
+`bpmn:StartEvent`
+: A starting node where the workflow is initiated. There must be only one start node in a study.
 
-### Modeling and data analysis
+`studyflow:Activity`
+: A generic task (`bpmn:Task`) that can be performed by human or computer agents.
 
-The following elements can be used to describe the analysis pipeline.
+`studyflow:Questionnaire`
+: When participants are instructed to answer a questionnaire.
 
-- `bpmn:StartEvent`: initiates the analysis pipeline. Unlike experimental design, there can be multiple start events in a pipeline.
-- `bpmn:EndEvent`: terminates the analysis pipeline. Unlike experimental design, there can be multiple end events in a pipeline.
+`studyflow:Instruction`
+: When participant are instructed to read some instructions.
+
+`studyflow:CognitiveTest`
+: A computerized program where participants perform a cognitive task.
+
+`studyflow:VideoGame`
+: A computer game in which participants play a video game.
+
+`bpmn:EndEvent`
+: An ending node that marks where the workflow completes.
+
+For a complete list of supported elements and their attributes, see the [Studyflow ontology](https://github.com/behaverse/studyflow-modeler/blob/main/docs/ontologies/bdm_studyflow.yaml).
+
+
+### Data and analysis pipeline
+
+The following elements can be used to describe the collected data and the modeling pipeline.
+
+`bpmn:StartEvent`
+: initiates the analysis pipeline.
+
+`bpmn:EndEvent`
+: terminates the analysis pipeline.
+
+- [ ] TODO
+
+### Publication and sharing
+
 - [ ] TODO

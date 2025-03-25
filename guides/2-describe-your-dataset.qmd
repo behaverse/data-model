@@ -80,6 +80,10 @@ codebook: codebook.md
 :::
 
 
+::: {.callout-note appearance="simple"}
+For a complete list of fields that can be included in the dataset card, see the [dataset card specification](/spec/general/2-dataset-card.qmd).
+:::
+
 ## Citation and license
 
 If you are sharing your dataset with others, it is important to include a citation for the dataset. This allows others to properly credit your work and helps you track the impact of your dataset. This also comes handy for linked data and semantic web applications.
@@ -127,7 +131,7 @@ One important aspect of BDM is how it automatically links the dataset to other r
 
 To summarize, dataset cards describe your dataset in a way that is easy to understand and useful. They include metadata about the dataset, such as the title, description, author, and codebook, as well as information about the citation and license. By following these conventions, you can make your dataset more discoverable, interpretable, and reproducible.
 
-Here is an example of a complete `README.md` file for a dataset:
+Here is an example of a `README.md` file for a dataset:
 
 
 ```markdown
