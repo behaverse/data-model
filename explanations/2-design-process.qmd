@@ -5,19 +5,26 @@ title: Design Process
 subtitle: How the Behaverse Data Model is being developed
 ---
 
-BDM is similar in some respects to the *data models* used in various domains. However, it is specifically designed to address the unique diversity of cognitive data. The development of BDM is an iterative process guided by two pillars: *Domain-Driven Design* and *Data Lakehouse*.
+Here we discuss the guiding principles and how they are applied to the development of the BDM.
 
-*Domain-Driven Design* helps develop a shared understanding of data that works for both domain and technical experts, while *Data Lakehouse* harmonizes diverse data without sacrificing flexibility or speed. This addresses the shortcomings of metadata-centric methods, which are often costly and ineffective at achieving reusability [^1]^,^[^2]. This approach emphasizes the shift from ad-hoc metadata to robust data structures and encourages a ubiquitous language for many cognitive tasks. This is crucial for developing tools and fostering collaboration in research.
+BDM is similar to the *domain-specific data models* used in various domains, specifically designed to address the unique diversity of data in cognitive and behavioral sciences. The development of BDM is an iterative process guided by two design patterns: *Domain-Driven Design* and *Data Lakehouse*.
+
+*Domain-Driven Design* aims to develop a shared understanding of data that works for both domain experts and technical experts.
+
+And *Data Lakehouse* helps with harmonizing a diverse se of data without sacrificing flexibility or speed (cognitive data can be thought as multi-modal, even at the level of tasks).
+
+These two patterns address the shortcomings of metadata-centric methods, which are often costly and ineffective at achieving reusability [^1]^,^[^2], and emphasize the need for a shift from ad-hoc metadata to robust data structures. They encourage a ubiquitous language for many cognitive tasks, crucial for developing tools and fostering collaboration in research.
 
 [^1]: N. Sambasivan, S. Kapania, H. Highfill, D. Akrong, P. Paritosh, and L. M. Aroyo, [*"Everyone wants to do the model work, not the data work: Data Cascades in High-Stakes AI,"*](https://doi.org/10.1145/3411764.3445518) in Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems, in CHI'21. New York, NY, USA: Association for Computing Machinery, May 2021. doi: 10.1145/3411764.3445518.
 
 [^2]: M. Hulsebos, W. Lin, S. Shankar, and A. Parameswaran, [*"It Took Longer than I was Expecting: Why is Dataset Search Still so Hard?,"*](https://dl.acm.org/doi/10.1145/3665939.3665959) in Proceedings of the 2024 Workshop on Human-In-the-Loop Data Analytics, in HILDA  24. New York, NY, USA: Association for Computing Machinery, June 2024. doi: 10.1145/3665939.3665959.
 
 
-![BDM use cases](/assets/bpmn/bdm_use_cases.svg)
+Moreover, BDM aims to address data management during all the steps of a research workflow, from the start to its completion:
 
 
-Here we discuss the guiding principles and how they are applied to the development of the BDM.
+![Main use cases for the BDM, from the start of a research project to its completion.](/assets/bpmn/bdm_use_cases.png)
+
 
 ## Domain-Driven Design
 
