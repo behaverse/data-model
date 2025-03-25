@@ -2,6 +2,8 @@
 title: Behaverse Data Model (BDM)
 subtitle: Unified dataset format for cognitive tests and questionnaires
 toc: false
+pagetitle: "Behaverse Data Model (BDM)"
+title-prefix: ""
 ---
 
 
