@@ -1,18 +1,42 @@
 ---
 order: 2
 output-file: describe-your-dataset
-icon: bi bi-reception-2
-difficulty: EASY
+icon: bi bi-reception-1
+difficulty: INTRO
 title: Describe Your Dataset
-subtitle: How to use dataset cards and codebooks to describe the data in a dataset
+subtitle: How to use dataset card and codebook
 code-overflow: wrap
 highlight-style: github
+code-tools: false
+code-copy: false
+code-annotations: hover
 ---
 
+Imagine you have a dataset with many variables and you want to share it with others (or with your future self). How can you describe the dataset in a way that is easy to understand and useful?
 
-## Dataset cards
+Here, you will see how to use dataset cards to describe your dataset. Dataset card contains metadata about your dataset, and provides two kinds of information: general description of the dataset, and a codebook that describes the variables in the dataset. With these two pieces of information, others can understand what the dataset is about, what variables it contains, and how to interpret the data.
 
-Each BDM dataset includes a `README.md` file in its root directory that provides both human- and machine-readable metadata. Machine readability relies primarily on the [front-matter](#). It includes information about the dataset as a whole (such as the title, description, and author) and the data (such as the variable names, types, and descriptions). Here is an example:
+BDM facilitates this by providing a set of conventions for structuring and naming variables and their values. For example, BDM uses the concept of trial and provides a set of pre-defined tables and variables to structure the trial data. This makes it easier to share and interpret the data, and to combine it with other datasets.
+
+## Dataset card
+
+Let's begin by dataset card. Each BDM-compatible dataset contains a `README.md` file in its main directory to provide both human- and machine-readable information about the dataset.
+
+The human-readable part is just the regular markdown format common in technical documentation. For a template you can use [HuggingFace dataset card example](https://huggingface.co/datasets/templates/dataset-card-example).
+
+The machine-readable part relies primarily on the [front-matter](#) of the file. Front-matters are a way to include metadata in a markdown file. They are written in YAML format and are placed at the top of the file between two sets of three dashes (`---`). For example:
+
+```markdown
+---
+title: "Example dataset"
+description: "this yaml is machine-readable"
+---
+
+This *markdown* is human-readable.
+```
+
+
+The front-matter includes information about the dataset as a whole (such as the title, description, and author) and the data (such as the variable names and data types). Here is an example:
 
 ```yaml
 ---
@@ -22,24 +46,107 @@ author: "John Doe"
 ---
 ```
 
-In BDM, part of the card that that describes the the data format is called codebook. It can include information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
+## Codebook
 
-If you have a codebook for your dataset, you can include it in the dataset card by adding a `codebook` field to the front-matter. The value of the `codebook` field should be either a path to the codebook file or the codebook itself. For example:
+In BDM, part of the front-matter that describes the the data is called codebook (under the yaml key `codebook`). It can include information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
+
+Codebook is also important because it contains experimenter's intentions and assumption about the study, which is crucial for interpreting the data.  For example, if the experimenter decides to only include age groups (and discard exact age), this decision should be documented in the codebook. Like this:
+
+```yaml
+codebook:
+  variables:
+    - name: "age"                                   # <1>
+      description: "The age group of the subject"
+      type: "enumeration"                           # <2>
+      missing: "NA"                                 # <3>
+      values:                                       # <4>
+        - "18-25": "between 18 and 25 years old (inclusive)"   # <4>
+        - "26-35": "between 26 and 35 years old (inclusive)"   # <4>
+        - "36-45": "between 36 and 45 years old (inclusive)"   # <4>
+        - "46-55": "between 46 and 55 years old (inclusive)"   # <4>
+        - "56-": "56 years old (inclusive) or older"           # <4>
+```
+1. The name of the variable.
+2. The type of the variable; here, a categorical variable.
+3. Missing data is represented by "NA".
+4. The possible values of the variable "age".
+
+::: {.callout-tip appearance="simple"}
+For small number of variables and values, you can describe the codebook in the `README.md` file (like above). But if you have a separate codebook for your dataset and it's too large to be included in the `README.md` file, the value of the `codebook` field should be either a path to the codebook file. For example:
 
 ```yaml
 codebook: codebook.md
 ```
+:::
 
-Or:
+
+## Citation and license
+
+If you are sharing your dataset with others, it is important to include a citation for the dataset. This allows others to properly credit your work and helps you track the impact of your dataset. This also comes handy for linked data and semantic web applications.
+
+You can include the citation in the front-matter `README.md` file (all fields are optional):
 
 ```yaml
+---
+title: "Example dataset"
+description: "This is an example dataset that contains some example data."
+doi: "10.1234/5678"                 # <1>
+url: "https://example.com/dataset"  # <2>
+authors:
+  - name: "John One Doe"
+    orcid: "0000-0000-0000-0000"
+  - name: "Jane Two Doe"
+    orcid: "0000-0000-0000-0001"
+license: "CC BY-SA 4.0"             # <3>
+---
+```
+1. Digital Object Identifier (DOI) for the dataset.
+2. URL for the dataset.
+3. License for the dataset.
+
+To get a DOI for your dataset, you can use services like [Zenodo](https://zenodo.org/), [OSF](https://osf.io/), [Figshare](https://figshare.com/), [OpenNeuro](https://openneuro.org/), or [Dryad](https://datadryad.org/). These services allow you to generate a permanent DOI that you can include in the dataset card.
+
+If you haven't already decided a license for your data, you can use services like [Choose a License](https://choosealicense.com/), [License Selector](https://ufal.github.io/public-license-selector/), or [Creative Commons license chooser](https://creativecommons.org/choose/). These tools helps you select a license that meets your needs and provides a human-readable summary of the license terms. Depending on your case, you can either put the a name or URL in the `license` field (all are valid):
+
+
+```yaml
+license: "CC BY-SA 4.0"                                     # <1>
+license: "https://creativecommons.org/licenses/by-sa/4.0/"  # <2>
+license: "LICENSE.md"                                       # <3>
+```
+1. Name of the license.
+2. URL of the license.
+3. Relative path to a license file in the dataset.
+
+
+::: {.callout-note appearance="simple"}
+One important aspect of BDM is how it automatically links the dataset to other resources on the web. This linking is important for creating a web of linked data that can be easily discovered and interpreted by others. This is done under-the-hood by BDM, so you don't have to worry about it. But it's good to know that BDM is designed to be compatible with the [Schema.org](https://schema.org/) and [Croissant](https://github.com/mlcommons/croissant) standards, which are widely used standard for describing data on the web.
+:::
+
+## A complete example
+
+To summarize, dataset cards describe your dataset in a way that is easy to understand and useful. They include metadata about the dataset, such as the title, description, author, and codebook, as well as information about the citation and license. By following these conventions, you can make your dataset more discoverable, interpretable, and reproducible.
+
+Here is an example of a complete `README.md` file for a dataset:
+
+
+```markdown
+---
+title: "Example dataset"
+description: "This is an example dataset that contains some example data."
+doi: "10.1234/5678"
+url: "https://example.com/dataset"
+authors:
+  - name: "John One Doe"
+    orcid: "0000-0000-0000-0000"
+  - name: "Jane Two Doe"
+    orcid: "0000-0000-0000-0001"
+license: "CC BY-SA 4.0"
 codebook:
-  @context: "https://behaverse.org/schemas/bdm/codebook.json"
-  @type: "Codebook"
-  variable:
-    - name: "age_group"
-      description: "The age group of the subject."
-      type: "integer"
+  variables:
+    - name: "age"
+      description: "The age group of the subject"
+      type: "enumeration"
       missing: "NA"
       values:
         - "18-25": "between 18 and 25 years old (inclusive)"
@@ -47,14 +154,21 @@ codebook:
         - "36-45": "between 36 and 45 years old (inclusive)"
         - "46-55": "between 46 and 55 years old (inclusive)"
         - "56-": "56 years old (inclusive) or older"
-```
+---
+
+# Example Dataset
+
+This is an example dataset that contains some example data.
 
 ## Citation
+
+If you use this dataset, please cite it as follows:
 
 ...
 
 ## License
 
-...
+This dataset is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
 
 ```
