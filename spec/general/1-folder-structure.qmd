@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 1
 output-file: folder-structure
 title: Folder Structure
 subtitle: A dataset is a folder that contains data files and all relevant information needed to make sense of that data.

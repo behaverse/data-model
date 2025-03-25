@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 4
 output-file: instructions
 title: Instructions
 subtitle: When information presented to subjects is a "message"

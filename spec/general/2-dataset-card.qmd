@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 2
 output-file: dataset-card
 title: Dataset Card
 ---

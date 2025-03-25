@@ -27,10 +27,7 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 [**Studyflow**](general/3-studyflow.qmd)
 : Study flow describes the sequence of activities in a study.
 
-[**Indexing**](general/4-indices.qmd)
-: Indices are used to identify and address data records.
-
-[**Instructions**](general/5-instructions.qmd)
+[**Instructions**](general/4-instructions.qmd)
 : Instructions provide additional guidance and help about tasks presented to subjects in a study.
 
 :::
