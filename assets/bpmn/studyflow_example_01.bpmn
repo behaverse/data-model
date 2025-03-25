@@ -4,7 +4,7 @@
     <bpmn2:startEvent id="StartEvent_1" name="Start">
       <bpmn2:outgoing>Flow_18opk19</bpmn2:outgoing>
     </bpmn2:startEvent>
-    <studyflow:cognitiveTest id="CognitiveTest_1efp4v8" name="2-back&#10;(pre-test)" instrument="behaverse" behaverseTask="NB" type="studyflow:CognitiveTest">
+    <studyflow:cognitiveTest id="CognitiveTest_1efp4v8" name="2-Back&#10;(pre-test)" instrument="behaverse" behaverseTask="NB" type="studyflow:CognitiveTest">
       <bpmn2:incoming>Flow_1vt91gc</bpmn2:incoming>
       <bpmn2:outgoing>Flow_1codlmv</bpmn2:outgoing>
     </studyflow:cognitiveTest>
@@ -12,7 +12,7 @@
       <bpmn2:incoming>Flow_05n4p9d</bpmn2:incoming>
       <bpmn2:outgoing>Flow_1vt91gc</bpmn2:outgoing>
     </studyflow:questionnaire>
-    <studyflow:instruction id="Instruction_1wtpgr2" name="Study instruction" type="studyflow:Instruction">
+    <studyflow:instruction id="Instruction_1wtpgr2" name="Study Instruction" type="studyflow:Instruction">
       <bpmn2:incoming>Flow_18opk19</bpmn2:incoming>
       <bpmn2:outgoing>Flow_05n4p9d</bpmn2:outgoing>
     </studyflow:instruction>
@@ -46,13 +46,13 @@
     <bpmn2:sequenceFlow id="Flow_1cskvjm" sourceRef="CognitiveTest_1er3e07" targetRef="Activity_0xvpq7m" />
     <bpmn2:sequenceFlow id="Flow_0co079j" sourceRef="CognitiveTest_0fowy28" targetRef="Activity_0xvpq7m" />
     <bpmn2:sequenceFlow id="Flow_18opk19" sourceRef="StartEvent_1" targetRef="Instruction_1wtpgr2" />
-    <studyflow:cognitiveTest id="CognitiveTest_1kcup5k" name="No game&#10;(rest)" instrument="rest" type="studyflow:CognitiveTest">
+    <studyflow:cognitiveTest id="CognitiveTest_1kcup5k" name="No Game&#10;(Rest)" instrument="rest" type="studyflow:CognitiveTest">
       <bpmn2:incoming>Flow_0jzu96k</bpmn2:incoming>
       <bpmn2:outgoing>Flow_0w1xnom</bpmn2:outgoing>
     </studyflow:cognitiveTest>
     <bpmn2:sequenceFlow id="Flow_0jzu96k" name="NVGP" sourceRef="RandomGateway_1ozt019" targetRef="CognitiveTest_1kcup5k" />
     <bpmn2:sequenceFlow id="Flow_0w1xnom" sourceRef="CognitiveTest_1kcup5k" targetRef="Activity_0xvpq7m" />
-    <studyflow:cognitiveTest id="Activity_0xvpq7m" name="2-back&#10;(post-test)" instrument="behaverse" behaverseTask="NB">
+    <studyflow:cognitiveTest id="Activity_0xvpq7m" name="2-Back&#10;(post-test)" instrument="behaverse" behaverseTask="NB">
       <bpmn2:incoming>Flow_0co079j</bpmn2:incoming>
       <bpmn2:incoming>Flow_1cskvjm</bpmn2:incoming>
       <bpmn2:incoming>Flow_0w1xnom</bpmn2:incoming>
@@ -67,94 +67,90 @@
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
-      <bpmndi:BPMNShape id="RandomGateway_1ozt019_di" bpmnElement="RandomGateway_1ozt019" isMarkerVisible="true" bioc:stroke="#8cb26e" bioc:fill="#d9e7d6" color:background-color="#d9e7d6" color:border-color="#8cb26e">
-        <dc:Bounds x="795" y="440" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="741" y="360" width="58" height="40" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="CognitiveTest_0fowy28_di" bpmnElement="CognitiveTest_0fowy28" bioc:stroke="#8cb26e" bioc:fill="#d9e7d6" color:background-color="#d9e7d6" color:border-color="#8cb26e">
-        <dc:Bounds x="880" y="425" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="CognitiveTest_1er3e07_di" bpmnElement="CognitiveTest_1er3e07" bioc:stroke="#728cb9" bioc:fill="#dde8fa" color:background-color="#dde8fa" color:border-color="#728cb9">
-        <dc:Bounds x="880" y="330" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="CognitiveTest_1kcup5k_di" bpmnElement="CognitiveTest_1kcup5k" bioc:stroke="#ac5a54" bioc:fill="#f1d0cd" color:background-color="#f1d0cd" color:border-color="#ac5a54">
-        <dc:Bounds x="880" y="520" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="CognitiveTest_01t90mm_di" bpmnElement="CognitiveTest_01t90mm">
-        <dc:Bounds x="619" y="420" width="150" height="90" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="CognitiveTest_1efp4v8_di" bpmnElement="CognitiveTest_1efp4v8">
-        <dc:Bounds x="513" y="420" width="80" height="90" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Questionnaire_0nknqwd_di" bpmnElement="Questionnaire_0nknqwd">
-        <dc:Bounds x="417" y="420" width="70" height="90" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Instruction_1wtpgr2_di" bpmnElement="Instruction_1wtpgr2">
-        <dc:Bounds x="290" y="420" width="100" height="90" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="225" y="447" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="231" y="490" width="25" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CognitiveTest_1er3e07_di" bpmnElement="CognitiveTest_1er3e07" bioc:stroke="#728cb9" bioc:fill="#dde8fa" color:background-color="#dde8fa" color:border-color="#728cb9">
+        <dc:Bounds x="880" y="330" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CognitiveTest_0fowy28_di" bpmnElement="CognitiveTest_0fowy28" bioc:stroke="#8cb26e" bioc:fill="#d9e7d6" color:background-color="#d9e7d6" color:border-color="#8cb26e">
+        <dc:Bounds x="880" y="425" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CognitiveTest_1kcup5k_di" bpmnElement="CognitiveTest_1kcup5k" bioc:stroke="#ac5a54" bioc:fill="#f1d0cd" color:background-color="#f1d0cd" color:border-color="#ac5a54">
+        <dc:Bounds x="880" y="520" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0empfiq" bpmnElement="Activity_0xvpq7m">
         <dc:Bounds x="1020" y="420" width="80" height="90" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0hgc547" bpmnElement="Activity_0w932h8">
-        <dc:Bounds x="1130" y="420" width="100" height="90" />
+        <dc:Bounds x="1120" y="420" width="60" height="90" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_005l2r5_di" bpmnElement="Event_005l2r5">
-        <dc:Bounds x="1252" y="447" width="36" height="36" />
+        <dc:Bounds x="1202" y="447" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1260" y="490" width="20" height="14" />
+          <dc:Bounds x="1210" y="490" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Instruction_1wtpgr2_di" bpmnElement="Instruction_1wtpgr2">
+        <dc:Bounds x="280" y="420" width="100" height="90" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Questionnaire_0nknqwd_di" bpmnElement="Questionnaire_0nknqwd">
+        <dc:Bounds x="405" y="420" width="70" height="90" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CognitiveTest_1efp4v8_di" bpmnElement="CognitiveTest_1efp4v8">
+        <dc:Bounds x="500" y="420" width="80" height="90" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CognitiveTest_01t90mm_di" bpmnElement="CognitiveTest_01t90mm">
+        <dc:Bounds x="605" y="420" width="150" height="90" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="RandomGateway_1ozt019_di" bpmnElement="RandomGateway_1ozt019" isMarkerVisible="true">
+        <dc:Bounds x="775" y="440" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="741" y="360" width="58" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1codlmv_di" bpmnElement="Flow_1codlmv">
-        <di:waypoint x="593" y="465" />
-        <di:waypoint x="619" y="465" />
+        <di:waypoint x="580" y="465" />
+        <di:waypoint x="605" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vt91gc_di" bpmnElement="Flow_1vt91gc">
+        <di:waypoint x="475" y="465" />
+        <di:waypoint x="500" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05n4p9d_di" bpmnElement="Flow_05n4p9d">
+        <di:waypoint x="380" y="465" />
+        <di:waypoint x="405" y="465" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0l7k0d2_di" bpmnElement="Flow_0l7k0d2">
-        <di:waypoint x="769" y="465" />
-        <di:waypoint x="795" y="465" />
+        <di:waypoint x="755" y="465" />
+        <di:waypoint x="775" y="465" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1n6c4ix_di" bpmnElement="Flow_1n6c4ix" bioc:stroke="#728cb9" color:border-color="#728cb9">
-        <di:waypoint x="820" y="440" />
-        <di:waypoint x="820" y="370" />
+        <di:waypoint x="800" y="440" />
+        <di:waypoint x="800" y="370" />
         <di:waypoint x="880" y="370" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="830" y="353" width="28" height="14" />
+          <dc:Bounds x="833" y="353" width="28" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0s1xp17_di" bpmnElement="Flow_0s1xp17" bioc:stroke="#8cb26e" color:border-color="#8cb26e">
-        <di:waypoint x="845" y="465" />
+        <di:waypoint x="825" y="465" />
         <di:waypoint x="880" y="465" />
-        <bpmndi:BPMNLabel color:color="#8cb26e">
-          <dc:Bounds x="840" y="472" width="37" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0jzu96k_di" bpmnElement="Flow_0jzu96k" bioc:stroke="#ac5a54" color:border-color="#ac5a54">
-        <di:waypoint x="820" y="490" />
-        <di:waypoint x="820" y="560" />
-        <di:waypoint x="880" y="560" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="829" y="563" width="29" height="14" />
+          <dc:Bounds x="828" y="450" width="37" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0co079j_di" bpmnElement="Flow_0co079j" bioc:stroke="#8cb26e" color:border-color="#8cb26e">
-        <di:waypoint x="980" y="465" />
-        <di:waypoint x="1020" y="465" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1cskvjm_di" bpmnElement="Flow_1cskvjm" bioc:stroke="#728cb9" color:border-color="#728cb9">
         <di:waypoint x="980" y="370" />
@@ -162,31 +158,35 @@
         <di:waypoint x="1000" y="440" />
         <di:waypoint x="1020" y="440" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0co079j_di" bpmnElement="Flow_0co079j" bioc:stroke="#8cb26e" color:border-color="#8cb26e">
+        <di:waypoint x="980" y="465" />
+        <di:waypoint x="1020" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18opk19_di" bpmnElement="Flow_18opk19">
+        <di:waypoint x="261" y="465" />
+        <di:waypoint x="280" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jzu96k_di" bpmnElement="Flow_0jzu96k" bioc:stroke="#ac5a54" color:border-color="#ac5a54">
+        <di:waypoint x="800" y="490" />
+        <di:waypoint x="800" y="560" />
+        <di:waypoint x="880" y="560" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="832" y="563" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0w1xnom_di" bpmnElement="Flow_0w1xnom" bioc:stroke="#ac5a54" color:border-color="#ac5a54">
         <di:waypoint x="980" y="560" />
         <di:waypoint x="1000" y="560" />
         <di:waypoint x="1000" y="490" />
         <di:waypoint x="1020" y="490" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1vt91gc_di" bpmnElement="Flow_1vt91gc">
-        <di:waypoint x="487" y="465" />
-        <di:waypoint x="513" y="465" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_05n4p9d_di" bpmnElement="Flow_05n4p9d">
-        <di:waypoint x="390" y="465" />
-        <di:waypoint x="417" y="465" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_18opk19_di" bpmnElement="Flow_18opk19">
-        <di:waypoint x="261" y="465" />
-        <di:waypoint x="290" y="465" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_02ejmbw_di" bpmnElement="Flow_02ejmbw">
         <di:waypoint x="1100" y="465" />
-        <di:waypoint x="1130" y="465" />
+        <di:waypoint x="1120" y="465" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ctk0pr_di" bpmnElement="Flow_0ctk0pr">
-        <di:waypoint x="1230" y="465" />
-        <di:waypoint x="1252" y="465" />
+        <di:waypoint x="1180" y="465" />
+        <di:waypoint x="1202" y="465" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
