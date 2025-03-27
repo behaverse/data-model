@@ -100,16 +100,16 @@ website:
 
       - section: "Specifications"
         contents:
-        - text: '<i class="bi bi-grid"></i> Overview'
+        - text: 'Overview'
           href: spec/index.qmd
-        - section: <i class="bi bi-square-fill"></i> General
+        - section: General
           contents:
             - auto: "spec/general/*.qmd"
         - section: "Events"
           icon: 0-square-fill
           contents:
             - href: spec/events/index.qmd
-              text: '<i class="bi bi-grid"></i> Overview'
+              text: 'Overview'
         - section: "Trials"
           icon: 1-square-fill
           contents:

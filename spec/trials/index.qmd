@@ -1,6 +1,6 @@
 
 ---
-title: <i class="bi bi-1-square-fill"></i> Trial Tables Overview
+title: <i class="bi bi-1-square-fill"></i> Trials
 subtitle: Trials are the main features of the scientific experiment
 toc: false
 listing: 
