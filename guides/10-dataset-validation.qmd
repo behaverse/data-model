@@ -1,7 +1,7 @@
 ---
 order: 10
 output-file: dataset-validation
-title: Dataset Validation
+title: Dataset validation
 subtitle: How to validate a BDM dataset
 ---
 

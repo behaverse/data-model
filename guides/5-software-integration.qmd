@@ -1,7 +1,7 @@
 ---
 order: 5
 output-file: software-integration
-title: Software Integration
+title: Software integration
 subtitle: How to develop software that outputs BDM
 ---
 

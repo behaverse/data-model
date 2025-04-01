@@ -1,7 +1,7 @@
 ---
-order: 14
+order: 13
 output-file: compatible-datasets
-title: BDM-compatible Datasets
+title: BDM-compatible datasets
 subtitle: How to access a BDM-compatible dataset
 ---
 

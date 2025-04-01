@@ -1,7 +1,7 @@
 ---
 order: 3
 output-file: convert-your-dataset
-title: Convert Your Dataset
+title: Convert your dataset
 subtitle: How to convert a behavior data table into a BDM dataset
 ---
 

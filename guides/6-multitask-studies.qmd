@@ -1,7 +1,7 @@
 ---
 order: 6
 output-file: multitask-studies
-title: Multi-task Studies
+title: Multi-task studies
 subtitle: How to manage data from multi-task studies using BDM
 ---
 

@@ -3,7 +3,7 @@ order: 1
 output-file: getting-started
 icon: bi bi-reception-1
 difficulty: INTRO
-title: Getting Started
+title: Getting started
 subtitle: Understand what BDM is and how to use it
 code-block-bg: true
 format:

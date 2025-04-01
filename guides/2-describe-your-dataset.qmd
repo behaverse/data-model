@@ -3,7 +3,7 @@ order: 2
 output-file: describe-your-dataset
 icon: bi bi-reception-1
 difficulty: INTRO
-title: Describe Your Dataset
+title: Describe your dataset
 subtitle: How to use dataset card and codebook
 code-overflow: wrap
 highlight-style: github

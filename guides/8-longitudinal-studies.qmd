@@ -1,7 +1,7 @@
 ---
 order: 8
 output-file: longitudinal-studies
-title: Longitudinal Studies
+title: Longitudinal studies
 subtitle: How to use longitudinal data in a BDM dataset
 ---
 

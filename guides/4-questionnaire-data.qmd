@@ -1,7 +1,7 @@
 ---
 order: 4
 output-file: questionnaire-data
-title: Questionnaire Data
+title: Questionnaire data
 subtitle: How to use questionnaire data in a BDM dataset
 ---
 
