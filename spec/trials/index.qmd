@@ -13,7 +13,7 @@ listing:
     - "*.qmd"
 ---
 
-A trial is a single instance of a participant interacting with a behavioral task and contains information about the participant, the task, and the interaction between the two. BDM data supports multiple trial-related tables that are designed to be as flexible as possible, allowing for a wide range of tasks to be represented.
+A trial is a single instance of a participant interacting with a task. It contains information about the participant, the task, and the interaction between the two. BDM supports multiple trial-related tables that are designed to be as flexible as possible, allowing for a wide range of cognitive tasks to be represented.
 
 ::: {.callout-tip appearance="simple"}
 We use <i class="bi bi-grid-3x3"></i> icon to refer to specific tables. For example the **<i class="bi bi-grid-3x3"></i> Trial** table or the **<i class="bi bi-grid-3x3"></i> Stimulus** table.
