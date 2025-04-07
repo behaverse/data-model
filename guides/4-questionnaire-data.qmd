@@ -5,7 +5,6 @@ icon: bi bi-reception-2
 difficulty: EASY
 title: Questionnaire data
 subtitle: How to store questionnaire data in a BDM dataset
-tbl-cap-location: margin
 ---
 
 Questionnaire data is typically a set of questions, options, and corresponding responses. A **question** can have many different formats (e.g., text, images, sounds) and offer participants a wide range of input **options** (e.g., radio buttons, numeric text fields) that may lead to different kinds of **response** types (e.g., numeric, text, ordered, nominal).
