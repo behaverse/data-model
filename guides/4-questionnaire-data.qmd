@@ -1,9 +1,141 @@
 ---
 order: 4
 output-file: questionnaire-data
+icon: bi bi-reception-2
+difficulty: EASY
 title: Questionnaire data
-subtitle: How to use questionnaire data in a BDM dataset
+subtitle: How to store questionnaire data in a BDM dataset
+tbl-cap-location: margin
 ---
 
-- [ ] I have questionnaire data
+Questionnaire data is typically a set of questions, options, and corresponding responses. A **question** can have many different formats (e.g., text, images, sounds) and offer participants a wide range of input **options** (e.g., radio buttons, numeric text fields) that may lead to different kinds of **response** types (e.g., numeric, text, ordered, nominal).
 
+Despite the central role of questionnaires in social sciences, a key impediment towards realizing their full potential is a lack of standards structure so they can be efficiently processed, integrated, reused, and shared. To address this, BDM proposes a tidy data structure (REF) that is flexible enough to represent the most common questionnaires while being simple enough to be easily understood and used. This tidy data structure (or long format) has the following characteristics:
+
+3. separate data into activity-specific files nested within subject specific folders (e.g., `subject_id/session_id/questionnaire_id/...`);
+2. keep the main information in one table (`trials.csv`) and delegate further details to supplementary tables (`stimuli.csv`, etc);
+1. focus on the interaction between one person and one stimulus; and consider questions and corresponding responses as a set of trials (i.e., each question is a trial with specific stimulus, options, and response).
+
+For example, here is a minimal dataset structure for a study with two subjects completing three questionnaires:
+
+```{.default .file-tree}
+study/
+├── README.md
+├── agents.csv
+├── agent_1/
+│   ├── questionnaire_1/
+│   │   └── trials.csv
+│   ├── questionnaire_2/
+│   │   └── trials.csv
+│   └── questionnaire_3/
+│       └── trials.csv
+└── agent_2/
+    ├── questionnaire_1/
+    │   └── trials.csv
+    ├── questionnaire_2/
+    │   └── trials_.csv
+    └── questionnaire_3/
+        ├── trials_1.csv
+        └── trials_2.csv
+```
+
+
+## <i class="bi bi-table"></i> Trial table
+
+Each trial is a single interaction between an agent (e.g., a human participant) and a stimulus (e.g., a question). [Trial table](#) is a standalone table and contains the main information about the trial, while other supplementary tables may contain more specific information about [the agents](#), [stimuli](#) and [options](#).
+
+Within the Trial table (`trials.csv`), each row corresponds to a single trial. A trial is identified by a unique identifier (`trial_id`) and contains main information about the agent, the stimulus (i.e., the question), the options, the response, and the evaluation of the response. Here are the variables that are typically included in the Trial table for questionnaires:
+
+### Stimulus description
+
+stimulus_id
+: Stimulus refers to the actual question shown to agents. `stimulus_id` is an alphanumeric string that uniquely identifies the question. This unique identifier can be used for instance to determine if two questions are the same (within or across datasets) and to possibly access more data about that question in the other places (e.g., the Stimulus table or questionnaire metadata).
+
+stimulus_index
+: An 1-indexed integer that tracks the order of the questions. In the context of a questionnaire, stimulus_index=1 would refer to the first presented question and stimulus_index=23 to the twenty-third question in a questionnaire.
+
+
+stimulus_description
+: A textual description of the stimulus. For questionnaires, this contains the english version of the question text shown to the participants. If the question was presented in different languages--which would be stated in the `language` column of the Trial table--the different translations would be available in supplementary resources for the questionnaire.
+
+stimulus_onset
+: How many seconds after the trial onset this question was presented to agents. In questionnaires, this value is typically 0. 
+
+stimulus_duration
+: How many seconds the question was displayed on the screen.
+
+
+### Options description
+
+Options define the set of possible responses that an agent can make. For example, if a question offers categorical inputs ("yes", "no", or to not respond at all), then it is not possible for the agent to enter a date or a text for example. Conversely if the option is a short text field, the agent may in principle input any sequence of say 255 characters. It is thus important to note that options are not equivalent to inputs: to use a specific option may require multiple user inputs, and options are not equivalent to responses: options define constraints on potential responses.
+
+The main properties of options stored in the Trial table are:
+
+option_id
+: A unique identifier of a specific response option. For example, a specific Likert scale offering agents the possibility to choose among 7 levels of agreement ranging from "strongly disagree" to "strongly agree" may have an option_id value of "agreement_7".  Note that a given question can oftentimes be used with different options (e.g., "agreement_7" vs "agreement_5" vs "agreement_2") and that the combination of a specific question text (i.e., question_id) and a specific option (i.e., option_id) is sometimes referred as an "item". There is no explicit concept for the combination of these two ids in BDM. 
+
+option_onset
+: How many seconds after the trial onset this option was presented to agents. In questionnaires, this value is typically 0.
+
+option_duration
+: How many seconds the option was displayed on the screen.
+
+option_source
+: The source of the options from which the option was derived. This is typically a string that indicates the range of options (e.g., "likert_1_to_7", "gender", etc). This is useful when options contain metadata about their psychometric properties (e.g., the range of values, the number of items, etc).
+
+### Response description
+
+Response refers to the meaning that is given to the agent's inputs and may be computed using an aggregation of several events (e.g., input text, key press timing). The main features of the responses that are encoded in the Trial table are the following:
+
+
+response_description
+: A short text describing the response given by the agent. In the case of questionnaires, this may be the label of a chosen option (e.g., "strongly agree") or the text entered in a text field (i.e., for an open question) or even a numeric input (e.g., "42"). 
+ 
+response_numeric
+: A numeric value associated with the response.
+
+: In some cases, response_value is empty (e.g., in the case of text inputs); in some cases, response_value is the same as response_description (e.g., when agents entered a number); in other case, response_value refers to a numeric value that is associated to an option chosen by the agent (e.g., the "never" option may be associated with the value of 0 and "always" with a value of 1). This is a numeric interpretation of a textual or categorical variable that is independent from the question asked; it is not an encoding of the scoring (see "Evaluation" section below).
+
+response_option_index
+: The index of the option chosen with the set of offered options (when these are a set like "agreement_7"). This is necessary for example when options are presented in random orders (e.g., in a quiz).
+
+response_time
+: Indicates how many seconds it took the agent to enter their response relative to the moment where entering a response for that trial became possible (e.g., onset of the options on the screen). 
+
+
+### Evaluation description
+
+It is often necessary to evaluate the response provided by the agent. Importantly, how to evaluate a response depends on the specific question asked and often even depends on the questionnaire as a whole. The main features to evaluate a response within the Trial table are the following:
+
+accuracy
+: Indicates with a number ranging from 0 to 1 if the response was correct. 
+
+correct
+: Indicates with a boolean value if the response is correct (true) or incorrect (false).
+
+score
+: A number that indicates the value the experimenter associates to this response in this particular context.
+: For example, in the BIS/BAS questionnaire, agents have to answer a set of questions by choosing for each one of four possible options (i.e., "very true for me", "somewhat true for me", "somewhat false for me", "very false for me"). For some questions, responding "very true of me" yields a score of 1 while for others it may yield a score of 4 (i.e., the reverse coded items) or even a score of 0 (i.e., the filler items). These item scores are then aggregated in some specific way to compute questionnaire-level scores (e.g., a BAS fun seeking score). 
+: ::: {.callout-warning appearance="simple"}
+Both *response_numeric* and *score* are required. When *response_numeric* and *score* and not distinguished, it may not be possible to know if the responses in a dataset are "reverse-coded" or "raw responses"--which arguably makes the dataset unusable. <br />For example, when responses are encoded using only a single numeric value (e.g., 2, 3, 4) it is unclear if these values represent the index of the selected options, a numeric value for the label of the option, or a particular way of scoring.
+:::
+
+### A minimal example
+
+Here is a minimal example of a Trial table a subject answering a questionnaire with two questions (i.e., stimuli) with two options each. The first question is a multiple choice question with two options ("yes" and "no") and the second question is a Likert scale with five options ("strongly disagree", "disagree", "neutral", "agree", "strongly agree"). The third question is an open-ended question where the agent can enter any text.
+
+```{=html}
+<style type="text/css">
+caption, .table-caption {
+  text-align: left;
+}
+</style>
+```
+
+:::{.table-responsive}
+|trial_id   |agent_id |session_id|stimulus_id|stimulus_index|stimulus_description           |stimulus_onset|stimulus_duration|option_id  |option_onset|option_duration|response_description|response_numeric|response_option_index|response_time|accuracy                   |correct                    |score|
+|-----------|---------|----------|-----------|--------------|-------------------------------|--------------|-----------------|-----------|------------|---------------|--------------------|----------------|---------------------|-------------|---------------------------|---------------------------|-----|
+|1          |subject_1|session_1 |stimulus_1 |1             |Do you like ice cream?         |0             |5                |yes_no     |0           |5              |yes                 |1               |1                    |2            |[*NA*]{.text-muted .small} |[*NA*]{.text-muted .small} |1    |
+|2          |subject_1|session_1 |stimulus_2 |2             |How much do you like ice cream?|0             |5                |agreement_5|0           |5              |strongly agree      |4               |5                    |5            |[*NA*]{.text-muted .small} |[*NA*]{.text-muted .small} |4    |
+: Example Trial table for a questionnaire (scroll horizontally to see all the columns)
+:::

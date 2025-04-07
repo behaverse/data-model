@@ -117,12 +117,12 @@ Within the activity folders, you will find the data files collected during the a
 ```{.default .file-tree}
 ...
 DigitSpan/
-├── trials_1.csv
-├── stimuli_1.csv
-└── options_1.csv
+├── trials.csv
+├── stimuli.csv
+└── options.csv
 ```
 
-- The `trials_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is 1-indexed and represents how many times the agent has initiated the activity. For example, `agent_02` has multiple responses for the `DigitSpan` activity in session 1.
+- The `trials_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is optional 1-indexed and represents how many times the agent has initiated the activity. If there was only one attempt to complete the activity, then it can be named `trials.csv`. If there were multiple attempts, then the file can be named `trials_1.csv`, `trials_2.csv`, etc. For example, `agent_01` has two attempts to complete the `DigitSpan` activity in session 1, so there are two files: `trials_1.csv` and `trials_2.csv`.
 - The dataset is in incomplete in terms of having the same data for all the agents. Data for the second subject (`agent_02`) does not include a second session, so there is no `session_02` folder for this subject.
 
 
