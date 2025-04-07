@@ -29,7 +29,7 @@
     groups will have different experiences within a study.
 - categories:
   - Context
-  variable_name: subject_id
+  variable_name: agent_id
   required: true
   data_type: string
   description: A unique identifier assigned to the agent (typically person) generating

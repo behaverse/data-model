@@ -12,7 +12,7 @@ Questionnaire data is typically a set of questions, options, and corresponding r
 
 Despite the central role of questionnaires in social sciences, a key impediment towards realizing their full potential is a lack of standards structure so they can be efficiently processed, integrated, reused, and shared. To address this, BDM proposes a tidy data structure (REF) that is flexible enough to represent the most common questionnaires while being simple enough to be easily understood and used. This tidy data structure (or long format) has the following characteristics:
 
-3. separate data into activity-specific files nested within subject specific folders (e.g., `subject_id/session_id/questionnaire_id/...`);
+3. separate data into activity-specific files nested within subject specific folders (e.g., `agent_id/session_id/questionnaire_id/...`);
 2. keep the main information in one table (`trials.csv`) and delegate further details to supplementary tables (`stimuli.csv`, etc);
 1. focus on the interaction between one person and one stimulus; and consider questions and corresponding responses as a set of trials (i.e., each question is a trial with specific stimulus, options, and response).
 

@@ -21,7 +21,7 @@
   required: false
   description: Refers to the `trial_id` in the @Trial table and indicates in which
     trial this stimulus was shown.
-  range: '`trial_id` in the @Trial table of the same subject/session/activity'
+  range: '`trial_id` in the @Trial table of the same agent/session/activity'
 - categories:
   - Context
   variable_name: response_id
@@ -29,7 +29,7 @@
   required: true
   description: Refers to the `response_id` in the @Trial table and indicates for which
     response this stimulus was shown.
-  range: '`response_id` in the @Trial table of the same subject/activity'
+  range: '`response_id` in the @Trial table of the same agent/activity'
 - categories:
   - Context
   variable_name: object_id
@@ -170,24 +170,24 @@
   data_type: enum
   required: true
   description: Describe the role that  the stimulus plays in the trial, e.g., "target".
-  range: '- `target`: A stimulus the subject must process and which should trigger
-    the completion of the response (e.g., classify, reach, memorize) if the subject
-    is doing the task as intended. In some cases (e.g., in a go/no-go task) the correct
-    response to a stimulus is to NOT click the button. In this case, the stimulus
-    that triggered the decision to NOT click the button is still a `target`.
+  range: '- `target`: A stimulus the agent must process and which should trigger the
+    completion of the response (e.g., classify, reach, memorize) if the agent is doing
+    the task as intended. In some cases (e.g., in a go/no-go task) the correct response
+    to a stimulus is to NOT click the button. In this case, the stimulus that triggered
+    the decision to NOT click the button is still a `target`.
 
-    - `non_target`: A stimulus the subject must process but which does not trigger
-    the completion of the response (e.g., the first two stimuli in a 2-back test).
+    - `non_target`: A stimulus the agent must process but which does not trigger the
+    completion of the response (e.g., the first two stimuli in a 2-back test).
 
-    - `distractor`: "A stimulus the subject should not process at all (i.e., ignore)
-    and which is unrelated to the correct execution of the task."
+    - `distractor`: "A stimulus the agent should not process at all (i.e., ignore)
+    and which is unrelated to the correct execution of the task.
 
-    - `location_cue`: A stimulus giving a spatial location information that subjects
+    - `location_cue`: A stimulus giving a spatial location information that agents
     could use to improve their performance.
 
-    -  `job_specifier`: A stimulus specifying which job the subject should perform.
+    -  `job_specifier`: A stimulus specifying which job the agent should perform.
 
-    - `stop_signal`: "A stimulus signaling the subjects that they should abort current
+    - `stop_signal`: "A stimulus signaling the agents that they should abort current
     action.
 
     - `probe`: A stimulus indicating about which stimulus to respond.'

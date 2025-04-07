@@ -182,11 +182,10 @@ subject_index
 
 Note that such zero-padding may depend on the number of subjects there are in a study (e.g., if there are less than 100, the first subject would be called "subject_01", but if there are more than 1000 subjects in total, that subject would be called "subject_0001"). By default, we use a zero-padded string of length 4 as this will be enough for the vast majority of behavioral datasets.
 
-subject_id
+agent_id
+: A string that uniquely identifies a subject (typically within a data collection institution or research group) and may be used to determine if the same subject participated in multiple studies wherein they might be assigned different subject_index values. agent_id may be created using custom procedure and look something like: `20025fe6-6868-47c6-a222-a5c06b49c8db`.
 
-:   a string that uniquely identifies a subject (typically within a data collection institution or research group) and may be used to determine if the same subject participated in multiple studies wherein they might be assigned different subject_index values. subject_id may be created using custom procedure and look something like: `20025fe6-6868-47c6-a222-a5c06b49c8db`.
-
-Note that `subject_id` is not be present in the L1 data but instead is available in separate *Subjects* table which lists subject information, including their subject_index and subject_id values.
+Note that `agent_id` is not be present in the L1 data but instead is available in separate *Subjects* table which lists subject information, including their subject_index and agent_id values.
 
 # Naming tasks and their components
 
