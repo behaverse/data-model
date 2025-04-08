@@ -30,7 +30,7 @@ dataset/
 ├── README.md
 ├── agents.csv
 ├── instruments/
-└── agents/
+└── data/
 ```
 
 
@@ -42,13 +42,13 @@ The `instruments/` folder contains parameters for the tasks, instructions, and q
 
 ## Data files
 
-The `agents/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA>`.
+The `data/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA_FILE>`.
 
-This folder also contains additional data for the studyflow, stimuli, and other data types. For example, the `agents/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
+This folder also contains additional data for the studyflow, stimuli, and other data types. For example, the `data/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
 
 ```{.default .file-tree}
 ...
-agents/
+data/
 ├── agent_1/
 │   ├── studyflow.csv
 │   ├── session_1/
@@ -84,7 +84,7 @@ agents/
 
 Note that:
 
-- Each agent has a folder named `agent_<ID>` where `<ID>` is a unique identifier for the human subject or computer agent. `<ID>` can be a number or a string, but must be unique within the dataset. For convenience, if your dataset contains only human subjects, you can also use the `agents/subject_<ID>/` format to name subject folders, but the root data folder remains `agents/`.
+- Each agent has a folder named `agent_<ID>` where `<ID>` is a unique identifier for the human subject or computer agent. `<ID>` can be a number or a string, but must be unique within the dataset. For convenience, if your dataset contains only human subjects, you may also use the `data/subject_<ID>/` format to name the folders, but the root data folder remains `data/`. But it is recommended to use the `agent_<ID>` format for all datasets, as it is more flexible and extensible.
 - The `studyflow.csv` file contains the order and metadata of the all activities for the agent.
 - Each session has a folder named `session_<ID>` where `<ID>` is a unique identifier for the session. Session identifiers are unique within the dataset, so `session_01` for `agent_01` is the same as `session_01` for `agent_02`.
 - Each activity has a folder named `<AGENT>/<SESSION>/<ACTIVITY>` where `<ACTIVITY>` is the name of the activity. In this example, the activities are `UFOV` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.

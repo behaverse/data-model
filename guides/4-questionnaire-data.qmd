@@ -21,21 +21,22 @@ For example, here is a minimal dataset structure for a study with two subjects c
 study/
 ├── README.md
 ├── agents.csv
-├── agent_1/
-│   ├── questionnaire_1/
-│   │   └── trials.csv
-│   ├── questionnaire_2/
-│   │   └── trials.csv
-│   └── questionnaire_3/
-│       └── trials.csv
-└── agent_2/
-    ├── questionnaire_1/
-    │   └── trials.csv
-    ├── questionnaire_2/
-    │   └── trials_.csv
-    └── questionnaire_3/
-        ├── trials_1.csv
-        └── trials_2.csv
+└── data/
+    ├── agent_1/
+    │   ├── questionnaire_1/
+    │   │   └── trials.csv
+    │   ├── questionnaire_2/
+    │   │   └── trials.csv
+    │   └── questionnaire_3/
+    │       └── trials.csv
+    └── agent_2/
+        ├── questionnaire_1/
+        │   └── trials.csv
+        ├── questionnaire_2/
+        │   └── trials.csv
+        └── questionnaire_3/
+            ├── trials_1.csv
+            └── trials_2.csv
 ```
 
 
@@ -44,6 +45,13 @@ study/
 Each trial is a single interaction between an agent (e.g., a human participant) and a stimulus (e.g., a question). [Trial table](#) is a standalone table and contains the main information about the trial, while other supplementary tables may contain more specific information about [the agents](#), [stimuli](#) and [options](#).
 
 Within the Trial table (`trials.csv`), each row corresponds to a single trial. A trial is identified by a unique identifier (`trial_id`) and contains main information about the agent, the stimulus (i.e., the question), the options, the response, and the evaluation of the response. Here are the variables that are typically included in the Trial table for questionnaires:
+
+:::{.callout-warning appearance="simple"}
+## Multiple attempts
+When a questionnaire is completed multiple times by the same agent in the same session, the data is stored in separate files per attempt and identified by a 1-indexed numerical suffix. For example, agent_2 in the example above completed questionnaire_3 twice; the data is stored in two files: `trials_1.csv` and `trials_2.csv`. The first file contains the data from the first attempt, and the second file contains the data from the second attempt. If there is only one attempt, the data would be stored in a single file named `trials.csv`.
+
+The file name is important because it allows for easy identification of potentially incomplete data and the number of attempts made by the agent.
+:::
 
 ### Stimulus description
 

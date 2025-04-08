@@ -26,7 +26,7 @@ Many experimental design tools outputs a single data table that contains all the
 ## Data folder
 
 - Split the data table into one table per activity per subject and save it in the corresponding subject's folder.
-- Create a folder for each in the `agents/<agent_id>/<activity_id>/` folder add store that data in the `trials.csv` file.
+- Create a folder for each in the `data/<agent_id>/<activity_id>/` folder add store that data in the `trials.csv` file.
 
 
 ## Studyflow
