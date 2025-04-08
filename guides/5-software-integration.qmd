@@ -2,7 +2,17 @@
 order: 5
 output-file: software-integration
 title: Software integration
-subtitle: How to develop software that outputs BDM
+subtitle: How to integrate BDM into an existing software stack
 ---
 
-- [ ] I want to develop a software that outputs BDM
+BDM provides specifications and tools to unify data and workflows in cognitive science. It provides identical formats for workflows, events, trials, and models that can be applied to many studies and cognitive tasks.
+
+BDM can be integrated into existing software stacks at the level of:
+
+- Study design: Studyflow defines protocols, instruments, data collection, analysis, and reporting.
+- Raw data: BDM provides data formats for events: the raw data collected for a study. BDM data format for events can be used for many activities, including questionnaires, cognitive tests, video games, and neuroimaging.
+- Trials: BDM Trial specs specify formats for the trials data that are either derived from the raw events data or collected directly by the data collection software. The trials data are the data that are used for the analysis and reporting.
+- Summary data: BDM specification includes data format for summary data an computational models that are derived from the events or trials. This include for example summary statistics, predictive model checkpoints, and model parameters.
+
+Depending on the use case, BDM can be integrated at one or more of these levels. For example, if you are using BDM to design a study, you can use the Studyflow specification to define the study protocol. If you are using BDM to store collected data, you can use the events specifications to define the data formats for the raw data. If you are using BDM to analyze or share data, you can use the trials specification to store main information about the activity and collected data in way that is interpretable and associated with the goals of the study. Finally, if you are using BDM to report results, you can use the summary data specification to define the data formats for the summary statistics or store model parameters.
+
