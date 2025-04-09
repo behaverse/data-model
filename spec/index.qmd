@@ -16,7 +16,7 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 
 ### General
 
-***Part of the BDM is common to all datasets, regardless of the specific type of activity. This includes:***
+***Part of the BDM is common to all datasets, regardless of the specific type of activity.***
 
 [**Folder structure**](general/1-folder-structure.qmd)
 : A BDM dataset is a folder that contains data files and all relevant information needed to make sense of that data.
@@ -36,7 +36,7 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 
 ### Specific
 
-***Some particular structures are unique to the type of data or activity. Specifically, BDM defines the following levels of data:***
+***Some particular structures are unique to the type of data or activity.***
 
 [**<i class="bi bi-0-square-fill"></i> Events**](events/index.qmd)
 : The raw data that are collected during the experiment. They are the most detailed data and are typically sufficient for reproducing the original experiment.
