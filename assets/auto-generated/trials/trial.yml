@@ -60,7 +60,7 @@
     repetition of the first one.
   range: 1-based index of activity within the subject-level data.
   notes:
-  - .tip See @StudyFlow table for more details.
+  - .tip See @Studyflow table for more details.
 - categories:
   - Task
   variable_name: language
@@ -278,6 +278,14 @@
 
     - `question`: The stimulus may consist of text, images and/or sounds; they require
     subjects to make a decision based on the content of the stimulus.'
+- categories:
+  - Stimulus
+  variable_name: stimulus_onset
+  required: false
+  data_type: float
+  description: Duration between the start of the trial and the appearance of the stimulus,
+    in seconds.
+  range: In seconds
 - categories:
   - Stimulus
   variable_name: stimulus_panel_count
