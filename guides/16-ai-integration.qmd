@@ -1,0 +1,12 @@
+---
+order: 16
+output-file: mcp
+title: AI integration
+subtitle: Seamless integration between LLM applications and BDM datasets
+---
+
+AI models are becoming an integral part of research. However, one of the biggest challenges with AI models is their need to understand the context to produce relevant responses. This is especially true for <abbr title="Large Language Models">LLMs</abbr>, which are trained on a wide range of data but may not have access to specific domain knowledge or external datasets.
+
+BDM addresses this challenge by providing an integration with [*Model Context Protocol (MCP)*](https://modelcontextprotocol.io). MCP is a standardized way to provide the context by connecting AI models to external tools and data. This integration not only allows AI models to access BDM-compatible datasets, but also provides data owners with a way to maintain control over their data while still enabling its use in AI applications. This is particularly important for data privacy and security.
+
+- [ ] I want to use a BDM dataset as external source to my LLM application
