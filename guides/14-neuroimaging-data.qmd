@@ -1,5 +1,5 @@
 ---
-order: 15
+order: 14
 output-file: neuroimaging-data
 title: Neuroimaging data
 subtitle: How to use neuroimaging data in a BDM dataset

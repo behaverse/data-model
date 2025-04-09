@@ -1,8 +1,10 @@
 ---
 order: 16
+icon: bi bi-reception-4
+difficulty: ADVANCED
 output-file: mcp
 title: AI integration
-subtitle: Seamless integration between LLM applications and BDM datasets
+subtitle: Seamless integration between LLMs and BDM datasets
 ---
 
 AI models are becoming an integral part of research. However, one of the biggest challenges with AI models is their need to understand the context to produce relevant responses. This is especially true for <abbr title="Large Language Models">LLMs</abbr>, which are trained on a wide range of data but may not have access to specific domain knowledge or external datasets.
