@@ -1,0 +1,8 @@
+---
+order: 16
+output-file: mcp
+title: Model Context Protocol (MCP) Integration
+subtitle: Seamless integration between LLM applications and BDM datasets
+---
+
+- [ ] I want to use a BDM dataset as external source to my LLM application

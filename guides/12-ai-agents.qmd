@@ -1,7 +1,7 @@
 ---
 order: 12
-output-file: ai-agents-data
-title: AI agents data
+output-file: ai-agents
+title: AI agents
 subtitle: How to use AI agents data in a BDM dataset
 ---
 
