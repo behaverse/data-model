@@ -1,7 +1,7 @@
 - categories:
-  - Identifier
+  - Key
   variable_name: id
-  data_type: id
+  data_type: PRIMARY KEY
   required: true
   description: Primary key of the @Stimulus table. Reference to this  identifier in
     other tables are thus named `stimulus_id`.

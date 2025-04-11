@@ -3,7 +3,7 @@ order: 16
 icon: bi bi-reception-4
 difficulty: ADVANCED
 output-file: mcp
-title: AI integration
+title: AI integration (MCP)
 subtitle: Seamless integration between LLMs and BDM datasets
 ---
 

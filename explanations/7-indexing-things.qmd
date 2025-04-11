@@ -1,7 +1,7 @@
 ---
 order: 7
 output-file: indexing
-title: Indexing Things
+title: Indexing things
 subtitle: How to index subjects, sessions, responses, and more
 ---
 

@@ -1,7 +1,7 @@
 - categories:
   - Key
   variable_name: id
-  data_type: id
+  data_type: PRIMARY KEY
   required: true
   description: Primary key; each click has its own `id` value that is unique within
     the table.

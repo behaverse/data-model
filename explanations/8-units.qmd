@@ -1,7 +1,7 @@
 ---
 order: 8
 output-file: units
-title: Units and Values
+title: Units and values
 toc-location: right
 ---
 

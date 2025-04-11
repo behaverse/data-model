@@ -1,0 +1,6 @@
+---
+order: 2
+output-file: video-games
+title: Video games
+subtitle: When subjects are playing video games as part of the experiment
+---

@@ -1,6 +1,6 @@
 ---
 order: 1
 output-file: cognitive-tests
-title: Cognitive Tests
+title: Cognitive tests
 subtitle: Specific tasks to assess specific cognitive functions
 ---

@@ -1,7 +1,7 @@
 ---
 order: 3
 output-file: resting-state
-title: Resting State
+title: Resting state
 subtitle: When subjects are not performing a task
 ---
 

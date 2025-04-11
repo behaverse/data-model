@@ -19,7 +19,7 @@ if (item.data_type) {
 %>
 <div <%= metadataAttrs(item) %> >
 <dt class="listing-name glossary-item-name">
-<%= item.name %> <% for (data_type of data_types) { %><code><span class="badge rounded-pill bg-info text-light"><%= data_type %></span></code><% } %>
+<%= item.name %> <% for (data_type of data_types) { %><code><span class="badge rounded-pill bg-dark text-light"><%= data_type %></span></code><% } %>
 <span class="listing-categories"><span class="listing-category"></span></span>
 </dt>
 <dd class="listing-description">

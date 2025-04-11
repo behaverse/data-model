@@ -1,7 +1,6 @@
 - categories:
   - Key
   variable_name: stimulus_id
-  data_type: id
   required: true
   description: A reference to the primary key `id` of the @Stimulus table.
   range: '`id` in the corresponding @Stimulus table (same subject/session/activity).'

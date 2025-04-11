@@ -1,7 +1,7 @@
 ---
 order: 2
 output-file: dataset-card
-title: Dataset Card
+title: Dataset card
 ---
 
 Dataset card

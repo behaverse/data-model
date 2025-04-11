@@ -1,7 +1,7 @@
 ---
 order: 3
-output-file: studyflow
-title: Studyflow
+output-file: studyflows
+title: Studyflows
 ---
 
 Studyflows are formal diagrams based on BPMN to describe research workflows. They can be used to visually describe the study protocol, data collection, analysis pipeline, or any other steps in a study. Studyflows facilitate communication with participants (e.g., by automatically running a study), researchers (e.g., by reproducible protocols and analyses), systems (e.g., by automated data processing), and other stakeholders.

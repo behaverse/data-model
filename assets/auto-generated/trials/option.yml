@@ -1,7 +1,7 @@
 - categories:
   - Key
-  variable_name: option_id
-  data_type: id
+  variable_name: id
+  data_type: PRIMARY KEY
   required: true
   description: Primary key of the @Option table. Reference to this  identifier in
     other tables are thus named `option_id`.

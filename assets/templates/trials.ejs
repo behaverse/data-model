@@ -12,7 +12,7 @@ items.forEach(item => categories.add(item.categories[0]));
 <% for (const [item_index, item] of itemsInCategory.entries()) { %>
 <div <%= metadataAttrs(item) %> >
 <dt class="listing-variable_name table-variable_name">
-<%= item.variable_name %> <code><span class="badge rounded-pill bg-info text-light"><%= item.data_type %></span></code>
+<%= item.variable_name %> <code><span class="badge rounded-pill bg-dark text-light"><%= item.data_type %></span></code>
 <span class="listing-categories"><span class="listing-category"></span></span>
 </dt>
 <dd class="listing-description">

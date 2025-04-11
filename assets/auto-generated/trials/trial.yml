@@ -1,8 +1,8 @@
 - categories:
-  - Identifier
+  - Key
   variable_name: id
   required: true
-  data_type: id
+  data_type: PRIMARY KEY
   description: A unique identifier assigned to responses in temporal order, meaning
     that larger IDs correspond to more recent responses that occurred later in time.
     This ID is unique within this table; no two rows share the same value.
