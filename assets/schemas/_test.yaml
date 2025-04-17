@@ -1,0 +1,34 @@
+id: https://w3id.org/bdm/trials/
+name: bdmt
+prefixes:
+  linkml: https://w3id.org/linkml/
+  bdmt: https://w3id.org/bdm/trials/
+imports:
+  - linkml:types
+default_range: string
+default_prefix: bdmt
+
+classes:
+  Trial:
+    slots:
+      - id
+      - study_name
+      - stimulus_ids
+  Trials:
+    tree_root: true
+    attributes:
+      trials:
+        range: Trial
+        multivalued: true
+        inlined_as_list: true
+
+
+slots:
+  id:
+    identifier: true
+  study_name:
+    range: string
+  stimulus_ids:
+    range: string
+    multivalued: true
+    inlined_as_list: true

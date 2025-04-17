@@ -1,0 +1,367 @@
+id: https://w3id.org/bdm/trials/
+name: bdmt
+prefixes:
+  linkml: https://w3id.org/linkml/
+  bdmt: https://w3id.org/bdm/trials/
+  studyflow: https://w3id.org/studyflow/
+imports:
+  - linkml:types
+default_range: string
+default_prefix: bdmt
+
+enums:
+  MultiTaskType:
+    permissible_values:
+      - none:
+          description: No multitasking, i.e., single-tasking.
+      - concurrent:
+          description: There are two independent tasks that need to be completed in parallel.
+      - compound:
+          description: The task requires multiple successive stages or involves tasks that are dependent/coupled.
+
+classes:
+  Trial:
+    slots:
+      - id
+      - study_name
+      - group_name
+      - agent_id
+      - session_id
+      - activity_index
+      - language
+      - instrument_id
+      - instrument_repetition
+      - timeline_id
+      - timeline_repetition
+      - multitask_type
+      - task_index
+      - job_type
+      - job_description
+      - job_repeat
+      - block_index
+      - block_name
+      - block_type
+      - transformation_name
+      - trial_id
+      - trial_start_datetime
+      - trial_seed
+      - stimulus_index
+      - stimulus_id
+      - stimulus_type
+      - stimulus_onset
+      - stimulus_panel_count
+      - stimulus_structure
+      - stimulus_structure_source_type
+      - stimulus_structure_source
+      - stimulus_set_size
+      - stimulus_count
+      - stimulus_source_type
+      - stimulus_source
+      - stimulus_index_in_source
+      - stimulus_position_index
+      - stimulus_description
+      - stimulus_role
+      - option_source_type
+      - option_source
+      - option_count
+      - option_id
+      - option_data_type
+      - measurement_type
+      - input_interface_type
+      - input_action_type
+      - input_count
+      - expected_response_option_index
+      - expected_response_description
+      - response_structure
+      - response_count
+      - response_option_index
+      - response_description
+      - response_numeric
+      - response_time
+      - response_datetime
+      - response_validation_time
+      - response_initiation_time
+      - response_skipped
+      - timed_out
+      - accuracy
+      - correct
+      - score
+      - evaluation_label
+      - feedback_description
+      - outcome_description
+      - outcome_numeric
+      - additional_measures
+      - adaptive_method_name
+      - adaptive_method_config
+      - adaptive_parameter_name
+      - adaptive_parameter_value
+      - adaptive_parameter_value_next
+  Attempt:  # container for multiple trials
+    tree_root: true
+    description: A collection of trial responses for a single agent in a single session.
+    attributes:
+      trials:
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+        array:
+        range: Trial
+  
+  Stimulus:
+    attributes:
+      id:
+      trial_id:
+      object_id:
+      presentation_id:
+      index_in_trial:
+        range: integer
+        minimum_value: 1
+      onset:
+        range: float
+        minimum_value: 0
+      duration:
+        range: float
+        minimum_value: 0
+      panel_id:
+      x_screen:
+      y_screen:
+      x_viewport:
+      y_viewport:
+      description:
+      source:
+      source_type:
+      index_in_source:
+      role:
+      animation:
+
+  Option:
+  Input:
+  StimulusComponent:
+  OptionComponent:
+  Instrument:
+
+slots:
+  variable:
+    is_grouping_slot: true
+  key_variable:
+    is_a: variable
+  context_variable:
+    is_a: variable
+  task_variable:
+    is_a: variable
+  stimulus_variable:
+    is_a: variable
+  option_variable:
+    is_a: variable
+  input_variable:
+    is_a: variable
+  expectation_variable:
+    is_a: variable
+  response_variable:
+    is_a: variable
+  evaluation_variable:
+    is_a: variable
+  feedback_variable:
+    is_a: variable
+  outcome_variable:
+    is_a: variable
+  accessory_variable:
+    is_a: variable
+  experimental_design_variable:
+    is_a: variable
+
+  id:
+    identifier: true
+    slot_group: key_variable
+    description: A unique identifier assigned to responses in temporal order.
+
+  study_name:
+    slot_group: context_variable
+    description: The name of the study or experiment.
+  group_name:
+    slot_group: context_variable
+    description: Subjects may be assigned to different groups. Typically, different groups will have different experiences within a study.
+  agent_id:
+    slot_group: context_variable
+    description: A unique identifier assigned to the agent (typically person) generating the responses.
+  session_id:
+    slot_group: context_variable
+    description: When there are multiple sessions, this variable indicates the order of each session. Even if the second session is an exact repetition of the first one.
+  activity_index:
+    slot_group: context_variable
+    description: Order of the activity within a session. Even if the second activity is an exact repetition of the first one.
+
+  language:
+    slot_group: task_variable
+    description: The language used in the task, expressed as a two-letter code in the ISO_639-1 standard.
+  instrument_id:
+    slot_group: task_variable
+    description: The unique identifier of the instrument used for collecting data (e.g., the name of the computer script used to run the test). Indicates corresponding file in the `instruments/` folder.
+  instrument_repetition:
+    slot_group: task_variable
+    description: The number of times this particular instrument has been completed in the past by this particular agent in this study. This variable has a value 0 the first time an instrument is used.
+    range: integer
+    minimum_value: 0
+  timeline_id:
+    slot_group: task_variable
+    description: Timelines are specific parameterization of an instrument.
+  timeline_repetition:
+    slot_group: task_variable
+    description: The number of times this particular timeline has been completed in the past by this particular agent in this study. 0-index.
+    range: integer
+    minimum_value: 0
+  multitask_type:
+    slot_group: task_variable
+    description: The type of multitasking required, if any.
+    range: MultiTaskType
+  task_index:
+    slot_group: task_variable
+    description: When multitasking is required, `task_index` refers to each of the individual tasks. For example, for auditoy-visual dual N-back, `task_index=1` is the auditory task and `task_index=2` is the visual task.
+    range: integer
+    minimum_value: 1
+  job_type:
+    slot_group: task_variable
+  job_description:
+    slot_group: task_variable
+  job_repeat:
+    slot_group: task_variable
+  block_index:
+    slot_group: task_variable
+  block_name:
+    slot_group: task_variable
+  block_type:
+    slot_group: task_variable
+  transformation_name:
+    slot_group: task_variable
+  trial_id:
+    slot_group: task_variable
+  trial_start_datetime:
+    slot_group: task_variable
+  trial_seed:
+    slot_group: task_variable
+    recommended: true
+
+  stimulus_index:
+    slot_group: stimulus_variable
+    range: integer
+    minimum_value: 1
+    # TODO this is a list
+  stimulus_id:
+    slot_group: stimulus_variable
+    range: Stimulus
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  stimulus_type:
+    slot_group: stimulus_variable
+  stimulus_onset:
+    slot_group: stimulus_variable
+  stimulus_panel_count:
+    slot_group: stimulus_variable
+  stimulus_structure:
+    slot_group: stimulus_variable
+  stimulus_structure_source_type:
+    slot_group: stimulus_variable
+  stimulus_structure_source:
+    slot_group: stimulus_variable
+  stimulus_set_size:
+    slot_group: stimulus_variable
+  stimulus_count:
+    slot_group: stimulus_variable
+  stimulus_source_type:
+    slot_group: stimulus_variable
+  stimulus_source:
+    slot_group: stimulus_variable
+  stimulus_index_in_source:
+    slot_group: stimulus_variable
+  stimulus_position_index:
+    slot_group: stimulus_variable
+  stimulus_description:
+    slot_group: stimulus_variable
+  stimulus_role:
+    slot_group: stimulus_variable
+
+  option_source_type:
+    slot_group: option_variable
+  option_source:
+    slot_group: option_variable
+  option_count:
+    slot_group: option_variable
+  option_id:
+    slot_group: option_variable
+  option_data_type:
+    slot_group: option_variable
+  measurement_type:
+    slot_group: option_variable
+
+  input_interface_type:
+    slot_group: input_variable
+  input_action_type:
+    slot_group: input_variable
+  input_count:
+    slot_group: input_variable
+
+  expected_response_option_index:
+    slot_group: expectation_variable
+  expected_response_description:
+    slot_group: expectation_variable
+
+  response_structure:
+    slot_group: response_variable
+  response_count:
+    slot_group: response_variable
+  response_option_index:
+    slot_group: response_variable
+  response_description:
+    slot_group: response_variable
+  response_numeric:
+    slot_group: response_variable
+  response_time:
+    slot_group: response_variable
+  response_datetime:
+    slot_group: response_variable
+  response_validation_time:
+    slot_group: response_variable
+  response_initiation_time:
+    slot_group: response_variable
+  response_skipped:
+    slot_group: response_variable
+  timed_out:
+    slot_group: response_variable
+
+  accuracy:
+    slot_group: evaluation_variable
+    range: float
+    minimum_value: 0
+    maximum_value: 1
+  correct:
+    slot_group: evaluation_variable
+    range: boolean
+  score:
+    slot_group: evaluation_variable
+    description:  a numeric score that represents the performance or quality of the response.
+    range: float
+  evaluation_label:
+    slot_group: evaluation_variable
+    description: A label assigned to the evaluation of the response, typically a string that describes the evaluation in a human-readable format.
+
+  feedback_description:
+    slot_group: feedback_variable
+  outcome_description:
+    slot_group: outcome_variable
+  outcome_numeric:
+    slot_group: outcome_variable
+
+  adaptive_method_name:
+    slot_group: experimental_design_variable
+  adaptive_method_config:
+    slot_group: experimental_design_variable
+  adaptive_parameter_name:
+    slot_group: experimental_design_variable
+  adaptive_parameter_value:
+    slot_group: experimental_design_variable
+  adaptive_parameter_value_next:
+    slot_group: experimental_design_variable
+
+  additional_measures:
+    slot_group: accessory_variable
