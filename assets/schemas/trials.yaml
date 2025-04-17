@@ -69,16 +69,75 @@ classes:
       - activity_index
       - language
 
-  Attempt:  # container for multiple trials
-    tree_root: true
-    description: A collection of trial responses for a single agent in a single session.
+  Study:
+    description: A collection of data from a single study or experiment.
     attributes:
+      study_name:
+        range: string
+      data:
+        range: AgentData
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+  AgentData:
+    tree_root: true
+    attributes:
+      agent_id:
+        range: string
+      group_name:
+        range: string
+      sessions:
+        range: SessionData
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+  SessionData:
+    attributes:
+      studyflow:
+        range: string
+      session_id:
+        range: string
+      session_index:
+        range: integer
+        minimum_value: 1
+        required: false
+        recommended: true
+        description: The order of the session within the agent data.
+      activities:
+        range: ActivityData
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+  ActivityData:
+    attributes:
+      activity_index:
+        range: integer
+        minimum_value: 1
+        required: false
+        recommended: true
+        description: The order of the activity within the session.
+      attempts:
+        range: AttemptData
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+  AttemptData:
+    description: A collection of trial responses for a single agent in a single session.
+    comments:
+      - This is a collection of trials for a single agent in a single session.
+    attributes:
+      attempt_index:
+        range: integer
+        minimum_value: 0
+        required: false
+        recommended: true
+        description: The number of times this particular activity has been initiated in the past by this particular agent in this session.
       trials:
+        range: Trial
         multivalued: true
         inlined: true
         inlined_as_list: true
         array:
-        range: Trial
   
   Stimulus:
     slot_usage:
@@ -343,7 +402,7 @@ slots:
     range: integer
     minimum_value: 1
     comments:
-      - In multi-activity sessions, even activities are the same, the activity_index is different.
+      - In multi-activity sessions, even activities are the same, the activity index is different.
 
   language:
     in_subset:
