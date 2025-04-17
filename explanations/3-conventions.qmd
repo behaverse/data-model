@@ -2,6 +2,7 @@
 order: 3
 output-file: conventions
 title: Conventions
+subtitle: Data and code conventions
 ---
 
 ## Introduction

@@ -2,6 +2,7 @@
 order: 5
 output-file: metadata
 title: Metadata
+subtitle: Additional information about the data
 ---
 
 Metadata provides information about a data record, in our case, a dataset. It can serve many functions, most important of which is dataset discovery beyond the scope of the repository where they have been published. There are numerous standards for such metadata which in practice may not be aimed for the same audience: some standards are destined to be machine-readable (e.g., for search engines) while other ones are designed for human readability.

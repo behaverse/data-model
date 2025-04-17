@@ -2,6 +2,7 @@
 order: 9
 output-file: instructions
 title: Instructions
+subtitle: Instructions and other messages
 ---
 
 Instructions (and other messages) are important in behavioral experiments are they determine to a large extent participants' behavior.

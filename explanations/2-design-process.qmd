@@ -2,7 +2,7 @@
 order: 2
 output-file: design-process
 title: Design process
-subtitle: How the Behaverse Data Model is being developed
+subtitle: How BDM is being developed
 ---
 
 Here we discuss the guiding principles and how they are applied to the development of the BDM.

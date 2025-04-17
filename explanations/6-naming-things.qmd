@@ -2,6 +2,7 @@
 order: 6
 output-file: naming
 title: Naming things
+subtitle: Naming conventions for variables, columns, files, and values
 ---
 
 # General advice on naming things
