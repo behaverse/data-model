@@ -84,45 +84,54 @@ classes:
     slot_usage:
       stimulus_id:
         key: true
+        rank: 1
     slots:
       - response_id
-      - stimulus_object_id
-      - stimulus_presentation_id
-      - stimulus_index_in_trial
-      - stimulus_onset
-      - stimulus_duration
-      - stimulus_panel_id
-      - stimulus_x_screen
-      - stimulus_y_screen
-      - stimulus_x_viewport
-      - stimulus_y_viewport
-      - stimulus_description
-      - stimulus_source
-      - stimulus_source_type
-      - stimulus_index_in_source
-      - stimulus_role
-      - stimulus_animation
+      - object_id
+      - presentation_id
+      - index_in_trial
+      - onset
+      - duration
+      - panel_id
+      - x_screen
+      - y_screen
+      - x_viewport
+      - y_viewport
+      - description
+      - source
+      - source_type
+      - index_in_source
+      - role
+      - animation
 
 
   Option:
-
-  Input:
-    attributes:
-      id:
-      response_id:
-      response_element_index:
-      onset:
-      duration:
-      x_screen:
-      y_screen:
-      x_viewport:
-      y_viewport:
-      object_type:
-      object_name:
-      is_object_enabled:
-      object_state:
+    slot_usage:
       option_id:
-      stimulus_id:
+        key: true
+    slots:
+      - option_id
+  Input:
+    todos:
+      - move attributes to the slots
+    slot_usage:
+      input_id:
+        key: true
+    slots:
+      - response_id
+      - response_element_index
+      - onset
+      - duration
+      - x_screen
+      - y_screen
+      - x_viewport
+      - y_viewport
+      - object_type
+      - object_name
+      - is_object_enabled
+      - object_state
+      - option_id
+      - stimulus_id
   
   StimulusComponent:
   
@@ -168,7 +177,7 @@ classes:
       - Used in the trial to describe the inputs entered by the agent.
       - This is a container for inputs.
       - Response is not synonymous with input.
-    attributes:
+    slot_usage:
       input_id:
         range: Input
         multivalued: true
@@ -205,8 +214,14 @@ classes:
       - stimulus_role
   OptionMixin: 
     mixin: true
+    slot_usage:
+      option_id:
+        range: Option
+        minimum_cardinality: 1
+        multivalued: true
+        inlined_as_list: true
+        inlined: false
     slots:
-      - option_id
       - option_source_type
       - option_source
       - option_count
@@ -424,39 +439,46 @@ slots:
     todos:
       - in the trials table, this is a list of numbers.
   stimulus_type:
+    todos:
+      - define range and enums if any
   stimulus_onset:
+    range: float
   stimulus_panel_count:
+    range: integer
   stimulus_structure:
   stimulus_structure_source_type:
   stimulus_structure_source:
   stimulus_set_size:
+    range: integer
   stimulus_count:
+    range: integer
   stimulus_source_type:
+    is_a: source_type
   stimulus_source:
+    is_a: source
   stimulus_index_in_source:
+    is_a: index_in_source
   stimulus_position_index:
+    is_a: index_in_source
+    todos:
+      - add to the Stimulus schema
   stimulus_description:
+    is_a: description
   stimulus_role:
+    is_a: role
 
   option_id:
-    range: Option
-    multivalued: true
-    inlined: false
-    notes:
-      - Used in the trial to describe the options available to the agent.
-      - This is a container for options.
   option_source_type:
   option_source:
   option_count:
   option_data_type:
   measurement_type:
 
+  input_id:
+    range: string
   input_interface_type:
-    slot_group: input_variable
   input_action_type:
-    slot_group: input_variable
   input_count:
-    slot_group: input_variable
 
   expected_response_option_index:
   expected_response_description:
@@ -509,14 +531,28 @@ slots:
 
   # ==================================================================
   # stimulus slots
-  stimulus_object_id:
-  stimulus_presentation_id:
-  stimulus_index_in_trial:
-  stimulus_duration:
-  stimulus_panel_id:
-  stimulus_x_screen:
-  stimulus_y_screen:
-  stimulus_x_viewport:
-  stimulus_y_viewport:
-  stimulus_animation:
-  
+  index_in_trial:
+  description:
+  source:
+  source_type:
+  index_in_source:
+  role:
+
+
+  # ==================================================================
+  # stimulus/option slots
+  response_element_index:
+  onset:
+  duration:
+  x_screen:
+  y_screen:
+  x_viewport:
+  y_viewport:
+  panel_id:
+  object_id:
+  presentation_id:
+  object_type:
+  object_name:
+  is_object_enabled:
+  object_state:
+  animation:
