@@ -169,7 +169,7 @@ classes:
       option_id:
         key: true
     slots:
-      - option_id
+
   Input:
     todos:
       - move attributes to the slots
@@ -201,7 +201,6 @@ classes:
       timeline_id:
         key: true
     slots:
-      - timeline_id
       - instrument_name
 
   # MIXIN helpers
@@ -343,7 +342,7 @@ classes:
 # ==================================================================
 
 slots:
-
+  id:
   response_id:
     in_subset:
       - KeySubset
