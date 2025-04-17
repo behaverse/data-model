@@ -10,7 +10,8 @@ default_range: string
 default_prefix: bdmt
 
 enums:
-  MultiTaskType:
+  MultiTaskTypeEnum:
+    enum_uri: bdmt:MultiTaskTypeEnum
     permissible_values:
       - none:
           description: No multitasking, i.e., single-tasking.
@@ -19,20 +20,43 @@ enums:
       - compound:
           description: The task requires multiple successive stages or involves tasks that are dependent/coupled.
 
+subsets:
+  KeyVariables:
+  ContextVariables:
+  TaskVariables:
+  StimulusVariables:
+  OptionVariables:
+  InputVariables:
+  EvaluationVariables:
+  ResponseVariables:
+  FeedbackVariables:
+  OutcomeVariables:
+  AccessoryVariables:
+  ExperimentalDesignVariables:
+  
+
+types:
+  JobType:
+    uri: linkml:string
+    base: str
+    description: Human-readable text to describe the type of job or task being performed by the agent.
+
 classes:
   Trial:
     slots:
-      - id
+      - response_id
+      - trial_id
       - study_name
       - group_name
       - agent_id
-      - session_id
+      - session_index
       - activity_index
       - language
-      - instrument_id
-      - instrument_repetition
-      - timeline_id
-      - timeline_repetition
+      - instrument
+      # - instrument_id
+      # - instrument_repetition
+      # - timeline_id
+      # - timeline_repetition
       - multitask_type
       - task_index
       - job_type
@@ -42,51 +66,55 @@ classes:
       - block_name
       - block_type
       - transformation_name
-      - trial_id
+      - trial_index
       - trial_start_datetime
       - trial_seed
-      - stimulus_index
-      - stimulus_id
-      - stimulus_type
-      - stimulus_onset
-      - stimulus_panel_count
-      - stimulus_structure
-      - stimulus_structure_source_type
-      - stimulus_structure_source
-      - stimulus_set_size
-      - stimulus_count
-      - stimulus_source_type
-      - stimulus_source
-      - stimulus_index_in_source
-      - stimulus_position_index
-      - stimulus_description
-      - stimulus_role
-      - option_source_type
-      - option_source
-      - option_count
-      - option_id
-      - option_data_type
-      - measurement_type
-      - input_interface_type
-      - input_action_type
-      - input_count
-      - expected_response_option_index
-      - expected_response_description
-      - response_structure
-      - response_count
-      - response_option_index
-      - response_description
-      - response_numeric
-      - response_time
-      - response_datetime
-      - response_validation_time
-      - response_initiation_time
-      - response_skipped
-      - timed_out
-      - accuracy
-      - correct
-      - score
-      - evaluation_label
+      - stimuli
+      # - stimulus_id
+      # - stimulus_type
+      # - stimulus_onset
+      # - stimulus_panel_count
+      # - stimulus_structure
+      # - stimulus_structure_source_type
+      # - stimulus_structure_source
+      # - stimulus_set_size
+      # - stimulus_count
+      # - stimulus_source_type
+      # - stimulus_source
+      # - stimulus_index_in_source
+      # - stimulus_position_index
+      # - stimulus_description
+      # - stimulus_role
+      - options
+      # - option_source_type
+      # - option_source
+      # - option_count
+      # - option_id
+      # - option_data_type
+      # - measurement_type
+      - inputs
+      # - input_interface_type
+      # - input_action_type
+      # - input_count
+      - responses
+      # - expected_response_option_index
+      # - expected_response_description
+      # - response_structure
+      # - response_count
+      # - response_option_index
+      # - response_description
+      # - response_numeric
+      # - response_time
+      # - response_datetime
+      # - response_validation_time
+      # - response_initiation_time
+      # - response_skipped
+      - evaluations
+      # - timed_out
+      # - accuracy
+      # - correct
+      # - score
+      # - evaluation_label
       - feedback_description
       - outcome_description
       - outcome_numeric
@@ -110,7 +138,7 @@ classes:
   Stimulus:
     attributes:
       id:
-      trial_id:
+      response_id:
       object_id:
       presentation_id:
       index_in_trial:
@@ -141,111 +169,176 @@ classes:
   Instrument:
 
 slots:
-  variable:
-    is_grouping_slot: true
-  key_variable:
-    is_a: variable
-  context_variable:
-    is_a: variable
-  task_variable:
-    is_a: variable
-  stimulus_variable:
-    is_a: variable
-  option_variable:
-    is_a: variable
-  input_variable:
-    is_a: variable
-  expectation_variable:
-    is_a: variable
-  response_variable:
-    is_a: variable
-  evaluation_variable:
-    is_a: variable
-  feedback_variable:
-    is_a: variable
-  outcome_variable:
-    is_a: variable
-  accessory_variable:
-    is_a: variable
-  experimental_design_variable:
-    is_a: variable
 
-  id:
+  response_id:
     identifier: true
-    slot_group: key_variable
+    in_subset:
+      - KeyVariables
     description: A unique identifier assigned to responses in temporal order.
-
+    comments:
+      -  In trials with multiple responses, the `id` is unique for each response.
+  trial_id:
+    in_subset:
+      - TaskVariables
+    description: An identifier assigned to the trial.
+    comments:
+      - In trials with multiple responses, the `trial_id` is the same for those responses.
+    recommended: true
+  trial_index:
+    exact_mappings:
+      - bdmt:trial_id
+    in_subset:
+      - TaskVariables
+    range: integer
+    minimum_value: 1
+    recommended: false
+    required: false
   study_name:
-    slot_group: context_variable
+    in_subset:
+      - ContextVariables
     description: The name of the study or experiment.
+    range: string
+    recommended: true
+    required: false
   group_name:
-    slot_group: context_variable
+    in_subset:
+      - ContextVariables
     description: Subjects may be assigned to different groups. Typically, different groups will have different experiences within a study.
+    range: string
+    recommended: true
+    required: false
   agent_id:
-    slot_group: context_variable
-    description: A unique identifier assigned to the agent (typically person) generating the responses.
-  session_id:
-    slot_group: context_variable
-    description: When there are multiple sessions, this variable indicates the order of each session. Even if the second session is an exact repetition of the first one.
+    in_subset:
+      - ContextVariables
+    description: An identifier assigned to the agent (typically a person) generating the responses.
+    range: string
+    recommended: true
+    required: true
+  session_index:
+    in_subset:
+      - ContextVariables
+    description: When there are multiple sessions, this indicates the order of sessions.
+    range: integer
+    minimum_value: 1
+    comments:
+      - In studies with repeated sessions, session_index is different even if sessions are exact repetitions.
   activity_index:
-    slot_group: context_variable
-    description: Order of the activity within a session. Even if the second activity is an exact repetition of the first one.
+    in_subset:
+      - ContextVariables
+    description: Indicates the order of activities within a session.
+    range: integer
+    minimum_value: 1
+    comments:
+      - In multi-activity sessions, even activities are the same, the activity_index is different.
 
   language:
-    slot_group: task_variable
+    in_subset:
+      - TaskVariables
     description: The language used in the task, expressed as a two-letter code in the ISO_639-1 standard.
+    range: string
+    todos:
+      - Range should be a controlled vocabulary of ISO_639-1 codes.
+
+  instrument:
+    in_subset:
+      - TaskVariables
+    description: The name of the instrument used for collecting data (e.g., the name of the computer script used to run the test).
+    range: Instrument
+    required: true
+    comments:
+      -  This is a container for the instrument used in the trial.
+    
+
   instrument_id:
-    slot_group: task_variable
-    description: The unique identifier of the instrument used for collecting data (e.g., the name of the computer script used to run the test). Indicates corresponding file in the `instruments/` folder.
+    in_subset:
+      - TaskVariables
+    description: The unique identifier of the instrument used for collecting data (e.g., the name of the computer script used to run the test).
+    range: string
+    comments:
+      -  Indicates corresponding file in the `instruments/` folder.
+  timeline_id:
+    in_subset:
+      - TaskVariables
+    description: Timelines are specific parameterization of an instrument.
+    range: Instrument
+    comments:
+      -  Corresponds to the timeline_id in the Instrument.
+    todos:
+      - This is the actual foreign key for the `instrument` slot.
+
   instrument_repetition:
-    slot_group: task_variable
+    in_subset:
+      - TaskVariables
     description: The number of times this particular instrument has been completed in the past by this particular agent in this study. This variable has a value 0 the first time an instrument is used.
     range: integer
     minimum_value: 0
-  timeline_id:
-    slot_group: task_variable
-    description: Timelines are specific parameterization of an instrument.
   timeline_repetition:
-    slot_group: task_variable
+    in_subset:
+      - TaskVariables
     description: The number of times this particular timeline has been completed in the past by this particular agent in this study. 0-index.
     range: integer
     minimum_value: 0
+
   multitask_type:
-    slot_group: task_variable
+    in_subset:
+      - TaskVariables
     description: The type of multitasking required, if any.
-    range: MultiTaskType
+    range: MultiTaskTypeEnum
   task_index:
-    slot_group: task_variable
+    in_subset:
+      - TaskVariables
     description: When multitasking is required, `task_index` refers to each of the individual tasks. For example, for auditoy-visual dual N-back, `task_index=1` is the auditory task and `task_index=2` is the visual task.
     range: integer
     minimum_value: 1
   job_type:
-    slot_group: task_variable
-  job_description:
-    slot_group: task_variable
-  job_repeat:
-    slot_group: task_variable
-  block_index:
-    slot_group: task_variable
-  block_name:
-    slot_group: task_variable
-  block_type:
-    slot_group: task_variable
-  transformation_name:
-    slot_group: task_variable
-  trial_id:
-    slot_group: task_variable
-  trial_start_datetime:
-    slot_group: task_variable
-  trial_seed:
-    slot_group: task_variable
+    range: JobType
     recommended: true
+    in_subset:
+      - TaskVariables
+  job_description:
+    range: string
+    in_subset:
+      - TaskVariables
+  job_repeat:
+    in_subset:
+      - TaskVariables
+  block_index:
+    in_subset:
+      - TaskVariables
+  block_name:
+    in_subset:
+      - TaskVariables
+  block_type:
+    in_subset:
+      - TaskVariables
+  transformation_name:
+    in_subset:
+      - TaskVariables
+  trial_start_datetime:
+    in_subset:
+      - TaskVariables
+  trial_seed:
+    in_subset:
+      - TaskVariables
+    recommended: true
+
+ 
+  stimuli:
+    slot_group: stimulus_variable
+    range: Stimulus
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    notes:
+      - Used in the trial to describe the stimuli presented to the agent.
+      - This is a container for the stimuli presented to the agent.
 
   stimulus_index:
     slot_group: stimulus_variable
     range: integer
     minimum_value: 1
-    # TODO this is a list
+    todos:
+      - in the trials table, this is a list of numbers.
   stimulus_id:
     slot_group: stimulus_variable
     range: Stimulus
@@ -281,6 +374,15 @@ slots:
   stimulus_role:
     slot_group: stimulus_variable
 
+  options:
+    slot_group: option_variable
+    range: Option
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    notes:
+      - Used in the trial to describe the options available to the agent.
+      - This is a container for options.
   option_source_type:
     slot_group: option_variable
   option_source:
@@ -294,6 +396,16 @@ slots:
   measurement_type:
     slot_group: option_variable
 
+  inputs:
+    slot_group: input_variable
+    range: Input
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    notes:
+      - Used in the trial to describe the inputs entered by the the agent.
+      - This is a container for inputs.
+      - Response is not synonymous with input.
   input_interface_type:
     slot_group: input_variable
   input_action_type:
@@ -301,11 +413,19 @@ slots:
   input_count:
     slot_group: input_variable
 
+  responses:
+    slot_group: response_variable
+    range: string
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    notes:
+      - Used in the trial to describe the responses by the agent.
+      - This is a container for responses.
   expected_response_option_index:
     slot_group: expectation_variable
   expected_response_description:
     slot_group: expectation_variable
-
   response_structure:
     slot_group: response_variable
   response_count:
@@ -326,9 +446,18 @@ slots:
     slot_group: response_variable
   response_skipped:
     slot_group: response_variable
-  timed_out:
-    slot_group: response_variable
 
+  evaluations:
+    slot_group: evaluation_variable
+    range: string
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    notes:
+      - Used in the trial to describe the evaluations of the responses.
+      - This is a container for evaluations.
+  timed_out:
+    slot_group: evaluation_variable
   accuracy:
     slot_group: evaluation_variable
     range: float
