@@ -36,8 +36,6 @@ subsets:
   MixinSubset:
     description: Utility elements that are used in multiple classes.
 
-  
-
 types:
   JobType:
     uri: linkml:string
@@ -47,11 +45,22 @@ types:
 classes:
   Trial:
     mixins:
+      - TaskMixin
+      - StimulusMixin
+      - InputMixin
+      - OptionMixin
       - ResponseMixin
       - EvaluationMixin
-      - InputMixin
+      - AdaptiveMixin
+      - FeedbackMixin
+      - OutcomeMixin
+      - AccessoryMixin
+
+    slot_usage:
+      response_id:
+        key: true
+
     slots:
-      - response_id
       - trial_id
       - study_name
       - group_name
@@ -60,83 +69,6 @@ classes:
       - activity_index
       - language
 
-      # - instrument
-      - instrument_name
-      - instrument_repetition
-      - timeline_id
-      - timeline_repetition
-
-      - multitask_type
-      - task_index
-      - job_type
-      - job_description
-      - job_repeat
-      - block_index
-      - block_name
-      - block_type
-      - transformation_name
-      - trial_index
-      - trial_start_datetime
-      - trial_seed
-
-      # - stimuli
-      - stimulus_id
-      # - stimulus_type
-      # - stimulus_onset
-      # - stimulus_panel_count
-      # - stimulus_structure
-      # - stimulus_structure_source_type
-      # - stimulus_structure_source
-      # - stimulus_set_size
-      # - stimulus_count
-      # - stimulus_source_type
-      # - stimulus_source
-      # - stimulus_index_in_source
-      # - stimulus_position_index
-      # - stimulus_description
-      # - stimulus_role
-
-      # - options
-      - option_id
-      # - option_source_type
-      # - option_source
-      # - option_count
-      # - option_data_type
-      # - measurement_type
-
-      # - inputs
-      # - input_interface_type
-      # - input_action_type
-      # - input_count
-
-      # - response
-      # - expected_response_option_index
-      # - expected_response_description
-      # - response_structure
-      # - response_count
-      # - response_option_index
-      # - response_description
-      # - response_numeric
-      # - response_time
-      # - response_datetime
-      # - response_validation_time
-      # - response_initiation_time
-      # - response_skipped
-      # - evaluation
-      # - timed_out
-      # - accuracy
-      # - correct
-      # - score
-      # - evaluation_label
-      - feedback_description
-      - outcome_description
-      - outcome_numeric
-      - additional_measures
-      - adaptive_method_name
-      - adaptive_method_config
-      - adaptive_parameter_name
-      - adaptive_parameter_value
-      - adaptive_parameter_value_next
   Attempt:  # container for multiple trials
     tree_root: true
     description: A collection of trial responses for a single agent in a single session.
@@ -149,53 +81,137 @@ classes:
         range: Trial
   
   Stimulus:
+    slot_usage:
+      stimulus_id:
+        key: true
+    slots:
+      - response_id
+      - stimulus_object_id
+      - stimulus_presentation_id
+      - stimulus_index_in_trial
+      - stimulus_onset
+      - stimulus_duration
+      - stimulus_panel_id
+      - stimulus_x_screen
+      - stimulus_y_screen
+      - stimulus_x_viewport
+      - stimulus_y_viewport
+      - stimulus_description
+      - stimulus_source
+      - stimulus_source_type
+      - stimulus_index_in_source
+      - stimulus_role
+      - stimulus_animation
+
+
+  Option:
+
+  Input:
     attributes:
       id:
-        identifier: true
       response_id:
-      object_id:
-      presentation_id:
-      index_in_trial:
-        range: integer
-        minimum_value: 1
+      response_element_index:
       onset:
-        range: float
-        minimum_value: 0
       duration:
-        range: float
-        minimum_value: 0
-      panel_id:
       x_screen:
       y_screen:
       x_viewport:
       y_viewport:
-      description:
-      source:
-      source_type:
-      index_in_source:
-      role:
-      animation:
-
-  Option:
-  Input:
+      object_type:
+      object_name:
+      is_object_enabled:
+      object_state:
+      option_id:
+      stimulus_id:
+  
   StimulusComponent:
+  
   OptionComponent:
+  
   Instrument:
-    attributes:
+    slot_usage:
       timeline_id:
         key: true
+    slots:
+      - timeline_id
+      - instrument_name
 
-  # mixin helpers
+  # MIXIN helpers
+  TaskMixin:
+    mixin: true
+    notes:
+      - Used in the trial to describe the task being performed by the agent.
+      - This is a container for task variables.
+    slot_usage:
+      timeline_id:
+        range: Instrument
+
+    slots:
+      - instrument_name
+      - instrument_repetition
+      - timeline_repetition
+      - multitask_type
+      - task_index
+      - job_type
+      - job_description
+      - job_repeat
+      - block_index
+      - block_name
+      - block_type
+      - transformation_name
+      - trial_index
+      - trial_start_datetime
+      - trial_seed
   InputMixin:
     mixin: true
     notes:
       - Used in the trial to describe the inputs entered by the agent.
       - This is a container for inputs.
       - Response is not synonymous with input.
+    attributes:
+      input_id:
+        range: Input
+        multivalued: true
+        inlined: false
     slots:
       - input_interface_type
       - input_action_type
       - input_count
+  StimulusMixin:
+    mixin: true
+    notes:
+      - Used in the trial to describe the stimuli presented to the agent.
+      - This is a container for stimuli.
+    slot_usage:
+      stimulus_id:
+        range: Stimulus
+        multivalued: true
+        inlined: false
+    slots:
+      - stimulus_index
+      - stimulus_type
+      - stimulus_onset
+      - stimulus_panel_count
+      - stimulus_structure
+      - stimulus_structure_source_type
+      - stimulus_structure_source
+      - stimulus_set_size
+      - stimulus_count
+      - stimulus_source_type
+      - stimulus_source
+      - stimulus_index_in_source
+      - stimulus_position_index
+      - stimulus_description
+      - stimulus_role
+  OptionMixin: 
+    mixin: true
+    slots:
+      - option_id
+      - option_source_type
+      - option_source
+      - option_count
+      - option_data_type
+      - measurement_type
   EvaluationMixin:
     mixin: true
     notes:
@@ -222,11 +238,39 @@ classes:
       - response_validation_time
       - response_initiation_time
       - response_skipped
+  FeedbackMixin:
+    mixin: true
+    slots:
+      - feedback_description
+  OutcomeMixin:
+    mixin: true
+    slots:
+      - outcome_description
+      - outcome_numeric
+  AccessoryMixin:
+    mixin: true
+    slots:
+      - additional_measures
+  AdaptiveMixin:
+    mixin: true
+    notes:
+      - Used in the trial to describe the adaptive parameters.
+      - This is a container for adaptive parameters.
+    slots:
+      - adaptive_method_name
+      - adaptive_method_config
+      - adaptive_parameter_name
+      - adaptive_parameter_value
+      - adaptive_parameter_value_next
+
+
+# ==================================================================
+# Slots
+# ==================================================================
 
 slots:
 
   response_id:
-    key: true
     in_subset:
       - KeySubset
     description: A unique identifier assigned to responses in temporal order.
@@ -294,17 +338,6 @@ slots:
     todos:
       - Range should be a controlled vocabulary of ISO_639-1 codes.
 
-  instrument:
-    in_subset:
-      - TaskSubset
-    description: The name of the instrument used for collecting data (e.g., the name of the computer script used to run the test).
-    range: Instrument
-    inlined: false
-    required: true
-    comments:
-      -  This is a container for the instrument used in the trial.
-    
-
   instrument_name:
     in_subset:
       - TaskSubset
@@ -316,7 +349,7 @@ slots:
     in_subset:
       - TaskSubset
     description: Timelines are specific parameterization of an instrument.
-    range: Instrument
+    range: string
     inlined: false
     required: true
     comments:
@@ -382,13 +415,7 @@ slots:
 
  
   stimulus_id:
-    slot_group: stimulus_variable
-    range: Stimulus
-    multivalued: true
-    inlined: false
-    notes:
-      - Used in the trial to describe the stimuli presented to the agent.
-      - This is a container for the stimuli presented to the agent.
+    range: string
 
   stimulus_index:
     slot_group: stimulus_variable
@@ -397,33 +424,19 @@ slots:
     todos:
       - in the trials table, this is a list of numbers.
   stimulus_type:
-    slot_group: stimulus_variable
   stimulus_onset:
-    slot_group: stimulus_variable
   stimulus_panel_count:
-    slot_group: stimulus_variable
   stimulus_structure:
-    slot_group: stimulus_variable
   stimulus_structure_source_type:
-    slot_group: stimulus_variable
   stimulus_structure_source:
-    slot_group: stimulus_variable
   stimulus_set_size:
-    slot_group: stimulus_variable
   stimulus_count:
-    slot_group: stimulus_variable
   stimulus_source_type:
-    slot_group: stimulus_variable
   stimulus_source:
-    slot_group: stimulus_variable
   stimulus_index_in_source:
-    slot_group: stimulus_variable
   stimulus_position_index:
-    slot_group: stimulus_variable
   stimulus_description:
-    slot_group: stimulus_variable
   stimulus_role:
-    slot_group: stimulus_variable
 
   option_id:
     range: Option
@@ -492,3 +505,18 @@ slots:
 
   additional_measures:
     slot_group: accessory_variable
+
+
+  # ==================================================================
+  # stimulus slots
+  stimulus_object_id:
+  stimulus_presentation_id:
+  stimulus_index_in_trial:
+  stimulus_duration:
+  stimulus_panel_id:
+  stimulus_x_screen:
+  stimulus_y_screen:
+  stimulus_x_viewport:
+  stimulus_y_viewport:
+  stimulus_animation:
+  
