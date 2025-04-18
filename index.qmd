@@ -14,7 +14,7 @@ The *Behaverse Data Model (BDM)* is an ongoing attempt to define a data format f
 
 ### How to use this website
 
-The website is organized in three main parts:
+The website is organized into three main parts:
 
 - [Guides](/guides/index.qmd): Tutorials and how-tos for integrating BDM into your projects.
 - [Specifications](/spec/index.qmd): Formal specifications of the BDM datasets.
