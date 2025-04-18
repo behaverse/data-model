@@ -73,7 +73,9 @@ Note however that in some cases this convention goes against the way we would na
 
 Note also that there might be cases where the terms used to form a variable name do not on their own reveal their relationships (entity versus property) and background knowledge is required to determine the correct order (i.e., `<entity>_<property>`).
 
-> **Rule #1** **Use the naming pattern `<entity>_<property>`.** {: .rule }
+::: {.callout-important appearance="simple" title="Rule 1"}
+Use the naming pattern `<entity>_<property>`.
+:::
 
 ## Adjectives
 
@@ -83,7 +85,9 @@ In these examples, "left" and "expected" are values not variables; they play the
 
 Thus our general pattern for naming variables and columns in a data table is:
 
-> **Rule #2** **Use the naming pattern `[<adjective>_]<entity>_<property>`.** {: .rule }
+::: {.callout-important appearance="simple" title="Rule 2"}
+Use the naming pattern `[<adjective>_]<entity>_<property>`.
+:::
 
 ## Singular versus plural
 
@@ -100,9 +104,13 @@ Regarding the second question, we follow the pattern <entity>\_<property> with t
 
 Finally, we think it's OK to use plurals for naming units (e.g., age_in_years).
 
-> **Rule #3** **When naming variables using `<entity>_<property>` pattern, express the entity in singular form.** {: .rule }
+::: {.callout-important appearance="simple" title="Rule 3"}
+When naming variables using `<entity>_<property>` pattern, express the entity in singular form.
+:::
 
-> It's OK to use plurals to name folders? e.g., Subjects, Instruments
+::: {.callout-note}
+> It's OK to use plurals to name folders, e.g., Subjects, Instruments
+:::
 
 ## Boolean variables
 
@@ -118,7 +126,9 @@ It's OK to not use prefix boolean variables with `is_`, `has_` or similar when t
 
 -   `timed_out`: the subject did not respond within the allotted time period.
 
-> **Rule #4** **Make clear when a variable is a boolean and express the variable positively.** {: .rule }
+::: {.callout-important appearance="simple" title="Rule 4"}
+Make clear when a variable is a boolean and express the variable positively.
+:::
 
 ## Aggregation and transformation
 
@@ -126,9 +136,13 @@ In data analysis pipelines variables are typically transformed and aggregated. S
 
 To keep naming consistent with the "Hierarchy" rule presented earlier, we will use suffixes of specific terms (see below) to designate aggregations and transformation of variables. For example, if there's a variable called `response_time` and we compute first the log of response_time and then average the logs of response_time we would end up with a new variable called `response_time_log_mean`. This is line with the "pipe"-style syntax in some data analysis programming languages (e.g., `response_time |> log() |> mean()`.)
 
-> **Rule #5** **When transforming or aggregating variables, use dedicated suffixes.** {: .rule }
+::: {.callout-important appearance="simple" title="Rule 5"}
+When transforming or aggregating variables, use dedicated suffixes.
+:::
 
-> Sometimes such names can get quite long and hard to read and there might in fact exist specific names to refer to a sequence of transformation (or one can invent new ones). For example, one might use `x_rmse` rather than `x_square_mean_root`. {: .note }
+::: {.callout-note appearance="simple"}
+Sometimes such names can get quite long and hard to read and there might in fact exist specific names to refer to a sequence of transformation (or one can invent new ones). For example, one might use `x_rmse` rather than `x_square_mean_root`.
+:::
 
 ## On conflicting standards, conventions and preferences
 
@@ -148,8 +162,7 @@ When choosing among different alternatives we try to follow the following princi
 
 # Naming People
 
-
-There are three issues related to naming people in a dataset; they concern how to name the "entity" (e.g., "participant" versus "subject"), which suffixes to use (e.g., "\_id" versus "\_index") and what format to use for its values (e.g., an integer or a string). We will go over each of this in turn and justify our choices.
+There are three issues related to naming people in a dataset; they concern how to name the "entity" (e.g., "participant" versus "subject"), which suffixes to use (e.g., "_id" versus "_index") and what format to use for its values (e.g., an integer or a string). We will go over each of this in turn and justify our choices.
 
 ### Naming the entity
 
@@ -157,7 +170,9 @@ People who participate in a study and from whom data is collected are typically 
 
 It is our view that the entity name in the data table should be generic to encompass a large set of use cases (e.g., children, animals, artificial agents) and we therefore second [BIDS](https://bids-specification.readthedocs.io/en/stable/) in the use of "subject" in the data specification and avoid using any other term in the data (however, contrary to BIDS we never use "participants"). This does not mean however that human participants should be addressed as "subjects" in general (for example, when communicating with them or about them); all participants are subjects, but not all subjects are participants (e.g., an AI-agent). Naming a column or data file using "subject" is convenient and does not imply disrespect towards human study participants.
 
-> **Rule #2** **Use "subject" to refer to the entity generating the response data.** {: .rule }
+::: {.callout-important appearance="simple" title="Rule 6"}
+Use "agent" to refer to the entity generating the response data.
+:::
 
 ## A suffix for the entity and format of the value
 
@@ -178,7 +193,6 @@ Purpose 1 requires uniqueness within a study while .4 requires uniqueness in gen
 Consequently, we adopt the following conventions:
 
 subject_index
-
 :   a string uniquely associated to each subject within a dataset. Following [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html#participant-names-and-other-labels), this string is obtained by concatenating the string `subject_` with a zero-padded number which "counts" subjects in a study (typically but not necessarily in chronological order). For example, the 15^th^ subject in a dataset might be assigned the subject_index value of subject_015.
 
 Note that such zero-padding may depend on the number of subjects there are in a study (e.g., if there are less than 100, the first subject would be called "subject_01", but if there are more than 1000 subjects in total, that subject would be called "subject_0001"). By default, we use a zero-padded string of length 4 as this will be enough for the vast majority of behavioral datasets.
@@ -193,31 +207,27 @@ Note that `agent_id` is not be present in the L1 data but instead is available i
 Numerous terms designate different aspects of a task. Here we list some of these terms and provide our definition (as for most cases, we did not find clear and consensual definitions in the literature).
 
 job
-
 :   refers to the high level description of the activity the subject is expected to perform. The job is typically described in the instructions (e.g., "your job is to classify these images in one of two categories"). Within job we distinguish `job_type`, which typically takes the form of a verb (e.g., "classify", "sort") and `job_description`, which adds nouns to that verb (e.g., "classify even/odd numbers", "sort by color").
 
 instrument
-
 :   refers to the code or material that is used to present stimuli to subjects and record responses. For example, in questionnaire-based studies, instrument would refer to specific questionnaires (e.g., BISBAS) while in computer-based assessments, it would refer to the specific cognitive test (e.g., NBack). We distinguish `instrument_name` which provides a short name of the instrument (e.g., BISBAS) and `instrument_id` which provides more detailed information about the specific version or instance of that instrument (e.g., BISBAS_v1.2023) which may be linked to additional data about that instrument (e.g., a link to view the instrument) in the *Instruments* table.
 
-    *Note:* a paradigm refers to a family of instruments.
+:::{.callout-note appearance="simple"}
+A paradigm refers to a family of instruments.
+:::
 
 timeline
-
 :   some instruments are not static but rather generate trials based on specific parameters implemented in computer code. We use the term "timeline" to refer to that set of parameters (or configuration file of the instrument). For example, one timeline of the N-back instrument might use N = 3 with letters while another could use the same N-back instrument using N = 2 with digits.
 
 task
-
 :   refers to a particular mapping between a specific stimulus set and a specific response set (and oftentimes an evaluation function which may indicate if that response was correct or incorrect for example). Note that both stimulus and response sets may be empty as in resting state tasks and sometimes only the response set is empty, as when hearing instructions. The definition of a specific task determines the meaning of a "trial" in an experiment and the structure of the resulting data tables.
 
 Note that some instruments require subjects to perform multiple tasks (either simultaneously or sequentially, e.g., the dual N-back test); consequently, a task is not equivalent to instrument.
 
 activity
-
 :   refers to the experience of a subject engaged in an instance of an instrument. For example, a subject that completes questionnaires A, B, A, C completed a total of four activities (despite using only three instruments).
 
 block
-
 :   a timeline may comprise sub-timelines. For example, a timeline may include a practice and two test blocks. We distinguish 4 types of blocks: - instruction - tutorial - practice - test
 
 ### Hierarchical structure of an experimental study
@@ -225,27 +235,21 @@ block
 Data from experimental behavioral studies typically have a hierarchical structure.
 
 study
-
 :   refers to a meaningful and complete unit of a research project. A study must have a research question and the data collected in a study should be necessary and sufficient to answer that question. A study typically involves many subjects, completing several activities, sometimes over multiple sessions.
 
 session
-
 :   refers to a grouping of consecutive activities. When subjects are tested on multiple days, each such day is typically called a session (i.e., consecutive sessions are typically separated by several hours). Note that there are other more technical and more local definitions of session that are commonly used in computer science. Session in psychology and related fields has a more abstract meaning and is typically related to the experimental design of a study.
 
 activity
-
 :   within a session, subjects complete activities (e.g., complete a computerized test or a questionnaire).
 
 block
-
 :   an activity may comprise multiple blocks that may or may not be of different types. For example, a computerized test may have an instruction block, a tutorial block and multiple test blocks.
 
 trial
-
 :   refers to a particular instance of an experiment (in the probability theoretical sense) where the structure of the experiment is defined by the task. For example, in a particular instance of the 2-back test, a particular trial may involve showing the letters "A-B-A" and observing the response "match". A timeline may combine multiple tasks (e.g., in a task-switching experiment) and for each task, there would be many trials (to support statistical inference).
 
 response
-
 :   refers to the meaningful behavioral unit emitted by a subject on a given trial. The response constitutes the actual observation or behavioral measurement in the dataset.
 
 # Naming stimuli
@@ -265,22 +269,19 @@ Numerous terms are commonly used to refer to specific categories of stimuli. The
 Furthermore, some of these terms belong to different semantic categories: a "cue" designates a functional role played by a stimulus within the context of the task (e.g., "this is to tell subjects to pay attention to the left") while "lure" reflects assumptions about the cognitive processes underlying task performance (e.g., "this type of stimuli should be more confusing to subjects because ..."). Following this insight, we distinguish the following terms:
 
 trial_tag
-
 :   one or multiple strings used to tag or label specific types of trials that are thought to be of theoretical interest by the data analyst and intended to be used for subsequent data analysis. Examples of trial tags include "lure", "difficult", "rare", "task_switch" and "congruent". Note that these are different from objective descriptions of trial features which may be found in the task parameters (e.g., the stimulus presentation duration) or in the stimulus descriptions. Note also that we don't use the terms "condition" or "trial_type" as these terms may be ambiguous.
 
 stimulus_role
-
 :   a functional role assigned to a stimulus within the context of the task by the experimenter or task designer. This assignment refers to how the experiments or task designer intends the stimulus to be processed by subjects (as typically explained to subjects in task instructions).
 
-Furher explanation may be needed to clarify the naming of stimulus roles.
 
 First, we define a stimulus as being a set of physical events that are presented to subjects with the intention or assumption that they will cause a particular effect (observable or not). Not all physical events are stimuli and the qualification of a physical event as being a stimulus or not depends on the context.
 
 By performing the task, the theorized agent performs a mapping between a stimulus space and a response space; in other words, we have:
 
-$$
+```{.python}
 Response = Cognition(Stimulus, Task)
-$$
+```
 
 It is important to note here that Stimulus and Task can be further broken down into sub-categories. In particular, we define the following `stimulus_role` types:
 
@@ -320,7 +321,9 @@ Having defined these categories, we now define the following stimulus roles with
 | selector           | probe              | stimulus that indicates how to response or about what input to respond.                                      |
 | modifier           | stop-signal        | stimulus that changes the stimulus-response mapping in a systematic way.                                     |
 
-> The goal of this table is to enforce consistency. When using the term "non-target" we will always mean a mandatory input which does not trigger a response and not a sub-type of distractor. {: .note }
+::: {.callout-note appearance="simple"}
+> The goal of this table is to enforce consistency. When using the term "non-target" we will always mean a mandatory input which does not trigger a response and not a sub-type of distractor.
+:::
 
 
 # Naming responses and response options
@@ -331,22 +334,16 @@ input action
 : Each time a subject clicks on a button, we record an (action) input of type "click". Input can be of different types (e.g., mouse-click, key-press). An input is not necessarily meaningful or interpreted.
 
 input interface
-
 :   The keyboard displayed on the screen is the input interface. The input interface can be of different types (e.g., buttons, text-field, slider).
 
 response
-
 :   is defined by the task and typically comprises only a subset of the inputs. For example, if the digit span task required reproducing a sequence of 3 digits (e.g, 3-5-7), the response might be 3-5-7 even though there might have been many more inputs (e.g., 3-6-delete-5-7-enter). Note that while "input" is an objective description of a type of event, "response" is an interpretation of a subset of those events that is tied to a specific the task definition. Sometimes people use "answer" or "choice" instead of "response". We use the generic term "response" in every case and may use other variables (e.g., "response_type") to qualify more specific types of responses (e.g., choice, number, text, choice-sequence).
 
 option (i.e., response options)
-
 :   in most computerized cognitive tests and surveys, subjects are offered a means to enter their response; most often this consists of a discrete set of options to choose from. This set is sometimes called "possible responses" or "answers"; we call this entity "option". It is important to record information about the response options because they directly determine the meaning of the data (e.g., a rating of "3" if very different if the scale goes from 1 to 3 versus 1 to 10).
-
-:   One key concern when describing response options is how to name the "good" one. In the survey literature, that option is sometimes referred to as the "key" while the remaining options are called ["distractors"](https://images.pearsonassessments.com/images/tmrs/tmrs_rg/Distractor_Rationales.pdf). We will not use these terms because they are unfamiliar to most and may be confusing (as "distractor" could also refer to a stimulus role and a "key" could refer to a button on a keyboard or a column in a data table). It is also common to see the term "correct_response" (or equivalent) to designate the "good" option. `correct_response` is however ambiguous as it could refer to 1. the response that was given on a correct trial (i.e., correct serves as an adjective/filter); 2. what response will evaluate to correct (i.e., if `response == correct_response`, then `correct = TRUE`) or 3. a boolean indicating if the current response is correct or not (`is_response_correct`).
-
-To refer to the option that we expect the subject to choose, we will use the term `expected_response`. If the actual response is equal to the expected response, the response is said to be "correct".
-
-Note that responses can be evaluated and that several variables may be used to qualify this evaluation beyond the boolean `correct` variable. In particular, options (and thus responses) may be assigned a `score` (i.e., a numeric value that may reflect the meaning or value of an option), an `accuracy` (i.e., a float ranging from 0 to 1 reflecting the level of accuracy) and `evaluation_label` variables. Evaluation variables like `correct` are not a property of the option per se but depends on the "question" being asked; it is thus a property of the response as defined within a specific trial.
+: One key concern when describing response options is how to name the "good" one. In the survey literature, that option is sometimes referred to as the "key" while the remaining options are called ["distractors"](https://images.pearsonassessments.com/images/tmrs/tmrs_rg/Distractor_Rationales.pdf). We will not use these terms because they are unfamiliar to most and may be confusing (as "distractor" could also refer to a stimulus role and a "key" could refer to a button on a keyboard or a column in a data table). It is also common to see the term "correct_response" (or equivalent) to designate the "good" option. `correct_response` is however ambiguous as it could refer to 1. the response that was given on a correct trial (i.e., correct serves as an adjective/filter); 2. what response will evaluate to correct (i.e., if `response == correct_response`, then `correct = TRUE`) or 3. a boolean indicating if the current response is correct or not (`is_response_correct`).
+: To refer to the option that we expect the subject to choose, we will use the term `expected_response`. If the actual response is equal to the expected response, the response is said to be "correct".
+: Note that responses can be evaluated and that several variables may be used to qualify this evaluation beyond the boolean `correct` variable. In particular, options (and thus responses) may be assigned a `score` (i.e., a numeric value that may reflect the meaning or value of an option), an `accuracy` (i.e., a float ranging from 0 to 1 reflecting the level of accuracy) and `evaluation_label` variables. Evaluation variables like `correct` are not a property of the option per se but depends on the "question" being asked; it is thus a property of the response as defined within a specific trial.
 
 # Naming temporal variables
 

@@ -95,3 +95,7 @@ figcaption {
 .breadcrumb-item i.float-end {
   display: none !important;
 }
+
+pre.file-tree code.sourceCode .code-annotation-anchor{
+  margin-top: auto;
+}

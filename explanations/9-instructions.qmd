@@ -18,8 +18,3 @@ Indeed, as with other types of stimuli, we can record what instructions were dis
 Under this perspective, it would make sense to include instructions and other messages in the subject-level data.
 
 In general, we recommend storing study-level instructions in the `instruments/` folder and to store activity-level instructions in the activity-specific folder that is inside the subjects's activity data folder. For example, if there are instructions that are specific to a particular cognitive task administration, these instructions should be stored in the activity-specific folder that is inside the subjects's activity data folder.
-
-
-### How to encode instructions?
-
-- [ ] TODO: how to encode instructions

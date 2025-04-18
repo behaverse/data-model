@@ -1,75 +1,64 @@
 ---
 order: 1
-output-file: folder-structure
+output-file: dataset-structure
 title: Folder structure
 subtitle: A dataset is a folder that contains data files and all relevant information needed to make sense of that data.
 code-block-bg: true
+highlight-style: github
+code-tools: false
+code-copy: false
+code-annotations: below
 ---
 
-A BDM-compatible dataset is a folder that contains data tables and all relevant information needed to make sense of that data. The name of the folder is the name of the dataset. Here is the structure of an example of dataset:
+In its current form, a BDM-compatible dataset is a folder that contain data and all relevant information needed to make sense of that data. The name of the folder is the name of the dataset. Here is the structure of an example of dataset:
 
-```default
-<dataset>/
-├─ README.md
-├─ LICENSE
-├─ studyflow.json
-├─ instruments/
-  ├─ instructions.csv
-  ├─ <instrument>.csv
-  ├─ ...
-├─ subjects/
-  ├─ subject_001/
-    ├─ studyflow.csv
-    ├─ <activity>/
-    ├─ --- response.csv
-  ├─ subject_002/
-  ├─ .../
-
+```{.default .file-tree}
+dataset/                          # <1>
+├── README.md                     # <2>
+├── LICENSE                       # <3>
+├── docs/                         # <4>
+├── instruments/                  # <5>
+│   ├── bisbas.yaml               # <5>
+│   ├── stroop.yaml               # <5>
+│   └── ...                       # <5>
+│
+├── agents.csv                    # <6>
+│
+├── data/                         # <7> 
+│   ├── agent_001/                # <8>
+│   │   ├── studyflow.csv         # <9>
+│   │   └── session_1/            # <10>
+│   │       └── <activity>/       # <11>
+│   │           ├── trials.csv
+│   │           ├── stimuli.csv
+│   │           └── options.csv
+│   └── agent_002/
+│       └── ...
+│
+└── examples/                     # <12>
+    ├── example_1.py              # <12>
+    └── example_2.R               # <12>
 ```
+1. **Dataset**: The root `dataset/` folder contains all the relevant data, metadata, and documentations. The name of this folder is a name that is assigned to the dataset (e.g., `abcd-2021`). This name follows the convention of naming version-controlled repositories as datasets are often shared via repositories: datasets names may only include lowercase letters, numbers and hyphens.
 
+2. **Dataset card**: The `README.md` file contains the general description of the dataset and embeds its metadata in its front-matter section. The metadata represents a [dataset card](2-dataset-card.qmd) rather than a codebook to describe specific instruments.
 
-All relevant data, metadata and documentation is included in the dataset folder. The name of this folder is a name that is assigned to the dataset (e.g., `abcd-2021`). This name follows the convention of naming version-controlled repositories as datasets are often shared via repositories: datasets names may only include lowercase letters, numbers and hyphens.
+3. **License**: The `LICENSE` file specifies the terms and conditions for use, reproduction and distribution of the dataset. While different licenses may apply to different parts of a dataset, it is recommended to keep it simple and to use the same license for the entire dataset. You can use websites like [choosealicense.com](https://choosealicense.com/) to help you choose a license for your dataset.
 
+4. **Documentations**: The `docs/` folder contains information about the study in general. This includes in particular administrative data (e.g., how participants were recruited), information about the experimental design, instructions and other messages communicated with study participants (e.g., information about consent; the study welcome page).
 
-### README.md
+5. **Instruments:** The `instruments/` folder contains information about the instruments used in the study. This includes metadata about each instrument (e.g., references to the relevant literature), links to the instrument content (e.g., an online version or a pdf of a questionnaire) but also codebooks that provide the definition of the parameters of the instruments that are recorded in the data.
 
-The `README.md` file contains the general description of the dataset and embeds its metadata in its front-matter section. The metadata represents a dataset card (as in [https://huggingface.co/datasets](HuggingFace)) rather than a codebook to describe specific instruments.
+6. **Agents metadata**: The `agents.csv` lists all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
 
+7. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per subject that contains all the data about that subject. 
 
-### LICENSE
+8. **Agent data:** The subject data folder is labelled following the template `agent_{x}` where x refers to a zero-padded integer (e.g., `agent__001`, `agent_123`; the number of zeros used for padding should be commensurate with the number of subjects in the dataset.
 
-The `LICENSE` file specifies the terms and conditions for use, reproduction and distribution of the dataset. While different licenses may apply to different parts of a dataset, it is recommended to keep it simple and to use the same license for the entire dataset. You can use websites like [choosealicense.com](https://choosealicense.com/) to help you choose a license for your dataset.
+9. **Studyflow**: Each subject data folder contains at its root a `studyflow.csv` file which explains what activities were completed by this subject (with a competition status), when they started and ended each activity and in what order the activities were completed.
 
+10. **Sessions** (optional): In some cases it might be useful to group the data within subject into subfolder corresponding to multiple data collection sessions (e.g., `session_01/`, `session_02/`). This level of folders is optional and should be used when the data collection is divided into sessions.
 
-### study/
+11. **Activity data**: Additional folders are included within each subject's folder depending on the specific activities completed by that subject. For example, if the subject completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
 
-The `study/` folder contains information about the study in general. This includes in particular adminstrative data (e.g., how participants were recruited), information about the experimental design, instructions and ohter messages communicated with study participants (e.g., information about consent; the study welcome page).
-
-
-### instruments/
-
-The `instruments/` folder contains information about the instruments used in the study. This includes metadata about each instrument (e.g., references to the relevant literature), links to the instrument content (e.g., an online version or a pdf of a questionnaire) but also codebooks that provide the definition of the parameters of the instruments that are recorded in the data.
-
-
-### subjects/
-
-The `subjects/` folder contains information about the subjects of the study. Typically, but not always, subjects will be study participants. This folder may for instance include a subjects.csv table listing all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
-
-
-The `data/` folder contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per subject that contains all the data about that subject.
-
-
-### subject\_\*/
-
-The subject data folder is labelled following the template `subject_{x}` where x refers to a zero-padded integer (e.g., `subject_001`, `subject_123`; the number of zeros used for padding should be commensurate with the number of subjects in the dataset.
-
-Each subject data folder contains at its root a `study_flow.csv` file which explains what activities were completed by this subject (with a competition status), when they started and ended each activity and in what order the activities were completed.
-
-Additional folders are included within each subjects' folder depending on the specific activities completed by that subject. For example, if the subject completed the BIS/BAS questionnaire and the Stroop test there would be two correspding data folders (i.e., `bisbas`, `stroop_test`).
-
-In some cases it might be usful to group the data within subject into subfolder corresponding to multiple data collection sessions (e.g., `session_01`, `session_02`).
-
-
-## examples/
-
-The optional `examples/` folder may contain sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
+11. **Examples** (optional): The `examples/` contains sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
