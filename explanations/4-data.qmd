@@ -2,18 +2,22 @@
 order: 4
 output-file: data
 title: Data
-subtitle: Data management and conventions
+subtitle: Common data terms, data formats, and naming conventions
 ---
 
-Data can be described using terms that indicate how it has been "collected", "stored", "organized", or "processed". As data is the core of BDM, it is worth describing such terms quickly to make explicit what we mean when we use them.
+Data can be described using terms that indicate how it has been "collected", "stored", "organized", or "processed". As data is the core of BDM, it is worth describing such terms quickly to make explicit what they mean in the context of BDM.
 
 ## Common terms
 
 ### Process: *Raw vs. Derived*
-Data that has not been processed is termed **raw data**. And data that is computed from other data, for example summary statistics, is called **derived data**. For reproducible research, it is essential to share raw data along with the analysis code. This allows others to replicate all analyses within a research project from the raw data, rather than relying only on derived data.
+Data that has not been processed is called **raw data**. And data that is computed from other data, for example summary statistics, is called **derived data**.
+
+For reproducible research, it is essential to share raw data along with the analysis codes. This allows others to replicate all analyses within a research project from the raw data, rather than relying only on partial derived data.
 
 ### Format: *Native vs. Tidy*
-Different systems may record data in a variety of forms (e.g., structured, unstructured) and file formats (e.g., CSV, JSON, MAT); this is data in its **native**, and commonly wide, format. **Tidy** data is organized in long-format table where each row is an observational record and each column is a variable or property of that record. See [Tidy Data paper](https://vita.had.co.nz/papers/tidy-data.pdf) for more information. BDM recommends that data be stored in a *tidy* format.
+Different systems may record data in a variety of forms (e.g., structured, unstructured) and file formats (e.g., CSV, JSON, MAT); this is data in its **native** format. **Tidy** data is organized in long-format table where each row is an observational record and each column is a variable or property of that record[^1]. "BDM recommends storing data in a *tidy* format.
+
+[^1]: For more details on tidy data, see ["Tidy Data"](https://vita.had.co.nz/papers/tidy-data.pdf).
 
 ### Storage: *Datalake vs. Warehouse vs. Lakehouse*
 A [**datalake**](https://martinfowler.com/bliki/DataLake.html) refers to an unstructured collection of data, typically from many different sources. On the one hand, the *data lake* can be seen as maximally flexible (accepting all sorts of data including tables in different formats, images, texts) and holding the potential for limitless data analysis; on the other hand, it can be seen as a chaotic data dump or swamp.
@@ -31,13 +35,14 @@ A [**database**](https://en.wikipedia.org/wiki/Database) usually refers to a col
 
 A [**dataset**](https://en.wikipedia.org/wiki/Data_set) also refers to a collection of data, but while a database is a "living" entity, a dataset is typically a static resource that can be downloaded and shared as a whole (e.g., the [PISA 2012 dataset](https://www.oecd.org/en/data/datasets/pisa-2012-database.html)). A dataset can be defined by a data collection campaign (e.g., all the data collected within a research project) or a data analysis campaign (e.g., a dataset created from a larger medical database that focuses specifically on mental health issues during the COVID pandemic).
 
-## Confusing terms
+### Confusing terms
 
 It is sometimes easy to confuse the terms described above. For example, data in native format is often called raw data even though the data may in fact contain derived data (for example, the overall score a person achieved on a school test alongside all individual responses and their correctness). Data in its native format is often messy but could in some cases be tidy.
 
 Note also that it is not always clear what is meant by "processing" and what still counts as "raw data". In BDM, data is no longer considered "raw" when the data has been processed in a way that reflects assumptions about the scientific values of the variables and relationships between them. For example, filtering out trials with response times shorter than 150 milliseconds because one believes that such short durations imply those responses are not valid, is a form of data processing which is "biased" and thus the resulting, filtered data cannot no longer be considered "raw". On the other hand, if for some reason, a system logs the same events multiple times, removing duplicates is a pre-processing step that is not biased and hence, the resulting, filtered data should still be considered "raw" data.
 
-In general, we believe that the following operations may be performed on original native-format data without compromising the "raw" status of the resulting data:
+In general, the following operations may be performed on original native-format data without compromising the "raw" status of the resulting data:
+
 - selection of variables
 - renaming variables and enum values
 - changes of units (from example, converting milliseconds to seconds)
@@ -46,9 +51,11 @@ In general, we believe that the following operations may be performed on origina
 - joining or splitting tables
 
 ## Which data to store and which to share?
-It is typically the case that more data is stored than shared. For example, researchers may store participants' contact information or specific parameters of the hardware being used. The question then arises: what information should be collected initially, what subset of that data should be shared, and whether the native-format data should be sent along with the tidy data extracted from it.
+More data is stored than shared. Researchers may store participants' contact information or specific parameters of the hardware being used, but they may not share that information.
 
-Regarding what data to store, the answer depends on the purpose of the study. In any case, participants need to be informed about what data is being collected and the data collection must follow relevant regulations. It is generally well advised to be parsimonious regarding which personal data to collect (https://martinfowler.com/bliki/Datensparsamkeit.html).
+What information should be collected initially, what subset of that data should be shared, and whether the native-format data should be shared along with the tidy data extracted from it?
+
+Regarding what data to store, the answer depends on the purpose of the study. In any case, participants need to be informed about what data is being collected and the data collection must follow relevant regulations. It is generally well advised to be parsimonious regarding which personal data to collect (see [Datensparsamkeit](https://martinfowler.com/bliki/Datensparsamkeit.html)).
 
 In BDM, native data should not be shared if one has the ability to extract and share better formatted data. There are three main reasons not to share source data:
 
@@ -58,11 +65,15 @@ In BDM, native data should not be shared if one has the ability to extract and s
 
 In short then, "don't share original unformatted data in its native format", instead share well documented, well formatted raw data.
 
-# Tidy tables
+## Tidy tables
 
 > "Tidy data allows one to start analyzing the data right away"
 >
-> Wickham, Hadley (20 February 2013). ["Tidy Data"](). *Journal of Statistical Software*.
+> [*Tidy data paper, Hadley Wickham*]{.small}
+>
+>   
+> 
+
 
 There are many different ways of organizing data in tabular form. We recommend that data tables should be tidy as defined by the following criteria:
 
@@ -78,9 +89,9 @@ In addition to these tidy data rules, we recommend the following rules for sorti
 
 Regarding the ordering of the columns, there is an order for categories of columns within the table, and an order of columns within a category. In general, for behavioral data, we keep to the left of the table variables that are used for scoping (e.g., to find or filter particular observations; e.g., subject_index, session_index, trial_index, trial_datetime); next we have variables describing a particular situation (e.g., stimulus_description, option_id), variables describing subjects's responses (e.g., response_time) and variables describing the evaluation of the responses (this order may correspond to the order of events within a trial; see spec). Within such categories, variables should be grouped when they are semantically related, from more abstract to more concrete, or in alphabetic order. For example, it would make sense to group all the variables that describe a `block` and to order them as `block_index` \> `block_type` \> `block_name`.
 
-# Files and folders
+## Files and folders
 
-## File formats
+### File formats
 
 In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over proprietary file formats (e.g., `.mat`, `.sav`, `.docx`). Open formats ensure that the data is accessible to a wide audience. Specifically, use the following formats:
 
@@ -93,7 +104,7 @@ In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over 
 
 Do NOT save the same data in multiple output formats (e.g., `.csv` and `.sav`) to avoid redundancy and version mismatches. However, lossless data conversion must be used if converting data to other formats.
 
-# Naming files and folders
+## Naming files and folders
 
 We want file and folder names to be short and meaningful. Instead of encoding numerous pieces of information in the filename (e.g., the subject index, the session, the task) we prefer short names that describe only what type of data a given file contains, leaving it to the names of the parent directories that contain that file to encode its context. Conceptually, this is equivalent to calling a file `README.md` within a project folder rather than calling it `project_subproject_README.md`.
 
@@ -145,6 +156,6 @@ We do not recommend using meaningless strings (e.g., `g9zkf`) or names that are 
 
 We do not recommend including the version in the dataset name (see below.)
 
-### Versioning data
+## Versioning data
 
 Datasets may change across time as new data is collected or errors are corrected; it is thus necessary to version datasets. We do not recommend appending version labels to file names as this raises many issues (e.g., do we append the updated version label to all files? Only the files that changed? Only the root directory?). Instead, we recommend using the data version control system [DVC](https://dvc.org/) and to encode the version information in the metadata of the dataset. Indeed, [schema.org](https://schema.org) or [calver.org](https://calver.org) allow to encode such information and popular data sharing platforms, such as [Zenodo](https://zenodo.org/), display that information.
