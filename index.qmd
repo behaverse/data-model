@@ -6,11 +6,11 @@ pagetitle: "Behaverse Data Model (BDM)"
 title-prefix: ""
 ---
 
-There are increasing amounts of cognitive and behavioral data freely available on the internet. Metadata standards and semantic web make it easier to find them. However, there are large inconsistencies in the way those datasets are structured, their variables named, and even in the meaning of various common terms. These inconsistencies make it unnecessarily hard to find and use datasets[^1] and hinder the development of effective tools.
+There are increasing amounts of cognitive and behavioral data freely available on the internet. Metadata and semantic web make it easier to find them. However, there are large inconsistencies in the way those datasets are structured, their variables names, and even in the meaning of common terms. These inconsistencies make it unnecessarily hard to find and use datasets[^1] and hinder the development of effective tools.
 
 [^1]: Hulsebos, M., Lin, W., Shankar, S., & Parameswaran, A. (2024, June). It took longer than i was expecting: Why is dataset search still so hard?. In *Proceedings of the 2024 Workshop on Human-In-the-Loop Data Analytics* (pp. 1-4). <https://doi.org/10.1145/3665939.3665959>
 
-The *Behaverse Data Model (BDM)* is an ongoing attempt to define a data format for cognitive and behavioral datasets that unifies a wide range of cognitive tests and questionnaires. It establishes conventions for structuring datasets and naming variables.
+The *Behaverse Data Model (BDM)* is an ongoing attempt to define a data format for cognitive datasets that unifies a wide range of cognitive tasks and questionnaires. It aims to establish conventions for structuring datasets and their content.
 
 ### How to use this website
 
