@@ -4,38 +4,40 @@ output-file: dataset-card
 title: Dataset card
 ---
 
+There are two main sources of metadata in BDM: the dataset card and the codebook.
+
 Dataset card
-: A structured representation of metadata. It is generally defined in the `README.md` front matter of a dataset (see [folder structure](1-folder-structure.qmd)) and provides information about its creator, license, funding, and other relevant information.
+
+:   A structured representation of metadata about the dataset. It is generally defined in the `README.md` front matter of a dataset (see [folder structure](1-folder-structure.qmd)) and provides information about its creator, license, funding, and other relevant information.
 
 Codebook
-: Part of the dataset card that contains information about the variables in the data (such as their names, types, and descriptions). It also includes information about the values that each variable can take on and any missing data that may exist in the dataset. The codebook is an essential component of the dataset, as it provides context and semantic that helps researchers interpret the data.
 
+:   Part of the dataset card that contains information about the variables in the data (such as their names, types, and descriptions). It also includes information about the values that each variable can take on and any missing data that may exist in the dataset. The codebook is an essential component of the dataset, as it provides context and semantic that helps researchers interpret the data.
 
+## Required fields
 
-### Required fields
-
-| Property    | Type                   | Description                                                                       |
+| Property | Type | Description |
 |------------------------|------------------------|------------------------|
-| name        | Text                   | The name of the dataset.                                                          |
-| description | Text                   | Description of the dataset.                                                       |
-| license     | URL                    | The license that applies to the dataset.                                          |
-| keywords    | Text or URL            | List of keywords or URLs delimited by commas.                                     |
-| creator     | Organization or Person | The creator(s)/author(s) of the published dataset.                                |
-| funding     | Grant                  | A Grant that directly or indirectly provide funding or sponsorship for this item. |
+| name | Text | The name of the dataset. |
+| description | Text | Description of the dataset. |
+| license | URL | The license that applies to the dataset. |
+| keywords | Text or URL | List of keywords or URLs delimited by commas. |
+| creator | Organization or Person | The creator(s)/author(s) of the published dataset. |
+| funding | Grant | A Grant that directly or indirectly provide funding or sponsorship for this item. |
 
-### Recommended
+## Recommended
 
-| Property             | Type                          | Description                                                                                                                     |
+| Property | Type | Description |
 |------------------------|------------------------|------------------------|
-| creditText           | Text                          | Text that can be used to credit person(s) and/or organization(s) associated with a published Creative Work.                     |
-| version              | Number or Text                | The version of the dataset.                                                                                                     |
-| size                 | Text                          | The size of the dataset (e.g., 2.5GB).                                                                                          |
-| maintainer           | Person                        | Person that manages the datasets and should be contacted regarding any dataset related issues.                                  |
-| measurementMethod    | DefinedTerm, URL, Text        | The type of method used to collect the data (e.g., "questionnaire", "computerize test", "video game".)                          |
-| measurementTechnique | DefinedTerm, URL, Text        | The instrument(s) used to collect the data (e.g., "Beck Depression Inventory")                                                  |
-| variableMeasured     | Property, PropertyValue, Text | Describes the type of construct being measured (e.g., "depression"), not the columns/variables in the dataset (e.g., "dep_q1"). |
+| creditText | Text | Text that can be used to credit person(s) and/or organization(s) associated with a published Creative Work. |
+| version | Number or Text | The version of the dataset. |
+| size | Text | The size of the dataset (e.g., 2.5GB). |
+| maintainer | Person | Person that manages the datasets and should be contacted regarding any dataset related issues. |
+| measurementMethod | DefinedTerm, URL, Text | The type of method used to collect the data (e.g., "questionnaire", "computerize test", "video game".) |
+| measurementTechnique | DefinedTerm, URL, Text | The instrument(s) used to collect the data (e.g., "Beck Depression Inventory") |
+| variableMeasured | Property, PropertyValue, Text | Describes the type of construct being measured (e.g., "depression"), not the columns/variables in the dataset (e.g., "dep_q1"). |
 
-### Derived datasets
+# Derived datasets
 
 Sometimes a dataset is curated/aggregated and shared by people who were not the original collectors of the data. In those cases it might be unclear how exactly to attribute proper credit to each type of contribution.
 
@@ -49,7 +51,7 @@ This being said, the original data collectors must be appropriately credited. Th
 -   creditText provides credit to both the curated and the original versions
 -   isBasedOn provides information and links to the original dataset.
 
-| Property  | Type                 | Description                                                                                                      |
-|------------------------|------------------------|------------------------|
-| isBasedOn | URL or CreativeWork  | A resource from which this work is derived or from which it is a modification or adaptation.                     |
-| citation  | CreativeWork or Text | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. |
+| Property | Type | Description |
+|---------------|------------------------|-------------------------------------|
+| isBasedOn | URL or CreativeWork | A resource from which this work is derived or from which it is a modification or adaptation. |
+| citation | CreativeWork or Text | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. |
