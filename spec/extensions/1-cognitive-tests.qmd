@@ -2,5 +2,12 @@
 order: 1
 output-file: cognitive-tests
 title: Cognitive tests
-subtitle: Specific tasks to assess specific cognitive functions
+subtitle: Custom tasks to assess specific cognitive functions
 ---
+
+In addition to the standard cognitive tests supported by the BDM data structure, custom tasks can store additional data in the BDM database.
+
+- [ ] events: add custom schemas for the new events
+- [ ] trials: mark additional columns in the trials table with a special `_` prefix
+- [ ] data types or tables: add to codebook and partition data by agent/session/activity
+- [ ] models: 

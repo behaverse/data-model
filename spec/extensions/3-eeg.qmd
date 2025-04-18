@@ -1,0 +1,6 @@
+---
+order: 4
+output-file: eeg
+title: Task EEG
+subtitle: When subjects are performing a task and EEG is recorded
+---

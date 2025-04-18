@@ -1,0 +1,6 @@
+---
+order: 3
+output-file: compressed-datasets
+title: Compression
+subtitle: Reducing the size of BDM datasets
+---

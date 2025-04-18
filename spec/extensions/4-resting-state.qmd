@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 output-file: resting-state
 title: Resting state
 subtitle: When subjects are not performing a task
