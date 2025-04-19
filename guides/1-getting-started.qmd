@@ -99,7 +99,7 @@ Events
 : Events are the lowest level of data in BDM. They represent the raw data collected during an activity. For example, in a `DigitSpan` activity, an event might be a single digit that the subject has to remember and the timestamp when the digit was presented. Events are stored in the `events.csv` file within the activity folder.
 
 Trials
-: Trials are a higher level of data that represent a single attempt at an activity accompanied by the subject's response and experimenter's interpretation of the response. For example, in a `DigitSpan` activity, a trial might be a sequence of digits that the subject has to remember. Trials are stored in the `trials.csv` file within the activity folder.
+: Trials are a higher level of data that represent a single attempt at an activity accompanied by the subject's response and experimenter's interpretation of the response. For example, in a `DigitSpan` activity, a trial might be a sequence of digits that the subject has to remember. Trials are stored in the `trials_*.csv` file within the activity folder.
 
 Models
 : Models are the highest level of data that represent the data analysis and interpretation of the trials. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more comples one, like a deep learning model that predicts the subject's performance.
@@ -109,7 +109,7 @@ The main data in behavioral data analysis is the trials. Events are the raw data
 
 ## Activities data
 
-See the [*<i class="bi bi-grid-3x3"></i> Trial* table](/spec/trials/1-trial.qmd) for more information. Trials are stored in the `trials.csv` file within the activity folder and can be accompanied by the optional supporting tables for stimuli, options, etc.
+See the [*<i class="bi bi-grid-3x3"></i> Trial* table](/spec/trials/1-trial.qmd) for more information. Trials are stored in the `trials_*.csv` file within the activity folder and can be accompanied by the optional supporting tables for stimuli, options, etc.
 
 
 Within the activity folders, you will find the data files collected during the activity. The structure of the activity folder is defined in the BDM Trials schema. Here is an example of a `DigitSpan` activity folder:
@@ -117,12 +117,12 @@ Within the activity folders, you will find the data files collected during the a
 ```{.default .file-tree}
 ...
 DigitSpan/
-├── trials.csv
-├── stimuli.csv
-└── options.csv
+├── trials_1.csv
+├── stimuli_1.csv
+└── options_1.csv
 ```
 
-- The `trials_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is optional 1-indexed and represents how many times the agent has initiated the activity. If there was only one attempt to complete the activity, then it can be named `trials.csv`. If there were multiple attempts, then the file can be named `trials_1.csv`, `trials_2.csv`, etc. For example, `agent_01` has two attempts to complete the `DigitSpan` activity in session 1, so there are two files: `trials_1.csv` and `trials_2.csv`.
+- The `trials_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is 1-indexed suffix and partitions data by how many times the agent has initiated the activity, e.g., first attempt, second attempt, etc. The idea is similar to [partitioning in Apache Arrow datasets](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html). If there was only one attempt to complete the activity, then it can be named `trials_1.csv`. If there were multiple attempts, then the file can be named `trials_1.csv`, `trials_2.csv`, etc. <br />In the example above, data for `agent_01` includes two attempts for the `DigitSpan` activity in session 1, so there are two files: `trials_1.csv` and `trials_2.csv`.
 - The dataset is in incomplete in terms of having the same data for all the agents. Data for the second subject (`agent_02`) does not include a second session, so there is no `session_02` folder for this subject.
 
 

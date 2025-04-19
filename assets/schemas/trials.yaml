@@ -117,19 +117,20 @@ classes:
         recommended: true
         description: The order of the activity within the session.
       attempts:
-        range: AttemptData
+        range: Data
         multivalued: true
         inlined: true
         inlined_as_list: true
+        description: A partition of the data that represents a single attempt of the activity by the agent in the session.
   AttemptData:
     description: A collection of trial responses for a single agent in a single session.
     comments:
-      - This is a collection of trials for a single agent in a single session.
+      - If there is only one attempt, the `attempt_index` is 1.
     attributes:
       attempt_index:
         range: integer
-        minimum_value: 0
-        required: false
+        minimum_value: 1
+        required: true
         recommended: true
         description: The number of times this particular activity has been initiated in the past by this particular agent in this session.
       trials:
