@@ -12,3 +12,4 @@ _site/
 
 .bkp
 .$*.drawio.bkp
+tmp/
