@@ -122,7 +122,7 @@ DigitSpan/
 └── options_1.csv
 ```
 
-- The `trials_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is 1-indexed suffix and partitions data by how many times the agent has initiated the activity, e.g., first attempt, second attempt, etc. The idea is similar to [partitioning in Apache Arrow datasets](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html). If there was only one attempt to complete the activity, then it can be named `trials_1.csv`. If there were multiple attempts, then the file can be named `trials_1.csv`, `trials_2.csv`, etc. <br />In the example above, data for `agent_01` includes two attempts for the `DigitSpan` activity in session 1, so there are two files: `trials_1.csv` and `trials_2.csv`.
+- The `trials_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is 1-indexed suffix and partitions data by how many times the agent has initiated the activity, e.g., first attempt, second attempt, etc. The idea is similar to [partitioning in Apache Arrow datasets](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html). <br />If there was only one attempt to complete the activity, then it can be named `trials_1.csv`. If there were multiple attempts, then the file can be named `trials_1.csv`, `trials_2.csv`, etc. <br />In the example above, data for `agent_01` includes two attempts for the `DigitSpan` activity in session 1, so there are two files: `trials_1.csv` and `trials_2.csv`.
 - The dataset is in incomplete in terms of having the same data for all the agents. Data for the second subject (`agent_02`) does not include a second session, so there is no `session_02` folder for this subject.
 
 
