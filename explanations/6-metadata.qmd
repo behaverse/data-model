@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 output-file: metadata
 title: Metadata
 subtitle: Additional information about the data

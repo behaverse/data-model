@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 7
 output-file: naming
 title: Naming things
 subtitle: Naming conventions for variables, columns, files, and values

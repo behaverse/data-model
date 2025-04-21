@@ -5,8 +5,6 @@ title: Conventions
 subtitle: Data and code conventions
 ---
 
-## Introduction
-
 Style guides and standards are useful in that they promote consistency and quality while facilitating the development of efficient workflows, automation, and specialized software. They can apply to data and code[^1], but also to other aspects of research, such as documentation, naming conventions, and even the design of experiments.
 
 [^1]: [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.goodreads.com/book/show/3735293-clean-code)

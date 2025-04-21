@@ -2,7 +2,7 @@
 order: 4
 output-file: data
 title: Data
-subtitle: Common data terms, data formats, and naming conventions
+subtitle: Common data terms
 ---
 
 Data can be described using terms that indicate how it has been "collected", "stored", "organized", or "processed". As data is the core of BDM, it is worth describing such terms quickly to make explicit what they mean in the context of BDM.
@@ -65,6 +65,12 @@ In BDM, native data should not be shared if one has the ability to extract and s
 
 In short then, "don't share original unformatted data in its native format", instead share well documented, well formatted raw data.
 
+## Versioning data
+
+Datasets may change across time as new data is collected or errors are corrected; it is thus necessary to version datasets. We do not recommend appending version labels to file names as this raises many issues (e.g., do we append the updated version label to all files? Only the files that changed? Only the root directory?). Instead, we recommend using the data version control system [DVC](https://dvc.org/) and to encode the version information in the metadata of the dataset. Indeed, [schema.org](https://schema.org) or [calver.org](https://calver.org) allow to encode such information and popular data sharing platforms, such as [Zenodo](https://zenodo.org/), display that information.
+
+
+
 ## Tidy tables
 
 > "Tidy data allows one to start analyzing the data right away"
@@ -88,74 +94,3 @@ Although these rules seem straightforward, there are use cases where it is not o
 In addition to these tidy data rules, we recommend the following rules for sorting rows and columns within a table. When rows refer to events, rows should be ordered in chronological order (e.g., the first row of a response table would indicate the first response of the first activity in the first session made by that subject). When observations do not refer to events but instead entities, the observations should be ordered either alphabetically by the names of the main entity (e.g., subject_index, instrument_name) or by the key measurement of the dataset (e.g., gdp in descending order in a gdp dataset).
 
 Regarding the ordering of the columns, there is an order for categories of columns within the table, and an order of columns within a category. In general, for behavioral data, we keep to the left of the table variables that are used for scoping (e.g., to find or filter particular observations; e.g., subject_index, session_index, trial_index, trial_datetime); next we have variables describing a particular situation (e.g., stimulus_description, option_id), variables describing subjects's responses (e.g., response_time) and variables describing the evaluation of the responses (this order may correspond to the order of events within a trial; see spec). Within such categories, variables should be grouped when they are semantically related, from more abstract to more concrete, or in alphabetic order. For example, it would make sense to group all the variables that describe a `block` and to order them as `block_index` \> `block_type` \> `block_name`.
-
-## Files and folders
-
-### File formats
-
-In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over proprietary file formats (e.g., `.mat`, `.sav`, `.docx`). Open formats ensure that the data is accessible to a wide audience. Specifically, use the following formats:
-
-| Data Type | Recommended Format | When? |
-|------------------------|----------------------------|---------------------|
-| Tabular data | `.csv` | Always |
-| Structured data | `.json` | For machine-focused applications |
-|  | `.yml` | When human readability and editability matter |
-| Text | `.md` | Always in Markdown, except for official, static, or administrative documents which may be in PDF |
-
-Do NOT save the same data in multiple output formats (e.g., `.csv` and `.sav`) to avoid redundancy and version mismatches. However, lossless data conversion must be used if converting data to other formats.
-
-## Naming files and folders
-
-We want file and folder names to be short and meaningful. Instead of encoding numerous pieces of information in the filename (e.g., the subject index, the session, the task) we prefer short names that describe only what type of data a given file contains, leaving it to the names of the parent directories that contain that file to encode its context. Conceptually, this is equivalent to calling a file `README.md` within a project folder rather than calling it `project_subproject_README.md`.
-
-There are no widespread standards or styleguides regarding how to name data files and folders. Some use lower case with hypens (e.g., the uses `mad-men` and `masculinity-survey` in [FiveThirtyEight](https://github.com/fivethirtyeight/data)) or underscores (e.g., `arxiv_qa`) or a mixture (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz` in [BIDS](https://bids-specification.readthedocs.io/)). Others use uppercase, either with hyphens, underscores or camelCase/PascalCase (e.g, `CIFAR10` in [PyTorch](https://pytorch.org/vision/stable/datasets.html), `BIG5` in [Open Psychometrics](https://openpsychometrics.org/_rawdata/))or a mixture thereof (e.g., `CoT-Collection`). It is not uncommon to find organizations that mix different naming styles (e.g., [Kaggle](https://www.kaggle.com/datasets), [HuggingFace](https://huggingface.co/datasets), [R](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html)). Furthermore, some people seem to distinguish the name of a dataset from the name of the corresponding file or folder (e.g., the ["Fashion-MNIST"](https://github.com/zalandoresearch/fashion-mnist) dataset is stored as "fashion-mnist").
-
-Perhaps the reason for this state of affairs is that a dataset is subject to multiple constraints:
-
-- When a dataset becomes a package or repository or module, the dataset must follow the corresponding conventions (e.g., `fashion-mnist`).
-- Datasets may contain files and folders that are subject to their own conventions, e.g., `README.md` file.
-- Data files may be related to variable names and to code; in which case they must form valid variable names, e.g., no spaces or hypens.
-
-
-Within BDM we use following styling rules: 
-
- - Data and filenames can only include lowercase letters, numbers, underscores, and hyphens (except for common files, e.g., README.md).
- - Dataset names follow the convention of repository names (i.e., no underscores).
- - Data files and code-related files have names that are valid variable names (e.g., under PEP8 in Python).
- - Hyphens and underscores are used for human readability, not to encode structural relationships (e.g., key-value pairs or entity_feature).
-
-
-We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `dataset/data/subject_001/session_1/response.csv` is preferred over `dataset/data/subject_001/subject-001_session-1_response.csv` as it is shorter and yet contains the same information.
-
-We also do not recommend including data in the filenames (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz`, `2019_`) as this data should be either accessible in the data or obvious from the context. 
-
-Here are a few examples of file and folder names that follow these rules:
-
--   `masculinity-survey/`
--   `big-5/`
--   `response.csv`
--   `subject_001/`
-
-
-## Naming datasets
-
-There are four main strategies to name datasets; they focus respectively on:
-
-- The project name (e.g., the [ABCD (Adolescent Brain Cognitive Development) dataset](https://abcdstudy.org/scientists/data-sharing/));
-- the name of the data provider (e.g., `CIFAR-10` from the Canadian Institute For Advanced Research);
-- the data content (e.g., `election-forecasts-2022`);
-- a related publication (e.g., the `Harmann74.cor` dataset refers to the publication "Harman, H. H. (1976) Modern Factor Analysis, Third Edition Revised, University of Chicago Press, Table 7.4.").
-
-For simple datasets that focus on a specific type of observation (e.g., air quality data) it makes sense to use content-based filenames (e.g., `air-quality`). In such cases, one should use meanifngful and explicit names. However, for more complex datasets such a naming scheme is typically not possible.
-
-In general we recommend that datasets be published (e.g., on Zenodo) and to name the corresponding datasets by referring to the last name of the first author and the date of the publication (e.g., `steyvers2020`).
-
-For bigger projects and datasets, it makes sense however to use the project name instead (e.g., `abcd2021`).
-
-We do not recommend using meaningless strings (e.g., `g9zkf`) or names that are not specific (e.g., `titanic`, `sleep`, `dolphin`) beyond simple toy datasets.
-
-We do not recommend including the version in the dataset name (see below.)
-
-## Versioning data
-
-Datasets may change across time as new data is collected or errors are corrected; it is thus necessary to version datasets. We do not recommend appending version labels to file names as this raises many issues (e.g., do we append the updated version label to all files? Only the files that changed? Only the root directory?). Instead, we recommend using the data version control system [DVC](https://dvc.org/) and to encode the version information in the metadata of the dataset. Indeed, [schema.org](https://schema.org) or [calver.org](https://calver.org) allow to encode such information and popular data sharing platforms, such as [Zenodo](https://zenodo.org/), display that information.

@@ -1,7 +1,7 @@
 ---
 order: 1
 output-file: cognitive-tests
-title: Cognitive tests
+title: Custom tests
 subtitle: Custom tasks to assess specific cognitive functions
 ---
 
