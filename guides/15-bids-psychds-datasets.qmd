@@ -1,8 +1,0 @@
----
-order: 15
-output-file: bids-psychds-datasets
-title: BIDS and PsychDS datasets
-subtitle: How to convert BIDS datasets into BDM datasets
----
-
-- [ ] Convert BIDS beh or PsychDS into BDM

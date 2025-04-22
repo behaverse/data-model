@@ -106,20 +106,19 @@ website:
           contents:
             - auto: "spec/general/*.qmd"
         - section: "Events"
-          icon: 0-square-fill
+          icon: database
           contents:
             - href: spec/events/index.qmd
               text: 'Overview'
         - section: "Trials"
-          icon: 1-square-fill
+          icon: database
           contents:
             - href: spec/trials/index.qmd
               text: '<i class="bi bi-grid"></i> Overview'
             - auto: spec/trials/*.qmd
         - section: "Models"
-          icon: 2-square-fill
+          icon: database
           contents:
-            - "<div class='callout callout-style-minimal'><i class='bi bi-hammer'></i> Work in Progress</div>"
         - section: "Extensions"
           icon: puzzle
           contents:

@@ -41,13 +41,13 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 
 ***Some particular structures are unique to the type of data or activity.***
 
-[**<i class="bi bi-0-square-fill"></i> Events**](events/index.qmd)
+[**<i class="bi bi-database"></i> Events**](events/index.qmd)
 : The raw data that are collected during the experiment. They are the most detailed data and are typically sufficient for reproducing the original experiment.
 
-[**<i class="bi bi-1-square-fill"></i> Trials**](trials/index.qmd)
+[**<i class="bi bi-database"></i> Trials**](trials/index.qmd)
 : At its core, BDM defines trials data that are derived from the events. They are task-specific and typically designed to capture the main features of the scientific experiment.
 
-<i class="bi bi-2-square-fill"></i> Models
+<i class="bi bi-database"></i> Models
 : The model parameters that are derived from the trial.  They generally address the research questions and are used for downstream data summary, analysis, publication, or visualization.
 
 :::
