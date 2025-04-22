@@ -1,6 +1,7 @@
 id: https://w3id.org/bdm/trials/
 name: bdmt
 prefixes:
+  schema: http://schema.org/
   linkml: https://w3id.org/linkml/
   bdmt: https://w3id.org/bdm/trials/
   studyflow: https://w3id.org/studyflow/
@@ -19,6 +20,13 @@ enums:
           description: There are two independent tasks that need to be completed in parallel.
       - compound:
           description: The task requires multiple successive stages or involves tasks that are dependent/coupled.
+  StimulusTypeEnum:
+    enum_uri: bdmt:StimulusTypeEnum
+    permissible_values:
+      - message:
+          description: The stimulus is a message shown to subjects (e.g., task instructions).
+      - question:
+          description: The stimulus may consist of text, images and/or sounds; they require subjects to make a decision based on the content of the stimulus.
 
 subsets:
   KeySubset:
@@ -37,11 +45,9 @@ subsets:
     description: Utility elements that are used in multiple classes.
 
 types:
-  JobType:
-    uri: linkml:string
-    base: str
-    description: Human-readable text to describe the type of job or task being performed by the agent.
-
+  URL:
+    base: uri
+    uri: schema:URL
 classes:
   Trial:
     mixins:
@@ -61,8 +67,6 @@ classes:
         key: true
 
     slots:
-      - trial_id
-      - episode_index
       - study_name
       - group_name
       - agent_id
@@ -171,6 +175,22 @@ classes:
       option_id:
         key: true
     slots:
+      - response_id
+      - index_in_trial
+      - object_id
+      - onset
+      - duration
+      - panel_id
+      - x_screen
+      - y_screen
+      - x_viewport
+      - y_viewport
+      - description
+      - value
+      - source
+      - source_type
+      - index_in_source
+      - animation
 
   Input:
     todos:
@@ -203,7 +223,11 @@ classes:
       timeline_id:
         key: true
     slots:
-      - instrument_name
+      - id
+      - name
+      - version
+      - description
+      - url
 
   # MIXIN helpers
   TaskMixin:
@@ -226,6 +250,8 @@ classes:
       - job_repeat
       - block_index
       - block_name
+      - trial_index
+      - episode_index
       - block_type
       - transformation_name
       - trial_index
@@ -256,10 +282,21 @@ classes:
         range: Stimulus
         multivalued: true
         inlined: false
+      stimulus_index:
+        multivalued: true
+      stimulus_onset:
+        multivalued: true
+      stimulus_index_in_source:
+        multivalued: true
+      stimulus_position_index:
+        multivalued: true
+      stimulus_description:
+        multivalued: true
+      stimulus_role:
+        multivalued: true
+
     slots:
-      - stimulus_index
       - stimulus_type
-      - stimulus_onset
       - stimulus_panel_count
       - stimulus_structure
       - stimulus_structure_source_type
@@ -268,10 +305,6 @@ classes:
       - stimulus_count
       - stimulus_source_type
       - stimulus_source
-      - stimulus_index_in_source
-      - stimulus_position_index
-      - stimulus_description
-      - stimulus_role
   OptionMixin: 
     mixin: true
     slot_usage:
@@ -345,32 +378,45 @@ classes:
 
 slots:
   id:
+    range: string
+    rank: 1
+    description: An identifier field.
+  name:
+    range: string
+    description: A human-readable text.
+  version:
+    range: string
+    description: A version number or identifier.
+  url:
+    exact_mappings:
+      - schema:URL
+    range: URL
+    description: A URL or link to the resource.
   response_id:
     in_subset:
       - KeySubset
     description: A unique identifier assigned to responses in temporal order.
     comments:
-      -  In trials with multiple responses, the `id` is unique for each response.
-  trial_id:
-    in_subset:
-      - TaskSubset
-    description: An identifier assigned to the trial.
-    comments:
-      - In trials with multiple responses, the `trial_id` is the same for those responses.
-    recommended: true
+      - Larger ids correspond to more recent responses that occurred later in time. 
+      - This id is unique within the @Trials table. In trials with multiple responses, this identifier is different for each response.
   trial_index:
     exact_mappings:
       - bdmt:trial_id
     in_subset:
       - TaskSubset
+    description: Sequential identifier representing number of times transformation rule to the events occurred.
+    comments:
+      -  It increases with each re-computation of the trial based on updated or newly received events.
+    recommended: true
     range: integer
     minimum_value: 1
-    recommended: false
     required: false
   episode_index:
     in_subset:
       - TaskSubset
     description: Episodes are temporal binning within the trial. No one really knows what this means.
+    notes:
+      - "From spec: Episodes are temporally distinct bins of time (no overlap and discrete). The binning of the time into successive episodes depends on the task; it is mostly used and necessary to group data in cases where two distinct trials occurred at the same time (e.g., dual N-back)."
     range: integer
     minimum_value: 1
     recommended: true
@@ -385,14 +431,14 @@ slots:
   group_name:
     in_subset:
       - ContextSubset
-    description: Subjects may be assigned to different groups. Typically, different groups will have different experiences within a study.
+    description: Subjects may be assigned to different groups. Typically, different groups of participants will have different experiences within a study.
     range: string
     recommended: true
     required: false
   agent_id:
     in_subset:
       - ContextSubset
-    description: An identifier assigned to the agent (typically a person) generating the responses.
+    description: A unique identifier assigned to the agent (typically person) generating the responses. This identifier tracks their participation and responses throughout the study. See @Subjects table.
     range: string
     recommended: true
     required: true
@@ -465,7 +511,7 @@ slots:
     range: integer
     minimum_value: 1
   job_type:
-    range: JobType
+    range: string
     recommended: true
     in_subset:
       - TaskSubset
@@ -507,8 +553,7 @@ slots:
     todos:
       - in the trials table, this is a list of numbers.
   stimulus_type:
-    todos:
-      - define range and enums if any
+    range: StimulusTypeEnum
   stimulus_onset:
     range: float
   stimulus_panel_count:
@@ -547,11 +592,20 @@ slots:
   input_interface_type:
   input_action_type:
   input_count:
+    range: integer
 
   expected_response_option_index:
+    range: integer
+    multivalued: true
+
   expected_response_description:
+    range: integer
+    multivalued: true
+
   response_structure:
   response_count:
+    todos:
+      - if each row is just one response, then this will be always 1! Probably index the table by trial_index.
   response_option_index:
   response_description:
   response_numeric:
@@ -624,3 +678,5 @@ slots:
   is_object_enabled:
   object_state:
   animation:
+  value:
+    description: A numeric value associated with a particular response option; typically indicating the "worth" of a response (e.g., `value=1` for the correct response).
