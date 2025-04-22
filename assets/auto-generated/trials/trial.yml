@@ -1,6 +1,6 @@
 - categories:
   - Key
-  variable_name: id
+  variable_name: response_id
   required: true
   data_type: PRIMARY KEY
   description: A unique identifier assigned to responses in temporal order, meaning
@@ -17,9 +17,7 @@
   variable_name: study_name
   required: true
   data_type: string
-  description: 'The name of the study the subjects participated in.
-
-    '
+  description: The name of the study or experiment.
 - categories:
   - Context
   variable_name: group_name
@@ -205,7 +203,7 @@
     - `instruction`: Presents written and/or visual instructions to the subject.'
 - categories:
   - Task
-  variable_name: projection_name
+  variable_name: transformation_name
   required: true
   data_type: string
   description: 'Refers to the specific events-to-trials function used to construct
@@ -225,17 +223,27 @@
     '
 - categories:
   - Task
-  variable_name: trial_id
+  variable_name: trial_index
   required: true
   data_type: id
-  description: Sequential identifier representing the application count of the projection
-    rule to the events occured. It increases with each re-computation of the trial
-    based on updated or newly received events.
+  description: Sequential identifier representing number of times transformation rule
+    to the events occurred. It increases with each re-computation of the trial based
+    on updated or newly received events.
   range: Preferably 1-based integer index.
   notes:
   - .tip This field emphasizes order of trials and alignment with projection-based
     definition of trials. A more complete name would be `projection_index` or `pojected_trial_index`.
     For brevity, BDM uses `trial_id` instead.
+- categories:
+  - Task
+  variable_name: episode_index
+  required: false
+  data_type: index
+  description: Episodes are temporally distinct bins of time (no overlap and discrete).
+    The binning of the time into successive episodes depends on the task; it is mostly
+    used and necessary to group data in cases where two distinct trials occurred at
+    the same time (e.g., dual N-back).
+  range: 1-based interger index.
 - categories:
   - Task
   variable_name: trial_start_datetime
@@ -616,8 +624,8 @@
   data_type: integer
   description: The index of the option the participant chose, starting from 1.
   notes:
-  - "response_index = 0 means the subject chose none of the options (e.g., a \u201C\
-    no-go\u201D response in a Go/No-go task)."
+  - "response_option_index = 0 means the subject chose none of the options (e.g.,\
+    \ a \u201Cno-go\u201D response in a Go/No-go task)."
   - response_index can be directly compared to expected_response_index.
   - response_index refers to an entry in the Option table (i.e., there is no  Response
     table).

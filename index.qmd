@@ -4,6 +4,7 @@ subtitle: Unified dataset format for cognitive tests and questionnaires
 toc: false
 pagetitle: "Behaverse Data Model (BDM)"
 title-prefix: ""
+code-overflow: wrap
 ---
 
 There are increasing amounts of behavioral data freely available on the internet. Metadata and semantic web make it easier to find them. However, there are large inconsistencies in the structure of those datasets, the names used for the variables, and even in the meaning of common terms. These inconsistencies make it unnecessarily hard to find and use datasets[^1] and hinder the development of effective tools.

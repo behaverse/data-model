@@ -19,9 +19,9 @@
   variable_name: trial_id
   data_type: id
   required: false
-  description: Refers to the `trial_id` in the @Trial table and indicates in which
-    trial this stimulus was shown.
-  range: '`trial_id` in the @Trial table of the same agent/session/activity'
+  description: Refers to the `id` in the @Trial table and indicates in which trial
+    this stimulus was shown.
+  range: '`trial_id` in the @Trial table of the same agent/session/activity/attempt'
 - categories:
   - Context
   variable_name: response_id
@@ -29,7 +29,7 @@
   required: true
   description: Refers to the `response_id` in the @Trial table and indicates for which
     response this stimulus was shown.
-  range: '`response_id` in the @Trial table of the same agent/activity'
+  range: '`response_id` in the @Trial table of the same agent/session/activity/attempt'
 - categories:
   - Context
   variable_name: object_id
