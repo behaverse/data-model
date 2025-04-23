@@ -599,7 +599,7 @@ slots:
     multivalued: true
 
   expected_response_description:
-    range: integer
+    range: string
     multivalued: true
 
   response_structure:

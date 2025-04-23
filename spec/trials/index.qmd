@@ -3,7 +3,8 @@
 title: <i class="bi bi-database"></i> Trials
 subtitle: Trials are the main features of the scientific experiment
 toc: false
-listing: 
+listing:
+  id: trial-tables-listing
   template: ../../assets/templates/trial-tables-listing.ejs
   sort: "order"
   categories: false
@@ -18,4 +19,15 @@ A trial is a single instance of a participant interacting with a task. It contai
 ::: {.callout-tip appearance="simple"}
 We use <i class="bi bi-grid-3x3"></i> icon to refer to specific tables. For example the **<i class="bi bi-grid-3x3"></i> Trial** table or the **<i class="bi bi-grid-3x3"></i> Stimulus** table.
 :::
+
+
+::: {#trial-tables-listing}
+:::
+
+<hr />
+
+Here is a diagram of the trial-related tables. The diagram shows the relationships between the tables and their attributes. The **<i class="bi bi-grid-3x3"></i> Trial** table is the main table.
+
+
+![](../../assets/schemas/trials_uml.png){width="100%" .lightbox .zoomable}
 
