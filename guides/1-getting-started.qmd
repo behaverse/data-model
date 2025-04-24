@@ -17,10 +17,6 @@ Behaverse Data Model (BDM for short) is a dataset architecture that aims to prov
 
 Whether you're an individual scientist or part of a larger lab, BDM can help you build a dataset that is easy to understand, maintain, and share with others. BDM is opinionated but designed to be flexible and extensible, so you can adapt it to your specific needs.
 
-
-## What is a dataset and how to organize it using BDM
-
-
 ## How does a BDM dataset look like?
 
 A BDM dataset is a collection of files and directories that follow a specific structure. Here is an example of a simple BDM dataset:
@@ -42,9 +38,13 @@ The `instruments/` folder contains parameters for the tasks, instructions, and q
 
 ## Data files
 
-The `data/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA_FILE>`.
+The `data/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA_FILE>`. This [directory-based](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html) [partitioning](https://en.wikipedia.org/wiki/Partition_(database)) allows for easy access to the data files and makes it easier to manage the data.
 
-This folder also contains additional data for the studyflow, stimuli, and other data types. For example, the `data/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
+The `data/<AGENT>/` folder contains the data for a single human subject or computer agent, and the `data/<AGENT>/<SESSION>/` folder contains the data for a single session. Each session can contain multiple activities, and each activity can contain data files for several attempts.
+
+Th `data/<AGENT>/` folder also contains additional data for the [studyflows](../spec/general/3-studyflows.qmd) and other data types.
+
+For example, the `data/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
 
 ```{.default .file-tree}
 ...

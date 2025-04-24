@@ -10,6 +10,6 @@ listing:
     - "*.qmd"
 ---
 
-Here, you can find practical guidelines to learn BDM. You don't need to fully understand BDM to apply it to your data. Once you find an idea that seems useful, put it into practice. You can always iterate between your data and BDM documentation, and return to it when you need more clarity about the data.
+Here, you can find practical guidelines to learn BDM and apply it to your data.
 
-
+You don't need to fully understand BDM to apply it to your data. Once you find an idea that seems useful, put it into practice. You can always iterate between your data and BDM documentation, and return here when you need more clarity.

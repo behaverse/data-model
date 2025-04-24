@@ -1,0 +1,55 @@
+---
+order: 3
+output-file: organize-your-data
+icon: bi bi-reception-2
+difficulty: EASY
+title: Organize your data
+subtitle: How to convert a behavior data table into a BDM dataset
+---
+
+Many experimental design tools outputs a single data table that contains all the data collected during a study. If this is the case and you want to convert this data file to BDM, follow the steps below.
+
+## Prerequisites
+- Data file is CSV or any other format that can be read and manipulated.
+- The data table contains all the necessary columns for BDM, including:
+  - Unique identifier for each subject (e.g., subject id)
+  - Cognitive tests or questionnaires names
+  - Observations (e.g., responses, ratings, etc.)
+  - Any other relevant metadata, e.g., timestamps, conditions, etc.
+
+
+## Dataset folder
+
+Create a new folder for your dataset, e.g., `my-dataset/`. You will probably use some internal project names for this folder, but it helps a lot with discoverability if you use a descriptive name and apply a common naming convention (e.g., as in git repository names: `lower-case`).
+
+This `my-dataset/` is your dataset folder. Within this folder, create the following structure:
+
+1. Create a `README.md` file in the main directory of the dataset folder. The file will contain human-readable description (as markdown) and machine-readable metadata of the dataset (as YAML front matter).
+2. Create a `LICENSE` file in the main directory of the dataset folder. This file should contain the license under which the dataset is released. You can use the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/) or any other license of [your choice](https://choosealicense.com/).
+3. Create an `agents.csv` file in the main directory of the dataset folder. This file should contain information about the subjects in the dataset. From here, we will call both human subjects and computer agents "agents". The file should contain at least the following columns:
+    - `id`: Unique identifier for each subject/agent, e.g., `agent_1`, `agent_2`, etc.
+
+## Data folder
+
+Split your data table into one table per activity per subject (e.g., group the data by ['agent_id', 'task_name']) and save it in the corresponding subject's folder as follows:
+
+- For each table, create a `my-dataset/data/<agent_id>/<session_id>/<activity_id>/` folder.
+  - If there is only one session, create a folder for the session in the agent's folder, e.g., `my-dataset/data/agent_1/session_1/`. If there are multiple sessions, create one folder for each session in the agent's folder.
+- Store the data files in the corresponding activity's folder. The data file should be named as `trials_1.csv` for the [Trial table](#) (the suffix `_1` means first attempt). For additional supplementary data,  use the same naming format: `stimuli_1.csv` for the [Stimulus table](#), etc.
+- If the agent attempted some activities multiple times, create separate files for each attempt, e.g., `trials_1.csv` for the first attempt, `trials_2.csv` for the second attempt, etc. The files should be named as `trials_1.csv`, `trials_2.csv`, etc.
+
+If the agent initiated an activity multiple times, create separate files for each attempt. For instance, you could name the first attempt `trials_1.csv`, the second attempt `trials_2.csv`, and so on.
+
+
+## Studyflow
+To describe your experiment, you can use the [Studyflow Modeler](https://behaverse.org/studyflow-modeler) to create a studyflow. It generates a `studyflow.xml` file that you can put in the root folder of your dataset.
+
+:::{.callout-note appearance="simple"}
+If you want to add subject-specific information (for example if they are assigned to only one of the many conditions), you can do this in the `studyflow.csv` file inside the subject's folder. The file corresponds to one instance of running the studyflow.
+:::
+
+## Instruments
+- Create an instrument file for each task/questionnaire in the `instruments/` folder. Each instrument file should contain the following information:
+    - Name of the instrument
+    - Description of the instrument
+    - Any other relevant metadata, e.g., questions, parameters, etc.

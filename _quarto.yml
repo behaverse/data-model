@@ -93,7 +93,7 @@ website:
 
       - section: "Guides"
         contents:
-          - text: Overview
+          - text: <i>Overview</i>
             href: guides/index.qmd
           - auto: "guides/*.qmd"
       - "---"
