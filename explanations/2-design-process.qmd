@@ -34,14 +34,42 @@ One of the primary benefits of applying DDD to behavioral data is that it serves
 
 Unlike rigid standards, flexibility of DDD allows for cost-effective and optional opt-in for some of its features. Ontologies and standards that are purely based on domain knowledge often lead to unstructured, raw knowledge. DDD, on the other hand, addresses the need for developing tools to conduct research, and provides a language that bridges the gap between domain experts and technical experts.
 
+### Events
+
+### Trial: Aggregate root
+
+Trial is the main aggregate root of the BDM. It represents a single instance of an agent performing a task, including all the data collected during that instance. The Trial aggregate includes various components, such as: Responses, Stimuli, Options, Outcomes, Evaluation, etc. These components are essential for understanding the context and results of the trial.
+
+### Core domain concepts
+
+- Response
+- Stimulus
+- Option
+
+### Supporting domain concepts
+
+- Agent
+- Task (task-specific events-to-trials mapping)
+- Experimental Design (e.g., adaptive parameters, conditions, etc)
+- Instruments (i.e., the environment in which the task is performed)
+
+
 ## Data Lakehouse
 
 A missing but important aspect in behavioral datasets is how to make analysis of data easy, cost-effective, and consistent while keeping the harmonizing/federation of data straightforward. For this reason, BDM relies on data lakehouse architecture which, unlike previous approaches, provides a lost-cost ingestion/storage/consumption based on a schema-on-read. Lakehouse allows, during study design and data collection, to only focus on the ubiquitous language of trials and events and later one, during the analysis and modeling, to apply loosely-coupled techniques to standardize datasets.
 
 Overall, considering events and trials as the ubiquitous domain concepts and data lakehouse as the harmonization approach make it possible to scale and manage behavioral analysis systems. New challenges involve storage, debugging, increased  traffic, and extending the data architecture to new tasks and modalities.
 
+### Data partitioning
 
-## Levels of data
+### Identical data structure
+
+### Data governance
+
+- Versioning
+- Metadata
+
+### Levels of data
 
 Behavioral experiments require and produce a variety of interrelated data, from instructions shown to the subjects, task parameters, and recorded interactions, to aggregated trials data that are interpretable in accord with the scientific question. If we consider cognitive tasks as a set of interactions that participants do, trial only captures the final state of those interactions. Events on the other hand allow us to reconstruct the history of interactions. However, events are not commonly used during the analysis and most researchers are only interested in the final states of events, i.e., trials.
 
