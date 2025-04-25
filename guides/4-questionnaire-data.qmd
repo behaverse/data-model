@@ -15,7 +15,7 @@ Despite the central role of questionnaires in social sciences, a key impediment 
 
 
 3. separate data into activity-specific files nested within subject specific folders (e.g., `agent_id/session_id/questionnaire_id/...`);
-2. keep the main information in one table (`trials.csv`) and delegate further details to supplementary tables (`stimuli.csv`, etc);
+2. keep the main information in one table (`trial_*.csv`) and delegate further details to supplementary tables (`stimulus_*.csv`, etc);
 1. focus on the interaction between one person and one stimulus; and consider questions and corresponding responses as a set of trials (i.e., each question is a trial with specific stimulus, options, and response).
 
 For example, here is a minimal dataset structure for a study with two subjects completing three questionnaires:
@@ -27,19 +27,19 @@ study/
 └── data/
     ├── agent_1/
     │   ├── questionnaire_1/
-    │   │   └── trials_1.csv
+    │   │   └── trial_1.csv
     │   ├── questionnaire_2/
-    │   │   └── trials_1.csv
+    │   │   └── trial_1.csv
     │   └── questionnaire_3/
-    │       └── trials_1.csv
+    │       └── trial_1.csv
     └── agent_2/
         ├── questionnaire_1/
-        │   └── trials_1.csv
+        │   └── trial_1.csv
         ├── questionnaire_2/
-        │   └── trials_1.csv
+        │   └── trial_1.csv
         └── questionnaire_3/
-            ├── trials_1.csv
-            └── trials_2.csv
+            ├── trial_1.csv
+            └── trial_2.csv
 ```
 
 
@@ -47,11 +47,11 @@ study/
 
 Each trial is a single interaction between an agent (e.g., a human participant) and a stimulus (e.g., a question). [Trial table](#) is a standalone table and contains the main information about the trial, while other supplementary tables may contain more specific information about [the agents](#), [stimuli](#) and [options](#).
 
-Within the Trial table (`trials_1.csv`), each row corresponds to a single trial. A trial is identified by a unique identifier (`trial_id`) and contains main information about the agent, the stimulus (i.e., the question), the options, the response, and the evaluation of the response. Here are the variables that are typically included in the Trial table for questionnaires:
+Within the Trial table (`trial_1.csv`), each row corresponds to a single trial. A trial is identified by a unique identifier (`trial_id`) and contains main information about the agent, the stimulus (i.e., the question), the options, the response, and the evaluation of the response. Here are the variables that are typically included in the Trial table for questionnaires:
 
 :::{.callout-warning appearance="simple"}
 ## Multiple attempts
-When a questionnaire is completed multiple times by the same agent in the same session, the data is partitioned and stored in separate files for each attempt and identified by a 1-indexed numerical suffix. For example, agent_2 in the example above completed questionnaire_3 twice; the data is stored in two files: `trials_1.csv` and `trials_2.csv`. The first file contains the data from the first attempt, and the second file contains the data from the second attempt. If there is only one attempt, the data would be stored in a single file named `trials_1.csv`.
+When a questionnaire is completed multiple times by the same agent in the same session, the data is partitioned and stored in separate files for each attempt and identified by a 1-indexed numerical suffix. For example, agent_2 in the example above completed questionnaire_3 twice; the data is stored in two files: `trial_1.csv` and `trial_2.csv`. The first file contains the data from the first attempt, and the second file contains the data from the second attempt. If there is only one attempt, the data would be stored in a single file named `trial_1.csv`.
 
 The file name is important because it allows for easy identification of potentially incomplete data and the number of attempts made by the agent.
 :::

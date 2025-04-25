@@ -38,14 +38,14 @@ Unlike rigid standards, flexibility of DDD allows for cost-effective and optiona
 
 Most of the time, raw data is collected as a series of events. These events are often recorded in a transactional way, meaning that they are stored as they occur, without waiting for some final state. This approach is more convenient for software engineers, as most code is written to control user interactions and store the corresponding data.
 
-### Trial: Aggregate root
+### Trial: aggregate root
 
 Trial is the main aggregate root of the BDM. It represents a single instance of an agent performing a task, including all the data collected during that instance. The Trial aggregate includes various components, such as: Responses, Stimuli, Options, Outcomes, Evaluation, etc. These components are essential for understanding the context and results of the trial.
 
 
 Here is a diagram of the trial concept. The diagram shows the relationships between the domain-specific concepts and their attributes.
 
-![](../../assets/schemas/trials_uml.png){width="100%" .lightbox .zoomable}
+![](../assets/schemas/trials_uml.png){width="100%" .lightbox}
 
 
 

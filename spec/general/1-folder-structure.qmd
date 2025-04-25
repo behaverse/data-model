@@ -29,9 +29,9 @@ dataset/                          # <1>
 │   │   ├── studyflow.csv         # <9>
 │   │   └── session_1/            # <10>
 │   │       └── <activity>/       # <11>
-│   │           ├── trials_1.csv
-│   │           ├── stimuli_1.csv
-│   │           └── options_1.csv
+│   │           ├── trial_1.csv
+│   │           ├── stimulus_1.csv
+│   │           └── option_1.csv
 │   └── agent_002/
 │       └── ...
 │
