@@ -24,7 +24,7 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 [**Dataset Card**](general/2-dataset-card.qmd)
 : Contains metadata and information about a dataset. It also includes a codebook to describe the semantics, structure, and format of the data variables.
 
-[**Studyflow**](general/3-studyflows.qmd)
+[**Studyflows**](general/3-studyflows.qmd)
 : Describes the sequence of activities in a study.
 
 [**Instructions**](general/4-instructions.qmd)
@@ -47,8 +47,8 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 [**<i class="bi bi-database"></i> Trials**](trials/index.qmd)
 : At its core, BDM defines trials data that are derived from the events. They are task-specific and typically designed to capture the main features of the scientific experiment.
 
-<i class="bi bi-database"></i> Derived Models
-: Models that are derived from or trained on events or trials. They generally address research questions and are used for further downstream summarization, analysis, deployment, or reporting.
+<i class="bi bi-database"></i> Models
+: Summary, scores, or models that are derived from trials (or raw events). Derived models are generally used to address research questions and can be further used for downstream summarization, analysis, deployment, or reporting.
 
 :::
 
