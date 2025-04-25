@@ -8,7 +8,7 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 
 <br />
 
-![A typical workflow in an experimental study. BDM focuses on the dataset structure for events, trials, and models.](../assets/bpmn/behavioral_experiments.png){width="80%" .lightbox}
+![A typical [workflow](general/3-studyflows.qmd) in an experimental study. BDM defines the structure of the experimental design (studyflow), raw observations (events), behavioral data (trials), and downstream analyses (derived models)](../assets/bpmn/behavioral_experiments.png){width="80%" .lightbox}
 
 ::: {.grid}
 
@@ -47,8 +47,8 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 [**<i class="bi bi-database"></i> Trials**](trials/index.qmd)
 : At its core, BDM defines trials data that are derived from the events. They are task-specific and typically designed to capture the main features of the scientific experiment.
 
-<i class="bi bi-database"></i> Models
-: The model parameters that are derived from the trial.  They generally address the research questions and are used for downstream data summary, analysis, publication, or visualization.
+<i class="bi bi-database"></i> Derived Models
+: Models that are derived from or trained on events or trials. They generally address research questions and are used for further downstream summarization, analysis, deployment, or reporting.
 
 :::
 

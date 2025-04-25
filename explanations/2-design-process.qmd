@@ -23,7 +23,7 @@ These two patterns address the shortcomings of metadata-centric methods, which a
 Moreover, BDM aims to address data management during all the steps of a research workflow, from the start to its completion:
 
 
-![Main use cases for the BDM, from the start of a research project to its completion.](/assets/bpmn/bdm_use_cases.png)
+![Main use cases of the BDM, from the start of a research project to its completion](/assets/bpmn/bdm_research_flow.png)
 
 
 ## Domain-Driven Design
@@ -36,9 +36,18 @@ Unlike rigid standards, flexibility of DDD allows for cost-effective and optiona
 
 ### Events
 
+Most of the time, raw data is collected as a series of events. These events are often recorded in a transactional way, meaning that they are stored as they occur, without waiting for some final state. This approach is more convenient for software engineers, as most code is written to control user interactions and store the corresponding data.
+
 ### Trial: Aggregate root
 
 Trial is the main aggregate root of the BDM. It represents a single instance of an agent performing a task, including all the data collected during that instance. The Trial aggregate includes various components, such as: Responses, Stimuli, Options, Outcomes, Evaluation, etc. These components are essential for understanding the context and results of the trial.
+
+
+Here is a diagram of the trial concept. The diagram shows the relationships between the domain-specific concepts and their attributes.
+
+![](../../assets/schemas/trials_uml.png){width="100%" .lightbox .zoomable}
+
+
 
 ### Core domain concepts
 
@@ -49,8 +58,8 @@ Trial is the main aggregate root of the BDM. It represents a single instance of 
 ### Supporting domain concepts
 
 - Agent
-- Task (task-specific events-to-trials mapping)
-- Experimental Design (e.g., adaptive parameters, conditions, etc)
+- Task projection (task-specific events-to-trials mapping/transformation)
+- Experimental design (e.g., studyflow, adaptive parameters, conditions, etc)
 - Instruments (i.e., the environment in which the task is performed)
 
 
@@ -64,13 +73,15 @@ Overall, considering events and trials as the ubiquitous domain concepts and dat
 
 ### Identical data structure
 
-### Data governance
-
-- Versioning
-- Metadata
-
 ### Levels of data
 
 Behavioral experiments require and produce a variety of interrelated data, from instructions shown to the subjects, task parameters, and recorded interactions, to aggregated trials data that are interpretable in accord with the scientific question. If we consider cognitive tasks as a set of interactions that participants do, trial only captures the final state of those interactions. Events on the other hand allow us to reconstruct the history of interactions. However, events are not commonly used during the analysis and most researchers are only interested in the final states of events, i.e., trials.
 
 For software engineers however, it's more convenient to collect transactional events rather than waiting for some final states; most codes are written as controlling some user interactions and storing the corresponding data. Trial data is an implicit post-processing of those event data. For a full reconstruction of what happened during the task, events data is more useful and it also leads to datasets that can be used in more modern disciplines such as RL where we are interested in learning how an agent interacts with the environment, rather than the final decisions.
+
+
+### Data governance
+
+- Versioning
+- Metadata
+- MLOps
