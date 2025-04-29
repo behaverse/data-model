@@ -25,7 +25,7 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 : Contains metadata and information about a dataset. It also includes a codebook to describe the semantics, structure, and format of the data variables.
 
 [**Studyflows**](general/3-studyflows.qmd)
-: Describes the sequence of activities in a study.
+: Describes the study protocol and the sequence of activities that subjects are exposed to.
 
 [**Instructions**](general/4-instructions.qmd)
 : Provides additional guidance and help about tasks presented to subjects in a study.
