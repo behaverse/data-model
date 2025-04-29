@@ -26,8 +26,3 @@ We use <i class="bi bi-grid-3x3"></i> icon to refer to specific tables. For exam
 
 <hr />
 
-Here is a diagram of the trial-related tables. The diagram shows the relationships between the tables and their attributes. The **<i class="bi bi-grid-3x3"></i> Trial** table is the main table.
-
-
-![](../../assets/schemas/trials_uml.png){width="100%" .lightbox .zoomable}
-

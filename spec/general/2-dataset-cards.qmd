@@ -1,7 +1,7 @@
 ---
 order: 2
-output-file: dataset-card
-title: Dataset card
+output-file: dataset-cards
+title: Dataset cards
 ---
 
 There are two main sources of metadata in BDM: the dataset card and the codebook.

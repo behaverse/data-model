@@ -116,8 +116,8 @@ website:
             - href: spec/trials/index.qmd
               text: '<i class="bi bi-grid"></i> Overview'
             - auto: spec/trials/*.qmd
-        - section: "Models"
-          icon: database
+        - section: "<span title='Work In Progress' class='work-in-progress fst-italic'>Statistics & Models <i class='float-end bi bi-cone-striped'></i></span>"
+          icon: database work-in-progress
           contents:
         - section: "Extensions"
           icon: puzzle
