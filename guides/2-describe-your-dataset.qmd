@@ -81,7 +81,7 @@ codebook: codebook.md
 
 
 ::: {.callout-note appearance="simple"}
-For a complete list of fields that can be included in the dataset card, see the [dataset card specification](/spec/general/2-dataset-card.qmd).
+For a complete list of fields that can be included in the dataset card, see the [dataset card specification](/spec/general/2-dataset-cards.qmd).
 :::
 
 ## Citation and license

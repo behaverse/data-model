@@ -20,9 +20,6 @@ A trial is a single instance of a participant interacting with a task. It contai
 We use <i class="bi bi-grid-3x3"></i> icon to refer to specific tables. For example the **<i class="bi bi-grid-3x3"></i> Trial** table or the **<i class="bi bi-grid-3x3"></i> Stimulus** table.
 :::
 
-
 ::: {#trial-tables-listing}
 :::
-
-<hr />
 

@@ -41,7 +41,7 @@ dataset/                          # <1>
 ```
 1. **Dataset**: The root `dataset/` folder contains all the relevant data, metadata, and documentations. The name of this folder is a name that is assigned to the dataset (e.g., `abcd-2021`). This name follows the convention of naming version-controlled repositories as datasets are often shared via repositories: datasets names may only include lowercase letters, numbers and hyphens.
 
-2. **Dataset card**: The `README.md` file contains the general description of the dataset and embeds its metadata in its front-matter section. The metadata represents a [dataset card](2-dataset-card.qmd) rather than a codebook to describe specific instruments.
+2. **Dataset card**: The `README.md` file contains the general description of the dataset and embeds its metadata in its front-matter section. The metadata represents a [dataset card](2-dataset-cards.qmd) rather than a codebook to describe specific instruments.
 
 3. **License**: The `LICENSE` file specifies the terms and conditions for use, reproduction and distribution of the dataset. While different licenses may apply to different parts of a dataset, it is recommended to keep it simple and to use the same license for the entire dataset. You can use websites like [choosealicense.com](https://choosealicense.com/) to help you choose a license for your dataset.
 
