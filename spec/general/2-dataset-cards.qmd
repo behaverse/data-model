@@ -4,33 +4,75 @@ output-file: dataset-cards
 title: Dataset cards
 ---
 
-There are two main sources of metadata in BDM: the dataset card and the codebook.
+There are two main sources of metadata in BDM: dataset card and codebook.
 
 Dataset card
-
-:   A structured representation of metadata about the dataset. It is generally defined in the `README.md` front matter of a dataset (see [folder structure](1-folder-structure.qmd)) and provides information about its creator, license, funding, and other relevant information.
+: A structured representation of metadata about the dataset. It is generally defined in the `README.md` front matter of a dataset (see [folder structure](1-folder-structure.qmd)) and provides information about its creator, license, and other relevant information.
 
 Codebook
+: Part of the dataset card that provides information about the variables in the data (such as their names, types, and descriptions). It also provides information about the values that each variable can take on and any missing data that may exist in the dataset. The codebook is an essential component of the dataset, as it provides context and semantic that helps researchers interpret the data.
 
-:   Part of the dataset card that contains information about the variables in the data (such as their names, types, and descriptions). It also includes information about the values that each variable can take on and any missing data that may exist in the dataset. The codebook is an essential component of the dataset, as it provides context and semantic that helps researchers interpret the data.
+Here is an example `README.md` file with a *dataset card* (in the front matter), a *codebook* (in the front matter), and *human-readable description* (in markdown):
+
+```yaml
+---
+title: "Example dataset"
+description: "This is an example dataset that contains some example data."
+version: "1.0"
+doi: "10.1234/5678"
+url: "https://example.com/dataset"
+creator:
+  - name: "John One Doe"
+    orcid: "0000-0000-0000-0000"
+  - name: "Jane Two Doe"
+    orcid: "0000-0000-0000-0001"
+license: "CC BY-SA 4.0"
+codebook:
+  variables:
+    - name: "age"
+      description: "The age group of the subject"
+      type: "enumeration"
+      missing: "NA"
+      values:
+        - "18-25": "between 18 and 25 years old (inclusive)"
+        - "26-35": "between 26 and 35 years old (inclusive)"
+        - "36-45": "between 36 and 45 years old (inclusive)"
+        - "46-55": "between 46 and 55 years old (inclusive)"
+        - "56-": "56 years old (inclusive) or older"
+---
+
+# Example Dataset
+
+This is an example dataset that contains some example data.
+
+## Citation
+
+If you use this dataset, please cite it as follows:
+
+...
+
+## License
+
+This dataset is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+```
 
 ## Required fields
 
 | Property | Type | Description |
 |------------------------|------------------------|------------------------|
-| name | Text | The name of the dataset. |
-| description | Text | Description of the dataset. |
-| license | URL | The license that applies to the dataset. |
-| keywords | Text or URL | List of keywords or URLs delimited by commas. |
-| creator | Organization or Person | The creator(s)/author(s) of the published dataset. |
-| funding | Grant | A Grant that directly or indirectly provide funding or sponsorship for this item. |
+| `name` | Text | The name of the dataset. |
+| `description` | Text | Description of the dataset. |
+| `version` | Number or Text | The version of the dataset. |
+| `license` | URL | The license that applies to the dataset. |
+| `creator` | Organization or Person | The creator(s)/author(s) of the published dataset. |
 
 ## Recommended
 
 | Property | Type | Description |
 |------------------------|------------------------|------------------------|
+| keywords | Text or URL | List of keywords or URLs delimited by commas. |
+| funding | Grant | A Grant that directly or indirectly provide funding or sponsorship for this item. |
 | creditText | Text | Text that can be used to credit person(s) and/or organization(s) associated with a published Creative Work. |
-| version | Number or Text | The version of the dataset. |
 | size | Text | The size of the dataset (e.g., 2.5GB). |
 | maintainer | Person | Person that manages the datasets and should be contacted regarding any dataset related issues. |
 | measurementMethod | DefinedTerm, URL, Text | The type of method used to collect the data (e.g., "questionnaire", "computerize test", "video game".) |
