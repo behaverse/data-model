@@ -118,13 +118,15 @@ Within the activity folders, you will find the data files collected during the a
 ...
 DigitSpan/
 ├── trial_1.csv
+├── trial_2.csv
 ├── stimulus_1.csv
-└── option_1.csv
+├── stimulus_2.csv
+├── option_1.csv
+└── option_2.csv
 ```
 
-- The `trial_<ATTEMPT>.csv` contains the data collected during the activity, where `<ATTEMPT>` is 1-indexed suffix and partitions data by how many times the agent has initiated the activity, e.g., first attempt, second attempt, etc. <br />If there was only one attempt to complete the activity, then it can be named `trial_1.csv`. If there were multiple attempts, then the file can be named `trial_1.csv`, `trial_2.csv`, etc. <br />In the example above, data for `agent_01` includes two attempts for the `DigitSpan` activity in session 1, so there are two files: `trial_1.csv` and `trial_2.csv`.
-- The dataset is in incomplete in terms of having the same data for all the agents. Data for the second subject (`agent_02`) does not include a second session, so there is no `session_02` folder for this subject.
-
+- The `trial_<ATTEMPT>.csv` contains the data collected during the `DigitSpan` activity, where `<ATTEMPT>` is 1-indexed suffix and partitions data by how many times the agent has initiated the activity, e.g., first attempt, second attempt, etc. <br />If there was only one attempt to complete the activity, then it can be named `trial_1.csv`. If there were multiple attempts, then the file can be named `trial_1.csv`, `trial_2.csv`, etc.
+- In the example above, there are two attempts for the `DigitSpan` activity, so there are two trial tables: `trial_1.csv` and `trial_2.csv`.
 
 ## Instruments
 
