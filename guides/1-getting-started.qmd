@@ -13,9 +13,9 @@ format:
 
 ## What is BDM?
 
-Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide interoperable data for modern cognitive projects. It is a set of conventions that help you organize behavioral data in a way that is easy to understand for both domain experts and technical experts. It is designed to work with a wide range of cognitive tests and questionnaires.
+Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide interoperable data for modern cognitive projects. It is a set of conventions that help you organize behavioral data in a way that is easy to understand for both domain experts and technical experts. Whether you're an individual scientist or part of a larger lab, BDM can help you build a dataset that is easy to maintain and share with others.
 
-Whether you're an individual scientist or part of a larger lab, BDM can help you build a dataset that is easy to maintain and share with others. BDM is opinionated but designed to be flexible and extensible, so you can adapt it to your specific needs.
+BDM is designed to work with a wide range of cognitive tests and questionnaires. It is opinionated but designed to be flexible and extensible, so you can adapt it to your specific needs.
 
 ## How does a BDM dataset look like?
 
@@ -43,13 +43,13 @@ dataset/
 
 ## Data files
 
-The `data/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA_FILE>`. This [directory-based](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html) [partitioning](https://en.wikipedia.org/wiki/Partition_(database)) allows for easy access to the data files and makes it easier to manage the data.
+The `data/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA_FILE>`. This is commonly called [directory-based](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html) [partitioning](https://en.wikipedia.org/wiki/Partition_(database)) and allows for easy access to the data files.
 
-The `data/<AGENT>/` folder contains the data for a single human subject or computer agent, and the `data/<AGENT>/<SESSION>/` folder contains the data for a single session. Each session can contain multiple activities, and each activity can contain data files for several attempts.
+The `data/<AGENT>/` folder contains the data for a single human subject or computer agent, and the `data/<AGENT>/<SESSION>/` folder contains the data for a single session. Each session can contain multiple activities, and each activity can contain data files for several attempts. So the data folder is organized as Agent > Session > Activity > Data File.
 
-Th `data/<AGENT>/` folder also contains additional data for the [studyflows](../spec/general/3-studyflows.qmd) and other data types.
+Th `data/<AGENT>/` folder may also contain other agent-specific data types, such as [studyflows](../spec/general/3-studyflows.qmd).
 
-For example, the `data/` folder for a dataset of three subjects, each with two sessions, and each session with two activities might look like this:
+Here is an example `data/` folder of three subjects, each with two sessions, and each session with two activities:
 
 ```{.default .file-tree}
 ...
@@ -89,9 +89,9 @@ data/
 
 Note that:
 
-- Each agent has a folder named `agent_<ID>` where `<ID>` is a unique identifier for the human subject or computer agent. `<ID>` can be a number or a string, but must be unique within the dataset. For convenience, if your dataset contains only human subjects, you may also use the `data/subject_<ID>/` format to name the folders, but the root data folder remains `data/`. But it is recommended to use the `agent_<ID>` format for all datasets, as it is more flexible and extensible.
+- Each agent has a folder named `agent_<ID>` where `<ID>` is a unique identifier for the human subject or computer agent. `<ID>` can be a number or a string, but must be unique within the dataset. For convenience, if your dataset contains only human subjects, you may also use the `data/subject_<ID>/` format, but the root data folder remains `data/`. But it is recommended to use the `agent_<ID>` naming for all datasets, as it is more flexible and extensible.
 - The `studyflow.csv` file contains the order and metadata of the all activities for the agent.
-- Each session has a folder named `session_<ID>` where `<ID>` is a unique identifier for the session. Session identifiers are unique within the dataset, so `session_01` for `agent_01` is the same as `session_01` for `agent_02`.
+- Each session has a folder named `session_<ID>` where `<ID>` is a unique identifier for the session. Session identifiers are unique within the dataset, so `session_01` for `agent_01` has the same session structure as `session_01` for `agent_02`.
 - Each activity has a folder named `<AGENT>/<SESSION>/<ACTIVITY>` where `<ACTIVITY>` is the name of the activity. In this example, the activities are `UFOV` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
 - The general idea of using file path to partition data is similar to the dataset partitioning in [Apache Arrow](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html) or [DuckDB](https://duckdb.org/docs/stable/data/partitioning/hive_partitioning.html).
 
@@ -106,8 +106,8 @@ Events
 Trials
 : Trials are a higher level of data that represent a single attempt at an activity accompanied by the subject's response and experimenter's interpretation of the response. For example, in a `DigitSpan` activity, a trial might be a sequence of digits that the subject has to remember. Trials are stored in the `trial_<ATTEMPT>.csv` file within the activity folder.
 
-Models
-: Models are the highest level of data that represent the data analysis and interpretation of the trials. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more comples one, like a deep learning model that predicts the subject's performance.
+Statistics & Models
+: Models are the highest level of data that represent the data analysis and interpretation of the trials. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more complex one, like a deep learning model that predicts the subject's performance.
 
 The main data in behavioral data analysis is the trials. Events are the raw data collected during an activity, and models are the data analysis and interpretation of the trials. The following sections assumes trials as the main data.
 
