@@ -13,7 +13,7 @@ format:
 
 ## What is BDM?
 
-The Behaverse Data Model (BDM) is an interoperable dataset architecture for a wide range of cognitive tests and questionnaires. It provides a set of conventions to organize behavioral data in a way that is easy to understand by both domain experts and technical experts. It is opinionated but also flexible, so you can adapt it to your specific needs.
+Behaverse Data Model (BDM) is an interoperable dataset architecture for a wide range of cognitive tests and questionnaires. It provides a set of conventions to organize behavioral data in a way that is easy to understand by both domain experts and technical experts. It is opinionated but also flexible, so you can adapt it to your specific needs.
 
 In the following sections, you will learn about the structure of a BDM dataset and how to create one. You will also learn about the different types of data in BDM and how to describe them with metadata.
 
@@ -97,8 +97,7 @@ Note that:
 
 ## Levels of data
 
-The BDM dataset is organized into three levels of data:
-
+BDM organizes data in three levels: events, trials, and models. Each level of data is represented by a different type of file.
 
 Events
 : Events are the lowest level of data in BDM. They represent the raw data collected during an activity. For example, in a `DigitSpan` activity, an event might be a single digit that the subject has to remember and the timestamp when the digit was presented. Events are stored in the `events.csv` file within the activity folder.
@@ -109,7 +108,7 @@ Trials
 Statistics & Models
 : Models are the highest level of data that represent the data analysis and interpretation of the trials. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more complex one, like a deep learning model that predicts the subject's performance.
 
-The main data in behavioral data analysis is the trials. Events are the raw data collected during an activity, and models are the data analysis and interpretation of the trials. The following sections assumes trials as the main data.
+The main data in behavioral data analysis is the trials. Events are the raw data collected during an activity, and statistics and models are interpretations of the trials. The following sections assumes trials as the main data.
 
 
 ## Activities data
