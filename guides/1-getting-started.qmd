@@ -13,9 +13,9 @@ format:
 
 ## What is BDM?
 
-Behaverse Data Model (BDM for short) is a dataset architecture that aims to provide interoperable data for modern cognitive projects. It is a set of conventions that help you organize behavioral data in a way that is easy to understand for both domain experts and technical experts. Whether you're an individual scientist or part of a larger lab, BDM can help you build a dataset that is easy to maintain and share with others.
+The Behaverse Data Model (BDM) is an interoperable dataset architecture for a wide range of cognitive tests and questionnaires. It provides a set of conventions to organize behavioral data in a way that is easy to understand by both domain experts and technical experts. It is opinionated but also flexible, so you can adapt it to your specific needs.
 
-BDM is designed to work with a wide range of cognitive tests and questionnaires. It is opinionated but designed to be flexible and extensible, so you can adapt it to your specific needs.
+In the following sections, you will learn about the structure of a BDM dataset and how to create one. You will also learn about the different types of data in BDM and how to describe them with metadata.
 
 ## How does a BDM dataset look like?
 
@@ -36,20 +36,20 @@ dataset/
 
 2. The `agents.csv` file contains information about the human subjects and artificial agents in the dataset. It is a CSV file with one row per agent and columns for attributes.
 
-3. The `instruments/` folder contains parameters for the tasks, instructions, and questionnaires. Each instrument represented as a YAML file that describes the instrument and its parameters. The instrument files are named after the instrument name, e.g., `instruments/DigitSpan.yaml`, and contain the various parameters for the instrument.
+3. The `instruments/` folder contains parameters for the tasks, instructions, and questionnaires. Each instrument is represented as a YAML file that describes the instrument and its parameters. The instrument files are named after the instrument name, e.g., `instruments/DigitSpan.yaml`, and contain the various parameters for the instrument.
 
 4. The `data/` folder contains the data files. Within this folder, there is one folder per each agent (human or machine participants of the study). This [directory-based](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html) [partitioning](https://en.wikipedia.org/wiki/Partition_(database)) makes it easier to access and manage the data.
 
 
 ## Data files
 
-The `data/` folder contains the data files. Within this folder, data files are organized as `<AGENT>/<SESSION>/<ACTIVITY>/<DATA_FILE>`. This is commonly called [directory-based](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html) [partitioning](https://en.wikipedia.org/wiki/Partition_(database)) and allows for easy access to the data files.
+The `data/` folder contains the data files. Within this folder, data files are organized in a hierarchical structure: `<AGENT>/<SESSION>/<ACTIVITY>/<DATA_FILE>`. This is commonly called [directory-based](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html) [partitioning](https://en.wikipedia.org/wiki/Partition_(database)) and allows for easy access to the data files.
 
-The `data/<AGENT>/` folder contains the data for a single human subject or computer agent, and the `data/<AGENT>/<SESSION>/` folder contains the data for a single session. Each session can contain multiple activities, and each activity can contain data files for several attempts. So the data folder is organized as Agent > Session > Activity > Data File.
+- The `data/<AGENT>/` folder contains the data for a single human subject or computer agent. It is organize by session folders for each session of the study. It may also contain other agent-specific data types, such as [`studyflow.csv`](../spec/general/3-studyflows.qmd) that describes the order the activities for the agent.
+- the `data/<AGENT>/<SESSION>/` folder contains the data for a single session. Each session folder can contain multiple activities.
+- The `data/<AGENT>/<SESSION>/<ACTIVITY>/` are activity folders. Activities are the cognitive tests, questionnaires, or other data collection instruments used in the study. They contain data files for one or more attempts of the same activity.
 
-Th `data/<AGENT>/` folder may also contain other agent-specific data types, such as [studyflows](../spec/general/3-studyflows.qmd).
-
-Here is an example `data/` folder of three subjects, each with two sessions, and each session with two activities:
+Here is an example `data/` folder of a dataset of three subjects, each with two sessions, and each session with two activities (`UFOV` and `DigitSpan`):
 
 ```{.default .file-tree}
 ...
@@ -92,7 +92,7 @@ Note that:
 - Each agent has a folder named `agent_<ID>` where `<ID>` is a unique identifier for the human subject or computer agent. `<ID>` can be a number or a string, but must be unique within the dataset. For convenience, if your dataset contains only human subjects, you may also use the `data/subject_<ID>/` format, but the root data folder remains `data/`. But it is recommended to use the `agent_<ID>` naming for all datasets, as it is more flexible and extensible.
 - The `studyflow.csv` file contains the order and metadata of the all activities for the agent.
 - Each session has a folder named `session_<ID>` where `<ID>` is a unique identifier for the session. Session identifiers are unique within the dataset, so `session_01` for `agent_01` has the same session structure as `session_01` for `agent_02`.
-- Each activity has a folder named `<AGENT>/<SESSION>/<ACTIVITY>` where `<ACTIVITY>` is the name of the activity. In this example, the activities are `UFOV` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
+- Each activity has a folder named `<AGENT>/<SESSION>/<ACTIVITY>/` where `<ACTIVITY>` is the name of the instrument used in the activity. In the example, the activities are `UFOV` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
 - The general idea of using file path to partition data is similar to the dataset partitioning in [Apache Arrow](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.partitioning.html) or [DuckDB](https://duckdb.org/docs/stable/data/partitioning/hive_partitioning.html).
 
 ## Levels of data
