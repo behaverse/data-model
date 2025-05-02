@@ -13,9 +13,9 @@ Each event is then an object (e.g., as in JSON or YAML) that follows a specific 
 | Variable | Description | Example |
 | :---- | :---- | :---- |
 | version (str) | Behaverse Events version ("latest" for the latest). <br />**Populated by LRS** | `"v25.0228"`  |
-| timestamp (datetime) | [RFC9557](https://datatracker.ietf.org/doc/html/rfc9557) datetime with TimeZone offset. This is the same as [RFC3339 as ISO 8601 profile](https://ijmacd.github.io/rfc3339-iso8601/). | `1996-12-19T16:39:57-08:00Z` |
-| stored (datetime) | <br />**Populated by LRS** | `1996-12-19T16:39:57-08:00Z` |
-| updated (datetime) | <br />**Populated by LRS** | `1996-12-19T16:39:57-08:00Z` |
+| timestamp (datetime) | When the event occurred. <br />Formatted as [RFC9557](https://datatracker.ietf.org/doc/html/rfc9557) datetime with TimeZone offset (this is the same as [RFC3339 as ISO 8601 profile](https://ijmacd.github.io/rfc3339-iso8601/)). | `1996-12-19T16:39:57-08:00Z` |
+| stored (datetime) | When the event was stored in the LRS.<br />**Populated by LRS** | `1996-12-19T16:39:57-08:00Z` |
+| updated (datetime) | When the event was updated in the LRS.<br />**Populated by LRS** | `1996-12-19T16:39:57-08:00Z` |
 | agent (str \| dict) | Same as schema:agent, extends xapi:actor |  |
 | verb (str \| dict) | The verb should be prefixed and compatible with xAPI, SchemaOrg, ActivityStreams2, or BDM ontologies. Extends schema:Action | `schema:CreateAction`<br />or `xapi:completed` |
 | object (dict) | If "objectType" is not defined, it will be treated as "schema:Event". |  |
@@ -32,3 +32,65 @@ The following prefixes are already imported in the BDM events schema:
 - **schema**: SchemaOrg  
 - **as2**: ActivityStream 2
 :::
+
+## Example
+
+In YAML format, a single BDM event looks like this:
+
+```yaml
+version: "v25.0228"
+timestamp: 1996-12-19T16:39:57-08:00Z
+stored: 1996-12-19T16:39:57-08:00Z
+updated: 1996-12-19T16:39:57-08:00Z
+agent:
+  name: "John Doe"
+verb: "xapi:completed"
+object:
+  objectType: "schema:Event"
+  id: "https://example.com/event/12345"
+    name: "Test Event"
+context:
+    study: "Study Name"
+    studyflow: "Studyflow Name"
+result:
+    accuracy: 1
+authority:
+    name: "Client App Developer"
+attachments:
+    stimulus: "Stimulus Name"
+    environment: "Environment Name"
+```
+
+In JSON format, the same event looks like this:
+
+```json
+{
+  "version": "v25.0228",
+  "timestamp": "1996-12-19T16:39:57-08:00Z",
+  "stored": "1996-12-19T16:39:57-08:00Z",
+  "updated": "1996-12-19T16:39:57-08:00Z",
+  "agent": {
+    "name": "John Doe"
+  },
+  "verb": "xapi:completed",
+  "object": {
+    "objectType": "schema:Event",
+    "id": "https://example.com/event/12345",
+    "name": "Test Event"
+  },
+  "context": {
+    "study": "Study Name",
+    "studyflow": "Studyflow Name"
+  },
+  "result": {
+    "accuracy": 1
+  },
+  "authority": {
+    "name": "Client App Developer"
+  },
+  "attachments": {
+    "stimulus": "Stimulus Name",
+    "environment": "Environment Name"
+  }
+}
+```
