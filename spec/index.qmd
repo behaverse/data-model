@@ -1,5 +1,5 @@
 ---
-title: Specification
+title: Specifications
 toc: false
 page-layout: full
 ---
@@ -45,7 +45,7 @@ Behaverse Data Model (BDM) specifies dataset structure and a set of tables that 
 : The raw data that are collected during the experiment. They are the most detailed data and are typically sufficient for reproducing the original experiment.
 
 [<i class="bi bi-database"></i> Level 2: **Trials**](trials/index.qmd)
-: At its core, BDM defines trials data that are derived from the events. They are task-specific and typically designed to capture the main features of the scientific experiment.
+: BDM considers trials as the core components of behavioral studies. These are task-specific, derived from event data, and typically designed to capture the main features of the scientific experiment.
 
 [<i class="bi bi-database"></i> Level 3: **Statistics & Models**](#)
 : Summary statistics, scores, or models that are derived from trials (or raw events). They address research questions or used for downstream analyses.

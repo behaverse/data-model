@@ -1,5 +1,5 @@
 ---
-title: <i class="bi bi-database"></i> Events Data
+title: <i class="bi bi-database"></i> Events data
 toc: false
 ---
 
