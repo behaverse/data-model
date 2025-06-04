@@ -44,7 +44,7 @@ The following elements can be used to describe the experimental design and data 
 `bpmn:EndEvent`
 : An ending node that marks where the workflow completes.
 
-For a complete list of supported elements and their attributes, see the [Studyflow ontology](https://github.com/behaverse/studyflow-modeler/blob/main/docs/ontologies/bdm_studyflow.yaml).
+For a complete list of supported elements and their attributes, see the [Studyflow ontology](/assets/schemas/studyflow.yaml).
 
 
 ### Data and analysis pipeline
