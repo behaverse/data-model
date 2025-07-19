@@ -1,12 +1,5 @@
 - categories:
   - Key
-  variable_name: option_id
-  required: true
-  data_type: id
-  description: A reference to the primary key `id` of the @Option table.
-  range: '`id` in the corresponding @Stimulus table (same subject/session/activity).'
-- categories:
-  - Key
   variable_name: index
   required: true
   data_type: index
@@ -14,6 +7,15 @@
     order of them. An option component with a higher `index` is displayed on top of
     those with lower values, similar to CSS z-index property.
   range: 1-based indices
+- categories:
+  - Key
+  variable_name: option_id
+  required: true
+  data_type: id
+  description: A reference to the key `option_id` in the <b><i class="bi bi-grid-3x3"></i>
+    Option</b> table.
+  range: '`option_id` in the corresponding <b><i class="bi bi-grid-3x3"></i> Option</b>
+    table (same subject/session/activity).'
 - categories:
   - Where
   variable_name: panel_id

@@ -7,11 +7,11 @@
     that larger IDs correspond to more recent responses that occurred later in time.
     This ID is unique within this table; no two rows share the same value.
   notes:
-  - This identifier is used by other tables, for example @Stimulus table which describes
-    in greater detail the sequence of images shown during a trial, their timing, and
-    visual properties. That table will refer to this `id` in order to link those descriptions
-    (typically multiple lines in the  Stimulus table) to a unique row in the @Trial
-    table.
+  - This identifier is used by other tables, for example <b><i class="bi bi-grid-3x3"></i>
+    Stimulus</b> table which describes in greater detail the sequence of images shown
+    during a trial, their timing, and visual properties. That table will refer to
+    this `id` in order to link those descriptions (typically multiple lines in the  Stimulus
+    table) to a unique row in the <b><i class="bi bi-grid-3x3"></i> Response</b> table.
 - categories:
   - Context
   variable_name: study_name
@@ -32,7 +32,7 @@
   data_type: string
   description: A unique identifier assigned to the agent (typically person) generating
     the responses. This ID tracks their participation and responses throughout the
-    study. See @Subjects table.
+    study. See <b><i class="bi bi-grid-3x3"></i> Agent</b> table.
 - categories:
   - Context
   variable_name: session_id
@@ -58,7 +58,7 @@
     repetition of the first one.
   range: 1-based index of activity within the subject-level data.
   notes:
-  - .tip See @Studyflow table for more details.
+  - .tip See <b><i class="bi bi-grid-3x3"></i> Studyflow</b> table for more details.
 - categories:
   - Task
   variable_name: language
@@ -72,9 +72,10 @@
   required: true
   data_type: string
   description: The unique identifier of the instrument used for collecting data (e.g.,
-    the name of the computer script used to run the test). Unique in the @Instrument
-    table and corresponding files in the `instruments/` folder.
-  range: '`id` in the @Instrument table.'
+    the name of the computer script used to run the test). Unique in the <b><i class="bi
+    bi-grid-3x3"></i> Instrument</b> table and corresponding files in the `instruments/`
+    folder.
+  range: '`id` in the <b><i class="bi bi-grid-3x3"></i> Instrument</b> table.'
 - categories:
   - Task
   variable_name: instrument_repetition
@@ -184,7 +185,7 @@
     \ completed twice in a row, they would have different `block_index` values (1\
     \ and 2, respectively) but they would have the same `block_name` (e.g., \u201C\
     NB_timeline1_block1\u201D). More details about the `block_name` is available in\
-    \ the @Instrument table."
+    \ the <b><i class=\"bi bi-grid-3x3\"></i> Instrument</b> table."
 - categories:
   - Task
   variable_name: block_type

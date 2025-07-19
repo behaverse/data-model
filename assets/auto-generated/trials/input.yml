@@ -1,17 +1,18 @@
 - categories:
   - Key
-  variable_name: id
+  variable_name: input_id
   data_type: PRIMARY KEY
   required: true
-  description: Primary key; each click has its own `id` value that is unique within
-    the table.
+  description: Primary key; each input or click has its own identifier value that
+    is unique within the table.
 - categories:
   - Context
   variable_name: response_id
   data_type: id
   required: true
   description: Indexing all the clicks that occurred within a given trial; ranging
-    from 1 to `input_count` in the corresponding @Trial table.
+    from 1 to `input_count` in the corresponding <b><i class="bi bi-grid-3x3"></i>
+    Response</b> table.
 - categories:
   - Context
   variable_name: response_element_index
@@ -20,12 +21,14 @@
   description: Indicates which of the clicks is used and in what order to form the
     actual response in the response table when `response_structure` is "sequence"
     or "set".
-  range: 1 to `input_count` in the corresponding row of the @Trial table.
+  range: 1 to `input_count` in the corresponding row of the <b><i class="bi bi-grid-3x3"></i>
+    Response</b> table.
   notes:
-  - 'This needs to be here rather than in @Option table, because the same option can
-    be clicked multiple times and either serve or not for the response depending on
-    the order of the clicks. For example, in the Digit Span test we could have the
-    response of "3;5;7" on a particular trial. This might correspond to
+  - 'This needs to be here rather than in <b><i class="bi bi-grid-3x3"></i> Option</b>
+    table, because the same option can be clicked multiple times and either serve
+    or not for the response depending on the order of the clicks. For example, in
+    the Digit Span test we could have the response of "3;5;7" on a particular trial.
+    This might correspond to
 
     >  - `option.description` = ["3", "4", "delete", "delete", "3", "5", "7", "enter"]
 
@@ -110,7 +113,8 @@
   required: false
   description: If the click is on an option, this variable indicates which option
     it was.
-  range: ' Corresponding `id` in the @Option table.'
+  range: ' Corresponding `option_id` in the <b><i class="bi bi-grid-3x3"></i> Option</b>
+    table.'
 - categories:
   - What
   variable_name: stimulus_id
@@ -118,4 +122,5 @@
   required: false
   description: If the click is on a stimulus, this variable indicates which stimulus
     it was.
-  range: ' Corresponding `id` in the @Stimulus table.'
+  range: ' Corresponding `stimulus_id` in the <b><i class="bi bi-grid-3x3"></i> Stimulus</b>
+    table.'

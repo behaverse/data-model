@@ -1,10 +1,10 @@
 - categories:
   - Identifier
-  variable_name: id
+  variable_name: instrument_id
   required: true
   data_type: string
-  description: Unique locatable identifier of an instrument. It can be formed by combining
-    name and version (e.g., "DS_v2024.01").
+  description: Unique identifier of an instrument. It can be formed by combining name
+    and version (e.g., "DS_v2024.01").
 - categories:
   - Identifier
   variable_name: timeline_id

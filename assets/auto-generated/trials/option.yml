@@ -1,30 +1,32 @@
 - categories:
   - Key
-  variable_name: id
+  variable_name: option_id
   data_type: PRIMARY KEY
   required: true
-  description: Primary key of the @Option table. Reference to this  identifier in
-    other tables are thus named `option_id`.
+  description: Primary key of the <b><i class="bi bi-grid-3x3"></i> Option</b> table.
+    Reference to this  identifier in other tables are thus named `option_id`.
   range: Each row in this table has a unique `id`
   notes:
   - If the same option is shown at two different times in a trial, those two instances
     will have their own row in the * Option* table, each with its own `id`.
 - categories:
   - Context
-  variable_name: trial_id
+  variable_name: trial_index
   data_type: id
   required: true
-  description: Refers to the `id` in the @Trial table and indicates in which trial
-    this option was shown.
-  range: '`trial_id` in the @Trial table for the same subject/session/activity'
+  description: Refers to the `trial_index` in the <b><i class="bi bi-grid-3x3"></i>
+    Response</b> table and indicates in which trial this option was shown.
+  range: '`trial_index` in the <b><i class="bi bi-grid-3x3"></i> Response</b> table
+    for the same subject/session/activity'
 - categories:
   - Context
   variable_name: response_id
   data_type: id
   required: false
-  description: Refers to the `response_id` in the @Trial table and indicates for which
-    response this option was shown.
-  range: '`response_id` in the @Trial table of the same subject/activity'
+  description: Refers to the `response_id` in the <b><i class="bi bi-grid-3x3"></i>
+    Response</b> table and indicates for which response this option was shown.
+  range: '`response_id` in the <b><i class="bi bi-grid-3x3"></i> Response</b> table
+    of the same subject/activity'
 - categories:
   - Context
   variable_name: index_in_trial

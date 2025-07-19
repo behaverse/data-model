@@ -1,14 +1,15 @@
 - categories:
   - Key
-  variable_name: id
+  variable_name: stimulus_id
   data_type: PRIMARY KEY
   required: true
-  description: Primary key of the @Stimulus table. Reference to this  identifier in
-    other tables are thus named `stimulus_id`.
+  description: Primary key of the <b><i class="bi bi-grid-3x3"></i> Stimulus</b> table.
+    Reference to this  identifier in other tables are thus named `stimulus_id`.
   range: Each row in this table has a unique `id`.
   notes:
   - .tip If the same stimulus is shown at two different times in a trial, those two
-    instances will have their own row in the @Stimulus table, each with its own `id`.
+    instances will have their own row in the <b><i class="bi bi-grid-3x3"></i> Stimulus</b>
+    table, each with its own `id`.
   - .important Make sure to refer to this field as `stimulus_id` rather than `id`
     When joining tables. This also applies to all the `id` fields; they are named  `id`
     within their own context/table, but `<context/table>_id` when addressed from other
@@ -19,17 +20,19 @@
   variable_name: trial_id
   data_type: id
   required: false
-  description: Refers to the `id` in the @Trial table and indicates in which trial
-    this stimulus was shown.
-  range: '`trial_id` in the @Trial table of the same agent/session/activity/attempt'
+  description: Refers to the `trial_index` in the <b><i class="bi bi-grid-3x3"></i>
+    Response</b> table and indicates in which trial this stimulus was shown.
+  range: '`trial_id` in the <b><i class="bi bi-grid-3x3"></i> Response</b> table of
+    the same agent/session/activity/attempt'
 - categories:
   - Context
   variable_name: response_id
   data_type: id
   required: true
-  description: Refers to the `response_id` in the @Trial table and indicates for which
-    response this stimulus was shown.
-  range: '`response_id` in the @Trial table of the same agent/session/activity/attempt'
+  description: Refers to the `response_id` in the <b><i class="bi bi-grid-3x3"></i>
+    Response</b> table and indicates for which response this stimulus was shown.
+  range: '`response_id` in the <b><i class="bi bi-grid-3x3"></i> Response</b> table
+    of the same agent/session/activity/attempt'
 - categories:
   - Context
   variable_name: object_id
@@ -49,9 +52,9 @@
   description: In a multitasking setting, a particular instance of a stimulus (e.g.,
     the current letter "A") may be used by multiple tasks at the same time (e.g, in
     the dual N-back task). Because these are different trials, they will have different
-    `trial_id` values and hence will have different rows in the @StimulusTable. We
-    use `presentation_id` to indicate that a given stimulus is in fact the same instance
-    across those trials.
+    `trial_id` values and hence will have different rows in the <b><i class="bi bi-grid-3x3"></i>
+    Stimulus</b> table. We use `presentation_id` to indicate that a given stimulus
+    is in fact the same instance across those trials.
 - categories:
   - Context
   variable_name: index_in_trial

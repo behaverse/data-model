@@ -2,8 +2,10 @@
   - Key
   variable_name: stimulus_id
   required: true
-  description: A reference to the primary key `id` of the @Stimulus table.
-  range: '`id` in the corresponding @Stimulus table (same subject/session/activity).'
+  description: A reference to the primary key `id` of the <b><i class="bi bi-grid-3x3"></i>
+    Stimulus</b> table.
+  range: '`stimulus_id` in the corresponding <b><i class="bi bi-grid-3x3"></i> Stimulus</b>
+    table (same subject/session/activity).'
 - categories:
   - Key
   variable_name: index

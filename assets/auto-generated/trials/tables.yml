@@ -1,20 +1,20 @@
 - index: 0
   publish: true
   category: Trials
-  name: Trial
-  label: Trial
-  description: Main trial table where each row describes a response in a trial.
+  name: Response
+  label: Response
+  description: Main table where each row describes a response in a trial.
   notes: The information in this table should be sufficient for most analyses, but
     more detailed information may be linked from other tables via identifiers (`response_id`
-    and `trial_id`).
+    and `trial_index`).
 - index: 1
   publish: true
   category: Trials
   name: Stimulus
   label: Stimulus
   description: Describes each of the stimuli that were shown during an trial.
-  notes: Each row corresponds to a stimulus in a trial. Each trial can contain different
-    number of stimuli.
+  notes: Each row of %%Stimulus table corresponds to a stimulus in a trial. Each trial
+    can contain different number of stimuli.
 - index: 2
   publish: true
   category: Trials
