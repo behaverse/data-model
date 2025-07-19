@@ -4,7 +4,7 @@ toc: false
 page-layout: full
 ---
 
-Behaverse Data Model (BDM) specifies dataset structure and a set of tables that are designed to capture the information relevant to the study of human behavior in many cognitive tests and questionnaires. The tables are designed to be tidy and to capture a wide variety of behavioral experiments.
+Behaverse Data Model (BDM) is a dataset structure designed to capture information relevant to the study of human behavior across a wide range of cognitive tests and questionnaires. It defines a folder structure and a set of tidy tables for organizing data from diverse behavioral experiments.
 
 <br />
 
