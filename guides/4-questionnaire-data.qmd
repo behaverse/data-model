@@ -27,31 +27,31 @@ study/
 └── data/
     ├── agent_1/
     │   ├── questionnaire_1/
-    │   │   └── trial_1.csv
+    │   │   └── response_1.csv
     │   ├── questionnaire_2/
-    │   │   └── trial_1.csv
+    │   │   └── response_1.csv
     │   └── questionnaire_3/
-    │       └── trial_1.csv
+    │       └── response_1.csv
     └── agent_2/
         ├── questionnaire_1/
-        │   └── trial_1.csv
+        │   └── response_1.csv
         ├── questionnaire_2/
-        │   └── trial_1.csv
+        │   └── response_1.csv
         └── questionnaire_3/
-            ├── trial_1.csv
-            └── trial_2.csv
+            ├── response_1.csv
+            └── response_2.csv
 ```
 
 
-## <i class="bi bi-table"></i> Trial table
+## <i class="bi bi-table"></i> Response table
 
-Each trial is a single interaction between an agent (e.g., a human participant) and a stimulus (e.g., a question). [Trial table](#) is a standalone table and contains the main information about the trial, while other supplementary tables may contain more specific information about [the agents](#), [stimuli](#) and [options](#).
+Each trial is a single interaction between an agent (e.g., a human participant) and a stimulus (e.g., a question). [Response table](#) is a standalone table and contains the main information about the trial, while other supplementary tables may contain more specific information about [the agents](#), [stimuli](#) and [options](#).
 
-Within the Trial table (`trial_1.csv`), each row corresponds to a single trial. A trial is identified by a unique identifier (`trial_id`) and contains main information about the agent, the stimulus (i.e., the question), the options, the response, and the evaluation of the response. Here are the variables that are typically included in the Trial table for questionnaires:
+Within the Response table (`response_1.csv`), each row corresponds to a single response in a trial. A trial is identified by a unique index (`trial_index`) and contains main information about the agent, the stimulus (i.e., the question), the options, the response, and the evaluation of the response. Here are the variables that are typically included in the Response table for questionnaires:
 
 :::{.callout-warning appearance="simple"}
 ## Multiple attempts
-When a questionnaire is completed multiple times by the same agent in the same session, the data is partitioned and stored in separate files for each attempt and identified by a 1-indexed numerical suffix. For example, agent_2 in the example above completed questionnaire_3 twice; the data is stored in two files: `trial_1.csv` and `trial_2.csv`. The first file contains the data from the first attempt, and the second file contains the data from the second attempt. If there is only one attempt, the data would be stored in a single file named `trial_1.csv`.
+When a questionnaire is completed multiple times by the same agent in the same session, the data is partitioned and stored in separate files for each attempt and identified by a 1-indexed numerical suffix. For example, agent_2 in the example above completed questionnaire_3 twice; the data is stored in two files: `response_1.csv` and `response_2.csv`. The first file contains the data from the first attempt, and the second file contains the data from the second attempt. If there is only one attempt, the data would be stored in a single file named `response_1.csv`.
 
 The file name is important because it allows for easy identification of potentially incomplete data and the number of attempts made by the agent.
 :::
@@ -66,7 +66,7 @@ stimulus_index
 
 
 stimulus_description
-: A textual description of the stimulus. For questionnaires, this contains the english version of the question text shown to the participants. If the question was presented in different languages--which would be stated in the `language` column of the Trial table--the different translations would be available in supplementary resources for the questionnaire.
+: A textual description of the stimulus. For questionnaires, this contains the english version of the question text shown to the participants. If the question was presented in different languages--which would be stated in the `language` column of the Response table--the different translations would be available in supplementary resources for the questionnaire.
 
 stimulus_onset
 : How many seconds after the trial onset this question was presented to agents. In questionnaires, this value is typically 0. 
@@ -79,7 +79,7 @@ stimulus_duration
 
 Options define the set of possible responses that an agent can make. For example, if a question offers categorical inputs ("yes", "no", or to not respond at all), then it is not possible for the agent to enter a date or a text for example. Conversely if the option is a short text field, the agent may in principle input any sequence of say 255 characters. It is thus important to note that options are not equivalent to inputs: to use a specific option may require multiple user inputs, and options are not equivalent to responses: options define constraints on potential responses.
 
-The main properties of options stored in the Trial table are:
+The main properties of options stored in the Response table are:
 
 option_id
 : A unique identifier of a specific response option. For example, a specific Likert scale offering agents the possibility to choose among 7 levels of agreement ranging from "strongly disagree" to "strongly agree" may have an option_id value of "agreement_7".  Note that a given question can oftentimes be used with different options (e.g., "agreement_7" vs "agreement_5" vs "agreement_2") and that the combination of a specific question text (i.e., question_id) and a specific option (i.e., option_id) is sometimes referred as an "item". There is no explicit concept for the combination of these two ids in BDM. 
@@ -95,7 +95,7 @@ option_source
 
 ### Response description
 
-Response refers to the meaning that is given to the agent's inputs and may be computed using an aggregation of several events (e.g., input text, key press timing). The main features of the responses that are encoded in the Trial table are the following:
+Response refers to the meaning that is given to the agent's inputs and may be computed using an aggregation of several events (e.g., input text, key press timing). The main features of the responses that are encoded in the Response table are the following:
 
 
 response_description
@@ -147,5 +147,5 @@ caption, .table-caption {
 |-----------|---------|----------|-----------|--------------|-------------------------------|--------------|-----------------|-----------|------------|---------------|--------------------|----------------|---------------------|-------------|---------------------------|---------------------------|-----|
 |1          |subject_1|session_1 |stimulus_1 |1             |Do you like ice cream?         |0             |5                |yes_no     |0           |5              |yes                 |1               |1                    |2            |[*NA*]{.text-muted .small} |[*NA*]{.text-muted .small} |1    |
 |2          |subject_1|session_1 |stimulus_2 |2             |How much do you like ice cream?|0             |5                |agreement_5|0           |5              |strongly agree      |4               |5                    |5            |[*NA*]{.text-muted .small} |[*NA*]{.text-muted .small} |4    |
-: Example Trial table for a questionnaire (scroll horizontally to see all the columns)
+: Example Response table for a questionnaire (scroll horizontally to see all the columns)
 :::

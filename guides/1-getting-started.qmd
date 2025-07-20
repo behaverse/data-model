@@ -103,7 +103,7 @@ Events
 : Events are the lowest level of data in BDM. They represent the raw data collected during an activity. For example, in a `DigitSpan` activity, an event might be a single digit that the subject has to remember and the timestamp when the digit was presented. Events are stored in the `events.csv` file within the activity folder.
 
 Trials
-: Trials are a higher level of data that represent a single attempt at an activity accompanied by the subject's response and experimenter's interpretation of the response. For example, in a `DigitSpan` activity, a trial might be a sequence of digits that the subject has to remember. Trials are stored in the `trial_<ATTEMPT>.csv` file within the activity folder.
+: Trials are a higher level of data that represent a single attempt at an activity accompanied by the subject's response and experimenter's interpretation of the response. For example, in a `DigitSpan` activity, a trial might be a sequence of digits that the subject has to remember. Trials are stored in the `response_<ATTEMPT>.csv` file within the activity folder along with the supporting tables for stimuli and options.
 
 Statistics & Models
 : Models are the highest level of data that represent the data analysis and interpretation of the trials. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more complex one, like a deep learning model that predicts the subject's performance.
@@ -113,7 +113,7 @@ The main data in behavioral data analysis is the trials. Events are the raw data
 
 ## Activities data
 
-See the [*<i class="bi bi-grid-3x3"></i> Trial* table](/spec/trials/1-trial.qmd) for more information. Trials are stored in the `trial_<ATTEMPT>.csv` file within the activity folder and can be accompanied by the optional supporting tables for stimuli, options, etc.
+See the [*<i class="bi bi-grid-3x3"></i> Response* table](/spec/trials/1-response.qmd) for more information. Trials are stored in the `response_<ATTEMPT>.csv` file within the activity folder and can be accompanied by the optional supporting tables for stimuli, options, etc.
 
 
 Within the activity folders, you will find the data files collected during the activity. Here is an example of a `DigitSpan` activity folder:
@@ -121,16 +121,16 @@ Within the activity folders, you will find the data files collected during the a
 ```{.default .file-tree}
 ...
 DigitSpan/
-├── trial_1.csv
-├── trial_2.csv
+├── response_1.csv
+├── response_2.csv
 ├── stimulus_1.csv
 ├── stimulus_2.csv
 ├── option_1.csv
 └── option_2.csv
 ```
 
-- The `trial_<ATTEMPT>.csv` contains the data collected during the `DigitSpan` activity, where `<ATTEMPT>` is 1-indexed suffix and partitions data by how many times the agent has initiated the activity, e.g., first attempt, second attempt, etc. <br />If there was only one attempt to complete the activity, then it can be named `trial_1.csv`. If there were multiple attempts, then the file can be named `trial_1.csv`, `trial_2.csv`, etc.
-- In the example above, there are two attempts for the `DigitSpan` activity, so there are two trial tables: `trial_1.csv` and `trial_2.csv`.
+- The `response_<ATTEMPT>.csv` contains the data collected during the `DigitSpan` activity, where `<ATTEMPT>` is 1-indexed suffix and partitions data by how many times the agent has initiated the activity, e.g., first attempt, second attempt, etc. <br />If there was only one attempt to complete the activity, then it can be named `response_1.csv`. If there were multiple attempts, then the file can be named `response_1.csv`, `response_2.csv`, etc.
+- In the example above, there are two attempts for the `DigitSpan` activity, so there are two tables: `response_1.csv` and `response_2.csv`.
 
 ## Instruments
 

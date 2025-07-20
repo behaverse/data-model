@@ -35,10 +35,10 @@ Split your data table into one table per activity per subject (e.g., group the d
 
 - For each table, create a `my-dataset/data/<agent_id>/<session_id>/<activity_id>/` folder.
   - If there is only one session, create a folder for the session in the agent's folder, e.g., `my-dataset/data/agent_1/session_1/`. If there are multiple sessions, create one folder for each session in the agent's folder.
-- Store the data files in the corresponding activity's folder. The data file should be named as `trial_1.csv` for the [Trial table](#) (the suffix `_1` means first attempt). For additional supplementary data,  use the same naming format: `stimulus_1.csv` for the [Stimulus table](#), etc.
-- If the agent attempted some activities multiple times, create separate files for each attempt, e.g., `trial_1.csv` for the first attempt, `trial_2.csv` for the second attempt, etc. The files should be named as `trial_1.csv`, `trial_2.csv`, etc.
+- Store the data files in the corresponding activity's folder. The data file should be named as `response_1.csv` for the [Response table](#) (the suffix `_1` means first attempt). For additional supplementary data,  use the same naming format: `stimulus_1.csv` for the [Stimulus table](#), etc.
+- If the agent attempted some activities multiple times, create separate files for each attempt, e.g., `response_1.csv` for the first attempt, `response_2.csv` for the second attempt, etc. The files should be named as `response_1.csv`, `response_2.csv`, etc.
 
-If the agent initiated an activity multiple times, create separate files for each attempt. For instance, you could name the first attempt `trial_1.csv`, the second attempt `trial_2.csv`, and so on.
+If the agent initiated an activity multiple times, create separate files for each attempt. For instance, you could name the first attempt `response_1.csv`, the second attempt `response_2.csv`, and so on.
 
 
 ## Studyflow
