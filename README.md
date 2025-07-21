@@ -1,6 +1,16 @@
 # Behaverse Data Model (BDM)
 *Behaverse Data Model (BDM)* is an ongoing effort to define a coherent data structure for a wide range of cognitive tests and questionnaires. For more details, visit [behaverse.org/data-model](https://behaverse.org/data-model).
 
+
+## Setup
+
+If you don't have [quarto](https://quarto.org/) installed, use `uv` to prepare the environment and preview the website locally:
+
+```bash
+uv run quarto preview .
+```
+
+
 ## About
 Behaverse Data Model is part of an [FNR](https://www.fnr.lu/) funded cognitive sciences research project from [xCIT](https://xcit.org/)—a research team led by Prof. Pedro Cardoso-Leite.
 
