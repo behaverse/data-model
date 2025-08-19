@@ -40,13 +40,11 @@ Most of the time, raw data is collected as a series of events. These events are 
 
 ### Trial: aggregate root
 
-Trial is the main aggregate root of the BDM. It represents a single instance of an agent performing a task, including all the data collected during that instance. The Trial aggregate includes various components, such as: Responses, Stimuli, Options, Outcomes, Evaluation, etc. These components are essential for understanding the context and results of the trial.
+Trial is the main aggregate root of a BDM dataset. It represents a single meaningful instance of an agent performing a task, including all the events collected during that instance. The Trial includes various components, such as: Responses, Stimuli, Options, Outcomes, Evaluation, etc. These components are essential for understanding the context and results of a trial.
 
+## Projection
 
-Here is a diagram of the trial concept. The diagram shows the relationships between the domain-specific concepts and their attributes.
-
-![](../assets/schemas/trials_uml.png){width="100%" .lightbox}
-
+In BDM, we treat every action during a cognitive task as a domain event. Trials are aggregate roots that represent the meaningful unit of analysis (e.g., interpretation of series of events depending on the task). Trials are built from events using projections. Events are the raw data collected during a task, while trials are the processed and structured data that researchers analyze. In a more technical sense, e, just like a materialized view in SQL aggregates normalized rows into a queryable summary, projections gather events into a coherent trial structure. This keeps the event stream as the source of truth while giving us trial-level data optimized for research and analysis.
 
 
 ### Core domain concepts
@@ -58,9 +56,14 @@ Here is a diagram of the trial concept. The diagram shows the relationships betw
 ### Supporting domain concepts
 
 - Agent
-- Task projection (task-specific events-to-trials mapping/transformation)
+- Task (task-specific projection that defines how events are aggregated into trials)
 - Experimental design (e.g., studyflow, adaptive parameters, conditions, etc)
 - Instruments (i.e., the environment in which the task is performed)
+
+
+Here is a diagram of the trial concept. The diagram shows the relationships between the domain-specific concepts and their attributes.
+
+![](../assets/schemas/trials_uml.png){width="100%" .lightbox}
 
 
 ## Data Lakehouse
