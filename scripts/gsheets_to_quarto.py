@@ -1,7 +1,18 @@
-# Convert "bdm_trial_spec_v2" from Google Sheets to Quarto YAML and QMD files
-# use: uv run --env-file .env python scripts/gsheets_to_quarto.py
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#   "pandas",
+#   "pyyaml",
+#   "requests"
+# ]
+# ///
 
-# Imports and setup
+# Convert "bdm_trial_spec_v2" from Google Sheets to Quarto YAML and QMD files.
+
+# example:
+#   the script below is run in the root directory of the BDM repo.
+#   TRIAL_SPEC_SHEET_ID environment variable set to the Google Sheet ID.
+#   uv run --env-file .env scripts/gsheets_to_quarto.py
 
 import re
 import os
@@ -32,7 +43,6 @@ def camel_to_dash(camel_case_string):
   Returns:
     The dash-separated lower-case string.
   """
-  import re
 
   if pd.isna(camel_case_string):
     raise ValueError('camel_case_string cannot be None')
