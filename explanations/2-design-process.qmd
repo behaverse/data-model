@@ -36,24 +36,32 @@ Unlike rigid standards, flexibility of DDD allows for cost-effective and optiona
 
 ### Events
 
-Most of the time, raw data is collected as a series of events. These events are often recorded in a transactional way, meaning that they are stored as they occur, without waiting for some final state. This approach is more convenient for software engineers, as most code is written to control user interactions and store the corresponding data.
+Most of the time, raw data can be modeled as a series of events. Events are discrete occurrences that capture specific actions or changes in state during a cognitive task. Examples of events include the presentation of a stimulus, the recording a response, or the selection of an option.
 
-### Trial: aggregate root
+Events are often recorded as soon as they occur in a transactional way, meaning that they are resulted from an interaction between the task and the agent. This data structure is more convenient for the software than storing complex data structures (like trials), as most code is written to control user interactions and store the corresponding data.
 
-Trial is the main aggregate root of a BDM dataset. It represents a single meaningful instance of an agent performing a task, including all the events collected during that instance. The Trial includes various components, such as: Responses, Stimuli, Options, Outcomes, Evaluation, etc. These components are essential for understanding the context and results of a trial.
+### Trials
 
-## Projection
+Trial is the main aggregate root of a BDM dataset. It represents a single meaningful instance of an agent performing a task, derived from all the events occurred during that instance.
 
-In BDM, we treat every action during a cognitive task as a domain event. Trials are aggregate roots that represent the meaningful unit of analysis (e.g., interpretation of series of events depending on the task). Trials are built from events using projections. Events are the raw data collected during a task, while trials are the processed and structured data that researchers analyze. In a more technical sense, e, just like a materialized view in SQL aggregates normalized rows into a queryable summary, projections gather events into a coherent trial structure. This keeps the event stream as the source of truth while giving us trial-level data optimized for research and analysis.
+A trial includes various components: Responses, Stimuli, Options, Outcomes, Evaluation, etc. These components are essential for understanding the context and results of a trial. Together, they represent the meaningful unit of analysis for researchers.
+
+### Projections
+
+Trials are built from events using projections. They are semantic layers on top of the events and define how events are interpreted and gathered into a trial. Projections are task-specific and can vary based on the experimental design.
+
+In a more technical sense, projections are like views in SQL which aggregate normalized rows (i.e., events) into a queryable summary (i.e., trials). This keeps the events as the only source of truth while providing trials that are optimized for domain-specific analysis.
 
 
-### Core domain concepts
+### Other domain concepts
+
+Core domain concepts:
 
 - Response
 - Stimulus
 - Option
 
-### Supporting domain concepts
+Supporting domain concepts:
 
 - Agent
 - Task (task-specific projection that defines how events are aggregated into trials)
@@ -61,7 +69,7 @@ In BDM, we treat every action during a cognitive task as a domain event. Trials 
 - Instruments (i.e., the environment in which the task is performed)
 
 
-Here is a diagram of the trial concept. The diagram shows the relationships between the domain-specific concepts and their attributes.
+Here is a diagram of the trial. The diagram shows the relationships between the domain-specific concepts and their attributes.
 
 ![](../assets/schemas/trials_uml.png){width="100%" .lightbox}
 

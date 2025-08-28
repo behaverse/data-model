@@ -1,7 +1,7 @@
 ---
+order: 1
 title: Explanations
 subtitle: Design choices and rationales behind BDM
-order: 1
 listing: 
   template: ../assets/templates/simple-links-listing.ejs
   sort: "order"
