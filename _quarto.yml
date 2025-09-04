@@ -100,25 +100,23 @@ website:
 
       - section: "Specifications"
         contents:
-        - text: 'Overview'
+        - text: 'Introduction'
           href: spec/index.qmd
         - section: General
           contents:
             - auto: "spec/general/*.qmd"
-        - section: "Events"
+        - text: "Events"
+          href: spec/events/index.qmd
           icon: database
-          contents:
-            - href: spec/events/index.qmd
-              text: 'Overview'
         - section: "Trials"
           icon: database
           contents:
             - href: spec/trials/index.qmd
               text: '<i class="bi bi-grid"></i> Overview'
             - auto: spec/trials/*.qmd
-        - section: "<span title='Work In Progress' class='work-in-progress fst-italic'>Statistics & Models <i class='float-end bi bi-cone-striped'></i></span>"
-          icon: database work-in-progress
-          contents:
+        - text: 'Statistics & Models <i class="float-end bi bi-cone-striped"></i>'
+          icon: database
+          href: spec/models/index.qmd
         - section: "Extensions"
           icon: puzzle
           contents:
