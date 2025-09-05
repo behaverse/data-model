@@ -16,6 +16,7 @@
 
 import re
 import os
+from typing import cast
 from pathlib import Path
 import pandas as pd
 import yaml
@@ -77,7 +78,7 @@ def convert_sheet_to_yaml(table_info: pd.Series, root_dir) -> Path:
     output_path = root_dir / file_name
 
     # if category exists, append it to the file path
-    if (pd.notna(table_info['category']) and len(table_info['category']) > 0):
+    if (pd.notnull(table_info.loc['category']) and len(table_info['category']) > 0):
       category = camel_to_dash(table_info['category'])
       output_path = root_dir / category / file_name
 
@@ -207,13 +208,17 @@ for yml_file in Path(OUTPUT_DIR).rglob('*.yml'):
         continue
 
     category = yml_file.parent.name
+
+    # root items are considered no-category
     category = None if category == 'auto-generated' else category
 
     # e.g., 'stimulus-component' -> 'StimulusComponent'
     table_name: str = yml_file.stem.title().replace('-', '')
     table_title: str = str(tables_df.loc[table_name, 'label'])
+
     table_description: str = str(tables_df.loc[table_name, 'description'])
-    table_order: int = int(tables_df.loc[table_name, 'index']) + 1
+
+    table_order: int = cast(int, tables_df.loc[table_name, 'index']) + 1
 
     if category is None:
         continue
