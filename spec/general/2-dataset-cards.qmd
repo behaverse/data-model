@@ -28,20 +28,22 @@ creator:
     orcid: "0000-0000-0000-0001"
 license: "CC BY-SA 4.0"
 codebook:
-  tableSchema:
-    columns:
-      - name: "age"
-        dc:description: "The age group of the subject"
-        datatype:
-          base: "string"
-          format: "18-25|26-35|36-45|46-55|56-"
-        null: "NA"
-        notes:
-          - "18-25: between 18 and 25 years old (inclusive)"
-          - "26-35: between 26 and 35 years old (inclusive)"
-          - "36-45: between 36 and 45 years old (inclusive)"
-          - "46-55: between 46 and 55 years old (inclusive)"
-          - "56-: 56 years old (inclusive) or older"
+  tables:
+    - name: response
+      tableSchema:
+        columns:
+          - name: "age"
+            description: "The age group of the subject"
+            datatype:
+              base: "string"
+              format: "18-25|26-35|36-45|46-55|56-"
+            null: "NA"
+            notes:
+              - "18-25: between 18 and 25 years old (inclusive)"
+              - "26-35: between 26 and 35 years old (inclusive)"
+              - "36-45: between 36 and 45 years old (inclusive)"
+              - "46-55: between 46 and 55 years old (inclusive)"
+              - "56-: 56 years old (inclusive) or older"
 ---
 
 # Example Dataset
