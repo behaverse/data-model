@@ -1,8 +1,17 @@
 ---
-title: <i class="bi bi-database"></i> Events data
+title: <i class="bi bi-database"></i> Events & Timeseries
 toc: false
 page-layout: full
 ---
+
+Raw data in BDM are stored as events and timeseries. While events represent discrete occurrences during an experiment (e.g., stimulus presentation, button press), timeseries capture continuous streams of data collected over time (e.g., EEG, fMRI, physiological signals, eye-tracking data).
+
+
+# Timeseries
+
+Timeseries in BDM represent continuous data streams collected during an experiment. They are typically used to capture physiological signals, neural activity, or other continuous measurements that vary over time. Each timeseries is stored as a separate file (e.g., CSV, TSV, or binary format) and is associated with metadata that describes the recording parameters, sampling rate, and other relevant information.
+
+# Events
 
 Events in BDM describe something that happened during an experiment (cognitive test, questionnaire, video game). Understanding and modeling events is crucial for interpreting the experimental data as events are typically considered the primary raw data; they include information about a wide range of stuff, from a simple stimulus shown or a button pressed to complex interactions with virtual environments. Overall, they may represent changes in the environment or the interactions between the agents and the environment.
 

@@ -97,13 +97,13 @@ Note that:
 
 ## Levels of data
 
-BDM organizes data in three levels: events, trials, and models. Each level of data is represented by a different type of file.
+BDM organizes data in three levels: events & timeseries, trials, and models. Each level of data is represented by a different type of file.
 
-Events
+Events & Timeseries
 : Events are the lowest level of data in BDM. They represent the raw data collected during an activity. For example, in a `DigitSpan` activity, an event might be a single digit that the subject has to remember and the timestamp when the digit was presented. Events are stored in the `events.csv` file within the activity folder.
 
 Trials
-: Trials are a higher level of data that represent a single attempt at an activity accompanied by the subject's response and experimenter's interpretation of the response. For example, in a `DigitSpan` activity, a trial might be a sequence of digits that the subject has to remember. Trials are stored in the `response_<ATTEMPT>.csv` file within the activity folder along with the supporting tables for stimuli and options.
+: Trials are a higher level aggregates of data that represent single attempts at an activity accompanied by the subject's response and experimenter's interpretation of the response. For example, in a `DigitSpan` activity, a trial might be a sequence of digits that the subject has to remember. Trials are stored in the `response_<ATTEMPT>.csv` file within the activity folder along with the supporting tables for stimuli and options.
 
 Statistics & Models
 : Models are the highest level of data that represent the data analysis and interpretation of the trials. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more complex one, like a deep learning model that predicts the subject's performance.

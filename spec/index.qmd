@@ -41,7 +41,7 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture informatio
 
 ***Some particular structures are unique to the type of data or activity. There are three [levels of data](../guides/1-getting-started.qmd#levels-of-data):***
 
-[<i class="bi bi-database"></i> Level 1: **Events & Timeseries**](events/index.qmd)
+[<i class="bi bi-database"></i> Level 1: **Events and Timeseries**](events/index.qmd)
 : The raw data that are collected during the experiment. They are the most detailed data and are typically sufficient for reproducing the original experiment.
 
 [<i class="bi bi-database"></i> Level 2: **Trials & Aggregates**](trials/index.qmd)
