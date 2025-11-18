@@ -48,28 +48,31 @@ author: "John Doe"
 
 ## Codebook
 
-In BDM, part of the front-matter that describes the the data is called codebook (under the yaml key `codebook`). It can include information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
+In BDM, part of the front-matter that describes the the data is called codebook (under the yaml key `codebook`). It follows the [CSVW standard](https:/csvw.org/) in YAML format to describe the variables in the dataset. It includes information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
 
 Codebook is also important because it contains experimenter's intentions and assumption about the study, which is crucial for interpreting the data.  For example, if the experimenter decides to only include age groups (and discard exact age), this decision should be documented in the codebook. Like this:
 
 ```yaml
 codebook:
-  variables:
-    - name: "age"                                   # <1>
-      description: "The age group of the subject"
-      type: "enumeration"                           # <2>
-      missing: "NA"                                 # <3>
-      values:                                       # <4>
-        - "18-25": "between 18 and 25 years old (inclusive)"   # <4>
-        - "26-35": "between 26 and 35 years old (inclusive)"   # <4>
-        - "36-45": "between 36 and 45 years old (inclusive)"   # <4>
-        - "46-55": "between 46 and 55 years old (inclusive)"   # <4>
-        - "56-": "56 years old (inclusive) or older"           # <4>
+  tableSchema:
+    columns:
+      - name: "age"                                   # <1>
+        dc:description: "The age group of the subject"
+        datatype:                                     # <2>
+          base: "string"
+          format: "18-25|26-35|36-45|46-55|56-"
+        null: "NA"                                    # <3>
+        notes:                                        # <4>
+          - "18-25: between 18 and 25 years old (inclusive)"
+          - "26-35: between 26 and 35 years old (inclusive)"
+          - "36-45: between 36 and 45 years old (inclusive)"
+          - "46-55: between 46 and 55 years old (inclusive)"
+          - "56-: 56 years old (inclusive) or older"
 ```
 1. The name of the variable.
-2. The type of the variable; here, a categorical variable.
+2. The type of the variable; here, a categorical variable defined by a format.
 3. Missing data is represented by "NA".
-4. The possible values of the variable "age".
+4. Notes describing the possible values of the variable "age".
 
 ::: {.callout-tip appearance="simple"}
 For small number of variables and values, you can describe the codebook in the `README.md` file (like above). But if it's too large to be included in the README file, the value of the `codebook` field can be a path to the codebook file. For example:
@@ -147,17 +150,20 @@ authors:
     orcid: "0000-0000-0000-0001"
 license: "CC BY-SA 4.0"
 codebook:
-  variables:
-    - name: "age"
-      description: "The age group of the subject"
-      type: "enumeration"
-      missing: "NA"
-      values:
-        - "18-25": "between 18 and 25 years old (inclusive)"
-        - "26-35": "between 26 and 35 years old (inclusive)"
-        - "36-45": "between 36 and 45 years old (inclusive)"
-        - "46-55": "between 46 and 55 years old (inclusive)"
-        - "56-": "56 years old (inclusive) or older"
+  tableSchema:
+    columns:
+      - name: "age"
+        dc:description: "The age group of the subject"
+        datatype:
+          base: "string"
+          format: "18-25|26-35|36-45|46-55|56-"
+        null: "NA"
+        notes:
+          - "18-25: between 18 and 25 years old (inclusive)"
+          - "26-35: between 26 and 35 years old (inclusive)"
+          - "36-45: between 36 and 45 years old (inclusive)"
+          - "46-55: between 46 and 55 years old (inclusive)"
+          - "56-: 56 years old (inclusive) or older"
 ---
 
 # Example Dataset

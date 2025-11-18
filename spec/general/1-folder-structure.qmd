@@ -47,7 +47,7 @@ dataset/                          # <1>
 
 4. **Documentations**: The `docs/` folder contains information about the study in general. This includes in particular administrative data (e.g., how participants were recruited), information about the experimental design, instructions and other messages communicated with study participants (e.g., information about consent; the study welcome page).
 
-5. **Instruments:** The `instruments/` folder contains information about the instruments used in the study. This includes metadata about each instrument (e.g., references to the relevant literature), links to the instrument content (e.g., an online version or a pdf of a questionnaire) but also codebooks that provide the definition of the parameters of the instruments that are recorded in the data.
+5. **Instruments:** The `instruments/` folder contains information about the instruments used in the study. This includes metadata about each instrument (e.g., references to the relevant literature), links to the instrument content (e.g., an online version or a pdf of a questionnaire) but also codebooks (using CSVW standard) that provide the definition of the parameters of the instruments that are recorded in the data.
 
 6. **Agents metadata**: The `agents.csv` lists all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
 
