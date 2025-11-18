@@ -72,10 +72,10 @@ codebook:
 4. The possible values of the variable "age".
 
 ::: {.callout-tip appearance="simple"}
-For small number of variables and values, you can describe the codebook in the `README.md` file (like above). But if you have a separate codebook for your dataset and it's too large to be included in the `README.md` file, the value of the `codebook` field should be either a path to the codebook file. For example:
+For small number of variables and values, you can describe the codebook in the `README.md` file (like above). But if it's too large to be included in the README file, the value of the `codebook` field can be a path to the codebook file. For example:
 
 ```yaml
-codebook: codebook.md
+codebook: codebook.yml
 ```
 :::
 
