@@ -13,3 +13,4 @@ _site/
 .bkp
 .$*.drawio.bkp
 tmp/
+**/*.quarto_ipynb

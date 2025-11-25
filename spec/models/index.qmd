@@ -1,7 +1,9 @@
 ---
-title: <i class="bi bi-database"></i> Statistics & Models
+title: <i class="bi bi-database"></i> Models
 toc: false
 page-layout: full
 ---
+
+Statistical summaries and models are the highest level of data that represent the scientific analysis and interpretation of the data. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more complex one, like a deep learning model that predicts the subject's performance.
 
 Work in progress...

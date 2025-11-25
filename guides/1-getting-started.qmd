@@ -105,8 +105,8 @@ Events & Timeseries
 Trials
 : Trials are a higher level aggregates of data that represent single attempts at an activity accompanied by the subject's response and experimenter's interpretation of the response. For example, in a `DigitSpan` activity, a trial might be a sequence of digits that the subject has to remember. Trials are stored in the `response_<ATTEMPT>.csv` file within the activity folder along with the supporting tables for stimuli and options.
 
-Statistics & Models
-: Models are the highest level of data that represent the data analysis and interpretation of the trials. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more complex one, like a deep learning model that predicts the subject's performance.
+Models
+: Statistical summaries and models are the highest level of data that represent the data analysis and interpretation of the trials. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more complex one, like a deep learning model that predicts the subject's performance.
 
 The main data in behavioral data analysis is the trials. Events are the raw data collected during an activity, and statistics and models are interpretations of the trials. The following sections assumes trials as the main data.
 

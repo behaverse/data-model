@@ -114,7 +114,7 @@ website:
             - href: spec/trials/index.qmd
               text: '<i class="bi bi-grid"></i> Overview'
             - auto: spec/trials/*.qmd
-        - text: 'Statistics & Models <i class="float-end bi bi-cone-striped"></i>'
+        - text: 'Models <i class="float-end bi bi-cone-striped"></i>'
           icon: database
           href: spec/models/index.qmd
         - section: "Extensions"
