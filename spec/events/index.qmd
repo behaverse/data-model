@@ -17,28 +17,46 @@ BDM events follow the [xAPI](https://github.com/adlnet/xAPI-Spec/) specification
 
 Each event is an object (as in JSON or YAML) that follows a specific structure as below:
 
-| Variable | Description | Example |
-| :---- | :---- | :---- |
-| agent (str \| dict) | Same as schema:agent, extends xapi:actor |  |
-| verb (str \| dict) | The verb should be prefixed and compatible with xAPI, SchemaOrg, ActivityStreams2, or BDM ontologies. Extends schema:Action | `schema:CreateAction`<br />or `xapi:completed` |
-| object (dict) | If "objectType" is not defined, it will be treated as "schema:Event". |  |
-| version (str) | The associated BDM version ("latest" for the latest). <br />**Populated by LRS** | `"v25.0228"`  |
-| timestamp (datetime) | When the event occurred. <br />Formatted as [RFC9557](https://datatracker.ietf.org/doc/html/rfc9557) datetime with TimeZone offset (this is the same as [RFC3339 as ISO 8601 profile](https://ijmacd.github.io/rfc3339-iso8601/)). | `1996-12-19T16:39:57-08:00Z` |
-| stored (datetime) | When the event was stored in the LRS.<br />**Populated by LRS** | `1996-12-19T16:39:57-08:00Z` |
-| updated (datetime) | When the event was updated in the LRS.<br />**Populated by LRS** | `1996-12-19T16:39:57-08:00Z` |
-| context (str \| Study) | This represents the study, for which the event was collected. It also contains metadata about the studyflow that was executed for the data collection and further processing. |  |
-| result (dict) | | `{ "accuracy": 1 }` |
-| authority (User) | Client app developer authenticated by the API key. <br />**Populated by LRS** |  |
-| attachments (list) | Ordered list of additional objects, e.g., stimulus, image, information about the environment, etc. |  `[]` |
+:::{.list-table tbl-colwidths="[20,60,20]"}
+- - Variable
+  - Description
+  - Example
+- - `agent` <br />(str \| dict)
+  - The person or software that performed the action described by the event. Same as schema:agent, extends xapi:actor
+  - 
+- - `verb` <br />(str \| dict)
+  - The action performed by the agent. It describes what happened in the event. Extends schema:Action
 
+  - `schema:CreateAction`<br />or `xapi:completed`
+- - `object` <br />(str \| dict)
+  - The object of the event. It describes what the action was performed on. It can be a stimulus, a response, a questionnaire item, etc. It is typically represented as an activity (xapi:Activity) or an entity (schema:Thing)
+  - 
+- - `version` <br />(str)
+  - The associated BDM version <br />**Populated by LRS** 
+  - `"v25.0228"`
+- - `timestamp` <br />(datetime)
+  - When the event occurred. <br />Formatted as [RFC9557](https://datatracker.ietf.org/doc/html/rfc9557) datetime with TimeZone offset (this is the same as [RFC3339 as ISO 8601 profile](https://ijmacd.github.io/rfc3339-iso8601/))
+  - `1996-12-19T16:39:57-08:00Z`
+- - `stored` <br />(datetime)
+  - When the event was stored in the LRS.<br />**Populated by LRS**
+  - `1996-12-19T16:39:57-08:00Z`
+- - `updated` <br />(datetime)
+  - When the event was updated in the LRS.<br />**Populated by LRS**
+  - `1996-12-19T16:39:57-08:00Z`
+- - `context` <br />(str \| dict)
+  - Additional information about the event, e.g., the study or studyflow in which the event occurred, the environment, etc.
+- - `result` <br />(dict)
+  - The outcome of the event, e.g., the accuracy of a response, response time, the score of a questionnaire item, etc.
+  - `{ "accuracy": 1 }`
+- - `authority` <br />(dict)
+  - The authority that generated the event, e.g., the client app that sent the event to the LRS. It can include information about the software or the developer. <br />**Populated by LRS**
+  - 
+- - `attachments` <br />(list)
+  - Additional files or data associated with the event, e.g., a stimulus file, a screenshot of the environment. Each attachment can include metadata about the content type, description, etc.
+  - `[]`
 
-:::{.callout-note appearance="simple"}
-The following prefixes are already imported in the BDM events schema:
-
-- **xapi**: Experience API  
-- **schema**: SchemaOrg  
-- **as2**: ActivityStream 2
 :::
+
 
 ## Example
 
@@ -69,6 +87,14 @@ attachments:
   - type: "Environment"
     runtime: "WebGL"
 ```
+
+:::{.callout-note appearance="simple"}
+The following prefixes are already imported in the BDM events schema:
+
+- **xapi**: Experience API  
+- **schema**: SchemaOrg  
+- **as2**: ActivityStream 2
+:::
 
 In JSON format, the same event looks like this:
 
@@ -123,7 +149,6 @@ As raw timeseries data is dense and homogeneous, it is stored as a separate doma
 The same schema can be used to represent metadata for timeseries, with the addition of a link to the timeseries data file in the `attachments` field:
 
 ```yaml
-...
 attachments:
   - type: "bdm:Timeseries"
     contentType: "application/x-edf"
