@@ -26,10 +26,18 @@ jobs:
         uses: quarto-dev/quarto-actions/render@v2
         with:
           to: html
-      - name: ⬆️ Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
         with:
-          path: _site/
-      - name: 🚀 Deploy to GitHub Pages
-        id: deployment
+          path: './_site'
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
         uses: actions/deploy-pages@v4
