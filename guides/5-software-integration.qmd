@@ -1,6 +1,8 @@
 ---
 order: 5
 output-file: software-integration
+icon: bi bi-reception-3
+difficulty: INTERMEDIATE
 title: Software integration
 subtitle: How to integrate BDM into an existing software stack
 ---

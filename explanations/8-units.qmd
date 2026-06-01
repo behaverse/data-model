@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 8
 output-file: units
 title: Units and values
 subtitle: Measurement units and formats

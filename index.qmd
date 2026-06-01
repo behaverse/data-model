@@ -28,7 +28,7 @@ You can also check:
 
 ### Evolution of the BDM
 
-To suggest improvements, please read the [design process](explanations/2-design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).
+To suggest improvements, please read the [design process](explanations/1-design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).
 
 ### Citation
 

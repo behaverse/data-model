@@ -2,6 +2,12 @@
 title: Page Not Found
 ---
 
-The requested page cannot be found.
+The requested page cannot be found. You may want to try searching to find the page's new location.
 
-You may want to try searching to find the page's new location.
+Or jump to one of the main sections:
+
+- [Home](/index.qmd)
+- [Guides](/guides/index.qmd)
+- [Specifications](/spec/index.qmd)
+- [Explanations](/explanations/index.qmd)
+- [Glossary](/glossary/index.qmd)

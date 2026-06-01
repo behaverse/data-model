@@ -49,8 +49,8 @@ website:
     background: light
     left: "&copy; 2025 [xCIT](https://xcit.org) &middot; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  &middot; [Cookies](#){#open_preferences_center} &middot; [About us](/about.qmd)"
 
-  announcement: 
-    content: "**This website is under construction.** Please see [github.com/behaverse/data-model](https://github.com/behaverse/data-model) for the latest updates." 
+  announcement:
+    content: "**Work in progress.** Some sections (Models, Datasets, and several Guides) are still being drafted. See the [changelog](/changelog.qmd) or follow along on [GitHub](https://github.com/behaverse/data-model)."
     position: above-navbar
 
   navbar: false
@@ -73,8 +73,9 @@ website:
     search: true
     pinned: false
     collapse-level: 1
-    tools: 
+    tools:
       - icon: people
+        text: About
         href: about.qmd
       - icon: clock-history
         text: Changelog
@@ -112,7 +113,7 @@ website:
           icon: database
           contents:
             - href: spec/trials/index.qmd
-              text: '<i class="bi bi-grid"></i> Overview'
+              text: '<i class="bi bi-grid"></i> *Overview*'
             - auto: spec/trials/*.qmd
         - text: 'Models <i class="float-end bi bi-cone-striped"></i>'
           icon: database
@@ -121,7 +122,7 @@ website:
           icon: puzzle
           contents:
             - href: spec/extensions/index.qmd
-              text: Overview
+              text: '*Overview*'
             - auto: spec/extensions/*.qmd
       - "---"
 

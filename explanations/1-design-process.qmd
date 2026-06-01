@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 1
 output-file: design-process
 title: Design process
 subtitle: How BDM is being developed

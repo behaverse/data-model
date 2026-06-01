@@ -1,9 +1,50 @@
 ---
 title: <i class="bi bi-database"></i> Models
+subtitle: Statistical summaries and computational models derived from trials and events
 toc: false
 page-layout: full
 ---
 
 Statistical summaries and models are the highest level of data that represent the scientific analysis and interpretation of the data. For example, in a `DigitSpan` activity, a model might be the subject's working memory capacity or a more complex one, like a deep learning model that predicts the subject's performance.
 
-Work in progress...
+::: {.callout-note appearance="simple"}
+This specification is still being drafted. The structure below is a working sketch, open to feedback on the [GitHub discussions](https://github.com/orgs/behaverse/discussions).
+:::
+
+## Scope
+
+The *Models* layer covers derived artifacts that summarize or interpret the underlying trials and events:
+
+- **Summary statistics** — per-agent, per-session, or per-activity scores (e.g., accuracy, response time distributions).
+- **Psychometric & cognitive parameters** — fitted parameters from established models (e.g., drift diffusion, IRT).
+- **Trained models** — task-specific predictors or representations (e.g., neural networks predicting an agent's performance), stored alongside the data they were trained on.
+
+## Planned structure
+
+Models will live in a top-level `models/` folder, optionally partitioned by agent/session/activity to mirror the data layout:
+
+```{.default .file-tree}
+models/
+├── <MODEL_NAME>/
+│   ├── README.md               # <1>
+│   ├── agent_<ID>/             # <2>
+│   │   └── session_<ID>/
+│   │       └── <ACTIVITY>/
+│   │           └── ...
+│   └── ...                     # <3>
+```
+
+1. `README.md` describes the model's purpose, inputs, outputs, and provenance (e.g., training data, fitting procedure). It also include model card metadata (e.g., model type, parameters, performance metrics) as structured YAML front matter.
+
+2. [Optional] mirrors the partitioned `data/` folder and stores per-trial outputs. But it's optional since some models may not have trial-level or agent-level outputs.
+
+3. [Optional] the rest of this folder is a free-form location for serialized models (e.g., `.pt`, `.onnx`, `.pkl`).
+
+## Open questions
+
+- How do we standardize the metadata that describes a model's inputs (events vs. trials vs. summaries) and its provenance?
+- How do we version models alongside the dataset they describe?
+- Do we need a separate manifest for cross-dataset models?
+- How to organize the checkpoints and artifacts in this folder?
+
+To suggest a direction or share a use case, please open a [discussion on GitHub](https://github.com/orgs/behaverse/discussions).

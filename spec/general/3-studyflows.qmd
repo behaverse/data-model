@@ -14,4 +14,9 @@ Here is an example of a simple studyflow:
 
 Although studyflows are visual, the underlying storage format is machine-readable. This allows for automated execution, validation, versioning, and simulation of studyflows. Studyflows can be created using diagramming tools such as [Studyflow Modeler](https://behaverse.org/studyflow-modeler).
 
-For a complete list of supported elements and their attributes, see the [Studyflow specification](https://behaverse.org/studyflow-modeler/docs/)
+::: {.callout-note appearance="simple" icon="false"}
+**See also**
+
+- [Studyflow Modeler](https://behaverse.org/studyflow-modeler): visual editor for studyflow diagrams.
+- [Studyflow Specification](https://behaverse.org/studyflow-modeler/docs/): complete list of supported elements and their attributes.
+:::

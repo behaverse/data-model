@@ -14,5 +14,5 @@ listing:
       subtitle: Description
 ---
 
-BDM datasets can be extended beyond cognitive tests and questionnaires using additional extensions for describing various types of data and use cases. Below is a list of supported extensions:
+BDM datasets can be extended beyond cognitive tests and questionnaires to describe additional types of data and use cases. Extensions are authored as schemas in the same format used by the [Studyflow Modeler](https://behaverse.org/studyflow-modeler). This keeps the structure of extensions consistent across BDM datasets, studyflows, and tools.
 
