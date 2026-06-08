@@ -13,7 +13,10 @@
 schemas_base_url: https://behaverse.org/schemas
 
 pins:
-  trial:        # pending — schemas/trial not yet published
+  trial:
+    version: v26.0608
+    # No hash yet (not yet served). Build with --local-dir against a schemas clone for now;
+    # when served at behaverse.org/schemas/trial/v26.0608/, add field_definitions_sha256.
   event:        # pending — schemas/event not yet published
   vocabulary:   # pending — schemas/vocabulary not yet published
   dataset:      # exists upstream (v26.0605); pin once it publishes field-definitions.json

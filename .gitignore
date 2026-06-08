@@ -17,6 +17,8 @@ tmp/
 
 # BDM redesign: build cache for fetched behaverse/schemas artifacts (scripts/build_spec.py)
 _fetched/
+# generated spec pages (scripts/build_spec.py) — built from behaverse/schemas, never committed
+spec/trial/
 
 # python
 __pycache__/
