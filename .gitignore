@@ -19,6 +19,7 @@ tmp/
 _fetched/
 # generated spec pages (scripts/build_spec.py) — built from behaverse/schemas, never committed
 spec/trial/
+spec/event/
 
 # python
 __pycache__/
