@@ -1,23 +1,21 @@
 # schemas.lock — pinned behaverse/schemas artifacts for a reproducible BDM build.
 # Read by scripts/build_spec.py. A BDM release (one per year) freezes this file.
 #
-# STATUS: placeholder. trial / event / vocabulary are NOT yet published by behaverse/schemas
-# (see BDM-schemas-side-spec.md). Pins are left null until their versioned URLs resolve;
-# build_spec.py treats a null pin as "pending" and skips it.
-#
-# Each active pin has the shape:
-#   <name>:
-#     version: vYY.MMDD
-#     field_definitions_sha256: <hex>   # sha256 of field-definitions.json
-#     schema_sha256: <hex>              # sha256 of schema.json
-schemas_base_url: https://behaverse.org/schemas
+# field-definitions.json is fetched from jsDelivr, pinned to a behaverse/schemas commit
+# (immutable + CDN-cached) and verified against the content hash below. behaverse.org/schemas
+# does not yet serve this artifact type; when its deploy publishes versioned
+# field-definitions.json, switch `source.url_template` to that path and drop `ref`.
+source:
+  url_template: "https://cdn.jsdelivr.net/gh/behaverse/schemas@{ref}/{name}/field-definitions.json"
+  ref: 2b31c8103c22959a06414c461a0f574c7be352c8   # behaverse/schemas main @ PR#8 merge
+
+# Human "full reference" link target on generated pages (the Docusaurus docs site).
+docs_base_url: https://behaverse.org/schemas
 
 pins:
   trial:
     version: v26.0608
-    # No hash yet (not yet served). Build with --local-dir against a schemas clone for now;
-    # when served at behaverse.org/schemas/trial/v26.0608/, add field_definitions_sha256.
+    field_definitions_sha256: 717746f8ad8fc73345153f83f01831494fc968dc2b0b54d12ab2c55717ba941b
   event:
-    version: v26.0608   # dev: built via --local-dir until served (then add field_definitions_sha256)
-  vocabulary:   # pending — schemas/vocabulary not yet published
-  dataset:      # exists upstream (v26.0605); pin once it publishes field-definitions.json
+    version: v26.0608
+    field_definitions_sha256: 887021a01541b973acf15dc669a0e175b708e9509e5527d3504bd97a8cd3b526

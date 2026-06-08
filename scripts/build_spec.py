@@ -47,9 +47,10 @@ def load_lock(path: Path = LOCK_PATH) -> dict:
     if not path.exists():
         sys.exit(f"missing {path} — a BDM build needs a lockfile of pinned schema versions")
     data = yaml.safe_load(path.read_text()) or {}
-    for key in ("schemas_base_url", "pins"):
-        if key not in data:
-            sys.exit(f"schemas.lock must define '{key}'")
+    if "pins" not in data:
+        sys.exit("schemas.lock must define 'pins'")
+    if "url_template" not in (data.get("source") or {}):
+        sys.exit("schemas.lock must define source.url_template")
     return data
 
 
@@ -57,16 +58,18 @@ def check_lock(data: dict) -> None:
     pins = data.get("pins") or {}
     active = {k: v for k, v in pins.items() if v}
     pending = [k for k, v in pins.items() if not v]
-    print(f"schemas.lock OK — base={data['schemas_base_url']}, "
+    ref = (data["source"].get("ref") or "-")
+    print(f"schemas.lock OK — source ref {ref}, "
           f"{len(active)} active, {len(pending)} pending {pending or ''}".rstrip())
     for name, pin in active.items():
-        if "version" not in pin:
-            sys.exit(f"pin '{name}' is missing 'version'")
+        for req in ("version", "field_definitions_sha256"):
+            if req not in pin:
+                sys.exit(f"pin '{name}' is missing '{req}'")
 
 
 # --- source resolution ----------------------------------------------------------------------
 
-def resolve_field_definitions(base_url: str, name: str, pin: dict, local_dir: str | None) -> dict:
+def resolve_field_definitions(source: dict, name: str, pin: dict, local_dir: str | None) -> dict:
     if local_dir:
         local = Path(local_dir).expanduser() / name / "field-definitions.json"
         if local.exists():
@@ -74,15 +77,16 @@ def resolve_field_definitions(base_url: str, name: str, pin: dict, local_dir: st
             return json.loads(local.read_text())
     import requests  # imported lazily so --local-dir / --check work offline
 
-    url = f"{base_url}/{name}/{pin['version']}/field-definitions.json"
+    url = source["url_template"].format(ref=source.get("ref", ""), name=name, version=pin["version"])
     resp = requests.get(url, timeout=30)
     resp.raise_for_status()
     expected = pin.get("field_definitions_sha256")
     actual = hashlib.sha256(resp.content).hexdigest()
-    if expected and actual != expected:
-        sys.exit(f"  {name}: hash mismatch for {url}\n    expected {expected}\n    actual   {actual}")
     if not expected:
-        print(f"  {name}: WARNING fetched {url} but no hash pinned (unverified)")
+        sys.exit(f"  {name}: no field_definitions_sha256 pinned in schemas.lock")
+    if actual != expected:
+        sys.exit(f"  {name}: hash mismatch for {url}\n    expected {expected}\n    actual   {actual}")
+    print(f"  {name}: fetched {url.split('@')[-1] if '@' in url else url} (sha256 ok)")
     return json.loads(resp.content)
 
 
@@ -197,10 +201,11 @@ def main() -> None:
     if not active:
         print("no active pins — nothing to generate (see schemas.lock).")
         return
+    docs_base = lock.get("docs_base_url", "https://behaverse.org/schemas")
     print(f"generating spec pages for: {', '.join(active)}")
     for name, pin in active.items():
-        doc = resolve_field_definitions(lock["schemas_base_url"], name, pin, args.local_dir)
-        generate_schema_pages(name, doc, lock["schemas_base_url"])
+        doc = resolve_field_definitions(lock["source"], name, pin, args.local_dir)
+        generate_schema_pages(name, doc, docs_base)
     print("done.")
 
 
