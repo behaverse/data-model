@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use the Behaverse Data Model (BDM), please cite the paper in 'preferred-citation'."
+title: "Behaverse Data Model (BDM)"
+abstract: "A unified dataset format for cognitive tests and questionnaires."
+type: software
+url: "https://behaverse.org/data-model"
+repository-code: "https://github.com/behaverse/data-model"
+license: CC-BY-4.0
+authors:
+  - family-names: Cardoso-Leite
+    given-names: Pedro
+  - family-names: Ansarinia
+    given-names: Morteza
+preferred-citation:
+  type: article
+  title: "The structure of behavioral data"
+  year: 2020
+  url: "https://arxiv.org/abs/2012.12583"
+  identifiers:
+    - type: other
+      value: "arXiv:2012.12583"
+  authors:
+    - family-names: Defossez
+      given-names: Aurélien
+    - family-names: Ansarinia
+      given-names: Morteza
+    - family-names: Clocher
+      given-names: Brice
+    - family-names: Schmück
+      given-names: Emmanuel
+    - family-names: Schrater
+      given-names: Paul
+    - family-names: Cardoso-Leite
+      given-names: Pedro

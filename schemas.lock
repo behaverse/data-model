@@ -1,0 +1,19 @@
+# schemas.lock — pinned behaverse/schemas artifacts for a reproducible BDM build.
+# Read by scripts/build_spec.py. A BDM release (one per year) freezes this file.
+#
+# STATUS: placeholder. trial / event / vocabulary are NOT yet published by behaverse/schemas
+# (see BDM-schemas-side-spec.md). Pins are left null until their versioned URLs resolve;
+# build_spec.py treats a null pin as "pending" and skips it.
+#
+# Each active pin has the shape:
+#   <name>:
+#     version: vYY.MMDD
+#     field_definitions_sha256: <hex>   # sha256 of field-definitions.json
+#     schema_sha256: <hex>              # sha256 of schema.json
+schemas_base_url: https://behaverse.org/schemas
+
+pins:
+  trial:        # pending — schemas/trial not yet published
+  event:        # pending — schemas/event not yet published
+  vocabulary:   # pending — schemas/vocabulary not yet published
+  dataset:      # exists upstream (v26.0605); pin once it publishes field-definitions.json

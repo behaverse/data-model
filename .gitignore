@@ -14,3 +14,10 @@ _site/
 .$*.drawio.bkp
 tmp/
 **/*.quarto_ipynb
+
+# BDM redesign: build cache for fetched behaverse/schemas artifacts (scripts/build_spec.py)
+_fetched/
+
+# python
+__pycache__/
+*.pyc

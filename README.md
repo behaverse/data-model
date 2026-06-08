@@ -10,6 +10,28 @@ To preview the documentation locally, make sure you have [Quarto CLI](https://qu
 quarto preview .
 ```
 
+## Documentation
+
+The documentation site is built with [Quarto](https://quarto.org) and published to GitHub Pages: **[behaverse.org/data-model](https://behaverse.org/data-model)**.
+
+## Related projects
+
+BDM is the human-facing umbrella for a small ecosystem. It *references* machine-readable artifacts rather than defining its own:
+
+- **[behaverse/schemas](https://github.com/behaverse/schemas)** — the schemas and vocabularies BDM documents (the single source of truth for data contracts).
+- **[behaverse](https://github.com/behaverse)** — other Behaverse tools and projects.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Issues and discussions are welcome on [GitHub](https://github.com/orgs/behaverse/discussions).
+
+## License
+
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — see [LICENSE](LICENSE).
+
+## Citation
+
+If you use BDM in your research, please cite *"The structure of behavioral data"* ([arXiv:2012.12583](https://arxiv.org/abs/2012.12583)); see [CITATION.cff](CITATION.cff).
 
 ## Acknowledgements
 
