@@ -113,7 +113,7 @@ The main data in behavioral data analysis is the trials. Events are the raw data
 
 ## Activities data
 
-See the [*<i class="bi bi-grid-3x3"></i> Response* table](/spec/trials/1-response.qmd) for more information. Trials are stored in the `response_<ATTEMPT>.csv` file within the activity folder and can be accompanied by the optional supporting tables for stimuli, options, etc.
+See the [*<i class="bi bi-grid-3x3"></i> Response* table](/spec/trial/1-response.qmd) for more information. Trials are stored in the `response_<ATTEMPT>.csv` file within the activity folder and can be accompanied by the optional supporting tables for stimuli, options, etc.
 
 
 Within the activity folders, you will find the data files collected during the activity. Here is an example of a `DigitSpan` activity folder:

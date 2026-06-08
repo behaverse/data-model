@@ -23,10 +23,17 @@ Please don't hand-edit generated content (any page BDM fetches/renders from `beh
 
 ## Develop locally
 
-Install the [Quarto CLI](https://quarto.org/docs/get-started/), then:
+Install the [Quarto CLI](https://quarto.org/docs/get-started/) and [uv](https://docs.astral.sh/uv/). The schema reference pages (`spec/trial/`, `spec/event/`) are **generated** from `behaverse/schemas` (see `scripts/build_spec.py` + `schemas.lock`), so generate them first, then preview:
 
 ```bash
+uv run scripts/build_spec.py   # fetch schema artifacts -> spec/trial, spec/event
 quarto preview .
+```
+
+To preview against a local `behaverse/schemas` checkout (before changes are merged/deployed):
+
+```bash
+uv run scripts/build_spec.py --local-dir ../schemas
 ```
 
 ## Conventions

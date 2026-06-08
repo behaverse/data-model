@@ -107,14 +107,14 @@ website:
           contents:
             - auto: "spec/general/*.qmd"
         - text: "Events"
-          href: spec/events/index.qmd
+          href: spec/event/index.qmd
           icon: database
         - section: "Trials"
           icon: database
           contents:
-            - href: spec/trials/index.qmd
+            - href: spec/trial/index.qmd
               text: '<i class="bi bi-grid"></i> *Overview*'
-            - auto: spec/trials/*.qmd
+            - auto: spec/trial/*.qmd
         - text: 'Models <i class="float-end bi bi-cone-striped"></i>'
           icon: database
           href: spec/models/index.qmd

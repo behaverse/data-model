@@ -1,0 +1,5 @@
+A trial is a single instance of a participant interacting with a task — it captures information about the participant, the task, and their interaction. BDM spreads trial information across several related tables (below), joined by `_id` foreign keys, so a wide range of cognitive tasks and questionnaires can be represented consistently.
+
+::: {.callout-tip appearance="simple"}
+Tables reference each other by `_id` foreign keys — e.g. `stimulus_id` in **Response** points to a row in the **Stimulus** table. When several entities occur in one trial (e.g. multiple stimuli), their ids/values are concatenated into a single string on CSV export.
+:::
