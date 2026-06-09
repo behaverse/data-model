@@ -58,13 +58,11 @@ def check_lock(data: dict) -> None:
     pins = data.get("pins") or {}
     active = {k: v for k, v in pins.items() if v}
     pending = [k for k, v in pins.items() if not v]
-    ref = (data["source"].get("ref") or "-")
-    print(f"schemas.lock OK — source ref {ref}, "
+    print(f"schemas.lock OK — source {data['source']['url_template']}, "
           f"{len(active)} active, {len(pending)} pending {pending or ''}".rstrip())
     for name, pin in active.items():
-        for req in ("version", "field_definitions_sha256"):
-            if req not in pin:
-                sys.exit(f"pin '{name}' is missing '{req}'")
+        if "version" not in pin:
+            sys.exit(f"pin '{name}' is missing 'version'")
 
 
 # --- source resolution ----------------------------------------------------------------------
@@ -80,13 +78,14 @@ def resolve_field_definitions(source: dict, name: str, pin: dict, local_dir: str
     url = source["url_template"].format(ref=source.get("ref", ""), name=name, version=pin["version"])
     resp = requests.get(url, timeout=30)
     resp.raise_for_status()
-    expected = pin.get("field_definitions_sha256")
-    actual = hashlib.sha256(resp.content).hexdigest()
-    if not expected:
-        sys.exit(f"  {name}: no field_definitions_sha256 pinned in schemas.lock")
-    if actual != expected:
-        sys.exit(f"  {name}: hash mismatch for {url}\n    expected {expected}\n    actual   {actual}")
-    print(f"  {name}: fetched {url.split('@')[-1] if '@' in url else url} (sha256 ok)")
+    expected = pin.get("field_definitions_sha256")  # optional: present only to freeze a release
+    if expected:
+        actual = hashlib.sha256(resp.content).hexdigest()
+        if actual != expected:
+            sys.exit(f"  {name}: hash mismatch for {url}\n    expected {expected}\n    actual   {actual}")
+        print(f"  {name}: fetched {url} (sha256 ok)")
+    else:
+        print(f"  {name}: fetched {url}")
     return json.loads(resp.content)
 
 

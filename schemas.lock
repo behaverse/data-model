@@ -1,13 +1,12 @@
-# schemas.lock — pinned behaverse/schemas artifacts for a reproducible BDM build.
-# Read by scripts/build_spec.py. A BDM release (one per year) freezes this file.
+# schemas.lock — which behaverse/schemas artifacts the BDM site fetches.
+# Read by scripts/build_spec.py.
 #
-# field-definitions.json is fetched from jsDelivr, pinned to a behaverse/schemas commit
-# (immutable + CDN-cached) and verified against the content hash below. behaverse.org/schemas
-# does not yet serve this artifact type; when its deploy publishes versioned
-# field-definitions.json, switch `source.url_template` to that path and drop `ref`.
+# We fetch the *current* field-definitions.json from the canonical schemas site. While the
+# schemas evolve rapidly (and BDM is their only consumer), pins are unversioned and content
+# hashes are omitted — the build simply tracks current. To freeze a release later, add a
+# `field_definitions_sha256` under a pin and build_spec will verify it.
 source:
-  url_template: "https://cdn.jsdelivr.net/gh/behaverse/schemas@{ref}/{name}/field-definitions.json"
-  ref: 2b31c8103c22959a06414c461a0f574c7be352c8   # behaverse/schemas main @ PR#8 merge
+  url_template: "https://behaverse.org/schemas/{name}/field-definitions.json"
 
 # Human "full reference" link target on generated pages (the Docusaurus docs site).
 docs_base_url: https://behaverse.org/schemas
@@ -15,7 +14,5 @@ docs_base_url: https://behaverse.org/schemas
 pins:
   trial:
     version: v26.0608
-    field_definitions_sha256: 717746f8ad8fc73345153f83f01831494fc968dc2b0b54d12ab2c55717ba941b
   event:
     version: v26.0608
-    field_definitions_sha256: 887021a01541b973acf15dc669a0e175b708e9509e5527d3504bd97a8cd3b526
