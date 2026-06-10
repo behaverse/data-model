@@ -29,6 +29,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -142,6 +143,13 @@ def _vocab_section(doc: dict) -> list[str]:
     return out
 
 
+def _slug(name: str) -> str:
+    """CamelCase table/section name -> kebab-case slug. Mirrors the behaverse/schemas docs
+    generator so the 'Full reference' link points at the right per-table page URL."""
+    s = re.sub(r'(?<!^)(?=[A-Z])', '-', str(name))
+    return re.sub(r'[^A-Za-z0-9]+', '-', s).strip('-').lower() or 'item'
+
+
 def render_table_page(schema: str, table: dict, ref_base: str) -> str:
     name = table["name"]
     out = ["---", f'title: "{name}"', "toc: true",
@@ -151,7 +159,7 @@ def render_table_page(schema: str, table: dict, ref_base: str) -> str:
     for note in table.get("notes") or []:
         out += ["::: {.callout-note appearance=\"simple\"}", note, ":::", ""]
     out += [f"::: {{.callout-tip appearance=\"simple\"}}",
-            f"Summary view. **[Full reference →]({ref_base}#{name.lower()})** on behaverse.org/schemas.",
+            f"Summary view. **[Full reference →]({ref_base}/{_slug(name)})** on behaverse.org/schemas.",
             ":::", ""]
     out += _field_rows(table["fields"]) + [""]
     return "\n".join(out)
