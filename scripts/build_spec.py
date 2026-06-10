@@ -107,6 +107,27 @@ def _field_rows(fields: list[dict]) -> list[str]:
     return rows
 
 
+def _grouped_field_rows(fields: list[dict]) -> list[str]:
+    """Render fields grouped under their category (Key, Context, …), as the original site did.
+    Groups by each field's first category in first-appearance order; falls back to a single flat
+    table when the fields carry no categories."""
+    order: list[str] = []
+    groups: dict[str, list[dict]] = {}
+    for f in fields:
+        cats = f.get("categories") or []
+        key = cats[0] if cats else ""
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(f)
+    if order == [""]:  # no categories present → flat table
+        return _field_rows(fields)
+    out: list[str] = []
+    for key in order:
+        out += [f"## {key or 'Other'}", ""] + _field_rows(groups[key]) + [""]
+    return out
+
+
 def _read_intro(schema: str) -> str:
     """Hand-written prose preamble for a generated schema page (spec/_intros/<schema>.qmd).
 
@@ -161,7 +182,7 @@ def render_table_page(schema: str, table: dict, ref_base: str) -> str:
     out += [f"::: {{.callout-tip appearance=\"simple\"}}",
             f"Summary view. **[Full reference →]({ref_base}/{_slug(name)})** on behaverse.org/schemas.",
             ":::", ""]
-    out += _field_rows(table["fields"]) + [""]
+    out += _grouped_field_rows(table["fields"])
     return "\n".join(out)
 
 
