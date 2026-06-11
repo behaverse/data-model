@@ -2,19 +2,15 @@
 title: Glossary
 subtitle: Controlled vocabulary for behavioral data terms and BDM concepts
 toc: false
-listing: 
+listing:
   template: "../assets/templates/glossary.ejs"
   field-required: [name, categories, description]
-  exclude:
-    "categories":
-      - "Glossary"
-      - "Data Type"
-      - "Variable Type"
-      - "Variable Category"
   filter-ui: [name, categories]
   sort-ui: false
   categories: numbered
   page-size: 10000
   contents:
-    - "../assets/auto-generated/glossary.yml"
+    - "glossary.yml"
 ---
+
+*This glossary is generated from the published [behaverse/schemas](https://behaverse.org/schemas) artifacts: cross-cutting terms from the [vocabulary](https://behaverse.org/schemas/vocabulary/terms.jsonld), plus the field terms each schema defines.*

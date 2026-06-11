@@ -20,6 +20,8 @@ _fetched/
 # generated spec pages (scripts/build_spec.py) — built from behaverse/schemas, never committed
 spec/trial/
 spec/event/
+# generated glossary data (scripts/build_spec.py) — vocabulary + harvested schema field terms
+glossary/glossary.yml
 
 # python
 __pycache__/

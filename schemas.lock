@@ -11,6 +11,12 @@ source:
 # Human "full reference" link target on generated pages (the Docusaurus docs site).
 docs_base_url: https://behaverse.org/schemas
 
+# Cross-cutting terminology (behaverse/schemas vocabulary/). Merged with field terms
+# harvested from the pinned schemas into the generated glossary (glossary/glossary.yml).
+# Tracks current, like the pins; add `sha256` to freeze.
+vocabulary:
+  url: "https://behaverse.org/schemas/vocabulary/terms.jsonld"
+
 pins:
   trial:
     version: v26.0608
