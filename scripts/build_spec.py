@@ -99,9 +99,12 @@ def _md(s: str | None) -> str:
 def _field_rows(fields: list[dict]) -> list[str]:
     rows = ["| Field | Type | Requirement | Description |", "|---|---|---|---|"]
     for f in fields:
-        desc = _md(f.get("description"))
+        parts = [_md(f["description"])] if f.get("description") else []
         if f.get("range"):
-            desc = f"{desc} <br/>*Range:* {_md(f['range'])}" if desc else f"*Range:* {_md(f['range'])}"
+            parts.append(f"*Range:* {_md(f['range'])}")
+        for note in f.get("notes") or []:
+            parts.append(f"*Note:* {_md(note)}")
+        desc = " <br/>".join(parts)
         req = REQUIREMENT_LABEL.get(f.get("requirement"), f.get("requirement", ""))
         rows.append(f"| `{f['name']}` | {_md(f.get('type'))} | {req} | {desc} |")
     return rows
