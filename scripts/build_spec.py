@@ -10,6 +10,12 @@ This reads schemas.lock (pinned versions + content hashes), obtains each schema'
 field-definitions.json, and generates Quarto spec pages (summary tables) that link out to the
 full reference at behaverse.org/schemas/<name>. See BDM-redesign-spec.md §5.
 
+It also generates the glossary data (glossary/glossary.yml) as a merge-view: cross-cutting
+terms from the behaverse/schemas vocabulary (terms.jsonld) plus field terms harvested from
+each fetched schema. Field names the vocabulary already defines are skipped (the vocabulary
+definition is canonical); a multi-table schema contributes each field name once (first
+definition wins, other tables are noted).
+
 Source resolution per schema (in order):
   1. --local-dir DIR (or $BDM_SCHEMAS_LOCAL): read DIR/<name>/field-definitions.json.
      Dev convenience for before the schemas site is deployed; the hash is NOT verified.
@@ -38,6 +44,7 @@ import yaml  # type: ignore
 REPO = Path(__file__).resolve().parent.parent
 LOCK_PATH = REPO / "schemas.lock"
 SPEC_DIR = REPO / "spec"
+GLOSSARY_DATA = REPO / "glossary" / "glossary.yml"
 
 REQUIREMENT_LABEL = {"required": "**required**", "recommended": "recommended", "optional": "optional"}
 
@@ -68,26 +75,38 @@ def check_lock(data: dict) -> None:
 
 # --- source resolution ----------------------------------------------------------------------
 
+def _fetch_json(url: str, expected_sha: str | None, label: str) -> dict:
+    import requests  # imported lazily so --local-dir / --check work offline
+
+    resp = requests.get(url, timeout=30)
+    resp.raise_for_status()
+    if expected_sha:  # optional: present only to freeze a release
+        actual = hashlib.sha256(resp.content).hexdigest()
+        if actual != expected_sha:
+            sys.exit(f"  {label}: hash mismatch for {url}\n    expected {expected_sha}\n    actual   {actual}")
+        print(f"  {label}: fetched {url} (sha256 ok)")
+    else:
+        print(f"  {label}: fetched {url}")
+    return json.loads(resp.content)
+
+
 def resolve_field_definitions(source: dict, name: str, pin: dict, local_dir: str | None) -> dict:
     if local_dir:
         local = Path(local_dir).expanduser() / name / "field-definitions.json"
         if local.exists():
             print(f"  {name}: local {local}  (dev — hash NOT verified)")
             return json.loads(local.read_text())
-    import requests  # imported lazily so --local-dir / --check work offline
-
     url = source["url_template"].format(ref=source.get("ref", ""), name=name, version=pin["version"])
-    resp = requests.get(url, timeout=30)
-    resp.raise_for_status()
-    expected = pin.get("field_definitions_sha256")  # optional: present only to freeze a release
-    if expected:
-        actual = hashlib.sha256(resp.content).hexdigest()
-        if actual != expected:
-            sys.exit(f"  {name}: hash mismatch for {url}\n    expected {expected}\n    actual   {actual}")
-        print(f"  {name}: fetched {url} (sha256 ok)")
-    else:
-        print(f"  {name}: fetched {url}")
-    return json.loads(resp.content)
+    return _fetch_json(url, pin.get("field_definitions_sha256"), name)
+
+
+def resolve_vocabulary(vocab_cfg: dict, local_dir: str | None) -> dict:
+    if local_dir:
+        local = Path(local_dir).expanduser() / "vocabulary" / "terms.jsonld"
+        if local.exists():
+            print(f"  vocabulary: local {local}  (dev — hash NOT verified)")
+            return json.loads(local.read_text())
+    return _fetch_json(vocab_cfg["url"], vocab_cfg.get("sha256"), "vocabulary")
 
 
 # --- rendering ------------------------------------------------------------------------------
@@ -237,6 +256,77 @@ def generate_schema_pages(schema: str, doc: dict, base_url: str) -> Path:
     return out_dir
 
 
+# --- glossary -------------------------------------------------------------------------------
+
+def _vocab_entries(vocab: dict) -> list[dict]:
+    """Vocabulary concepts -> glossary listing entries (scheme label = category).
+    Schemes/concepts with status 'internal' are reference-only and excluded."""
+    scheme_label = {s["@id"]: s["label"] for s in vocab["schemes"] if s.get("status") != "internal"}
+    entries = []
+    for c in vocab["concepts"]:
+        if c.get("status") == "internal" or c["scheme"] not in scheme_label:
+            continue
+        e = {"name": c["label"], "categories": [scheme_label[c["scheme"]]]}
+        if c.get("data_type"):
+            e["data_type"] = c["data_type"]
+        e["description"] = c["definition"]
+        if c.get("range"):
+            e["range"] = c["range"]
+        if c.get("notes"):
+            e["notes"] = list(c["notes"])
+        entries.append(e)
+    return entries
+
+
+def _schema_term_entries(schema: str, doc: dict, skip: set[str]) -> list[dict]:
+    """Harvest one schema's field terms as glossary entries. Names in `skip` (defined by the
+    vocabulary) are omitted. In a multi-table schema each name appears once: the first
+    definition wins and the other tables are noted."""
+    pairs = [(t["name"], f) for t in doc["tables"] for f in t["fields"]] if "tables" in doc \
+        else [(None, f) for f in doc["fields"]]
+    entries: dict[str, dict] = {}
+    tables_of: dict[str, list[str]] = {}
+    for tname, f in pairs:
+        name = f["name"]
+        if name in skip:
+            continue
+        if tname and tname not in tables_of.setdefault(name, []):
+            tables_of[name].append(tname)
+        if name in entries:
+            continue
+        e = {"name": name, "categories": [f"{schema.title()} fields"]}
+        if f.get("type"):
+            e["data_type"] = str(f["type"])
+        e["description"] = f.get("description", "")
+        if f.get("range"):
+            e["range"] = f["range"]
+        if f.get("notes"):
+            e["notes"] = list(f["notes"])
+        entries[name] = e
+    for name, e in entries.items():
+        ts = tables_of.get(name) or []
+        if len(ts) > 1:
+            e.setdefault("notes", []).append(
+                f"Shown as defined in the {ts[0]} table; also a field of: {', '.join(ts[1:])}.")
+    return sorted(entries.values(), key=lambda e: e["name"])
+
+
+def generate_glossary(vocab: dict, docs: dict[str, dict]) -> None:
+    entries = _vocab_entries(vocab)
+    vocab_names = {e["name"] for e in entries}
+    counts = [f"{len(entries)} vocabulary terms (v{vocab.get('version', '?')})"]
+    for schema, doc in docs.items():
+        harvested = _schema_term_entries(schema, doc, vocab_names)
+        entries += harvested
+        counts.append(f"{len(harvested)} {schema} fields")
+    header = ("# GENERATED by scripts/build_spec.py — do not edit.\n"
+              "# Merge-view rendered by glossary/index.qmd: behaverse/schemas vocabulary terms\n"
+              "# + field terms harvested from each schema's field-definitions.json.\n")
+    GLOSSARY_DATA.write_text(header + yaml.safe_dump(entries, sort_keys=False,
+                                                     allow_unicode=True, width=100))
+    print(f"  glossary: {' + '.join(counts)} -> {GLOSSARY_DATA}")
+
+
 # --- main -----------------------------------------------------------------------------------
 
 def main() -> None:
@@ -257,9 +347,16 @@ def main() -> None:
         return
     docs_base = lock.get("docs_base_url", "https://behaverse.org/schemas")
     print(f"generating spec pages for: {', '.join(active)}")
+    docs: dict[str, dict] = {}
     for name, pin in active.items():
         doc = resolve_field_definitions(lock["source"], name, pin, args.local_dir)
         generate_schema_pages(name, doc, docs_base)
+        docs[name] = doc
+    vocab_cfg = lock.get("vocabulary")
+    if vocab_cfg:
+        print("generating glossary (vocabulary + schema field terms)")
+        vocab = resolve_vocabulary(vocab_cfg, args.local_dir)
+        generate_glossary(vocab, docs)
     print("done.")
 
 
