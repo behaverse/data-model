@@ -131,10 +131,11 @@ website:
           - auto: "explanations/*.qmd"
       - "---"
 
-      - href: datasets/index.qmd
-        icon: database-check
-        text: Datasets
-      - "---"
+      # hidden until the Datasets page has content
+      # - href: datasets/index.qmd
+      #   icon: database-check
+      #   text: Datasets
+      # - "---"
 
       - href: glossary/index.qmd
         icon: journal-text

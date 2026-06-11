@@ -24,7 +24,7 @@ Let's begin by dataset card. Each BDM-compatible dataset contains a `README.md` 
 
 The human-readable part is just the regular markdown format common in technical documentation. For a template you can use [HuggingFace dataset card example](https://huggingface.co/datasets/templates/dataset-card-example).
 
-The machine-readable part relies primarily on the [front-matter](#) of the file. Front-matters are a way to include metadata in a markdown file. They are written in YAML format and are placed at the top of the file between two sets of three dashes (`---`). For example:
+The machine-readable part relies primarily on the front-matter of the file. Front-matters are a way to include metadata in a markdown file. They are written in YAML format and are placed at the top of the file between two sets of three dashes (`---`). For example:
 
 ```markdown
 ---
