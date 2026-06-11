@@ -41,13 +41,13 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture informatio
 
 ***Some particular structures are unique to the type of data or activity. There are three [levels of data](../guides/1-getting-started.qmd#levels-of-data):***
 
-[<i class="bi bi-database"></i> Level 1: **Events**](event/index.qmd)
+[<i class="bi bi-database"></i> **Events**](event/index.qmd)
 : Raw data collected during the experiment. This includes both discrete events (e.g., stimuli, responses) and continuous streams sampled at regular intervals (e.g., physiological signals). This level is the most detailed and is typically sufficient to reproduce the original experiment.
 
-[<i class="bi bi-database"></i> Level 2: **Trials**](trial/index.qmd)
+[<i class="bi bi-database"></i> **Trials**](trial/index.qmd)
 : BDM considers trials as the core components of cognitive experiments. These are task-specific aggregates, derived from raw events, and typically designed to capture the main features of the scientific experiment.
 
-[<i class="bi bi-database"></i> Level 3: **Models**](#)
+[<i class="bi bi-database"></i> **Models**](models/index.qmd)
 : Summary statistics, scores, or computational models that are derived from trials or events. They address research questions or are used for downstream analyses.
 
 :::

@@ -45,7 +45,7 @@ study/
 
 ## <i class="bi bi-table"></i> Response table
 
-Each trial is a single interaction between an agent (e.g., a human participant) and a stimulus (e.g., a question). [Response table](#) is a standalone table and contains the main information about the trial, while other supplementary tables may contain more specific information about [the agents](#), [stimuli](#) and [options](#).
+Each trial is a single interaction between an agent (e.g., a human participant) and a stimulus (e.g., a question). The [Response table](../spec/trial/1-response.qmd) is a standalone table and contains the main information about the trial, while other supplementary tables may contain more specific information about the agents, [stimuli](../spec/trial/2-stimulus.qmd) and [options](../spec/trial/3-option.qmd).
 
 Within the Response table (`response_1.csv`), each row corresponds to a single response in a trial. A trial is identified by a unique index (`trial_index`) and contains main information about the agent, the stimulus (i.e., the question), the options, the response, and the evaluation of the response. Here are the variables that are typically included in the Response table for questionnaires:
 

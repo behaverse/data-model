@@ -23,7 +23,6 @@ The website is organized into three main parts:
 
 You can also check:
 
-- [Datasets](/datasets/index.qmd): Examples of datasets that conform to the BDM.
 - [Glossary](/glossary/index.qmd): A controlled vocabulary for cognitive and behavioral data.
 
 ### Evolution of the BDM
