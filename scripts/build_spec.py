@@ -28,6 +28,9 @@ Usage:
   uv run scripts/build_spec.py --check                       # validate schemas.lock, exit
   uv run scripts/build_spec.py --local-dir ../path/to/schemas  # generate from a local clone
   uv run scripts/build_spec.py                               # fetch from published URLs
+
+TODO (upstream): remove LEGACY_LINKS once behaverse/schemas field-definitions are updated to
+use the new site paths introduced in the 2026-06 BDM redesign.
 """
 from __future__ import annotations
 
@@ -47,6 +50,23 @@ SPEC_DIR = REPO / "spec"
 GLOSSARY_DATA = REPO / "glossary" / "glossary.yml"
 
 REQUIREMENT_LABEL = {"required": "**required**", "recommended": "recommended", "optional": "optional"}
+
+# Old site paths that moved in the 2026-06 redesign; upstream schema descriptions may still
+# reference them. Rewrite until behaverse/schemas field-definitions catch up.
+LEGACY_LINKS: dict[str, str] = {
+    "/spec/general/2-dataset-cards.qmd": "/spec/dataset-cards.html",
+    "/spec/general/1-folder-structure.qmd": "/spec/conventions/folder-structure.html",
+    "/spec/general/3-studyflows.qmd": "/spec/studyflows.html",
+    "/spec/general/4-instructions.qmd": "/spec/instructions.html",
+    "/spec/general/5-questionnaires.qmd": "/spec/questionnaires.html",
+}
+
+
+def rewrite_legacy_links(text: str) -> str:
+    """Replace stale pre-redesign site paths in fetched field text."""
+    for old, new in LEGACY_LINKS.items():
+        text = text.replace(old, new)
+    return text
 
 
 # --- lockfile -------------------------------------------------------------------------------
@@ -112,7 +132,7 @@ def resolve_vocabulary(vocab_cfg: dict, local_dir: str | None) -> dict:
 # --- rendering ------------------------------------------------------------------------------
 
 def _md(s: str | None) -> str:
-    return (s or "").replace("|", "\\|").replace("\n", " ").strip()
+    return rewrite_legacy_links((s or "").replace("|", "\\|").replace("\n", " ").strip())
 
 
 def _field_rows(fields: list[dict]) -> list[str]:
@@ -269,11 +289,11 @@ def _vocab_entries(vocab: dict) -> list[dict]:
         e = {"name": c["label"], "categories": [scheme_label[c["scheme"]]]}
         if c.get("data_type"):
             e["data_type"] = c["data_type"]
-        e["description"] = c["definition"]
+        e["description"] = rewrite_legacy_links(c["definition"])
         if c.get("range"):
-            e["range"] = c["range"]
+            e["range"] = rewrite_legacy_links(c["range"])
         if c.get("notes"):
-            e["notes"] = list(c["notes"])
+            e["notes"] = [rewrite_legacy_links(n) for n in c["notes"]]
         entries.append(e)
     return entries
 
@@ -297,11 +317,11 @@ def _schema_term_entries(schema: str, doc: dict, skip: set[str]) -> list[dict]:
         e = {"name": name, "categories": [f"{schema.title()} fields"]}
         if f.get("type"):
             e["data_type"] = str(f["type"])
-        e["description"] = f.get("description", "")
+        e["description"] = rewrite_legacy_links(f.get("description", ""))
         if f.get("range"):
-            e["range"] = f["range"]
+            e["range"] = rewrite_legacy_links(f["range"])
         if f.get("notes"):
-            e["notes"] = list(f["notes"])
+            e["notes"] = [rewrite_legacy_links(n) for n in f["notes"]]
         entries[name] = e
     for name, e in entries.items():
         ts = tables_of.get(name) or []
