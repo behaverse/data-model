@@ -3,7 +3,7 @@
 $bdm-magenta:      #D100B5;  // marks, rules, badges
 $bdm-magenta-text: #B5009E;  // links, accented text (darker for contrast)
 $bdm-ink:          #1c1917;
-$bdm-paper:        #FCFBF8;
+$bdm-paper:        #F2F5F7;  // EXPERIMENT: light blue-grey (was cream #FCFBF8)
 $bdm-stone-700:    #44403c;
 $bdm-stone-600:    #57534e;
 $bdm-stone-500:    #78716c;
@@ -38,6 +38,8 @@ $toc-color: $bdm-stone-600;
 @font-face { font-family: "Space Mono"; font-weight: 700; src: url(assets/fonts/space-mono-v17-latin-700.woff2) format("woff2"); }
 
 // ===== global texture =====
+// EXPERIMENT: dotted background on all pages (was hero-only)
+body { background-image: radial-gradient(#dbe1e7 1px, transparent 1px); background-size: 16px 16px; }
 h1, h2, h3 { letter-spacing: -0.015em; }
 a:hover { text-decoration: underline; }
 .navbar { border-bottom: 1px solid $bdm-hairline; }
@@ -60,8 +62,7 @@ a:hover { text-decoration: underline; }
 .column-margin { font-size: .82rem; line-height: 1.55; color: $bdm-stone-500; }
 
 // ===== homepage components (index.qmd) =====
-.bdm-hero { padding: 3.5rem 0 2.5rem;
-  background-image: radial-gradient(#e9e7e3 1px, transparent 1px); background-size: 16px 16px; }
+.bdm-hero { padding: 3.5rem 0 2.5rem; }  // EXPERIMENT: dots moved to body (were hero-only, warm grey)
 .bdm-hero h1 { font-size: 2.4rem; line-height: 1.22; max-width: 22em; }
 .bdm-hero .lead { font-size: 1.05rem; color: $bdm-stone-700; max-width: 38em; }
 .bdm-filetree { font-family: "Space Mono"; font-size: .8rem; line-height: 1.7; color: $bdm-stone-600; border-left: 2px solid $bdm-ink; padding-left: 1rem; }
