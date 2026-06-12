@@ -1,0 +1,66 @@
+---
+title: The big picture
+subtitle: What BDM is, in one sitting
+aliases: [/explanations/index.html]
+---
+
+BDM is a framework for organizing all the data a cognitive-science experiment
+produces — behavior, questionnaires, physiological signals — so that datasets
+are consistent across studies, clear to humans, and readily usable by machines.
+
+This page gives you the whole picture. The deep dives are one click away.
+
+## Three kinds of information
+
+A dataset answers three different kinds of question, and BDM keeps them
+distinct and linked:
+
+1. **What happened** — *records*: events (key presses, screen changes, answers
+   given) and timeseries (EEG, eye tracking), timestamped as they occurred.
+2. **What it means** — *interpretations*: trials. A trial is not observed; it
+   is constructed from records by an explicit rule (a *task-pattern*). The
+   same event stream under a different rule yields different trials — so BDM
+   stores the rule with the data.
+3. **What it tells us about people** — *inferences*: models of agents, fit on
+   trials or directly on records.
+
+Most formats flatten these into one table and lose the distinctions. Keeping
+them separate is what makes BDM datasets auditable: you can always trace an
+inference back to the interpretation it relied on, and an interpretation back
+to the raw record.
+
+## The anatomy of a dataset
+
+A BDM dataset is a folder with a predictable shape:
+
+```
+my-study/
+├─ dataset.yaml        # the dataset card: what this is, who, how, license
+├─ events/             # records: what happened, as it happened
+├─ trials/             # interpretations: tidy tables, one row per trial
+│  ├─ response.csv
+│  └─ stimulus.csv
+└─ models/             # inferences: descriptions of agents
+```
+
+Every table is tidy; every name follows the [naming
+conventions](/spec/conventions/naming.html); every column is defined in the
+[specification](/spec/index.html). You always know where things are and what
+they are called.
+
+## Where everything fits
+
+- The **conventions** (naming, indexing, units, folder structure) are rules —
+  they live in the [Specification](/spec/index.html).
+- The **why** behind the design lives here in Concepts:
+  [design process](design-process.qmd) ·
+  [the nature of behavioral data](behavioral-data.qmd) ·
+  [metadata](metadata.qmd).
+- The machine-readable schemas live in the
+  [schemas repository](https://behaverse.org/schemas) — this site renders
+  summaries of them and never forks them.
+
+## Next steps
+
+Ready to try it? [Get started](/guides/1-getting-started.qmd). Evaluating
+whether BDM is right for you? [Why BDM](/why/index.qmd).

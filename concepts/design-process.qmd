@@ -1,8 +1,7 @@
 ---
-order: 1
-output-file: design-process
 title: Design process
 subtitle: How BDM is being developed
+aliases: [/explanations/design-process.html]
 ---
 
 Here we discuss the guiding principles and how they are applied to the development of the BDM.
