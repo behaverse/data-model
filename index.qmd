@@ -1,32 +1,70 @@
 ---
-title: Behaverse Data Model (BDM)
-subtitle: Unified dataset format for cognitive tests and questionnaires
-toc: false
-pagetitle: "Behaverse Data Model (BDM)"
+pagetitle: "Behaverse Data Model"
 title-prefix: ""
-code-overflow: wrap
+toc: false
+page-layout: full
 ---
 
-There are increasing amounts of behavioral data freely available on the internet. Metadata and semantic web make it easier to find them. However, there are large inconsistencies in the structure of those datasets, the names used for the variables, and even in the meaning of common terms. These inconsistencies make it unnecessarily hard to find and use datasets[^1] and hinder the development of effective tools.
+::: {.bdm-hero}
+:::: {.grid}
+::: {.g-col-12 .g-col-md-8}
+[Behaverse · Data Model]{.kicker}
 
-[^1]: Hulsebos, M., Lin, W., Shankar, S., & Parameswaran, A. (2024, June). It took longer than i was expecting: Why is dataset search still so hard?. In *Proceedings of the 2024 Workshop on Human-In-the-Loop Data Analytics* (pp. 1-4). <https://doi.org/10.1145/3665939.3665959>
+# All cognitive science data, in one coherent framework.
 
-The *Behaverse Data Model (BDM)* is an ongoing attempt to define a data format for behavioral datasets that unifies a wide range of cognitive tests and questionnaires. It aims to establish conventions for structuring behavioral datasets and their content.
+::: {.lead}
+BDM defines how to organize, name, and describe experimental data—behavior,
+questionnaires, physiological signals, and more—so datasets are consistent
+across studies, clear to humans, and readily usable by machines.
+:::
+:::
+::: {.g-col-12 .g-col-md-4}
+```{=html}
+<div class="bdm-filetree">my-study/<br>├─ dataset.yaml<br>├─ events/<br>├─ trials/<br>│&nbsp;&nbsp;├─ response.csv<br>│&nbsp;&nbsp;└─ stimulus.csv<br>└─ models/</div>
+```
+:::
+::::
+:::
 
-### How to use this website
+```{=html}
+<nav class="bdm-routes" aria-label="Main sections">
+  <a href="why/index.html"><span class="rn">01</span><br><span class="rt">Why BDM</span><br><span class="rd">the problem &amp; the payoff</span></a>
+  <a href="concepts/index.html"><span class="rn">02</span><br><span class="rt">Concepts</span><br><span class="rd">the big picture in 15 minutes</span></a>
+  <a href="guides/index.html"><span class="rn">03</span><br><span class="rt">Guides</span><br><span class="rd">your data into BDM</span></a>
+  <a href="spec/index.html"><span class="rn">04</span><br><span class="rt">Specification</span><br><span class="rd">every table, field, and rule</span></a>
+</nav>
+```
 
-The website is organized into three main parts:
+Every lab organizes behavioral data its own way. The result: datasets that
+cannot be combined, tools that cannot be reused, analyses that start from
+scratch every time.[^1] And the data itself is harder than it looks — a key
+press means nothing without the task, the stimulus, and the person behind it.
 
-- [Guides](/guides/index.qmd): Tutorials and how-tos for integrating BDM into your projects.
-- [Specifications](/spec/index.qmd): Formal specifications of the BDM datasets.
-- [Concepts](/concepts/index.qmd): Detailed explanations of fundamental concepts and design decisions.
+[^1]: Hulsebos et al. (2024), [*It took longer than I was
+expecting*](https://doi.org/10.1145/3665939.3665959), on why dataset search
+is still so hard.
 
-You can also check:
+BDM keeps three kinds of information distinct and linked: what was
+**recorded** (events, signals), what it **means** given the task (trials,
+derived by explicit rules), and what it says about **the agent** (models).
+The result is a dataset whose meaning travels with it.
 
-- [Datasets](/datasets/index.qmd): Examples of datasets that conform to the BDM.
-- [Glossary](/glossary/index.qmd): A controlled vocabulary for cognitive and behavioral data.
+Datasets that share this structure can be read without emailing their
+authors, joined across studies, checked automatically, and analyzed by tools
+that were not written for them.
 
-### Evolution of the BDM
+![The data journey: from experiment to a coherent, analyzable
+dataset.](assets/img/data-journey.svg){fig-alt="Diagram: an experiment
+produces events and signals (records); explicit task-patterns turn records
+into trials (interpretations); models of agents (inferences) are fit on
+either; everything lands in one consistently structured BDM dataset folder."}
 
-To suggest improvements, please read the [design process](concepts/design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).
-
+::: {.bdm-proof}
+[Read the paper](https://arxiv.org/abs/2012.12583) (*The structure of
+behavioral data*, arXiv 2020) · Builds on [tidy
+data](https://www.jstatsoft.org/article/view/v059i10),
+[xAPI](https://xapi.com/), [BIDS](https://bids.neuroimaging.io/),
+[schema.org](https://schema.org), [CSVW](https://www.w3.org/TR/tabular-data-primer/)
+· Developed openly [on GitHub](https://github.com/behaverse/data-model) ·
+[How to cite](why/index.qmd#the-paper)
+:::
