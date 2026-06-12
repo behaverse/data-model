@@ -73,6 +73,7 @@ a:hover { text-decoration: underline; }
 .bdm-routes .rt { font-family: "Space Grotesk"; font-weight: 600; color: $bdm-ink; }
 .bdm-routes .rd { font-size: .8rem; color: $bdm-stone-500; }
 @media (max-width: 768px) { .bdm-routes { grid-template-columns: repeat(2, 1fr); } }
+.bdm-story { max-width: 46em; }
 .bdm-proof { font-size: .85rem; color: $bdm-stone-600; border-top: 1px solid $bdm-hairline; padding-top: 1rem; margin-top: 2.5rem; }
 
 // ===== tables (spec summary tables, generated pages included) =====

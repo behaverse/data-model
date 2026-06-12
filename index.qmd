@@ -35,6 +35,7 @@ across studies, clear to humans, and readily usable by machines.
 </nav>
 ```
 
+::: {.bdm-story}
 Every lab organizes behavioral data its own way. The result: datasets that
 cannot be combined, tools that cannot be reused, analyses that start from
 scratch every time.[^1] And the data itself is harder than it looks — a key
@@ -52,6 +53,7 @@ The result is a dataset whose meaning travels with it.
 Datasets that share this structure can be read without emailing their
 authors, joined across studies, checked automatically, and analyzed by tools
 that were not written for them.
+:::
 
 ![The data journey: from experiment to a coherent, analyzable
 dataset.](assets/img/data-journey.svg){fig-alt="Diagram: an experiment
