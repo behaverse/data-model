@@ -1,0 +1,25 @@
+---
+title: Timeseries
+subtitle: EEG, eye tracking, and other physiological recordings
+status: open-design-area
+---
+
+BDM does not yet define a schema for timeseries data. This is a deliberate
+deferral, not an oversight: existing standards already describe physiological
+recordings well, and we would rather point to them than reinvent them.
+
+## What to do today
+
+- Store timeseries recordings as opaque files alongside your BDM dataset
+  (e.g., EDF, BIDS-organized EEG, Parquet).
+- Use the dataset card to declare that these files exist and where.
+- Follow [BIDS](https://bids.neuroimaging.io/) for neuroimaging-style
+  recordings and [EDF](https://www.edfplus.info/) for polygraphic signals.
+
+## The open question
+
+The leading candidate design is a thin metadata envelope: a small schema that
+describes how an event references a timeseries blob (content type, sampling
+rate, channels, units, sample count, offset) while the payload itself stays in
+an established format. Follow or join the discussion on
+[GitHub](https://github.com/orgs/behaverse/discussions).
