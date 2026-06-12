@@ -1,14 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-52 -52 104 104" width="104" height="104">
-  <defs>
-    <polygon id="hex" points="0,-15 13,-7.5 13,7.5 0,15 -13,7.5 -13,-7.5"/>
-  </defs>
   <g>
-    <use href="#hex" x="0"   y="0"   fill="#D100B5"/>
-    <use href="#hex" x="0"   y="-32" fill="#1c1917"/>
-    <use href="#hex" x="28"  y="-16" fill="#1c1917"/>
-    <use href="#hex" x="28"  y="16"  fill="#1c1917"/>
-    <use href="#hex" x="0"   y="32"  fill="#D100B5"/>
-    <use href="#hex" x="-28" y="16"  fill="#1c1917"/>
-    <use href="#hex" x="-28" y="-16" fill="#1c1917"/>
+    <polygon points="0,-15 13,-7.5 13,7.5 0,15 -13,7.5 -13,-7.5" fill="#D100B5"/>
+    <polygon points="0,-47 13,-39.5 13,-24.5 0,-17 -13,-24.5 -13,-39.5" fill="#1c1917"/>
+    <polygon points="28,-31 41,-23.5 41,-8.5 28,-1 15,-8.5 15,-23.5" fill="#1c1917"/>
+    <polygon points="28,1 41,8.5 41,23.5 28,31 15,23.5 15,8.5" fill="#1c1917"/>
+    <polygon points="0,17 13,24.5 13,39.5 0,47 -13,39.5 -13,24.5" fill="#D100B5"/>
+    <polygon points="-28,1 -15,8.5 -15,23.5 -28,31 -41,23.5 -41,8.5" fill="#1c1917"/>
+    <polygon points="-28,-31 -15,-23.5 -15,-8.5 -28,-1 -41,-8.5 -41,-23.5" fill="#1c1917"/>
   </g>
 </svg>
