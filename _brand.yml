@@ -3,20 +3,4 @@ meta:
   link: https://behaverse.org/data-model
 
 logo:
-  large: "assets/img/behaverse_data_logo.png"
-
-color:
-  palette: 
-    behaverse-purple: "#4700BA"
-
-typography:
-  fonts:
-    - family: "IBM Plex Sans"
-      source: google
-  base: "IBM Plex Sans"
-  headings:
-    family: "IBM Plex Sans"
-    weight: bold
-  link: 
-   decoration: none
-   color: behaverse-purple
+  large: "assets/img/bdm-logo.svg"
