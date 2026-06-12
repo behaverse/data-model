@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-52 -52 104 104" width="104" height="104">
+  <defs>
+    <polygon id="hex" points="0,-15 13,-7.5 13,7.5 0,15 -13,7.5 -13,-7.5"/>
+  </defs>
+  <g>
+    <use href="#hex" x="0"   y="0"   fill="#D100B5"/>
+    <use href="#hex" x="0"   y="-32" fill="#1c1917"/>
+    <use href="#hex" x="28"  y="-16" fill="#1c1917"/>
+    <use href="#hex" x="28"  y="16"  fill="#1c1917"/>
+    <use href="#hex" x="0"   y="32"  fill="#D100B5"/>
+    <use href="#hex" x="-28" y="16"  fill="#1c1917"/>
+    <use href="#hex" x="-28" y="-16" fill="#1c1917"/>
+  </g>
+</svg>
