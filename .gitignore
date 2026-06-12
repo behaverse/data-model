@@ -26,3 +26,5 @@ glossary/glossary.yml
 # python
 __pycache__/
 *.pyc
+_design/
+.superpowers/
