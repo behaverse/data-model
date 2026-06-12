@@ -1,8 +1,8 @@
 ---
-order: 2
-output-file: conventions
 title: Conventions
 subtitle: Data and code conventions
+aliases:
+  - /explanations/conventions.html
 ---
 
 Style guides and standards are useful in that they promote consistency and quality while facilitating the development of efficient workflows, automation, and specialized software. They can apply to data and code[^1], but also to other aspects of research, such as documentation, naming conventions, and even the design of experiments.

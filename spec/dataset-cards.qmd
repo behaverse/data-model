@@ -1,13 +1,13 @@
 ---
-order: 2
-output-file: dataset-cards
 title: Dataset cards
+aliases:
+  - /spec/general/dataset-cards.html
 ---
 
 There are two main sources of metadata in BDM: dataset card and codebook.
 
 Dataset card
-: A structured metadata about the dataset. It is generally defined in the frontmatter part of `README.md` file (see [folder structure](1-folder-structure.qmd)) and provides information about its creator, license, and other relevant information.
+: A structured metadata about the dataset. It is generally defined in the frontmatter part of `README.md` file (see [folder structure](/spec/conventions/folder-structure.html)) and provides information about its creator, license, and other relevant information.
 
 Codebook
 : Part of the dataset card that provides information about the variables in the data (such as their names, types, and descriptions). It also provides information about the values that each variable can take on and any missing data that may exist in the dataset. The codebook is an essential component of the dataset, as it provides semantics that help researchers interpret the data.

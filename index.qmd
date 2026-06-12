@@ -19,7 +19,7 @@ The website is organized into three main parts:
 
 - [Guides](/guides/index.qmd): Tutorials and how-tos for integrating BDM into your projects.
 - [Specifications](/spec/index.qmd): Formal specifications of the BDM datasets.
-- [Explanations](/explanations/index.qmd): Detailed explanations of fundamental concepts and design decisions.
+- [Concepts](/concepts/index.qmd): Detailed explanations of fundamental concepts and design decisions.
 
 You can also check:
 
@@ -28,5 +28,5 @@ You can also check:
 
 ### Evolution of the BDM
 
-To suggest improvements, please read the [design process](explanations/1-design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).
+To suggest improvements, please read the [design process](concepts/design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).
 

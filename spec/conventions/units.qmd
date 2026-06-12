@@ -1,9 +1,9 @@
 ---
-order: 8
-output-file: units
 title: Units and values
 subtitle: Measurement units and formats
 toc-location: right
+aliases:
+  - /explanations/units.html
 ---
 
 > *The 'root cause' of the loss of the spacecraft was the failed translation of English units into metric units in a segment of ground-based, navigation-related mission software, ...*

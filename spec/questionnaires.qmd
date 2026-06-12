@@ -1,12 +1,12 @@
 ---
-order: 5
-output-file: questionnaires
 title: Questionnaires
 subtitle: When information presented to subjects is a "question"
+aliases:
+  - /spec/general/questionnaires.html
 ---
 
 ::: {.callout-note appearance="simple"}
-See also [Questionnaire data guide](../../guides/4-questionnaire-data.qmd) for practical examples and recommendations about questionnaire data.
+See also [Questionnaire data guide](../guides/4-questionnaire-data.qmd) for practical examples and recommendations about questionnaire data.
 :::
 
 Data from questionnaires and instructions are somewhat similar to the data collected from cognitive tasks.

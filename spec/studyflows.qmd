@@ -1,7 +1,7 @@
 ---
-order: 3
-output-file: studyflows
 title: Studyflows
+aliases:
+  - /spec/general/studyflows.html
 ---
 
 Studyflows are BPMN-based diagrams to describe research workflows. They can be used to visually describe the study protocol, data collection, analysis pipeline, or any other steps in a study. Studyflows facilitate communication with participants (e.g., by automatically running a study), researchers (e.g., by reproducible protocols and analyses), systems (e.g., by automated data processing), and other stakeholders.
@@ -9,7 +9,7 @@ Studyflows are BPMN-based diagrams to describe research workflows. They can be u
 Here is an example of a simple studyflow:
 
 
-![A visual representation of a simple studyflow that describes an experiment (click on the image to enlarge).](../../assets/bpmn/studyflow_example_01.png){width="80%" .lightbox}
+![A visual representation of a simple studyflow that describes an experiment (click on the image to enlarge).](../assets/bpmn/studyflow_example_01.png){width="80%" .lightbox}
 
 
 Although studyflows are visual, the underlying storage format is machine-readable. This allows for automated execution, validation, versioning, and simulation of studyflows. Studyflows can be created using diagramming tools such as [Studyflow Modeler](https://behaverse.org/studyflow-modeler).

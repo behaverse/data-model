@@ -1,0 +1,134 @@
+---
+title: Folder structure
+subtitle: A dataset is a folder that contains data files and all relevant information needed to make sense of that data.
+code-block-bg: true
+highlight-style: github
+code-tools: false
+code-copy: false
+code-annotations: below
+aliases:
+  - /spec/general/dataset-structure.html
+  - /explanations/files-and-folders.html
+---
+
+In its current form, a BDM-compatible dataset is a folder that contain data and all relevant information needed to make sense of that data. The name of the folder is the name of the dataset. Here is the structure of an example of dataset:
+
+```{.default .file-tree}
+dataset/                          # <1>
+├── README.md                     # <2>
+├── LICENSE                       # <3>
+├── docs/                         # <4>
+├── instruments/                  # <5>
+│   ├── bisbas.yaml               # <5>
+│   ├── stroop.yaml               # <5>
+│   └── ...                       # <5>
+│
+├── agents.csv                    # <6>
+│
+├── data/                         # <7> 
+│   ├── agent_001/                # <8>
+│   │   ├── studyflow.csv         # <9>
+│   │   └── session_1/            # <10>
+│   │       └── <activity>/       # <11>
+│   │           ├── response_1.csv
+│   │           ├── stimulus_1.csv
+│   │           └── option_1.csv
+│   └── agent_002/
+│       └── ...
+│
+└── examples/                     # <12>
+    ├── example_1.py              # <12>
+    └── example_2.R               # <12>
+```
+1. **Dataset**: The root `dataset/` folder contains all the relevant data, metadata, and documentations. The name of this folder is a name that is assigned to the dataset (e.g., `abcd-2021`). This name follows the convention of naming version-controlled repositories as datasets are often shared via repositories: datasets names may only include lowercase letters, numbers and hyphens.
+
+2. **Dataset card**: The `README.md` file contains the general description of the dataset and embeds its metadata in its front-matter section. The metadata represents a [dataset card](/spec/dataset-cards.html) rather than a codebook to describe specific instruments.
+
+3. **License**: The `LICENSE` file specifies the terms and conditions for use, reproduction and distribution of the dataset. While different licenses may apply to different parts of a dataset, it is recommended to keep it simple and to use the same license for the entire dataset. You can use websites like [choosealicense.com](https://choosealicense.com/) to help you choose a license for your dataset.
+
+4. **Documentations**: The `docs/` folder contains information about the study in general. This includes in particular administrative data (e.g., how participants were recruited), information about the experimental design, instructions and other messages communicated with study participants (e.g., information about consent; the study welcome page).
+
+5. **Instruments:** The `instruments/` folder contains information about the instruments used in the study. This includes metadata about each instrument (e.g., references to the relevant literature), links to the instrument content (e.g., an online version or a pdf of a questionnaire) but also codebooks (using CSVW standard) that provide the definition of the parameters of the instruments that are recorded in the data.
+
+6. **Agents metadata**: The `agents.csv` lists all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
+
+7. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per subject that contains all the data about that subject. 
+
+8. **Agent data:** The subject data folder is labelled following the template `agent_{x}` where x refers to a zero-padded integer (e.g., `agent__001`, `agent_123`; the number of zeros used for padding should be commensurate with the number of subjects in the dataset.
+
+9. **Studyflow**: Each subject data folder contains at its root a `studyflow.csv` file which explains what activities were completed by this subject (with a competition status), when they started and ended each activity and in what order the activities were completed.
+
+10. **Sessions** (optional): In some cases it might be useful to group the data within subject into subfolder corresponding to multiple data collection sessions (e.g., `session_01/`, `session_02/`). This level of folders is optional and should be used when the data collection is divided into sessions.
+
+11. **Activity data**: Additional folders are included within each subject's folder depending on the specific activities completed by that subject. For example, if the subject completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
+
+11. **Examples** (optional): The `examples/` contains sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
+
+<!-- merged from explanations/4-files-and-folders; owner editorial pass pending -->
+
+## Background and rationale
+
+## File formats
+
+In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over proprietary file formats (e.g., `.mat`, `.sav`, `.docx`). Open formats ensure that the data is accessible to a wide audience. Specifically, use the following formats:
+
+| Data Type | Recommended Format | When? |
+|------------------------|----------------------------|---------------------|
+| Tabular data | `.csv` | Always |
+| Structured data | `.json` | For machine-focused applications |
+|  | `.yml` | When human readability and editability matter |
+| Text | `.md` | Always in Markdown, except for official, static, or administrative documents which may be in PDF |
+
+Do NOT save the same data in multiple output formats (e.g., `.csv` and `.sav`) to avoid redundancy and version mismatches. However, lossless data conversion must be used if converting data to other formats.
+
+## Naming files and folders
+
+We want file and folder names to be short and meaningful. Instead of encoding numerous pieces of information in the filename (e.g., the subject index, the session, the task) we prefer short names that describe only what type of data a given file contains, leaving it to the names of the parent directories that contain that file to encode its context. Conceptually, this is equivalent to calling a file `README.md` within a project folder rather than calling it `project_subproject_README.md`.
+
+There are no widespread standards or styleguides regarding how to name data files and folders. Some use lower case with hypens (e.g., the uses `mad-men` and `masculinity-survey` in [FiveThirtyEight](https://github.com/fivethirtyeight/data)) or underscores (e.g., `arxiv_qa`) or a mixture (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz` in [BIDS](https://bids-specification.readthedocs.io/)). Others use uppercase, either with hyphens, underscores or camelCase/PascalCase (e.g, `CIFAR10` in [PyTorch](https://pytorch.org/vision/stable/datasets.html), `BIG5` in [Open Psychometrics](https://openpsychometrics.org/_rawdata/))or a mixture thereof (e.g., `CoT-Collection`). It is not uncommon to find organizations that mix different naming styles (e.g., [Kaggle](https://www.kaggle.com/datasets), [HuggingFace](https://huggingface.co/datasets), [R](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html)). Furthermore, some people seem to distinguish the name of a dataset from the name of the corresponding file or folder (e.g., the ["Fashion-MNIST"](https://github.com/zalandoresearch/fashion-mnist) dataset is stored as "fashion-mnist").
+
+Perhaps the reason for this state of affairs is that a dataset is subject to multiple constraints:
+
+- When a dataset becomes a package or repository or module, the dataset must follow the corresponding conventions (e.g., `fashion-mnist`).
+- Datasets may contain files and folders that are subject to their own conventions, e.g., `README.md` file.
+- Data files may be related to variable names and to code; in which case they must form valid variable names, e.g., no spaces or hypens.
+
+
+Within BDM we use following styling rules:
+
+ - Data and filenames can only include lowercase letters, numbers, underscores, and hyphens (except for common files, e.g., README.md).
+ - Dataset names follow the convention of repository names (i.e., no underscores).
+ - Data files and code-related files have names that are valid variable names (e.g., under PEP8 in Python).
+ - Hyphens and underscores are used for human readability, not to encode structural relationships (e.g., key-value pairs or entity_feature).
+
+
+We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `dataset/data/subject_001/session_1/response.csv` is preferred over `dataset/data/subject_001/subject-001_session-1_response.csv` as it is shorter and yet contains the same information.
+
+We also do not recommend including data in the filenames (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz`, `2019_`) as this data should be either accessible in the data or obvious from the context.
+
+Here are a few examples of file and folder names that follow these rules:
+
+-   `masculinity-survey/`
+-   `big-5/`
+-   `response.csv`
+-   `subject_001/`
+
+
+## Naming datasets
+
+There are four main strategies to name datasets; they focus respectively on:
+
+- The project name (e.g., the [ABCD (Adolescent Brain Cognitive Development) dataset](https://abcdstudy.org/scientists/data-sharing/));
+- the name of the data provider (e.g., `CIFAR-10` from the Canadian Institute For Advanced Research);
+- the data content (e.g., `election-forecasts-2022`);
+- a related publication (e.g., the `Harmann74.cor` dataset refers to the publication "Harman, H. H. (1976) Modern Factor Analysis, Third Edition Revised, University of Chicago Press, Table 7.4.").
+
+For simple datasets that focus on a specific type of observation (e.g., air quality data) it makes sense to use content-based filenames (e.g., `air-quality`). In such cases, one should use meanifngful and explicit names. However, for more complex datasets such a naming scheme is typically not possible.
+
+In general we recommend that datasets be published (e.g., on Zenodo) and to name the corresponding datasets by referring to the last name of the first author and the date of the publication (e.g., `steyvers2020`).
+
+For bigger projects and datasets, it makes sense however to use the project name instead (e.g., `abcd2021`).
+
+We do not recommend using meaningless strings (e.g., `g9zkf`) or names that are not specific (e.g., `titanic`, `sleep`, `dolphin`) beyond simple toy datasets.
+
+We do not recommend including the version in the dataset name (see below.)
