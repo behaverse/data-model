@@ -1,19 +1,24 @@
 ---
-title: Tutorials and How-to Guides
+title: Guides
+subtitle: Practical paths from your data to a BDM dataset
 toc: false
-listing: 
+listing:
   template: ../assets/templates/simple-links-listing.ejs
   sort: "order"
   categories: false
   filter-ui: false
-  contents:
-    - "*.qmd"
+  contents: ["*.qmd"]
 ---
 
-Here, you can find practical guidelines to learn BDM and apply it to your data.
+**New to BDM? [Start here](1-getting-started.qmd).** It takes you from a
+typical dataset to a first BDM-structured one — you do not need to understand
+all of BDM before you begin.
 
-You don't need to fully understand BDM to apply it to your data. Once you find an idea that seems useful, put it into practice. You can always iterate between your data and BDM documentation, and return here when you need more clarity.
+The other guides each solve one concrete problem. Iterate: apply an idea to
+your data, come back when you need the next one.
 
 ::: {.callout-note appearance="simple"}
-**Looking for a guide?** Several how-tos are planned but not yet written, including longitudinal studies, multi-agent datasets, validation, combining datasets, and AI agents. If one would help you, please [open an issue](https://github.com/behaverse/data-model/issues/new) or join the [discussion on GitHub](https://github.com/orgs/behaverse/discussions) to help us prioritize.
+**Missing a guide?** Several are planned — see the [roadmap](/why/roadmap.qmd)
+— and [your vote](https://github.com/behaverse/data-model/issues/new) moves
+them up the queue.
 :::
