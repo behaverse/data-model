@@ -8,7 +8,7 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture informatio
 
 <br />
 
-![A typical [workflow](general/3-studyflows.qmd) in an experimental study. BDM defines the structure of the experimental design (studyflow), raw observations (events), behavioral data (trials), and downstream analyses (derived models)](../assets/bpmn/behavioral_experiments.png){width="80%" .lightbox}
+![A typical [workflow](studyflows.qmd) in an experimental study. BDM defines the structure of the experimental design (studyflow), raw observations (events), behavioral data (trials), and downstream analyses (derived models)](../assets/bpmn/behavioral_experiments.png){width="80%" .lightbox}
 
 ::: {.grid}
 
@@ -18,19 +18,19 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture informatio
 
 ***Part of the BDM is common to all datasets, regardless of the specific type of activity:***
 
-[**Folder structure**](general/1-folder-structure.qmd)
+[**Folder structure**](conventions/folder-structure.qmd)
 : A BDM dataset is a folder that contains data files and all relevant information needed to make sense of that data.
 
-[**Dataset cards**](general/2-dataset-cards.qmd)
+[**Dataset cards**](dataset-cards.qmd)
 : Contain metadata and information about a dataset. Dataset cards also include a codebook to describe the semantics, structure, and format of the data variables.
 
-[**Studyflows**](general/3-studyflows.qmd)
+[**Studyflows**](studyflows.qmd)
 : Describe the study protocol and the sequence of activities that subjects are exposed to.
 
-[**Instructions**](general/4-instructions.qmd)
+[**Instructions**](instructions.qmd)
 : Provide additional guidance and help about tasks presented to subjects in a study.
 
-[**Questionnaires**](general/5-questionnaires.qmd)
+[**Questionnaires**](questionnaires.qmd)
 : Describe the questions presented to subjects and the responses they provide.
 
 :::

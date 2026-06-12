@@ -3,6 +3,7 @@
 # quarto
 _site/
 .quarto/
+_quarto_internal_scss_error.scss
 
 # ignore ide settings
 .vscode/
