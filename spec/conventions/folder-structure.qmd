@@ -62,13 +62,13 @@ dataset/                          # <1>
 
 11. **Activity data**: Additional folders are included within each subject's folder depending on the specific activities completed by that subject. For example, if the subject completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
 
-11. **Examples** (optional): The `examples/` contains sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
+12. **Examples** (optional): The `examples/` contains sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
 
 <!-- merged from explanations/4-files-and-folders; owner editorial pass pending -->
 
 ## Background and rationale
 
-## File formats
+### File formats
 
 In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over proprietary file formats (e.g., `.mat`, `.sav`, `.docx`). Open formats ensure that the data is accessible to a wide audience. Specifically, use the following formats:
 
@@ -81,7 +81,7 @@ In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over 
 
 Do NOT save the same data in multiple output formats (e.g., `.csv` and `.sav`) to avoid redundancy and version mismatches. However, lossless data conversion must be used if converting data to other formats.
 
-## Naming files and folders
+### Naming files and folders
 
 We want file and folder names to be short and meaningful. Instead of encoding numerous pieces of information in the filename (e.g., the subject index, the session, the task) we prefer short names that describe only what type of data a given file contains, leaving it to the names of the parent directories that contain that file to encode its context. Conceptually, this is equivalent to calling a file `README.md` within a project folder rather than calling it `project_subproject_README.md`.
 
@@ -114,7 +114,7 @@ Here are a few examples of file and folder names that follow these rules:
 -   `subject_001/`
 
 
-## Naming datasets
+### Naming datasets
 
 There are four main strategies to name datasets; they focus respectively on:
 
