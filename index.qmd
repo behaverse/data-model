@@ -30,18 +30,3 @@ You can also check:
 
 To suggest improvements, please read the [design process](explanations/1-design-process.qmd) and visit [discussions on GitHub](https://github.com/orgs/behaverse/discussions). Everyone is welcome to [contribute](contribute.qmd).
 
-### Citation
-
-To learn more about the ideas behind the *BDM*, see [*"the structure of behavioral data"*](https://arxiv.org/abs/2012.12583) on arXiv. If you want to use the *BDM* in your research, feel free to cite this paper.
-
-```bibtex
-@misc{defossez2020structurebehavioraldata,
-      title={The structure of behavioral data}, 
-      author={Aurélien Defossez and Morteza Ansarinia and Brice Clocher and Emmanuel Schmück and Paul Schrater and Pedro Cardoso-Leite},
-      year={2020},
-      eprint={2012.12583},
-      archivePrefix={arXiv},
-      primaryClass={q-bio.NC},
-      url={https://arxiv.org/abs/2012.12583}, 
-}
-```

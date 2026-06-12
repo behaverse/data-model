@@ -1,0 +1,63 @@
+---
+title: Why BDM
+subtitle: The problem with behavioral data, and what a shared framework buys us
+---
+
+## The problem
+
+Every lab organizes behavioral data its own way. The same task produces
+differently named files, differently shaped tables, and differently defined
+variables in every lab that runs it — sometimes in every study. The result:
+datasets that cannot be combined, tools that cannot be reused, and analyses
+that start from scratch every time.[^search]
+
+[^search]: Finding usable datasets is measurably hard; see Hulsebos et al.
+(2024), [*It took longer than I was expecting*](https://doi.org/10.1145/3665939.3665959).
+
+None of this is negligence. Behavioral data is genuinely harder to
+standardize than it looks: a key press means nothing by itself — its meaning
+depends on the task, the stimulus, the instructions, and the person. A format
+for behavioral data has to carry that context. BDM is designed to.
+
+## What a shared framework buys
+
+- **Efficiency** — less bespoke work; code and tools transfer between studies.
+- **Robustness** — fewer errors from ambiguous, idiosyncratic formats.
+- **Transparency** — fewer hidden choices buried in analysis scripts.
+- **Quality** — consistency and completeness can be checked automatically.
+- **Usability** — datasets ship documented and ready to analyze.
+- **Reuse and integration** — results can be replicated, extended, and merged
+  across studies; large shared datasets become possible.
+
+## Where BDM comes from
+
+BDM builds on standards that earned their place: [tidy
+data](https://www.jstatsoft.org/article/view/v059i10) for table shape,
+[BIDS](https://bids.neuroimaging.io/) for dataset organization,
+[xAPI](https://xapi.com/) for events, [schema.org](https://schema.org) and
+[CSVW](https://www.w3.org/TR/tabular-data-primer/) for metadata. Where good
+prior art exists, BDM adopts it; it only invents where cognitive science has
+needs nothing else covers.
+
+The framework is developed openly — see the [ecosystem](ecosystem.qmd), the
+[roadmap](roadmap.qmd), and the [discussions on
+GitHub](https://github.com/orgs/behaverse/discussions).
+
+## The paper
+
+The thinking behind BDM is laid out in [*The structure of behavioral
+data*](https://arxiv.org/abs/2012.12583). If you use BDM in your research,
+cite:
+
+```bibtex
+@misc{defossez2020structurebehavioraldata,
+      title={The structure of behavioral data},
+      author={Aurélien Defossez and Morteza Ansarinia and Brice Clocher and
+              Emmanuel Schmück and Paul Schrater and Pedro Cardoso-Leite},
+      year={2020},
+      eprint={2012.12583},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.NC},
+      url={https://arxiv.org/abs/2012.12583},
+}
+```

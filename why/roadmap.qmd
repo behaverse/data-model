@@ -1,0 +1,29 @@
+---
+title: Roadmap
+subtitle: What exists, what is being designed, what is deliberately deferred
+---
+
+BDM is developed openly and incrementally. This page tracks what is not done
+yet, so that nothing has to pretend.
+
+## Being designed
+
+- **Models** — how inferences about agents are stored and versioned
+  ([draft notes](/spec/models/index.qmd)).
+- **Timeseries** — EEG, eye tracking, physiological recordings
+  ([open design area](/spec/timeseries.qmd)).
+
+## Planned guides
+
+Several how-to guides are planned but not yet written. If one of these would
+help you, [open an issue](https://github.com/behaverse/data-model/issues/new)
+to help us prioritize:
+
+multi-task studies · events data · longitudinal and test–retest studies ·
+multi-agent datasets · dataset validation · combining datasets ·
+compatible datasets · AI agents on BDM data
+
+## Deliberately out of scope (for now)
+
+- A style validator for naming conventions (the conventions are prose-first).
+- A BDM-defined timeseries payload format (we point to BIDS/EDF instead).

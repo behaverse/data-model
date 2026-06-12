@@ -1,0 +1,22 @@
+---
+title: The ecosystem
+subtitle: The pieces around the data model, and what each one does
+---
+
+BDM is one piece of a set of standards and tools that work together. This
+page is the map.
+
+| Piece | What it is | Where |
+|---|---|---|
+| **Data model** (this site) | The human-facing framework: conventions, concepts, guides, specification | [behaverse.org/data-model](https://behaverse.org/data-model) |
+| **Schemas** | The machine-readable source of truth: JSON Schemas, field definitions, validators, changelogs | [behaverse.org/schemas](https://behaverse.org/schemas) · [GitHub](https://github.com/behaverse/schemas) |
+| **Studyflow modeler** | Visual editor for study designs (studyflows) | [behaverse.org/studyflow-modeler](https://behaverse.org/studyflow-modeler/app) |
+| **Behaverse** | The broader project: cognitive assessments, games, models | [behaverse.org](https://behaverse.org) |
+
+How they relate: this site **defines** the prose conventions and renders
+summaries; the schemas repository **owns** every machine artifact (this site
+fetches them at build time, pinned by `schemas.lock`); tools consume both.
+
+**Datasets:** a public catalog of BDM-formatted datasets will appear here as
+soon as the first reference dataset is published — see the
+[roadmap](roadmap.qmd).
