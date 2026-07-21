@@ -62,15 +62,7 @@ website:
         href: glossary/index.qmd
     right:
       - text: "Project"
-        menu:
-          - text: "About"
-            href: about.qmd
-          - text: "Contribute"
-            href: contribute.qmd
-          - text: "Roadmap"
-            href: roadmap.qmd
-          - text: "Changelog"
-            href: changelog.qmd
+        href: about.qmd
       - icon: github
         href: https://github.com/behaverse/data-model/
 
