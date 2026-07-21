@@ -4,11 +4,17 @@ subtitle: What BDM is, in one sitting
 aliases: [/explanations/index.html, /why/ecosystem.html]
 ---
 
-BDM is a framework for organizing all the data a cognitive-science experiment
-produces — behavior, questionnaires, physiological signals — so that datasets
-are consistent across studies, clear to humans, and readily usable by machines.
+BDM (Behaverse Data Model) is a way to organize everything a behavioral
+experiment produces — responses, questionnaires, event streams, physiological
+signals — into one predictable, self-describing dataset. A BDM dataset is an
+ordinary folder: tidy tables and event streams whose names, columns, and
+units follow shared conventions, together with the metadata that explains
+what they are and how they came to be.
 
-This page gives you the whole picture. The deep dives are one click away.
+Three ideas carry the whole model: data comes in **three levels**, a dataset
+is a **folder with a fixed anatomy**, and the data model is one piece of a
+**small ecosystem**. Everything else on this site is detail behind one of
+these three.
 
 ## Three levels of data
 
@@ -51,18 +57,24 @@ my-study/
    └─ agent_001/
       └─ session_1/
          └─ stroop/
-            ├─ events_1.ndjson   # records: what happened, as it happened
-            ├─ response_1.csv    # trials: tidy tables, one row per trial
+            ├─ events_1.ndjson   # level 1: what happened, as it happened
+            ├─ response_1.csv    # level 2: trials, one row each
             └─ stimulus_1.csv
 ```
 
-(The full layout, including studyflows and timeseries files, is in the
-[folder structure](/spec/conventions/folder-structure.qmd) specification.)
+Around the data files, three artifacts explain them: the **[dataset
+card](/spec/dataset-cards.qmd)** (the `README.md` front matter: what this
+dataset is, who made it, and a codebook for its variables), the
+**[studyflow](/spec/studyflows.qmd)** (the study design: which activities, in
+what order), and the
+**[instruments](/spec/conventions/folder-structure.qmd)** (the tasks and
+questionnaires used, with their parameters).
 
 Every table is tidy; every name follows the [naming
 conventions](/spec/conventions/naming.html); every column is defined in the
 [specification](/spec/index.html). You always know where things are and what
-they are called.
+they are called. (The full layout, including timeseries files, is in the
+[folder structure](/spec/conventions/folder-structure.qmd) specification.)
 
 ## Where everything fits
 
@@ -81,11 +93,12 @@ fetches them at build time, pinned by `schemas.lock`); tools consume both.
 A public catalog of BDM-formatted datasets will follow the first published
 reference dataset — see the [roadmap](/roadmap.qmd).
 
-Within this site:
+Within this site, the deep dives are one click away:
 
-- The **conventions** (naming, indexing, units, folder structure) are rules —
-  they live in the [Specification](/spec/index.html).
-- The **why** behind the design lives here in Concepts:
+- The **rules** — naming, indexing, units, folder structure — live in the
+  [Specification](/spec/index.html), alongside the field-by-field reference
+  for every table.
+- The **reasoning** behind the design lives here in Concepts:
   [design process](design-process.qmd) ·
   [the nature of behavioral data](behavioral-data.qmd) ·
   [metadata](metadata.qmd).
