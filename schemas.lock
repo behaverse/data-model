@@ -17,6 +17,9 @@ docs_base_url: https://behaverse.org/schemas
 vocabulary:
   url: "https://behaverse.org/schemas/vocabulary/terms.jsonld"
 
+# `version` is informational (the upstream version last synced against). It is only
+# substituted into the fetch URL if url_template contains a {version} placeholder —
+# the canonical template above does not, so builds track current content.
 pins:
   trial:
     version: v26.0608

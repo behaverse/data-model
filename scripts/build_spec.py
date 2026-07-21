@@ -6,9 +6,9 @@
 build_spec.py — fetch published behaverse/schemas artifacts and generate the BDM spec pages.
 
 Replaces scripts/gsheets_to_quarto.py: instead of owning schema content, BDM *references* it.
-This reads schemas.lock (pinned versions + content hashes), obtains each schema's
-field-definitions.json, and generates Quarto spec pages (summary tables) that link out to the
-full reference at behaverse.org/schemas/<name>. See BDM-redesign-spec.md §5.
+This reads schemas.lock (which schemas to fetch + optional content hashes), obtains each
+schema's field-definitions.json, and generates Quarto spec pages (summary tables) that link
+out to the full reference at behaverse.org/schemas/<name>. See BDM-redesign-spec.md §5.
 
 It also generates the glossary data (glossary/glossary.yml) as a merge-view: cross-cutting
 terms from the behaverse/schemas vocabulary (terms.jsonld) plus field terms harvested from
@@ -18,9 +18,11 @@ definition wins, other tables are noted).
 
 Source resolution per schema (in order):
   1. --local-dir DIR (or $BDM_SCHEMAS_LOCAL): read DIR/<name>/field-definitions.json.
-     Dev convenience for before the schemas site is deployed; the hash is NOT verified.
-  2. Fetch <schemas_base_url>/<name>/<version>/field-definitions.json and verify its
-     sha256 against the lockfile (fail on mismatch; warn if no hash pinned).
+     Dev convenience for previewing unpublished schema changes; the hash is NOT verified,
+     and a missing local file is an error (no silent fallback to the network).
+  2. Fetch the URL built from source.url_template ({name}, and {version} only if the
+     template includes it — the canonical template tracks *current* content) and verify
+     its sha256 against the lockfile (fail on mismatch; warn if no hash pinned).
 
 Generated pages are build outputs (gitignored), never hand-edited.
 
@@ -88,44 +90,64 @@ def check_lock(data: dict) -> None:
     pending = [k for k, v in pins.items() if not v]
     print(f"schemas.lock OK — source {data['source']['url_template']}, "
           f"{len(active)} active, {len(pending)} pending {pending or ''}".rstrip())
-    for name, pin in active.items():
-        if "version" not in pin:
-            sys.exit(f"pin '{name}' is missing 'version'")
+    tpl = data["source"]["url_template"]
+    if "{version}" in tpl:
+        for name, pin in active.items():
+            if "version" not in pin:
+                sys.exit(f"pin '{name}' is missing 'version' (required by url_template)")
 
 
 # --- source resolution ----------------------------------------------------------------------
 
-def _fetch_json(url: str, expected_sha: str | None, label: str) -> dict:
+def _fetch_json(url: str, expected_sha: str | None, label: str, attempts: int = 3) -> dict:
+    import time
+
     import requests  # imported lazily so --local-dir / --check work offline
 
-    resp = requests.get(url, timeout=30)
-    resp.raise_for_status()
+    resp = None
+    for i in range(attempts):
+        try:
+            resp = requests.get(url, timeout=30)
+            resp.raise_for_status()
+            break
+        except requests.RequestException as err:
+            # 4xx won't heal on retry; retry only transient failures (timeouts, 5xx, conn).
+            status = getattr(getattr(err, "response", None), "status_code", None)
+            if (status is not None and status < 500) or i == attempts - 1:
+                sys.exit(f"  {label}: failed to fetch {url}: {err}")
+            wait = 2 ** (i + 1)
+            print(f"  {label}: fetch failed ({err}); retrying in {wait}s ({i + 1}/{attempts - 1})")
+            time.sleep(wait)
     if expected_sha:  # optional: present only to freeze a release
         actual = hashlib.sha256(resp.content).hexdigest()
         if actual != expected_sha:
             sys.exit(f"  {label}: hash mismatch for {url}\n    expected {expected_sha}\n    actual   {actual}")
         print(f"  {label}: fetched {url} (sha256 ok)")
     else:
-        print(f"  {label}: fetched {url}")
+        print(f"  {label}: fetched {url} — warning: no sha256 pinned, tracking current upstream content")
     return json.loads(resp.content)
 
 
 def resolve_field_definitions(source: dict, name: str, pin: dict, local_dir: str | None) -> dict:
     if local_dir:
         local = Path(local_dir).expanduser() / name / "field-definitions.json"
-        if local.exists():
-            print(f"  {name}: local {local}  (dev — hash NOT verified)")
-            return json.loads(local.read_text())
-    url = source["url_template"].format(ref=source.get("ref", ""), name=name, version=pin["version"])
+        if not local.exists():
+            sys.exit(f"  {name}: --local-dir given but {local} does not exist — "
+                     "refusing to silently fall back to the published version")
+        print(f"  {name}: local {local}  (dev — hash NOT verified)")
+        return json.loads(local.read_text())
+    url = source["url_template"].format(ref=source.get("ref", ""), name=name, version=pin.get("version", ""))
     return _fetch_json(url, pin.get("field_definitions_sha256"), name)
 
 
 def resolve_vocabulary(vocab_cfg: dict, local_dir: str | None) -> dict:
     if local_dir:
         local = Path(local_dir).expanduser() / "vocabulary" / "terms.jsonld"
-        if local.exists():
-            print(f"  vocabulary: local {local}  (dev — hash NOT verified)")
-            return json.loads(local.read_text())
+        if not local.exists():
+            sys.exit(f"  vocabulary: --local-dir given but {local} does not exist — "
+                     "refusing to silently fall back to the published version")
+        print(f"  vocabulary: local {local}  (dev — hash NOT verified)")
+        return json.loads(local.read_text())
     return _fetch_json(vocab_cfg["url"], vocab_cfg.get("sha256"), "vocabulary")
 
 
@@ -365,12 +387,16 @@ def main() -> None:
     if not active:
         print("no active pins — nothing to generate (see schemas.lock).")
         return
-    docs_base = lock.get("docs_base_url", "https://behaverse.org/schemas")
+    docs_base = lock.get("docs_base_url") or sys.exit("schemas.lock must define docs_base_url")
     print(f"generating spec pages for: {', '.join(active)}")
+    gitignore = (REPO / ".gitignore").read_text() if (REPO / ".gitignore").exists() else ""
     docs: dict[str, dict] = {}
     for name, pin in active.items():
         doc = resolve_field_definitions(lock["source"], name, pin, args.local_dir)
         generate_schema_pages(name, doc, docs_base)
+        if f"spec/{name}/" not in gitignore:
+            print(f"  warning: spec/{name}/ is generated but not in .gitignore — "
+                  "add it so build output cannot be committed")
         docs[name] = doc
     vocab_cfg = lock.get("vocabulary")
     if vocab_cfg:

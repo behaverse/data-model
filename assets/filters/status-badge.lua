@@ -10,7 +10,10 @@ function Pandoc(doc)
   if status == nil then return doc end
   local key = pandoc.utils.stringify(status)
   local label = LABELS[key]
-  if label == nil then return doc end
+  if label == nil then
+    io.stderr:write("[status-badge] unknown status '" .. key .. "' — no badge rendered (expected: draft | open-design-area)\n")
+    return doc
+  end
   local badge = pandoc.Div(
     { pandoc.Plain({ pandoc.Str(label) }) },
     pandoc.Attr("", { "status-badge", "status-" .. key })
