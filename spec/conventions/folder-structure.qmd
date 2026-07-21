@@ -57,11 +57,11 @@ dataset/                          # <1>
 
 7. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per agent that contains all the data about that agent.
 
-8. **Agent data:** The agent data folder is labelled following the template `agent_{x}` where x refers to a zero-padded integer (e.g., `agent_001`, `agent_123`); the number of zeros used for padding should be commensurate with the number of agents in the dataset.
+8. **Agent data:** The agent data folder is labelled following the template `agent_{x}` where x is a zero-padded integer (e.g., `agent_001`, `agent_123`). The padding width follows the [naming conventions](naming.qmd): commensurate with the number of agents in the dataset, three digits by default.
 
 9. **Studyflow**: Each agent data folder contains at its root a `studyflow.csv` file which explains what activities were completed by this agent (with a completion status), when they started and ended each activity and in what order the activities were completed.
 
-10. **Sessions** (optional): In some cases it might be useful to group the data within each agent's folder into subfolders corresponding to multiple data collection sessions (e.g., `session_01/`, `session_02/`). This level of folders is optional and should be used when the data collection is divided into sessions.
+10. **Sessions** (optional): In some cases it might be useful to group the data within each agent's folder into subfolders corresponding to multiple data collection sessions (e.g., `session_1/`, `session_2/`). This level of folders is optional and should be used when the data collection is divided into sessions.
 
 11. **Activity data**: Additional folders are included within each agent's folder depending on the specific activities completed by that agent. For example, if the agent completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
 
