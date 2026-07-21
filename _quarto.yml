@@ -94,6 +94,7 @@ website:
             - guides/3-organize-your-data.qmd
             - guides/4-questionnaire-data.qmd
             - guides/5-software-integration.qmd
+            - guides/7-events-data.qmd
             - guides/16-ai-integration.qmd
     - id: spec
       contents:

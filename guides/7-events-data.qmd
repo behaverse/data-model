@@ -1,0 +1,111 @@
+---
+order: 7
+output-file: events-data
+icon: bi bi-reception-3
+difficulty: INTERMEDIATE
+title: Events data
+subtitle: How to store raw events in a BDM dataset
+code-block-bg: true
+format:
+  html:
+    code-copy: false
+---
+
+BDM organizes data in three levels: **events**, **trials**, and **models**. Events are the rawest record of what happened during an activity — every stimulus presentation, key press, click, or state change, each with a timestamp. Trials are the meaningful units derived from events (the [Response table](/spec/trial/1-response.qmd) and its supporting tables), and models are interpretations of the trials. This guide covers the events level: what an event looks like and how event streams are stored inside a BDM dataset.
+
+Most analyses only need the trial tables. Keep the events when you need to audit how the trial tables were derived, compute measures the trial tables do not carry (e.g., typing dynamics, hesitation), or reprocess a study with a better derivation pipeline.
+
+## The event envelope
+
+Events in BDM follow an [xAPI](https://github.com/adlnet/xAPI-Spec/)-style envelope — *actor, verb, object* — extended with the canonical `bdm:` vocabulary of verbs, object types, and actor types. The [Events specification](/spec/event/index.qmd) lists the envelope fields and the full vocabulary. A single event is one JSON object:
+
+```json
+{
+  "timestamp": "2026-03-14T09:26:53.589+01:00",
+  "actor": {"objectType": "bdm:Agent", "id": "agent_001"},
+  "verb": "bdm:key_pressed",
+  "object": {"objectType": "bdm:UIComponent", "id": "keyboard"},
+  "result": {"extensions": {"bdm:key": "7"}},
+  "context": {
+    "extensions": {
+      "bdm:session_id": "0b1f3f2e-8c1d-4c62-9d3a-4c5a1f2e8c1d",
+      "bdm:trial_index": 12
+    }
+  }
+}
+```
+
+The `result` and `context` objects carry verb-specific detail through open `bdm:*` extension keys; `context.extensions` positions the event in the scoping hierarchy (session → activity → runtime instance → block → trial).
+
+## How events are stored: NDJSON
+
+The canonical at-rest form of the events layer in a BDM dataset is **NDJSON** (newline-delimited JSON): one event object per line, UTF-8, append-only. The stream for one attempt at an activity lives in the activity folder, beside the trial tables, partitioned by attempt exactly like `response_<ATTEMPT>.csv`:
+
+```{.default .file-tree}
+...
+DigitSpan/
+├── response_1.csv
+├── stimulus_1.csv
+├── option_1.csv
+└── events_1.ndjson
+```
+
+Once a recording is closed, the file may be compressed to `events_<ATTEMPT>.ndjson.gz`.
+
+Why NDJSON rather than a CSV table or one big JSON array?
+
+- **Events are nested and heterogeneous.** Each verb carries its own `result`/`context` extensions, so events are not tabular — a CSV would force JSON-in-cells or an unbounded set of sparse columns.
+- **Crash-flushable.** The file is valid after every appended line; a session that dies mid-recording keeps every event written so far.
+- **Streamable and validatable.** Consumers can process the stream line by line without parsing the whole file, and every line validates against the [event schema](https://behaverse.org/schemas/event) as-is.
+
+A few boundaries that follow from this decision:
+
+- **`EventBatch` is the interchange shape, not the at-rest format.** APIs and exports move events as an `EventBatch` (`{batch_id?, events: [...]}`); when a batch reaches a dataset, its events are stored as NDJSON lines.
+- **Derived copies are permitted.** You may add e.g. a Parquet copy for analytics, but the NDJSON stream remains the raw source of truth.
+- **Private recording formats need a documented mapping.** Recording engines that log in their own compact format must document a lossless mapping from their records to canonical event objects.
+
+See the event schema's [Storage section](https://behaverse.org/schemas/event) for the full decision record.
+
+## Attachments
+
+Events reference bulky payloads — recording files, stimulus blobs, continuous signals — through the `attachments` field; payloads are never inlined. Each attachment has a fixed shape: required `type` (a `bdm:` term such as `bdm:Timeseries`), `contentType` (MIME type), and `url`, plus optional `sha256`, `length` (bytes), and `description`.
+
+```json
+{
+  "timestamp": "2026-03-14T09:31:02.114+01:00",
+  "actor": {"objectType": "bdm:Engine", "id": "engine_v2.1"},
+  "verb": "bdm:recording_ended",
+  "object": {"objectType": "bdm:Recording", "id": "mouse_recording_1"},
+  "attachments": [
+    {
+      "type": "bdm:Timeseries",
+      "contentType": "application/json",
+      "url": "mouse_1.ndjson.gz.timeseries.json",
+      "sha256": "9f2b5c…",
+      "description": "Mouse trajectory sidecar for attempt 1"
+    }
+  ]
+}
+```
+
+The `url` is a **relative path resolved against the location of the file containing the reference** — for an at-rest events file, the activity folder — or an absolute URL. In the example above, the sidecar sits beside `events_1.ndjson` in the same activity folder.
+
+## Continuous signals: attachment → sidecar → payload
+
+Dense, homogeneous streams (mouse trajectories, gaze, EEG) do not go into the event stream sample by sample. Instead, BDM uses one uniform reference chain:
+
+1. An event (typically `bdm:recording_ended`) carries an attachment with `type: "bdm:Timeseries"` pointing at a **sidecar metadata file** (`<payload-filename>.timeseries.json`).
+2. The sidecar — validated by the [timeseries schema](https://behaverse.org/schemas/timeseries) — declares the payload's location, clock, sampling nature, and channels.
+3. The sidecar's `content_url` points at the **payload** itself (NDJSON, CSV, EDF, Parquet, …), stored beside it in the activity folder.
+
+See the [Timeseries page](/spec/timeseries.qmd) for the sidecar convention and where these files live in a dataset.
+
+## Clocks and timestamps
+
+Recording engines timestamp events on a **monotonic per-session clock** — the vocabulary term [`engine_seconds`](/glossary/index.qmd): seconds since engine start, immune to wall-clock adjustments. One anchor per session bridges to wall-clock time:
+
+```
+timestamp = anchor_datetime + t
+```
+
+where `anchor_datetime` is the RFC 9557 datetime at `engine_seconds = 0` and `t` is the sample's time on the monotonic clock. Events store the wall-clock `timestamp` and may additionally carry the original monotonic time as an optional `bdm:t` context extension. The same clock terms govern timeseries sidecars, so events and continuous signals stay alignable. All three terms are defined in the vocabulary's *time* scheme (see the [Glossary](/glossary/index.qmd)).
