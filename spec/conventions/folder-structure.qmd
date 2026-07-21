@@ -52,15 +52,15 @@ dataset/                          # <1>
 
 6. **Agents metadata**: The `agents.csv` lists all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
 
-7. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per subject that contains all the data about that subject. 
+7. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per agent that contains all the data about that agent.
 
-8. **Agent data:** The subject data folder is labelled following the template `agent_{x}` where x refers to a zero-padded integer (e.g., `agent__001`, `agent_123`; the number of zeros used for padding should be commensurate with the number of subjects in the dataset.
+8. **Agent data:** The agent data folder is labelled following the template `agent_{x}` where x refers to a zero-padded integer (e.g., `agent_001`, `agent_123`); the number of zeros used for padding should be commensurate with the number of agents in the dataset.
 
-9. **Studyflow**: Each subject data folder contains at its root a `studyflow.csv` file which explains what activities were completed by this subject (with a competition status), when they started and ended each activity and in what order the activities were completed.
+9. **Studyflow**: Each agent data folder contains at its root a `studyflow.csv` file which explains what activities were completed by this agent (with a completion status), when they started and ended each activity and in what order the activities were completed.
 
-10. **Sessions** (optional): In some cases it might be useful to group the data within subject into subfolder corresponding to multiple data collection sessions (e.g., `session_01/`, `session_02/`). This level of folders is optional and should be used when the data collection is divided into sessions.
+10. **Sessions** (optional): In some cases it might be useful to group the data within each agent's folder into subfolders corresponding to multiple data collection sessions (e.g., `session_01/`, `session_02/`). This level of folders is optional and should be used when the data collection is divided into sessions.
 
-11. **Activity data**: Additional folders are included within each subject's folder depending on the specific activities completed by that subject. For example, if the subject completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
+11. **Activity data**: Additional folders are included within each agent's folder depending on the specific activities completed by that agent. For example, if the agent completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
 
 12. **Examples** (optional): The `examples/` contains sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
 
@@ -102,7 +102,7 @@ Within BDM we use following styling rules:
  - Hyphens and underscores are used for human readability, not to encode structural relationships (e.g., key-value pairs or entity_feature).
 
 
-We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `dataset/data/subject_001/session_1/response.csv` is preferred over `dataset/data/subject_001/subject-001_session-1_response.csv` as it is shorter and yet contains the same information.
+We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `dataset/data/agent_001/session_1/response.csv` is preferred over `dataset/data/agent_001/agent-001_session-1_response.csv` as it is shorter and yet contains the same information.
 
 We also do not recommend including data in the filenames (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz`, `2019_`) as this data should be either accessible in the data or obvious from the context.
 
@@ -111,7 +111,7 @@ Here are a few examples of file and folder names that follow these rules:
 -   `masculinity-survey/`
 -   `big-5/`
 -   `response.csv`
--   `subject_001/`
+-   `agent_001/`
 
 
 ### Naming datasets

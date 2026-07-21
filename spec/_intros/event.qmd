@@ -9,7 +9,7 @@ Events in BDM follow the [xAPI](https://github.com/adlnet/xAPI-Spec/) specificat
 Each event is an object (in JSON or YAML) following the envelope below. For example, in YAML:
 
 ```yaml
-timestamp: 1996-12-19T16:39:57-08:00Z
+timestamp: 1996-12-19T16:39:57-08:00
 actor:
   objectType: "bdm:Agent"
   id: "agent_001"

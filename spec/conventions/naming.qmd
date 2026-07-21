@@ -109,7 +109,7 @@ When naming variables using `<entity>_<property>` pattern, express the entity in
 :::
 
 ::: {.callout-note}
-> It's OK to use plurals to name folders, e.g., Subjects, Instruments
+> It's OK to use plurals to name folders and files that hold collections, e.g., `instruments/`, `agents.csv`
 :::
 
 ## Boolean variables
@@ -148,7 +148,7 @@ Sometimes such names can get quite long and hard to read and there might in fact
 
 It seems impossible to have everyone agree on common standards and conventions---different fields have their own traditions and people have different preferences.
 
-Furthermore, while we intend to conform to main existing conventions as much as possible, this is not always possible to do as different conventions and standards often conflict with each other. For example, [schema.org](schema.org) uses an "mixedCase" to describe the elements of its schema (e.g., `countryOfOrigin`, `dateCreated`) while both the leading [python](https://pep8.org/) and [R](https://style.tidyverse.org/files.html) styleguides recommend using "lower_snake_case" (reusing the previous examples: `country_of_origin`, `date_created`.) The same is true for the file formats to use (e.g., `.csv` vs `.tsv`, `json-ld` vs `XML`.) and virtually all other aspects of data.
+Furthermore, while we intend to conform to main existing conventions as much as possible, this is not always possible to do as different conventions and standards often conflict with each other. For example, [schema.org](https://schema.org) uses a "mixedCase" style to describe the elements of its schema (e.g., `countryOfOrigin`, `dateCreated`) while both the leading [python](https://pep8.org/) and [R](https://style.tidyverse.org/files.html) styleguides recommend using "lower_snake_case" (reusing the previous examples: `country_of_origin`, `date_created`.) The same is true for the file formats to use (e.g., `.csv` vs `.tsv`, `json-ld` vs `XML`.) and virtually all other aspects of data.
 
 When choosing among different alternatives we try to follow the following principles:
 
@@ -168,7 +168,7 @@ There are three issues related to naming people in a dataset; they concern how t
 
 People who participate in a study and from whom data is collected are typically called "subjects" or "participants". While "subject" has been standard in many sub-fields of cognitive sciences, "participant" has become more common recently and is considered more respectful to human study participants as it acknowledges their active involvement in the study. Other terms may be common in specific research domains investigating humans (e.g., "respondent", "patient", "child"), non-human animals (e.g., "primate", "mouse") or computational models (e.g., "agent"). Still, in other contexts, it might be customary to use more generic terms (e.g., "user"). Finally there are terms that are idiosyncratic to particular data collection services (e.g., "worker").
 
-It is our view that the entity name in the data table should be generic to encompass a large set of use cases (e.g., children, animals, artificial agents) and we therefore second [BIDS](https://bids-specification.readthedocs.io/en/stable/) in the use of "subject" in the data specification and avoid using any other term in the data (however, contrary to BIDS we never use "participants"). This does not mean however that human participants should be addressed as "subjects" in general (for example, when communicating with them or about them); all participants are subjects, but not all subjects are participants (e.g., an AI-agent). Naming a column or data file using "subject" is convenient and does not imply disrespect towards human study participants.
+It is our view that the entity name in the data table should be generic to encompass a large set of use cases (e.g., children, animals, artificial agents). Unlike [BIDS](https://bids-specification.readthedocs.io/en/stable/), which uses "subject", we use "agent" in the data specification and avoid using any other term in the data (in particular, we never use "participants" in the data): "agent" covers human participants, non-human animals, and computational models alike. This does not mean however that human participants should be addressed as "agents" in general (for example, when communicating with them or about them); all participants are agents, but not all agents are participants (e.g., an AI agent). Naming a column or data file using "agent" is convenient and does not imply disrespect towards human study participants.
 
 ::: {.callout-important appearance="simple" title="Rule 6"}
 Use "agent" to refer to the entity generating the response data.
@@ -176,31 +176,31 @@ Use "agent" to refer to the entity generating the response data.
 
 ## A suffix for the entity and format of the value
 
-A reference to a subject can serve multiple purposes:
+A reference to an agent can serve multiple purposes:
 
-1.  Ensure the uniqueness of a subject within a study; link all data from a subject within a study.
+1.  Ensure the uniqueness of an agent within a study; link all data from an agent within a study.
 
-2.  Select or identify data belonging to a particular subject. For example, if you see an outlier point in a plot and want to understand why that point occurred, it might be necessary to identify that data as belonging to a particular subject and then look in greater detail in that subject's data.
+2.  Select or identify data belonging to a particular agent. For example, if you see an outlier point in a plot and want to understand why that point occurred, it might be necessary to identify that data as belonging to a particular agent and then look in greater detail in that agent's data.
 
-3.  Use the subject's identifier to name their data files.
+3.  Use the agent's identifier to name their data files.
 
-4.  Ensure the uniqueness of a subject across studies. A subject may participate in multiple studies and it might be necessary (e.g., for meta-analyses) to determine whether subjects participated in multiple studies.
+4.  Ensure the uniqueness of an agent across studies. An agent may participate in multiple studies and it might be necessary (e.g., for meta-analyses) to determine whether agents participated in multiple studies.
 
 These four purposes have somewhat different requirements.
 
-Purpose 1 requires uniqueness within a study while .4 requires uniqueness in general. For purpose 1 it would suffice to have a participant counter and assign an integer to each participant within a study. This leads to shorter names which makes it practical for purposes 2 and 3. To ensure the uniqueness of subject identifiers in general requires longer strings, which are rather impractical for data analysis and management.
+Purpose 1 requires uniqueness within a study while .4 requires uniqueness in general. For purpose 1 it would suffice to have an agent counter and assign an integer to each agent within a study. This leads to shorter names which makes it practical for purposes 2 and 3. To ensure the uniqueness of agent identifiers in general requires longer strings, which are rather impractical for data analysis and management.
 
 Consequently, we adopt the following conventions:
 
-subject_index
-:   a string uniquely associated to each subject within a dataset. Following [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html#participant-names-and-other-labels), this string is obtained by concatenating the string `subject_` with a zero-padded number which "counts" subjects in a study (typically but not necessarily in chronological order). For example, the 15^th^ subject in a dataset might be assigned the subject_index value of subject_015.
+agent_index
+:   a string uniquely associated to each agent within a dataset. Similar to [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html#participant-names-and-other-labels) participant labels, this string is obtained by concatenating the string `agent_` with a zero-padded number which "counts" agents in a study (typically but not necessarily in chronological order). For example, the 15^th^ agent in a dataset might be assigned the agent_index value of agent_015.
 
-Note that such zero-padding may depend on the number of subjects there are in a study (e.g., if there are less than 100, the first subject would be called "subject_01", but if there are more than 1000 subjects in total, that subject would be called "subject_0001"). By default, we use a zero-padded string of length 4 as this will be enough for the vast majority of behavioral datasets.
+Note that such zero-padding may depend on the number of agents there are in a study (e.g., if there are less than 100, the first agent would be called "agent_01", but if there are more than 1000 agents in total, that agent would be called "agent_0001"). By default, we use a zero-padded string of length 4 as this will be enough for the vast majority of behavioral datasets.
 
 agent_id
-: A string that uniquely identifies a subject (typically within a data collection institution or research group) and may be used to determine if the same subject participated in multiple studies wherein they might be assigned different subject_index values. agent_id may be created using custom procedure and look something like: `20025fe6-6868-47c6-a222-a5c06b49c8db`.
+: A string that uniquely identifies an agent (typically within a data collection institution or research group) and may be used to determine if the same agent participated in multiple studies wherein they might be assigned different agent_index values. agent_id may be created using custom procedure and look something like: `20025fe6-6868-47c6-a222-a5c06b49c8db`.
 
-Note that `agent_id` is not be present in the L1 data but instead is available in separate *Subjects* table which lists subject information, including their subject_index and agent_id values.
+Note that `agent_id` need not appear in every data table; the *Agents* table (`agents.csv`) lists agent information, including their agent_index and agent_id values.
 
 # Naming tasks and their components
 

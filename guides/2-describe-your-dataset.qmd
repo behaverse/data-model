@@ -24,11 +24,11 @@ Let's begin by dataset card. Each BDM-compatible dataset contains a `README.md` 
 
 The human-readable part is just the regular markdown format common in technical documentation. For a template you can use [HuggingFace dataset card example](https://huggingface.co/datasets/templates/dataset-card-example).
 
-The machine-readable part relies primarily on the [front-matter](#) of the file. Front-matters are a way to include metadata in a markdown file. They are written in YAML format and are placed at the top of the file between two sets of three dashes (`---`). For example:
+The machine-readable part relies primarily on the [front-matter](../spec/dataset-cards.qmd) of the file. Front-matters are a way to include metadata in a markdown file. They are written in YAML format and are placed at the top of the file between two sets of three dashes (`---`). For example:
 
 ```markdown
 ---
-title: "Example dataset"
+name: "example-dataset"
 description: "this yaml is machine-readable"
 ---
 
@@ -36,19 +36,20 @@ This *markdown* is human-readable.
 ```
 
 
-The front-matter includes information about the dataset as a whole (such as the title, description, and author) and the data (such as the variable names and data types). Here is an example:
+The front-matter includes information about the dataset as a whole (such as the name, description, and creator) and the data (such as the variable names and data types). Here is an example:
 
 ```yaml
 ---
-title: "Example dataset"
+name: "example-dataset"
 description: "This is an example dataset that contains some example data."
-author: "John Doe"
+creator:
+  - name: "John Doe"
 ---
 ```
 
 ## Codebook
 
-In BDM, part of the front-matter that describes the the data is called codebook (under the yaml key `codebook`). It follows the [CSVW standard](https:/csvw.org/) in YAML format to describe the variables in the dataset. It includes information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
+In BDM, part of the front-matter that describes the data is called codebook (under the yaml key `codebook`). It follows the [CSVW standard](https://csvw.org/) in YAML format to describe the variables in the dataset. It includes information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
 
 Codebook is also important because it contains experimenter's intentions and assumption about the study, which is crucial for interpreting the data.  For example, if the experimenter decides to only include age groups (and discard exact age), this decision should be documented in the codebook. Like this:
 
@@ -97,11 +98,11 @@ You can include the citation in the front-matter `README.md` file (all fields ar
 
 ```yaml
 ---
-title: "Example dataset"
+name: "example-dataset"
 description: "This is an example dataset that contains some example data."
 doi: "10.1234/5678"                 # <1>
 url: "https://example.com/dataset"  # <2>
-authors:
+creator:
   - name: "John One Doe"
     orcid: "0000-0000-0000-0000"
   - name: "Jane Two Doe"
@@ -115,7 +116,7 @@ license: "CC BY-SA 4.0"             # <3>
 
 To get a DOI for your dataset, you can use services like [Zenodo](https://zenodo.org/), [OSF](https://osf.io/), [Figshare](https://figshare.com/), [OpenNeuro](https://openneuro.org/), or [Dryad](https://datadryad.org/). These services allow you to generate a permanent DOI that you can include in the dataset card.
 
-If you haven't already decided a license for your data, you can use services like [Choose a License](https://choosealicense.com/), [License Selector](https://ufal.github.io/public-license-selector/), or [Creative Commons license chooser](https://creativecommons.org/choose/). These tools helps you select a license that meets your needs and provides a human-readable summary of the license terms. Depending on your case, you can either put the a name or URL in the `license` field (all are valid):
+If you haven't already decided a license for your data, you can use services like [Choose a License](https://choosealicense.com/), [License Selector](https://ufal.github.io/public-license-selector/), or [Creative Commons license chooser](https://creativecommons.org/choose/). These tools helps you select a license that meets your needs and provides a human-readable summary of the license terms. Depending on your case, you can either put a name or URL in the `license` field (all are valid):
 
 
 ```yaml
@@ -134,18 +135,18 @@ One important aspect of BDM is how it automatically links the dataset to other r
 
 ## A complete example
 
-To summarize, dataset cards describe your dataset in a way that is easy to understand and useful. They include metadata about the dataset, such as the title, description, author, and codebook, as well as information about the citation and license. By following these conventions, you can make your dataset more discoverable, interpretable, and reproducible.
+To summarize, dataset cards describe your dataset in a way that is easy to understand and useful. They include metadata about the dataset, such as the name, description, creator, and codebook, as well as information about the citation and license. By following these conventions, you can make your dataset more discoverable, interpretable, and reproducible.
 
 Here is an example of a `README.md` file for a dataset:
 
 
 ```markdown
 ---
-title: "Example dataset"
+name: "example-dataset"
 description: "This is an example dataset that contains some example data."
 doi: "10.1234/5678"
 url: "https://example.com/dataset"
-authors:
+creator:
   - name: "John One Doe"
     orcid: "0000-0000-0000-0000"
   - name: "Jane Two Doe"

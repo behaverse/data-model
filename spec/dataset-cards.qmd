@@ -16,7 +16,7 @@ Here is an example `README.md` file with a *dataset card* (in the front matter),
 
 ```yaml
 ---
-title: "Example dataset"
+name: "example-dataset"
 description: "This is an example dataset that contains some example data."
 version: "1.0"
 doi: "10.1234/5678"
