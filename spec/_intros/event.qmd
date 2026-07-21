@@ -29,13 +29,16 @@ attachments: []
 
 ## Timeseries
 
-Timeseries represent streams of observations collected at fixed intervals — physiological signals, neural activity, or other continuous measurements. In BDM a timeseries is a specific type of event; the difference is in shape: timeseries are dense, continuous, and homogeneously typed (e.g., resting-state EEG at 500 Hz), whereas regular events are sparse, discrete, and heterogeneous.
+Timeseries represent streams of observations sampled continuously — physiological signals, neural activity, mouse trajectories. They differ from regular events in shape: timeseries are dense, continuous, and homogeneously typed (e.g., resting-state EEG at 500 Hz), whereas events are sparse, discrete, and heterogeneous.
 
-Because raw timeseries data is dense and homogeneous, it is unsuitable for inline storage in event records. Instead, BDM treats the raw signal as a blob: the data is written to a separate, domain-appropriate file (CSV, Parquet, EDF, …) and only *referenced* from the event via the `attachments` field, alongside metadata describing the sampling rate and recording parameters.
+Because of that shape, raw signals are never inlined in event records. The samples are written to a separate, domain-appropriate payload file (NDJSON, CSV, EDF, Parquet, …) described by a sidecar metadata file governed by the [timeseries schema](https://behaverse.org/schemas/timeseries); the event references the *sidecar* via `attachments` (see the [Timeseries page](/spec/timeseries.qmd)):
 
 ```yaml
 attachments:
   - type: "bdm:Timeseries"
-    contentType: "application/x-edf"
-    url: "file:///eeg_timeseries_data.edf"
+    contentType: "application/json"
+    url: "eeg_1.edf.timeseries.json"
+    sha256: "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
 ```
+
+Each attachment carries a required `type` (a `bdm:` term), `contentType` (MIME type), and `url` — a relative path resolved against the location of the file containing the reference, or an absolute URL — plus optional `sha256`, `length`, and `description`.
