@@ -89,7 +89,7 @@ data/
 
 Note that:
 
-- Each agent has a folder named `agent_<ID>` where `<ID>` is a unique identifier for the human subject or computer agent. `<ID>` can be a number or a string, but must be unique within the dataset. For convenience, if your dataset contains only human subjects, you may also use the `data/subject_<ID>/` format, but the root data folder remains `data/`. But it is recommended to use the `agent_<ID>` naming for all datasets, as it is more flexible and extensible.
+- Each agent has a folder named `agent_<ID>` where `<ID>` is a unique identifier for the human participant or computer agent. `<ID>` can be a number or a string, but must be unique within the dataset. BDM uses `agent_<ID>` for all datasets, whether the agents are humans, animals, or computational models (see [Naming things](/spec/conventions/naming.qmd)).
 - The `studyflow.csv` file contains the order and metadata of the all activities for the agent.
 - Each session has a folder named `session_<N>` where `<N>` is the agent's session number (its `session_index`). Session numbering is nested within agents — it restarts at 1 for each agent — so `session_1` for `agent_1` and `session_1` for `agent_2` are different sessions that simply came first for their respective agents. A session's dataset-wide identity is its `session_uuid` (see [Indexing things](/spec/conventions/indexing.qmd)).
 - Each activity has a folder named `<AGENT>/<SESSION>/<ACTIVITY>/` where `<ACTIVITY>` is the name of the instrument used in the activity. In the example, the activities are `UFOV` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
