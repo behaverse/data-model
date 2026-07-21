@@ -6,8 +6,6 @@ page-layout: full
 ---
 
 ::: {.bdm-hero}
-:::: {.grid}
-::: {.g-col-12 .g-col-md-8}
 [Behaverse · Data Model]{.kicker}
 
 # All cognitive science data, in one coherent framework.
@@ -17,13 +15,6 @@ BDM defines how to organize, name, and describe experimental data—behavior,
 questionnaires, physiological signals, and more—so datasets are consistent
 across studies, clear to humans, and readily usable by machines.
 :::
-:::
-::: {.g-col-12 .g-col-md-4}
-```{=html}
-<div class="bdm-filetree">my-study/<br>├─ dataset.yaml<br>├─ events/<br>├─ trials/<br>│&nbsp;&nbsp;├─ response.csv<br>│&nbsp;&nbsp;└─ stimulus.csv<br>└─ models/</div>
-```
-:::
-::::
 :::
 
 ```{=html}
@@ -55,11 +46,6 @@ authors, joined across studies, checked automatically, and analyzed by tools
 that were not written for them.
 :::
 
-![The data journey: from experiment to a coherent, analyzable
-dataset.](assets/img/data-journey.svg){fig-alt="Diagram: an experiment
-produces events and signals (records); explicit task-patterns turn records
-into trials (interpretations); models of agents (inferences) are fit on
-either; everything lands in one consistently structured BDM dataset folder."}
 
 ::: {.bdm-proof}
 [Read the paper](https://arxiv.org/abs/2012.12583) (*The structure of
