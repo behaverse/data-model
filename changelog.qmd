@@ -3,6 +3,24 @@
 
 ## [Unreleased]
 
+### Added
+
+- Events data guide: the event envelope, NDJSON at-rest storage, attachments, timeseries referencing, and the clock mapping.
+- Folder structure: placement of raw event streams (`events_<attempt>.ndjson[.gz]`) and timeseries payload + sidecar files, plus a new acquisition→dataset mapping section.
+- Glossary: the vocabulary `time` scheme terms (`engine_seconds`, `anchor_datetime`, `t`) and the new trial fields.
+
+### Changed
+
+- Spec pages track `behaverse/schemas` v26.0721: the trial family grows the **Subtrial** and **TaskParameter** tables (9 tables) and the Response fields `session_index`, `session_uuid`, `response_index`, `subtrial_count`, and `response_type`; the event family shows 25 verbs (including `bdm:key_released`) and the formalized attachment shape.
+- Timeseries page rewritten around the sidecar + payload convention (timeseries schema v26.0721); the Task EEG and Resting state extensions point at it as their data layer.
+- Session identity clarified: `session_index` is a per-agent ordinal; `session_uuid` is the session's global identity (carried in event streams as `bdm:session_id`).
+- One zero-padding rule for indexed folder names: width commensurate with the entity count, three digits by default.
+
+### Fixed
+
+- Getting started said events are stored in `events.csv` (the canonical at-rest form is NDJSON) and claimed session identifiers are unique within the dataset (session numbering restarts per agent).
+- The questionnaire guide's example table used a `session_id` column with string values (now `session_index` with integers, per the trial schema rename).
+
 ## [26.06-dev1] - 2026-06-01
 
 ### Added
