@@ -11,12 +11,17 @@ permissions:
   pages: write
   contents: read
 
+concurrency:
+  group: pages-publish
+  cancel-in-progress: false
+
 jobs:
   build:
     name: 📦 Build
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@v6
       - name: 🛠️ Setup Quarto
@@ -44,6 +49,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5

@@ -1,0 +1,37 @@
+name: 🔍 PR Check
+
+# Validate that the site builds before merge: schema fetch + spec generation + full
+# Quarto render. Publishing to Pages stays in publish.yml (push to main).
+on:
+  pull_request:
+    branches:
+      - 'main'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 📦 Build (no deploy)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - name: 🛠️ Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: 📦 Setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: 🔗 Generate spec pages from behaverse/schemas
+        run: uv run scripts/build_spec.py
+
+      - name: 🎨 Render
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html
