@@ -26,9 +26,17 @@ Note we do NOT use the term "session" to refer to software related meanings (e.g
 session_index is nested within agent_index. This means that when an agent starts a new session their session_index will be incremented; however, their session_index is unaffected by other agents' data completion journeys.
 :::
 
+: :::{.callout-note appearance="simple"}
+Because it restarts per agent, session_index is an *ordinal*, not an identifier: `session_index = 2` recurs for every agent with two or more sessions. A session's global identity is `session_uuid` — a UUID (RFC 9562) assigned by the recording engine when the session starts, defined in the [Response table](/spec/trial/1-response.qmd). Event streams scope events to a session through the `bdm:session_id` context extension, whose value is this UUID.
+:::
+
 `response_index`
 : Agents emit responses. These may be complex sequences of inputs (e.g., typing an answer) that are interpreted within a study as a meaningful unit of observation.
 An agent will emit responses over the course of their participation in the study. response_index is nested within agents, not within any lower level construct. This means that we increment our response counter starting from an agent's first response to their last response within a study without ever resetting that counter. The maximum value of response_index for a given agent reflects how many responses were recorded from that agent in the study.
+
+: :::{.callout-note appearance="simple"}
+`response_index` is also a field of the [Response table](/spec/trial/1-response.qmd) (since trial schema v26.0720), defined there with exactly this nesting. It is distinct from `response_option_index` (which option was chosen) and from `response_id` (a table-scoped identifier assigned in temporal order).
+:::
 
 
 `episode_index`

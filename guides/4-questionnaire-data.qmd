@@ -16,7 +16,7 @@ Despite the central role of questionnaires in social sciences, a key impediment 
 
 1. focus on the interaction between one person and one stimulus; and consider questions and corresponding responses as a set of trials (i.e., each question is a trial with specific stimulus, options, and response);
 2. keep the main information in one table (`trial_*.csv`) and delegate further details to supplementary tables (`stimulus_*.csv`, etc);
-3. separate data into activity-specific files nested within agent-specific folders (e.g., `agent_id/session_id/questionnaire_id/...`).
+3. separate data into activity-specific files nested within agent-specific folders (e.g., `<AGENT>/<SESSION>/<ACTIVITY>/...`).
 
 For example, here is a minimal dataset structure for a study with two subjects completing three questionnaires:
 
@@ -143,9 +143,9 @@ caption, .table-caption {
 ```
 
 :::{.table-responsive}
-|trial_id   |agent_id |session_id|stimulus_id|stimulus_index|stimulus_description           |stimulus_onset|stimulus_duration|option_id  |option_onset|option_duration|response_description|response_numeric|response_option_index|response_time|accuracy                   |correct                    |score|
-|-----------|---------|----------|-----------|--------------|-------------------------------|--------------|-----------------|-----------|------------|---------------|--------------------|----------------|---------------------|-------------|---------------------------|---------------------------|-----|
-|1          |agent_1  |session_1 |stimulus_1 |1             |Do you like ice cream?         |0             |5                |yes_no     |0           |5              |yes                 |1               |1                    |2            |[*NA*]{.text-muted .small} |[*NA*]{.text-muted .small} |1    |
-|2          |agent_1  |session_1 |stimulus_2 |2             |How much do you like ice cream?|0             |5                |agreement_5|0           |5              |strongly agree      |4               |5                    |5            |[*NA*]{.text-muted .small} |[*NA*]{.text-muted .small} |4    |
+|trial_id   |agent_id |session_index|stimulus_id|stimulus_index|stimulus_description           |stimulus_onset|stimulus_duration|option_id  |option_onset|option_duration|response_description|response_numeric|response_option_index|response_time|accuracy                   |correct                    |score|
+|-----------|---------|-------------|-----------|--------------|-------------------------------|--------------|-----------------|-----------|------------|---------------|--------------------|----------------|---------------------|-------------|---------------------------|---------------------------|-----|
+|1          |agent_1  |1            |stimulus_1 |1             |Do you like ice cream?         |0             |5                |yes_no     |0           |5              |yes                 |1               |1                    |2            |[*NA*]{.text-muted .small} |[*NA*]{.text-muted .small} |1    |
+|2          |agent_1  |1            |stimulus_2 |2             |How much do you like ice cream?|0             |5                |agreement_5|0           |5              |strongly agree      |4               |5                    |5            |[*NA*]{.text-muted .small} |[*NA*]{.text-muted .small} |4    |
 : Example Response table for a questionnaire (scroll horizontally to see all the columns)
 :::
