@@ -75,9 +75,16 @@ website:
         href: https://github.com/behaverse/data-model/
 
   sidebar:
-    - id: concepts
+    - id: project
+      title: "Project"
       style: docked
       collapse-level: 2
+      contents:
+        - about.qmd
+        - contribute.qmd
+        - roadmap.qmd
+        - changelog.qmd
+    - id: concepts
       contents:
         - concepts/index.qmd
         - concepts/design-process.qmd

@@ -29,14 +29,10 @@ across studies, clear to humans, and readily usable by machines.
 ::: {.bdm-story}
 Every lab organizes behavioral data its own way. The result: datasets that
 cannot be combined, tools that cannot be reused, analyses that start from
-scratch every time.[^1] And the data itself is harder than it looks — a key
+scratch every time. And the data itself is harder than it looks — a key
 press means nothing without the task, the stimulus, and the person behind it.
 
-[^1]: Hulsebos et al. (2024), [*It took longer than I was
-expecting*](https://doi.org/10.1145/3665939.3665959), on why dataset search
-is still so hard.
-
-BDM keeps three kinds of information distinct and linked: what was
+BDM keeps three levels of data distinct and linked: what was
 **recorded** (events, signals), what it **means** given the task (trials,
 derived by explicit rules), and what it says about **the agent** (models).
 The result is a dataset whose meaning travels with it.

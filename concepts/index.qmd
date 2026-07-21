@@ -10,24 +10,32 @@ are consistent across studies, clear to humans, and readily usable by machines.
 
 This page gives you the whole picture. The deep dives are one click away.
 
-## Three kinds of information
+## Three levels of data
 
-A dataset answers three different kinds of question, and BDM keeps them
-distinct and linked:
+A BDM dataset separates what was observed, what it means, and what we
+conclude from it — three levels, each derived from the one below:
 
-1. **What happened** — *records*: events (key presses, screen changes, answers
-   given) and timeseries (EEG, eye tracking), timestamped as they occurred.
-2. **What it means** — *interpretations*: trials. A trial is not observed; it
-   is constructed from records by an explicit rule (a *task-pattern*). The
-   same event stream under a different rule yields different trials — so BDM
-   stores the rule with the data.
-3. **What it tells us about people** — *inferences*: models of agents, fit on
-   trials or directly on records.
+[Events](/spec/event/index.qmd) (and [timeseries](/spec/timeseries.qmd))
+: The raw record: what happened, as it happened. Key presses, stimulus
+  presentations, answers given — timestamped event streams — plus continuous
+  signals (EEG, eye tracking) stored alongside them. Detailed enough to
+  reconstruct the experiment.
 
-Most formats flatten these into one table and lose the distinctions. Keeping
-them separate is what makes BDM datasets auditable: you can always trace an
-inference back to the interpretation it relied on, and an interpretation back
-to the raw record.
+[Trials](/spec/trial/index.qmd)
+: The scientific unit of analysis. A trial is not observed — it is derived
+  from the events by an explicit, task-specific rule, and stored as tidy
+  tables (responses, stimuli, options, …). The same event stream can yield
+  different trial tables under different rules, which is why BDM keeps the
+  events and records how the trials were derived.
+
+[Models](/spec/models/index.qmd)
+: What the data tells us: summary statistics, scores, and fitted models of
+  the agents, derived from trials or directly from events.
+
+Most formats keep only a trial-level table and discard the rest. Keeping the
+three levels distinct and linked is what makes a BDM dataset auditable: a
+conclusion traces back to the trials it was computed from, and a trial traces
+back to the raw events it was derived from.
 
 ## The anatomy of a dataset
 
