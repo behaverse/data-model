@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 output-file: software-integration
 icon: bi bi-reception-3
 difficulty: INTERMEDIATE

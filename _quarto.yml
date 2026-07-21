@@ -61,22 +61,23 @@ website:
       - text: "Glossary"
         href: glossary/index.qmd
     right:
-      - text: "Contribute"
-        href: contribute.qmd
-      - text: "About"
-        href: about.qmd
+      - text: "Project"
+        menu:
+          - text: "About"
+            href: about.qmd
+          - text: "Contribute"
+            href: contribute.qmd
+          - text: "Roadmap"
+            href: roadmap.qmd
+          - text: "Changelog"
+            href: changelog.qmd
       - icon: github
         href: https://github.com/behaverse/data-model/
 
   sidebar:
-    - id: why
+    - id: concepts
       style: docked
       collapse-level: 2
-      contents:
-        - why/index.qmd
-        - why/ecosystem.qmd
-        - why/roadmap.qmd
-    - id: concepts
       contents:
         - concepts/index.qmd
         - concepts/design-process.qmd
@@ -85,17 +86,12 @@ website:
     - id: guides
       contents:
         - guides/index.qmd
-        - section: "Start here"
-          contents:
-            - guides/1-getting-started.qmd
-        - section: "How-to guides"
-          contents:
-            - guides/2-describe-your-dataset.qmd
-            - guides/3-organize-your-data.qmd
-            - guides/4-questionnaire-data.qmd
-            - guides/5-software-integration.qmd
-            - guides/7-events-data.qmd
-            - guides/16-ai-integration.qmd
+        - guides/1-getting-started.qmd
+        - guides/3-organize-your-data.qmd
+        - guides/2-describe-your-dataset.qmd
+        - guides/4-questionnaire-data.qmd
+        - guides/7-events-data.qmd
+        - guides/5-software-integration.qmd
     - id: spec
       contents:
         - spec/index.qmd
@@ -105,22 +101,26 @@ website:
             - spec/conventions/naming.qmd
             - spec/conventions/indexing.qmd
             - spec/conventions/units.qmd
-            - spec/conventions/folder-structure.qmd
-        - section: "Dataset"
+        - section: "Dataset layout"
           contents:
+            - spec/conventions/folder-structure.qmd
             - spec/dataset-cards.qmd
+        - section: "Data levels"
+          contents:
+            - text: "Events"
+              href: spec/event/index.qmd
+            - section: "Trials"
+              contents:
+                - spec/trial/index.qmd
+                - auto: spec/trial/*.qmd
+            - text: "Models"
+              href: spec/models/index.qmd
+            - text: "Timeseries"
+              href: spec/timeseries.qmd
+        - section: "Study artifacts"
+          contents:
             - spec/studyflows.qmd
             - spec/instructions.qmd
             - spec/questionnaires.qmd
-        - text: "Events"
-          href: spec/event/index.qmd
-        - section: "Trials"
-          contents:
-            - spec/trial/index.qmd
-            - auto: spec/trial/*.qmd
-        - text: "Models"
-          href: spec/models/index.qmd
-        - text: "Timeseries"
-          href: spec/timeseries.qmd
         - text: "Extensions"
           href: spec/extensions/index.qmd

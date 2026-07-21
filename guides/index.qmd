@@ -18,7 +18,7 @@ The other guides each solve one concrete problem. Iterate: apply an idea to
 your data, come back when you need the next one.
 
 ::: {.callout-note appearance="simple"}
-**Missing a guide?** Several are planned — see the [roadmap](/why/roadmap.qmd)
+**Missing a guide?** Several are planned — see the [roadmap](/roadmap.qmd)
 — and [your vote](https://github.com/behaverse/data-model/issues/new) moves
 them up the queue.
 :::

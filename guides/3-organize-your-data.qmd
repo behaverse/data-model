@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 2
 output-file: organize-your-data
 icon: bi bi-reception-2
 difficulty: EASY

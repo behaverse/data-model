@@ -39,8 +39,9 @@ data](https://www.jstatsoft.org/article/view/v059i10) for table shape,
 prior art exists, BDM adopts it; it only invents where cognitive science has
 needs nothing else covers.
 
-The framework is developed openly — see the [ecosystem](ecosystem.qmd), the
-[roadmap](roadmap.qmd), and the [discussions on
+The framework is developed openly — see [where everything
+fits](/concepts/index.qmd#where-everything-fits), the [roadmap](/roadmap.qmd),
+and the [discussions on
 GitHub](https://github.com/orgs/behaverse/discussions).
 
 ## The paper

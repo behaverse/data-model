@@ -48,11 +48,8 @@ that were not written for them.
 
 
 ::: {.bdm-proof}
-[Read the paper](https://arxiv.org/abs/2012.12583) (*The structure of
-behavioral data*, arXiv 2020) · Builds on [tidy
-data](https://www.jstatsoft.org/article/view/v059i10),
-[xAPI](https://xapi.com/), [BIDS](https://bids.neuroimaging.io/),
-[schema.org](https://schema.org), [CSVW](https://www.w3.org/TR/tabular-data-primer/)
-· Developed openly [on GitHub](https://github.com/behaverse/data-model) ·
-[How to cite](why/index.qmd#the-paper)
+Builds on [BIDS](https://bids.neuroimaging.io/), [xAPI](https://xapi.com/),
+[schema.org](https://schema.org),
+[CSVW](https://www.w3.org/TR/tabular-data-primer/), and tidy-data principles
+· Developed openly [on GitHub](https://github.com/behaverse/data-model)
 :::

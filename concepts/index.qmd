@@ -1,7 +1,7 @@
 ---
 title: The big picture
 subtitle: What BDM is, in one sitting
-aliases: [/explanations/index.html]
+aliases: [/explanations/index.html, /why/ecosystem.html]
 ---
 
 BDM is a framework for organizing all the data a cognitive-science experiment
@@ -35,13 +35,21 @@ A BDM dataset is a folder with a predictable shape:
 
 ```
 my-study/
-├─ dataset.yaml        # the dataset card: what this is, who, how, license
-├─ events/             # records: what happened, as it happened
-├─ trials/             # interpretations: tidy tables, one row per trial
-│  ├─ response.csv
-│  └─ stimulus.csv
-└─ models/             # inferences: descriptions of agents
+├─ README.md            # the dataset card: what this is, who, how, license
+├─ LICENSE
+├─ instruments/         # what was used to collect the data
+├─ agents.csv           # who the data is about
+└─ data/                # one folder per agent / session / activity
+   └─ agent_001/
+      └─ session_1/
+         └─ stroop/
+            ├─ events_1.ndjson   # records: what happened, as it happened
+            ├─ response_1.csv    # trials: tidy tables, one row per trial
+            └─ stimulus_1.csv
 ```
+
+(The full layout, including studyflows and timeseries files, is in the
+[folder structure](/spec/conventions/folder-structure.qmd) specification.)
 
 Every table is tidy; every name follows the [naming
 conventions](/spec/conventions/naming.html); every column is defined in the
@@ -50,15 +58,29 @@ they are called.
 
 ## Where everything fits
 
+BDM is one piece of a set of standards and tools that work together:
+
+| Piece | What it is | Where |
+|---|---|---|
+| **Data model** (this site) | The human-facing framework: conventions, concepts, guides, specification | [behaverse.org/data-model](https://behaverse.org/data-model) |
+| **Schemas** | The machine-readable source of truth: JSON Schemas, field definitions, validators, changelogs | [behaverse.org/schemas](https://behaverse.org/schemas) · [GitHub](https://github.com/behaverse/schemas) |
+| **Studyflow modeler** | Visual editor for study designs (studyflows) | [behaverse.org/studyflow-modeler](https://behaverse.org/studyflow-modeler/app) |
+| **Behaverse** | The broader project: cognitive assessments, games, models | [behaverse.org](https://behaverse.org) |
+
+How they relate: this site **defines** the prose conventions and renders
+summaries; the schemas repository **owns** every machine artifact (this site
+fetches them at build time, pinned by `schemas.lock`); tools consume both.
+A public catalog of BDM-formatted datasets will follow the first published
+reference dataset — see the [roadmap](/roadmap.qmd).
+
+Within this site:
+
 - The **conventions** (naming, indexing, units, folder structure) are rules —
   they live in the [Specification](/spec/index.html).
 - The **why** behind the design lives here in Concepts:
   [design process](design-process.qmd) ·
   [the nature of behavioral data](behavioral-data.qmd) ·
   [metadata](metadata.qmd).
-- The machine-readable schemas live in the
-  [schemas repository](https://behaverse.org/schemas) — this site renders
-  summaries of them and never forks them.
 
 ## Next steps
 

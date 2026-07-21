@@ -1,6 +1,7 @@
 ---
 title: Roadmap
 subtitle: What exists, what is being designed, what is deliberately deferred
+aliases: [/why/roadmap.html]
 ---
 
 BDM is developed openly and incrementally. This page tracks what is not done

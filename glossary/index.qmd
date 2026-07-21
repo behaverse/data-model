@@ -13,4 +13,16 @@ listing:
     - "glossary.yml"
 ---
 
-*This glossary is generated from the published [behaverse/schemas](https://behaverse.org/schemas) artifacts: cross-cutting terms from the [vocabulary](https://behaverse.org/schemas/vocabulary/terms.jsonld), plus the field terms each schema defines.*
+The glossary is the one place to look up what a BDM term means: the
+cross-cutting vocabulary (verbs, actor types, time terms, …) together with
+every field the published schemas define (the trial tables, the event
+envelope). Use it to check what a column name means before analyzing a
+dataset, to find the term for a concept before inventing a new name, and to
+see which schema owns a definition.
+
+Filter by name or category below. Definitions are generated at build time
+from the published [behaverse/schemas](https://behaverse.org/schemas)
+artifacts — the [vocabulary](https://behaverse.org/schemas/vocabulary/terms.jsonld)
+plus each schema's field definitions — so this page always matches the
+schemas the site was built against; where a field name also exists as a
+vocabulary term, the vocabulary definition is shown (it is canonical).

@@ -14,9 +14,22 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture informatio
 
 ::: {.g-col-md-6 .g-col-12}
 
-### General
+### Conventions
 
-***Part of the BDM is common to all datasets, regardless of the specific type of activity:***
+***The rules every BDM dataset follows, whatever it contains:***
+
+[**Naming things**](conventions/naming.qmd)
+: How variables, columns, files, values — and the people and tasks they describe — are named, and why.
+
+[**Indexing things**](conventions/indexing.qmd)
+: The index variables (agent, session, activity, block, trial, …), what each one means, and how they nest.
+
+[**Units**](conventions/units.qmd)
+: How quantities, times, and dates are expressed.
+
+### Dataset layout
+
+***What a BDM dataset physically is:***
 
 [**Folder structure**](conventions/folder-structure.qmd)
 : A BDM dataset is a folder that contains data files and all relevant information needed to make sense of that data.
@@ -24,31 +37,43 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture informatio
 [**Dataset cards**](dataset-cards.qmd)
 : Contain metadata and information about a dataset. Dataset cards also include a codebook to describe the semantics, structure, and format of the data variables.
 
+### Study artifacts
+
+***Descriptions of how the data came to be:***
+
 [**Studyflows**](studyflows.qmd)
-: Describe the study protocol and the sequence of activities that subjects are exposed to.
+: Describe the study protocol and the sequence of activities that agents are exposed to.
 
 [**Instructions**](instructions.qmd)
-: Provide additional guidance and help about tasks presented to subjects in a study.
+: Provide additional guidance and help about tasks presented to agents in a study.
 
 [**Questionnaires**](questionnaires.qmd)
-: Describe the questions presented to subjects and the responses they provide.
+: Describe the questions presented to agents and the responses they provide.
 
 :::
 
 ::: {.g-col-md-6 .g-col-12}
 
-### Specific
+### Data levels
 
-***Some particular structures are unique to the type of data or activity. There are three [levels of data](../guides/1-getting-started.qmd#levels-of-data):***
+***The data itself, from raw observations to interpretations:***
 
 [<i class="bi bi-database"></i> **Events**](event/index.qmd)
-: Raw data collected during the experiment. This includes both discrete events (e.g., stimuli, responses) and continuous streams sampled at regular intervals (e.g., physiological signals). This level is the most detailed and is typically sufficient to reproduce the original experiment.
+: Raw data collected during the experiment, stored as NDJSON event streams. This level is the most detailed and is typically sufficient to reproduce the original experiment.
 
 [<i class="bi bi-database"></i> **Trials**](trial/index.qmd)
 : BDM considers trials as the core components of cognitive experiments. These are task-specific aggregates, derived from raw events, and typically designed to capture the main features of the scientific experiment.
 
 [<i class="bi bi-database"></i> **Models**](models/index.qmd)
 : Summary statistics, scores, or computational models that are derived from trials or events. They address research questions or are used for downstream analyses.
+
+[<i class="bi bi-database"></i> **Timeseries**](timeseries.qmd)
+: Continuous signals (EEG, eye tracking, physiology): a payload file plus a sidecar metadata file, referenced from the event stream.
+
+### Extensions
+
+[**Extensions**](extensions/index.qmd)
+: Planned extensions of BDM beyond cognitive tests and questionnaires — custom tests, video games, task EEG, resting state, compression.
 
 :::
 
