@@ -1,7 +1,6 @@
 ---
 title: Timeseries
 subtitle: EEG, eye tracking, and other physiological recordings
-status: open-design-area
 ---
 
 BDM does not yet define a schema for timeseries data. This is a deliberate
