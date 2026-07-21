@@ -121,7 +121,5 @@ website:
           href: spec/models/index.qmd
         - text: "Timeseries"
           href: spec/timeseries.qmd
-        - section: "Extensions"
-          contents:
-            - spec/extensions/index.qmd
-            - auto: spec/extensions/*.qmd
+        - text: "Extensions"
+          href: spec/extensions/index.qmd

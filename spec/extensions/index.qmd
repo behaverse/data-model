@@ -1,18 +1,22 @@
 ---
 title: Extensions
-toc: false
-listing:
-    contents: 
-        - "*.qmd"
-    type: table
-    fields: [title, subtitle]
-    filter-ui: false
-    sort-ui: false
-    sort: order asc
-    field-display-names: 
-      title: Extension
-      subtitle: Description
 ---
 
 BDM datasets can be extended beyond cognitive tests and questionnaires to describe additional types of data and use cases. Extensions are authored as schemas in the same format used by the [Studyflow Modeler](https://behaverse.org/studyflow-modeler). This keeps the structure of extensions consistent across BDM datasets, studyflows, and tools.
 
+The following extensions are planned. None is specified yet; each will get its own page here once its specification is written.
+
+Custom tests
+: Custom tasks to assess specific cognitive functions, beyond the standard cognitive tests BDM supports. A custom test extension covers: custom schemas for new event types; additional task-specific columns in the trial tables (marked with a dedicated prefix); extra data types or tables described in the codebook and partitioned by agent/session/activity; and task-specific derived models.
+
+Video games
+: When agents play video games as part of the experiment — richer interaction streams, game state, and telemetry than standard cognitive tests produce.
+
+Compression
+: Reducing the size of BDM datasets for storage and transfer without losing the ability to validate and query them.
+
+Task EEG
+: When agents perform a task while EEG is recorded — synchronizing the EEG timeseries with task events and trials.
+
+Resting state
+: When agents are not performing a task. Resting-state data is typically used to study the intrinsic activity of the brain.
