@@ -4,11 +4,14 @@
 
 ## Development
 
-To preview the documentation locally, make sure you have [Quarto CLI](https://quarto.org/docs/get-started/) installed, and then run:
+To preview the documentation locally, make sure you have the [Quarto CLI](https://quarto.org/docs/get-started/) and [uv](https://docs.astral.sh/uv/) installed. The spec pages for trial/event and the glossary data are **generated** from the published [behaverse/schemas](https://github.com/behaverse/schemas) artifacts, so generate them first (needs network), then preview:
 
 ```bash
+uv run scripts/build_spec.py   # generate spec/trial/, spec/event/, glossary/glossary.yml
 quarto preview .
 ```
+
+Re-run `build_spec.py` after upstream schema changes — Quarto's watcher does not re-run it. See [CONTRIBUTING.md](CONTRIBUTING.md) for details, including previewing against a local schemas clone with `--local-dir`.
 
 ## Documentation
 
@@ -24,6 +27,10 @@ BDM is the human-facing umbrella for a small ecosystem. It *references* machine-
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Issues and discussions are welcome on [GitHub](https://github.com/orgs/behaverse/discussions).
+
+## AI assistance
+
+Parts of this documentation and its tooling are developed with the assistance of [Claude Code](https://claude.com/claude-code), under the direction and review of the maintainers. This statement serves as the project's disclosure; individual commits and pull requests do not carry separate AI-attribution notices.
 
 ## License
 
