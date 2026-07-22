@@ -5,16 +5,47 @@ aliases: [/explanations/index.html, /why/ecosystem.html]
 ---
 
 BDM (Behaverse Data Model) is a way to organize everything a behavioral
-experiment produces — responses, questionnaires, event streams, physiological
-signals — into one predictable, self-describing dataset. A BDM dataset is an
+study produces and consumes — responses, questionnaires, event streams,
+physiological signals — in a coherent, user-friendly, and interoperable way.
+
+Behavioral research runs on many kinds of information that are rarely
+distinguished in practice: instructions, questionnaire responses, study
+flows, demographic information about the participants, stimulus
+descriptions, and more. BDM identifies these concepts and, for each one,
+defines three things:
+
+**What** it is
+: A controlled vocabulary with precise definitions, shared across a wide
+  range of use cases — so that one concept has one name, and "response time"
+  does not circulate under five names and three different units.
+
+**How** it is encoded
+: Which variables to record, what to call them, and the conventions for
+  their values.
+
+**Where** it lives
+: Where each kind of information is stored, and in what form — for example,
+  information about stimuli goes in a stimulus table, saved as a CSV file.
+
+A key concern of BDM — though not the only one — is to describe how a
+dataset in experimental cognitive science should be structured. Not
+approximately, but *exactly*: exactly enough that a dataset can be
+validated, read by machines, and processed by automated pipelines.
+
+This is what sets BDM apart from similar projects. Most standards stop at
+metadata (describing what a data file is about) or at file naming and folder
+layout. BDM tackles the harder problem: defining what the data itself should
+contain, how its variables are named and defined, and how the different
+kinds of information are organized and connected to each other.
+
+The rest of this page is that structure, in one sitting. A BDM dataset is an
 ordinary folder: tidy tables and event streams whose names, columns, and
 units follow shared conventions, together with the metadata that explains
-what they are and how they came to be.
-
-Three ideas carry the whole model: data comes in **three levels**, a dataset
-is a **folder with a fixed anatomy**, and the data model is one piece of a
-**small ecosystem**. Everything else on this site is detail behind one of
-these three.
+what they are and how they came to be. Three ideas carry the whole model:
+data comes in **three levels**, a dataset is a **folder with a fixed
+anatomy**, and the data model is one piece of a **small ecosystem** (whose
+other pieces — the schemas, the studyflow modeler, a modeling framework —
+have or will have their own project pages).
 
 ## Three levels of data
 
@@ -85,6 +116,7 @@ BDM is one piece of a set of standards and tools that work together:
 | **Data model** (this site) | The human-facing framework: conventions, concepts, guides, specification | [behaverse.org/data-model](https://behaverse.org/data-model) |
 | **Schemas** | The machine-readable source of truth: JSON Schemas, field definitions, validators, changelogs | [behaverse.org/schemas](https://behaverse.org/schemas) · [GitHub](https://github.com/behaverse/schemas) |
 | **Studyflow modeler** | Visual editor for study designs (studyflows) | [behaverse.org/studyflow-modeler](https://behaverse.org/studyflow-modeler/app) |
+| **Modeling framework** | Fitting and comparing models of behavior on BDM data | in development — project page to come |
 | **Behaverse** | The broader project: cognitive assessments, games, models | [behaverse.org](https://behaverse.org) |
 
 How they relate: this site **defines** the prose conventions and renders
