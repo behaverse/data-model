@@ -27,7 +27,7 @@ session_index is nested within agent_index. This means that when an agent starts
 :::
 
 : :::{.callout-note appearance="simple"}
-Because it restarts per agent, session_index is an *ordinal*, not an identifier: `session_index = 2` recurs for every agent with two or more sessions. A session's global identity is `session_uuid` — a UUID (RFC 9562) assigned by the recording engine when the session starts, defined in the [Response table](/spec/trial/1-response.qmd). Event streams scope events to a session through the `bdm:session_id` context extension, whose value is this UUID.
+Because it restarts per agent, session_index is an *ordinal*, not an identifier: `session_index = 2` recurs for every agent with two or more sessions. A session's global identity is `session_uuid`—a UUID (RFC 9562) assigned by the recording engine when the session starts, defined in the [Response table](/spec/trial/1-response.qmd). Event streams scope events to a session through the `bdm:session_id` context extension, whose value is this UUID.
 :::
 
 `response_index`

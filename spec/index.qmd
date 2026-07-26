@@ -19,7 +19,7 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture informatio
 ***The rules every BDM dataset follows, whatever it contains:***
 
 [**Naming things**](conventions/naming.qmd)
-: How variables, columns, files, values — and the people and tasks they describe — are named, and why.
+: How variables, columns, files, values—and the people and tasks they describe—are named, and why.
 
 [**Indexing things**](conventions/indexing.qmd)
 : The index variables (agent, session, activity, block, trial, …), what each one means, and how they nest.
@@ -73,7 +73,7 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture informatio
 ### Extensions
 
 [**Extensions**](extensions/index.qmd)
-: Planned extensions of BDM beyond cognitive tests and questionnaires — custom tests, video games, task EEG, resting state, compression.
+: Planned extensions of BDM beyond cognitive tests and questionnaires—custom tests, video games, task EEG, resting state, compression.
 
 :::
 

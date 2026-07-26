@@ -7,7 +7,7 @@ subtitle: The problem with behavioral data, and what a shared framework buys us
 
 Every lab organizes behavioral data its own way. The same task produces
 differently named files, differently shaped tables, and differently defined
-variables in every lab that runs it — sometimes in every study. The result:
+variables in every lab that runs it—sometimes in every study. The result:
 datasets that cannot be combined, tools that cannot be reused, and analyses
 that start from scratch every time.[^search]
 
@@ -15,18 +15,18 @@ that start from scratch every time.[^search]
 (2024), [*It took longer than I was expecting*](https://doi.org/10.1145/3665939.3665959).
 
 None of this is negligence. Behavioral data is genuinely harder to
-standardize than it looks: a key press means nothing by itself — its meaning
+standardize than it looks: a key press means nothing by itself—its meaning
 depends on the task, the stimulus, the instructions, and the person. A format
 for behavioral data has to carry that context. BDM is designed to.
 
 ## What a shared framework buys
 
-- **Efficiency** — less bespoke work; code and tools transfer between studies.
-- **Robustness** — fewer errors from ambiguous, idiosyncratic formats.
-- **Transparency** — fewer hidden choices buried in analysis scripts.
-- **Quality** — consistency and completeness can be checked automatically.
-- **Usability** — datasets ship documented and ready to analyze.
-- **Reuse and integration** — results can be replicated, extended, and merged
+- **Efficiency**—less bespoke work; code and tools transfer between studies.
+- **Robustness**—fewer errors from ambiguous, idiosyncratic formats.
+- **Transparency**—fewer hidden choices buried in analysis scripts.
+- **Quality**—consistency and completeness can be checked automatically.
+- **Usability**—datasets ship documented and ready to analyze.
+- **Reuse and integration**—results can be replicated, extended, and merged
   across studies; large shared datasets become possible.
 
 ## Where BDM comes from
@@ -39,7 +39,7 @@ data](https://www.jstatsoft.org/article/view/v059i10) for table shape,
 prior art exists, BDM adopts it; it only invents where cognitive science has
 needs nothing else covers.
 
-The framework is developed openly — see [where everything
+The framework is developed openly—see [where everything
 fits](/concepts/index.qmd#where-everything-fits), the [roadmap](/roadmap.qmd),
 and the [discussions on
 GitHub](https://github.com/orgs/behaverse/discussions).

@@ -9,9 +9,9 @@ yet, so that nothing has to pretend.
 
 ## Being designed
 
-- **Models** — how inferences about agents are stored and versioned
+- **Models**—how inferences about agents are stored and versioned
   ([draft notes](/spec/models/index.qmd)).
-- **Timeseries** — EEG, eye tracking, physiological recordings
+- **Timeseries**—EEG, eye tracking, physiological recordings
   ([open design area](/spec/timeseries.qmd)).
 
 ## Planned guides

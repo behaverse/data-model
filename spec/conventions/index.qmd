@@ -18,5 +18,5 @@ Some of the design choices for BDM are based on standards and style guides for s
 - For constants use `ALL_CAPS` (e.g., `PI`, `MAX_RADIUS`).
 
 :::{.callout-tip appearance="simple"}
-In some cases data may be aggregated from multiple different projects, each following their own styles and it might not always be feasible/practical to harmonize them. When in doubt, consult ["PEP 8 — the Style Guide for Python Code"](https://pep8.org/) or the ["Google Python Style Guide"](https://google.github.io/styleguide/pyguide.html).
+In some cases data may be aggregated from multiple different projects, each following their own styles and it might not always be feasible/practical to harmonize them. When in doubt, consult ["PEP 8—the Style Guide for Python Code"](https://pep8.org/) or the ["Google Python Style Guide"](https://google.github.io/styleguide/pyguide.html).
 :::

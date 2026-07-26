@@ -11,14 +11,12 @@ listing:
 ---
 
 **New to BDM? [Start here](1-getting-started.qmd).** It takes you from a
-typical dataset to a first BDM-structured one — you do not need to understand
+typical dataset to a first BDM-structured one—you do not need to understand
 all of BDM before you begin.
 
 The other guides each solve one concrete problem. Iterate: apply an idea to
 your data, come back when you need the next one.
 
 ::: {.callout-note appearance="simple"}
-**Missing a guide?** Several are planned — see the [roadmap](/roadmap.qmd)
-— and [your vote](https://github.com/behaverse/data-model/issues/new) moves
-them up the queue.
+**Missing a guide?** Several are planned—see the [roadmap](/roadmap.qmd)—and [your vote](https://github.com/behaverse/data-model/issues/new) moves them up the queue.
 :::

@@ -10,13 +10,13 @@ Custom tests
 : Custom tasks to assess specific cognitive functions, beyond the standard cognitive tests BDM supports. A custom test extension covers: custom schemas for new event types; additional task-specific columns in the trial tables (marked with a dedicated prefix); extra data types or tables described in the codebook and partitioned by agent/session/activity; and task-specific derived models.
 
 Video games
-: When agents play video games as part of the experiment — richer interaction streams, game state, and telemetry than standard cognitive tests produce.
+: When agents play video games as part of the experiment—richer interaction streams, game state, and telemetry than standard cognitive tests produce.
 
 Compression
 : Reducing the size of BDM datasets for storage and transfer without losing the ability to validate and query them.
 
 Task EEG
-: When agents perform a task while EEG is recorded — synchronizing the EEG timeseries with task events and trials. Its data layer is the [timeseries schema](https://behaverse.org/schemas/timeseries): the EEG payload plus its sidecar metadata, referenced from the event stream and aligned to trials through the shared monotonic clock.
+: When agents perform a task while EEG is recorded—synchronizing the EEG timeseries with task events and trials. Its data layer is the [timeseries schema](https://behaverse.org/schemas/timeseries): the EEG payload plus its sidecar metadata, referenced from the event stream and aligned to trials through the shared monotonic clock.
 
 Resting state
-: When agents are not performing a task. Resting-state data is typically used to study the intrinsic activity of the brain. Its data layer is likewise the [timeseries schema](https://behaverse.org/schemas/timeseries) — a payload file plus its sidecar metadata, recorded without accompanying trial tables.
+: When agents are not performing a task. Resting-state data is typically used to study the intrinsic activity of the brain. Its data layer is likewise the [timeseries schema](https://behaverse.org/schemas/timeseries)—a payload file plus its sidecar metadata, recorded without accompanying trial tables.

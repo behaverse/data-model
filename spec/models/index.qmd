@@ -15,9 +15,9 @@ This specification is still being drafted. The structure below is a working sket
 
 The *Models* layer covers derived artifacts that summarize or interpret the underlying trials and events:
 
-- **Summary statistics** — per-agent, per-session, or per-activity scores (e.g., accuracy, response time distributions).
-- **Psychometric & cognitive parameters** — fitted parameters from established models (e.g., drift diffusion, IRT).
-- **Trained models** — task-specific predictors or representations (e.g., neural networks predicting an agent's performance), stored alongside the data they were trained on.
+- **Summary statistics**—per-agent, per-session, or per-activity scores (e.g., accuracy, response time distributions).
+- **Psychometric & cognitive parameters**—fitted parameters from established models (e.g., drift diffusion, IRT).
+- **Trained models**—task-specific predictors or representations (e.g., neural networks predicting an agent's performance), stored alongside the data they were trained on.
 
 ## Planned structure
 

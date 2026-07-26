@@ -3,26 +3,26 @@ title: Timeseries
 subtitle: EEG, eye tracking, mouse trajectories, and other continuous signals
 ---
 
-Continuous sampled signals — mouse trajectories, gaze, EEG, and other physiological recordings — are part of a BDM dataset, but their samples are *referenced, never inlined*: the raw data lives in a domain-appropriate **payload** file, and a small JSON **sidecar** describes it. The sidecar is what BDM specifies. It is validated by the [timeseries schema](https://behaverse.org/schemas/timeseries) in `behaverse/schemas`, which is the full reference for this page.
+Continuous sampled signals—mouse trajectories, gaze, EEG, and other physiological recordings—are part of a BDM dataset, but their samples are *referenced, never inlined*: the raw data lives in a domain-appropriate **payload** file, and a small JSON **sidecar** describes it. The sidecar is what BDM specifies. It is validated by the [timeseries schema](https://behaverse.org/schemas/timeseries) in `behaverse/schemas`, which is the full reference for this page.
 
 ## The sidecar + payload model
 
-- **Payload** — the samples, in any declared format: NDJSON, CSV, EDF, Parquet, … (e.g., `mouse_1.ndjson.gz`, `eeg_1.edf`). BDM does not validate payloads; established formats stay as they are.
-- **Sidecar** — a JSON file named after the payload file as it exists on disk, with `.timeseries.json` appended (`mouse_1.ndjson.gz` → `mouse_1.ndjson.gz.timeseries.json`). It declares the payload's location (`content_url`), content type and encoding, an optional SHA-256, the **clock**, the **sampling nature**, and the **channels**.
+- **Payload**—the samples, in any declared format: NDJSON, CSV, EDF, Parquet, … (e.g., `mouse_1.ndjson.gz`, `eeg_1.edf`). BDM does not validate payloads; established formats stay as they are.
+- **Sidecar**—a JSON file named after the payload file as it exists on disk, with `.timeseries.json` appended (`mouse_1.ndjson.gz` → `mouse_1.ndjson.gz.timeseries.json`). It declares the payload's location (`content_url`), content type and encoding, an optional SHA-256, the **clock**, the **sampling nature**, and the **channels**.
 
-Both files live in the dataset's activity folder beside the trial tables, partitioned by attempt (`response_1.csv` ↔ `mouse_1.ndjson.gz`) — see [Folder structure](/spec/conventions/folder-structure.qmd).
+Both files live in the dataset's activity folder beside the trial tables, partitioned by attempt (`response_1.csv` ↔ `mouse_1.ndjson.gz`)—see [Folder structure](/spec/conventions/folder-structure.qmd).
 
 ## Channels are the primitive
 
-A mouse trajectory (`t`, `x`, `y`), a gaze stream, and a 64-channel EEG all share one shape: a payload plus a list of channel definitions (name, datatype, unit, optional coordinate frame). There is no class per modality — a "2-D position series" is just a documented profile of the same shape.
+A mouse trajectory (`t`, `x`, `y`), a gaze stream, and a 64-channel EEG all share one shape: a payload plus a list of channel definitions (name, datatype, unit, optional coordinate frame). There is no class per modality—a "2-D position series" is just a documented profile of the same shape.
 
 ## How events reference a timeseries
 
-An event's `attachments` entry points at the **sidecar** (`type: "bdm:Timeseries"`, `contentType: "application/json"`), and the sidecar's `content_url` points at the payload. One uniform chain — attachment → sidecar → payload — so the metadata is always discoverable from the event stream. Both references are relative paths resolved against the referencing file's own location, or absolute URLs. See the [Events data guide](/guides/7-events-data.qmd).
+An event's `attachments` entry points at the **sidecar** (`type: "bdm:Timeseries"`, `contentType: "application/json"`), and the sidecar's `content_url` points at the payload. One uniform chain—attachment → sidecar → payload—so the metadata is always discoverable from the event stream. Both references are relative paths resolved against the referencing file's own location, or absolute URLs. See the [Events data guide](/guides/7-events-data.qmd).
 
 ## Clocks and sampling
 
-Sample times (`t`) are on the sidecar's declared clock — by default the vocabulary term `engine_seconds`, a monotonic per-session clock — and the per-session `anchor_datetime` bridges to wall-clock time (`datetime = anchor + t`). There are two sampling natures: `event_driven` (one sample per occurrence, e.g., pointer moves; the payload must contain a `t` channel) and `sampled` (nominal fixed rate; `nominal_rate_hz` required, sample times derivable from index × rate).
+Sample times (`t`) are on the sidecar's declared clock—by default the vocabulary term `engine_seconds`, a monotonic per-session clock—and the per-session `anchor_datetime` bridges to wall-clock time (`datetime = anchor + t`). There are two sampling natures: `event_driven` (one sample per occurrence, e.g., pointer moves; the payload must contain a `t` channel) and `sampled` (nominal fixed rate; `nominal_rate_hz` required, sample times derivable from index × rate).
 
 ::: {.callout-note appearance="simple"}
 The timeseries family currently publishes a validation schema (`schema.json`) but no `field-definitions.json`, so this page summarizes the convention rather than rendering a generated field reference the way [Trials](/spec/trial/index.qmd) and [Events](/spec/event/index.qmd) do. The [schema documentation](https://behaverse.org/schemas/timeseries) is the authoritative field reference.

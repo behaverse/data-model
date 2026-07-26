@@ -22,7 +22,7 @@ see which schema owns a definition.
 
 Filter by name or category below. Definitions are generated at build time
 from the published [behaverse/schemas](https://behaverse.org/schemas)
-artifacts — the [vocabulary](https://behaverse.org/schemas/vocabulary/terms.jsonld)
-plus each schema's field definitions — so this page always matches the
+artifacts—the [vocabulary](https://behaverse.org/schemas/vocabulary/terms.jsonld)
+plus each schema's field definitions—so this page always matches the
 schemas the site was built against; where a field name also exists as a
 vocabulary term, the vocabulary definition is shown (it is canonical).
