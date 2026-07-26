@@ -4,138 +4,81 @@ subtitle: What BDM is, in one sitting
 aliases: [/explanations/index.html, /why/ecosystem.html]
 ---
 
-BDM (Behaverse Data Model) is a way to organize everything a behavioral
-study produces and consumes — responses, questionnaires, event streams,
-physiological signals — in a coherent, user-friendly, and interoperable way.
+BDM (Behaverse Data Model) is a specific, coherent, user-friendly, and interoperable way of organizing everything a behavioral study produces and consumes.
 
-Behavioral research runs on many kinds of information that are rarely
-distinguished in practice: instructions, questionnaire responses, study
-flows, demographic information about the participants, stimulus
-descriptions, and more. BDM identifies these concepts and, for each one,
-defines three things:
+A cognitive science study draws on many kinds of information: behavioral data (key presses, choices), questionnaire responses, physiological signals, stimulus descriptions, instructions, task parameters, participant demographics, and much more. BDM aims to cover all of them, and for each one defines three things:
 
 **What** it is
-: A controlled vocabulary with precise definitions, shared across a wide
-  range of use cases — so that one concept has one name, and "response time"
-  does not circulate under five names and three different units.
+: The key concept a piece of information represents, and what it means. "Trial", for example, can refer to several distinct concepts, and "instructions" can be seen as a kind of stimulus. Pinning down the core data concepts of cognitive science is what makes it possible to organize the data consistently and meaningfully.
 
 **How** it is encoded
-: Which variables to record, what to call them, and the conventions for
-  their values.
+: Which variables to record, what to call them, and the conventions their values follow. A controlled vocabulary ensures one concept is always named and encoded the same way—response time is always `response_time` in seconds, never `RT` or `reactionTime` in milliseconds.
 
 **Where** it lives
-: Where each kind of information is stored, and in what form — for example,
-  information about stimuli goes in a stimulus table, saved as a CSV file.
+: Where each kind of information is stored, and in what form—information about stimuli, for instance, goes in a stimulus table saved as a CSV file.
 
-A key concern of BDM — though not the only one — is to describe how a
-dataset in experimental cognitive science should be structured. Not
-approximately, but *exactly*: exactly enough that a dataset can be
-validated, read by machines, and processed by automated pipelines.
+Because BDM specifies all of this exactly, a dataset can be validated, read by machines, and processed by automated pipelines—giving stronger quality control and transparency than the typical, per-study custom data-processing code.
 
-This is what sets BDM apart from similar projects. Most standards stop at
-metadata (describing what a data file is about) or at file naming and folder
-layout. BDM tackles the harder problem: defining what the data itself should
-contain, how its variables are named and defined, and how the different
-kinds of information are organized and connected to each other.
-
-The rest of this page is that structure, in one sitting. A BDM dataset is an
-ordinary folder: tidy tables and event streams whose names, columns, and
-units follow shared conventions, together with the metadata that explains
-what they are and how they came to be. Three ideas carry the whole model:
-data comes in **three levels**, a dataset is a **folder with a fixed
-anatomy**, and the data model is one piece of a **small ecosystem** (whose
-other pieces — the schemas, the studyflow modeler, a modeling framework —
-have or will have their own project pages).
-
-## Three levels of data
-
-A BDM dataset separates what was observed, what it means, and what we
-conclude from it — three levels, each derived from the one below:
-
-[Events](/spec/event/index.qmd) (and [timeseries](/spec/timeseries.qmd))
-: The raw record: what happened, as it happened. Key presses, stimulus
-  presentations, answers given — timestamped event streams — plus continuous
-  signals (EEG, eye tracking) stored alongside them. Detailed enough to
-  reconstruct the experiment.
-
-[Trials](/spec/trial/index.qmd)
-: The scientific unit of analysis. A trial is not observed — it is derived
-  from the events by an explicit, task-specific rule, and stored as tidy
-  tables (responses, stimuli, options, …). The same event stream can yield
-  different trial tables under different rules, which is why BDM keeps the
-  events and records how the trials were derived.
-
-[Models](/spec/models/index.qmd)
-: What the data tells us: summary statistics, scores, and fitted models of
-  the agents, derived from trials or directly from events.
-
-Most formats keep only a trial-level table and discard the rest. Keeping the
-three levels distinct and linked is what makes a BDM dataset auditable: a
-conclusion traces back to the trials it was computed from, and a trial traces
-back to the raw events it was derived from.
+BDM is not the only effort to improve how cognitive-science data is organized. Where it stands apart, in our view, is that it goes beyond describing metadata, naming files, and prescribing a folder layout: it tackles the harder problems of defining what the data itself should contain, how its variables are named and defined, and how the different kinds of information connect to each other. BDM prioritizes behavior because understanding behavior is essential to understanding the processes and computations that produce it, and the biology that supports it.
 
 ## The anatomy of a dataset
 
-A BDM dataset is a folder with a predictable shape:
+Perhaps the simplest way to see what BDM is, is to look at what a BDM dataset looks like. A BDM dataset is an ordinary folder, named after the study that produced it. Inside are subfolders holding data and metadata—organized as tidy tables or richer structured formats—whose columns and fields carry names and definitions drawn from a controlled vocabulary, and values and units that follow shared conventions.
 
 ```
 my-study/
-├─ README.md            # the dataset card: what this is, who, how, license
+├─ README.md            # dataset card: what this is, who made it, license, etc.
 ├─ LICENSE
-├─ instruments/         # what was used to collect the data
-├─ agents.csv           # who the data is about
-└─ data/                # one folder per agent / session / activity
+├─ instruments/         # the tasks and questionnaires used, with their parameters
+│  ├─ stroop.yaml
+│  └─ bisbas.yaml
+├─ agents.csv           # who the data is about—one row per agent
+└─ data/                # the data, partitioned by agent → session → activity
    └─ agent_001/
+      ├─ studyflow.csv        # what this agent did, and in what order
       └─ session_1/
-         └─ stroop/
-            ├─ events_1.ndjson   # level 1: what happened, as it happened
-            ├─ response_1.csv    # level 2: trials, one row each
-            └─ stimulus_1.csv
+         ├─ stroop/           # a cognitive test
+         │  ├─ events_1.ndjson    # events: what happened, as it happened
+         │  ├─ response_1.csv     # trials: one row per trial
+         │  ├─ stimulus_1.csv     # supporting table: the stimuli shown
+         │  ├─ option_1.csv       # supporting table: the response options
+         │  └─ input_1.csv        # supporting table: the raw inputs (key presses)
+         └─ bisbas/           # a questionnaire—stored the same way
+            ├─ response_1.csv
+            ├─ stimulus_1.csv     # the questions
+            └─ option_1.csv       # the answer options
 ```
 
-Around the data files, three artifacts explain them: the **[dataset
-card](/spec/dataset-cards.qmd)** (the `README.md` front matter: what this
-dataset is, who made it, and a codebook for its variables), the
-**[studyflow](/spec/studyflows.qmd)** (the study design: which activities, in
-what order), and the
-**[instruments](/spec/conventions/folder-structure.qmd)** (the tasks and
-questionnaires used, with their parameters).
+Reading top to bottom:
 
-Every table is tidy; every name follows the [naming
-conventions](/spec/conventions/naming.html); every column is defined in the
-[specification](/spec/index.html). You always know where things are and what
-they are called. (The full layout, including timeseries files, is in the
-[folder structure](/spec/conventions/folder-structure.qmd) specification.)
+- **`README.md`** is the [dataset card](/spec/dataset-cards.qmd): a human-readable description plus machine-readable metadata in its front matter—what the dataset is, who made it, its license, and a codebook defining every variable.
+- **`LICENSE`** states the terms under which the data may be used.
+- **`instruments/`** describes the tasks and questionnaires used to collect the data—one file per instrument, with its parameters.
+- **`agents.csv`** lists who the data is about: one row per agent (a human participant or an artificial one), with their attributes.
+- **`data/`** holds the data itself, partitioned by folders into `agent → session → activity`. Each agent's folder carries a **[`studyflow.csv`](/spec/studyflows.qmd)** recording which activities they completed and in what order, and one subfolder per session. Each session in turn holds one folder per activity—a cognitive test (`stroop/`) or a questionnaire (`bisbas/`); both are stored the same way.
 
-## Where everything fits
+Inside an activity folder, the raw **events** (`events_1.ndjson`) record what happened as it happened, and the **[Response table](/spec/trial/1-response.qmd)** (`response_1.csv`) holds the *trials* derived from those events—one row per trial. Supporting tables alongside it describe the stimuli shown (`stimulus_1.csv`), the response options offered (`option_1.csv`), and the raw inputs collected (`input_1.csv`). The trailing `_1` marks the attempt, so a repeated activity becomes `response_2.csv`, and so on.
 
-BDM is one piece of a set of standards and tools that work together:
+Every table is tidy; every name follows the [naming conventions](/spec/conventions/naming.qmd); every column is defined in the [specification](/spec/index.qmd). You always know where things are and what they are called. (The full layout, including timeseries files, is in the [folder structure](/spec/conventions/folder-structure.qmd) specification.)
+
+## Where BDM fits in the Behaverse ecosystem
+
+BDM focuses on the dataset for a single study—everything you need to share all the data that study produced. But some parts of a dataset reach beyond it. For example, to make sense of a dataset you need its studyflow. Yet the studyflow also matters when running the study, processing its data, or building models of behavior. The boundaries between these concerns are genuinely blurred, which is why BDM is one piece of a broader set of tools that work together:
 
 | Piece | What it is | Where |
 |---|---|---|
 | **Data model** (this site) | The human-facing framework: conventions, concepts, guides, specification | [behaverse.org/data-model](https://behaverse.org/data-model) |
 | **Schemas** | The machine-readable source of truth: JSON Schemas, field definitions, validators, changelogs | [behaverse.org/schemas](https://behaverse.org/schemas) · [GitHub](https://github.com/behaverse/schemas) |
 | **Studyflow modeler** | Visual editor for study designs (studyflows) | [behaverse.org/studyflow-modeler](https://behaverse.org/studyflow-modeler/app) |
-| **Modeling framework** | Fitting and comparing models of behavior on BDM data | in development — project page to come |
-| **Behaverse** | The broader project: cognitive assessments, games, models | [behaverse.org](https://behaverse.org) |
+| **Behaverse** | The broader project, including cognitive assessments, games, and more | [behaverse.org](https://behaverse.org) |
 
-How they relate: this site **defines** the prose conventions and renders
-summaries; the schemas repository **owns** every machine artifact (this site
-fetches them at build time, pinned by `schemas.lock`); tools consume both.
-A public catalog of BDM-formatted datasets will follow the first published
-reference dataset — see the [roadmap](/roadmap.qmd).
+This site **defines** the prose conventions and renders summaries; the schemas repository **owns** every machine artifact (this site fetches them at build time, pinned by `schemas.lock`); the tools consume both. Additional projects are in progress (e.g., a modeling framework and a public catalog of BDM-formatted datasets); they will be listed here once ready (see the [roadmap](/roadmap.qmd)).
 
 Within this site, the deep dives are one click away:
 
-- The **rules** — naming, indexing, units, folder structure — live in the
-  [Specification](/spec/index.html), alongside the field-by-field reference
-  for every table.
-- The **reasoning** behind the design lives here in Concepts:
-  [design process](design-process.qmd) ·
-  [the nature of behavioral data](behavioral-data.qmd) ·
-  [metadata](metadata.qmd).
+- The **rules**—naming, indexing, units, folder structure—live in the [Specification](/spec/index.qmd), alongside the field-by-field reference for every table.
+- The **reasoning** behind the design lives here in Concepts: [design process](design-process.qmd) · [the nature of behavioral data](behavioral-data.qmd) · [metadata](metadata.qmd).
 
 ## Next steps
 
-Ready to try it? [Get started](/guides/1-getting-started.qmd). Evaluating
-whether BDM is right for you? [Why BDM](/why/index.qmd).
+Ready to try it? [Get started](/guides/1-getting-started.qmd). Evaluating whether BDM is right for you? [Why BDM](/why/index.qmd).
