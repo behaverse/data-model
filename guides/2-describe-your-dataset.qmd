@@ -97,19 +97,12 @@ If you are sharing your dataset with others, it is important to include a citati
 You can include the citation in the front-matter of the `README.md` file:
 
 ```yaml
----
-name: "example-dataset"
-description: "This is an example dataset that contains some example data."
-version: "1.0"
 doi: "10.1234/5678"                 # <1>
 url: "https://example.com/dataset"  # <2>
 creator:
-  - name: "John One Doe"
-    orcid: "0000-0000-0000-0000"
-  - name: "Jane Two Doe"
-    orcid: "0000-0000-0000-0001"
+  - name: "Ada Lovelace"
+    orcid: "0000-0002-1825-0097"
 license: "CC BY-SA 4.0"             # <3>
----
 ```
 1. Digital Object Identifier (DOI) for the dataset.
 2. URL for the dataset.
@@ -134,58 +127,8 @@ license: "LICENSE.md"                                       # <3>
 One important aspect of BDM is how it automatically links the dataset to other resources on the web. This linking is important for creating a web of linked data that can be easily discovered and interpreted by others. This is done under-the-hood by BDM, so you don't have to worry about it. But it's good to know that BDM is designed to be compatible with the [Schema.org](https://schema.org/) and [Croissant](https://github.com/mlcommons/croissant) standards, which are widely used standard for describing data on the web.
 :::
 
-## A complete example
+## Putting it together
 
 To summarize, dataset cards describe your dataset in a way that is easy to understand and useful. They include metadata about the dataset, such as the name, description, creator, and codebook, as well as information about the citation and license. By following these conventions, you can make your dataset more discoverable, interpretable, and reproducible.
 
-Here is an example of a `README.md` file for a dataset:
-
-
-```markdown
----
-name: "example-dataset"
-description: "This is an example dataset that contains some example data."
-version: "1.0"
-doi: "10.1234/5678"
-url: "https://example.com/dataset"
-creator:
-  - name: "John One Doe"
-    orcid: "0000-0000-0000-0000"
-  - name: "Jane Two Doe"
-    orcid: "0000-0000-0000-0001"
-license: "CC BY-SA 4.0"
-codebook:
-  tables:
-    - name: response
-      tableSchema:
-        columns:
-          - name: "age"
-            description: "The age group of the agent"
-            datatype:
-              base: "string"
-              format: "18-25|26-35|36-45|46-55|56-"
-            null: "NA"
-            notes:
-              - "18-25: between 18 and 25 years old (inclusive)"
-              - "26-35: between 26 and 35 years old (inclusive)"
-              - "36-45: between 36 and 45 years old (inclusive)"
-              - "46-55: between 46 and 55 years old (inclusive)"
-              - "56-: 56 years old (inclusive) or older"
----
-
-# Example Dataset
-
-This is an example dataset that contains some example data.
-
-## Citation
-
-If you use this dataset, please cite it as follows:
-
-...
-
-## License
-
-This dataset is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-
-```
+The [dataset card specification](/spec/dataset-cards.qmd) lists every field, marks which are required, and shows a complete `README.md` combining the metadata, the codebook, and the human-readable description.
