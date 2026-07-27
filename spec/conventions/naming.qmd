@@ -5,7 +5,7 @@ aliases:
   - /explanations/naming.html
 ---
 
-# General advice on naming things
+## General advice on naming things
 
 Naming things is notoriously hard; Here we present concrete examples to illustrate concerns when naming data related entities and justify our choices.
 
@@ -13,23 +13,23 @@ Best practices in programming emphasize the importance of making your code reada
 
 Here are a few key points to consider when naming variables:
 
-1.  Names should be explicit (i.e., "intention-revealing") and easy to understand (e.g., instead of `t` use `elapsed_time_in_days`).
+1. Names should be explicit (i.e., "intention-revealing") and easy to understand (e.g., instead of `t` use `elapsed_time_in_days`).
 
-2.  Ideally, names should tell you why they exist, what it does and how it is used.
+2. Ideally, names should tell you why they exist, what it does and how it is used.
 
-3.  Avoid names that can be misinterpreted outside of their context (e.g., `left` could mean `remaining` and `right` could mean `correct`); unfortunately, many words are ambiguous in programming.
+3. Avoid names that can be misinterpreted outside of their context (e.g., `left` could mean `remaining` and `right` could mean `correct`); unfortunately, many words are ambiguous in programming.
 
-4.  It's OK to use technical terms and abbreviations if they are common knowledge among those who will read the code or use the data; you don't want people to mentally rename your variable into some other variable name that is more common and familiar.
+4. It's OK to use technical terms and abbreviations if they are common knowledge among those who will read the code or use the data; you don't want people to mentally rename your variable into some other variable name that is more common and familiar.
 
-5.  Don't shorten regular words, in particular if they are already short and shortening them may lead to confusion (e.g., `acc` for `accuracy` or is it `anterior cingulate cortex`, `corr` for `correct` or for `correlation`).
+5. Don't shorten regular words, in particular if they are already short and shortening them may lead to confusion (e.g., `acc` for `accuracy` or is it `anterior cingulate cortex`, `corr` for `correct` or for `correlation`).
 
-6.  Choose specific and more "colorful" words.
+6. Choose specific and more "colorful" words.
 
-7.  Avoid generic names like `tmp`, `Data`, `Manager`.
+7. Avoid generic names like `tmp`, `Data`, `Manager`.
 
-8.  Avoid noise words; among equally informative names, prefer the shortest.
+8. Avoid noise words; among equally informative names, prefer the shortest.
 
-9.  Avoid number-series naming (e.g., a1, a2).
+9. Avoid number-series naming (e.g., a1, a2).
 
 10. Attach extra information if needed (e.g., `plaintext_password` rather than `password`, `height_in_cm` rather than `height`, `raw_data` rather than `data`)
 
@@ -45,27 +45,27 @@ Here are a few key points to consider when naming variables:
 
 16. Use formatting to convey meaning (e.g., capitalization, underscores, dashed).
 
-> If you feel the need to write a comment to explain the meaning of a variable or function or expression, instead of writing the comment think about the possibility to change the names/code to make them more readable (ideally to the point no comments are needed). {: .tip }
+> If you feel the need to write a comment to explain the meaning of a variable or function or expression, instead of writing the comment think about the possibility to change the names/code to make them more readable (ideally to the point no comments are needed).
 
-> Test your variable names. Show someone (a peer) your variable name and ask them to guess what the variable means and what type it likely has (and whether it is a variable, a function or something else). {: .tip }
+> Test your variable names. Show someone (a peer) your variable name and ask them to guess what the variable means and what type it likely has (and whether it is a variable, a function or something else).
 
-> Don't hesitate to change names when you come up with better ones. {: .tip }
+> Don't hesitate to change names when you come up with better ones.
 
-## Hierarchy
+### Hierarchy
 
 Many variable names (e.g., the column names of data table) include hierarchical information. Here are a few examples we found in public datasets:
 
--   `houseIndex`
--   `petal_length`
--   `ReturnOnInvestment`
--   `woman_age_usa`
--   `car_batterySize`
--   `test_phase`
--   `gross_salary`
--   `student_response_type`
--   `problem.view`
--   `total_number_hits`
--   `coroutines_mean_cycle_duration`
+- `houseIndex`
+- `petal_length`
+- `ReturnOnInvestment`
+- `woman_age_usa`
+- `car_batterySize`
+- `test_phase`
+- `gross_salary`
+- `student_response_type`
+- `problem.view`
+- `total_number_hits`
+- `coroutines_mean_cycle_duration`
 
 These examples show a lack of consistency. One way to achieve consistency is construct such terms by going from the highest/biggest/abstract to the lowest/smallest/concrete. For example `car_battery_size` makes more sense than `battery_car_size` or `size_car_battery`. It also makes sense to first name an entity (e.g., "house", "petal", "car battery") before naming its properties (e.g., "index", "length", "age"). Furhtermore, imagine a data set that contains many different entities and each entity has many properties. It seems plausible that this naming convention fits more naturally with the way we think: we first think of the entities before focusing on its attributes.
 
@@ -77,7 +77,7 @@ Note also that there might be cases where the terms used to form a variable name
 Use the naming pattern `<entity>_<property>`.
 :::
 
-## Adjectives
+### Adjectives
 
 There are cases that look like `<entity>_<property>` (or `<class>_<property>`) but are in fact quite different. Consider for example variable names like "expected_response", and "left_button". In these examples, "response" and "button" are not properties of "expected" and "left". Should we instead rename these variables into "response_expected" and "button_left"? Again, it is important to note that "left" does not refer to a type of feature of button; the feature that would have "left" as a value might be called position and it would then make sense to have a variable called "button_position" which could take the value "left"'. button_left then does in fact NOT follow the convention `<class>_<property>`;
 
@@ -89,14 +89,14 @@ Thus our general pattern for naming variables and columns in a data table is:
 Use the naming pattern `[<adjective>_]<entity>_<property>`.
 :::
 
-## Singular versus plural
+### Singular versus plural
 
 The use of singular versus plural in variable names is sometimes inconsistent. This inconsistency seems to arise from the fact that the plural may either refer to the values of a variable or to its cardinality. For example, does `customers_served` indicate "how many customers were served" or "list which customers were served"?
 
 This point raises in fact two questions:
 
--   When should we use plurals?
--   How do we name "those variables" when we don't use plurals?
+- When should we use plurals?
+- How do we name "those variables" when we don't use plurals?
 
 Regarding the first question, plurals should be used for variables that have multiple values (e.g., a list). Following this rationale, `served_customers` would be a valid name for a variable listing which customers were served. Note however, that typical tabular data only allow for a single value per cell. It then follows, that in general column names in tabular data should all be in singular form.
 
@@ -112,25 +112,25 @@ When naming variables using `<entity>_<property>` pattern, express the entity in
 > It's OK to use plurals to name folders and files that hold collections, e.g., `instruments/`, `agents.csv`
 :::
 
-## Boolean variables
+### Boolean variables
 
 There are two main rules for naming boolean variables:
 
--   don't use negatives or negations in boolean names to avoid mental gymnastics (e.g., instead of "has_not_succeeded" or "has_failed", use "has_succeeded");
+- don't use negatives or negations in boolean names to avoid mental gymnastics (e.g., instead of "has_not_succeeded" or "has_failed", use "has_succeeded");
 
--   use `is_`, `has_` or `should_` to make clear the variable is a boolean when there is ambiguity (e.g., compare `space` versus `has_space`, or `checked` versus `is_checked` or `has_checked`).
+- use `is_`, `has_` or `should_` to make clear the variable is a boolean when there is ambiguity (e.g., compare `space` versus `has_space`, or `checked` versus `is_checked` or `has_checked`).
 
 It's OK to not use prefix boolean variables with `is_`, `has_` or similar when there is no ambiguity or a convention. In particular we use the following two boolean variables:
 
--   `correct`: the response given by a subject was correct.
+- `correct`: the response given by a subject was correct.
 
--   `timed_out`: the subject did not respond within the allotted time period.
+- `timed_out`: the subject did not respond within the allotted time period.
 
 ::: {.callout-important appearance="simple" title="Rule 4"}
 Make clear when a variable is a boolean and express the variable positively.
 :::
 
-## Aggregation and transformation
+### Aggregation and transformation
 
 In data analysis pipelines variables are typically transformed and aggregated. Sometimes it can be hard to come up with names for the new variables and to do so in a consistent way.
 
@@ -144,7 +144,7 @@ When transforming or aggregating variables, use dedicated suffixes.
 Sometimes such names can get quite long and hard to read and there might in fact exist specific names to refer to a sequence of transformation (or one can invent new ones). For example, one might use `x_rmse` rather than `x_square_mean_root`.
 :::
 
-## On conflicting standards, conventions and preferences
+### On conflicting standards, conventions and preferences
 
 It seems impossible to have everyone agree on common standards and conventions---different fields have their own traditions and people have different preferences.
 
@@ -152,15 +152,15 @@ Furthermore, while we intend to conform to main existing conventions as much as 
 
 When choosing among different alternatives we try to follow the following principles:
 
--   if the standard is already used and provides value, follow the standard as is. This is in particular the case for (descriptive) metadata: schema.org should be used for that as it is supported by Google.
+- if the standard is already used and provides value, follow the standard as is. This is in particular the case for (descriptive) metadata: schema.org should be used for that as it is supported by Google.
 
--   if there are strong technical reasons to favor one alternative over another.
+- if there are strong technical reasons to favor one alternative over another.
 
--   when possible use open rather than closed solutions (e.g., avoid saving data in proprietary file formats.)
+- when possible use open rather than closed solutions (e.g., avoid saving data in proprietary file formats.)
 
--   focus on the target audience. There are different stakeholders involved in the data lifecycle and they have different needs and conventions. The software engineer that writes the code that generates log files when a person plays a game might best follow the standards of the programming language that software is written in. The person that stores the data and wants other people to reuse that data will prefer conventions that are familiar to that community. Finally, the data analyst who wants to exploit that data would likely have the data be in their conventions (e.g., PEP8.) With regards to these different stakeholders, we argue that the "client is king" and we should therefore follow the conventions that are required or recommended by that stakeholder. This means, for example, that for metadata that is meant to help people find the dataset we follow the standards of search engines. For the data that is meant to be used by data analysts, we use the standards that are recommended/preferred by that community.
+- focus on the target audience. There are different stakeholders involved in the data lifecycle and they have different needs and conventions. The software engineer that writes the code that generates log files when a person plays a game might best follow the standards of the programming language that software is written in. The person that stores the data and wants other people to reuse that data will prefer conventions that are familiar to that community. Finally, the data analyst who wants to exploit that data would likely have the data be in their conventions (e.g., PEP8.) With regards to these different stakeholders, we argue that the "client is king" and we should therefore follow the conventions that are required or recommended by that stakeholder. This means, for example, that for metadata that is meant to help people find the dataset we follow the standards of search engines. For the data that is meant to be used by data analysts, we use the standards that are recommended/preferred by that community.
 
-# Naming People
+## Naming people
 
 There are three issues related to naming people in a dataset; they concern how to name the "entity" (e.g., "participant" versus "subject"), which suffixes to use (e.g., "_id" versus "_index") and what format to use for its values (e.g., an integer or a string). We will go over each of this in turn and justify our choices.
 
@@ -174,17 +174,17 @@ It is our view that the entity name in the data table should be generic to encom
 Use "agent" to refer to the entity generating the response data.
 :::
 
-## A suffix for the entity and format of the value
+### A suffix for the entity and format of the value
 
 A reference to an agent can serve multiple purposes:
 
-1.  Ensure the uniqueness of an agent within a study; link all data from an agent within a study.
+1. Ensure the uniqueness of an agent within a study; link all data from an agent within a study.
 
-2.  Select or identify data belonging to a particular agent. For example, if you see an outlier point in a plot and want to understand why that point occurred, it might be necessary to identify that data as belonging to a particular agent and then look in greater detail in that agent's data.
+2. Select or identify data belonging to a particular agent. For example, if you see an outlier point in a plot and want to understand why that point occurred, it might be necessary to identify that data as belonging to a particular agent and then look in greater detail in that agent's data.
 
-3.  Use the agent's identifier to name their data files.
+3. Use the agent's identifier to name their data files.
 
-4.  Ensure the uniqueness of an agent across studies. An agent may participate in multiple studies and it might be necessary (e.g., for meta-analyses) to determine whether agents participated in multiple studies.
+4. Ensure the uniqueness of an agent across studies. An agent may participate in multiple studies and it might be necessary (e.g., for meta-analyses) to determine whether agents participated in multiple studies.
 
 These four purposes have somewhat different requirements.
 
@@ -193,7 +193,7 @@ Purpose 1 requires uniqueness within a study while .4 requires uniqueness in gen
 Consequently, we adopt the following conventions:
 
 agent_index
-:   a string uniquely associated to each agent within a dataset. Similar to [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html#participant-names-and-other-labels) participant labels, this string is obtained by concatenating the string `agent_` with a zero-padded number which "counts" agents in a study (typically but not necessarily in chronological order). For example, the 15^th^ agent in a dataset might be assigned the agent_index value of agent_015.
+: a string uniquely associated to each agent within a dataset. Similar to [BIDS](https://bids-specification.readthedocs.io/en/stable/02-common-principles.html#participant-names-and-other-labels) participant labels, this string is obtained by concatenating the string `agent_` with a zero-padded number which "counts" agents in a study (typically but not necessarily in chronological order). For example, the 15^th^ agent in a dataset might be assigned the agent_index value of agent_015.
 
 The zero-padding width is chosen once per dataset, commensurate with the number of agents in the study (e.g., with more than 1000 agents, the 15^th^ agent would be `agent_0015`). By default, use three digits (e.g., `agent_015`)—enough for the vast majority of behavioral datasets. The same rule applies to any other indexed folder or label: session folders rarely need padding at all (`session_1`, `session_2`), and small illustrative examples may use unpadded numbers (e.g., `agent_1` in a three-agent example).
 
@@ -202,57 +202,57 @@ agent_id
 
 Note that `agent_id` need not appear in every data table; the *Agents* table (`agents.csv`) lists agent information, including their agent_index and agent_id values.
 
-# Naming tasks and their components
+## Naming tasks and their components
 
 Numerous terms designate different aspects of a task. Here we list some of these terms and provide our definition (as for most cases, we did not find clear and consensual definitions in the literature).
 
 job
-:   refers to the high level description of the activity the subject is expected to perform. The job is typically described in the instructions (e.g., "your job is to classify these images in one of two categories"). Within job we distinguish `job_type`, which typically takes the form of a verb (e.g., "classify", "sort") and `job_description`, which adds nouns to that verb (e.g., "classify even/odd numbers", "sort by color").
+: refers to the high level description of the activity the subject is expected to perform. The job is typically described in the instructions (e.g., "your job is to classify these images in one of two categories"). Within job we distinguish `job_type`, which typically takes the form of a verb (e.g., "classify", "sort") and `job_description`, which adds nouns to that verb (e.g., "classify even/odd numbers", "sort by color").
 
 instrument
-:   refers to the code or material that is used to present stimuli to subjects and record responses. For example, in questionnaire-based studies, instrument would refer to specific questionnaires (e.g., BISBAS) while in computer-based assessments, it would refer to the specific cognitive test (e.g., NBack). We distinguish `instrument_name` which provides a short name of the instrument (e.g., BISBAS) and `instrument_id` which provides more detailed information about the specific version or instance of that instrument (e.g., BISBAS_v1.2023) which may be linked to additional data about that instrument (e.g., a link to view the instrument) in the *Instruments* table.
+: refers to the code or material that is used to present stimuli to subjects and record responses. For example, in questionnaire-based studies, instrument would refer to specific questionnaires (e.g., BISBAS) while in computer-based assessments, it would refer to the specific cognitive test (e.g., NBack). We distinguish `instrument_name` which provides a short name of the instrument (e.g., BISBAS) and `instrument_id` which provides more detailed information about the specific version or instance of that instrument (e.g., BISBAS_v1.2023) which may be linked to additional data about that instrument (e.g., a link to view the instrument) in the *Instruments* table.
 
 :::{.callout-note appearance="simple"}
 A paradigm refers to a family of instruments.
 :::
 
 timeline
-:   some instruments are not static but rather generate trials based on specific parameters implemented in computer code. We use the term "timeline" to refer to that set of parameters (or configuration file of the instrument). For example, one timeline of the N-back instrument might use N = 3 with letters while another could use the same N-back instrument using N = 2 with digits.
+: some instruments are not static but rather generate trials based on specific parameters implemented in computer code. We use the term "timeline" to refer to that set of parameters (or configuration file of the instrument). For example, one timeline of the N-back instrument might use N = 3 with letters while another could use the same N-back instrument using N = 2 with digits.
 
 task
-:   refers to a particular mapping between a specific stimulus set and a specific response set (and oftentimes an evaluation function which may indicate if that response was correct or incorrect for example). Note that both stimulus and response sets may be empty as in resting state tasks and sometimes only the response set is empty, as when hearing instructions. The definition of a specific task determines the meaning of a "trial" in an experiment and the structure of the resulting data tables.
+: refers to a particular mapping between a specific stimulus set and a specific response set (and oftentimes an evaluation function which may indicate if that response was correct or incorrect for example). Note that both stimulus and response sets may be empty as in resting state tasks and sometimes only the response set is empty, as when hearing instructions. The definition of a specific task determines the meaning of a "trial" in an experiment and the structure of the resulting data tables.
 
 Note that some instruments require subjects to perform multiple tasks (either simultaneously or sequentially, e.g., the dual N-back test); consequently, a task is not equivalent to instrument.
 
 activity
-:   refers to the experience of a subject engaged in an instance of an instrument. For example, a subject that completes questionnaires A, B, A, C completed a total of four activities (despite using only three instruments).
+: refers to the experience of a subject engaged in an instance of an instrument. For example, a subject that completes questionnaires A, B, A, C completed a total of four activities (despite using only three instruments).
 
 block
-:   a timeline may comprise sub-timelines. For example, a timeline may include a practice and two test blocks. We distinguish 4 types of blocks: - instruction - tutorial - practice - test
+: a timeline may comprise sub-timelines. For example, a timeline may include a practice and two test blocks. We distinguish 4 types of blocks: - instruction - tutorial - practice - test
 
 ### Hierarchical structure of an experimental study
 
 Data from experimental behavioral studies typically have a hierarchical structure.
 
 study
-:   refers to a meaningful and complete unit of a research project. A study must have a research question and the data collected in a study should be necessary and sufficient to answer that question. A study typically involves many subjects, completing several activities, sometimes over multiple sessions.
+: refers to a meaningful and complete unit of a research project. A study must have a research question and the data collected in a study should be necessary and sufficient to answer that question. A study typically involves many subjects, completing several activities, sometimes over multiple sessions.
 
 session
-:   refers to a grouping of consecutive activities. When subjects are tested on multiple days, each such day is typically called a session (i.e., consecutive sessions are typically separated by several hours). Note that there are other more technical and more local definitions of session that are commonly used in computer science. Session in psychology and related fields has a more abstract meaning and is typically related to the experimental design of a study.
+: refers to a grouping of consecutive activities. When subjects are tested on multiple days, each such day is typically called a session (i.e., consecutive sessions are typically separated by several hours). Note that there are other more technical and more local definitions of session that are commonly used in computer science. Session in psychology and related fields has a more abstract meaning and is typically related to the experimental design of a study.
 
 activity
-:   within a session, subjects complete activities (e.g., complete a computerized test or a questionnaire).
+: within a session, subjects complete activities (e.g., complete a computerized test or a questionnaire).
 
 block
-:   an activity may comprise multiple blocks that may or may not be of different types. For example, a computerized test may have an instruction block, a tutorial block and multiple test blocks.
+: an activity may comprise multiple blocks that may or may not be of different types. For example, a computerized test may have an instruction block, a tutorial block and multiple test blocks.
 
 trial
-:   refers to a particular instance of an experiment (in the probability theoretical sense) where the structure of the experiment is defined by the task. For example, in a particular instance of the 2-back test, a particular trial may involve showing the letters "A-B-A" and observing the response "match". A timeline may combine multiple tasks (e.g., in a task-switching experiment) and for each task, there would be many trials (to support statistical inference).
+: refers to a particular instance of an experiment (in the probability theoretical sense) where the structure of the experiment is defined by the task. For example, in a particular instance of the 2-back test, a particular trial may involve showing the letters "A-B-A" and observing the response "match". A timeline may combine multiple tasks (e.g., in a task-switching experiment) and for each task, there would be many trials (to support statistical inference).
 
 response
-:   refers to the meaningful behavioral unit emitted by a subject on a given trial. The response constitutes the actual observation or behavioral measurement in the dataset.
+: refers to the meaningful behavioral unit emitted by a subject on a given trial. The response constitutes the actual observation or behavioral measurement in the dataset.
 
-# Naming stimuli
+## Naming stimuli
 
 The term "stimulus" is ubiquitous in cognitive sciences despite lacking a clear and consensual definition (e.g., it may refer to thing that caused a response versus the thing the experimenter generated to elicit a (possibly internal) response).
 
@@ -269,10 +269,10 @@ Numerous terms are commonly used to refer to specific categories of stimuli. The
 Furthermore, some of these terms belong to different semantic categories: a "cue" designates a functional role played by a stimulus within the context of the task (e.g., "this is to tell subjects to pay attention to the left") while "lure" reflects assumptions about the cognitive processes underlying task performance (e.g., "this type of stimuli should be more confusing to subjects because ..."). Following this insight, we distinguish the following terms:
 
 trial_tag
-:   one or multiple strings used to tag or label specific types of trials that are thought to be of theoretical interest by the data analyst and intended to be used for subsequent data analysis. Examples of trial tags include "lure", "difficult", "rare", "task_switch" and "congruent". Note that these are different from objective descriptions of trial features which may be found in the task parameters (e.g., the stimulus presentation duration) or in the stimulus descriptions. Note also that we don't use the terms "condition" or "trial_type" as these terms may be ambiguous.
+: one or multiple strings used to tag or label specific types of trials that are thought to be of theoretical interest by the data analyst and intended to be used for subsequent data analysis. Examples of trial tags include "lure", "difficult", "rare", "task_switch" and "congruent". Note that these are different from objective descriptions of trial features which may be found in the task parameters (e.g., the stimulus presentation duration) or in the stimulus descriptions. Note also that we don't use the terms "condition" or "trial_type" as these terms may be ambiguous.
 
 stimulus_role
-:   a functional role assigned to a stimulus within the context of the task by the experimenter or task designer. This assignment refers to how the experiments or task designer intends the stimulus to be processed by subjects (as typically explained to subjects in task instructions).
+: a functional role assigned to a stimulus within the context of the task by the experimenter or task designer. This assignment refers to how the experiments or task designer intends the stimulus to be processed by subjects (as typically explained to subjects in task instructions).
 
 
 First, we define a stimulus as being a set of physical events that are presented to subjects with the intention or assumption that they will cause a particular effect (observable or not). Not all physical events are stimuli and the qualification of a physical event as being a stimulus or not depends on the context.
@@ -287,46 +287,46 @@ It is important to note here that Stimulus and Task can be further broken down i
 
 input
 
-:   mandatory input that causes a response when *Task* is fully specified; "domain" of the "Cognition" function. <br /> *Example:* a particular letter in the N-back task.
+: mandatory input that causes a response when *Task* is fully specified; "domain" of the "Cognition" function. <br /> *Example:* a particular letter in the N-back task.
 
 distractor
 
-:   a stimulus that is not used by the "ideal", theorized optimal agent. Example, a light flashing at random intervals.
+: a stimulus that is not used by the "ideal", theorized optimal agent. Example, a light flashing at random intervals.
 
 facilitator
 
-:   optional argument which may improve performance if taken into account. Example: spatial cue in the Posner task.
+: optional argument which may improve performance if taken into account. Example: spatial cue in the Posner task.
 
 specifier
 
-:   mandatory input to specify the cognitive operations to be performed on the input; on its own, the specifier is insufficient to yield a response. <br /> *Example:* task cue in a task-switching paradigm.
+: mandatory input to specify the cognitive operations to be performed on the input; on its own, the specifier is insufficient to yield a response. <br /> *Example:* task cue in a task-switching paradigm.
 
 selector
 
-:   stimulus used to highlight a subset of stimuli for which to respond to. <br /> *Example:* a question mark on top of one of the MOT dots. Probably a subclass of specifier.
+: stimulus used to highlight a subset of stimuli for which to respond to. <br /> *Example:* a question mark on top of one of the MOT dots. Probably a subclass of specifier.
 
 modifier
 
-:   stimulus that implies a transformation of the mapping from stimuli to responses. <br /> *Example:* negation sign in a symbol detection task (i.e., "now press the key in response to all but the digit '3'). Probably a subclass of specifier.
+: stimulus that implies a transformation of the mapping from stimuli to responses. <br /> *Example:* negation sign in a symbol detection task (i.e., "now press the key in response to all but the digit '3'). Probably a subclass of specifier.
 
 Having defined these categories, we now define the following stimulus roles within each category:
 
-| stimulus_role_type | stimulus_role      | description                                                                                                  |
+| stimulus_role_type | stimulus_role | description |
 |:---------------|:---------------|:----------------------------------------|
-| input              | target ("trigger") | stimulus that completes the input and triggers the execution of the response.                                |
-|                    | non-target         | stimulus that is mandatory for performing the task but not sufficient to trigger a response.                 |
-| distractor         | distractor         | stimulus that is not processed by the "ideal" agent but may decrease performance when processed by subjects. |
-| facilitator        | location-cue       | stimulus that is not processed by the "ideal" agent but may increase performance when processed by subjects. |
-| specifier          | task-specifier     | stimulus that indicates which task should be performed.                                                      |
-| selector           | probe              | stimulus that indicates how to response or about what input to respond.                                      |
-| modifier           | stop-signal        | stimulus that changes the stimulus-response mapping in a systematic way.                                     |
+| input | target ("trigger") | stimulus that completes the input and triggers the execution of the response. |
+| | non-target | stimulus that is mandatory for performing the task but not sufficient to trigger a response. |
+| distractor | distractor | stimulus that is not processed by the "ideal" agent but may decrease performance when processed by subjects. |
+| facilitator | location-cue | stimulus that is not processed by the "ideal" agent but may increase performance when processed by subjects. |
+| specifier | task-specifier | stimulus that indicates which task should be performed. |
+| selector | probe | stimulus that indicates how to response or about what input to respond. |
+| modifier | stop-signal | stimulus that changes the stimulus-response mapping in a systematic way. |
 
 ::: {.callout-note appearance="simple"}
 > The goal of this table is to enforce consistency. When using the term "non-target" we will always mean a mandatory input which does not trigger a response and not a sub-type of distractor.
 :::
 
 
-# Naming responses and response options
+## Naming responses and response options
 
 Various terms and constructs are somehow related to the concept of a "response". Here we list those terms and clarify how we use them. To illustrate the various terms we will use the example of the digit span task where people have to click with their mouse on a virtual keyboard displayed on the screen which shows the digits 1 to 9, an "enter" button and a "delete" button.
 
@@ -334,18 +334,18 @@ input action
 : Each time a subject clicks on a button, we record an (action) input of type "click". Input can be of different types (e.g., mouse-click, key-press). An input is not necessarily meaningful or interpreted.
 
 input interface
-:   The keyboard displayed on the screen is the input interface. The input interface can be of different types (e.g., buttons, text-field, slider).
+: The keyboard displayed on the screen is the input interface. The input interface can be of different types (e.g., buttons, text-field, slider).
 
 response
-:   is defined by the task and typically comprises only a subset of the inputs. For example, if the digit span task required reproducing a sequence of 3 digits (e.g, 3-5-7), the response might be 3-5-7 even though there might have been many more inputs (e.g., 3-6-delete-5-7-enter). Note that while "input" is an objective description of a type of event, "response" is an interpretation of a subset of those events that is tied to a specific the task definition. Sometimes people use "answer" or "choice" instead of "response". We use the generic term "response" in every case and may use other variables (e.g., "response_type") to qualify more specific types of responses (e.g., choice, number, text, choice-sequence).
+: is defined by the task and typically comprises only a subset of the inputs. For example, if the digit span task required reproducing a sequence of 3 digits (e.g, 3-5-7), the response might be 3-5-7 even though there might have been many more inputs (e.g., 3-6-delete-5-7-enter). Note that while "input" is an objective description of a type of event, "response" is an interpretation of a subset of those events that is tied to a specific the task definition. Sometimes people use "answer" or "choice" instead of "response". We use the generic term "response" in every case and may use other variables (e.g., "response_type") to qualify more specific types of responses (e.g., choice, number, text, choice-sequence).
 
 option (i.e., response options)
-:   in most computerized cognitive tests and surveys, subjects are offered a means to enter their response; most often this consists of a discrete set of options to choose from. This set is sometimes called "possible responses" or "answers"; we call this entity "option". It is important to record information about the response options because they directly determine the meaning of the data (e.g., a rating of "3" if very different if the scale goes from 1 to 3 versus 1 to 10).
+: in most computerized cognitive tests and surveys, subjects are offered a means to enter their response; most often this consists of a discrete set of options to choose from. This set is sometimes called "possible responses" or "answers"; we call this entity "option". It is important to record information about the response options because they directly determine the meaning of the data (e.g., a rating of "3" if very different if the scale goes from 1 to 3 versus 1 to 10).
 : One key concern when describing response options is how to name the "good" one. In the survey literature, that option is sometimes referred to as the "key" while the remaining options are called ["distractors"](https://images.pearsonassessments.com/images/tmrs/tmrs_rg/Distractor_Rationales.pdf). We will not use these terms because they are unfamiliar to most and may be confusing (as "distractor" could also refer to a stimulus role and a "key" could refer to a button on a keyboard or a column in a data table). It is also common to see the term "correct_response" (or equivalent) to designate the "good" option. `correct_response` is however ambiguous as it could refer to 1. the response that was given on a correct trial (i.e., correct serves as an adjective/filter); 2. what response will evaluate to correct (i.e., if `response == correct_response`, then `correct = TRUE`) or 3. a boolean indicating if the current response is correct or not (`is_response_correct`).
 : To refer to the option that we expect the subject to choose, we will use the term `expected_response`. If the actual response is equal to the expected response, the response is said to be "correct".
 : Note that responses can be evaluated and that several variables may be used to qualify this evaluation beyond the boolean `correct` variable. In particular, options (and thus responses) may be assigned a `score` (i.e., a numeric value that may reflect the meaning or value of an option), an `accuracy` (i.e., a float ranging from 0 to 1 reflecting the level of accuracy) and `evaluation_label` variables. Evaluation variables like `correct` are not a property of the option per se but depends on the "question" being asked; it is thus a property of the response as defined within a specific trial.
 
-# Naming temporal variables
+## Naming temporal variables
 
 Multiple terms may be used as variable names to describe different temporal features. Here we present some general guidelines we follow for consistency. Firstly, some terms are used to characterize specific **points in time**; others are used to describe a **duration**. Sometimes this distinction may seem fuzzy (e.g., a point in time relative to a reference point is a duration) but in general it is clear if the intention or focus is on an event or on a duration. Secondly, as we are referring here to a feature or property on an entity (i.e., a temporal feature), the temporal part of the variable name would be encoded as a suffix (e.g., `study_start_datetime`).
 
@@ -353,36 +353,36 @@ Below we cover the main temporal suffixes for both events and durations.
 
 \*\_datetime
 
-:   indicates a date and a time in a (somewhat) absolute sense for an event; datetime variables are expected to be in a specific format (see below). For example the start datetime of a timeline may be `2009-10-31T01:48:52.512Z`. Note that we use `*_datetime` rather than `* _date_time` because `date_time` may incorrectly suggest that `time` is a feature of `date` (e.g., `start_datetime` is less ambiguous than `start_date_time` which could be read as `(start_)date_time` or `(start_date)_time)`.
+: indicates a date and a time in a (somewhat) absolute sense for an event; datetime variables are expected to be in a specific format (see below). For example the start datetime of a timeline may be `2009-10-31T01:48:52.512Z`. Note that we use `*_datetime` rather than `* _date_time` because `date_time` may incorrectly suggest that `time` is a feature of `date` (e.g., `start_datetime` is less ambiguous than `start_date_time` which could be read as `(start_)date_time` or `(start_date)_time)`.
 
 \*\_onset
 
-:   refers to the start of an event expressed relative to the start of a trial. It thus expresses the duration between the trial start and the start of some event (e.g., `stimulus_onset`);
+: refers to the start of an event expressed relative to the start of a trial. It thus expresses the duration between the trial start and the start of some event (e.g., `stimulus_onset`);
 
 \*\_offset
 
-:   refers to the end of an event expressed relative to the start of a trial (e.g., `stimulus_offset`);
+: refers to the end of an event expressed relative to the start of a trial (e.g., `stimulus_offset`);
 
 Note that datetime is explicit while onset and offset are relative to an implicit temporal reference (in our case, the start of a trial.)
 
 response_time
 
-:   we only use the suffix `_time` for `response_time`, which despite being ubiquitous in experimental psychology does not have a consensual definition (e.g., it may refer to the onset or offset of the response). Here response_time refers to the completion of a response expressed relative to the earliest possible timepoint a response could have been completed recorded.
+: we only use the suffix `_time` for `response_time`, which despite being ubiquitous in experimental psychology does not have a consensual definition (e.g., it may refer to the onset or offset of the response). In BDM, `response_time` is the duration between the earliest possible moment a response could have been completed and the moment it was actually completed (not the moment it was initiated).
 
 \*\_duration
 
-:   refers to the time difference between the end and the start of some event. For example, `stimulus_duration` describes how long the stimulus was displayed.
+: refers to the time difference between the end and the start of some event. For example, `stimulus_duration` describes how long the stimulus was displayed.
 
 Finally, there are several terms that may be common in some contexts but which we avoid using. These include the terms like `interval` (as in inter-trial interval, inter-stimulus interval, cue-target interval), `onset_asynchrony` (as in stimulus onset asynchrony or SOA), `period` (as in foreperiod), `phase`, `delay` and `latency` (e.g., as in response latency). We note however that there are very specific uses cases where some of these terms may be necessary (e.g., to describe standard parameters of an instrument; latency may have a clear and specific meaning in software engineering).
 
 ### Examples
 
--   `stimulus_onset` refers to the duration between trial start and appearance of the stimulus;
--   `stimulus_duration` is the duration between the appearance and the disappearance of the stimulus;
--   `response_time` typically represents the duration between the onset of a stimulus and the completion of the response to that stimulus.
--   `response_onset` refers to the duration between trial start (not stimulus onset) and the start of the response;
--   `response_offset` refers to the duration between trial start (not stimulus onset) and the moment the response was completed;
--   `response_duration` refers to the difference between `response_offset` and `response_onset` and indicates how long it took to enter the response.
+- `stimulus_onset` refers to the duration between trial start and appearance of the stimulus;
+- `stimulus_duration` is the duration between the appearance and the disappearance of the stimulus;
+- `response_time` is the duration between the earliest moment the response could have been completed (e.g., once the response options were available) and the moment it was completed;
+- `response_onset` refers to the duration between trial start (not stimulus onset) and the start of the response;
+- `response_offset` refers to the duration between trial start (not stimulus onset) and the moment the response was completed;
+- `response_duration` refers to the difference between `response_offset` and `response_onset` and indicates how long it took to enter the response.
 
 :::{.callout-note appearance="simple"}
 In general, in data tables, we should refer to stimulus onset times relative to the beginning of the trial (time reference of the trial) and specify their duration (i.e., onset and duration, rather than onset and offset or `start_datetime` and `end_datetime`).

@@ -23,25 +23,26 @@ dataset/                          # <1>
 │   ├── stroop.yaml               # <5>
 │   └── ...                       # <5>
 │
-├── agents.csv                    # <6>
+├── studyflow.xml                 # <6>
+├── agents.csv                    # <7>
 │
-├── data/                         # <7> 
-│   ├── agent_001/                # <8>
-│   │   ├── studyflow.csv         # <9>
-│   │   └── session_1/            # <10>
-│   │       └── <activity>/       # <11>
+├── data/                         # <8>
+│   ├── agent_001/                # <9>
+│   │   ├── studyflow.csv         # <10>
+│   │   └── session_1/            # <11>
+│   │       └── <activity>/       # <12>
 │   │           ├── response_1.csv
 │   │           ├── stimulus_1.csv
 │   │           ├── option_1.csv
-│   │           ├── events_1.ndjson                    # <12>
-│   │           ├── mouse_1.ndjson.gz                  # <13>
-│   │           └── mouse_1.ndjson.gz.timeseries.json  # <13>
+│   │           ├── events_1.ndjson                    # <13>
+│   │           ├── mouse_1.ndjson.gz                  # <14>
+│   │           └── mouse_1.ndjson.gz.timeseries.json  # <14>
 │   └── agent_002/
 │       └── ...
 │
-└── examples/                     # <14>
-    ├── example_1.py              # <14>
-    └── example_2.R               # <14>
+└── examples/                     # <15>
+    ├── example_1.py              # <15>
+    └── example_2.R               # <15>
 ```
 1. **Dataset**: The root `dataset/` folder contains all the relevant data, metadata, and documentations. The name of this folder is a name that is assigned to the dataset (e.g., `abcd-2021`). This name follows the convention of naming version-controlled repositories as datasets are often shared via repositories: datasets names may only include lowercase letters, numbers and hyphens.
 
@@ -53,23 +54,25 @@ dataset/                          # <1>
 
 5. **Instruments:** The `instruments/` folder contains information about the instruments used in the study. This includes metadata about each instrument (e.g., references to the relevant literature), links to the instrument content (e.g., an online version or a pdf of a questionnaire) but also codebooks (using CSVW standard) that provide the definition of the parameters of the instruments that are recorded in the data.
 
-6. **Agents metadata**: The `agents.csv` lists all participants in a study, demographic information as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for subjects that are male, aged 35 and who have completed at least 10 trials of a specific task?).
+6. **Studyflow (design)**: The `studyflow.xml` file describes the study protocol: the activities and the paths agents may take through them. One file per dataset (see [Studyflows](/spec/studyflows.html)).
 
-7. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per agent that contains all the data about that agent.
+7. **Agents metadata**: The `agents.csv` lists all agents in a study, their demographic information, as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for agents that are male, aged 35 and who have completed at least 10 trials of a specific task?).
 
-8. **Agent data:** The agent data folder is labelled following the template `agent_{x}` where x is a zero-padded integer (e.g., `agent_001`, `agent_123`). The padding width follows the [naming conventions](naming.qmd): commensurate with the number of agents in the dataset, three digits by default.
+8. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per agent that contains all the data about that agent.
 
-9. **Studyflow**: Each agent data folder contains at its root a `studyflow.csv` file which explains what activities were completed by this agent (with a completion status), when they started and ended each activity and in what order the activities were completed.
+9. **Agent data:** The agent data folder is labelled following the template `agent_{x}` where x is a zero-padded integer (e.g., `agent_001`, `agent_123`). The padding width follows the [naming conventions](naming.qmd): commensurate with the number of agents in the dataset, three digits by default.
 
-10. **Sessions** (optional): In some cases it might be useful to group the data within each agent's folder into subfolders corresponding to multiple data collection sessions (e.g., `session_1/`, `session_2/`). This level of folders is optional and should be used when the data collection is divided into sessions.
+10. **Studyflow**: Each agent data folder contains at its root a `studyflow.csv` file which explains what activities were completed by this agent (with a completion status), when they started and ended each activity and in what order the activities were completed.
 
-11. **Activity data**: Additional folders are included within each agent's folder depending on the specific activities completed by that agent. For example, if the agent completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
+11. **Sessions** (optional): In some cases it might be useful to group the data within each agent's folder into subfolders corresponding to multiple data collection sessions (e.g., `session_1/`, `session_2/`). This level of folders is optional and should be used when the data collection is divided into sessions.
 
-12. **Event stream** (optional): The raw events recorded during an attempt at the activity, stored as `events_<attempt>.ndjson` (optionally compressed to `.ndjson.gz`)—one event object per line, partitioned by attempt like `response_<attempt>.csv`. See [Raw acquisition data](#raw-acquisition-data-events-and-timeseries) below.
+12. **Activity data**: Additional folders are included within each agent's folder depending on the specific activities completed by that agent. For example, if the agent completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
 
-13. **Timeseries** (optional): Continuous signals (mouse trajectories, gaze, EEG, …) recorded during the activity: a payload file in a domain-appropriate format plus its metadata sidecar named `<payload-filename>.timeseries.json`, both in the activity folder.
+13. **Event stream** (optional): The raw events recorded during an attempt at the activity, stored as `events_<attempt>.ndjson` (optionally compressed to `.ndjson.gz`)—one event object per line, partitioned by attempt like `response_<attempt>.csv`. See [Raw acquisition data](#raw-acquisition-data-events-and-timeseries) below.
 
-14. **Examples** (optional): The `examples/` contains sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
+14. **Timeseries** (optional): Continuous signals (mouse trajectories, gaze, EEG, …) recorded during the activity: a payload file in a domain-appropriate format plus its metadata sidecar named `<payload-filename>.timeseries.json`, both in the activity folder.
+
+15. **Examples** (optional): The `examples/` contains sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
 
 ## Raw acquisition data: events and timeseries {#raw-acquisition-data-events-and-timeseries}
 
@@ -105,14 +108,14 @@ In general, open file formats (e.g., `.csv`, `.json`, `.md`) are preferred over 
 |------------------------|----------------------------|---------------------|
 | Tabular data | `.csv` | Always |
 | Structured data | `.json` | For machine-focused applications |
-|  | `.yml` | When human readability and editability matter |
+| | `.yml` | When human readability and editability matter |
 | Text | `.md` | Always in Markdown, except for official, static, or administrative documents which may be in PDF |
 
 Do NOT save the same data in multiple output formats (e.g., `.csv` and `.sav`) to avoid redundancy and version mismatches. However, lossless data conversion must be used if converting data to other formats.
 
 ### Naming files and folders
 
-We want file and folder names to be short and meaningful. Instead of encoding numerous pieces of information in the filename (e.g., the subject index, the session, the task) we prefer short names that describe only what type of data a given file contains, leaving it to the names of the parent directories that contain that file to encode its context. Conceptually, this is equivalent to calling a file `README.md` within a project folder rather than calling it `project_subproject_README.md`.
+We want file and folder names to be short and meaningful. Instead of encoding numerous pieces of information in the filename (e.g., the agent index, the session, the task) we prefer short names that describe only what type of data a given file contains, leaving it to the names of the parent directories that contain that file to encode its context. Conceptually, this is equivalent to calling a file `README.md` within a project folder rather than calling it `project_subproject_README.md`.
 
 There are no widespread standards or styleguides regarding how to name data files and folders. Some use lower case with hypens (e.g., the uses `mad-men` and `masculinity-survey` in [FiveThirtyEight](https://github.com/fivethirtyeight/data)) or underscores (e.g., `arxiv_qa`) or a mixture (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz` in [BIDS](https://bids-specification.readthedocs.io/)). Others use uppercase, either with hyphens, underscores or camelCase/PascalCase (e.g, `CIFAR10` in [PyTorch](https://pytorch.org/vision/stable/datasets.html), `BIG5` in [Open Psychometrics](https://openpsychometrics.org/_rawdata/))or a mixture thereof (e.g., `CoT-Collection`). It is not uncommon to find organizations that mix different naming styles (e.g., [Kaggle](https://www.kaggle.com/datasets), [HuggingFace](https://huggingface.co/datasets), [R](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html)). Furthermore, some people seem to distinguish the name of a dataset from the name of the corresponding file or folder (e.g., the ["Fashion-MNIST"](https://github.com/zalandoresearch/fashion-mnist) dataset is stored as "fashion-mnist").
 
@@ -131,16 +134,16 @@ Within BDM we use following styling rules:
  - Hyphens and underscores are used for human readability, not to encode structural relationships (e.g., key-value pairs or entity_feature).
 
 
-We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `dataset/data/agent_001/session_1/response.csv` is preferred over `dataset/data/agent_001/agent-001_session-1_response.csv` as it is shorter and yet contains the same information.
+We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `dataset/data/agent_001/session_1/stroop/response_1.csv` is preferred over `dataset/data/agent_001/agent-001_session-1_stroop_response-1.csv` as it is shorter and yet contains the same information.
 
 We also do not recommend including data in the filenames (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz`, `2019_`) as this data should be either accessible in the data or obvious from the context.
 
 Here are a few examples of file and folder names that follow these rules:
 
--   `masculinity-survey/`
--   `big-5/`
--   `response.csv`
--   `agent_001/`
+- `masculinity-survey/`
+- `big-5/`
+- `response_1.csv`
+- `agent_001/`
 
 
 ### Naming datasets
@@ -160,4 +163,4 @@ For bigger projects and datasets, it makes sense however to use the project name
 
 We do not recommend using meaningless strings (e.g., `g9zkf`) or names that are not specific (e.g., `titanic`, `sleep`, `dolphin`) beyond simple toy datasets.
 
-We do not recommend including the version in the dataset name (see below.)
+We do not recommend including the version in the dataset name; version information belongs in the dataset's metadata (see [Dataset cards](/spec/dataset-cards.qmd)).

@@ -76,15 +76,15 @@ Datasets may change across time as new data is collected or errors are corrected
 >
 > [*Tidy data paper, Hadley Wickham*]{.small}
 >
->   
-> 
+>
+>
 
 
 There are many different ways of organizing data in tabular form. We recommend that data tables should be tidy as defined by the following criteria:
 
-1.  Each variable forms a column.
-2.  Each observation forms a row.
-3.  Each type of observational unit forms a table.
+1. Each variable forms a column.
+2. Each observation forms a row.
+3. Each type of observational unit forms a table.
 
 For more details see Hadley (2014).
 

@@ -14,6 +14,18 @@ Here is an example of a simple studyflow:
 
 Although studyflows are visual, the underlying storage format is machine-readable. This allows for automated execution, validation, versioning, and simulation of studyflows. Studyflows can be created using diagramming tools such as [Studyflow Modeler](https://behaverse.org/studyflow-modeler).
 
+## The two studyflow files in a dataset
+
+A studyflow describes what a study *intends* to happen; a dataset also has to record what *actually* happened to each agent. BDM therefore stores two related files:
+
+`studyflow.xml`
+: The study design, at the root of the dataset. It defines the activities and the paths agents may take through them, in the BPMN-based format described above, and is what the [Studyflow Modeler](https://behaverse.org/studyflow-modeler) produces. One file per dataset, since the design is shared by everyone in the study.
+
+`studyflow.csv`
+: What actually happened for one agent, at the root of that agent's folder (`data/agent_001/studyflow.csv`). It records the activities that agent engaged with: their order, when each started and ended, whether each was completed, and any agent-specific details such as the condition they were assigned to. One file per agent, because each agent traverses the design differently.
+
+Together they make an agent's path auditable: the design states what was possible, and the per-agent record states which of it occurred. Where an agent's data folder contains an activity, that activity should also appear in their `studyflow.csv`.
+
 ::: {.callout-note appearance="simple" icon="false"}
 **See also**
 

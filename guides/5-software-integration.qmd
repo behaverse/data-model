@@ -15,5 +15,5 @@ Data formats in BDM includes three levels of abstraction:
 - Trials: The data that are used for the analysis and reporting.
 - Models: Summary data an computational models that are derived from the events or trials. This include for example scores, statistics, checkpoints, and model parameters.
 
-Depending on the use case, BDM can be integrated at one or more of these levels.  For example, if you want to store raw data in real-time, you can use the events specifications. If you want to analyze or share data, you can use the trials specification to store main information about the activity in way that is interpretable and associated with the goals of the study. Finally, if you want to assess scores or report results, you can use the models specifications to store summary statistics, predictive models, or other outputs.
+Depending on the use case, BDM can be integrated at one or more of these levels. For example, if you want to store raw data in real-time, you can use the events specifications. If you want to analyze or share data, you can use the trials specification to store main information about the activity in way that is interpretable and associated with the goals of the study. Finally, if you want to assess scores or report results, you can use the models specifications to store summary statistics, predictive models, or other outputs.
 

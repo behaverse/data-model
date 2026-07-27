@@ -2,7 +2,7 @@
 title: Extensions
 ---
 
-BDM datasets can be extended beyond cognitive tests and questionnaires to describe additional types of data and use cases. Extensions are authored as schemas in the same format used by the [Studyflow Modeler](https://behaverse.org/studyflow-modeler). This keeps the structure of extensions consistent across BDM datasets, studyflows, and tools.
+BDM datasets can be extended beyond cognitive tests and questionnaires to describe additional types of data and use cases. An extension is written the same way as the rest of BDM: as a schema in the [behaverse/schemas](https://behaverse.org/schemas) repository, authored in [LinkML](https://linkml.io/) and published as JSON Schema together with generated field definitions. Extensions therefore inherit the same vocabulary, conventions, and validation as the core model, and the tools that read BDM datasets can read them without special cases.
 
 The following extensions are planned. None is specified yet; each will get its own page here once its specification is written.
 

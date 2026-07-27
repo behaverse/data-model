@@ -4,27 +4,21 @@ subtitle: What exists, what is being designed, what is deliberately deferred
 aliases: [/why/roadmap.html]
 ---
 
-BDM is developed openly and incrementally. This page tracks what is not done
-yet, so that nothing has to pretend.
+BDM is developed openly and incrementally. This page tracks what is not done yet, so that nothing has to pretend.
 
 ## Being designed
 
-- **Models**—how inferences about agents are stored and versioned
-  ([draft notes](/spec/models/index.qmd)).
-- **Timeseries**—EEG, eye tracking, physiological recordings
-  ([open design area](/spec/timeseries.qmd)).
+- **Models**—how inferences about agents are stored and versioned ([draft notes](/spec/models/index.qmd)).
+- **Multi-sensor and multi-agent studies**—how collaborative, VR, and multi-sensor recordings are represented.
+- **Extensions**—the extensions listed on the [Extensions](/spec/extensions/index.qmd) page (custom tests, video games, compression, task EEG, resting state) are described but not yet specified.
 
 ## Planned guides
 
-Several how-to guides are planned but not yet written. If one of these would
-help you, [open an issue](https://github.com/behaverse/data-model/issues/new)
-to help us prioritize:
+Several how-to guides are planned but not yet written. If one of these would help you, [open an issue](https://github.com/behaverse/data-model/issues/new) to help us prioritize:
 
-multi-task studies · events data · longitudinal and test–retest studies ·
-multi-agent datasets · dataset validation · combining datasets ·
-compatible datasets · AI agents on BDM data
+multi-task studies · longitudinal and test–retest studies · multi-agent datasets · dataset validation · combining datasets · compatible datasets · AI agents on BDM data
 
 ## Deliberately out of scope (for now)
 
 - A style validator for naming conventions (the conventions are prose-first).
-- A BDM-defined timeseries payload format (we point to BIDS/EDF instead).
+- A BDM-defined timeseries *payload* format: the [timeseries schema](/spec/timeseries.qmd) specifies the metadata sidecar, while the payload itself stays in a domain-appropriate format (EDF, Parquet, CSV, …).

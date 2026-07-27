@@ -1,6 +1,6 @@
 ---
 title: Instructions
-subtitle: When information presented to subjects is a "message"
+subtitle: When information presented to agents is a "message"
 aliases:
   - /spec/general/instructions.html
   - /explanations/instructions.html
@@ -26,8 +26,8 @@ There are at least two types of instructions. There are instructions provided wi
 
 It is perhaps interesting to note that instructions can be viewed as a subtype of an questionnaire item where a text and/or other media objects are presented (that may not be a question) and where the response options are limited to either the navigation buttons (e.g., "Next"), to a confirmation or start button (e.g., a button stating "Ready to start") or no option at all (e.g., the instructions are shown for a given duration, after which the next activity is automatically started).
 
-Indeed, as with other types of stimuli, we can record what instructions were displayed, when and how they were displayed and we can record the subject's responses (e.g, pressed the "back button") and response times, which may be used for example to evaluate if subjects plausibly read the instructions.
+Indeed, as with other types of stimuli, we can record what instructions were displayed, when and how they were displayed and we can record the agent's responses (e.g, pressed the "back button") and response times, which may be used for example to evaluate whether agents plausibly read the instructions.
 
-Under this perspective, it would make sense to include instructions and other messages in the subject-level data.
+Under this perspective, it would make sense to include instructions and other messages in the agent-level data.
 
-In general, we recommend storing study-level instructions in the `instruments/` folder and to store activity-level instructions in the activity-specific folder that is inside the subjects's activity data folder. For example, if there are instructions that are specific to a particular cognitive task administration, these instructions should be stored in the activity-specific folder that is inside the subjects's activity data folder.
+In general, we recommend storing study-level instructions in the `instruments/` folder and to store activity-level instructions in the activity-specific folder that is inside the agent's activity data folder. For example, if there are instructions that are specific to a particular cognitive task administration, these instructions should be stored in the activity-specific folder that is inside the agent's activity data folder.

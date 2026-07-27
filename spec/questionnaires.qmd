@@ -11,13 +11,13 @@ See also [Questionnaire data guide](../guides/4-questionnaire-data.qmd) for prac
 
 Data from questionnaires and instructions are somewhat similar to the data collected from cognitive tasks.
 
-There are however differences in how certain elements are typically named in different contexts. 
+There are however differences in how certain elements are typically named in different contexts.
 
-For example, in cognitive psychology it is common to name the information presented to subjects and that they have to process to make a decision or provide a response as stimulus. However, in questionnaires it is more common to call this information a "question" or "item". When presenting information about what the subject is expected to do (where the required response might be press the button Next when you're ready) we may call that information "instructions" or "message". 
+For example, in cognitive psychology it is common to name the information presented to subjects and that they have to process to make a decision or provide a response as stimulus. However, in questionnaires it is more common to call this information a "question" or "item". When presenting information about what the subject is expected to do (where the required response might be press the button Next when you're ready) we may call that information "instructions" or "message".
 
 It is true that by keeping domain specific terminology it is easier to understand what a specific terms refers to. However, is also common to mix these different kinds of data. For example, a study may interleave instructions, trials from cognitive test and questions. A common data model makes it possible to describe all the related behavioral data in a consistent manner, preserving the order of events and the meaning of the variables.
 
-This is the design that we've adopted in the behaverse data model.
+This is the design that we have adopted in the Behaverse Data Model.
 
 
 

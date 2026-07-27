@@ -10,13 +10,13 @@ BDM is similar to the *domain-specific data models* used in various domains, spe
 
 *Domain-Driven Design* aims to develop a shared understanding of data that works for both domain experts and technical experts.
 
-And *Data Lakehouse* helps with harmonizing a diverse se of data without sacrificing flexibility or speed (cognitive data can be thought as multi-modal, even at the level of tasks).
+And *Data Lakehouse* helps with harmonizing a diverse set of data without sacrificing flexibility or speed (cognitive data can be thought as multi-modal, even at the level of tasks).
 
 These two patterns address the shortcomings of metadata-centric methods, which are often costly and ineffective at achieving reusability [^1]^,^[^2], and emphasize the need for a shift from ad-hoc metadata to robust data structures. They encourage a ubiquitous language for many cognitive tasks, crucial for developing tools and fostering collaboration in research.
 
 [^1]: N. Sambasivan, S. Kapania, H. Highfill, D. Akrong, P. Paritosh, and L. M. Aroyo, [*"Everyone wants to do the model work, not the data work: Data Cascades in High-Stakes AI,"*](https://doi.org/10.1145/3411764.3445518) in Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems, in CHI'21. New York, NY, USA: Association for Computing Machinery, May 2021. doi: 10.1145/3411764.3445518.
 
-[^2]: M. Hulsebos, W. Lin, S. Shankar, and A. Parameswaran, [*"It Took Longer than I was Expecting: Why is Dataset Search Still so Hard?,"*](https://dl.acm.org/doi/10.1145/3665939.3665959) in Proceedings of the 2024 Workshop on Human-In-the-Loop Data Analytics, in HILDA  24. New York, NY, USA: Association for Computing Machinery, June 2024. doi: 10.1145/3665939.3665959.
+[^2]: M. Hulsebos, W. Lin, S. Shankar, and A. Parameswaran, [*"It Took Longer than I was Expecting: Why is Dataset Search Still so Hard?,"*](https://dl.acm.org/doi/10.1145/3665939.3665959) in Proceedings of the 2024 Workshop on Human-In-the-Loop Data Analytics, in HILDA 24. New York, NY, USA: Association for Computing Machinery, June 2024. doi: 10.1145/3665939.3665959.
 
 
 Moreover, BDM aims to address data management during all the steps of a research workflow, from the start to its completion:
@@ -45,11 +45,11 @@ Trial is the main aggregate root of a BDM dataset. It represents a single meanin
 
 A trial includes various components: Responses, Stimuli, Options, Outcomes, Evaluation, etc. These components are essential for understanding the context and results of a trial. Together, they represent the meaningful unit of analysis for researchers.
 
-### Projections
+### Deriving trials from events
 
-Trials are built from events using projections. They are semantic layers on top of the events and define how events are interpreted and gathered into a trial. Projections are task-specific and can vary based on the experimental design.
+Trials are built from events by an explicit, task-specific rule. The rule is a semantic layer on top of the events: it defines how events are interpreted and gathered into a trial, and it varies with the experimental design.
 
-In a more technical sense, projections are like views in SQL which aggregate normalized rows (i.e., events) into a queryable summary (i.e., trials). This keeps the events as the only source of truth while providing trials that are optimized for domain-specific analysis.
+In a more technical sense, such a rule is like a view in SQL, which aggregates normalized rows (i.e., events) into a queryable summary (i.e., trials). This keeps the events as the only source of truth while providing trials that are optimized for domain-specific analysis.
 
 
 ### Other domain concepts
@@ -63,7 +63,7 @@ Core domain concepts:
 Supporting domain concepts:
 
 - Agent
-- Task (task-specific projection that defines how events are aggregated into trials)
+- Task (the task-specific rule that defines how events are aggregated into trials)
 - Experimental design (e.g., studyflow, adaptive parameters, conditions, etc)
 - Instruments (i.e., the environment in which the task is performed)
 
@@ -75,9 +75,9 @@ Here is a diagram of the trial. The diagram shows the relationships between the 
 
 ## Data Lakehouse
 
-A missing but important aspect in behavioral datasets is how to make analysis of data easy, cost-effective, and consistent while keeping the harmonizing/federation of data straightforward. For this reason, BDM relies on data lakehouse architecture which, unlike previous approaches, provides a lost-cost ingestion/storage/consumption based on a schema-on-read. Lakehouse allows, during study design and data collection, to only focus on the ubiquitous language of trials and events and later one, during the analysis and modeling, to apply loosely-coupled techniques to standardize datasets.
+A missing but important aspect in behavioral datasets is how to make analysis of data easy, cost-effective, and consistent while keeping the harmonizing/federation of data straightforward. For this reason, BDM relies on data lakehouse architecture which, unlike previous approaches, provides a low-cost ingestion/storage/consumption based on a schema-on-read. Lakehouse allows, during study design and data collection, to only focus on the ubiquitous language of trials and events and later on, during the analysis and modeling, to apply loosely-coupled techniques to standardize datasets.
 
-Overall, considering events and trials as the ubiquitous domain concepts and data lakehouse as the harmonization approach make it possible to scale and manage behavioral analysis systems. New challenges involve storage, debugging, increased  traffic, and extending the data architecture to new tasks and modalities.
+Overall, considering events and trials as the ubiquitous domain concepts and data lakehouse as the harmonization approach make it possible to scale and manage behavioral analysis systems. New challenges involve storage, debugging, increased traffic, and extending the data architecture to new tasks and modalities.
 
 ### Data partitioning
 

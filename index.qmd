@@ -8,44 +8,37 @@ page-layout: full
 ::: {.bdm-hero}
 [Behaverse · Data Model]{.kicker}
 
-# All cognitive science data, in one coherent framework.
+# All cognitive science data, in one coherent framework
 
 ::: {.lead}
-BDM defines how to organize, name, and describe experimental data—behavior,
-questionnaires, physiological signals, and more—so datasets are consistent
-across studies, clear to humans, and readily usable by machines.
+The Behaverse Data Model (BDM) defines how the data of a cognitive science study (including behavior, physiology, and everything needed to interpret it) should be named, organized, and described, so that it can be understood and reused by other researchers, integrated into data catalogs for large-scale studies, and processed automatically by software. The goal is not merely to save time, but to accelerate research and to make possible studies that no single dataset could support.
 :::
 :::
 
 ```{=html}
 <nav class="bdm-routes" aria-label="Main sections">
-  <a href="why/index.html"><span class="rn">01</span><br><span class="rt">Why BDM</span><br><span class="rd">the problem &amp; the payoff</span></a>
-  <a href="concepts/index.html"><span class="rn">02</span><br><span class="rt">Concepts</span><br><span class="rd">the big picture in 15 minutes</span></a>
-  <a href="guides/index.html"><span class="rn">03</span><br><span class="rt">Guides</span><br><span class="rd">your data into BDM</span></a>
+  <a href="why/index.html"><span class="rn">01</span><br><span class="rt">Why BDM</span><br><span class="rd">the problem, and what BDM adds</span></a>
+  <a href="concepts/index.html"><span class="rn">02</span><br><span class="rt">Concepts</span><br><span class="rd">the big picture in one sitting</span></a>
+  <a href="guides/index.html"><span class="rn">03</span><br><span class="rt">Guides</span><br><span class="rd">from raw data to a BDM dataset</span></a>
   <a href="spec/index.html"><span class="rn">04</span><br><span class="rt">Specification</span><br><span class="rd">every table, field, and rule</span></a>
 </nav>
 ```
 
 ::: {.bdm-story}
-Every lab organizes behavioral data its own way. The result: datasets that
-cannot be combined, tools that cannot be reused, analyses that start from
-scratch every time. And the data itself is harder than it looks—a key
-press means nothing without the task, the stimulus, and the person behind it.
+More and more research data is being openly shared. Unfortunately, finding a dataset does not guarantee it is usable. Across datasets, file formats, folder layouts, variable names, and units typically differ, and the information needed to make sense of the data is often incomplete or scattered across multiple sources. [Why BDM](why/index.qmd) documents these problems and examines what current standards do and do not cover.
 
-BDM keeps three levels of data distinct and linked: what was
-**recorded** (events, signals), what it **means** given the task (trials,
-derived by explicit rules), and what it says about **the agent** (models).
-The result is a dataset whose meaning travels with it.
+BDM addresses these problems by defining the data concepts a study involves (e.g., trials, stimuli, responses, options, instructions, agents) along with the variables that describe them, the units and values those variables may take, and where each belongs in the dataset. [Concepts](concepts/index.qmd) explains this framework and shows what a BDM dataset looks like; the [Specification](spec/index.qmd) documents every table, field, and convention in detail.
 
-Datasets that share this structure can be read without emailing their
-authors, joined across studies, checked automatically, and analyzed by tools
-that were not written for them.
+The definitions are published as versioned, machine-readable schemas, so a dataset that follows them can be validated automatically, combined with other datasets, and analyzed with software written for BDM rather than for a single study. The [Guides](guides/index.qmd) show how to organize an existing dataset, describe it, and store questionnaire and event data; the [Glossary](glossary/index.qmd) defines every term BDM uses.
+
+BDM is developed openly and continues to evolve. The [roadmap](roadmap.qmd) describes what is planned next; questions and proposals are welcome in the [discussions](https://github.com/orgs/behaverse/discussions).
 :::
 
 
 ::: {.bdm-proof}
-Builds on [BIDS](https://bids.neuroimaging.io/), [xAPI](https://xapi.com/),
-[schema.org](https://schema.org),
-[CSVW](https://www.w3.org/TR/tabular-data-primer/), and tidy-data principles
-· Developed openly [on GitHub](https://github.com/behaverse/data-model)
+Builds on [BIDS](https://bids.neuroimaging.io/), [xAPI](https://xapi.com/), [schema.org](https://schema.org), [CSVW](https://www.w3.org/TR/tabular-data-primer/), and tidy-data principles · Schemas published at [behaverse/schemas](https://behaverse.org/schemas) · Developed openly [on GitHub](https://github.com/behaverse/data-model)
+
+
+BDM is part of a larger ecosystem of projects called [Behaverse](https://behaverse.org/), developed by the [xCIT](https://xcit.org/) research group at the University of Luxembourg.
+
 :::

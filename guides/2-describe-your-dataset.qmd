@@ -51,7 +51,7 @@ creator:
 
 In BDM, part of the front-matter that describes the data is called codebook (under the yaml key `codebook`). It follows the [CSVW standard](https://csvw.org/) in YAML format to describe the variables in the dataset. It includes information about the variables in the dataset, such as the name, type, and description of each variable, the values that each variable can take on, and any missing data that may exist in the dataset. Codebooks are useful for understanding the data, sharing it with others, and for reproducibility.
 
-Codebook is also important because it contains experimenter's intentions and assumption about the study, which is crucial for interpreting the data.  For example, if the experimenter decides to only include age groups (and discard exact age), this decision should be documented in the codebook. Like this:
+Codebook is also important because it contains experimenter's intentions and assumption about the study, which is crucial for interpreting the data. For example, if the experimenter decides to only include age groups (and discard exact age), this decision should be documented in the codebook. Like this:
 
 ```yaml
 codebook:
@@ -60,7 +60,7 @@ codebook:
       tableSchema:
         columns:
           - name: "age"                                   # <1>
-            description: "The age group of the subject"
+            description: "The age group of the agent"
             datatype:                                     # <2>
               base: "string"
               format: "18-25|26-35|36-45|46-55|56-"
@@ -94,12 +94,13 @@ For a complete list of fields that can be included in the dataset card, see the 
 
 If you are sharing your dataset with others, it is important to include a citation for the dataset. This allows others to properly credit your work and helps you track the impact of your dataset. This also comes handy for linked data and semantic web applications.
 
-You can include the citation in the front-matter `README.md` file (all fields are optional):
+You can include the citation in the front-matter of the `README.md` file:
 
 ```yaml
 ---
 name: "example-dataset"
 description: "This is an example dataset that contains some example data."
+version: "1.0"
 doi: "10.1234/5678"                 # <1>
 url: "https://example.com/dataset"  # <2>
 creator:
@@ -144,6 +145,7 @@ Here is an example of a `README.md` file for a dataset:
 ---
 name: "example-dataset"
 description: "This is an example dataset that contains some example data."
+version: "1.0"
 doi: "10.1234/5678"
 url: "https://example.com/dataset"
 creator:
@@ -158,7 +160,7 @@ codebook:
       tableSchema:
         columns:
           - name: "age"
-            description: "The age group of the subject"
+            description: "The age group of the agent"
             datatype:
               base: "string"
               format: "18-25|26-35|36-45|46-55|56-"

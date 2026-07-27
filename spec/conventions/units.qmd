@@ -17,8 +17,8 @@ Some variables have measurement units. Variables should use the standard measure
 
 Examples:
 
--   `age` (by default in years)
--   `age_in_months`
+- `age` (by default in years)
+- `age_in_months`
 
 When the units are a single word it's OK to use the complete word; if it has multiple words, it's better to abbreviate them unless the abbreviation can lead to confusion or ambiguity. For example, prefer `seconds` to `s` but `mpg` to `miles_per_gallon`.
 
@@ -84,34 +84,34 @@ Below we list the names we use for different measurement units by measurement di
 
 ### Duration
 
--   milliseconds
--   **seconds**
--   minutes
--   hours
--   days
--   months
--   years
--   decades
--   centuries
+- milliseconds
+- **seconds**
+- minutes
+- hours
+- days
+- months
+- years
+- decades
+- centuries
 
 ### Weight
 
--   mg: milligrams
--   g: grams
--   **kg: kilograms**
--   pounds
+- mg: milligrams
+- g: grams
+- **kg: kilograms**
+- pounds
 
 ### Length
 
--   mm: millimeters
--   **cm: centimeters**
--   m: meters
--   km: kilometers
--   inches
--   feet
--   feet_inch: mix of feet and inches (e.g., 5"3')
--   pixels: number of pixels; the pixel size in cm depends on subjects screen size and resolution.
--   screen_fraction: fraction of subject's screen diagonal expressed between 0 and 1, from bottom-left to top-right. For example, if the diagonal of the screen is 40cm long, a screen_fraction of 0.25 corresponds to 10cm.
+- mm: millimeters
+- **cm: centimeters**
+- m: meters
+- km: kilometers
+- inches
+- feet
+- feet_inch: mix of feet and inches (e.g., 5"3')
+- pixels: number of pixels; the pixel size in cm depends on subjects screen size and resolution.
+- screen_fraction: fraction of subject's screen diagonal expressed between 0 and 1, from bottom-left to top-right. For example, if the diagonal of the screen is 40cm long, a screen_fraction of 0.25 corresponds to 10cm.
 
 :::{.callout-note}
 For more information on viewports, see [CSS *viewport-percentage length* on MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/length#relative_length_units_based_on_viewport).
@@ -119,4 +119,4 @@ For more information on viewports, see [CSS *viewport-percentage length* on MDN 
 
 ### Frequency
 
--   **hertz: count per second**
+- **hertz: count per second**
