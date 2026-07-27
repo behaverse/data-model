@@ -1,54 +1,99 @@
 ---
 title: Why BDM
-subtitle: The problem with behavioral data, and what a shared framework buys us
+subtitle: Why behavioral data needs its own standard, and what BDM adds
 ---
+
+
+<!-- TODO: update this page with references from the literature that support these points -->
 
 ## The problem
 
-Every lab organizes behavioral data its own way. The same task produces
-differently named files, differently shaped tables, and differently defined
-variables in every lab that runs it—sometimes in every study. The result:
-datasets that cannot be combined, tools that cannot be reused, and analyses
-that start from scratch every time.[^search]
+Although more and more behavioral data is shared every year, finding a dataset does not guarantee it is usable. Reviewing public datasets[^survey] quickly reveals numerous inconsistencies:
 
-[^search]: Finding usable datasets is measurably hard; see Hulsebos et al.
-(2024), [*It took longer than I was expecting*](https://doi.org/10.1145/3665939.3665959).
+- **location and organization**: Datasets are distributed across public repositories, laboratory pages, and personal websites, and each follows its own folder structure. It is sometimes challenging to locate the actual data in a project repository.
+- **file formats**: Datasets are shared under a variety of file formats (e.g., CSV files, spreadsheets, proprietary formats). Opening them may require installing software, which may be expensive or no longer available.
+- **granularity**: Whether a row represents a participant, a trial, or an aggregate cannot be determined without opening the file; data files may furthermore mix different levels of granularity, creating ambiguity in the meaning of specific variables.
+- **naming conventions**: The same concept is named differently across datasets—a participant may be referred to as `id`, `Subject`, or `SubjectID`—and naming styles are often mixed within a single table, as in `Span_amount`, `CorrectAnswer`, and `TrialList.Sample`.
+- **semantics**: The same name denotes different concepts. For example, `trial` may refer to a trial index or to a trial type.
+- **units and values**: It is often unclear what units of measurement are used or what values a variable can take. For example, response times are reported without indicating whether they are expressed in milliseconds or seconds.
+- **completeness**: Instructions, task parameters, the instruments used, and the raw event records are routinely incomplete or missing.
+- **fragmentation**: The information that is available may be dispersed across the research paper, its supplementary material, project websites, and the data files themselves. Different sources may furthermore contradict each other.
 
-None of this is negligence. Behavioral data is genuinely harder to
-standardize than it looks: a key press means nothing by itself—its meaning
-depends on the task, the stimulus, the instructions, and the person. A format
-for behavioral data has to carry that context. BDM is designed to.
 
-## What a shared framework buys
+These inconsistencies have been repeatedly documented in the scientific literature. They make it difficult, and sometimes impossible, to reuse a dataset and reproduce or extend past studies. Locating a suitable dataset is already challenging[^search]. Once located, substantial preprocessing work is often required before it can even be determined whether that dataset is usable or not.
 
-- **Efficiency**—less bespoke work; code and tools transfer between studies.
-- **Robustness**—fewer errors from ambiguous, idiosyncratic formats.
-- **Transparency**—fewer hidden choices buried in analysis scripts.
-- **Quality**—consistency and completeness can be checked automatically.
-- **Usability**—datasets ship documented and ready to analyze.
-- **Reuse and integration**—results can be replicated, extended, and merged
-  across studies; large shared datasets become possible.
+In addition to facilitating data reuse, standardizing behavioral data opens up a range of new opportunities that have already been realized in other domains:
 
-## Where BDM comes from
+- **automation**: Data that conform to a known structure can be processed by pipelines written once and applied to any compliant dataset, rather than being re-implemented for each study.
+- **quality control**: Consistency and completeness can be verified automatically, so that errors are detected before analysis rather than after publication.
+- **transparency**: Analytic decisions that are typically hidden in preprocessing code and differ across studies can be made explicit, visible, and consistent.
+- **integration**: Datasets from different studies and laboratories can be combined, to facilitate meta-analyses and large-scale analyses.
+- **tool development**: Standardized data encourage the development of specialized software for behavioral data; the quality and scope of that software may far exceed the effort individual groups would be willing to expend on single projects.
+- **efficiency**: Time currently spent deciphering and reshaping data can be redirected towards the scientific questions that motivated the study.
 
-BDM builds on standards that earned their place: [tidy
-data](https://www.jstatsoft.org/article/view/v059i10) for table shape,
-[BIDS](https://bids.neuroimaging.io/) for dataset organization,
-[xAPI](https://xapi.com/) for events, [schema.org](https://schema.org) and
-[CSVW](https://www.w3.org/TR/tabular-data-primer/) for metadata. Where good
-prior art exists, BDM adopts it; it only invents where cognitive science has
-needs nothing else covers.
 
-The framework is developed openly—see [where everything
-fits](/concepts/index.qmd#where-everything-fits), the [roadmap](/roadmap.qmd),
-and the [discussions on
-GitHub](https://github.com/orgs/behaverse/discussions).
+
+
+
+
+[^survey]: Reported in [*The structure of behavioral data*](https://arxiv.org/abs/2012.12583), §§2–4 (see [The paper](#the-paper) below).
+
+[^search]: Finding usable datasets is hard even before these problems; see Hulsebos et al. (2024), [*It took longer than I was expecting*](https://doi.org/10.1145/3665939.3665959).
+
+
+
+
+## Why current solutions are not enough
+
+The issues listed above have already been tackled by various projects and standards. However, in our view, none of them are entirely satisfactory, as each tends to address only a facet of the problem. This is why BDM builds on those efforts and aims to fill the gaps.
+
+For example, metadata standards such as [schema.org](https://schema.org), [CSVW](https://www.w3.org/TR/tabular-data-primer/), and [Psych-DS](https://psych-ds.github.io/) aim to describe *what a file is about*, so that datasets can be discovered, and possibly parsed, through a search engine. Such standards are essential. They are, however, necessarily generic, and do not cover the search criteria cognitive scientists may be interested in (e.g., type of population tested, number of trials, presence of eye tracking data). Furthermore, these metadata standards do not explain *what the data itself should be*—which variables exist, what they mean, and how they relate to each other.
+
+Other standards focus on specific types of data. [xAPI](https://xapi.com/), for example, provides a common actor–verb–object structure for describing events such as key presses and images appearing on screen. Standards of this kind typically do not specify the cognitive-science constructs built upon those events, such as trials, stimuli, responses, and options, nor do they explain how one type of data relates to another (e.g., how event data relates to trial-level data).
+
+Finally, some standards prescribe how the files and folders of a dataset are organized and described, including which file formats should be used for each type of data. The most widely adopted of these in the cognitive sciences today is [BIDS](https://bids.neuroimaging.io/) (see also [Psych-DS](https://psych-ds.github.io/)). However, these standards typically do not explain how to organize and encode behavioral data in a way that remains consistent across studies.[^bids-beh]
+
+[^bids-beh]: BIDS accommodates behavioral data as one of its data types, `beh`, realized as a `beh/` directory within a subject's directory (or within a session's, when the study has sessions). It defines only four optional columns for it—`trial_type`, `response_time`, `HED`, and `stim_file`—all other concepts (e.g., what was shown, what was chosen, and whether the response was correct) are left for each study to figure out (see [the BIDS specification](https://bids-specification.readthedocs.io/en/stable/modality-specific-files/behavioral-experiments.html)).
+
+What these solutions lack is therefore one or more of the following:
+
+- **domain coverage**: They are not designed for the full range of behavioral activities (e.g., cognitive tests, questionnaires, games) and data sources (e.g., event data, trial data, gaze recordings).
+- **completeness**: They address some of the information a study produces, while leaving other parts (e.g., instructions, task parameters, raw events) unspecified.
+- **controlled vocabulary and conventions**: They do not prescribe the names, definitions, and units that would make the same concept recognizable from one dataset to the next.
+
+The last of these is the most consequential, as it is what prevents datasets from being combined. Consistent file naming and comprehensive metadata are necessary but not sufficient conditions for reuse—for example, two datasets may be impeccably organized and thoroughly documented, and still encode response time under different names, in different units, and with different underlying assumptions.
+
+
+
+
+
+## What BDM adds
+
+BDM is built to close the three gaps listed above:
+
+- **domain coverage**: the model is designed for behavioral activities in general—cognitive tests, questionnaires, and games—and for the range of data they produce, from raw events and trial tables to gaze recordings. Its scope is tested against real use cases: BDM is developed alongside a battery of tasks, questionnaires, and games that we build and run ourselves, so that every addition is checked against data we actually collect.
+
+- **completeness**: it covers everything a study produces and consumes, from the study design and the instructions given to participants down to the raw event record, and states where each part belongs.
+
+- **controlled vocabulary and conventions**: each concept carries one name, one definition, and stated units, so that the same variable remains recognizable from one dataset to the next.
+
+BDM builds on existing standards and extends them as needed. Determining which standard fits which job is itself part of the contribution, as it commits the model to a coherent set of choices that would otherwise be made anew, and differently, in every study: [tidy data](https://www.jstatsoft.org/article/view/v059i10) for table shape, directory-based partitioning for the dataset layout, xAPI for the event envelope, schema.org for discoverability, and CSVW for describing CSV files.
+
+Beyond that selection, BDM defines the layer none of these standards covers: the content and meaning of the data itself. Events, for instance, retain the xAPI envelope but add a canonical BDM vocabulary of verbs and object types, together with a defined storage format; trials add the tables, columns, and definitions that turn those events into an analyzable unit.
+
+Because the resulting structure is exact and machine-readable, datasets can be validated automatically, combined across studies, and analyzed with tools written once and reused, rather than with the per-study code that tends to obscure the analytic choices it embodies. Finally, a standardized and comprehensive data model like BDM makes it possible to programmatically transform the data into a different standard (e.g., if that were required for a particular tool or analysis).
+
+
+## Where BDM stands today
+
+BDM is developed openly and incrementally. It defines several schemas—covering trials, events, timeseries, and the shared vocabulary—which are all versioned, machine-readable, and accompanied by validators and changelogs. The schemas are available at [behaverse/schemas](https://behaverse.org/schemas); this documentation site is generated directly from the published schemas, so that its contents correspond to what a machine would enforce. The [roadmap](/roadmap.qmd) records what is settled, what is currently being designed, and what is deliberately out of scope, while [where everything fits](/concepts/index.qmd#where-everything-fits) maps the surrounding components. Development takes place in the open, and [discussion on GitHub](https://github.com/orgs/behaverse/discussions) is welcome.
+
+BDM is also expected to change. Better solutions will certainly emerge in the future (e.g., more efficient ways of storing and querying data)—BDM will be updated or extended accordingly.
+
 
 ## The paper
 
-The thinking behind BDM is laid out in [*The structure of behavioral
-data*](https://arxiv.org/abs/2012.12583). If you use BDM in your research,
-cite:
+The reasoning behind BDM is presented in [*The structure of behavioral data*](https://arxiv.org/abs/2012.12583).
 
 ```bibtex
 @misc{defossez2020structurebehavioraldata,
