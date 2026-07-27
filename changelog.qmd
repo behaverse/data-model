@@ -6,6 +6,19 @@ title: Changelog
 
 ### Added
 
+- Spec pages for the trial schema's new tables: **Studyflow** (the run log), **Subtrial**, **TrialParameter**, and **TaskParameter**—eleven tables in total.
+- `studyflow.csv` is documented as the run log, with its columns and its relationship to the `studyflow.xml` design.
+- `runtime_id` documented in the indexing conventions as the run-level identifier that makes table-local ids unambiguous.
+- Field notes marked `.warning` / `.important` / `.tip` upstream now render with their severity rather than as generic notes.
+
+### Changed
+
+- Data filenames no longer carry an attempt suffix: `response.csv`, not `response_1.csv`. Every run of an activity is in the same file, distinguished by `runtime_id` and `attempt`; runs that produced no data still appear in `studyflow.csv`. Timeseries payloads keep per-run filenames, since a binary recording cannot be concatenated.
+- The folder tree is described as a view rather than as directory partitioning: every data file carries the scoping needed to interpret it, so it remains readable on its own.
+- Generated trial page filenames are zero-padded (`01-response`), so the sidebar orders them correctly past nine tables; the previous URLs redirect.
+
+### Added
+
 - Events data guide: the event envelope, NDJSON at-rest storage, attachments, timeseries referencing, and the clock mapping.
 - Folder structure: placement of raw event streams (`events_<attempt>.ndjson[.gz]`) and timeseries payload + sidecar files, plus a new acquisition→dataset mapping section.
 - Glossary: the vocabulary `time` scheme terms (`engine_seconds`, `anchor_datetime`, `t`) and the new trial fields.

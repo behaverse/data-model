@@ -75,27 +75,12 @@ Two distinctions are worth stating explicitly, because collapsing them is what m
 
 ## The columns that matter for questionnaires
 
-Each row of the Response table (`response.csv`) is one trial: one agent answering one question. Of the columns available, three deserve particular attention when the activity is a questionnaire:
-
-`stimulus_description`
-: The question text, in English. If the question was presented in another language—recorded in the `language` column—the translations belong in the questionnaire's supplementary resources rather than in this column.
-
-`option_source`
-: Where the set of options came from (e.g., `agreement_1_to_7`, `gender`). This is what lets a reader tell whether two datasets used the same scale, and it is where psychometric metadata about the scale can be attached.
-
-`response_option_index`
-: Which option was chosen, by position in the offered set. This is essential when options are presented in a random order.
+Each row of the Response table (`response.csv`) is one trial: one agent answering one question. The [Response table](/spec/trial/01-response.qmd) reference documents every column, including guidance specific to questionnaires: how `stimulus_description` handles questions presented in another language, what `option_source` records and why it is what lets a reader tell whether two datasets used the same scale, why `response_option_index` is essential when options are shuffled, and the distinction between `response_numeric` and `score`.
 
 ::: {.callout-warning appearance="simple"}
 ## Record the response and the score separately
 
-`response_numeric` and `score` answer different questions, and both are required.
-
-`response_numeric` is a numeric reading of what the agent chose, independent of the question asked: "never" might be 0 and "always" 1. It is empty for free-text answers, and identical to `response_description` when the agent entered a number.
-
-`score` is the value the experimenter assigns to that answer in this particular context. In the BIS/BAS questionnaire, for instance, answering "very true for me" yields a score of 1 for some items, 4 for reverse-coded items, and 0 for filler items. Item scores are then aggregated into questionnaire-level scores.
-
-When these concepts are collapsed into one column, a reader cannot tell whether the numbers are raw answers, option positions, or already reverse-coded—which arguably makes the dataset unusable.
+`response_numeric` (the raw answer, independent of the question) and `score` (the value the experimenter assigns to that answer in this context) must both be present, and must never be collapsed into a single column. A reader would otherwise be unable to tell whether the numbers are raw answers, option positions, or already reverse-coded—which arguably makes the dataset unusable.
 :::
 
 ## A minimal example

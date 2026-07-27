@@ -39,18 +39,18 @@ The `result` and `context` objects carry verb-specific detail through open `bdm:
 
 ## How events are stored: NDJSON
 
-The canonical at-rest form of the events layer in a BDM dataset is **NDJSON** (newline-delimited JSON): one event object per line, UTF-8, append-only. The stream for one attempt at an activity lives in the activity folder, beside the trial tables, partitioned by attempt exactly like `response_<ATTEMPT>.csv`:
+The canonical at-rest form of the events layer in a BDM dataset is **NDJSON** (newline-delimited JSON): one event object per line, UTF-8, append-only. The stream for an activity lives in the activity folder, beside the trial tables. Every run of that activity writes to the same file; each line carries the `bdm:runtime_id` of the run it belongs to:
 
 ```{.default .file-tree}
 ...
 DigitSpan/
-├── response_1.csv
-├── stimulus_1.csv
-├── option_1.csv
-└── events_1.ndjson
+├── response.csv
+├── stimulus.csv
+├── option.csv
+└── events.ndjson
 ```
 
-Once a recording is closed, the file may be compressed to `events_<ATTEMPT>.ndjson.gz`.
+Once a recording is closed, the file may be compressed to `events.ndjson.gz`.
 
 Why NDJSON rather than a CSV table or one big JSON array?
 
@@ -82,13 +82,13 @@ Events reference bulky payloads—recording files, stimulus blobs, continuous si
       "contentType": "application/json",
       "url": "mouse_1.ndjson.gz.timeseries.json",
       "sha256": "9f2b5c…",
-      "description": "Mouse trajectory sidecar for attempt 1"
+      "description": "Mouse trajectory sidecar for this run"
     }
   ]
 }
 ```
 
-The `url` is a **relative path resolved against the location of the file containing the reference**—for an at-rest events file, the activity folder—or an absolute URL. In the example above, the sidecar sits beside `events_1.ndjson` in the same activity folder.
+The `url` is a **relative path resolved against the location of the file containing the reference**—for an at-rest events file, the activity folder—or an absolute URL. In the example above, the sidecar sits beside `events.ndjson` in the same activity folder.
 
 ## Continuous signals: attachment → sidecar → payload
 

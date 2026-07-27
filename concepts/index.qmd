@@ -38,15 +38,15 @@ my-study/
       ├─ studyflow.csv        # what this agent did, and in what order
       └─ session_1/
          ├─ stroop/           # a cognitive test
-         │  ├─ events_1.ndjson    # events: what happened, as it happened
-         │  ├─ response_1.csv     # trials: one row per trial
-         │  ├─ stimulus_1.csv     # supporting table: the stimuli shown
-         │  ├─ option_1.csv       # supporting table: the response options
-         │  └─ input_1.csv        # supporting table: the raw inputs (key presses)
+         │  ├─ events.ndjson    # events: what happened, as it happened
+         │  ├─ response.csv     # trials: one row per trial
+         │  ├─ stimulus.csv     # supporting table: the stimuli shown
+         │  ├─ option.csv       # supporting table: the response options
+         │  └─ input.csv        # supporting table: the raw inputs (key presses)
          └─ bisbas/           # a questionnaire—stored the same way
-            ├─ response_1.csv
-            ├─ stimulus_1.csv     # the questions
-            └─ option_1.csv       # the answer options
+            ├─ response.csv
+            ├─ stimulus.csv     # the questions
+            └─ option.csv       # the answer options
 ```
 
 Reading top to bottom:
@@ -55,9 +55,9 @@ Reading top to bottom:
 - **`LICENSE`** states the terms under which the data may be used.
 - **`instruments/`** describes the tasks and questionnaires used to collect the data—one file per instrument, with its parameters.
 - **`agents.csv`** lists who the data is about: one row per agent (a human participant or an artificial one), with their attributes.
-- **`data/`** holds the data itself, partitioned by folders into `agent → session → activity`. Each agent's folder carries a **[`studyflow.csv`](/spec/studyflows.qmd)** recording which activities they completed and in what order, and one subfolder per session. Each session in turn holds one folder per activity—a cognitive test (`stroop/`) or a questionnaire (`bisbas/`); both are stored the same way.
+- **`data/`** holds the data itself, organized into folders by `agent → session → activity`. The tree is a convenience for browsing: each file also states its own scope in its columns, so it can be read on its own. Each agent's folder carries a **[`studyflow.csv`](/spec/studyflows.qmd)** recording which activities they completed and in what order, and one subfolder per session. Each session in turn holds one folder per activity—a cognitive test (`stroop/`) or a questionnaire (`bisbas/`); both are stored the same way.
 
-Inside an activity folder, the raw **events** (`events_1.ndjson`) record what happened as it happened, and the **[Response table](/spec/trial/01-response.qmd)** (`response_1.csv`) holds the *trials* derived from those events—one row per trial. Supporting tables alongside it describe the stimuli shown (`stimulus_1.csv`), the response options offered (`option_1.csv`), and the raw inputs collected (`input_1.csv`). The trailing `_1` marks the attempt, so a repeated activity becomes `response_2.csv`, and so on.
+Inside an activity folder, the raw **events** (`events.ndjson`) record what happened as it happened, and the **[Response table](/spec/trial/01-response.qmd)** (`response.csv`) holds the *trials* derived from those events—one row per trial. Supporting tables alongside it describe the stimuli shown (`stimulus.csv`), the response options offered (`option.csv`), and the raw inputs collected (`input.csv`). The trailing `_1` marks the attempt, so a repeated activity becomes `response.csv`, and so on.
 
 Every table is tidy; every name follows the [naming conventions](/spec/conventions/naming.qmd); every column is defined in the [specification](/spec/index.qmd). You always know where things are and what they are called. (The full layout, including timeseries files, is in the [folder structure](/spec/conventions/folder-structure.qmd) specification.)
 

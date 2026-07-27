@@ -10,7 +10,7 @@ Continuous sampled signals—mouse trajectories, gaze, EEG, and other physiologi
 - **Payload**—the samples, in any declared format: NDJSON, CSV, EDF, Parquet, … (e.g., `mouse_1.ndjson.gz`, `eeg_1.edf`). BDM does not validate payloads; established formats stay as they are.
 - **Sidecar**—a JSON file named after the payload file as it exists on disk, with `.timeseries.json` appended (`mouse_1.ndjson.gz` → `mouse_1.ndjson.gz.timeseries.json`). It declares the payload's location (`content_url`), content type and encoding, an optional SHA-256, the **clock**, the **sampling nature**, and the **channels**.
 
-Both files live in the dataset's activity folder beside the trial tables, partitioned by attempt (`response_1.csv` ↔ `mouse_1.ndjson.gz`)—see [Folder structure](/spec/conventions/folder-structure.qmd).
+Both files live in the dataset's activity folder beside the trial tables—see [Folder structure](/spec/conventions/folder-structure.qmd). Unlike the tidy tables, which hold every run of an activity in one file, a timeseries payload keeps a per-run filename: a binary recording cannot be concatenated, and two runs cannot share a name.
 
 ## Channels are the primitive
 

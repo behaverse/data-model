@@ -22,9 +22,24 @@ A studyflow describes what a study *intends* to happen; a dataset also has to re
 : The study design, at the root of the dataset. It defines the activities and the paths agents may take through them, in the BPMN-based format described above, and is what the [Studyflow Modeler](https://behaverse.org/studyflow-modeler) produces. One file per dataset, since the design is shared by everyone in the study.
 
 `studyflow.csv`
-: What actually happened for one agent, at the root of that agent's folder (`data/agent_001/studyflow.csv`). It records the activities that agent engaged with: their order, when each started and ended, whether each was completed, and any agent-specific details such as the condition they were assigned to. One file per agent, because each agent traverses the design differently.
+: What actually happened for one agent, at the root of that agent's folder (`data/agent_001/studyflow.csv`). One file per agent, because each agent traverses the design differently.
 
-Together they make an agent's path auditable: the design states what was possible, and the per-agent record states which of it occurred. Where an agent's data folder contains an activity, that activity should also appear in their `studyflow.csv`.
+Together they make an agent's path auditable: the design states what was possible, and the per-agent record states which of it occurred.
+
+## The run log (`studyflow.csv`)
+
+`studyflow.csv` is the **run log**: one row per *activity run*, where a run is a single execution of one activity by one agent. Restarting an activity produces another run, and therefore another row. It is defined by the `Studyflow` table of the trial schema—see the [field-by-field reference](/spec/trial/09-studyflow.qmd).
+
+Each row records:
+
+- **which run it was**—`runtime_id`, the identifier every other table uses to refer back to this run, together with `attempt`, `instrument_repetition`, and `timeline_repetition`;
+- **where it sits in the study**—`agent_id`, `session_index`, `session_uuid`, `activity_index`, `instrument_id`, and `timeline_id`;
+- **how it went**—`status` and, where relevant, `abandon_reason`;
+- **when it happened**—`start_datetime`, `end_datetime`, and `anchor_datetime`, the point that ties the run's monotonic clock to wall-clock time.
+
+Because a run that was started and abandoned before producing any data still gets a row, the run log is what makes incomplete participation visible. A dataset's data files show only the runs that produced data; `studyflow.csv` shows every run that was begun, which is what tells a reader whether a missing activity was skipped, abandoned, or never assigned.
+
+`runtime_id` is also what makes local identifiers unambiguous. Identifiers such as `response_id` are unique only *within* a run, so the dataset-wide key for a row is the pair `(runtime_id, response_id)`.
 
 ::: {.callout-note appearance="simple" icon="false"}
 **See also**

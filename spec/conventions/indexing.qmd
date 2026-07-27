@@ -30,6 +30,9 @@ session_index is nested within agent_index. This means that when an agent starts
 Because it restarts per agent, session_index is an *ordinal*, not an identifier: `session_index = 2` recurs for every agent with two or more sessions. A session's global identity is `session_uuid`—a UUID (RFC 9562) assigned by the recording engine when the session starts, defined in the [Response table](/spec/trial/01-response.qmd). Event streams scope events to a session through the `bdm:session_id` context extension, whose value is this UUID.
 :::
 
+`runtime_id`
+: Identifies an *activity run*: one execution of one activity by one agent, with restarts counted as separate runs. It is not an ordinal—it does not count anything—but an identifier assigned by the recording engine, and it appears in every trial table as well as on every line of the event stream. Because the identifiers below are unique only within a run, `runtime_id` is what makes them unambiguous across a dataset: the dataset-wide key for a response is the pair (`runtime_id`, `response_id`). The runs themselves are listed in the agent's `studyflow.csv` (see [Studyflows](/spec/studyflows.qmd)).
+
 `response_index`
 : Agents emit responses. These may be complex sequences of inputs (e.g., typing an answer) that are interpreted within a study as a meaningful unit of observation.
 An agent will emit responses over the course of their participation in the study. response_index is nested within agents, not within any lower level construct. This means that we increment our response counter starting from an agent's first response to their last response within a study without ever resetting that counter. The maximum value of response_index for a given agent reflects how many responses were recorded from that agent in the study.

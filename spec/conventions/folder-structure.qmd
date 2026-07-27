@@ -31,10 +31,10 @@ dataset/                          # <1>
 │   │   ├── studyflow.csv         # <10>
 │   │   └── session_1/            # <11>
 │   │       └── <activity>/       # <12>
-│   │           ├── response_1.csv
-│   │           ├── stimulus_1.csv
-│   │           ├── option_1.csv
-│   │           ├── events_1.ndjson                    # <13>
+│   │           ├── response.csv
+│   │           ├── stimulus.csv
+│   │           ├── option.csv
+│   │           ├── events.ndjson                    # <13>
 │   │           ├── mouse_1.ndjson.gz                  # <14>
 │   │           └── mouse_1.ndjson.gz.timeseries.json  # <14>
 │   └── agent_002/
@@ -68,30 +68,36 @@ dataset/                          # <1>
 
 12. **Activity data**: Additional folders are included within each agent's folder depending on the specific activities completed by that agent. For example, if the agent completed the BIS/BAS questionnaire and the Stroop test there would be two corresponding data folders (i.e., `bisbas`, `stroop`).
 
-13. **Event stream** (optional): The raw events recorded during an attempt at the activity, stored as `events_<attempt>.ndjson` (optionally compressed to `.ndjson.gz`)—one event object per line, partitioned by attempt like `response_<attempt>.csv`. See [Raw acquisition data](#raw-acquisition-data-events-and-timeseries) below.
+13. **Event stream** (optional): The raw events recorded during the activity, stored as `events.ndjson` (optionally compressed to `.ndjson.gz`)—one event object per line, each carrying the `bdm:runtime_id` of the run it belongs to. See [Raw acquisition data](#raw-acquisition-data-events-and-timeseries) below.
 
 14. **Timeseries** (optional): Continuous signals (mouse trajectories, gaze, EEG, …) recorded during the activity: a payload file in a domain-appropriate format plus its metadata sidecar named `<payload-filename>.timeseries.json`, both in the activity folder.
 
 15. **Examples** (optional): The `examples/` contains sample codes to showcase some aspects of the data (e.g., descriptive statistics, missing values plot).
 
+## The folder tree is a view, not the key
+
+The layout above makes a dataset easy to browse and to select from, but the path is not what makes a file interpretable. Every BDM data file carries the scoping it needs in its own columns: which agent, which session, and—through `runtime_id`—which run produced each row. This is why `runtime_id` is repeated in every table rather than left implicit in the folder name.
+
+The practical consequence is that a file does not lose its meaning when it is moved, copied, or opened on its own, and the same data can be exported into a different layout without loss. This differs from directory-partitioning schemes such as Hive or Arrow, where the partition keys live in the path and are deliberately omitted from the files. In BDM the tree is a *view* of the data; the long-term model is a catalog that can export this layout, among others.
+
 ## Raw acquisition data: events and timeseries {#raw-acquisition-data-events-and-timeseries}
 
 The trial tables are *derived* data. When the raw acquisition record is kept—recommended whenever you may need to audit or re-derive the trial tables—it lives in the same activity folder, partitioned by attempt like the trial tables:
 
-- **Event streams** live at `data/agent_{x}/[session_{n}/]<activity>/events_<attempt>.ndjson` (optionally `.ndjson.gz`), beside `response_<attempt>.csv`. The canonical at-rest form is NDJSON: one event object per line, each validating against the [event schema](https://behaverse.org/schemas/event). See the [Events data guide](/guides/7-events-data.qmd).
+- **Event streams** live at `data/agent_{x}/[session_{n}/]<activity>/events.ndjson` (optionally `.ndjson.gz`), beside `response.csv`. The canonical at-rest form is NDJSON: one event object per line, each validating against the [event schema](https://behaverse.org/schemas/event). See the [Events data guide](/guides/7-events-data.qmd).
 - **Timeseries** are stored as a payload file (e.g., `mouse_1.ndjson.gz`, `eeg_1.edf`) plus its sidecar `<payload-filename>.timeseries.json` in the same activity folder. The sidecar—validated by the [timeseries schema](https://behaverse.org/schemas/timeseries)—describes the payload's clock, sampling, and channels; events reference the sidecar via `attachments`, and the sidecar references the payload. See [Timeseries](/spec/timeseries.qmd).
 
 ## From acquisition to dataset
 
-A recording engine produces one recording per run—that is, per agent, session, and attempt at an activity. Each part of that recording has one place in the layout:
+A recording engine produces one recording per run—one execution of one activity by one agent, with restarts counted separately. Each part of that recording has one place in the layout:
 
 | The engine records… | …which lands in the dataset as |
 |---|---|
 | the agent's identity (`agent_id`) | the `agent_{x}/` folder, plus a row in `agents.csv` mapping `agent_index` to `agent_id` |
 | the session | the `session_{n}/` folder—`session_index` is the per-agent ordinal; `session_uuid` is the session's global identity, carried in the trial tables and in event streams as the `bdm:session_id` context extension |
 | the task / instrument | the `<activity>/` folder, named after the instrument (which has a matching file in `instruments/`) |
-| the derived trial data | the activity's CSVs: `response_<attempt>.csv` and its supporting tables (`stimulus_`, `option_`, `input_`, …) |
-| the raw event stream | `events_<attempt>.ndjson[.gz]` beside those CSVs |
+| the derived trial data | the activity's CSVs: `response.csv` and its supporting tables (`stimulus.csv`, `option.csv`, `input.csv`, …) |
+| the raw event stream | `events.ndjson[.gz]` beside those CSVs |
 | continuous signals (mouse, gaze, EEG, …) | payload + `.timeseries.json` sidecar beside them, referenced from the event stream's `attachments` |
 
 Engines record time on a monotonic per-session clock (the vocabulary term `engine_seconds`), and the per-session `anchor_datetime`—the wall-clock datetime at clock zero—is the single bridge to calendar time. Datetime columns in the trial tables are therefore **derived**, computed from the monotonic clock as `anchor_datetime + t`, not independently recorded.
@@ -134,7 +140,7 @@ Within BDM we use following styling rules:
  - Hyphens and underscores are used for human readability, not to encode structural relationships (e.g., key-value pairs or entity_feature).
 
 
-We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `dataset/data/agent_001/session_1/stroop/response_1.csv` is preferred over `dataset/data/agent_001/agent-001_session-1_stroop_response-1.csv` as it is shorter and yet contains the same information.
+We recommend using simple, short but clear names for data files so they are easier to type and can be fully displayed on screen. The location of a file provides additional context. For example `dataset/data/agent_001/session_1/stroop/response.csv` is preferred over `dataset/data/agent_001/agent-001_session-1_stroop_response-1.csv` as it is shorter and yet contains the same information.
 
 We also do not recommend including data in the filenames (e.g., `sub-03_task-rest_space-MNI152_bold.nii.gz`, `2019_`) as this data should be either accessible in the data or obvious from the context.
 
@@ -142,7 +148,7 @@ Here are a few examples of file and folder names that follow these rules:
 
 - `masculinity-survey/`
 - `big-5/`
-- `response_1.csv`
+- `response.csv`
 - `agent_001/`
 
 
