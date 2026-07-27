@@ -79,6 +79,13 @@ a:hover { text-decoration: underline; }
 .bdm-story { max-width: 46em; }
 .bdm-proof { font-size: .85rem; color: $bdm-stone-600; border-top: 1px solid $bdm-hairline; padding-top: 1rem; margin-top: 2.5rem; }
 
+// ===== field notes in generated spec tables (severity from behaverse/schemas) =====
+// Block callouts cannot be used inside a table cell, so severity is a labelled span.
+.field-note { font-family: "Space Mono"; font-size: .78em; letter-spacing: .03em; }
+.field-note-warning { color: $bdm-magenta-text; font-weight: 700; }
+.field-note-important { color: $bdm-stone-700; font-weight: 700; }
+.field-note-tip { color: $bdm-stone-600; font-weight: 600; }
+
 // ===== tables (spec summary tables, generated pages included) =====
 .table thead th { font-family: "Space Mono"; font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; border-top: 2px solid $bdm-ink; border-bottom: 1px solid $bdm-ink; }
 .table td code, .table-variable_name code { font-family: "Space Mono"; color: $bdm-magenta-text; background: none; }

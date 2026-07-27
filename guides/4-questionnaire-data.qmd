@@ -65,7 +65,7 @@ BDM uses one vocabulary for cognitive tests and questionnaires alike, so the fam
 | the available answers | the **options** | the choices offered, e.g., a five-point agreement scale |
 | the answer given | the **response** | the meaning assigned to what the agent did |
 
-Each of these constructs is described by several variables: identifiers, descriptions, indices, and timing information, among others. They are documented field by field on the [Response table](/spec/trial/1-response.qmd) page, with the supplementary [Stimulus](/spec/trial/2-stimulus.qmd) and [Option](/spec/trial/3-option.qmd) tables alongside it, and every term is defined in the [Glossary](/glossary/index.qmd).
+Each of these constructs is described by several variables: identifiers, descriptions, indices, and timing information, among others. They are documented field by field on the [Response table](/spec/trial/01-response.qmd) page, with the supplementary [Stimulus](/spec/trial/02-stimulus.qmd) and [Option](/spec/trial/03-option.qmd) tables alongside it, and every term is defined in the [Glossary](/glossary/index.qmd).
 
 Two distinctions are worth stating explicitly, because collapsing them is what makes questionnaire data hard to reuse:
 

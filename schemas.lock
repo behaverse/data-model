@@ -22,6 +22,6 @@ vocabulary:
 # the canonical template above does not, so builds track current content.
 pins:
   trial:
-    version: v26.0721
+    version: v26.0728
   event:
     version: v26.0721
