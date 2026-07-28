@@ -1,5 +1,12 @@
 ---
 title: Extensions
+# these were separate pages before the extensions were consolidated here
+aliases:
+  - /spec/extensions/cognitive-tests.html
+  - /spec/extensions/video-games.html
+  - /spec/extensions/compressed-datasets.html
+  - /spec/extensions/eeg.html
+  - /spec/extensions/resting-state.html
 ---
 
 BDM datasets can be extended beyond cognitive tests and questionnaires to describe additional types of data and use cases. An extension is written the same way as the rest of BDM: as a schema in the [behaverse/schemas](https://behaverse.org/schemas) repository, authored in [LinkML](https://linkml.io/) and published as JSON Schema together with generated field definitions. Extensions therefore inherit the same vocabulary, conventions, and validation as the core model, and the tools that read BDM datasets can read them without special cases.

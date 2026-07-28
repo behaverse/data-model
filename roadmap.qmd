@@ -1,7 +1,7 @@
 ---
 title: Roadmap
 subtitle: What exists, what is being designed, what is deliberately deferred
-aliases: [/why/roadmap.html]
+aliases: [/why/roadmap.html, /guides/mcp.html]
 ---
 
 BDM is developed openly and incrementally. This page tracks what is not done yet, so that nothing has to pretend.
@@ -16,7 +16,7 @@ BDM is developed openly and incrementally. This page tracks what is not done yet
 
 Several how-to guides are planned but not yet written. If one of these would help you, [open an issue](https://github.com/behaverse/data-model/issues/new) to help us prioritize:
 
-multi-task studies · longitudinal and test–retest studies · multi-agent datasets · dataset validation · combining datasets · compatible datasets · AI agents on BDM data
+multi-task studies · longitudinal and test–retest studies · multi-agent datasets · dataset validation · combining datasets · compatible datasets · AI agents on BDM data, including exposing datasets to language models through the [Model Context Protocol](https://modelcontextprotocol.io)
 
 ## Deliberately out of scope (for now)
 
