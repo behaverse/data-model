@@ -1,8 +1,0 @@
----
-order: 9
-output-file: multi-agent-datasets
-title: Multi-agent datasets
-subtitle: How to use multi-agent data in a BDM dataset
----
-
-- [ ] I have multi-agent data

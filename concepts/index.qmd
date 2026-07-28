@@ -77,7 +77,7 @@ This site **defines** the prose conventions and renders summaries; the schemas r
 Within this site, the deep dives are one click away:
 
 - The **rules**—naming, indexing, units, folder structure—live in the [Specification](/spec/index.qmd), alongside the field-by-field reference for every table.
-- The **reasoning** behind the design lives here in Concepts: [design process](design-process.qmd) · [the nature of behavioral data](behavioral-data.qmd) · [metadata](metadata.qmd).
+- The **reasoning** behind the design lives here in Concepts: [design process](design-process.qmd) · [data terminology](behavioral-data.qmd) · [metadata](metadata.qmd).
 
 ## Next steps
 

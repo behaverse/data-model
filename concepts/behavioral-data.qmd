@@ -1,16 +1,16 @@
 ---
-title: The nature of behavioral data
+title: Data terminology
 subtitle: The terms used to describe data, and what they mean in BDM
 aliases: [/explanations/data.html]
 ---
 
-Data is described with words that indicate how it was collected, stored, organized, or processed. Those words are used loosely in practice, and the looseness matters: whether a dataset counts as "raw" determines what may legitimately be done with it. This page sets out what each term means in BDM.
+There are many terms to describe data. This page sets out what each term means in BDM.
 
 ## Raw and derived
 
 Data that has not been processed is **raw**; data computed from other data—summary statistics, scores, fitted models—is **derived**. Reproducible research requires sharing the raw data alongside the analysis code, so that others can replicate the whole chain rather than inspecting its conclusions.
 
-The boundary is less obvious than it appears. In BDM, data stops being raw once it has been processed in a way that reflects an assumption about what the values mean. Filtering out trials with response times under 150 ms, on the belief that such responses cannot be genuine, is such an assumption: the result is no longer raw. Removing duplicate records written twice by a logging bug is not, because no scientific judgment is involved.
+The boundary is less obvious than it appears. In BDM, data stops being raw once it has been processed in a way that reflects an assumption about what the values mean. Filtering out trials with response times under 150 ms, on the belief that such responses cannot be genuine, is such an assumption: the result is no longer raw. Removing duplicate records written twice by a logging bug is not, because no scientific judgment is involved and no information is lost.
 
 The following operations therefore preserve raw status:
 
@@ -21,21 +21,43 @@ The following operations therefore preserve raw status:
 - removing duplicates;
 - joining or splitting tables.
 
-## Native and tidy
+## Source and tidy
 
-Systems record data in whatever shape suits them—structured or not, as CSV, JSON, MAT, or a proprietary format. That is data in its **native** format. **Tidy** data is organized so that each row is an observation and each column a variable.
+**Source data** is data as the producing system emitted it: whatever structure and file format the task engine, survey platform, or recording device happened to write—structured or not, as CSV, JSON, MAT, or something else.
 
-BDM datasets are tidy. The rules a table must satisfy, and the row and column ordering that goes with them, are specified in [Tables](/spec/conventions/tables.qmd).
+Turning it into a BDM dataset is a **transformation**: variables are renamed, units converted, columns selected, tables joined or split, and the layout changed so that each row is an observation and each column a variable. The result is **tidy** data. The rules a tidy BDM table must satisfy, and the row and column ordering that goes with them, are specified in [Tables](/spec/conventions/tables.qmd).
 
-Note that native and raw are independent: data in its native format often contains derived values (a total score stored alongside the individual responses), and native data may happen to be tidy already.
+Tidy is therefore not simply the opposite of source: it is the *target* of that transformation. Source data may already be tidy, and a transformation could in principle target some other structure.
+
+Keeping these terms straight matters because two distinctions are at work, and they are independent:
+
+| Axis | Question it answers | Terms |
+|---|---|---|
+| **Interpretation** | Has a scientific judgment been applied? | raw vs. derived |
+| **Structure** | Has it been transformed into a target structure? | source vs. tidy |
+
+The two can vary separately. Source data often contains derived values—a total score stored alongside the individual responses—so *source* does not imply *raw*. Transforming source data into tidy tables preserves raw status, since none of the operations listed above involves a judgment about what the values mean.
+
+::: {.callout-note appearance="simple"}
+Neighbouring fields use narrower words for parts of this. In the tidyverse and pandas, *reshaping* (or *pivoting*) means changing a table's layout between wide and long form without altering any values—one step of the transformation described here, not the whole of it. In data-pipeline vocabulary, *extract* and *transform* name separate stages: getting data out of the source system, and changing it once out.
+:::
+
+
 
 ## Database and dataset
 
 A [**database**](https://en.wikipedia.org/wiki/Database) is a collection of data managed by a database management system, implying ongoing interaction: users read and write to it.
 
-A [**dataset**](https://en.wikipedia.org/wiki/Data_set) is also a collection of data, but a static one—downloadable and shareable as a whole, like the [PISA 2012 dataset](https://www.oecd.org/en/data/datasets/pisa-2012-database.html). A dataset may be defined by a collection campaign (everything gathered in a project) or by an analysis campaign (a subset extracted from a larger database for one purpose).
+A [**dataset**](https://en.wikipedia.org/wiki/Data_set) also contains data, but it also comprises metadata and supporting information. It is a **complete and meaningful unit**: everything needed to interpret the data--including what the measurements mean, what instruments were used, in what context the data was collected.  BDM describes datasets in this sense—which is why the [folder structure](/spec/conventions/folder-structure.qmd) has a place for the design and the instruments alongside the data, and why every file states its own scope.
 
-BDM describes datasets. The catalog that a collection of datasets forms is a separate concern.
+## Data catalogs
+
+A **data catalog** is an inventory of datasets: it holds, for each one, the metadata needed to find it and to judge whether it is worth obtaining—what it contains, who produced it, under what licence, with which instruments and population—without holding the data itself.
+
+The distinction matters because the two answer different questions. A dataset answers *what happened in this study*; a catalog answers *which studies exist and which of them are relevant to me*. A catalog therefore describes datasets from the outside, and its entries are deliberately shallow: enough to search and filter, not enough to analyze.
+
+Cataloging is a separate concern from the data model, and in the Behaverse ecosystem it is a separate schema—[`catalog`](https://behaverse.org/schemas/catalog), a metadata schema for thematic catalogs of cognitive science datasets. A well-formed [dataset card](/spec/dataset-cards.qmd) is what makes a BDM dataset catalogable: the fields a catalog needs are already there, so listing a dataset is a matter of harvesting its metadata rather than describing it again.
+
 
 ## Storage architectures
 
@@ -55,13 +77,13 @@ More data is stored than shared. A study may hold participants' contact details 
 
 What to *store* depends on the study, subject to two constraints: participants must be informed what is collected, and collection must follow the applicable regulations. Being parsimonious with personal data is generally wise (see [Datensparsamkeit](https://martinfowler.com/bliki/Datensparsamkeit.html)).
 
-What to *share* is a different question. In BDM, native-format data should not be shared when better-formatted data can be extracted from it, for three reasons:
+What to *share* is a different question. In BDM, source data should not be shared when better-structured data can be extracted from it, for three reasons:
 
-- **Usability.** Native data is often messy, sometimes in proprietary formats, and rarely documented.
-- **Privacy.** Native data may contain personal information the sharer is unaware of—full names, IP addresses. Defining what will be shared, and extracting only that, avoids accidental disclosure.
-- **Responsibility.** Preparing usable data from a native recording is the data engineer's job, not the analyst's. Handing over both the native data and the extracted data transfers that responsibility: an analyst who can see the preprocessing code becomes accountable for errors in it. This does not remove the obligation to verify the extraction—it places that obligation with the party doing the extracting.
+- **Usability.** Source data is often messy, sometimes in proprietary formats, and poorly documented.
+- **Privacy.** Source data may contain personal information the sharer is unaware of—full names, IP addresses. Defining what will be shared, and extracting only that, avoids accidental disclosure.
+- **Responsibility.** Preparing usable data from a source recording is the data engineer's job, not the analyst's. Handing over both the source data and the transformed data transfers that responsibility: an analyst who can see the preprocessing code becomes accountable for errors in it. This does not remove the obligation to verify the transformation—it places that obligation with the party doing it.
 
-In short: do not share unformatted native data. Share well-documented, well-formatted raw data.
+In short: do not share unstructured source data. Share well-documented, well-structured raw data.
 
 ## Versioning
 

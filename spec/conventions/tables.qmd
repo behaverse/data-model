@@ -27,7 +27,7 @@ These rules are less obvious to apply than they look. Questionnaires are the sta
 
 Rows that refer to events are ordered **chronologically**: the first row of a response table is the first response, in the first activity, of the first session for that agent.
 
-Rows that refer to entities rather than events are ordered either **alphabetically** by the name of the main entity (e.g., `agent_index`, `instrument_name`) or by the **key measurement** of the dataset (e.g., descending GDP in a GDP dataset).
+Rows that refer to entities rather than events are ordered either **alphabetically** by the name of the main entity (e.g., `agent_index`, `instrument_name`) or by the **key measurement** of the dataset (e.g., descending memory span score in a memory span dataset).
 
 ## Column order
 

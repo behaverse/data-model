@@ -1,9 +1,0 @@
----
-order: 8
-output-file: longitudinal-studies
-title: Longitudinal studies
-subtitle: How to use longitudinal data in a BDM dataset
----
-
-- [ ] I have a dataset of longitudinal study (test/retest)
-

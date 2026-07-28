@@ -1,9 +1,0 @@
-{
-"trials": [
-    {
-        "id": "test",
-        "study_name": "Test Study",
-        "stimulus_ids": ["stimulus1", "stimulus2"]
-    }
-]
-}

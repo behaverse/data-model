@@ -3,16 +3,27 @@ pagetitle: "Behaverse Data Model"
 title-prefix: ""
 toc: false
 page-layout: full
+# the hero puts its H1 inside a grid column; section wrapping would break that nesting
+section-divs: false
 ---
 
 ::: {.bdm-hero}
+:::: {.grid}
+::: {.g-col-12 .g-col-md-8}
 [Behaverse · Data Model]{.kicker}
 
-# All cognitive science data, in one coherent framework
+# All cognitive science data in one coherent framework
 
 ::: {.lead}
 The Behaverse Data Model (BDM) defines how the data of a cognitive science study (including behavior, physiology, and everything needed to interpret it) should be named, organized, and described, so that it can be understood and reused by other researchers, integrated into data catalogs for large-scale studies, and processed automatically by software. The goal is not merely to save time, but to accelerate research and to make possible studies that no single dataset could support.
 :::
+:::
+::: {.g-col-12 .g-col-md-4}
+```{=html}
+<div class="bdm-filetree">my_dataset/<br>├─ README.md<br>├─ studyflow.xml<br>├─ instruments/<br>├─ agents.csv<br>└─ data/<br>&nbsp;&nbsp;&nbsp;└─ agent_001/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ studyflow.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ stroop_test/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ events.ndjson<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ response.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─ stimulus.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ big5_questionnaire/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ response.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ stimulus.csv</div>
+```
+:::
+::::
 :::
 
 ```{=html}

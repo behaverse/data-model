@@ -1,8 +1,0 @@
----
-order: 12
-output-file: ai-agents
-title: AI agents
-subtitle: How to use AI agents data in a BDM dataset
----
-
-- [ ] I used AI as simulating agents
