@@ -27,6 +27,9 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture everything
 [**Units**](conventions/units.qmd)
 : How quantities, times, and dates are expressed.
 
+[**Tables**](conventions/tables.qmd)
+: The tidy structure every data table follows, and how its rows and columns are ordered.
+
 ### Dataset layout
 
 ***What a BDM dataset physically is:***

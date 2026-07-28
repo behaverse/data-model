@@ -100,6 +100,7 @@ website:
             - spec/conventions/naming.qmd
             - spec/conventions/indexing.qmd
             - spec/conventions/units.qmd
+            - spec/conventions/tables.qmd
         - section: "Dataset layout"
           contents:
             - spec/conventions/folder-structure.qmd

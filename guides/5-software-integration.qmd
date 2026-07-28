@@ -4,16 +4,63 @@ output-file: software-integration
 icon: bi bi-reception-3
 difficulty: INTERMEDIATE
 title: Software integration
-subtitle: How to integrate BDM into an existing software stack
+subtitle: How to make an existing tool read or write BDM data
 ---
 
-The main reason to integrate BDM into an existing software stack is to use identical data formats across different cognitive tasks. BDM provides a set of specifications and tools that can be used to define the data formats for events, trials, and models (including summary data), as well as workflows.
+If you maintain software that collects, processes, or analyzes behavioral data—a task engine, a questionnaire platform, an analysis pipeline—supporting BDM means agreeing on one data contract with every other tool that does the same. This guide covers how to adopt it incrementally.
 
-Data formats in BDM includes three levels of abstraction:
+## Decide where to integrate
 
-- Events: The raw data collected during an experiment. The provided data structure for events can be be used for many activities, including questionnaires, cognitive tests, video games, and neuroimaging.
-- Trials: The data that are used for the analysis and reporting.
-- Models: Summary data an computational models that are derived from the events or trials. This include for example scores, statistics, checkpoints, and model parameters.
+BDM can be adopted at one level without adopting the others. Pick by what your software does:
 
-Depending on the use case, BDM can be integrated at one or more of these levels. For example, if you want to store raw data in real-time, you can use the events specifications. If you want to analyze or share data, you can use the trials specification to store main information about the activity in way that is interpretable and associated with the goals of the study. Finally, if you want to assess scores or report results, you can use the models specifications to store summary statistics, predictive models, or other outputs.
+| If your software… | Integrate at | What that involves |
+|---|---|---|
+| records interactions as they happen | [events](/spec/event/index.qmd) | write one JSON object per interaction to `events.ndjson` |
+| produces analyzable per-trial data | [trials](/spec/trial/index.qmd) | write `response.csv` and its supporting tables |
+| computes scores or fits models | [models](/spec/models/index.qmd) | *(specification still in draft)* |
+| reads other people's datasets | trials, plus the [dataset card](/spec/dataset-cards.qmd) | parse the folder layout and the metadata |
 
+A task engine typically writes events and derives trials. An analysis tool typically only reads trials.
+
+## Writing events
+
+The event layer is the least invasive place to start, because it matches how software already works: something happens, and a record is appended.
+
+1. **Emit one object per event**, following the [event envelope](/spec/event/index.qmd): a `timestamp`, an `actor`, a `verb` from the `bdm:` vocabulary, and an `object`. Anything task-specific goes in `result.extensions` or `context.extensions`.
+2. **Write NDJSON**—one object per line, UTF-8, append-only. This survives a crash mid-recording, which a single JSON array does not.
+3. **Stamp every line with the run.** Each line carries the `bdm:runtime_id` of the activity run that produced it, so the file remains interpretable independently of where it sits.
+4. **Reference large signals rather than inlining them.** Continuous recordings go in their own payload file with a [timeseries sidecar](/spec/timeseries.qmd), referenced from the event's `attachments`.
+
+Validate output against the [event schema](https://behaverse.org/schemas/event): every line should validate on its own.
+
+## Writing trials
+
+Trial tables are derived from events by a rule specific to the task—see [Deriving trials from events](/concepts/design-process.qmd#deriving-trials-from-events). To emit them:
+
+1. **Map your task's concepts onto BDM's.** A question becomes a stimulus, the available answers become options, what the agent did becomes a response. The [naming conventions](/spec/conventions/naming.qmd) fix the vocabulary; the [glossary](/glossary/index.qmd) defines each term.
+2. **Write the [Response table](/spec/trial/01-response.qmd)** as `response.csv`, one row per trial, plus whichever supporting tables apply (`stimulus.csv`, `option.csv`, `input.csv`).
+3. **Record the run in `studyflow.csv`**, including runs that were abandoned before producing data—that record is what makes incomplete participation visible. See [Studyflows](/spec/studyflows.qmd).
+4. **Follow the table conventions** for tidy structure and column order ([Tables](/spec/conventions/tables.qmd)), and the [units](/spec/conventions/units.qmd) conventions for values.
+
+## Consuming BDM data
+
+Software that reads BDM datasets can rely on three guarantees:
+
+- **The layout is predictable.** Files sit at `data/<agent>/[<session>/]<activity>/`, described in [Folder structure](/spec/conventions/folder-structure.qmd).
+- **Files are self-describing.** Each row carries the columns identifying its agent, session, and run, so a file can be read on its own without inferring anything from its path.
+- **The schemas are versioned and machine-readable.** Fetch them from [behaverse.org/schemas](https://behaverse.org/schemas) and validate against them rather than hard-coding column lists; each family has a changelog.
+
+Read the dataset's `README.md` front matter first: it declares the version and carries a codebook describing any variables beyond the standard ones.
+
+## Adopting incrementally
+
+Full compliance is not the entry price. A reasonable order:
+
+1. Adopt the **naming conventions and units** in your existing output—cheap, and it removes most cross-study ambiguity on its own.
+2. Emit the **Response table** for one activity, and check it against the spec.
+3. Add the **event stream**, once the trial tables are stable.
+4. Add the **dataset card and studyflow**, which make the output a shareable dataset rather than a set of files.
+
+::: {.callout-note appearance="simple"}
+Building a tool on BDM, or hitting a case the specification does not cover? Those are worth raising in the [discussions](https://github.com/orgs/behaverse/discussions)—gaps found by implementers are how the model improves.
+:::

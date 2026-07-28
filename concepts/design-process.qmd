@@ -27,7 +27,7 @@ Moreover, BDM aims to address data management during all the steps of a research
 
 ## Domain-Driven Design
 
-Behavioral data is inherently complex due to the variety of data types, the diversity of experimental designs, and the need for precise data interpretation. Traditional data management approaches often struggle with the variability and context-dependence of behavioral data. Such domain-specific complexity are best addressed in software engineering by Domain-Driven Design (DDD), which is a structured approach that aligns technical design with the specific needs of the domain, which in our case is behavioral science.
+Behavioral data is inherently complex due to the variety of data types, the diversity of experimental designs, and the need for precise data interpretation. Traditional data management approaches often struggle with the variability and context-dependence of behavioral data. Such domain-specific complexity is best addressed in software engineering by Domain-Driven Design (DDD), which is a structured approach that aligns technical design with the specific needs of the domain, which in our case is behavioral science.
 
 One of the primary benefits of applying DDD to behavioral data is that it serves as the foundation for all study design, data collection, pre-processing, and analysis phases. It also ensures consistency across different studies while accommodating the unique aspects of different experiments. DDD's focus on bounded contexts allows for the clear definition of key concepts like "Trial," ensuring that these concepts are used consistently across different settings.
 
@@ -37,7 +37,7 @@ Unlike rigid standards, flexibility of DDD allows for cost-effective and optiona
 
 Most of the time, raw data can be modeled as a series of events. Events are discrete occurrences that capture specific actions or changes in state during a cognitive task. Examples of events include the presentation of a stimulus, the recording a response, or the selection of an option.
 
-Events are often recorded as soon as they occur in a transactional way, meaning that they are resulted from an interaction between the task and the agent. This data structure is more convenient for the software than storing complex data structures (like trials), as most code is written to control user interactions and store the corresponding data.
+Events are often recorded as soon as they occur in a transactional way, meaning that they are resulted from an interaction between the task and the agent. This is also more convenient for the software producing the data: most code is written to control an interaction and store what happened, rather than to assemble a higher-level structure like a trial while the task is running.
 
 ### Trials
 
@@ -68,9 +68,7 @@ Supporting domain concepts:
 - Instruments (i.e., the environment in which the task is performed)
 
 
-Here is a diagram of the trial. The diagram shows the relationships between the domain-specific concepts and their attributes.
-
-![](../assets/schemas/trials_uml.png){width="100%" .lightbox}
+The tables these concepts become, and the fields that describe them, are documented in the [trial specification](/spec/trial/index.qmd), which is generated from the schema and therefore always current.
 
 
 ## Data Lakehouse
@@ -79,19 +77,14 @@ A missing but important aspect in behavioral datasets is how to make analysis of
 
 Overall, considering events and trials as the ubiquitous domain concepts and data lakehouse as the harmonization approach make it possible to scale and manage behavioral analysis systems. New challenges involve storage, debugging, increased traffic, and extending the data architecture to new tasks and modalities.
 
-### Data partitioning
+### Why both events and trials are kept
 
-### Identical data structure
+A behavioral study produces interrelated data at different levels: the instructions shown to agents, the task parameters, the recorded interactions, and the aggregated trials that answer the scientific question. A trial captures the *final state* of a set of interactions; the events capture their *history*.
 
-### Levels of data
+Most analysis uses trials, and most researchers only need them. Keeping the events anyway serves two purposes. It allows the full sequence to be reconstructed—what was shown, in what order, and how the agent got to their answer—which matters when a trial table has to be audited or re-derived under a different rule. And it produces datasets usable by fields that model the interaction itself rather than its outcome, such as reinforcement learning, where what is learned is how an agent behaves in an environment rather than which decision it reached.
 
-Behavioral experiments require and produce a variety of interrelated data, from instructions shown to the subjects, task parameters, and recorded interactions, to aggregated trials data that are interpretable in accord with the scientific question. If we consider cognitive tasks as a set of interactions that participants do, trial only captures the final state of those interactions. Events on the other hand allow us to reconstruct the history of interactions. However, events are not commonly used during the analysis and most researchers are only interested in the final states of events, i.e., trials.
+### Uniform structure across tasks
 
-For software engineers however, it's more convenient to collect transactional events rather than waiting for some final states; most codes are written as controlling some user interactions and storing the corresponding data. Trial data is an implicit post-processing of those event data. For a full reconstruction of what happened during the task, events data is more useful and it also leads to datasets that can be used in more modern disciplines such as RL where we are interested in learning how an agent interacts with the environment, rather than the final decisions.
+The same table shapes, column names, and units are used whatever the activity: a Stroop test, a questionnaire, and a game all produce a Response table with the same meaning. This is what makes tooling possible—software written once applies to any BDM dataset—and it is what allows datasets from different studies to be combined without reconciling vocabularies.
 
-
-### Data governance
-
-- Versioning
-- Metadata
-- MLOps
+Where an activity genuinely needs something the core model does not cover, that goes into an [extension](/spec/extensions/index.qmd) rather than into an ad-hoc column.
