@@ -1,0 +1,7 @@
+---
+# Injected above the generated agents spec tables by scripts/build_spec.py.
+---
+
+Every BDM dataset ships `agents.csv` at its root: the agent roster—one row per agent—mapping the dataset-local `agent_index` (which names the agent's data folder, e.g. `agent_015`) to the global `agent_id` (which identifies the agent across studies), together with core per-agent attributes. Every table that carries an `agent_id`, such as [Response](/spec/trial/response.qmd) and [StudyflowLog](/spec/trial/studyflow-log.qmd), resolves it against this roster. The reference below is generated from the [agents schema](https://behaverse.org/schemas/agents) in `behaverse/schemas`.
+
+Per-agent data availability is not recorded in the roster: each agent's [`studyflow_log.csv`](/spec/studyflows.qmd) lists every run they began, with its status. Datasets may add custom columns; the schema defines the shared core.

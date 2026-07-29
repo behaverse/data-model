@@ -105,6 +105,10 @@ website:
           contents:
             - spec/conventions/folder-structure.qmd
             - spec/dataset-cards.qmd
+            - section: "Agents"
+              contents:
+                - spec/agents/index.qmd
+                - auto: spec/agents/*.qmd
         - section: "Data levels"
           contents:
             - text: "Events"
