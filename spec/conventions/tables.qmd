@@ -19,7 +19,7 @@ A BDM table is tidy[^tidy] in the sense that:
 
 [^tidy]: Wickham, H. (2014). Tidy data. *Journal of Statistical Software*, 59(10). [https://doi.org/10.18637/jss.v059.i10](https://doi.org/10.18637/jss.v059.i10)
 
-The third rule is why a trial is not stored as one wide table: responses, stimuli, options, and inputs are different observational units, so each gets its own table, linked by identifiers. The [Response table](/spec/trial/02-response.qmd) holds the trial-level record; the supporting tables describe what was shown and what was offered.
+The third rule is why a trial is not stored as one wide table: responses, stimuli, options, and inputs are different observational units, so each gets its own table, linked by identifiers. The [Response table](/spec/trial/response.qmd) holds the trial-level record; the supporting tables describe what was shown and what was offered.
 
 These rules are less obvious to apply than they look. Questionnaires are the standard hard case, and are treated separately in the [questionnaire data guide](/guides/4-questionnaire-data.qmd).
 

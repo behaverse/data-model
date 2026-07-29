@@ -140,7 +140,8 @@ def test_legacy_site_paths_pass_through_unrewritten():
 
 def test_index_page_carries_configured_aliases():
     doc = {"version": "26.0803", "tables": [
-        {"name": "Channel", "fields": [], "docs_url": "https://x/timeseries/channel"}]}
+        {"name": "Channel", "slug": "channel", "fields": [],
+         "docs_url": "https://x/timeseries/channel"}]}
     page = build_spec.render_index_page("timeseries", doc, "https://x/timeseries",
                                         aliases=["/spec/timeseries.html"])
     head = page.split("---")[1]
@@ -150,10 +151,50 @@ def test_index_page_carries_configured_aliases():
 def test_generate_passes_pin_aliases_to_the_index(tmp_path, monkeypatch):
     monkeypatch.setattr(build_spec, "SPEC_DIR", tmp_path)
     doc = {"version": "26.0803", "tables": [
-        {"name": "Channel", "fields": [], "docs_url": "https://x/timeseries/channel"}]}
+        {"name": "Channel", "slug": "channel", "fields": [],
+         "docs_url": "https://x/timeseries/channel"}]}
     build_spec.generate_schema_pages("timeseries", doc, "https://x",
                                      aliases=["/spec/timeseries.html"])
     assert '/spec/timeseries.html' in (tmp_path / "timeseries" / "index.qmd").read_text()
+
+
+# --- stable filenames: pages are named by published slug, ordered by front matter -----------
+# Numbered filenames broke every hand-written link whenever upstream reordered its tables;
+# slug filenames are stable across reorders, and `order:` front matter drives the sidebar.
+
+def _tables_doc():
+    return {"version": "26.0803", "tables": [
+        {"name": "StudyflowLog", "slug": "studyflow-log", "fields": [],
+         "docs_url": "https://x/trial/studyflow-log"},
+        {"name": "Response", "slug": "response", "fields": [],
+         "docs_url": "https://x/trial/response"}]}
+
+
+def test_table_pages_are_named_by_published_slug(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_spec, "SPEC_DIR", tmp_path)
+    build_spec.generate_schema_pages("trial", _tables_doc(), "https://x")
+    names = sorted(p.name for p in (tmp_path / "trial").glob("*.qmd"))
+    assert names == ["index.qmd", "response.qmd", "studyflow-log.qmd"]
+
+
+def test_table_page_front_matter_carries_the_artifact_order():
+    table = _tables_doc()["tables"][1]
+    head = build_spec.render_table_page("trial", table, 2).split("---")[1]
+    assert "order: 2" in head
+
+
+def test_table_page_aliases_keep_the_numbered_urls_alive():
+    table = _tables_doc()["tables"][1]
+    head = build_spec.render_table_page("trial", table, 2).split("---")[1]
+    assert "/spec/trial/2-response.html" in head
+    assert "/spec/trial/02-response.html" in head
+
+
+def test_index_links_use_slug_filenames(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_spec, "SPEC_DIR", tmp_path)
+    build_spec.generate_schema_pages("trial", _tables_doc(), "https://x")
+    index = (tmp_path / "trial" / "index.qmd").read_text()
+    assert "(studyflow-log.qmd)" in index and "(02-" not in index
 
 
 # --- glossary -------------------------------------------------------------------------------

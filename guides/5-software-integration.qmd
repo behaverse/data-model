@@ -38,7 +38,7 @@ Validate output against the [event schema](https://behaverse.org/schemas/event):
 Trial tables are derived from events by a rule specific to the task—see [Deriving trials from events](/concepts/design-process.qmd#deriving-trials-from-events). To emit them:
 
 1. **Map your task's concepts onto BDM's.** A question becomes a stimulus, the available answers become options, what the agent did becomes a response. The [naming conventions](/spec/conventions/naming.qmd) fix the vocabulary; the [glossary](/glossary/index.qmd) defines each term.
-2. **Write the [Response table](/spec/trial/02-response.qmd)** as `response.csv`, one row per trial, plus whichever supporting tables apply (`stimulus.csv`, `option.csv`, `input.csv`).
+2. **Write the [Response table](/spec/trial/response.qmd)** as `response.csv`, one row per trial, plus whichever supporting tables apply (`stimulus.csv`, `option.csv`, `input.csv`).
 3. **Record the run in `studyflow_log.csv`**, including runs that were abandoned before producing data—that record is what makes incomplete participation visible. See [Studyflows](/spec/studyflows.qmd).
 4. **Follow the table conventions** for tidy structure and column order ([Tables](/spec/conventions/tables.qmd)), and the [units](/spec/conventions/units.qmd) conventions for values.
 

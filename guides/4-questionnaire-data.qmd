@@ -65,7 +65,7 @@ BDM uses one vocabulary for cognitive tests and questionnaires alike, so the fam
 | the available answers | the **options** | the choices offered, e.g., a five-point agreement scale |
 | the answer given | the **response** | the meaning assigned to what the agent did |
 
-Each of these constructs is described by several variables: identifiers, descriptions, indices, and timing information, among others. They are documented field by field on the [Response table](/spec/trial/02-response.qmd) page, with the supplementary [Stimulus](/spec/trial/03-stimulus.qmd) and [Option](/spec/trial/04-option.qmd) tables alongside it, and every term is defined in the [Glossary](/glossary/index.qmd).
+Each of these constructs is described by several variables: identifiers, descriptions, indices, and timing information, among others. They are documented field by field on the [Response table](/spec/trial/response.qmd) page, with the supplementary [Stimulus](/spec/trial/stimulus.qmd) and [Option](/spec/trial/option.qmd) tables alongside it, and every term is defined in the [Glossary](/glossary/index.qmd).
 
 Two distinctions are worth stating explicitly, because collapsing them is what makes questionnaire data hard to reuse:
 
@@ -75,7 +75,7 @@ Two distinctions are worth stating explicitly, because collapsing them is what m
 
 ## The columns that matter for questionnaires
 
-Each row of the Response table (`response.csv`) is one trial: one agent answering one question. The [Response table](/spec/trial/02-response.qmd) reference documents every column, including guidance specific to questionnaires: how `stimulus_description` handles questions presented in another language, what `option_source` records and why it is what lets a reader tell whether two datasets used the same scale, why `response_option_index` is essential when options are shuffled, and the distinction between `response_numeric` and `score`.
+Each row of the Response table (`response.csv`) is one trial: one agent answering one question. The [Response table](/spec/trial/response.qmd) reference documents every column, including guidance specific to questionnaires: how `stimulus_description` handles questions presented in another language, what `option_source` records and why it is what lets a reader tell whether two datasets used the same scale, why `response_option_index` is essential when options are shuffled, and the distinction between `response_numeric` and `score`.
 
 ::: {.callout-warning appearance="simple"}
 ## Record the response and the score separately
@@ -85,7 +85,7 @@ Each row of the Response table (`response.csv`) is one trial: one agent answerin
 
 ## Where subscale totals belong
 
-The `score` column above holds trial-level values: the worth assigned to one answer. Scores that summarize a whole run of the questionnaire—a subscale total, a mean over reverse-coded items, a clinical band—belong in the [Score table](/spec/trial/12-score.qmd): long format, one row per score, keyed by `runtime_id` and `score_name` (with `score_index` when one method produces several values). `method` and `method_version` record how each value was produced, and `classification` together with `classification_reference` record the band a value falls into and the norms that say so.
+The `score` column above holds trial-level values: the worth assigned to one answer. Scores that summarize a whole run of the questionnaire—a subscale total, a mean over reverse-coded items, a clinical band—belong in the [Score table](/spec/trial/score.qmd): long format, one row per score, keyed by `runtime_id` and `score_name` (with `score_index` when one method produces several values). `method` and `method_version` record how each value was produced, and `classification` together with `classification_reference` record the band a value falls into and the norms that say so.
 
 Two points follow from why the table exists:
 

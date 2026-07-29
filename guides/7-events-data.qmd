@@ -11,7 +11,7 @@ format:
     code-copy: false
 ---
 
-BDM organizes data in three levels: **events**, **trials**, and **models**. Events are the rawest record of what happened during an activity—every stimulus presentation, key press, click, or state change, each with a timestamp. Trials are the meaningful units derived from events (the [Response table](/spec/trial/02-response.qmd) and its supporting tables), and models are interpretations of the trials. This guide covers the events level: what an event looks like and how event streams are stored inside a BDM dataset.
+BDM organizes data in three levels: **events**, **trials**, and **models**. Events are the rawest record of what happened during an activity—every stimulus presentation, key press, click, or state change, each with a timestamp. Trials are the meaningful units derived from events (the [Response table](/spec/trial/response.qmd) and its supporting tables), and models are interpretations of the trials. This guide covers the events level: what an event looks like and how event streams are stored inside a BDM dataset.
 
 Most analyses only need the trial tables. Keep the events when you need to audit how the trial tables were derived, compute measures the trial tables do not carry (e.g., typing dynamics, hesitation), or reprocess a study with a better derivation pipeline.
 
