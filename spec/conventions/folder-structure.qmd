@@ -56,7 +56,7 @@ dataset/                          # <1>
 
 6. **Studyflow (design)**: The `studyflow.xml` file describes the study protocol: the activities and the paths agents may take through them. One file per dataset (see [Studyflows](/spec/studyflows.html)).
 
-7. **Agents metadata**: The `agents.csv` lists all agents in a study, their demographic information, as well as what data is available for each of them. This data is most useful for quickly locating specific data (e.g., where is the data for agents that are male, aged 35 and who have completed at least 10 trials of a specific task?).
+7. **Agents metadata**: The `agents.csv` file lists all agents in a study together with core per-agent attributes such as demographics (see the [Agents reference](/spec/agents/index.qmd)). What data exists for each agent is derivable from that agent's `studyflow_log.csv`.
 
 8. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per agent that contains all the data about that agent.
 
