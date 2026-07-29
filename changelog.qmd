@@ -13,7 +13,7 @@ title: Changelog
 
 ### Changed
 
-- The trial run-log table follows its upstream rename: **StudyflowLog**, stored per agent as `studyflow_log.csv` (`studyflow.xml` is the plan, `studyflow_log.csv` is what happened). All pages and examples updated.
+- The trial run-log table follows its upstream rename: **StudyflowLog**, stored per agent as `studyflow_log.csv` (`studyflow.xml` defines the study; `studyflow_log.csv` records what happened to a particular agent). All pages and examples updated.
 - "Full reference" links on spec pages use the URL published by the schema (`docs_url`) instead of deriving it locally.
 - Glossary entries for fields with a defined value set list the value names.
 

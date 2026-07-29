@@ -2,6 +2,6 @@
 # Injected above the generated studyflow spec tables by scripts/build_spec.py.
 ---
 
-This is the field reference for `studyflow.xml`, the machine-readable study *plan* at the root of a dataset: the elements a studyflow may contain—the study itself, activities such as cognitive tests, questionnaires, and instructions, the events and gateways that connect them, and the datasets they produce—and the fields each element carries. It is generated from the [studyflow schema](https://behaverse.org/schemas/studyflow) in `behaverse/schemas`.
+This is the field reference for `studyflow.xml`, the executable, machine-readable definition of a study at the root of a dataset: the elements a studyflow may contain—the study itself, activities such as cognitive tests, questionnaires, and instructions, the start and end events that open and close it, the gateways that route agents through it, and the datasets it references—and the fields each element carries. It is generated from the [studyflow schema](https://behaverse.org/schemas/studyflow) in `behaverse/schemas`.
 
-For what a studyflow is and how the plan relates to the per-agent run log (`studyflow_log.csv`, defined by the trial family's [StudyflowLog](/spec/trial/01-studyflowlog.qmd) table), see [Studyflows](/spec/studyflows.qmd).
+For what a studyflow is and how the study definition relates to the per-agent run log (`studyflow_log.csv`, defined by the trial family's [StudyflowLog](/spec/trial/01-studyflowlog.qmd) table), see [Studyflows](/spec/studyflows.qmd).

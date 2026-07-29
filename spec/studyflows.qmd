@@ -14,21 +14,23 @@ Here is an example of a simple studyflow:
 
 Although studyflows are visual, the underlying storage format is machine-readable. This allows for automated execution, validation, versioning, and simulation of studyflows. Studyflows can be created using diagramming tools such as [Studyflow Modeler](https://behaverse.org/studyflow-modeler).
 
-## The two studyflow files in a dataset
+The machine-readable structure of a studyflow is defined by the [studyflow schema](https://behaverse.org/schemas/studyflow) in [`behaverse/schemas`](https://github.com/behaverse/schemas); its elements and fields are documented in the [Studyflow schema reference](/spec/studyflow/index.qmd).
 
-A studyflow describes what a study *intends* to happen; a dataset also has to record what *actually* happened to each agent. BDM therefore stores two related files:
+## The two kinds of "studyflow" files in a dataset
 
-`studyflow.xml`
-: The study design, at the root of the dataset. It defines the activities and the paths agents may take through them, in the BPMN-based format described above, and is what the [Studyflow Modeler](https://behaverse.org/studyflow-modeler) produces. One file per dataset, since the design is shared by everyone in the study.
+It is important to note that a dataset may contain two kinds of "studyflow" files: a single study-level studyflow file and agent-level studyflow files.
 
-`studyflow_log.csv`
-: What actually happened for one agent, at the root of that agent's folder (`data/agent_001/studyflow_log.csv`). One file per agent, because each agent traverses the design differently.
+The study-level studyflow file is the BPMN-based, human- and machine-readable file that covers a study's full lifecycle, including its design, execution, data collection, data processing, and reporting. This file is called `studyflow.xml` and lives at the root of the dataset. This study-level studyflow file is typically not available in open datasets and needs to be reconstructed with information from different sources (e.g., publication, supplementary materials).
 
-Together they make an agent's path auditable: the design states what was possible, and the per-agent record states which of it occurred.
+For more information on studyflows, see the [Studyflow Modeler](https://behaverse.org/studyflow-modeler) (i.e., the visual editor for studyflow diagrams) and the [Studyflow Specification](https://behaverse.org/studyflow-modeler/docs/) for the complete list of supported elements and their attributes.
+
+The agent-level studyflow file is called `studyflow_log.csv`. It describes in tabular format the timestamped sequence of activities a specific agent engaged with in the context of a study. There is one such file per agent, at the root of that agent's folder (e.g., `data/agent_001/studyflow_log.csv`), because each agent may traverse the design differently (e.g., they may be assigned to different activities, they may drop out or restart activities).
+
+Together both types of files make an agent's path auditable: the design states (among other things) what was possible, and the per-agent record states which of it occurred.
 
 ## The run log (`studyflow_log.csv`)
 
-`studyflow_log.csv` is the **run log**: one row per *activity run*, where a run is a single execution of one activity by one agent. Restarting an activity produces another run, and therefore another row. It is defined by the `StudyflowLog` table of the trial schema—see the [field-by-field reference](/spec/trial/01-studyflowlog.qmd). The pair of names states the pairing plainly: `studyflow.xml` is the plan, `studyflow_log.csv` is what happened.
+`studyflow_log.csv` is the **run log**: one row per *activity run*, where a run is a single execution of one activity by one agent. Restarting an activity produces another run, and therefore another row. It is defined by the `StudyflowLog` table of the trial schema—see the [field-by-field reference](/spec/trial/01-studyflowlog.qmd). The pair of names states the pairing plainly: `studyflow.xml` defines the study—the process agents move through—and `studyflow_log.csv` records what happened to a particular agent as they did.
 
 Each row records:
 
@@ -40,10 +42,3 @@ Each row records:
 Because a run that was started and abandoned before producing any data still gets a row, the run log is what makes incomplete participation visible. A dataset's data files show only the runs that produced data; `studyflow_log.csv` shows every run that was begun, which is what tells a reader whether a missing activity was skipped, abandoned, or never assigned.
 
 `runtime_id` is also what makes local identifiers unambiguous. Identifiers such as `response_id` are unique only *within* a run, so the dataset-wide key for a row is the pair `(runtime_id, response_id)`.
-
-::: {.callout-note appearance="simple" icon="false"}
-**See also**
-
-- [Studyflow Modeler](https://behaverse.org/studyflow-modeler): visual editor for studyflow diagrams.
-- [Studyflow Specification](https://behaverse.org/studyflow-modeler/docs/): complete list of supported elements and their attributes.
-:::
