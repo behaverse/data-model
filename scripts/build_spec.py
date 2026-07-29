@@ -221,12 +221,67 @@ def _note_plain(note: object) -> str:
     return f"{level.capitalize()}: {text}" if level else text
 
 
+# Enum value sets (schemas ≥ v26.0803): a values-carrying field ships `values` — an authored-
+# order list of {"value": ..., "description"?: ...} — always together with `values_exhaustive`.
+# The presence of `values` is the signal, never `type`: three trial fields carrying values are
+# type "string", and two "enum" fields carry no values at all.
+_INLINE_VALUES_MAX = 140  # chars; e.g. studyflow's 22-value behaverseTask defers to the section
+
+
+def _values_label(f: dict) -> str:
+    """An open set must not read as the complete enumeration."""
+    return "Values" if f.get("values_exhaustive") else "Known values"
+
+
+def _inline_names(values: list[dict]) -> str:
+    return " · ".join(f"`{v['value']}`" for v in values)
+
+
+def _values_inline(f: dict) -> str | None:
+    """The value names as they appear in the field's table cell; a long list defers to the
+    value-definitions section rather than filling the cell with a wall of names."""
+    values = f.get("values")
+    if not values:
+        return None
+    names = _inline_names(values)
+    if len(names) > _INLINE_VALUES_MAX:
+        return f"*{_values_label(f)}:* {len(values)}, defined below."
+    return f"*{_values_label(f)}:* {names}"
+
+
+def _needs_definition_section(f: dict) -> bool:
+    values = f.get("values") or []
+    return bool(values) and (any(v.get("description") for v in values)
+                             or len(_inline_names(values)) > _INLINE_VALUES_MAX)
+
+
+def _value_definition_sections(fields: list[dict]) -> list[str]:
+    """The full-width 'Value definitions' block rendered below a page's field tables.
+
+    The inline cell carries only the value names; the definitions render here, where prose is
+    not fighting a table cell's width. A field appears when at least one of its values is
+    documented, or when its name list was too long to inline."""
+    body: list[str] = []
+    for f in fields:
+        if not _needs_definition_section(f):
+            continue
+        body += [f"### `{f['name']}`", ""]
+        if not f.get("values_exhaustive"):
+            body += ["The set is open: datasets may contain values not listed here.", ""]
+        body += ["| Value | Description |", "|---|---|"]
+        body += [f"| `{v['value']}` | {_md(v.get('description'))} |" for v in f["values"]]
+        body += [""]
+    return ["## Value definitions", ""] + body if body else []
+
+
 def _field_rows(fields: list[dict]) -> list[str]:
     rows = ["| Field | Type | Requirement | Description |", "|---|---|---|---|"]
     for f in fields:
         parts = [_md(f["description"])] if f.get("description") else []
         if f.get("range"):
             parts.append(f"*Range:* {_md(f['range'])}")
+        if (inline := _values_inline(f)):
+            parts.append(inline)
         for note in f.get("notes") or []:
             parts.append(_note_inline(note))
         desc = " <br/>".join(parts)
@@ -313,6 +368,8 @@ def render_table_page(schema: str, table: dict, ref_base: str, index: int | None
     out += [f"*Summary view—[full reference →]({ref_base}/{_slug(name)}) "
             "on behaverse.org/schemas.*", ""]
     out += _grouped_field_rows(table["fields"])
+    if (sections := _value_definition_sections(table["fields"])):
+        out += ["", *sections]
     return "\n".join(out)
 
 
@@ -368,6 +425,8 @@ def generate_schema_pages(schema: str, doc: dict, base_url: str) -> Path:
         page += [f"*Schema version `{doc.get('version','?')}`—[full reference]({ref_base}).*", "",
                  f"## {heading}", ""]
         page += _field_rows(doc["fields"])
+        if (sections := _value_definition_sections(doc["fields"])):
+            page += ["", *sections]
         page += _vocab_section(doc)
         (out_dir / "index.qmd").write_text("\n".join(page) + "\n")
         vocab = doc.get("vocabularies") or {}
@@ -422,6 +481,9 @@ def _schema_term_entries(schema: str, doc: dict, skip: set[str]) -> list[dict]:
             e["range"] = rewrite_legacy_links(f["range"])
         if f.get("notes"):
             e["notes"] = [rewrite_legacy_links(_note_plain(n)) for n in f["notes"]]
+        if f.get("values"):  # value-set docs live on the spec page; the names still belong here
+            names = ", ".join(f"`{v['value']}`" for v in f["values"])
+            e.setdefault("notes", []).append(f"{_values_label(f)}: {names}.")
         entries[name] = e
     for name, e in entries.items():
         ts = tables_of.get(name) or []
