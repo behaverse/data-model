@@ -21,4 +21,4 @@ multi-task studies · longitudinal and test–retest studies · multi-agent data
 ## Deliberately out of scope (for now)
 
 - A style validator for naming conventions (the conventions are prose-first).
-- A BDM-defined timeseries *payload* format: the [timeseries schema](/spec/timeseries.qmd) specifies the metadata sidecar, while the payload itself stays in a domain-appropriate format (EDF, Parquet, CSV, …).
+- A BDM-defined timeseries *payload* format: the [timeseries schema](/spec/timeseries/index.qmd) specifies the metadata sidecar, while the payload itself stays in a domain-appropriate format (EDF, Parquet, CSV, …).

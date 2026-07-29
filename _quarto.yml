@@ -115,11 +115,17 @@ website:
                 - auto: spec/trial/*.qmd
             - text: "Models"
               href: spec/models/index.qmd
-            - text: "Timeseries"
-              href: spec/timeseries.qmd
+            - section: "Timeseries"
+              contents:
+                - spec/timeseries/index.qmd
+                - auto: spec/timeseries/*.qmd
         - section: "Study artifacts"
           contents:
             - spec/studyflows.qmd
+            - section: "Studyflow schema"
+              contents:
+                - spec/studyflow/index.qmd
+                - auto: spec/studyflow/*.qmd
             - spec/instructions.qmd
             - spec/questionnaires.qmd
         - text: "Extensions"

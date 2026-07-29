@@ -31,7 +31,7 @@ Because it restarts per agent, session_index is an *ordinal*, not an identifier:
 :::
 
 `runtime_id`
-: Identifies an *activity run*: one execution of one activity by one agent, with restarts counted as separate runs. It is not an ordinal—it does not count anything—but an identifier assigned by the recording engine, and it appears in every trial table as well as on every line of the event stream. Because the identifiers below are unique only within a run, `runtime_id` is what makes them unambiguous across a dataset: the dataset-wide key for a response is the pair (`runtime_id`, `response_id`). The runs themselves are listed in the agent's `studyflow.csv` (see [Studyflows](/spec/studyflows.qmd)).
+: Identifies an *activity run*: one execution of one activity by one agent, with restarts counted as separate runs. It is not an ordinal—it does not count anything—but an identifier assigned by the recording engine, and it appears in every trial table as well as on every line of the event stream. Because the identifiers below are unique only within a run, `runtime_id` is what makes them unambiguous across a dataset: the dataset-wide key for a response is the pair (`runtime_id`, `response_id`). The runs themselves are listed in the agent's `studyflow_log.csv` (see [Studyflows](/spec/studyflows.qmd)).
 
 `response_index`
 : Agents emit responses. These may be complex sequences of inputs (e.g., typing an answer) that are interpreted within a study as a meaningful unit of observation.

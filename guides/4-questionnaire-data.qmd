@@ -41,7 +41,7 @@ study/
 ├── agents.csv
 └── data/
     ├── agent_001/
-    │   ├── studyflow.csv
+    │   ├── studyflow_log.csv
     │   ├── questionnaire_1/
     │   │   └── response.csv
     │   ├── questionnaire_2/
@@ -52,7 +52,7 @@ study/
         └── ...
 ```
 
-Besides the responses themselves, three files carry the information needed to interpret them. Each questionnaire has an entry in [`instruments/`](/spec/conventions/folder-structure.qmd) describing the instrument and its parameters. The [`studyflow.xml`](/spec/studyflows.qmd) at the root describes the study as designed: which questionnaires are administered, and in what order. Each agent's [`studyflow.csv`](/spec/studyflows.qmd) records what that agent actually did, which is what tells a reader whether a missing questionnaire was skipped, abandoned, or never assigned. The dataset as a whole is described in [`README.md`](/spec/dataset-cards.qmd), and `agents.csv` lists the agents.
+Besides the responses themselves, three files carry the information needed to interpret them. Each questionnaire has an entry in [`instruments/`](/spec/conventions/folder-structure.qmd) describing the instrument and its parameters. The [`studyflow.xml`](/spec/studyflows.qmd) at the root describes the study as designed: which questionnaires are administered, and in what order. Each agent's [`studyflow_log.csv`](/spec/studyflows.qmd) records what that agent actually did, which is what tells a reader whether a missing questionnaire was skipped, abandoned, or never assigned. The dataset as a whole is described in [`README.md`](/spec/dataset-cards.qmd), and `agents.csv` lists the agents.
 
 ## Mapping a questionnaire onto BDM
 
@@ -82,6 +82,15 @@ Each row of the Response table (`response.csv`) is one trial: one agent answerin
 
 `response_numeric` (the raw answer, independent of the question) and `score` (the value the experimenter assigns to that answer in this context) must both be present, and must never be collapsed into a single column. A reader would otherwise be unable to tell whether the numbers are raw answers, option positions, or already reverse-coded—which arguably makes the dataset unusable.
 :::
+
+## Where subscale totals belong
+
+The `score` column above holds trial-level values: the worth assigned to one answer. Scores that summarize a whole run of the questionnaire—a subscale total, a mean over reverse-coded items, a clinical band—belong in the [Score table](/spec/trial/12-score.qmd): long format, one row per score, keyed by `runtime_id` and `score_name` (with `score_index` when one method produces several values). `method` and `method_version` record how each value was produced, and `classification` together with `classification_reference` record the band a value falls into and the norms that say so.
+
+Two points follow from why the table exists:
+
+- **Some scores cannot be recomputed from the trial tables.** An adaptive estimate comes from the estimator inside the instrument, not from a formula over the recorded responses. A dataset that drops such values is not reusable, so they are recorded here.
+- **A subscale total is not a model.** Models are specifications, fits, parameter estimates, and their provenance; a subscale total is a derived summary of one activity run, and the Score table is its home.
 
 ## A minimal example
 

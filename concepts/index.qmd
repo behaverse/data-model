@@ -35,7 +35,7 @@ my-study/
 ├─ agents.csv           # who the data is about—one row per agent
 └─ data/                # the data, partitioned by agent → session → activity
    └─ agent_001/
-      ├─ studyflow.csv        # what this agent did, and in what order
+      ├─ studyflow_log.csv        # what this agent did, and in what order
       └─ session_1/
          ├─ stroop/           # a cognitive test
          │  ├─ events.ndjson    # events: what happened, as it happened
@@ -55,7 +55,7 @@ Reading top to bottom:
 - **`LICENSE`** states the terms under which the data may be used.
 - **`instruments/`** describes the tasks and questionnaires used to collect the data—one file per instrument, with its parameters.
 - **`agents.csv`** lists who the data is about: one row per agent (a human participant or an artificial one), with their attributes.
-- **`data/`** holds the data itself, organized into folders by `agent → session → activity`. The tree is a convenience for browsing: each file also states its own scope in its columns, so it can be read on its own. Each agent's folder carries a **[`studyflow.csv`](/spec/studyflows.qmd)** recording which activities they completed and in what order, and one subfolder per session. Each session in turn holds one folder per activity—a cognitive test (`stroop/`) or a questionnaire (`bisbas/`); both are stored the same way.
+- **`data/`** holds the data itself, organized into folders by `agent → session → activity`. The tree is a convenience for browsing: each file also states its own scope in its columns, so it can be read on its own. Each agent's folder carries a **[`studyflow_log.csv`](/spec/studyflows.qmd)** recording which activities they completed and in what order, and one subfolder per session. Each session in turn holds one folder per activity—a cognitive test (`stroop/`) or a questionnaire (`bisbas/`); both are stored the same way.
 
 Inside an activity folder, the raw **events** (`events.ndjson`) record what happened as it happened, and the **[Response table](/spec/trial/02-response.qmd)** (`response.csv`) holds the *trials* derived from those events—one row per trial. Supporting tables alongside it describe the stimuli shown (`stimulus.csv`), the response options offered (`option.csv`), and the raw inputs collected (`input.csv`). The trailing `_1` marks the attempt, so a repeated activity becomes `response.csv`, and so on.
 

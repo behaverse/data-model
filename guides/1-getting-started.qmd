@@ -45,7 +45,7 @@ dataset/
 
 The `data/` folder contains the data files. Within this folder, data files are organized in a hierarchical structure: `<AGENT>/<SESSION>/<ACTIVITY>/<DATA_FILE>`. This makes the data easy to navigate and to select from without opening every file.
 
-- The `data/<AGENT>/` folder contains the data for a single agent. It is organized into session folders for each session of the study. It may also contain other agent-specific data types, such as [`studyflow.csv`](/spec/studyflows.qmd), which records what that agent actually did and in what order.
+- The `data/<AGENT>/` folder contains the data for a single agent. It is organized into session folders for each session of the study. It may also contain other agent-specific data types, such as [`studyflow_log.csv`](/spec/studyflows.qmd), which records what that agent actually did and in what order.
 - the `data/<AGENT>/<SESSION>/` folder contains the data for a single session. Each session folder can contain multiple activities.
 - The `data/<AGENT>/<SESSION>/<ACTIVITY>/` are activity folders. Activities are the cognitive tests, questionnaires, or other data collection instruments used in the study. They contain data files for one or more attempts of the same activity.
 
@@ -55,7 +55,7 @@ Here is an example `data/` folder of a dataset of three agents, each with two se
 ...
 data/
 ├── agent_1/
-│   ├── studyflow.csv
+│   ├── studyflow_log.csv
 │   ├── session_1/
 │   │   ├── UFOV/
 │   │   │   └── ...
@@ -67,14 +67,14 @@ data/
 │       └── DigitSpan/
 │           └── ...
 ├── agent_2/
-│   ├── studyflow.csv
+│   ├── studyflow_log.csv
 │   └── session_1/
 │       ├── UFOV/
 │       │   └── ...
 │       └── DigitSpan/
 │           └── ...
 └── agent_3/
-    ├── studyflow.csv
+    ├── studyflow_log.csv
     ├── session_1/
     │   ├── UFOV/
     │   │   └── ...
@@ -90,7 +90,7 @@ data/
 Note that:
 
 - Each agent has a folder named `agent_<ID>`, where `<ID>` is a zero-padded number that indexes the agent within the dataset (`agent_001`, `agent_002`, …; three digits by default). BDM uses `agent_<ID>` for all datasets, whether the agents are humans, animals, or computational models (see [Naming things](/spec/conventions/naming.qmd)).
-- The `studyflow.csv` file contains the order and metadata of the all activities for the agent.
+- The `studyflow_log.csv` file contains the order and metadata of the all activities for the agent.
 - Each session has a folder named `session_<N>` where `<N>` is the agent's session number (its `session_index`). Session numbering is nested within agents—it restarts at 1 for each agent—so `session_1` for `agent_1` and `session_1` for `agent_2` are different sessions that simply came first for their respective agents. A session's dataset-wide identity is its `session_uuid` (see [Indexing things](/spec/conventions/indexing.qmd)).
 - Each activity has a folder named `<AGENT>/<SESSION>/<ACTIVITY>/` where `<ACTIVITY>` is the name of the instrument used in the activity. In the example, the activities are `UFOV` and `DigitSpan`. For each activity, there is an instrument file in the `instruments/` folder with the same name.
 - The folder tree is a convenience, not the source of truth. Unlike directory-partitioning schemes such as Hive or Arrow, where the path *carries* the partition keys and the files omit them, every BDM data file states its own scope: the columns identifying the agent, session, and run are present in the file itself. A file therefore remains interpretable when it is moved, copied, or loaded on its own, and the same data can be exported into a different layout without loss.
@@ -130,7 +130,7 @@ DigitSpan/
 ```
 
 - The `response.csv` file contains the trial data collected during the `DigitSpan` activity. If the agent ran the activity more than once, every run is in this same file: each row carries the `runtime_id` of the run that produced it and an `attempt` number.
-- The runs themselves—including any that were started and abandoned before producing data—are listed in the agent's `studyflow.csv`.
+- The runs themselves—including any that were started and abandoned before producing data—are listed in the agent's `studyflow_log.csv`.
 
 ## Instruments
 

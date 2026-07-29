@@ -31,7 +31,7 @@ attachments: []
 
 Timeseries represent streams of observations sampled continuously—physiological signals, neural activity, mouse trajectories. They differ from regular events in shape: timeseries are dense, continuous, and homogeneously typed (e.g., resting-state EEG at 500 Hz), whereas events are sparse, discrete, and heterogeneous.
 
-Because of that shape, raw signals are never inlined in event records. The samples are written to a separate, domain-appropriate payload file (NDJSON, CSV, EDF, Parquet, …) described by a sidecar metadata file governed by the [timeseries schema](https://behaverse.org/schemas/timeseries); the event references the *sidecar* via `attachments` (see the [Timeseries page](/spec/timeseries.qmd)):
+Because of that shape, raw signals are never inlined in event records. The samples are written to a separate, domain-appropriate payload file (NDJSON, CSV, EDF, Parquet, …) described by a sidecar metadata file governed by the [timeseries schema](https://behaverse.org/schemas/timeseries); the event references the *sidecar* via `attachments` (see the [Timeseries page](/spec/timeseries/index.qmd)):
 
 ```yaml
 attachments:

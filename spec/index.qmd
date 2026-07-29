@@ -70,7 +70,7 @@ Behaverse Data Model (BDM) is a dataset structure designed to capture everything
 [<i class="bi bi-database"></i> **Models**](models/index.qmd)
 : Summary statistics, scores, or computational models that are derived from trials or events. They address research questions or are used for downstream analyses.
 
-[<i class="bi bi-database"></i> **Timeseries**](timeseries.qmd)
+[<i class="bi bi-database"></i> **Timeseries**](timeseries/index.qmd)
 : Continuous signals (EEG, eye tracking, physiology): a payload file plus a sidecar metadata file, referenced from the event stream.
 
 ### Extensions

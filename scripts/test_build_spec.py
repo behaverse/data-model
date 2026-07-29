@@ -108,8 +108,9 @@ def test_value_with_missing_description_gets_empty_cell():
 # --- page integration -----------------------------------------------------------------------
 
 def test_table_page_appends_value_definitions_after_field_tables():
-    table = {"name": "Response", "fields": [_open_field()]}
-    page = build_spec.render_table_page("trial", table, "https://x/trial")
+    table = {"name": "Response", "fields": [_open_field()],
+             "docs_url": "https://x/trial/response"}
+    page = build_spec.render_table_page("trial", table)
     assert page.index("## Value definitions") > page.index("| `stimulus_role` |")
 
 
@@ -119,6 +120,40 @@ def test_flat_page_appends_value_definitions(tmp_path, monkeypatch):
     build_spec.generate_schema_pages("dataset", doc, "https://x")
     page = (tmp_path / "dataset" / "index.qmd").read_text()
     assert "## Value definitions" in page and "### `status`" in page
+
+
+# --- published slugs & links (schemas ≥ v26.0801 publish slug/docs_url per table) -----------
+
+def test_full_reference_link_uses_published_docs_url_not_a_derived_slug():
+    table = {"name": "StudyflowLog", "fields": [],
+             "slug": "studyflow-log",
+             "docs_url": "https://x/trial/a-path-no-slugger-would-derive"}
+    page = build_spec.render_table_page("trial", table)
+    assert "https://x/trial/a-path-no-slugger-would-derive" in page
+
+
+def test_legacy_site_paths_pass_through_unrewritten():
+    # The rewrite table is dead code: zero occurrences in any artifact at v26.0803.
+    text = "see /spec/general/2-dataset-cards.qmd for details"
+    assert build_spec._md(text) == text
+
+
+def test_index_page_carries_configured_aliases():
+    doc = {"version": "26.0803", "tables": [
+        {"name": "Channel", "fields": [], "docs_url": "https://x/timeseries/channel"}]}
+    page = build_spec.render_index_page("timeseries", doc, "https://x/timeseries",
+                                        aliases=["/spec/timeseries.html"])
+    head = page.split("---")[1]
+    assert 'aliases: ["/spec/timeseries.html"]' in head
+
+
+def test_generate_passes_pin_aliases_to_the_index(tmp_path, monkeypatch):
+    monkeypatch.setattr(build_spec, "SPEC_DIR", tmp_path)
+    doc = {"version": "26.0803", "tables": [
+        {"name": "Channel", "fields": [], "docs_url": "https://x/timeseries/channel"}]}
+    build_spec.generate_schema_pages("timeseries", doc, "https://x",
+                                     aliases=["/spec/timeseries.html"])
+    assert '/spec/timeseries.html' in (tmp_path / "timeseries" / "index.qmd").read_text()
 
 
 # --- glossary -------------------------------------------------------------------------------

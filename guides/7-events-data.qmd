@@ -98,7 +98,7 @@ Dense, homogeneous streams (mouse trajectories, gaze, EEG) do not go into the ev
 2. The sidecar—validated by the [timeseries schema](https://behaverse.org/schemas/timeseries)—declares the payload's location, clock, sampling nature, and channels.
 3. The sidecar's `content_url` points at the **payload** itself (NDJSON, CSV, EDF, Parquet, …), stored beside it in the activity folder.
 
-See the [Timeseries page](/spec/timeseries.qmd) for the sidecar convention and where these files live in a dataset.
+See the [Timeseries page](/spec/timeseries/index.qmd) for the sidecar convention and where these files live in a dataset.
 
 ## Clocks and timestamps
 

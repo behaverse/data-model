@@ -20,8 +20,14 @@ vocabulary:
 # `version` is informational (the upstream version last synced against). It is only
 # substituted into the fetch URL if url_template contains a {version} placeholder —
 # the canonical template above does not, so builds track current content.
+# `aliases` (optional): pre-generation URLs the generated index page must keep alive.
 pins:
   trial:
-    version: v26.0728
+    version: v26.0803
   event:
     version: v26.0721
+  studyflow:
+    version: v26.0803
+  timeseries:
+    version: v26.0803
+    aliases: ["/spec/timeseries.html"]

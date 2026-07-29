@@ -1,9 +1,8 @@
 ---
-title: Timeseries
-subtitle: EEG, eye tracking, mouse trajectories, and other continuous signals
+# Injected above the generated timeseries spec tables by scripts/build_spec.py.
 ---
 
-Continuous sampled signals—mouse trajectories, gaze, EEG, and other physiological recordings—are part of a BDM dataset, but their samples are *referenced, never inlined*: the raw data lives in a domain-appropriate **payload** file, and a small JSON **sidecar** describes it. The sidecar is what BDM specifies. It is validated by the [timeseries schema](https://behaverse.org/schemas/timeseries) in `behaverse/schemas`, which is the full reference for this page.
+Continuous sampled signals—mouse trajectories, gaze, EEG, and other physiological recordings—are part of a BDM dataset, but their samples are *referenced, never inlined*: the raw data lives in a domain-appropriate **payload** file, and a small JSON **sidecar** describes it. The sidecar is what BDM specifies, and its fields are documented in the reference below, generated from the [timeseries schema](https://behaverse.org/schemas/timeseries) in `behaverse/schemas`.
 
 ## The sidecar + payload model
 
@@ -23,7 +22,3 @@ An event's `attachments` entry points at the **sidecar** (`type: "bdm:Timeseries
 ## Clocks and sampling
 
 Sample times (`t`) are on the sidecar's declared clock—by default the vocabulary term `engine_seconds`, a monotonic per-session clock—and the per-session `anchor_datetime` bridges to wall-clock time (`datetime = anchor + t`). There are two sampling natures: `event_driven` (one sample per occurrence, e.g., pointer moves; the payload must contain a `t` channel) and `sampled` (nominal fixed rate; `nominal_rate_hz` required, sample times derivable from index × rate).
-
-::: {.callout-note appearance="simple"}
-The timeseries family currently publishes a validation schema (`schema.json`) but no `field-definitions.json`, so this page summarizes the convention rather than rendering a generated field reference the way [Trials](/spec/trial/index.qmd) and [Events](/spec/event/index.qmd) do. The [schema documentation](https://behaverse.org/schemas/timeseries) is the authoritative field reference.
-:::

@@ -29,7 +29,7 @@ The event layer is the least invasive place to start, because it matches how sof
 1. **Emit one object per event**, following the [event envelope](/spec/event/index.qmd): a `timestamp`, an `actor`, a `verb` from the `bdm:` vocabulary, and an `object`. Anything task-specific goes in `result.extensions` or `context.extensions`.
 2. **Write NDJSON**—one object per line, UTF-8, append-only. This survives a crash mid-recording, which a single JSON array does not.
 3. **Stamp every line with the run.** Each line carries the `bdm:runtime_id` of the activity run that produced it, so the file remains interpretable independently of where it sits.
-4. **Reference large signals rather than inlining them.** Continuous recordings go in their own payload file with a [timeseries sidecar](/spec/timeseries.qmd), referenced from the event's `attachments`.
+4. **Reference large signals rather than inlining them.** Continuous recordings go in their own payload file with a [timeseries sidecar](/spec/timeseries/index.qmd), referenced from the event's `attachments`.
 
 Validate output against the [event schema](https://behaverse.org/schemas/event): every line should validate on its own.
 
@@ -39,7 +39,7 @@ Trial tables are derived from events by a rule specific to the task—see [Deriv
 
 1. **Map your task's concepts onto BDM's.** A question becomes a stimulus, the available answers become options, what the agent did becomes a response. The [naming conventions](/spec/conventions/naming.qmd) fix the vocabulary; the [glossary](/glossary/index.qmd) defines each term.
 2. **Write the [Response table](/spec/trial/02-response.qmd)** as `response.csv`, one row per trial, plus whichever supporting tables apply (`stimulus.csv`, `option.csv`, `input.csv`).
-3. **Record the run in `studyflow.csv`**, including runs that were abandoned before producing data—that record is what makes incomplete participation visible. See [Studyflows](/spec/studyflows.qmd).
+3. **Record the run in `studyflow_log.csv`**, including runs that were abandoned before producing data—that record is what makes incomplete participation visible. See [Studyflows](/spec/studyflows.qmd).
 4. **Follow the table conventions** for tidy structure and column order ([Tables](/spec/conventions/tables.qmd)), and the [units](/spec/conventions/units.qmd) conventions for values.
 
 ## Consuming BDM data

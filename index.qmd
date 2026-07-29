@@ -20,7 +20,7 @@ The Behaverse Data Model (BDM) defines how the data of a cognitive science study
 :::
 ::: {.g-col-12 .g-col-md-4}
 ```{=html}
-<div class="bdm-filetree">my_dataset/<br>├─ README.md<br>├─ studyflow.xml<br>├─ instruments/<br>├─ agents.csv<br>└─ data/<br>&nbsp;&nbsp;&nbsp;└─ agent_001/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ studyflow.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ stroop_test/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ events.ndjson<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ response.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─ stimulus.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ big5_questionnaire/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ response.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ stimulus.csv</div>
+<div class="bdm-filetree">my_dataset/<br>├─ README.md<br>├─ studyflow.xml<br>├─ instruments/<br>├─ agents.csv<br>└─ data/<br>&nbsp;&nbsp;&nbsp;└─ agent_001/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ studyflow_log.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ stroop_test/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ events.ndjson<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ response.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─ stimulus.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ big5_questionnaire/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ response.csv<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ stimulus.csv</div>
 ```
 :::
 ::::

@@ -28,7 +28,7 @@ dataset/                          # <1>
 │
 ├── data/                         # <8>
 │   ├── agent_001/                # <9>
-│   │   ├── studyflow.csv         # <10>
+│   │   ├── studyflow_log.csv     # <10>
 │   │   └── session_1/            # <11>
 │   │       └── <activity>/       # <12>
 │   │           ├── response.csv
@@ -62,7 +62,7 @@ dataset/                          # <1>
 
 9. **Agent data:** The agent data folder is labelled following the template `agent_{x}` where x is a zero-padded integer (e.g., `agent_001`, `agent_123`). The padding width follows the [naming conventions](naming.qmd): commensurate with the number of agents in the dataset, three digits by default.
 
-10. **Studyflow**: Each agent data folder contains at its root a `studyflow.csv` file which explains what activities were completed by this agent (with a completion status), when they started and ended each activity and in what order the activities were completed.
+10. **Studyflow log**: Each agent data folder contains at its root a `studyflow_log.csv` file which explains what activities were completed by this agent (with a completion status), when they started and ended each activity and in what order the activities were completed.
 
 11. **Sessions** (optional): In some cases it might be useful to group the data within each agent's folder into subfolders corresponding to multiple data collection sessions (e.g., `session_1/`, `session_2/`). This level of folders is optional and should be used when the data collection is divided into sessions.
 
@@ -85,7 +85,7 @@ The practical consequence is that a file does not lose its meaning when it is mo
 The trial tables are *derived* data. When the raw acquisition record is kept—recommended whenever you may need to audit or re-derive the trial tables—it lives in the same activity folder, partitioned by attempt like the trial tables:
 
 - **Event streams** live at `data/agent_{x}/[session_{n}/]<activity>/events.ndjson` (optionally `.ndjson.gz`), beside `response.csv`. The canonical at-rest form is NDJSON: one event object per line, each validating against the [event schema](https://behaverse.org/schemas/event). See the [Events data guide](/guides/7-events-data.qmd).
-- **Timeseries** are stored as a payload file (e.g., `mouse_1.ndjson.gz`, `eeg_1.edf`) plus its sidecar `<payload-filename>.timeseries.json` in the same activity folder. The sidecar—validated by the [timeseries schema](https://behaverse.org/schemas/timeseries)—describes the payload's clock, sampling, and channels; events reference the sidecar via `attachments`, and the sidecar references the payload. See [Timeseries](/spec/timeseries.qmd).
+- **Timeseries** are stored as a payload file (e.g., `mouse_1.ndjson.gz`, `eeg_1.edf`) plus its sidecar `<payload-filename>.timeseries.json` in the same activity folder. The sidecar—validated by the [timeseries schema](https://behaverse.org/schemas/timeseries)—describes the payload's clock, sampling, and channels; events reference the sidecar via `attachments`, and the sidecar references the payload. See [Timeseries](/spec/timeseries/index.qmd).
 
 ## From acquisition to dataset
 

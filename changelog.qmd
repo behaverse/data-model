@@ -6,6 +6,19 @@ title: Changelog
 
 ### Added
 
+- Enum value sets from `behaverse/schemas` v26.0803 now render on the spec pages: value names in the field tables, full definitions in a per-page "Value definitions" section, open sets marked as *known values*.
+- Generated spec pages for the **studyflow** family (the `studyflow.xml` plan elements, nine tables) and the **timeseries** family (sidecar and channel fields), each with a hand-written introduction; the old timeseries URL redirects.
+- The questionnaire guide documents the **Score** table: where run-level scores such as subscale totals belong, and why scores that cannot be recomputed must be recorded.
+- The trial spec links the family's published JSON-LD context (`trial/context.jsonld`).
+
+### Changed
+
+- The trial run-log table follows its upstream rename: **StudyflowLog**, stored per agent as `studyflow_log.csv` (`studyflow.xml` is the plan, `studyflow_log.csv` is what happened). All pages and examples updated.
+- "Full reference" links on spec pages use the URL published by the schema (`docs_url`) instead of deriving it locally.
+- Glossary entries for fields with a defined value set list the value names.
+
+### Added
+
 - Spec pages for the trial schema's new tables: **Studyflow** (the run log), **Subtrial**, **TrialParameter**, and **TaskParameter**—eleven tables in total.
 - `studyflow.csv` is documented as the run log, with its columns and its relationship to the `studyflow.xml` design.
 - `runtime_id` documented in the indexing conventions as the run-level identifier that makes table-local ids unambiguous.
