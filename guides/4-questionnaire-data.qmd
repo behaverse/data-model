@@ -65,7 +65,7 @@ BDM uses one vocabulary for cognitive tests and questionnaires alike, so the fam
 | the available answers | the **options** | the choices offered, e.g., a five-point agreement scale |
 | the answer given | the **response** | the meaning assigned to what the agent did |
 
-Each of these constructs is described by several variables: identifiers, descriptions, indices, and timing information, among others. They are documented field by field on the [Response table](/spec/trial/01-response.qmd) page, with the supplementary [Stimulus](/spec/trial/02-stimulus.qmd) and [Option](/spec/trial/03-option.qmd) tables alongside it, and every term is defined in the [Glossary](/glossary/index.qmd).
+Each of these constructs is described by several variables: identifiers, descriptions, indices, and timing information, among others. They are documented field by field on the [Response table](/spec/trial/02-response.qmd) page, with the supplementary [Stimulus](/spec/trial/03-stimulus.qmd) and [Option](/spec/trial/04-option.qmd) tables alongside it, and every term is defined in the [Glossary](/glossary/index.qmd).
 
 Two distinctions are worth stating explicitly, because collapsing them is what makes questionnaire data hard to reuse:
 
@@ -75,7 +75,7 @@ Two distinctions are worth stating explicitly, because collapsing them is what m
 
 ## The columns that matter for questionnaires
 
-Each row of the Response table (`response.csv`) is one trial: one agent answering one question. The [Response table](/spec/trial/01-response.qmd) reference documents every column, including guidance specific to questionnaires: how `stimulus_description` handles questions presented in another language, what `option_source` records and why it is what lets a reader tell whether two datasets used the same scale, why `response_option_index` is essential when options are shuffled, and the distinction between `response_numeric` and `score`.
+Each row of the Response table (`response.csv`) is one trial: one agent answering one question. The [Response table](/spec/trial/02-response.qmd) reference documents every column, including guidance specific to questionnaires: how `stimulus_description` handles questions presented in another language, what `option_source` records and why it is what lets a reader tell whether two datasets used the same scale, why `response_option_index` is essential when options are shuffled, and the distinction between `response_numeric` and `score`.
 
 ::: {.callout-warning appearance="simple"}
 ## Record the response and the score separately

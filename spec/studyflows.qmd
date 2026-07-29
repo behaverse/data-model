@@ -28,7 +28,7 @@ Together they make an agent's path auditable: the design states what was possibl
 
 ## The run log (`studyflow.csv`)
 
-`studyflow.csv` is the **run log**: one row per *activity run*, where a run is a single execution of one activity by one agent. Restarting an activity produces another run, and therefore another row. It is defined by the `Studyflow` table of the trial schema—see the [field-by-field reference](/spec/trial/09-studyflow.qmd).
+`studyflow.csv` is the **run log**: one row per *activity run*, where a run is a single execution of one activity by one agent. Restarting an activity produces another run, and therefore another row. It is defined by the `Studyflow` table of the trial schema—see the [field-by-field reference](/spec/trial/01-studyflowlog.qmd).
 
 Each row records:
 
