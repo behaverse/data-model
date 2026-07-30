@@ -23,9 +23,9 @@ vocabulary:
 # `aliases` (optional): pre-generation URLs the generated index page must keep alive.
 pins:
   trial:
-    version: v26.0807
+    version: v26.0808
   event:
-    version: v26.0805
+    version: v26.0808
   studyflow:
     version: v26.0803
   timeseries:
