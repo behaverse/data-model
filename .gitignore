@@ -24,6 +24,7 @@ spec/event/
 spec/studyflow/
 spec/timeseries/
 spec/agents/
+spec/devices/
 # generated glossary data (scripts/build_spec.py) — vocabulary + harvested schema field terms
 glossary/glossary.yml
 

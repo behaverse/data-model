@@ -1,0 +1,7 @@
+---
+# Injected above the generated devices spec tables by scripts/build_spec.py.
+---
+
+A BDM dataset may ship `devices.csv` at its root: the device roster—one row per recording device—holding device-lifetime facts: platform and OS, display geometry (size in centimetres, resolution, refresh rate, pixel ratio), pixel-density calibration with its method and provenance, and capabilities. Runs reference their device through [StudyflowLog](/spec/trial/studyflow-log.qmd)'s `device_id`. The reference below is generated from the [devices schema](https://behaverse.org/schemas/devices) in `behaverse/schemas`.
+
+Run-lifetime facts deliberately stay on the run log: the recording engine (`engine_name`/`engine_version`) and the viewing distance (`screen_distance`—posture is a property of the sitting, not the hardware). A calibration belongs to the device, which is what lets a participant calibrate once rather than at every session; declining to calibrate is recorded, distinct from absence.
