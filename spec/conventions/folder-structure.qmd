@@ -25,6 +25,7 @@ dataset/                          # <1>
 │
 ├── studyflow.xml                 # <6>
 ├── agents.csv                    # <7>
+├── devices.csv                   # <7>
 │
 ├── data/                         # <8>
 │   ├── agent_001/                # <9>
@@ -56,7 +57,7 @@ dataset/                          # <1>
 
 6. **Studyflow (design)**: The `studyflow.xml` file describes the study protocol: the activities and the paths agents may take through them. One file per dataset (see [Studyflows](/spec/studyflows.html)).
 
-7. **Agents metadata**: The `agents.csv` file lists all agents in a study together with core per-agent attributes such as demographics (see the [Agents reference](/spec/agents/index.qmd)). What data exists for each agent is derivable from that agent's `studyflow_log.csv`.
+7. **Rosters**: The `agents.csv` file lists all agents in a study together with core per-agent attributes such as demographics (see the [Agents reference](/spec/agents/index.qmd)). What data exists for each agent is derivable from that agent's `studyflow_log.csv`. Beside it, the optional `devices.csv` lists the recording devices—display geometry, calibration with its provenance, capabilities (see the [Devices reference](/spec/devices/index.qmd))—each referenced by a run's `device_id`.
 
 8. **Data**: Contains all the data collected within a study and that are within the scope of a dataset. Within `data/` there is one folder per agent that contains all the data about that agent.
 
@@ -98,9 +99,13 @@ A recording engine produces one recording per run—one execution of one activit
 | the task / instrument | the `<activity>/` folder, named after the instrument (which has a matching file in `instruments/`) |
 | the derived trial data | the activity's CSVs: `response.csv` and its supporting tables (`stimulus.csv`, `option.csv`, `input.csv`, …) |
 | the raw event stream | `events.ndjson[.gz]` beside those CSVs |
-| continuous signals (mouse, gaze, EEG, …) | payload + `.timeseries.json` sidecar beside them, referenced from the event stream's `attachments` |
+| continuous signals (mouse, gaze, EEG, …) | payload + `.timeseries.json` sidecar beside them, referenced from the event stream's `attachments` and linked to their device by `source` |
+| the run itself—begun, completed, or abandoned | a row in the agent's `studyflow_log.csv`: status and timing, the recording engine (`engine_name`/`engine_version`), the device (`device_id`), the viewing distance, and the coordinate-frame declaration |
+| the recording device | a row in `devices.csv` at the dataset root—display geometry, calibration with its provenance, capabilities—referenced by each run's `device_id` |
 
-Engines record time on a monotonic per-session clock (the vocabulary term `engine_seconds`), and the per-session `anchor_datetime`—the wall-clock datetime at clock zero—is the single bridge to calendar time. Datetime columns in the trial tables are therefore **derived**, computed from the monotonic clock as `anchor_datetime + t`, not independently recorded.
+Engines record time on a monotonic clock (the vocabulary term `engine_seconds`), and the per-run `anchor_datetime`—recorded on each run's `studyflow_log.csv` row, because a restart starts a new engine clock—is the single bridge to calendar time. Datetime columns in the trial tables are therefore **derived**, computed from the monotonic clock as `anchor_datetime + t`, not independently recorded.
+
+The acquisition directory itself—how an engine lays out its private recording before aggregation—is engine-private: BDM starts at the dataset boundary. The one constraint is naming: engine-side identity sidecars use the BDM term names (the [StudyflowLog](/spec/trial/studyflow-log.qmd) columns and `study_name`), so aggregation is a rename-free copy.
 
 <!-- merged from explanations/4-files-and-folders; owner editorial pass pending -->
 
